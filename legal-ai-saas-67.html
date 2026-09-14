@@ -1,0 +1,1646 @@
+<html lang="en"><head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-M9KHGFVL');</script>
+  <!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legau — Legal AI for Solo Practitioners</title>
+
+    <!-- Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&amp;display=swap" rel="stylesheet">
+    <link rel="icon" href="https://get.legau.com/favicon.png" type="image/png"/>
+
+    <!-- Icons -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+           html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+     
+      /* ---------- Base type ---------- */
+      .font-serif { font-family: 'Charter', 'Tiempos Text', 'Newsreader', serif; }
+      .font-sans  { font-family: 'Inter', sans-serif; }
+
+      /* ---------- Animation ---------- */
+      @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(0.5rem); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fade-in { animation: fadeInUp 600ms ease-out forwards; }
+
+      /* ---------- FAQ accordion ---------- */
+      .faq-grid {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 200ms ease-out;
+      }
+      .faq-grid.is-open { grid-template-rows: 1fr; }
+      .faq-inner { overflow: hidden; }
+
+      /* ================================================================
+         MAILERLITE FORM — Legau styling
+         Two variants: .legau-ml--dark (teal sections) / .legau-ml--light
+         !important is required: webforms.min.js re-applies its own styles
+         after load and will otherwise restore the white container.
+         ================================================================ */
+      .legau-ml * { box-sizing: border-box; }
+
+      .legau-ml,
+      .legau-ml .ml-form-embedWrapper,
+      .legau-ml .ml-form-embedBody,
+      .legau-ml .ml-form-successBody,
+      .legau-ml .ml-form-embedContent,
+      .legau-ml .ml-form-successContent,
+      .legau-ml .ml-block-form,
+      .legau-ml .ml-field-group {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      .legau-ml .ml-form-embedWrapper {
+        width: 100% !important;
+        max-width: 520px !important;
+        font-family: 'Inter', -apple-system, sans-serif;
+        display: block !important;
+      }
+      /* Alignment is independent of colour variant */
+      .legau-ml--center .ml-form-embedWrapper { margin: 0 auto !important; }
+
+      .legau-ml .ml-block-form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      /* Once the button wraps onto its own line, centre it */
+      @media (max-width: 560px) {
+        .legau-ml .ml-block-form { justify-content: center; }
+      }
+
+      .legau-ml input[type="email"] {
+        flex: 1 1 240px;
+        min-width: 0;
+        border-radius: 8px !important;
+        font-family: inherit;
+        font-size: 15px !important;
+        line-height: 22px !important;
+        padding: 13px 16px !important;
+        width: 100% !important;
+        transition: border-color .2s, box-shadow .2s;
+      }
+      .legau-ml input[type="email"]:focus {
+        outline: none;
+        border-color: #23C4D6 !important;
+        box-shadow: 0 0 0 2px rgba(35,196,214,0.3);
+      }
+
+      /* Dark sections */
+      .legau-ml--dark input[type="email"] {
+        background: #FAF8F3 !important;
+        border: 1px solid #FAF8F3 !important;
+        color: #06303A !important;
+      }
+      .legau-ml--dark input[type="email"]::placeholder { color: rgba(6,48,58,0.5); }
+
+      /* Light sections */
+      .legau-ml--light input[type="email"] {
+        background: #FFFFFF !important;
+        border: 1px solid rgba(6,48,58,0.2) !important;
+        color: #06303A !important;
+      }
+      .legau-ml--light input[type="email"]::placeholder { color: rgba(6,48,58,0.4); }
+
+      .legau-ml button.primary,
+      .legau-ml button.loading {
+        flex: 0 0 auto;
+        background: #23C4D6 !important;
+        border: none !important;
+        border-radius: 8px !important;
+        color: #06303A !important;
+        cursor: pointer;
+        font-family: inherit !important;
+        font-size: 15px !important;
+        font-weight: 500 !important;
+        line-height: 22px !important;
+        padding: 13px 24px !important;
+        width: auto !important;
+        white-space: nowrap;
+        transition: background .2s;
+      }
+      .legau-ml--dark  button.primary:hover { background: #FAF8F3 !important; }
+      .legau-ml--light button.primary:hover { background: #1FB0C0 !important; }
+
+      .legau-ml .ml-form-embedSubmitLoad { display: inline-block; width: 22px; height: 22px; }
+      .legau-ml .ml-form-embedSubmitLoad:after {
+        content: " ";
+        display: block;
+        width: 12px; height: 12px;
+        margin: 1px;
+        border-radius: 50%;
+        border: 3px solid #06303A;
+        border-color: #06303A #06303A #06303A transparent;
+        animation: legau-spin 1.2s linear infinite;
+      }
+      @keyframes legau-spin { to { transform: rotate(360deg); } }
+
+      .legau-ml .sr-only {
+        position: absolute; width: 1px; height: 1px;
+        padding: 0; margin: -1px; overflow: hidden;
+        clip: rect(0,0,0,0); border: 0;
+      }
+
+      .legau-ml .ml-error input[type="email"] { border-color: #E89B5A !important; }
+
+      /* Success state */
+      .legau-ml .ml-form-successContent h4 {
+        font-family: 'Charter', 'Newsreader', Georgia, serif !important;
+        font-size: 24px !important;
+        font-weight: 400 !important;
+        margin: 0 0 8px !important;
+      }
+      .legau-ml .ml-form-successContent p {
+        font-size: 15px !important;
+        line-height: 24px !important;
+        margin: 0 !important;
+      }
+      .legau-ml--dark  .ml-form-successContent h4 { color: #FAF8F3 !important; }
+      .legau-ml--dark  .ml-form-successContent p  { color: rgba(250,248,243,0.75) !important; }
+      .legau-ml--light .ml-form-successContent h4 { color: #06303A !important; }
+      .legau-ml--light .ml-form-successContent p  { color: rgba(6,48,58,0.7) !important; }
+      .legau-ml--light .ml-form-successContent    { text-align: center; }
+    </style>
+  </head>
+
+  <body class="bg-[#FAF8F3] text-[#06303A] font-sans antialiased selection:bg-[#23C4D6]/30 selection:text-inherit">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M9KHGFVL"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->    
+    <!-- ============================ NAV ============================ -->
+    <nav id="site-nav" class="fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300">
+      <div class="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between transition-all duration-300" id="nav-inner">
+        <div class="inline-flex flex-col items-start relative cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+          <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/66b95995-6f55-4ee0-9329-b1945636400e_320w.png" alt="Legau" class="w-auto h-10 md:h-12 object-contain rounded-sm">
+        </div>
+        <a href="legal-ai-saas-67.1.html#signup-section" class="inline-flex items-center justify-center text-sm font-normal bg-[#23C4D6] text-[#06303A] px-5 py-2.5 rounded hover:bg-[#1FB0C0] transition-colors duration-200">
+          Try Legau free
+        </a>
+      </div>
+    </nav>
+
+    <!-- ============================ 1. HERO ============================ -->
+    <section class="overflow-hidden bg-[#06303A] relative">
+      <div class="md:pt-48 md:pb-32 pt-32 px-6 pb-24">
+        <div class="grid md:grid-cols-[1fr_1fr] max-w-7xl mx-auto gap-x-12 gap-y-12 items-center">
+          <div class="max-w-xl z-10">
+            <span class="uppercase block text-xs font-light text-[#E89B5A] tracking-widest mb-6">
+              — LEGAL AI FOR SOLO PRACTICE
+            </span>
+
+            <h1 class="md:text-7xl leading-[1.05] animate-fade-in text-5xl text-[#FAF8F3] tracking-tight font-serif opacity-0 mb-6 translate-y-2">
+              Be a
+              <span class="italic">lawyer</span>
+              again.
+            </h1>
+
+            <p class="md:text-xl leading-[1.6] text-lg font-light text-[#B5D8DD] max-w-[540px] mb-10 tracking-tight">
+              Legau is the leverage you've never had on drafting and reviewing
+              legal work, inside Word and Outlook.
+            </p>
+
+            <!-- Form + secondary link -->
+            <div class="">
+              <!-- MailerLite embed (dark) -->
+              <div id="mlb2-44016198" class="legau-ml legau-ml--dark ml-form-embedContainer ml-subscribe-form ml-subscribe-form-44016198">
+                <div class="ml-form-embedWrapper">
+                  <div class="ml-form-embedBody row-form">
+                    <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/181920/forms/193701611720148256/subscribe" data-code="" method="post" target="_blank">
+                      <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required" style="flex:1 1 240px; min-width:0;">
+                        <label for="hero-email" class="sr-only">
+                          Your work email
+                        </label>
+                        <input id="hero-email" type="email" class="form-control" name="fields[email]" placeholder="Your work email" autocomplete="email" aria-invalid="false">
+                      </div>
+                      <button type="submit" class="primary">
+                        Try Legau free
+                      </button>
+                      <button disabled="disabled" style="display: none;" type="button" class="loading">
+                        <div class="ml-form-embedSubmitLoad"></div>
+                        <span class="sr-only">Loading…</span>
+                      </button>
+                      <input type="hidden" name="ml-submit" value="1" aria-invalid="false">
+                      <input type="hidden" name="anticsrf" value="true" aria-invalid="false">
+                    </form>
+                  </div>
+                  <div class="ml-form-successBody row-success" style="display: none;">
+                    <div class="ml-form-successContent">
+                      <h4>Check your inbox.</h4>
+                      <p>We've sent you everything you need to get started.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <a href="legal-ai-saas-67.1.html#guide" class="inline-block mt-6 underline underline-offset-4 decoration-[#FAF8F3]/30 hover:decoration-[#FAF8F3] transition-colors duration-200 text-sm text-[#FAF8F3] font-light">Download the evaluation guide →</a>
+            </div>
+
+            <p class="text-xs font-extralight text-[#B5D8DD]/80 mt-4">
+              No credit card. Works inside Word and Outlook.
+            </p>
+          </div>
+
+          <!-- Hero visual -->
+          <div class="relative w-full flex transform md:rotate-1 md:hover:rotate-0 transition-transform duration-500 bg-transparent">
+            <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/7565058f-45b6-4cc1-9728-ba98e0008a37_1600w.png" alt="Legau legal AI interface inside Microsoft Word" class="w-full h-auto object-cover bg-transparent transform scale-125 md:scale-150 transition-transform duration-500">
+          </div>
+        </div>
+      </div>
+
+      <!-- Press -->
+      <div class="bg-transparent w-full px-6 pt-16 pb-16 md:pt-4 md:pb-16">
+        <div class="flex flex-col items-center w-full max-w-7xl mx-auto">
+          <span class="uppercase block text-xs font-light text-[#E89B5A] tracking-widest font-sans text-center mb-8">
+            LEGAU IN THE PRESS
+          </span>
+          <div class="flex flex-wrap w-full mb-12 gap-x-12 gap-y-12 items-center justify-center">
+            <a href="https://www.law.com" target="_blank" rel="noopener" class="opacity-60 hover:opacity-100 transition-opacity duration-150 ease-out flex items-center justify-center">
+              <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/6e8c247f-58c9-4587-bc1b-79cfcba5385a_320w.png" alt="Law.com" class="h-5 md:h-[26px] w-auto object-contain brightness-0 invert">
+            </a>
+            <a href="https://www.law360.com" target="_blank" rel="noopener" class="opacity-60 hover:opacity-100 transition-opacity duration-150 ease-out flex items-center justify-center">
+              <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/c60008e0-c401-4765-bf51-88b500939730_320w.png" alt="Law360" class="h-5 md:h-[26px] w-auto object-contain brightness-0 invert">
+            </a>
+            <a href="https://abovethelaw.com" target="_blank" rel="noopener" class="opacity-60 hover:opacity-100 transition-opacity duration-150 ease-out flex items-center justify-center">
+              <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/c49e1ae0-46be-4057-a6f0-654172773fcc_320w.png" alt="Above the Law" class="h-5 md:h-[26px] w-auto object-contain brightness-0 invert">
+            </a>
+            <a href="https://www.lawnext.com" target="_blank" rel="noopener" class="opacity-60 hover:opacity-100 transition-opacity duration-150 ease-out flex items-center justify-center">
+              <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/8a848370-213e-4af3-b9ca-275141b07af4_320w.png" alt="LawSites" class="h-5 md:h-[26px] w-auto object-contain brightness-0 invert">
+            </a>
+            <a href="https://www.artificiallawyer.com" target="_blank" rel="noopener" class="opacity-60 hover:opacity-100 transition-opacity duration-150 ease-out flex items-center justify-center">
+              <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/567b7aa6-2b21-44cb-b4e8-1bd7a51acc8d_320w.png" alt="Artificial Lawyer" class="h-5 md:h-[26px] w-auto object-contain brightness-0 invert">
+            </a>
+          </div>
+          <p class="text-base md:text-xl leading-relaxed font-thin text-[#FAF8F3] tracking-tight font-serif text-center w-full max-w-2xl mb-4">
+            "A versatile tool that takes a somewhat unique approach to legal
+            drafting."
+          </p>
+          <span class="uppercase block text-xs font-light text-[#B5D8DD]/80 tracking-widest font-sans text-center">
+            — LAWSITES, Bob Ambrogi
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 2. PROBLEM + FEATURES ============================ -->
+          <!-- The solo reality -->
+      <div class="w-full bg-[#FAF8F3] px-4 md:px-8 pt-16 pb-8 md:pt-24 md:pb-12">
+        <div class="max-w-7xl mx-auto w-full bg-[#06303A] rounded-2xl md:rounded-3xl px-6 md:px-16 py-16 md:py-24">
+          <div class="max-w-[880px] mx-auto w-full flex flex-col items-center">
+            <span class="block text-center uppercase text-[#E89B5A] font-sans font-normal text-[13px] tracking-[0.15em] mb-12">
+              — The Solo Reality
+            </span>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 w-full text-left items-start" role="list">
+              <div class="flex flex-col" role="listitem">
+                <h3 class="font-serif italic font-light text-[22px] md:text-[28px] leading-[1.15] text-[#FAF8F3] tracking-tight">
+                  Law used to be the whole job.
+                </h3>
+                <p class="font-sans font-light text-[16px] leading-[1.6] text-[#B5D8DD] mt-4">
+                  Now it's what you squeeze in between calls, emails, and
+                  everything else that keeps the practice running.
+                </p>
+              </div>
+
+              <div class="flex flex-col" role="listitem">
+                <h3 class="font-serif italic font-light text-[22px] md:text-[28px] leading-[1.15] text-[#FAF8F3] tracking-tight">
+                  Generic AI isn't built for law.
+                </h3>
+                <p class="font-sans font-light text-[16px] leading-[1.6] text-[#B5D8DD] mt-4">
+                  It's built to sound right, not to be right. Legal work runs on
+                  the second one.
+                </p>
+              </div>
+            </div>
+
+            <hr class="w-[60px] border-t border-[#E89B5A] my-12" aria-hidden="true">
+
+            <div class="max-w-[560px] mx-auto w-full text-center flex flex-col items-center">
+              <h2 class="text-[30px] leading-[1.2] font-light italic text-[#FAF8F3] tracking-tight font-serif">
+                This is where Legau comes in.
+              </h2>
+              <p class="font-sans font-light text-[17px] leading-[1.5] text-[#B5D8DD] mt-3">
+                The legal leverage, built into the work.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Features -->
+      <div class="max-w-6xl mx-auto px-6 py-16 md:py-32">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-y-16 md:gap-y-32 gap-x-12 md:gap-x-20 items-center">
+          <!-- Row 1 -->
+          <div class="flex flex-col order-2 md:order-1">
+            <span class="text-[#06303A] font-light text-xs uppercase tracking-widest block mb-6">
+              More legal work done
+            </span>
+            <h3 class="font-serif font-extralight text-2xl md:text-3xl tracking-tight mb-4 text-[#06303A]">
+              Drafts that move when your day is already full
+            </h3>
+            <p class="leading-relaxed text-sm md:text-base font-extralight text-[#06303A] max-w-md">
+              Create contracts, motions, memos, and other legal documents
+              directly inside Microsoft Word, with the right context already
+              there to help the work move faster.
+            </p>
+          </div>
+          <div class="w-full flex items-center justify-center order-1 md:order-2">
+            <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/8c7fd152-55fe-43fc-a9db-2edf372077f8_1600w.png" alt="Legau drafting inside Microsoft Word" class="w-full h-auto object-contain drop-shadow-2xl transform scale-[1.2]">
+          </div>
+
+          <!-- Row 2 -->
+          <div class="w-full flex items-center justify-center order-3 md:order-3">
+            <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/15a19bea-605d-493e-be5a-b19b99e6575d_1600w.png" alt="Legau contract review and redlining" class="w-full h-auto object-contain drop-shadow-2xl transform scale-[1.2]">
+          </div>
+          <div class="flex flex-col order-4 md:order-4">
+            <span class="text-[#06303A] font-light text-xs uppercase tracking-widest block mb-6">
+              Review with peace of mind
+            </span>
+            <h3 class="font-serif font-extralight text-2xl md:text-3xl tracking-tight mb-4 text-[#06303A]">
+              Review without carrying every line alone
+            </h3>
+            <p class="leading-relaxed text-sm md:text-base font-extralight text-[#06303A] max-w-md">
+              Compare documents, catch legal risks, generate redlines, and get a
+              second set of eyes, so review feels less like another thing
+              weighing on you only.
+            </p>
+          </div>
+
+          <!-- Row 3 -->
+          <div class="flex flex-col order-6 md:order-5">
+            <span class="text-[#06303A] font-light text-xs uppercase tracking-widest block mb-6">
+              The inbox stops eating your morning
+            </span>
+            <h3 class="font-serif font-extralight text-2xl md:text-3xl tracking-tight mb-4 text-[#06303A]">
+              Get from thread to answer faster.
+            </h3>
+            <p class="leading-relaxed text-sm md:text-base font-extralight text-[#06303A] max-w-md">
+              Summarize long threads, draft replies, create legal emails from
+              scratch, analyze documents, and save your own templates without
+              leaving Outlook.
+            </p>
+          </div>
+          <div class="w-full flex items-center justify-center order-5 md:order-6">
+            <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/c73202cf-5dcf-4453-bd0e-4e739b3d2525_1600w.png" alt="Legau email assistance inside Outlook" class="w-full h-auto object-contain drop-shadow-2xl transform scale-[1.2]">
+          </div>
+
+          <!-- Row 4 -->
+          <div class="w-full flex items-center justify-center order-7 md:order-7">
+            <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/e56705cb-4082-4e20-8957-8877c84378cb_1600w.png" alt="Legau document analysis with sources" class="w-full h-auto object-contain drop-shadow-2xl transform scale-[1.2]">
+          </div>
+          <div class="flex flex-col order-8 md:order-8">
+            <span class="text-[#06303A] font-light text-xs uppercase tracking-widest block mb-6">
+              Built for solo practice
+            </span>
+            <h3 class="font-serif font-extralight text-2xl md:text-3xl tracking-tight mb-4 text-[#06303A]">
+              No IT department. No implementation team. Serious about
+              confidentiality.
+            </h3>
+            <p class="leading-relaxed text-sm md:text-base font-extralight text-[#06303A] max-w-md">
+              Works inside the tools you already have. You're running it the
+              same day you sign up. And because simple still has to be safe,
+              Legau keeps client data isolated, grounds answers in legal
+              context, and shows sources when it matters.
+            </p>
+          </div>
+        </div>
+
+        <!-- Grounding footer -->
+        <div class="md:pt-24 flex flex-col text-center w-full max-w-5xl mx-auto pt-16 pb-8 items-center">
+          <span class="uppercase block text-xs font-light text-[#5A6B73] tracking-widest text-center mb-8">
+            — Grounded in real law, not guesses
+          </span>
+          <div class="flex flex-wrap justify-center items-center gap-x-10 gap-y-6 opacity-80">
+            <div class="flex items-center gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-[#E89B5A]" aria-hidden="true">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+              </svg>
+              <span class="text-sm font-light text-[#06303A]">
+                Court Decisions
+              </span>
+            </div>
+            <div class="flex items-center gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-[#E89B5A]" aria-hidden="true">
+                <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
+                <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+                <path d="M10 9H8"></path>
+                <path d="M16 13H8"></path>
+                <path d="M16 17H8"></path>
+              </svg>
+              <span class="text-sm font-light text-[#06303A]">
+                Current Legislation
+              </span>
+            </div>
+            <div class="flex items-center gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-[#5A6B73]" aria-hidden="true">
+                <path d="m6 14 1.45-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.55 6a2 2 0 0 1-1.94 1.5H4a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h3.93a2 2 0 0 1 1.66.9l.82 1.2a2 2 0 0 0 1.66.9H18a2 2 0 0 1 2 2v2"></path>
+              </svg>
+              <span class="text-sm font-light text-[#06303A]">
+                Your Knowledge &amp; Context
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+        <!-- Section CTA -->
+        <div class="flex flex-col items-center text-center pt-6 md:pt-8 pb-8 md:pb-12">
+          <a href="legal-ai-saas-67.1.html#signup-section" class="inline-flex items-center justify-center bg-[#23C4D6] text-[#06303A] hover:bg-[#1FB0C0] transition-colors duration-200 font-normal rounded py-3 px-6 text-sm">
+            Try Legau free
+          </a>
+        </div>
+      
+    
+
+    <!-- ============================ 3. DEMO VIDEO ============================ -->
+    <section class="bg-[#06303A] px-6 pt-32 pb-32" id="video">
+      <div class="text-center max-w-5xl mx-auto">
+        <span class="uppercase block text-xs font-light text-[#E89B5A] tracking-widest mb-6">
+          — See it for yourself
+        </span>
+        <h2 class="md:text-5xl text-3xl font-thin text-[#FAF8F3] tracking-tight font-serif mb-12">
+          Inside
+          <span class="italic">Word</span>
+          and
+          <span class="italic">Outlook</span>
+          . Inside your day.
+        </h2>
+
+        <div class="max-w-4xl mx-auto relative rounded-xl border border-[#23C4D6] overflow-hidden aspect-video">
+          <iframe src="https://www.youtube.com/embed/EqvYdNXAAMA" title="Legau product walkthrough" class="absolute inset-0 w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 4. COMPARISON ============================ -->
+    <section class="py-16 md:py-24 bg-[#FAF8F3]" id="comparison">
+      <div class="flex flex-col max-w-5xl mx-auto px-6 items-center">
+        <div class="w-full max-w-2xl flex flex-col items-center text-center mb-12">
+          <span class="uppercase text-xs font-normal text-[#E89B5A] tracking-widest text-center mb-6">
+            — Why not just ChatGPT
+          </span>
+          <h2 class="text-4xl md:text-5xl leading-tight font-extralight text-[#06303A] tracking-tight font-serif text-center mb-6">
+            Legal
+            <i class="italic">knowledge</i>
+            . Your judgment.
+          </h2>
+        </div>
+
+        <div class="w-full relative border border-[#E0E0E0] rounded-lg bg-[#FAF8F3]">
+          <div class="overflow-x-auto md:p-8 w-full p-5 relative">
+            <table class="w-full text-left border-collapse table-fixed">
+              <caption class="sr-only">
+                Comparison of general AI and Legau
+              </caption>
+              <thead class="">
+                <tr class="">
+                  <th scope="col" class="w-[30%] md:w-[25%] bg-[#FAF8F3] border-b border-[#E0E0E0] pt-4 pb-5 pr-2 md:pr-4 align-bottom"></th>
+                  <th scope="col" class="w-[35%] align-bottom border-b border-[#E0E0E0] pt-4 pr-2 md:pr-4 pb-5">
+                    <div class="uppercase text-xs font-normal text-[#06303A] tracking-widest">
+                      General AI
+                      <span class="normal-case tracking-normal text-[#5A6B73] text-xs font-light block mt-1">
+                        (like ChatGPT or Claude)
+                      </span>
+                    </div>
+                  </th>
+                  <th scope="col" class="w-[35%] md:w-[40%] align-bottom border-b border-[#E0E0E0] pt-4 px-2 md:px-4 pb-5">
+                    <div class="uppercase text-xs font-normal text-[#06303A] tracking-widest border-[#23C4D6] border-t-2 pt-1">
+                      Legau
+                      <span class="normal-case tracking-normal text-[#5A6B73] text-xs font-light block mt-1">
+                        (legal AI for solos)
+                      </span>
+                    </div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="">
+                <tr class="border-b border-[#E0E0E0] last:border-0">
+                  <th scope="row" class="bg-[#FAF8F3] py-4 font-light text-[#06303A] text-sm pr-2 md:pr-4 text-left font-sans align-top break-words">
+                    Focus
+                  </th>
+                  <td class="py-4 text-[#5A6B73] text-sm leading-relaxed pr-2 md:pr-4 align-top break-words">
+                    Broad, generalized knowledge for everyday tasks
+                  </td>
+                  <td class="py-4 text-[#06303A] text-sm leading-relaxed px-2 md:px-4 align-top break-words">
+                    Purpose-built exclusively for solo legal practitioners
+                  </td>
+                </tr>
+                <tr class="border-b border-[#E0E0E0] last:border-0">
+                  <th scope="row" class="bg-[#FAF8F3] py-4 font-light text-[#06303A] text-sm pr-2 md:pr-4 text-left font-sans align-top break-words">
+                    Training Data
+                  </th>
+                  <td class="py-4 text-[#5A6B73] text-sm leading-relaxed pr-2 md:pr-4 align-top break-words">
+                    Scraped from unverified open internet sources
+                  </td>
+                  <td class="py-4 text-[#06303A] text-sm leading-relaxed px-2 md:px-4 align-top break-words">
+                    Trained strictly on verified, high-quality legal documents
+                  </td>
+                </tr>
+                <tr class="border-b border-[#E0E0E0] last:border-0">
+                  <th scope="row" class="bg-[#FAF8F3] py-4 font-light text-[#06303A] text-sm pr-2 md:pr-4 text-left font-sans align-top break-words">
+                    Workflow
+                  </th>
+                  <td class="py-4 text-[#5A6B73] text-sm leading-relaxed pr-2 md:pr-4 align-top break-words">
+                    Manual prompting; good only for rough first drafts
+                  </td>
+                  <td class="py-4 text-[#06303A] text-sm leading-relaxed px-2 md:px-4 align-top break-words">
+                    End-to-end automation tailored to solo legal workflows
+                  </td>
+                </tr>
+                <tr class="border-b border-[#E0E0E0] last:border-0">
+                  <th scope="row" class="bg-[#FAF8F3] py-4 font-light text-[#06303A] text-sm pr-2 md:pr-4 text-left font-sans align-top break-words">
+                    Jurisdiction Knowledge
+                  </th>
+                  <td class="py-4 text-[#5A6B73] text-sm leading-relaxed pr-2 md:pr-4 align-top break-words">
+                    Lacks local nuance, risking non-compliance
+                  </td>
+                  <td class="py-4 text-[#06303A] text-sm leading-relaxed px-2 md:px-4 align-top break-words">
+                    Hyper-localized expertise tailored to your specific
+                    jurisdiction
+                  </td>
+                </tr>
+                <tr class="border-b border-[#E0E0E0] last:border-0">
+                  <th scope="row" class="bg-[#FAF8F3] py-4 font-light text-[#06303A] text-sm pr-2 md:pr-4 text-left font-sans align-top break-words">
+                    Privacy &amp; Safety
+                  </th>
+                  <td class="py-4 text-[#5A6B73] text-sm leading-relaxed pr-2 md:pr-4 align-top break-words">
+                    Often exposes sensitive client data to public models
+                  </td>
+                  <td class="py-4 text-[#06303A] text-sm leading-relaxed px-2 md:px-4 align-top break-words">
+                    Bank-grade security; zero data retention for complete
+                    confidentiality
+                  </td>
+                </tr>
+                <tr class="border-b border-[#E0E0E0] last:border-0">
+                  <th scope="row" class="bg-[#FAF8F3] py-4 font-light text-[#06303A] text-sm pr-2 md:pr-4 text-left font-sans align-top break-words">
+                    Accuracy &amp; Sources
+                  </th>
+                  <td class="py-4 text-[#5A6B73] text-sm leading-relaxed pr-2 md:pr-4 align-top break-words">
+                    Prone to hallucinations and incorrect legal citations
+                  </td>
+                  <td class="py-4 text-[#06303A] text-sm leading-relaxed px-2 md:px-4 align-top break-words">
+                    Highly accurate legal analysis with transparent, verifiable
+                    citations
+                  </td>
+                </tr>
+                <tr class="border-b border-[#E0E0E0] last:border-0">
+                  <th scope="row" class="bg-[#FAF8F3] py-4 font-light text-[#06303A] text-sm pr-2 md:pr-4 text-left font-sans align-top break-words">
+                    Setup &amp; Pricing
+                  </th>
+                  <td class="py-4 text-[#5A6B73] text-sm leading-relaxed pr-2 md:pr-4 align-top break-words">
+                    Requires heavy customization and endless prompt engineering
+                  </td>
+                  <td class="py-4 text-[#06303A] text-sm leading-relaxed px-2 md:px-4 align-top break-words">
+                    Ready to use workflows with transparent, solo-friendly
+                    pricing
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-[#FAF8F3] to-transparent pointer-events-none md:hidden rounded-r-lg z-30"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+     LEGAU · "The legal AI iceberg" lead-magnet section
+     · Fonts (Inter + Newsreader) are already loaded by the page.
+     · Every class is prefixed .lgi- so nothing collides with
+       Tailwind or the rest of the LP.
+     · All styling is scoped inside .lgi — no global resets.
+     · Desktop keeps the 16:9 banner. Below 1024px it reflows to a
+       stacked layout with readable fixed type sizes.
+     · Form: MailerLite 195435889682286185 (guide list)
+     ============================================================ -->
+
+    <style>
+      /* ---- scoped reset (does NOT leak to the page) ---- */
+      .lgi, .lgi *{ box-sizing:border-box; }
+      .lgi h2, .lgi p, .lgi form{ margin:0; padding:0; }
+
+      .lgi{
+        /* Evolution palette — scoped, not :root */
+        --lgi-teal:#06303A;
+        --lgi-cyan:#23C4D6;
+        --lgi-cream:#FAF8F3;
+        --lgi-copper:#E89B5A;
+        --lgi-light:#B5D8DD;
+
+        --lgi-waterline:25.9cqw;
+        --lgi-cover-water:47%;
+
+        position:relative;
+        width:100%;
+        aspect-ratio:16/9;
+        container-type:inline-size;
+        overflow:hidden;
+        background:var(--lgi-teal);
+        border-top:4px solid rgba(250,248,243,0.20);
+        font-family:'Inter', system-ui, sans-serif;
+        -webkit-font-smoothing:antialiased;
+      }
+
+      /* ---- water + light ---- */
+      .lgi-water{
+        position:absolute; left:0; right:0;
+        top:var(--lgi-waterline); bottom:0;
+        background:linear-gradient(180deg,
+          rgba(0,0,0,0.10) 0%, rgba(0,0,0,0.30) 60%, rgba(0,0,0,0.42) 100%);
+      }
+      .lgi-glow{
+        position:absolute;
+        left:52cqw; top:6cqw; width:44cqw; height:44cqw;
+        background:radial-gradient(circle, rgba(35,196,214,0.22) 0%, rgba(35,196,214,0) 65%);
+      }
+
+      /* ---- shared waterline ---- */
+      .lgi-rule{
+        position:absolute;
+        top:var(--lgi-waterline);
+        left:47cqw; right:0; height:0.09cqw;
+        background:linear-gradient(90deg, rgba(232,155,90,0) 0%, var(--lgi-copper) 20%, var(--lgi-copper) 100%);
+      }
+      .lgi-rule-label{
+        position:absolute; right:5cqw; text-align:right;
+        font-size:max(0.82cqw, 10px); font-weight:400;
+        letter-spacing:0.26em; text-transform:uppercase;
+        color:var(--lgi-copper);
+      }
+      .lgi-rule-label.is-above{ top:calc(var(--lgi-waterline) - 2.1cqw); }
+      .lgi-rule-label.is-below{ top:calc(var(--lgi-waterline) + 1.1cqw); color:var(--lgi-light); opacity:0.6; }
+
+      /* ---- left: message ---- */
+      .lgi-copy{
+        position:absolute;
+        left:7cqw; top:50%; transform:translateY(-54%);
+        width:36cqw; z-index:2;
+      }
+      .lgi-eyebrow{
+        display:block;
+        font-size:max(0.82cqw, 11px); font-weight:400;
+        letter-spacing:0.26em; text-transform:uppercase;
+        color:var(--lgi-copper);
+        margin-bottom:1.6cqw;
+      }
+      .lgi-headline{
+        font-size:max(3.7cqw, 30px); font-weight:300; line-height:1.14;
+        letter-spacing:-0.015em; color:var(--lgi-cream);
+      }
+      .lgi-subline{
+        margin-top:1.8cqw;
+        font-size:max(1.44cqw, 15px); font-weight:300; line-height:1.55;
+        color:var(--lgi-light); max-width:31cqw;
+      }
+      .lgi-subline em{ font-style:normal; color:var(--lgi-cyan); }
+
+      /* ---- MailerLite form ---- */
+      .lgi .ml-form-embedWrapper,
+      .lgi .ml-form-embedBody,
+      .lgi .ml-form-successBody,
+      .lgi .ml-form-embedContent,
+      .lgi .ml-form-successContent,
+      .lgi .ml-block-form,
+      .lgi .ml-field-group{
+        background:transparent !important;
+        border:none !important;
+        box-shadow:none !important;
+        padding:0 !important;
+        margin:0 !important;
+      }
+      .lgi .ml-block-form{
+        display:flex; align-items:stretch; flex-wrap:wrap;
+        gap:0.7cqw; margin-top:2.6cqw !important; width:29cqw;
+      }
+      .lgi .ml-field-group{ flex:1 1 14cqw; min-width:0; }
+      .lgi input[type="email"]{
+        width:100% !important;
+        padding:1.05cqw 1.3cqw !important;
+        font-family:'Inter', system-ui, sans-serif !important;
+        font-size:max(1.1cqw, 13px) !important; font-weight:300 !important;
+        line-height:1.4 !important;
+        color:var(--lgi-cream) !important;
+        background:rgba(250,248,243,0.06) !important;
+        border:0.07cqw solid rgba(181,216,221,0.38) !important;
+        border-radius:0.28cqw !important;
+        outline:none;
+      }
+      .lgi input[type="email"]::placeholder{ color:var(--lgi-light); opacity:0.55; }
+      .lgi input[type="email"]:focus{
+        border-color:var(--lgi-cyan) !important;
+        box-shadow:0 0 0 0.14cqw rgba(35,196,214,0.28);
+      }
+      .lgi button.primary,
+      .lgi button.loading{
+        flex:0 0 auto;
+        padding:1.05cqw 1.9cqw !important;
+        background:var(--lgi-cyan) !important;
+        color:var(--lgi-teal) !important;
+        font-family:'Inter', system-ui, sans-serif !important;
+        font-size:max(1.12cqw, 13px) !important; font-weight:500 !important;
+        line-height:1.4 !important; letter-spacing:0.01em;
+        border:none !important; border-radius:0.28cqw !important;
+        cursor:pointer; white-space:nowrap; width:auto !important;
+        transition:background .2s;
+      }
+      .lgi button.primary:hover{ background:#3ED2E2 !important; }
+      .lgi .ml-form-embedSubmitLoad{ display:inline-block; width:1.4cqw; height:1.4cqw; }
+      .lgi .ml-form-embedSubmitLoad:after{
+        content:" "; display:block; width:0.8cqw; height:0.8cqw;
+        margin:0.1cqw; border-radius:50%;
+        border:0.2cqw solid var(--lgi-teal);
+        border-color:var(--lgi-teal) var(--lgi-teal) var(--lgi-teal) transparent;
+        animation:lgi-spin 1.2s linear infinite;
+      }
+      @keyframes lgi-spin{ to{ transform:rotate(360deg); } }
+      .lgi .sr-only{
+        position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+        overflow:hidden; clip:rect(0,0,0,0); border:0;
+      }
+      .lgi .ml-error input[type="email"]{ border-color:var(--lgi-copper) !important; }
+      .lgi-note{
+        margin-top:1.05cqw !important;
+        font-size:max(0.88cqw, 11px); font-weight:300;
+        color:var(--lgi-light); opacity:0.62;
+      }
+      .lgi .ml-form-successContent h4{
+        font-family:'Charter','Tiempos Text','Newsreader',Georgia,serif !important;
+        font-size:max(1.6cqw, 17px) !important; font-weight:400 !important;
+        color:var(--lgi-cream) !important; margin:0 0 0.5cqw !important;
+      }
+      .lgi .ml-form-successContent p{
+        font-size:max(1.05cqw, 13px) !important; font-weight:300 !important;
+        color:var(--lgi-light) !important; margin:0 !important;
+      }
+
+      /* ---- right: the book ---- */
+      .lgi-stage{
+        position:absolute;
+        left:56cqw; top:8cqw;
+        width:26cqw; height:38cqw;
+        container-type:inline-size;   /* book internals size off the stage */
+        z-index:2;
+      }
+      .lgi-persp{ width:100%; height:100%; perspective:461cqw; }
+      .lgi-book{
+        --lgi-thick:8.85cqw;
+        position:relative; width:100%; height:100%;
+        transform-style:preserve-3d;
+        transform:rotateY(-27deg);
+      }
+      .lgi-face{ position:absolute; inset:0; }
+
+      .lgi-spine{
+        width:var(--lgi-thick); height:100%; left:0; top:0;
+        transform-origin:left center;
+        transform:rotateY(-90deg) translateX(calc(var(--lgi-thick) / -2));
+        background:linear-gradient(90deg,#06303A 0%,#0A3E4A 100%);
+        display:flex; flex-direction:column;
+        align-items:center; justify-content:space-between;
+        padding:6.15cqw 0;
+      }
+      .lgi-spine-mark{ width:2.12cqw; height:2.12cqw; border-radius:50%; background:var(--lgi-copper); }
+      .lgi-spine-text{
+        font-size:2.77cqw; font-weight:500;
+        letter-spacing:0.22em; text-transform:uppercase;
+        color:var(--lgi-light);
+        writing-mode:vertical-rl; transform:scaleX(-1);
+      }
+
+      .lgi-cover{
+        transform:translateZ(calc(var(--lgi-thick) / 2));
+        background:var(--lgi-cream); overflow:hidden;
+        box-shadow:7.7cqw 11.5cqw 23cqw rgba(0,0,0,0.45),
+                   0 0 0 0.23cqw rgba(6,48,58,0.10);
+      }
+      .lgi-cover-water{
+        position:absolute; left:0; right:0;
+        top:var(--lgi-cover-water); bottom:0;
+        background:rgba(6,48,58,0.045);
+        border-top:0.35cqw solid var(--lgi-copper);
+      }
+      .lgi-cover-art{ position:absolute; inset:0; width:100%; height:100%; }
+      .lgi-cover-type{ position:absolute; left:8.46cqw; right:8.46cqw; top:8.85cqw; }
+      .lgi-cover-eyebrow{
+        font-size:2.62cqw; font-weight:500;
+        letter-spacing:0.26em; text-transform:uppercase;
+        color:var(--lgi-teal); opacity:0.55;
+      }
+      .lgi-cover-title{
+        margin-top:5.77cqw;
+        font-family:'Charter','Tiempos Text','Newsreader',Georgia,serif;
+        font-size:9.81cqw; font-weight:400; line-height:1.12;
+        letter-spacing:-0.01em; color:var(--lgi-teal);
+      }
+      .lgi-cover-sub{
+        margin-top:4.23cqw;
+        font-size:3.15cqw; font-weight:300; line-height:1.45;
+        color:var(--lgi-teal); opacity:0.62; max-width:50cqw;
+      }
+      .lgi-cover-foot{
+        position:absolute; left:8.46cqw; bottom:7.31cqw;
+        font-size:2.38cqw; font-weight:500;
+        letter-spacing:0.2em; text-transform:uppercase;
+        color:var(--lgi-teal); opacity:0.55;
+      }
+      .lgi-pct{
+        position:absolute; right:8.46cqw;
+        font-size:2.62cqw; font-weight:500; letter-spacing:0.14em;
+        color:var(--lgi-copper);
+      }
+      .lgi-pct.is-top{ top:calc(var(--lgi-cover-water) - 7.7cqw); }
+      .lgi-pct.is-bottom{ top:calc(var(--lgi-cover-water) + 3.46cqw); color:var(--lgi-teal); opacity:0.5; }
+
+      .lgi-shadow{
+        position:absolute; left:55cqw; top:45.4cqw;
+        width:30cqw; height:2.6cqw;
+        background:radial-gradient(ellipse, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0) 70%);
+      }
+
+      /* ---- foot: the six layers ---- */
+      .lgi-layers{
+        position:absolute; left:7cqw; bottom:3.4cqw; z-index:2;
+        font-size:max(0.86cqw, 10px); font-weight:400;
+        letter-spacing:0.2em; text-transform:uppercase;
+        color:var(--lgi-light); opacity:0.42;
+      }
+      .lgi-layers span{ color:var(--lgi-copper); opacity:0.8; margin:0 0.25cqw; }
+
+      /* ============================================================
+         MOBILE — reflow to a stack with fixed, readable type.
+         cqw sizing is abandoned below this width because the 16:9
+         composition needs real width to stay legible.
+         ============================================================ */
+      @media (max-width:1024px){
+        .lgi{
+          aspect-ratio:auto;
+          padding:48px 24px 40px;
+          container-type:normal;
+        }
+        .lgi-water{
+          top:auto; height:58%; bottom:0;
+          background:linear-gradient(180deg,
+            rgba(0,0,0,0) 0%, rgba(0,0,0,0.26) 55%, rgba(0,0,0,0.42) 100%);
+        }
+        .lgi-glow,
+        .lgi-rule,
+        .lgi-rule-label,
+        .lgi-shadow{ display:none; }
+
+        .lgi-copy{
+          position:static; width:100%; transform:none;
+          max-width:520px; margin:0 auto; text-align:center;
+        }
+        .lgi-eyebrow{ font-size:11px; margin-bottom:16px; }
+        .lgi-headline{ font-size:30px; line-height:1.15; }
+        .lgi-subline{ margin-top:16px; font-size:16px; max-width:none; }
+
+        .lgi .ml-block-form{
+          margin-top:28px !important; width:100%;
+          gap:10px; justify-content:center;
+        }
+        .lgi .ml-field-group{ flex:1 1 100%; }
+        .lgi input[type="email"]{
+          padding:13px 16px !important;
+          font-size:16px !important;      /* 16px avoids iOS zoom-on-focus */
+          border-width:1px !important; border-radius:8px !important;
+        }
+        .lgi button.primary,
+        .lgi button.loading{
+          padding:13px 24px !important;
+          font-size:16px !important; border-radius:8px !important;
+        }
+        .lgi .ml-form-embedSubmitLoad{ width:22px; height:22px; }
+        .lgi .ml-form-embedSubmitLoad:after{
+          width:12px; height:12px; margin:1px; border-width:3px;
+        }
+        .lgi-note{ margin-top:14px !important; font-size:13px; }
+        .lgi .ml-form-successContent h4{ font-size:22px !important; margin:0 0 6px !important; }
+        .lgi .ml-form-successContent p{ font-size:15px !important; }
+
+        .lgi-stage{
+          position:static; margin:44px auto 0;
+          width:190px; height:278px;
+        }
+        .lgi-layers{
+          position:static; margin:36px auto 0;
+          max-width:100%; text-align:center;
+          font-size:10px; line-height:2; overflow-wrap:anywhere;
+        }
+        .lgi-layers span{ margin:0 6px; }
+      }
+    </style>
+
+    <section id="guide" class="lgi" aria-labelledby="lgi-title">
+      <div class="lgi-water"></div>
+      <div class="lgi-glow"></div>
+
+      <div class="lgi-rule"></div>
+      <div class="lgi-rule-label is-above">~10% visible</div>
+      <div class="lgi-rule-label is-below">~90% below</div>
+
+      <!-- LEFT: message -->
+      <div class="lgi-copy">
+        <span class="lgi-eyebrow">— The evaluation guide</span>
+        <h2 class="lgi-headline tracking-tight" id="lgi-title">
+          Six questions to ask
+          <br>
+          any legal AI tool.
+        </h2>
+        <p class="lgi-subline">
+          What you see on screen is about
+          <em>10%</em>
+          of the tool. But it's the 90% what decides whether you can trust it
+          with your work.
+        </p>
+
+        <!-- MailerLite embed — guide form 195435889682286185 -->
+        <div id="mlb2-44688849" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-44688849">
+          <div class="ml-form-embedWrapper">
+            <div class="ml-form-embedBody row-form">
+              <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/181920/forms/195435889682286185/subscribe" data-code="" method="post" target="_blank">
+                <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                  <label for="guide-email" class="sr-only">
+                    Your email address
+                  </label>
+                  <input id="guide-email" type="email" class="form-control" name="fields[email]" placeholder="Your email address" autocomplete="off" aria-invalid="false">
+                </div>
+                <button type="submit" class="primary">Get the guide</button>
+                <button disabled="disabled" style="display: none;" type="button" class="loading">
+                  <div class="ml-form-embedSubmitLoad"></div>
+                  <span class="sr-only">Loading…</span>
+                </button>
+                <input type="hidden" name="ml-submit" value="1" aria-invalid="false">
+                <input type="hidden" name="anticsrf" value="true" aria-invalid="false">
+              </form>
+            </div>
+            <div class="ml-form-successBody row-success" style="display: none;">
+              <div class="ml-form-successContent">
+                <h4>On its way.</h4>
+                <p>Check your inbox for the guide.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p class="lgi-note">Six pages, sent straight to your inbox.</p>
+      </div>
+
+      <!-- RIGHT: the book -->
+      <div class="lgi-shadow"></div>
+
+      <div class="lgi-stage">
+        <div class="lgi-persp">
+          <div class="lgi-book">
+            <div class="lgi-face lgi-spine">
+              <div class="lgi-spine-mark"></div>
+              <div class="lgi-spine-text">Legau · Short guide</div>
+              <div class="lgi-spine-mark"></div>
+            </div>
+
+            <div class="lgi-face lgi-cover">
+              <svg class="lgi-cover-art" viewBox="0 0 260 380" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M84 178 L58 208 L50 248 L72 292 L110 314 L128 340 L146 306 L178 268 L186 222 L172 178 Z" fill="#23C4D6" opacity="0.26"></path>
+                <path d="M84 178 L58 208 L50 248 L72 292 L110 314 L124 178 Z" fill="#23C4D6" opacity="0.15"></path>
+                <path d="M172 178 L186 222 L178 268 L146 306 L152 178 Z" fill="#06303A" opacity="0.09"></path>
+                <path d="M72 292 L110 314 L128 340 L146 306 L178 268 L142 288 L96 290 Z" fill="#06303A" opacity="0.10"></path>
+                <path d="M84 178 L128 128 L150 152 L172 178 Z" fill="#06303A" class=""></path>
+                <path d="M128 128 L84 178 L130 178 Z" fill="#06303A" opacity="0.70"></path>
+                <path d="M150 152 L172 178 L156 178 Z" fill="#23C4D6" opacity="0.45"></path>
+              </svg>
+
+              <div class="lgi-cover-water"></div>
+
+              <div class="lgi-cover-type">
+                <div class="lgi-cover-eyebrow">Legau · Short guide</div>
+                <div class="lgi-cover-title tracking-tight">
+                  The legal
+                  <br>
+                  AI iceberg
+                </div>
+                <div class="lgi-cover-sub">
+                  What the attorney sees is only the tip.
+                </div>
+              </div>
+
+              <div class="lgi-pct is-top">10%</div>
+              <div class="lgi-pct is-bottom">90%</div>
+              <div class="lgi-cover-foot">legau.com</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lgi-layers">
+        Foundation models
+        <span>·</span>
+        Legal knowledge
+        <span>·</span>
+        Application
+        <span>·</span>
+        Context
+        <span>·</span>
+        Evaluation
+        <span>·</span>
+        Trust
+      </div>
+    </section>
+
+    <!-- ============================ 5. PRICING ============================ -->
+    <section class="bg-[#06303A] border-[#FAF8F3]/20 border-t-4 px-6 pt-32 pb-24 text-[#FAF8F3]" id="pricing">
+      <div class="max-w-7xl mx-auto text-center">
+        <span class="uppercase block text-xs font-light text-[#E89B5A] tracking-widest mb-6">
+          — Pricing
+        </span>
+        <h2 class="md:text-5xl inline-block text-4xl font-thin text-[#FAF8F3] tracking-tight font-serif relative mb-16">
+          Pricing built for
+          <i class="italic">solo</i>
+          practice.
+        </h2>
+
+        <div class="flex mb-16 gap-x-4 items-center justify-center">
+          <span class="text-sm font-thin transition-colors" id="label-monthly">
+            Monthly
+          </span>
+          <button class="w-14 h-8 rounded-full bg-[#23C4D6] relative flex items-center px-1 transition-colors focus:outline-none focus:ring-2 focus:ring-[#FAF8F3]/50" id="billing-toggle" role="switch" aria-checked="false" aria-label="Toggle annual billing">
+            <div class="w-6 h-6 bg-white rounded-full shadow-sm transform transition-transform duration-300 translate-x-0" id="toggle-knob"></div>
+          </button>
+          <span class="text-sm font-thin transition-colors text-[#FAF8F3]/40" id="label-annual">
+            Annual
+            <span class="text-[#23C4D6] font-extralight ml-1">(-10%)</span>
+          </span>
+        </div>
+
+        <div class="grid md:grid-cols-3 lg:gap-8 text-left gap-6 items-start">
+          <!-- Starter -->
+          <div class="bg-[#06303A] border border-[#FAF8F3]/20 rounded-2xl p-8 shadow-sm flex flex-col h-full">
+            <h3 class="text-2xl font-serif font-thin tracking-tight mb-2">
+              Starter
+            </h3>
+            <div class="mb-2 min-h-[80px]">
+              <div class="flex flex-wrap gap-2 items-end">
+                <span class="text-xl font-thin text-[#FAF8F3]/60 line-through mb-1 hidden" id="starter-old">
+                  $948
+                </span>
+                <span class="text-4xl font-serif font-thin tracking-tight text-[#E89B5A]" id="starter-new">
+                  $79
+                </span>
+                <span class="text-xs font-thin text-[#FAF8F3]/60 mb-1" id="starter-unit">
+                  /month per user
+                </span>
+              </div>
+            </div>
+            <ul class="space-y-4 mb-10 flex-1 text-xs font-thin">
+              <li class="flex items-start gap-3">
+                <iconify-icon icon="solar:check-circle-linear" class="text-[#23C4D6] text-xl shrink-0"></iconify-icon>
+                <span class="">10 requests per month per user</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <iconify-icon icon="solar:check-circle-linear" class="text-[#23C4D6] text-xl shrink-0"></iconify-icon>
+                <span class="">Court Decisions Library</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <iconify-icon icon="solar:check-circle-linear" class="text-[#23C4D6] text-xl shrink-0"></iconify-icon>
+                <span>Legal Papers Engine</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <iconify-icon icon="solar:check-circle-linear" class="text-[#23C4D6] text-xl shrink-0"></iconify-icon>
+                <span>Favorites</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <iconify-icon icon="solar:check-circle-linear" class="text-[#23C4D6] text-xl shrink-0"></iconify-icon>
+                <span class="">Automatic Quoting</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <iconify-icon icon="solar:check-circle-linear" class="text-[#23C4D6] text-xl shrink-0"></iconify-icon>
+                <span class="">Support by email</span>
+              </li>
+            </ul>
+            <a href="https://my.legau.com/onboarding/?trial=true&amp;plan=starter&amp;billing=monthly" class="block hover:opacity-90 transition-opacity font-extralight text-[#06303A] text-center text-sm bg-[#23C4D6] w-full rounded-md py-3" id="starter-btn-monthly">
+              Subscribe 14 days for free
+            </a>
+            <a href="https://my.legau.com/onboarding/?trial=true&amp;plan=starter&amp;billing=yearly" class="hidden hover:opacity-90 transition-opacity font-extralight text-[#06303A] text-center text-sm bg-[#23C4D6] w-full rounded-md py-3" id="starter-btn-annual">
+              Subscribe 14 days for free
+            </a>
+          </div>
+
+          <!-- Business -->
+          <div class="bg-[#06303A] border-2 border-[#23C4D6] rounded-2xl p-8 shadow-lg flex flex-col h-full relative">
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#23C4D6] text-[#06303A] text-[10px] font-extralight uppercase tracking-widest px-3 py-1 rounded-full">
+              Recommended
+            </div>
+            <h3 class="text-2xl font-serif font-thin tracking-tight mb-2">
+              Business
+            </h3>
+            <div class="mb-2 min-h-[80px]">
+              <div class="flex flex-wrap gap-2 items-end">
+                <span class="text-xl font-thin text-[#FAF8F3]/60 line-through mb-1 hidden" id="business-old">
+                  $1188
+                </span>
+                <span class="text-4xl font-serif font-thin tracking-tight text-[#E89B5A]" id="business-new">
+                  $99
+                </span>
+                <span class="text-xs font-thin text-[#FAF8F3]/60 mb-1" id="business-unit">
+                  /month per user
+                </span>
+              </div>
+            </div>
+            <ul class="space-y-4 mb-10 flex-1 text-xs font-thin">
+              <li class="flex items-start gap-3">
+                <iconify-icon icon="solar:check-circle-linear" class="text-[#23C4D6] text-xl shrink-0"></iconify-icon>
+                <span class="">50 requests per month per user</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <iconify-icon icon="solar:check-circle-linear" class="text-[#23C4D6] text-xl shrink-0"></iconify-icon>
+                <span>Everything in Starter</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <iconify-icon icon="solar:check-circle-linear" class="text-[#23C4D6] text-xl shrink-0"></iconify-icon>
+                <span class="">300 Segmented Documents</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <iconify-icon icon="solar:check-circle-linear" class="text-[#23C4D6] text-xl shrink-0"></iconify-icon>
+                <span>Legal Documents Workflow</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <iconify-icon icon="solar:check-circle-linear" class="text-[#23C4D6] text-xl shrink-0"></iconify-icon>
+                <span>AI Assistant</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <iconify-icon icon="solar:check-circle-linear" class="text-[#23C4D6] text-xl shrink-0"></iconify-icon>
+                <span class="">
+                  Integration with Document Management System
+                </span>
+              </li>
+            </ul>
+            <a href="https://my.legau.com/onboarding/?trial=true&amp;plan=business&amp;billing=monthly" class="block hover:opacity-90 transition-opacity font-extralight text-[#06303A] text-center text-sm bg-[#23C4D6] w-full rounded-md py-3" id="business-btn-monthly">
+              Subscribe 14 days for free
+            </a>
+            <a href="https://my.legau.com/onboarding/?trial=true&amp;plan=business&amp;billing=yearly" class="hidden hover:opacity-90 transition-opacity font-extralight text-[#06303A] text-center text-sm bg-[#23C4D6] w-full rounded-md py-3" id="business-btn-annual">
+              Subscribe 14 days for free
+            </a>
+          </div>
+
+          <!-- Enterprise -->
+          <div class="bg-[#06303A] border border-[#FAF8F3]/20 rounded-2xl p-8 shadow-sm flex flex-col h-full">
+            <h3 class="text-2xl font-serif font-thin tracking-tight mb-2">
+              Enterprise
+            </h3>
+            <div class="mb-2 min-h-[80px]">
+              <div class="flex flex-wrap gap-2 items-end">
+                <span class="text-xl font-thin text-[#FAF8F3]/60 line-through mb-1 hidden" id="enterprise-old">
+                  $1668
+                </span>
+                <span class="text-4xl font-serif font-thin tracking-tight text-[#E89B5A]" id="enterprise-new">
+                  $139
+                </span>
+                <span class="text-xs font-thin text-[#FAF8F3]/60 mb-1" id="enterprise-unit">
+                  /month per user
+                </span>
+              </div>
+            </div>
+            <ul class="space-y-4 mb-10 flex-1 text-xs font-thin">
+              <li class="flex items-start gap-3">
+                <iconify-icon icon="solar:check-circle-linear" class="text-[#23C4D6] text-xl shrink-0"></iconify-icon>
+                <span>Everything in Business</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <iconify-icon icon="solar:check-circle-linear" class="text-[#23C4D6] text-xl shrink-0"></iconify-icon>
+                <span>600 Segmented Documents</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <iconify-icon icon="solar:check-circle-linear" class="text-[#23C4D6] text-xl shrink-0"></iconify-icon>
+                <span>Unlimited AI Assistant requests</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <iconify-icon icon="solar:check-circle-linear" class="text-[#23C4D6] text-xl shrink-0"></iconify-icon>
+                <span>Dedicated Success Manager</span>
+              </li>
+            </ul>
+            <a href="https://my.legau.com/onboarding/?trial=true&amp;plan=enterprise&amp;billing=monthly" class="block hover:opacity-90 transition-opacity font-extralight text-[#06303A] text-center text-sm bg-[#23C4D6] w-full rounded-md py-3" id="enterprise-btn-monthly">
+              Subscribe 14 days for free
+            </a>
+            <a href="https://my.legau.com/onboarding/?trial=true&amp;plan=enterprise&amp;billing=yearly" class="hidden hover:opacity-90 transition-opacity font-extralight text-[#06303A] text-center text-sm bg-[#23C4D6] w-full rounded-md py-3" id="enterprise-btn-annual">
+              Subscribe 14 days for free
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 6. TESTIMONIALS ============================ -->
+    <section class="bg-[#FAF8F3] border-[#06303A]/10 border-t px-6 pt-32 pb-32">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16 max-w-3xl mx-auto">
+          <span class="uppercase block text-xs font-normal text-[#E89B5A] tracking-widest mb-6">
+            — Testimonials
+          </span>
+          <h2 class="md:text-5xl text-3xl text-[#06303A] tracking-tight font-serif font-light">
+            What solo practitioners are
+            <span class="italic">saying</span>
+            .
+          </h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <figure class="bg-white border border-[#E0E0E0] p-8 rounded-lg flex flex-col justify-between h-full shadow-md">
+            <blockquote class="font-serif italic font-light text-lg leading-relaxed mb-8 text-[#06303A]">
+              "I used to spend three hours on a Saturday reviewing opposing
+              counsel's revisions just to make sure defined terms didn't break.
+              Legau does the mechanical check in seconds, so I can just read for
+              intent."
+            </blockquote>
+            <figcaption class="uppercase text-xs tracking-widest text-[#5A6B73] font-normal">
+              Daniel M. Real Estate • Chicago, IL
+            </figcaption>
+          </figure>
+
+          <figure class="bg-white border border-[#E0E0E0] p-8 rounded-lg flex flex-col justify-between h-full shadow-md">
+            <blockquote class="font-serif italic font-light text-lg leading-relaxed mb-8 text-[#06303A]">
+              "The integration is what sold me. I didn't want another login. It
+              just sits right there in Word, and when I'm stuck staring at a
+              blank non-compete clause, it pulls exactly how I drafted it for my
+              last three clients."
+            </blockquote>
+            <figcaption class="uppercase text-xs tracking-widest text-[#5A6B73] font-normal">
+              Sarah T. Small-firm Civil • Austin, TX
+            </figcaption>
+          </figure>
+
+          <figure class="bg-white border border-[#E0E0E0] p-8 rounded-lg flex flex-col justify-between h-full shadow-md">
+            <blockquote class="font-serif italic font-light text-lg leading-relaxed mb-8 text-[#06303A]">
+              "It actually feels like having an eager junior associate who has
+              memorized every document I've written since 2018. It doesn't write
+              my arguments, but it sets the table perfectly every time."
+            </blockquote>
+            <figcaption class="uppercase text-xs tracking-widest text-[#5A6B73] font-normal">
+              John P. Estate/Probate • Miami, FL
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 8. FAQ ============================ -->
+    <section class="text-[#FAF8F3] bg-[#06303A] border-[#FAF8F3]/20 border-t-4 px-6 pt-32 pb-32">
+      <div class="max-w-3xl mx-auto">
+        <span class="uppercase block text-xs font-normal text-[#E89B5A] tracking-widest text-center mb-4">
+          — Things Solos Ask First
+        </span>
+        <h2 class="text-3xl md:text-5xl text-[#FAF8F3] tracking-tight font-serif font-thin text-center mb-16">
+          The questions that
+          <span class="italic">matter</span>
+          before you sign up.
+        </h2>
+
+        <div class="border-t border-[#FAF8F3]/20">
+          <div class="group border-[#FAF8F3]/20 border-b py-5">
+            <button class="faq-button w-full flex items-center justify-between text-left focus:outline-none" aria-expanded="false">
+              <span class="md:text-2xl group-hover:text-[#23C4D6] transition-colors text-xl font-extralight text-[#FAF8F3] tracking-tight font-serif pr-6">
+                Will this replace my professional judgment?
+              </span>
+              <iconify-icon icon="solar:alt-arrow-down-linear" class="text-2xl text-[#FAF8F3]/40 transform transition-transform duration-200 shrink-0"></iconify-icon>
+            </button>
+            <div class="faq-grid">
+              <div class="faq-inner">
+                <p class="pt-4 text-[#FAF8F3]/80 font-extralight leading-relaxed pr-12 text-sm font-sans">
+                  No. Legau is built to give you leverage, not to replace you.
+                  It drafts, reviews, and surfaces legal context, but the final
+                  judgment and the responsibility stay with you. That's the only
+                  way legal AI works for a solo, and it's how we built it.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="group border-[#FAF8F3]/20 border-b py-5">
+            <button class="faq-button w-full flex items-center justify-between text-left focus:outline-none" aria-expanded="false">
+              <span class="md:text-2xl group-hover:text-[#23C4D6] transition-colors text-xl font-extralight text-[#FAF8F3] tracking-tight font-serif pr-6">
+                How do you reduce hallucinations?
+              </span>
+              <iconify-icon icon="solar:alt-arrow-down-linear" class="text-2xl text-[#FAF8F3]/40 transform transition-transform duration-200 shrink-0"></iconify-icon>
+            </button>
+            <div class="faq-grid">
+              <div class="faq-inner">
+                <p class="pt-4 text-[#FAF8F3]/80 font-extralight leading-relaxed pr-12 text-sm font-sans">
+                  Two ways. First, every answer Legau gives is grounded in real
+                  legal sources (court decisions, doctrine, current
+                  legislation). Second, Legau shows you its sources so you can
+                  verify before you sign anything.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="group border-[#FAF8F3]/20 border-b py-5">
+            <button class="faq-button w-full flex items-center justify-between text-left focus:outline-none" aria-expanded="false">
+              <span class="md:text-2xl group-hover:text-[#23C4D6] transition-colors text-xl font-extralight text-[#FAF8F3] tracking-tight font-serif pr-6">
+                Is my client data secure? Is it used to train AI?
+              </span>
+              <iconify-icon icon="solar:alt-arrow-down-linear" class="text-2xl text-[#FAF8F3]/40 transform transition-transform duration-200 shrink-0"></iconify-icon>
+            </button>
+            <div class="faq-grid">
+              <div class="faq-inner">
+                <p class="pt-4 text-[#FAF8F3]/80 font-extralight leading-relaxed pr-12 text-sm font-sans">
+                  Yes, secure. No, not used to train. Your data is encrypted in
+                  transit and at rest, isolated from other users, and never used
+                  to train models. Confidentiality is the only way this product
+                  can exist for lawyers, so we built it that way from day one.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="group border-[#FAF8F3]/20 border-b py-5">
+            <button class="faq-button w-full flex items-center justify-between text-left focus:outline-none" aria-expanded="false">
+              <span class="md:text-2xl group-hover:text-[#23C4D6] transition-colors text-xl font-extralight text-[#FAF8F3] tracking-tight font-serif pr-6">
+                We don't have IT. Is this hard to install?
+              </span>
+              <iconify-icon icon="solar:alt-arrow-down-linear" class="text-2xl text-[#FAF8F3]/40 transform transition-transform duration-200 shrink-0"></iconify-icon>
+            </button>
+            <div class="faq-grid">
+              <div class="faq-inner">
+                <p class="pt-4 text-[#FAF8F3]/80 font-extralight leading-relaxed pr-12 text-sm font-sans">
+                  Under 5 minutes. Legau works directly inside Microsoft Word
+                  and Outlook.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="group border-[#FAF8F3]/20 border-b py-5">
+            <button class="faq-button w-full flex items-center justify-between text-left focus:outline-none" aria-expanded="false">
+              <span class="md:text-2xl group-hover:text-[#23C4D6] transition-colors text-xl font-extralight text-[#FAF8F3] tracking-tight font-serif pr-6">
+                What practice areas does Legau support?
+              </span>
+              <iconify-icon icon="solar:alt-arrow-down-linear" class="text-2xl text-[#FAF8F3]/40 transform transition-transform duration-200 shrink-0"></iconify-icon>
+            </button>
+            <div class="faq-grid">
+              <div class="faq-inner">
+                <p class="pt-4 text-[#FAF8F3]/80 font-extralight leading-relaxed pr-12 text-sm font-sans">
+                  Legau works across most areas of solo practice: estate and
+                  probate, family, immigration, criminal defense, real estate,
+                  civil litigation, and general small-firm work. The deeper
+                  Legau goes with you (your templates, your past work, your
+                  DMS), the more it specializes to your area.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="group border-[#FAF8F3]/20 border-b py-5">
+            <button class="faq-button w-full flex items-center justify-between text-left focus:outline-none" aria-expanded="false">
+              <span class="md:text-2xl group-hover:text-[#23C4D6] transition-colors text-xl font-extralight text-[#FAF8F3] tracking-tight font-serif pr-6">
+                Can I cancel anytime?
+              </span>
+              <iconify-icon icon="solar:alt-arrow-down-linear" class="text-2xl text-[#FAF8F3]/40 transform transition-transform duration-200 shrink-0"></iconify-icon>
+            </button>
+            <div class="faq-grid">
+              <div class="faq-inner">
+                <p class="pt-4 text-[#FAF8F3]/80 font-extralight leading-relaxed pr-12 text-sm font-sans">
+                  Yes. The paid plans (monthly and annual) can be cancelled or
+                  paused at any time, and you keep access through the end of the
+                  period you've paid for.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 7. FINAL CTA ============================ -->
+    <section class="text-center bg-[#FAF8F3] px-6 pt-32 pb-32" id="signup-section">
+      <div class="flex flex-col items-center text-center max-w-3xl mx-auto">
+        <h2 class="md:text-6xl text-4xl font-thin text-[#06303A] tracking-tight font-serif leading-[1.1] mb-8">
+          Put the law back at the center of the day.
+        </h2>
+        <p class="text-lg md:text-xl text-[#06303A]/70 font-thin max-w-xl mx-auto mb-10">
+          AI leverage for legal work, grounded in real law, with sources, and
+          with your judgment.
+        </p>
+
+                <!-- MailerLite embed (light, centred) — form 196792443867235706 -->
+        <div id="mlb2-45204258" class="legau-ml legau-ml--light legau-ml--center ml-form-embedContainer ml-subscribe-form ml-subscribe-form-45204258 w-full max-w-lg">
+          <div class="ml-form-embedWrapper">
+            <div class="ml-form-embedBody row-form">
+              <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/181920/forms/196792443867235706/subscribe" data-code="" method="post" target="_blank">
+                <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required" style="flex:1 1 240px; min-width:0;">
+                  <label for="cta-email" class="sr-only">Your work email</label>
+                  <input id="cta-email" type="email" class="form-control" name="fields[email]" placeholder="Your work email" autocomplete="email" aria-invalid="false">
+                </div>
+                <button type="submit" class="primary">
+                  Start with Legau free
+                </button>
+                <button disabled="disabled" style="display: none;" type="button" class="loading">
+                  <div class="ml-form-embedSubmitLoad"></div>
+                  <span class="sr-only">Loading…</span>
+                </button>
+                <input type="hidden" name="ml-submit" value="1" aria-invalid="false">
+                <input type="hidden" name="anticsrf" value="true" aria-invalid="false">
+              </form>
+            </div>
+            <div class="ml-form-successBody row-success" style="display: none;">
+              <div class="ml-form-successContent">
+                <h4>Check your inbox.</h4>
+                <p>We've sent you everything you need to get started.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Secondary CTA: lead magnet — TODO: replace # with the real guide URL -->
+        <a href="legal-ai-saas-67.1.html#guide" class="mt-8 text-[#06303A] underline underline-offset-4 decoration-[#06303A]/30 hover:decoration-[#06303A] transition-colors text-base font-thin">
+          Download the evaluation guide
+        </a>
+        <p class="text-sm text-[#06303A]/60 font-light max-w-md mx-auto mt-4">
+          Still comparing? The guide helps you evaluate legal AI tools before
+          commiting.
+        </p>
+
+        <!-- Trust row -->
+        <ul class="flex flex-wrap justify-center items-center gap-x-3 gap-y-2 text-xs text-[#06303A]/50 font-light mt-14">
+          <li class="">No credit card</li>
+          <li aria-hidden="true">·</li>
+          <li class="">Setup in under 5 minutes</li>
+          <li aria-hidden="true">·</li>
+          <li class="">Your data never trains our models</li>
+          <li aria-hidden="true">·</li>
+          <li class="">Cancel anytime</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================ FOOTER ============================ -->
+    <footer class="bg-[#03252D] border-[#FAF8F3]/10 border-t px-6 pt-16 pb-16">
+      <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-12 md:gap-8">
+        <div class="flex flex-col items-start">
+          <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/66b95995-6f55-4ee0-9329-b1945636400e_320w.png" alt="Legau" class="w-auto h-10 md:h-12 object-contain rounded-sm">
+          <span class="text-[#B5D8DD] text-xs uppercase tracking-widest font-light mt-2">
+            Be a lawyer again.
+          </span>
+        </div>
+        <nav aria-label="Legal" class="">
+          <ul class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8 text-[#B5D8DD] text-xs font-light">
+            <li class="">
+              <a href="https://legau.com/privacy-policy/" class="hover:text-[#F0EBE0] transition-colors">
+                Privacy Policy
+              </a>
+            </li>
+            <li>
+              <a href="https://legau.com/cookies-policy/" class="hover:text-[#F0EBE0] transition-colors">
+                Cookie Policy
+              </a>
+            </li>
+            <li>
+              <a href="https://legau.com/terms-and-conditions/" class="hover:text-[#F0EBE0] transition-colors">
+                Terms of Use
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="text-xs font-light text-[#B5D8DD]/60 text-center max-w-7xl border-[#FAF8F3]/10 border-t mt-16 mx-auto pt-8">
+        © 2026 Legau. All rights reserved.
+      </div>
+    </footer>
+
+    <!-- ============================ SCRIPTS ============================ -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+
+                /* ---------- Sticky nav background ---------- */
+        var nav = document.getElementById('site-nav');
+        var navInner = document.getElementById('nav-inner');
+
+        function onScroll() {
+          if (window.scrollY > 80) {
+            nav.classList.add('bg-[#06303A]', 'shadow-lg');
+            navInner.classList.remove('py-6');
+            navInner.classList.add('py-3');
+          } else {
+            nav.classList.remove('bg-[#06303A]', 'shadow-lg');
+            navInner.classList.remove('py-3');
+            navInner.classList.add('py-6');
+          }
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+
+        /* ---------- Pricing toggle ---------- */
+        var toggle = document.getElementById('billing-toggle');
+        var isAnnual = false;
+
+        var PLANS = {
+          starter:    { monthly: '$79',  annual: '$853',  strike: '$948'  },
+          business:   { monthly: '$99',  annual: '$1069', strike: '$1188' },
+          enterprise: { monthly: '$139', annual: '$1501', strike: '$1668' }
+        };
+
+        function setBilling(annual) {
+          var knob = document.getElementById('toggle-knob');
+          knob.classList.toggle('translate-x-6', annual);
+          document.getElementById('label-monthly').classList.toggle('text-[#FAF8F3]/40', annual);
+          document.getElementById('label-annual').classList.toggle('text-[#FAF8F3]/40', !annual);
+          toggle.setAttribute('aria-checked', String(annual));
+
+          Object.keys(PLANS).forEach(function (plan) {
+            document.getElementById(plan + '-old').classList.toggle('hidden', !annual);
+            document.getElementById(plan + '-new').textContent = annual ? PLANS[plan].annual : PLANS[plan].monthly;
+            document.getElementById(plan + '-unit').textContent = annual ? '/year per user' : '/month per user';
+
+            var m = document.getElementById(plan + '-btn-monthly');
+            var a = document.getElementById(plan + '-btn-annual');
+            m.classList.toggle('hidden', annual);
+            m.classList.toggle('block', !annual);
+            a.classList.toggle('hidden', !annual);
+            a.classList.toggle('block', annual);
+          });
+        }
+
+        if (toggle) {
+          toggle.addEventListener('click', function () {
+            isAnnual = !isAnnual;
+            setBilling(isAnnual);
+          });
+        }
+
+        /* ---------- FAQ accordion ---------- */
+        document.querySelectorAll('.faq-button').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var content = btn.nextElementSibling;
+            var icon = btn.querySelector('iconify-icon');
+            var isOpen = content.classList.contains('is-open');
+
+            document.querySelectorAll('.faq-grid').forEach(function (g) { g.classList.remove('is-open'); });
+            document.querySelectorAll('.faq-button iconify-icon').forEach(function (i) { i.style.transform = 'rotate(0deg)'; });
+            document.querySelectorAll('.faq-button').forEach(function (b) { b.setAttribute('aria-expanded', 'false'); });
+
+            if (!isOpen) {
+              content.classList.add('is-open');
+              icon.style.transform = 'rotate(180deg)';
+              btn.setAttribute('aria-expanded', 'true');
+            }
+          });
+        });
+      });
+    </script>
+
+    <script>
+            /* ---------- MailerLite success callbacks ---------- */
+      function mlShowSuccess(selector) {
+        document.querySelectorAll(selector + ' .row-form').forEach(function (el) {
+          el.style.display = 'none';
+        });
+        document.querySelectorAll(selector + ' .row-success').forEach(function (el) {
+          el.style.display = 'block';
+        });
+      }
+
+      /* Hero (form 193701611720148256) */
+      function ml_webform_success_44016198() {
+        mlShowSuccess('.ml-subscribe-form-44016198');
+        mlShowSuccess('.ml-subscribe-form-45204258');
+      }
+
+      /* Final CTA (form 196792443867235706) */
+      function ml_webform_success_45204258() {
+        mlShowSuccess('.ml-subscribe-form-45204258');
+        mlShowSuccess('.ml-subscribe-form-44016198');
+      }
+
+      /* Guide list — lead magnet (form 195435889682286185) */
+      function ml_webform_success_44688849() {
+        mlShowSuccess('.ml-subscribe-form-44688849');
+      }
+    </script>
+
+    <!-- MailerLite: loaded once for all embeds -->
+    <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v83147fa8ce2d95cb73ece7f28b469519" type="text/javascript"></script>
+    <script>
+      fetch("https://assets.mailerlite.com/jsonp/181920/forms/193701611720148256/takel");
+      fetch("https://assets.mailerlite.com/jsonp/181920/forms/195435889682286185/takel");
+      fetch("https://assets.mailerlite.com/jsonp/181920/forms/196792443867235706/takel");
+    </script>
+  
+</body></html>
