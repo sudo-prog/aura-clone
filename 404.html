@@ -12,6 +12,7 @@
     <script>
       (function () {
         if (typeof window === "undefined") return;
+        window.__BASE_PATH__ = "/aura-clone/";
         var path = window.location.pathname || "/";
         if (path === "/aura-clone" || path === "/aura-clone/") {
           window.location.replace("/aura-clone/code");

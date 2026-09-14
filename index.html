@@ -13,14 +13,13 @@
 
     <!-- GitHub Pages subdirectory routing fix -->
     <!-- On GitHub Pages, the site lives at /aura-clone/ (not root). -->
-    <!-- The SPA interprets the first URL segment as a slug (/:slug route) -->
-    <!-- and crashes with "No slug provided" or renders a 404. -->
-    <!-- Redirect root and bare subpath to /code so the main app loads. -->
+    <!-- Set __BASE_PATH__ so React Router uses correct basename, -->
+    <!-- and redirect root to /code so the app shell loads. -->
     <script>
       (function () {
         if (typeof window === "undefined") return;
+        window.__BASE_PATH__ = "/aura-clone/";
         var path = window.location.pathname || "/";
-        // Match /aura-clone, /aura-clone/, but NOT /aura-clone/some-page
         if (path === "/aura-clone" || path === "/aura-clone/") {
           window.location.replace("/aura-clone/code");
         }
