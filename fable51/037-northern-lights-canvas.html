@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="trustpilot-one-time-domain-verification-id" content="e7fde8c5-aaf9-473a-b59e-d1f4a8847cd8" />
+
+    <!-- Static SEO for main domain (aura.build) - removed on subdomains/custom domains -->
+    <meta name="description" data-static-seo="true" content="A meditative full-screen canvas landscape in which layered noise-driven curtains of green and violet light drift over a black pine horizon and are mirrored in a" />
+    <title data-static-seo="true">Fable 5.1 · Northern Lights — Lake Inari, 68.9° N</title>
+
+    <meta property="og:type" content="website" data-static-seo="true" />
+    <meta property="og:site_name" content="The Gallery" data-static-seo="true" />
+    <meta property="og:title" content="Fable 5.1 · Northern Lights — Lake Inari, 68.9° N" data-static-seo="true" />
+    <meta property="og:description" content="A meditative full-screen canvas landscape in which layered noise-driven curtains of green and violet light drift over a black pine horizon and are mirrored in a" data-static-seo="true" />
+    <meta property="og:image" content="https://sudo-prog.github.io/aura-clone/fable51/shots/037-northern-lights-canvas.jpg" data-static-seo="true" />
+    <meta property="og:url" content="https://sudo-prog.github.io/aura-clone/fable51/037-northern-lights-canvas.html" data-static-seo="true" />
+    <meta property="og:image:width" content="1200" data-static-seo="true" />
+    <meta property="og:image:height" content="630" data-static-seo="true" />
+
+    <meta name="twitter:card" content="summary_large_image" data-static-seo="true" />
+    <meta name="twitter:site" content="@AuraBuilds" data-static-seo="true" />
+    <meta name="twitter:title" content="Fable 5.1 · Northern Lights — Lake Inari, 68.9° N" data-static-seo="true" />
+    <meta name="twitter:description" content="A meditative full-screen canvas landscape in which layered noise-driven curtains of green and violet light drift over a black pine horizon and are mirrored in a" data-static-seo="true" />
+    <meta name="twitter:image" content="https://sudo-prog.github.io/aura-clone/fable51/shots/037-northern-lights-canvas.jpg" data-static-seo="true" />
+
+    <!-- Remove Aura SEO/marketing tags on subdomains/custom domains BEFORE page renders -->
+    <script>
+      (function () {
+        var h = location.hostname || "";
+        var main = [
+          "aura.build", "aura.page", "aurachat.io",
+          "localhost", "netlify.app", "vercel.app",
+        ];
+        var isMain = main.some(function (d) {
+          return h === d || h.endsWith("." + d);
+        });
+        var remove = false;
+        if (isMain) {
+          var parts = h.split(".");
+          var isLocal = h.endsWith(".localhost");
+          var isPreview = h.endsWith(".netlify.app") || h.endsWith(".vercel.app");
+          var sub = parts.length > 2 ? parts[0]
+               : isLocal && parts.length === 2 ? parts[0] : "";
+          remove = ((sub && !isPreview) || (sub && isLocal))
+                   && sub.toLowerCase() !== "www";
+        } else {
+          remove = true;
+        }
+        if (remove) {
+          var els = document.querySelectorAll("[data-static-seo]");
+          for (var i = 0; i < els.length; i++)
+            els[i].parentNode.removeChild(els[i]);
+        }
+      })();
+    </script>
+
+    <!-- Google tag (gtag.js) - internal domains only -->
+
+    <!-- Favicon (Aura domains only; customer domains use their own favicon or none) -->
+    <script>
+      (function () {
+        var h = location.hostname || "";
+        var internal = ["aura.build", "www.aura.build", "aura.page",
+          "www.aura.page", "aurachat.io", "www.aurachat.io",
+          "beta--aurachatapp.netlify.app", "localhost"].includes(h);
+        if (!internal) return;
+        function addLink(rel, href, media) {
+          var link = document.createElement("link");
+          link.rel = rel; link.href = href;
+          if (rel === "icon") link.type = "image/png";
+          if (media) link.media = media;
+          link.setAttribute("data-static-seo", "true");
+          document.head.appendChild(link);
+        }
+        addLink("icon", "/logo-aura-128-light.png", "(prefers-color-scheme: light)");
+        addLink("icon", "/logo-aura-128-dark.png", "(prefers-color-scheme: dark)");
+        addLink("icon", "/logo-aura-128-light.png");
+        addLink("apple-touch-icon", "/logo-aura-128-light.png");
+      })();
+    </script>
+
+    <!-- Core homepage font; the extended catalog is route-scoped in App.tsx. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+
+    <!-- Iconify Icon Web Component -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/iconify-icon@2.1.0/dist/iconify-icon.min.js"
+      defer
+      integrity="sha384-GPb5RlngihS9H0z1D137JsvzmeZ7tCpWEF4t5YDoTZyMsPP8S7h7vFDh4XhheU83"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" crossorigin src="../assets/index-CugVVnIU.js"></script>
+    <link rel="stylesheet" crossorigin href="../assets/index-Bp88t92M.css">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="../sitemap.xml">
+
+    <style>
+      /* Full-screen iframe viewer — matches aura.build template preview rendering */
+      #room-viewer {
+        position: fixed;
+        inset: 0;
+        z-index: 50;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(14, 13, 11, 0.96);
+      }
+      #room-view-iframe {
+        width: 100vw;
+        height: 100vh;
+        border: 0;
+        display: block;
+      }
+      #room-view-iframe::-webkit-scrollbar { display: none; }
+      #room-view-iframe { -ms-overflow-style: none; scrollbar-width: none; }
+      /* Subtle overlay for the back button */
+      #room-back {
+        position: absolute;
+        top: 24px;
+        left: 24px;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        background: rgba(234, 228, 216, 0.08);
+        border: 1px solid var(--hairline, #2a2a2a);
+        border-radius: 8px;
+        color: var(--bone, #eae4d8);
+        font-family: 'Inter', system-ui, sans-serif;
+        font-size: 0.85rem;
+        text-decoration: none;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        transition: all 0.2s ease;
+      }
+      #room-back:hover {
+        background: rgba(234, 228, 216, 0.15);
+        border-color: var(--hairline-strong, #444);
+      }
+      @media (max-width: 720px) {
+        #room-back { top: 12px; left: 12px; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="root">
+      <div id="room-viewer">
+        <a href="fable51.html" id="room-back" title="Back to gallery"><iconify-icon icon="mdi-chevron-left" style="font-size: 1.2rem;"></iconify-icon> Back to Fable 5.1</a>
+        <iframe id="room-view-iframe" src="../fable51/sites/037-northern-lights-canvas/index.html" title="Fable 5.1 · Northern Lights — Lake Inari, 68.9° N" name="room-view" sandbox="allow-scripts allow-stylesheet allow-same-origin allow-popups allow-forms" allow="fullscreen"></iframe>
+      </div>
+    </div>
+
+    <script>
+      // Full-screen: exit on Escape or back button
+      document.addEventListener("keydown", function(e) {
+        if (e.key === "Escape") window.location.href = "fable51.html";
+      });
+    </script>
+  </body>
+</html>

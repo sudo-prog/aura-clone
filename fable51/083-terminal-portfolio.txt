@@ -1,0 +1,24 @@
+TITLE: nova@portfolio — Faux Terminal Portfolio
+
+PROMPT: Design a developer portfolio that lives entirely inside a beautiful faux terminal window. The desktop behind it is a soft mesh of radial gradients (deep indigo #1b1f3a, violet #3b2a6b, teal #0f4c5c fading to #08090f) with two huge blurred colour blobs drifting slowly. Centre a macOS-style window (max 980×680, rounded 14px) whose chrome is a frosted glass bar with red/yellow/green traffic lights, three tabs ("nova@portfolio — zsh" active, "notes.md", "server.log"), a 24px backdrop blur, a 1px hairline border and a deep 40px/90px drop shadow. Below the window, a translucent glass dock holds five gradient app icons with inline SVG glyphs (Finder, Projects, Skills, Contact, Themes) that magnify on hover with a tooltip and trigger the matching command when clicked.
+
+The terminal body uses a monospace system stack (ui-monospace, SF Mono, Menlo, Consolas, Courier New) with a green user, grey @, cyan directory and pink ❯ prompt, and an accent-coloured blinking block cursor that dims when the input is unfocused. On load, a custom block-character ASCII logo reading NOVA types in line by line (a few characters per tick) with an accent text-shadow glow, followed by a fake "Last login" line and a welcome message. A real <input> sits inline after the prompt so mobile keyboards work; on phones a pulsing "Tap to type" pill appears until focus.
+
+Implement these commands: help (two-column command list), about (key/value profile of Nova Reyes, a creative engineer in Lisbon), skills (a CSS grid bar chart whose gradient bars animate from 0 to their percentage with a cubic-bezier ease and a repeating-gradient tick texture), projects (four cards — Tidewater, Lantern, Fieldnotes, Glasshouse — with coloured left borders, tag pills, staggered rise-in animation and a hover lift), contact (email, GitHub, Mastodon, PGP fingerprint), theme <name> (switch between Dracula-like #282a36/#bd93f9, Solarized-like #002b36/#b58900, Nord-like #2e3440/#88c0d0, and Paper-light #fbf8f1/#b3541e palettes via CSS custom properties on <html>; the desktop gradient recolours too), matrix (a canvas Matrix-rain easter egg with katakana and code glyphs in the theme's green that fills the terminal for seven seconds or until any key/tap, then prints a joke), clear, history (numbered list; Up/Down arrows recall entries), plus whoami, date, echo, ls and a sudo joke. Tab completes command names (and theme names after "theme"); ambiguous prefixes print the candidates. Ctrl+L clears and Ctrl+C echoes ^C. Unknown commands print a zsh-style error in red.
+
+Keep the look modern rather than CRT: no scanlines, soft shadows, translucent surfaces, thin scrollbars, rounded tabs. Respect prefers-reduced-motion by skipping the typing animation, blob drift, cursor blink and bar transitions. Ensure no horizontal overflow at 375px and that the window fills the phone viewport height minus the dock.
+
+DESCRIPTION: A polished, glassy macOS-style terminal that doubles as a portfolio — you type commands to reveal a typed ASCII logo, animated skill bars, project cards, contact details, four colour themes and a Matrix easter egg, all inside a single self-contained page with a fake dock and a gradient desktop.
+
+TECHNIQUES:
+- CSS custom-property theming with four palettes applied via a data-theme attribute on <html>
+- Frosted glass chrome and dock using backdrop-filter, layered box-shadows and hairline borders
+- Typewriter animation of a block-character ASCII logo using async/await and requestAnimationFrame-safe DOM updates
+- Command interpreter with history navigation, Tab completion, Ctrl shortcuts and HTML-escaped echo
+- Rich in-terminal output: CSS grid bar chart with animated widths, auto-fit card grid with staggered keyframes
+- Canvas Matrix rain sized to the terminal with devicePixelRatio scaling, resize handling and auto-stop
+- Real inline <input> for native mobile keyboards, focus-state cursor styling, tap-to-focus hint
+- Inline SVG dock glyphs, hover magnification with attr()-driven tooltips
+- prefers-reduced-motion fallbacks throughout
+
+INTERACTION: The visitor is greeted by the logo typing itself, then invited to type help. Every piece of content is a command: they can type, Tab-complete, recall history with the arrow keys, or simply click a dock icon to run the corresponding command. Switching themes recolours the terminal and the desktop live; typing matrix takes over the window with falling glyphs until a key or tap dismisses it. Clicking anywhere in the terminal refocuses the input so the flow of typing is never lost.

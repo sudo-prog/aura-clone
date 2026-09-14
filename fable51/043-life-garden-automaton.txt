@@ -1,0 +1,26 @@
+TITLE: The Garden Automaton — Conway's Life as a Living Bed
+
+PROMPT: Create a single self-contained HTML page that reimagines Conway's Game of Life as a nocturnal botanical garden bed, presented like a plate from an old horticultural journal. The whole viewport is a canvas over a dark soil background: a radial gradient from warm umber (#241911) through soil brown-black (#16100B) to near-black (#0C0805), with a heavy radial vignette and a faint SVG fractal-noise grain overlay (data URI, overlay blend) for a paper-and-earth texture.
+
+Cells are not squares. Each living cell is a soft rounded bloom drawn from a pre-rendered sprite: a wide low-alpha radial glow, a filled circle body, a small white specular highlight, and for cells older than eight generations five faint petal discs around the centre. Sprites are rendered with additive "lighter" compositing so neighbouring blooms bleed light into one another. Colour is a function of age: seedling moss green (#7FB069) for the first two generations, blending to coral (#F28E7B) by age eight, to violet (#A687D1) by age twenty, and to elder gold (#E7B95A) by age forty-five. Newborn cells appear at 70% scale for a one-frame sprout. When a cell dies it leaves a brown stain (rgba 120,80,60) that decays by 7% per frame, so gliders drag fading trails through the soil. The grid wraps at all four edges (toroidal), and the cell size adapts from 11px on phones to 18px on 4K displays, preserving existing cells on resize.
+
+Typography is that of a botanical journal: Iowan Old Style / Palatino / Georgia. Top-left shows "Plate XIV · Cellular Horticulture" in tiny tracked monospace, the title "The Garden Automaton" (with Automaton italic in gold) at up to 40px, and an italic caption explaining the three rules as loneliness, company and crowding. Top-right holds Generation and Population counters in large tabular numerals with a tracked monospace label and an italic "blooms" unit. Bottom-left is an italic legend with four glowing colour dots. Bottom-right is the control cluster: a tempo slider (1–30 generations per second, gold thumb with glow), pill buttons for Pause/Grow, Step and Clear bed, and a "Seed drawer" button that pops a frosted-glass drawer scaling up from its corner. The drawer contains six seed packets laid out two-up, each with a serif name and an italic tagline: Gosper's glider gun, Pulsar, R-pentomino, Acorn, Wild garden (random 30%), and Diehard. Choosing one clears the bed, stamps the pattern in the centre (the gun offset to the upper left), closes the drawer and starts the simulation.
+
+Interaction: click a cell to toggle it, drag to paint living cells, a thin cream ring follows the hovered cell. Space toggles growth, Escape closes the drawer. The simulation uses a fixed-step accumulator so tempo is independent of frame rate, with Uint16Array age grids swapped each generation. Under prefers-reduced-motion the default tempo drops to four per second and UI transitions are removed. Mood: hushed, nurturing, slightly mystical — a greenhouse by lantern light.
+
+DESCRIPTION: A full-viewport Game of Life whose cells are luminous rounded blooms colouring from seedling green through coral and violet to elder gold as they age, leaving fading soil stains when they die, all framed with botanical-journal serif typography, a tempo slider, live generation and population counters, click-and-drag planting and a seed drawer of classic patterns.
+
+TECHNIQUES:
+- Toroidal Conway update on Uint16Array age grids with double buffering
+- Fixed-timestep accumulator decoupling generations-per-second from frame rate
+- Age-mapped colour ramp via three-stop linear interpolation
+- Pre-rendered per-age bloom sprites (glow, body, petals, highlight) cached by age bucket and cell size
+- Additive "lighter" compositing for overlapping bloom glow
+- Death-trail buffer (Float32Array) with exponential decay drawn as soil stains
+- devicePixelRatio-aware canvas with state-preserving resize and adaptive cell size
+- Inline SVG feTurbulence grain as a data URI with overlay blend
+- Frosted-glass seed drawer with scale/opacity transition and ARIA expanded state
+- Pointer capture for drag-planting; hover ring rendered on canvas
+- Classic patterns (glider gun, pulsar, R-pentomino, acorn, diehard) encoded as plaintext rows
+
+INTERACTION: The garden runs on load with Gosper's glider gun streaming gliders across the bed. Clicking toggles a bloom, dragging paints a row of seedlings, and the hover ring shows where you will plant. The tempo slider changes how many generations pass per second, Pause/Grow halts or resumes, Step advances one generation while paused, and Clear bed empties the soil. The Seed drawer offers six cultivars; picking one replants the bed and resumes growth. Counters update every frame, and the colour of each bloom tells you at a glance how long it has survived.
