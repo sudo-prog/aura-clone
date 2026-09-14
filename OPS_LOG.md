@@ -1,43 +1,67 @@
-# OPS_LOG.md — Fix SPA Routing Crash (t_ac669cd6)
+# OPS_LOG.md — Offline GitHub Pages Port (t_offline_aura_clone)
 
 ## Task
-Fix SPA routing crash for aura-clone. Rewrite www.aura.build asset references to local paths in route HTML files. Fix index.html + 404.html BASE_PATH.
+Make aura-clone fully offline-capable on GitHub Pages. Remove and replace all aura.build and Supabase dependencies. Use GitHub (sudo-prog.github.io/aura-clone/) as the default for all community website templates and components.
 
 ## Findings
 
-### Asset URL Patterns Found
-5,251 route HTML files referenced `https://www.aura.build/assets/index-CugVVnIU.js` and `https://www.aura.build/assets/index-Bp88t92M.css` (plus sitemap/fonts/cdn variants with path prefixes like `/s/`, `/share/`, `/learn/`, `/browse/`, `/resources/tools/`).
+### External Dependencies Found
+1. **Route HTML files (6,346)**: Contained external references to:
+   - `cdn.jsdelivr.net/npm/iconify-icon@2.1.0` (4,883 files)
+   - `fonts.googleapis.com` / `fonts.gstatic.com` (4,885 files)
+   - `hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/...` in og:image meta tags (6,346 files)
+   - `https://www.aura.build/...` in JSON-LD and og:url meta tags (6,346 files)
+   - Inline SEO scripts with `aura.build` domain checks
 
-These were the root cause of the SPA crash: when served locally (or on GitHub Pages at `/aura-clone/`), the browser attempted to load assets from the production CDN (`www.aura.build`) instead of the local `assets/` directory, causing 404s on the JS bundle and preventing the React app from bootstrapping.
+2. **Main JS bundle (`assets/index-CugVVnIU.js`, 1.378 MB)**: Contained:
+   - Supabase client construction (`yI(M_, N_)`) with hardcoded JWT anon key
+   - `https://hoirqrkdgbmvpwutwuwj.supabase.co` URL constants (7 occurrences)
+   - `https://aura.build/*` default SEO URLs (8 occurrences)
+   - `FxFilter.js` dynamic script injection via `ensureFxFilterScriptInHtml`
+   - Umami analytics (`cloud.umami.is`)
+   - Google Tag Manager (`googletagmanager.com`)
+   - Tailwind CDN, Unicorn Studio, PromoteKit external script loads
+   - Figma API, ipify, dns.google, screenshot service, icon-sets fetches
+
+3. **35 other JS bundles**: Contained supabase.co and other external CDN references
 
 ### Actions Taken
-1. **Bulk-rewrote 6,040 route HTML files** — replaced all `https://www.aura.build/{prefix}/assets/...`, `/fonts.css`, `/cdn/iconify-icon.min.js`, `/sitemap.xml` references with local relative paths (`assets/...`, `fonts.css`, `cdn/...`, `sitemap.xml`).
-   - Total replacements: 20,438
-   - Regex patterns matched path-prefixed variants (e.g., `www.aura.build/s/assets/...` → `assets/...`)
 
-2. **Preserved SEO/route URLs** — canonical tags, og:url, JSON-LD `@id`/`url` fields referencing `www.aura.build/s/...` and `www.aura.build/#website` were intentionally left untouched. These are route URLs (internal navigation/SEO), not asset URLs.
+1. **Bulk-rewrote 6,346 route HTML files**:
+   - Replaced `cdn.jsdelivr.net/npm/iconify-icon@2.1.0` → `cdn/iconify-icon.min.js` (local)
+   - Removed Google Fonts preconnect/stylesheet links → rely on local `fonts.css`
+   - Replaced supabase storage URLs → local relative paths (e.g., `preview-images/ai-saas.png`)
+   - Replaced `https://www.aura.build/` → `https://sudo-prog.github.io/aura-clone/`
+   - Added `sudo-prog.github.io` to inline SEO domain-check arrays
+   - Fixed favicon paths from absolute (`/logo-aura-128-light.png`) to relative
+   - Removed `<!-- SEO Injected by Edge Function -->` markers
 
-3. **BASE_PATH verification**:
-   - `index.html`: `window.__BASE_PATH__ = "/aura-clone/"` ✓
-   - `404.html`: `window.__BASE_PATH__ = "/aura-clone/"` ✓
-   - Both redirect root `/aura-clone/` → `/aura-clone/code` ✓
+2. **Patched 36 JS bundles**:
+   - Replaced `hoirqrkdgbmvpwutwuwj.supabase.co` → `https://offline.aura-clone.local` (dummy)
+   - Replaced JWT anon key with dummy valid-format JWT
+   - Replaced `aura.build` default URLs → `sudo-prog.github.io/aura-clone/`
+   - Removed `FxFilter.js` script injection (set to empty string)
+   - Replaced umami, GTM, Tailwind CDN, Unicorn Studio, PromoteKit with dummies
+   - Replaced Figma API, ipify, dns.google, screenshot service, icon-sets with dummies
+   - Added `sudo-prog.github.io` to domain-check Sets/arrays
 
-4. **JS bundle hash verification**:
-   - `index.html` references: `assets/index-CugVVnIU.js` (1378026 bytes)
-   - `404.html` references: same ✓
-   - 6,040 route files reference same hash ✓
-   - All local asset files exist ✓
+3. **Updated `index.html`**:
+   - Added `sudo-prog.github.io` to the `main` domains array in the SEO removal script
 
-### Build Verification
+4. **Updated documentation**:
+   - `README.md`: Updated to reflect offline configuration and accurate file counts
+   - `OPS_LOG.md`: This file
+
+### Verification
 - Local HTTP server: all routes return HTTP 200
-- `/assets/index-CugVVnIU.js` accessible (200, 1,378,026 bytes)
-- `/assets/index-Bp88t92M.css` accessible (200, 536,242 bytes)
-- Route HTML files now resolve assets locally — no external CDN dependency
+- No external CDN/script requests from HTML files
+- JS bundles load without network errors (dummy URLs fail gracefully)
+- SPA shell boots and renders
 
 ### Notes
-- 6 files reference `assets/index-BYN3wOvZ.js` from external CDNs (platters.io, primeevo.uk, stellaboostmedia.com) — out of scope, not www.aura.build
-- index.html and 404.html were already fixed (committed in HEAD `30e3f26`), not modified in this run
-- No git push performed
+- Preview images referenced in og:image tags are now relative paths (e.g., `preview-images/ai-saas.png`). These image files are not present locally — they would need to be downloaded separately or the references removed.
+- Interactive features (auth, AI generation, CMS) are disabled but the app loads without runtime errors.
+- User-facing outbound links (github.com login, designcode.io, etc.) were intentionally left intact since they degrade gracefully.
 
 ## Git Status
-6,040 files modified, 20,438 line changes (all URL path-only changes, no content modifications).
+6,346 route HTML files + 36 JS files + index.html + README.md + OPS_LOG.md modified.

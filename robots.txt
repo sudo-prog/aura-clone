@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sudo-prog.github.io/sitemap.xml
+Sitemap: https://sudo-prog.github.io/aura-clone/sitemap.xml

@@ -33,12 +33,12 @@
     />
     <meta
       property="og:image"
-      content="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/learn-assets/seo-previews/2026-05-22/share-preview.jpg"
+      content="learn-assets/seo-previews/2026-05-22/share-preview.jpg"
       data-static-seo="true"
     />
     <meta
       property="og:url"
-      content="https://aura.build/"
+      content="https://sudo-prog.github.io/aura-clone/"
       data-static-seo="true"
     />
     <meta property="og:image:width" content="1200" data-static-seo="true" />
@@ -62,13 +62,13 @@
     />
     <meta
       name="twitter:image"
-      content="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/learn-assets/seo-previews/2026-05-22/share-preview.jpg"
+      content="learn-assets/seo-previews/2026-05-22/share-preview.jpg"
       data-static-seo="true"
     />
     <link
       rel="alternate"
       type="text/plain"
-      href="https://aura.build/llms.txt"
+      href="https://sudo-prog.github.io/aura-clone/llms.txt"
       data-static-seo="true"
     />
     <script type="application/ld+json" data-static-seo="true">
@@ -77,37 +77,37 @@
         "@graph": [
           {
             "@type": "Organization",
-            "@id": "https://aura.build/#organization",
+            "@id": "https://sudo-prog.github.io/aura-clone/#organization",
             "name": "Aura",
-            "url": "https://aura.build/",
-            "logo": "https://aura.build/logo-aura.svg",
+            "url": "https://sudo-prog.github.io/aura-clone/",
+            "logo": "https://sudo-prog.github.io/aura-clone/logo-aura.svg",
             "sameAs": ["https://twitter.com/mengto"]
           },
           {
             "@type": "WebSite",
-            "@id": "https://aura.build/#website",
+            "@id": "https://sudo-prog.github.io/aura-clone/#website",
             "name": "Aura",
-            "url": "https://aura.build/",
+            "url": "https://sudo-prog.github.io/aura-clone/",
             "publisher": {
-              "@id": "https://aura.build/#organization"
+              "@id": "https://sudo-prog.github.io/aura-clone/#organization"
             },
             "potentialAction": {
               "@type": "SearchAction",
-              "target": "https://aura.build/assets?q={search_term_string}",
+              "target": "https://sudo-prog.github.io/aura-clone/assets?q={search_term_string}",
               "query-input": "required name=search_term_string"
             }
           },
           {
             "@type": "SoftwareApplication",
-            "@id": "https://aura.build/#software",
+            "@id": "https://sudo-prog.github.io/aura-clone/#software",
             "name": "Aura",
             "applicationCategory": "DesignApplication",
             "operatingSystem": "Web",
-            "url": "https://aura.build/",
+            "url": "https://sudo-prog.github.io/aura-clone/",
             "description": "AI landing page builder that creates stunning designs in seconds. No design skills needed. Export to HTML & Figma.",
-            "image": "https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/learn-assets/seo-previews/2026-05-22/share-preview.jpg",
+            "image": "learn-assets/seo-previews/2026-05-22/share-preview.jpg",
             "creator": {
-              "@id": "https://aura.build/#organization"
+              "@id": "https://sudo-prog.github.io/aura-clone/#organization"
             }
           }
         ]
@@ -125,6 +125,7 @@
           "localhost",
           "netlify.app",
           "vercel.app",
+          "sudo-prog.github.io",
         ];
         var isMain = main.some(function (d) {
           return h === d || h.endsWith("." + d);
@@ -169,7 +170,8 @@
           h === "aurachat.io" ||
           h === "www.aurachat.io" ||
           h === "beta--aurachatapp.netlify.app" ||
-          h === "localhost";
+          h === "localhost" ||
+          h === "sudo-prog.github.io";
         if (!internal) return;
 
         function addLink(rel, href, media) {
@@ -184,30 +186,23 @@
 
         addLink(
           "icon",
-          "/logo-aura-128-light.png",
+          "logo-aura-128-light.png",
           "(prefers-color-scheme: light)",
         );
         addLink(
           "icon",
-          "/logo-aura-128-dark.png",
+          "logo-aura-128-dark.png",
           "(prefers-color-scheme: dark)",
         );
-        addLink("icon", "/logo-aura-128-light.png");
-        addLink("apple-touch-icon", "/logo-aura-128-light.png");
+        addLink("icon", "logo-aura-128-light.png");
+        addLink("apple-touch-icon", "logo-aura-128-light.png");
       })();
     </script>
 
     <!-- Core homepage font; the extended catalog is route-scoped in App.tsx. -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-    />
-
     <!-- Iconify Icon Web Component -->
     <script
-      src="https://cdn.jsdelivr.net/npm/iconify-icon@2.1.0/dist/iconify-icon.min.js"
+      src="cdn/iconify-icon.min.js"
       defer
       integrity="sha384-GPb5RlngihS9H0z1D137JsvzmeZ7tCpWEF4t5YDoTZyMsPP8S7h7vFDh4XhheU83"
       crossorigin="anonymous"

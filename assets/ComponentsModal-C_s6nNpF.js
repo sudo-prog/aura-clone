@@ -17,7 +17,7 @@ This action cannot be undone.`;st("Delete Selected Components",t,Wt,"Delete Comp
                           <meta charset="UTF-8">
                           <meta name="viewport" content="width=device-width, initial-scale=1.0">
                           <title>Component Preview</title>
-                          <script src="https://cdn.tailwindcss.com"><\/script>
+                          <script src="https://tailwind-dummy.local"><\/script>
                           <style>
                             html, body {
                               height: 100%;
@@ -56,7 +56,7 @@ This action cannot be undone.`;st("Delete Selected Components",t,Wt,"Delete Comp
                             <meta charset="UTF-8">
                             <meta name="viewport" content="width=device-width, initial-scale=1.0">
                             <title>Component Preview</title>
-                            <script src="https://cdn.tailwindcss.com"><\/script>
+                            <script src="https://tailwind-dummy.local"><\/script>
                             <style>
                               html, body { height: 100%; margin: 0; padding: 0; }
                               body { height: 100%; overflow: auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: ${Qe()}; color: ${_==="black"?"#ffffff":"#000000"}; }

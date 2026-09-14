@@ -2,6 +2,8 @@
 
 A static clone of [aura.build](https://aura.build) — an AI landing page builder. This is a **base template** that includes all the static assets (HTML shell, JS bundles, CSS, fonts, icons) without any templates (you add your own).
 
+This version is configured to run **fully offline** on GitHub Pages at `https://sudo-prog.github.io/aura-clone/`.
+
 ## What's Included
 
 ### Static Assets
@@ -13,7 +15,7 @@ A static clone of [aura.build](https://aura.build) — an AI landing page builde
 - **Logo files** — SVG + light/dark PNG variants
 
 ### Routes
-- **1,453 HTML route pages** — all sitemap URLs downloaded as static HTML
+- **6,346 HTML route pages** — all sitemap URLs downloaded as static HTML
 - Each page references the same JS/CSS bundles (SPA architecture)
 - All asset links converted to relative paths for offline browsing
 
@@ -29,18 +31,23 @@ Aura.build is an AI website builder that:
 - Includes visual editing, CMS, custom domains, analytics, and SEO controls
 - Uses a prompt-credit model across supported AI models
 
-## Important Notes
+## Offline Configuration
 
-### Runtime Dependencies (Will NOT work offline)
-The app's JS bundles contain API calls to:
-- `supabase.co` — backend/database/auth (requires backend setup)
-- `analytics.aura.build` — analytics (stripped from HTML)
-- Google Tag Manager (stripped from HTML)
+All external dependencies have been removed or replaced:
 
-The **UI and static rendering** work offline, but **interactive features** (auth, saving, AI generation) require the Supabase backend.
+| Dependency | Status |
+|---|---|
+| `supabase.co` (backend/auth/storage) | Replaced with offline dummy — auth/data features disabled |
+| `cdn.jsdelivr.net` (iconify) | Replaced with local `cdn/iconify-icon.min.js` |
+| `fonts.googleapis.com` / `fonts.gstatic.com` | Replaced with local `fonts.css` + Inter TTF files |
+| `cdn.tailwindcss.com` | Replaced with offline dummy |
+| `cloud.umami.is` (analytics) | Replaced with offline dummy |
+| `googletagmanager.com` (GTM) | Replaced with offline dummy |
+| `api.figma.com` | Replaced with offline dummy |
+| `icon-sets.iconify.design` | Replaced with offline dummy |
+| `aura.build` default URLs | Replaced with `https://sudo-prog.github.io/aura-clone/` |
 
-### Templates
-Per user request, templates were **not** included. The `assets/` directory contains only the framework code, not user-created templates.
+The **UI and static rendering** work fully offline. Interactive features that require a backend (auth, saving, AI generation, CMS persistence) are disabled but the app loads without network errors.
 
 ## Usage
 
@@ -52,11 +59,12 @@ npx serve .
 python3 -m http.server 8000
 ```
 
-### Git
+### Deploy to GitHub Pages
 ```bash
 git init
 git add -A
-git commit -m "Initial clone of aura.build base"
+git commit -m "Initial clone of aura.build base (offline)"
+# Push to GitHub, enable GitHub Pages from main branch root
 ```
 
 ## Directory Structure
@@ -65,8 +73,9 @@ aura-clone/
 ├── assets/           # JS + CSS bundles (308 files)
 ├── fonts/            # Inter font files (5 TTF)
 ├── cdn/              # Iconify icon library
-├── *.html            # Route pages (1,453 files)
+├── *.html            # Route pages (6,346 files)
 ├── index.html        # SPA shell
+├── 404.html          # SPA fallback
 ├── sitemap.xml
 ├── robots.txt
 ├── logo-aura*

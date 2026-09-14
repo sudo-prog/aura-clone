@@ -1,4 +1,4 @@
-const y=new Set(["preconnect","preload","stylesheet"]),l="https://cdn.tailwindcss.com",h="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js",f=[/cdn\.tailwindcss\.com/i,/code\.iconify\.design\/(?:iconify-icon|3\/)/i,/unpkg\.com\/lucide@/i],E=/Background \((embed|video|image|component)\) added by Aura/i,b=`html,
+const y=new Set(["preconnect","preload","stylesheet"]),l="https://tailwind-dummy.local",h="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js",f=[/cdn\.tailwindcss\.com/i,/code\.iconify\.design\/(?:iconify-icon|3\/)/i,/unpkg\.com\/lucide@/i],E=/Background \((embed|video|image|component)\) added by Aura/i,b=`html,
 body {
   min-height: 100%;
 }

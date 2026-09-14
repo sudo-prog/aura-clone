@@ -3,7 +3,7 @@ import{d6 as W,u as B,d as V,l as X,r as d,aT as Y,j as e,X as _,C as J,fv as I,
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
- */const ne=W("SquareArrowUpRight",[["rect",{width:"18",height:"18",x:"3",y:"3",rx:"2",key:"afitv7"}],["path",{d:"M8 8h8v8",key:"b65dnt"}],["path",{d:"m8 16 8-8",key:"13b9ih"}]]),se=t=>{var h;if(!t)return"";const p='<script src="https://cdn.tailwindcss.com"><\/script>',m=`
+ */const ne=W("SquareArrowUpRight",[["rect",{width:"18",height:"18",x:"3",y:"3",rx:"2",key:"afitv7"}],["path",{d:"M8 8h8v8",key:"b65dnt"}],["path",{d:"m8 16 8-8",key:"13b9ih"}]]),se=t=>{var h;if(!t)return"";const p='<script src="https://tailwind-dummy.local"><\/script>',m=`
     <style>
       /* Disable animations */
       *, *::before, *::after {
@@ -220,7 +220,7 @@ import{d6 as W,u as B,d as V,l as X,r as d,aT as Y,j as e,X as _,C as J,fv as I,
         });
       })();
     <\/script>
-  `;if(t.toLowerCase().includes("<html")&&t.toLowerCase().includes("<head")&&t.toLowerCase().includes("<body")){let r=t;const s=[];t.includes("fonts.googleapis.com")||(s.push('<link rel="preconnect" href="https://fonts.googleapis.com">'),s.push('<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'),s.push('<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">')),t.includes("https://cdn.tailwindcss.com")||s.push(p),t.includes("lucide")||s.push('<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"><\/script>'),(!t.includes("font-family")||!t.includes("Inter"))&&s.push(`<style>
+  `;if(t.toLowerCase().includes("<html")&&t.toLowerCase().includes("<head")&&t.toLowerCase().includes("<body")){let r=t;const s=[];t.includes("fonts.googleapis.com")||(s.push('<link rel="preconnect" href="fonts-dummy.local">'),s.push('<link rel="preconnect" href="fonts-gstatic-dummy.local" crossorigin>'),s.push('<link href="fonts-dummy.local/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">')),t.includes("https://tailwind-dummy.local")||s.push(p),t.includes("lucide")||s.push('<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"><\/script>'),(!t.includes("font-family")||!t.includes("Inter"))&&s.push(`<style>
       body { font-family: 'Inter', sans-serif; }
     </style>`);const x=[...s,m];if(x.length>0){const a=x.join(`
   `);r.toLowerCase().includes("</head>")?r=r.replace(/(<\/head>)/i,`  ${a}
@@ -251,9 +251,9 @@ $1`)),r=r.replace(/<body[^>]*>([\s\S]*)<\/body>/i,`${w}
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   ${`
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="fonts-dummy.local">
+  <link rel="preconnect" href="fonts-gstatic-dummy.local" crossorigin>
+  <link href="fonts-dummy.local/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   ${p}
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"><\/script>
   <style>
