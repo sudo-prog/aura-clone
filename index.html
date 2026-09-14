@@ -114,25 +114,6 @@
       }
     </script>
 
-    <!-- GitHub Pages root routing fix: on github.io the SPA treats the
-         username subdomain as a published-site slug and crashes with
-         "No slug provided". Redirect root / to /code so the app shell
-         loads instead of the published-site resolver. -->
-    <script>
-      (function () {
-        if (typeof window === "undefined") return;
-        var host = (window.location.hostname || "").toLowerCase();
-        var path = window.location.pathname || "/";
-        if (
-          host.endsWith(".github.io") &&
-          !window.__CUSTOM_DOMAIN__ &&
-          (path === "/" || path === "")
-        ) {
-          window.location.replace("/code");
-        }
-      })();
-    </script>
-
     <!-- Remove Aura SEO/marketing tags on subdomains/custom domains BEFORE page renders -->
     <script>
       (function () {
@@ -144,6 +125,7 @@
           "localhost",
           "netlify.app",
           "vercel.app",
+          "github.io",
         ];
         var isMain = main.some(function (d) {
           return h === d || h.endsWith("." + d);
@@ -153,7 +135,7 @@
           var parts = h.split(".");
           var isLocal = h.endsWith(".localhost");
           var isPreview =
-            h.endsWith(".netlify.app") || h.endsWith(".vercel.app");
+            h.endsWith(".netlify.app") || h.endsWith(".vercel.app") || h.endsWith(".github.io");
           var sub =
             parts.length > 2
               ? parts[0]
