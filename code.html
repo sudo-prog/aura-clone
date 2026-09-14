@@ -137,11 +137,13 @@
           var isPreview =
             h.endsWith(".netlify.app") || h.endsWith(".vercel.app");
           var sub =
-            parts.length > 2
-              ? parts[0]
-              : isLocal && parts.length === 2
+            h === "sudo-prog.github.io"
+              ? ""
+              : parts.length > 2
                 ? parts[0]
-                : "";
+                : isLocal && parts.length === 2
+                  ? parts[0]
+                  : "";
           remove =
             ((sub && !isPreview) || (sub && isLocal)) &&
             sub.toLowerCase() !== "www";
@@ -199,16 +201,11 @@
       })();
     </script>
 
-    <!-- Set __BASE_PATH__ so React Router uses correct basename, -->
-    <!-- and redirect root to /code so the app shell loads. -->
+    <!-- Set __BASE_PATH__ so React Router uses correct basename. -->
     <script>
       (function () {
         if (typeof window === "undefined") return;
         window.__BASE_PATH__ = "/aura-clone/";
-        var path = window.location.pathname || "/";
-        if (path === "/aura-clone" || path === "/aura-clone/") {
-          window.location.replace("/aura-clone/code");
-        }
       })();
     </script>
 

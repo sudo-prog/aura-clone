@@ -78,11 +78,13 @@
           var isPreview =
             h.endsWith(".netlify.app") || h.endsWith(".vercel.app");
           var sub =
-            parts.length > 2
-              ? parts[0]
-              : isLocal && parts.length === 2
+            h === "sudo-prog.github.io"
+              ? ""
+              : parts.length > 2
                 ? parts[0]
-                : "";
+                : isLocal && parts.length === 2
+                  ? parts[0]
+                  : "";
           remove =
             ((sub && !isPreview) || (sub && isLocal)) &&
             sub.toLowerCase() !== "www";
