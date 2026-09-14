@@ -14,64 +14,64 @@
     <!-- Static SEO for main domain (aura.build) - removed on subdomains/custom domains -->
     <meta
       name="description"
-      data-static-seo="true"
+      
       content="AI landing page builder that creates stunning designs in seconds. No design skills needed. Export to HTML & Figma. Trusted by 189,000 users worldwide."
     />
-    <title data-static-seo="true">Aura – AI Website Builder</title>
+    <title >Aura – AI Website Builder</title>
 
-    <meta property="og:type" content="website" data-static-seo="true" />
-    <meta property="og:site_name" content="Aura" data-static-seo="true" />
+    <meta property="og:type" content="website"  />
+    <meta property="og:site_name" content="Aura"  />
     <meta
       property="og:title"
       content="Aura – AI Website Builder"
-      data-static-seo="true"
+      
     />
     <meta
       property="og:description"
       content="AI landing page builder that creates stunning designs in seconds. No design skills needed. Export to HTML & Figma. Trusted by 189,000 users worldwide."
-      data-static-seo="true"
+      
     />
     <meta
       property="og:image"
       content="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/learn-assets/seo-previews/2026-05-22/share-preview.jpg"
-      data-static-seo="true"
+      
     />
     <meta
       property="og:url"
       content="https://aura.build/"
-      data-static-seo="true"
+      
     />
-    <meta property="og:image:width" content="1200" data-static-seo="true" />
-    <meta property="og:image:height" content="630" data-static-seo="true" />
+    <meta property="og:image:width" content="1200"  />
+    <meta property="og:image:height" content="630"  />
 
     <meta
       name="twitter:card"
       content="summary_large_image"
-      data-static-seo="true"
+      
     />
-    <meta name="twitter:site" content="@AuraBuilds" data-static-seo="true" />
+    <meta name="twitter:site" content="@AuraBuilds"  />
     <meta
       name="twitter:title"
       content="Aura – AI Website Builder"
-      data-static-seo="true"
+      
     />
     <meta
       name="twitter:description"
       content="AI landing page builder that creates stunning designs in seconds. No design skills needed. Export to HTML & Figma. Trusted by 189,000 users worldwide."
-      data-static-seo="true"
+      
     />
     <meta
       name="twitter:image"
       content="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/learn-assets/seo-previews/2026-05-22/share-preview.jpg"
-      data-static-seo="true"
+      
     />
     <link
       rel="alternate"
       type="text/plain"
-      href="https://aura.build/llms.txt"
-      data-static-seo="true"
+      href="llms.txt"
+      
     />
-    <script type="application/ld+json" data-static-seo="true">
+    <script type="application/ld+json" >
       {
         "@context": "https://schema.org",
         "@graph": [
@@ -155,47 +155,11 @@
       })();
     </script>
 
-    <!-- Google tag (gtag.js) - internal domains only -->
-
-    <!-- Favicon (Aura domains only; customer domains use their own favicon or none) -->
-    <script>
-      (function () {
-        var h = location.hostname || "";
-        var internal =
-          h === "aura.build" ||
-          h === "www.aura.build" ||
-          h === "aura.page" ||
-          h === "www.aura.page" ||
-          h === "aurachat.io" ||
-          h === "www.aurachat.io" ||
-          h === "beta--aurachatapp.netlify.app" ||
-          h === "localhost";
-        if (!internal) return;
-
-        function addLink(rel, href, media) {
-          var link = document.createElement("link");
-          link.rel = rel;
-          link.href = href;
-          if (rel === "icon") link.type = "image/png";
-          if (media) link.media = media;
-          link.setAttribute("data-static-seo", "true");
-          document.head.appendChild(link);
-        }
-
-        addLink(
-          "icon",
-          "/logo-aura-128-light.png",
-          "(prefers-color-scheme: light)",
-        );
-        addLink(
-          "icon",
-          "/logo-aura-128-dark.png",
-          "(prefers-color-scheme: dark)",
-        );
-        addLink("icon", "/logo-aura-128-light.png");
-        addLink("apple-touch-icon", "/logo-aura-128-light.png");
-      })();
-    </script>
+    <!-- Favicon -->
+    <link rel="icon" href="logo-aura-128-light.png" media="(prefers-color-scheme: light)" />
+    <link rel="icon" href="logo-aura-128-dark.png" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="logo-aura-128-light.png" />
+    <link rel="apple-touch-icon" href="logo-aura-128-light.png" />
 
     <!-- Core homepage font; the extended catalog is route-scoped in App.tsx. -->
     
