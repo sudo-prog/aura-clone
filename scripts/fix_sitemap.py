@@ -5,12 +5,15 @@ Fix the aura-clone sitemap.xml and create templates.html.
 Actions:
 1. Rewrite sitemap.xml — remove stale aura.build URLs (browse/, learn/, share/, s/, design-systems/),
    fix browse/components → browse/templates, ensure all 100 fable51 pages are listed.
-2. Create templates.html — SPA page with iframe gallery of all 100 fable51 studies.
+2. Create templates.html — SPA page with iframe gallery of all 150 examples:
+   50 from gallery/ (Fable 5.0 sites) + 100 from fable51/ (Fable 5.1 studies),
+   organized in 3 tabs (50 Fable, 100 Fable, All 150).
 3. Update components.html routing so /browse/components redirects to templates.html.
 """
 import re
 from pathlib import Path
 from datetime import datetime, timezone
+from html import escape
 
 REPO_ROOT = Path(__file__).parent.parent
 SITEMAP_PATH = REPO_ROOT / "sitemap.xml"
@@ -65,15 +68,47 @@ def get_fable51_entries():
     return entries
 
 def get_gallery_entries():
-    """Extract gallery site directories."""
+    """Extract 50 gallery site entries from gallery HTML files."""
     entries = []
     if GALLERY_DIR.exists():
-        for d in sorted(GALLERY_DIR.iterdir()):
-            if d.is_dir() and d.name not in ("css", "js", "fonts", "img", "shots"):
-                index_html = d / "index.html"
-                if index_html.exists():
-                    entries.append(d.name)
+        for f in sorted(GALLERY_DIR.glob("*.html")):
+            if f.name == "index.html":
+                continue
+            text = f.read_text(encoding="utf-8")
+            name = f.stem
+
+            # Extract title from <title> tag
+            title_match = re.search(r'<title[^>]*>([^<]*)</title>', text)
+            title = title_match.group(1).strip() if title_match else name
+            title = _unescape_html(title).replace(" — The Gallery", "").strip()
+
+            # Extract description meta tag
+            desc_match = re.search(r'<meta name="description"[^>]*content="([^"]*)"', text)
+            desc = desc_match.group(1).strip() if desc_match else ""
+            desc = _unescape_html(desc)
+
+            # Try to extract accent color from data-accent attribute or inline style
+            accent = "#000000"
+            data_match = re.search(r'data-accent="([^"]+)"', text)
+            if data_match:
+                accent = data_match.group(1)
+
+            entries.append({
+                "name": name,
+                "file": f.name,
+                "title": title,
+                "description": desc,
+                "accent": accent,
+            })
+
     return entries
+
+def _unescape_html(s):
+    """Unescape common HTML entities."""
+    s = s.replace("&amp;", "&").replace("&lt;", "<").replace("&gt;", ">")
+    s = s.replace("&quot;", '"').replace("&#39;", "'")
+    from html import unescape as html_unescape
+    return html_unescape(s)
 
 def collect_valid_urls():
     """Collect all valid URLs that exist as files on disk."""
@@ -136,34 +171,44 @@ def generate_sitemap(urls):
     lines.append("</urlset>")
     return "\n".join(lines) + "\n"
 
-def create_templates_html(entries):
-    """Create templates.html with iframe gallery of all 100 fable studies."""
-    # First 50 = "50 Fable", all 100 = "100 Fable"
-    first_50 = entries[:50]
-    all_100 = entries
-
-    def make_cards(entries_list, badge_class, badge_text):
-        cards = []
-        for i, entry in enumerate(entries_list):
-            name = entry["name"]
-            title = entry.get("title", name)
-            # Use the name as fallback title (stripped of number prefix)
-            display_title = name.replace("-", " ").title() if not entry.get("title") or entry["title"] == entry["name"] else entry["title"]
-            cards.append(f"""    <div class="card" data-accent="{entry.get('accent', '#000')}">
+def create_templates_html(fable51_entries, gallery_entries):
+    """Create templates.html with iframe gallery of all 150 examples (50 gallery + 100 fable51)
+    organized in 3 tabs: 50 Fable, 100 Fable, All 150."""
+    # --- 50 Fable tab: gallery site pages in iframes ---
+    def make_gallery_card(entry):
+        name = entry["name"]
+        title = _unescape_html(entry["title"])
+        accent = entry.get("accent", "#000000")
+        return f'''    <div class="card" data-accent="{accent}">
       <div class="card-header">
-        <span class="badge {badge_class}">{badge_text}</span>
-        <span class="card-title">{display_title}</span>
+        <span class="badge fable50-badge">50-Fable</span>
+        <span class="card-title">{title}</span>
       </div>
       <div class="iframe-wrapper">
-        <iframe src="fable51/{name}.html" loading="lazy" title="{display_title}" referrerpolicy="no-referrer"></iframe>
+        <iframe src="gallery/{name}.html" loading="lazy" title="{title}" referrerpolicy="no-referrer"></iframe>
       </div>
-    </div>""")
-        return "\n".join(cards)
+    </div>'''
 
-    cards_50 = make_cards(first_50, "fable51-badge", "50-Fable")
-    cards_100 = make_cards(all_100, "fable100-badge", "100-Fable")
+    # --- 100 Fable tab: all 100 fable51 studies in iframes ---
+    def make_fable51_card(entry, badge_text):
+        name = entry["name"]
+        title = _unescape_html(entry.get("title", name))
+        accent = entry.get("accent", "#000000")
+        return f'''    <div class="card" data-accent="{accent}">
+      <div class="card-header">
+        <span class="badge fable100-badge">{badge_text}</span>
+        <span class="card-title">{title}</span>
+      </div>
+      <div class="iframe-wrapper">
+        <iframe src="fable51/{name}.html" loading="lazy" title="{title}" referrerpolicy="no-referrer"></iframe>
+      </div>
+    </div>'''
 
-    html_content = f"""<!DOCTYPE html>
+    cards_gallery_50 = "\n".join(make_gallery_card(e) for e in gallery_entries)
+    cards_fable51_100 = "\n".join(make_fable51_card(e, "100-Fable") for e in fable51_entries)
+    cards_all_150 = cards_gallery_50 + "\n" + cards_fable51_100
+
+    html_content = f'''<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -184,7 +229,7 @@ def create_templates_html(entries):
     .card-header {{ padding: 0.5rem 1rem; display: flex; align-items: center; gap: 0.5rem; background: #1a1a1a; border-bottom: 1px solid #222; }}
     .card-title {{ font-size: 0.85rem; font-weight: 500; flex: 1; }}
     .badge {{ padding: 0.2rem 0.6rem; font-size: 0.7rem; border-radius: 3px; font-weight: 600; }}
-    .fable51-badge {{ background: #4a90d9; color: #fff; }}
+    .fable50-badge {{ background: #4a90d9; color: #fff; }}
     .fable100-badge {{ background: #9b59b6; color: #fff; }}
     .iframe-wrapper {{ width: 100%; height: 200px; }}
     .iframe-wrapper iframe {{ width: 100%; height: 100%; border: none; }}
@@ -194,41 +239,51 @@ def create_templates_html(entries):
 <body>
   <header>
     <h1>Templates</h1>
-    <p>50 Fable &amp; 100 Fable website examples in individual iframes</p>
+    <p>50 Gallery Fable + 100 Fable51 Studies = 150 website examples in individual iframes</p>
   </header>
   <div class="container">
     <div class="tabs">
-      <div class="tab active" onclick="showTab('fable51', this)">50 Fable</div>
-      <div class="tab" onclick="showTab('fable100', this)">100 Fable</div>
+      <div class="tab active" onclick="showTab('gallery', this)">50 Gallery Fable</div>
+      <div class="tab" onclick="showTab('fable51', this)">100 Fable51 Studies</div>
+      <div class="tab" onclick="showTab('all', this)">All 150</div>
     </div>
     <div id="grid" class="grid">
-{cards_50}
+{cards_gallery_50}
     </div>
   </div>
   <footer>
-    Aura Clone — Templates gallery of Fable 5.1 HTML studies
+    Aura Clone — Templates gallery of Fable 5.0 and 5.1 HTML studies
   </footer>
   <script>
-    // SAFETY: cards50/cards100 are pre-rendered at build time from local data.js, not user input
-    const cards50 = `{cards_50}`;
-    const cards100 = `{cards_100}`;
+    // SAFETY: card strings are pre-rendered at build time from local data.js and gallery HTML, not user input
+    const cardsGallery = `{cards_gallery_50}`;
+    const cardsFable51 = `{cards_fable51_100}`;
+    const cardsAll = `{cards_all_150}`;
     function showTab(tabName, clickedTab) {{
       document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
       clickedTab.classList.add('active');
-      document.getElementById('grid').innerHTML = tabName === 'fable51' ? cards50 : cards100;
+      const grid = document.getElementById('grid');
+      if (tabName === 'gallery') grid.innerHTML = cardsGallery;
+      else if (tabName === 'fable51') grid.innerHTML = cardsFable51;
+      else grid.innerHTML = cardsAll;
     }}
   </script>
 </body>
 </html>
-"""
+'''
     TEMPLATES_HTML.write_text(html_content, encoding="utf-8")
-    print(f"[fix_sitemap] Written templates.html ({len(html_content)} chars, {len(all_100)} iframe cards)")
+    total = len(gallery_entries) + len(fable51_entries)
+    print(f"[fix_sitemap] Written templates.html ({len(html_content)} chars, {len(gallery_entries)} gallery + {len(fable51_entries)} fable51 = {total} iframes)")
+
 
 def main():
     print("=== Aura-clone Sitemap + Templates Fix ===")
 
-    entries = get_fable51_entries()
-    print(f"[fix_sitemap] Found {len(entries)} fable51 HTML pages")
+    fable51_entries = get_fable51_entries()
+    print(f"[fix_sitemap] Found {len(fable51_entries)} fable51 HTML pages")
+
+    gallery_entries = get_gallery_entries()
+    print(f"[fix_sitemap] Found {len(gallery_entries)} gallery HTML pages")
 
     # Step 1: Collect valid URLs
     urls = collect_valid_urls()
@@ -257,11 +312,13 @@ def main():
     print(f"[fix_sitemap] Rewrote sitemap.xml: {len(sitemap_xml)} chars, {len(clean_urls)} URLs")
 
     # Step 2: Create templates.html
-    create_templates_html(entries)
+    create_templates_html(fable51_entries, gallery_entries)
 
     print("\n=== Summary ===")
     print(f"Valid URLs in sitemap: {len(clean_urls)}")
-    print(f"Fable51 entries: {len(entries)}")
+    print(f"Fable51 entries: {len(fable51_entries)}")
+    print(f"Gallery entries: {len(gallery_entries)}")
+    print(f"Total iframes: {len(fable51_entries) + len(gallery_entries)}")
     print(f"Sitemap: {SITEMAP_PATH}")
     print(f"Templates: {TEMPLATES_HTML}")
 
