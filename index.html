@@ -11,6 +11,22 @@
       content="e7fde8c5-aaf9-473a-b59e-d1f4a8847cd8"
     />
 
+    <!-- GitHub Pages subdirectory routing fix -->
+    <!-- On GitHub Pages, the site lives at /aura-clone/ (not root). -->
+    <!-- The SPA interprets the first URL segment as a slug (/:slug route) -->
+    <!-- and crashes with "No slug provided" or renders a 404. -->
+    <!-- Redirect root and bare subpath to /code so the main app loads. -->
+    <script>
+      (function () {
+        if (typeof window === "undefined") return;
+        var path = window.location.pathname || "/";
+        // Match /aura-clone, /aura-clone/, but NOT /aura-clone/some-page
+        if (path === "/aura-clone" || path === "/aura-clone/") {
+          window.location.replace("/aura-clone/code");
+        }
+      })();
+    </script>
+
     <!-- Static SEO for main domain (removed on subdomains / custom domains) -->
     <meta
       name="description"
@@ -39,7 +55,7 @@
     <meta
       property="og:url"
       data-static-seo="true"
-      content="https://sudo-prog.github.io/"
+      content="https://sudo-prog.github.io/aura-clone/"
     />
     <meta property="og:image:width" content="1200" data-static-seo="true" />
     <meta property="og:image:height" content="630" data-static-seo="true" />
@@ -77,37 +93,37 @@
         "@graph": [
           {
             "@type": "Organization",
-            "@id": "https://sudo-prog.github.io/#organization",
+            "@id": "https://sudo-prog.github.io/aura-clone/#organization",
             "name": "Aura",
-            "url": "https://sudo-prog.github.io/",
-            "logo": "https://sudo-prog.github.io/logo-aura.svg",
+            "url": "https://sudo-prog.github.io/aura-clone/",
+            "logo": "https://sudo-prog.github.io/aura-clone/logo-aura.svg",
             "sameAs": ["https://twitter.com/mengto"]
           },
           {
             "@type": "WebSite",
-            "@id": "https://sudo-prog.github.io/#website",
+            "@id": "https://sudo-prog.github.io/aura-clone/#website",
             "name": "Aura",
-            "url": "https://sudo-prog.github.io/",
+            "url": "https://sudo-prog.github.io/aura-clone/",
             "publisher": {
-              "@id": "https://sudo-prog.github.io/#organization"
+              "@id": "https://sudo-prog.github.io/aura-clone/#organization"
             },
             "potentialAction": {
               "@type": "SearchAction",
-              "target": "https://sudo-prog.github.io/assets?q={search_term_string}",
+              "target": "https://sudo-prog.github.io/aura-clone/assets?q={search_term_string}",
               "query-input": "required name=search_term_string"
             }
           },
           {
             "@type": "SoftwareApplication",
-            "@id": "https://sudo-prog.github.io/#software",
+            "@id": "https://sudo-prog.github.io/aura-clone/#software",
             "name": "Aura",
             "applicationCategory": "DesignApplication",
             "operatingSystem": "Web",
-            "url": "https://sudo-prog.github.io/",
+            "url": "https://sudo-prog.github.io/aura-clone/",
             "description": "AI landing page builder that creates stunning designs in seconds. No design skills needed. Export to HTML &amp; Figma.",
             "image": "share-preview.jpg",
             "creator": {
-              "@id": "https://sudo-prog.github.io/#organization"
+              "@id": "https://sudo-prog.github.io/aura-clone/#organization"
             }
           }
         ]

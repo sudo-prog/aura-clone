@@ -8,6 +8,17 @@
     />
     <title>Aura – AI Website Builder</title>
 
+    <!-- GitHub Pages subdirectory routing fix -->
+    <script>
+      (function () {
+        if (typeof window === "undefined") return;
+        var path = window.location.pathname || "/";
+        if (path === "/aura-clone" || path === "/aura-clone/") {
+          window.location.replace("/aura-clone/code");
+        }
+      })();
+    </script>
+
     <!-- Favicon -->
     <link rel="icon" href="logo-aura-128-light.png" media="(prefers-color-scheme: light)" />
     <link rel="icon" href="logo-aura-128-dark.png" media="(prefers-color-scheme: dark)" />
