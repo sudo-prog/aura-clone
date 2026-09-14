@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Gallery — Fifty Rooms Built by Claude</title>
+  <meta name="description" content="An index of fifty invented places — fifty small websites, each a world with its own typography, physics and point of view. Pick a door.">
+  <meta property="og:title" content="The Gallery — Fifty Rooms Built by Claude">
+  <meta property="og:description" content="An index of fifty invented places. Each room is a self-contained website with its own typography, physics and point of view.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="gallery/shots/aeropost.jpg">
+  <meta property="og:url" content="https://sudo-prog.github.io/aura-clone/gallery.html">
+  <meta name="theme-color" content="#0E0D0B">
+  <script>document.documentElement.classList.add('boot')</script>
+  <link rel="preload" href="gallery/fonts/BricolageGrotesque-03.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="gallery/fonts/SplineSansMono-04.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="gallery/fonts/Newsreader-06.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="gallery/fonts/BricolageGrotesque.css">
+  <link rel="stylesheet" href="gallery/fonts/Newsreader.css">
+  <link rel="stylesheet" href="gallery/fonts/SplineSansMono.css">
+  <link rel="stylesheet" href="gallery/css/main.css">
+  <link rel="icon" href="gallery/shots/aeropost.jpg" type="image/jpeg">
+  <link rel="stylesheet" crossorigin href="assets/index-Bp88t92M.css">
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="sitemap.xml">
+  <style>
+    /* ---------- iframe viewer overlay ---------- */
+    #viewer {
+      position: fixed;
+      inset: 0;
+      z-index: 5000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(14, 13, 11, 0.95);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
+    #viewer.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    #viewer .frame-wrap {
+      position: relative;
+      width: 92vw;
+      max-width: 1680px;
+      height: 88vh;
+      max-height: 920px;
+      background: var(--panel);
+      border: 1px solid var(--hairline);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 40px 120px rgba(0,0,0,0.6);
+      transform: scale(0.96);
+      transition: transform 0.4s var(--ease-out);
+    }
+    #viewer.open .frame-wrap { transform: scale(1); }
+    #room-iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+    #viewer .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 10;
+      background: rgba(234, 228, 216, 0.1);
+      border: 1px solid var(--hairline);
+      color: var(--bone);
+      width: 36px;
+      height: 36px;
+      border-radius: 6px;
+      font-size: 20px;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(4px);
+    }
+    #viewer .close-btn:hover {
+      background: rgba(234, 228, 216, 0.25);
+      border-color: var(--hairline-strong);
+    }
+    .vwrap.active .vitrine {
+      border-color: color-mix(in oklab, var(--a) 70%, rgba(234, 228, 216, 0.4));
+      box-shadow: 0 0 30px color-mix(in oklab, var(--a) 20%, transparent);
+    }
+    @media (max-width: 720px) {
+      #viewer .frame-wrap { width: 98vw; max-width: none; height: 82vh; max-height: none; border-radius: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="masthead wrap">
+    <p class="walltext">Permanent collection<br>fifty rooms · one hall<br>open all night</p>
+    <p class="eyebrow">An index of invented places</p>
+    <h1 aria-label="The Gallery">The Gallery</h1>
+    <p class="lede">Fifty small websites, each an invented world with its own typography,
+      physics and point of view — built by Claude, one room at a time. <em>Click a door to enter.</em></p>
+    <nav class="spectrum" id="spectrum" aria-label="The collection by color — jump to a room"></nav>
+    <div class="controls">
+      <input class="search" id="search" type="search"
+        placeholder="Find a room — a name, a place, anything" aria-label="Find a room">
+      <p class="count" id="count">50 / 50 rooms</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <ul class="grid" id="grid" aria-label="The collection"></ul>
+    <div class="empty" id="empty">
+      <p>No room answers to that.</p>
+      <p class="hint">Clear the search to see all fifty</p>
+    </div>
+    <noscript>
+      <p>The directory needs JavaScript to hang its fifty rooms — but every room stands on its
+        own at <code>gallery/&lt;room&gt;/index.html</code>.</p>
+    </noscript>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p class="close">Fifty rooms, one hall. Every door is self-contained — no CDNs, no stock
+        imagery, no outside requests. The fonts, the physics and the pictures all live inside.</p>
+      <p class="fine">Built by Claude · click any card to open that room in-frame · Esc to close</p>
+    </div>
+  </footer>
+
+  <div class="plaque" id="plaque" role="status"></div>
+
+  <!-- iframe viewer overlay -->
+  <div id="viewer" aria-hidden="true">
+    <div class="frame-wrap">
+      <button class="close-btn" aria-label="Close room viewer" type="button">×</button>
+      <iframe id="room-iframe" title="Room viewer" sandbox="allow-scripts allow-stylesheet allow-same-origin allow-popups"></iframe>
+    </div>
+  </div>
+
+  <script>
+    // Close viewer on overlay click or close button
+    (function() {
+      var v = document.getElementById('viewer');
+      var f = document.getElementById('room-iframe');
+      v.addEventListener('click', function(e) {
+        if (e.target === v) {
+          v.classList.remove('open');
+          v.setAttribute('aria-hidden', 'true');
+          f.src = '';
+          document.body.style.overflow = '';
+        }
+      });
+      document.querySelector('.close-btn').addEventListener('click', function() {
+        v.classList.remove('open');
+        v.setAttribute('aria-hidden', 'true');
+        f.src = '';
+        document.body.style.overflow = '';
+      });
+    })();
+  </script>
+
+  <script src="gallery/js/data.js"></script>
+  <script src="gallery/js/main.js"></script>
+  <script
+    src="cdn/iconify-icon.min.js"
+    defer
+    integrity="sha384-GPb5RlngihS9H0z1D137JsvzmeZ7tCpWEF4t5YDoTZyMsPP8S7h7vFDh4XhheU83"
+    crossorigin="anonymous"
+  ></script>
+</body>
+</html>

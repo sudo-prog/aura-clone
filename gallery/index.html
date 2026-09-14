@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Gallery — Fifty Rooms Built by Claude</title>
+  <meta name="description" content="An index of fifty invented places — fifty small websites, each a world with its own typography, physics and point of view. Pick a door.">
+  <meta property="og:title" content="The Gallery — Fifty Rooms Built by Claude">
+  <meta property="og:description" content="An index of fifty invented places. Each room is a self-contained website with its own typography, physics and point of view.">
+  <meta name="theme-color" content="#0E0D0B">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='13' fill='%230E0D0B'/%3E%3Crect x='10' y='22' width='7' height='32' rx='2' fill='%233EC5D6'/%3E%3Crect x='19.5' y='14' width='7' height='40' rx='2' fill='%23E8543F'/%3E%3Crect x='29' y='26' width='7' height='28' rx='2' fill='%23F2D06B'/%3E%3Crect x='38.5' y='10' width='7' height='44' rx='2' fill='%237B5CD6'/%3E%3Crect x='48' y='19' width='7' height='35' rx='2' fill='%234FD6A0'/%3E%3C/svg%3E">
+  <script>document.documentElement.classList.add('boot')</script>
+  <link rel="preload" href="fonts/BricolageGrotesque-03.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/SplineSansMono-04.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/Newsreader-06.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="fonts/BricolageGrotesque.css">
+  <link rel="stylesheet" href="fonts/Newsreader.css">
+  <link rel="stylesheet" href="fonts/SplineSansMono.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+  <header class="masthead wrap">
+    <p class="walltext">Permanent collection<br>fifty rooms · one hall<br>open all night</p>
+    <p class="eyebrow">An index of invented places</p>
+    <h1 aria-label="The Gallery">The Gallery</h1>
+    <p class="lede">Fifty small websites, each an invented world with its own typography,
+      physics and point of view — built by Claude, one room at a time. <em>Pick a door.</em></p>
+    <nav class="spectrum" id="spectrum" aria-label="The collection by color — jump to a room"></nav>
+    <div class="controls">
+      <input class="search" id="search" type="search"
+        placeholder="Find a room — a name, a place, anything" aria-label="Find a room">
+      <p class="count" id="count">50 / 50 rooms</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <ul class="grid" id="grid" aria-label="The collection"></ul>
+    <div class="empty" id="empty">
+      <p>No room answers to that.</p>
+      <p class="hint">Clear the search to see all fifty</p>
+    </div>
+    <noscript>
+      <p>The directory needs JavaScript to hang its fifty rooms — but every room stands on its
+        own at <code>https://&lt;room&gt;</code>.</p>
+    </noscript>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p class="close">Fifty rooms, one hall. Every door is self-contained — no CDNs, no stock
+        imagery, no outside requests. The fonts, the physics and the pictures all live inside.</p>
+      <p class="fine">Built by Claude · the doors open with one click · no setup required</p>
+    </div>
+  </footer>
+
+  <div class="plaque" id="plaque" role="status"></div>
+
+  <script src="js/data.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>
