@@ -197,6 +197,19 @@
       })();
     </script>
 
+    <!-- Set __BASE_PATH__ so React Router uses correct basename, -->
+    <!-- and redirect root to /code so the app shell loads. -->
+    <script>
+      (function () {
+        if (typeof window === "undefined") return;
+        window.__BASE_PATH__ = "/aura-clone/";
+        var path = window.location.pathname || "/";
+        if (path === "/aura-clone" || path === "/aura-clone/") {
+          window.location.replace("/aura-clone/code");
+        }
+      })();
+    </script>
+
     <!-- Core homepage font; the extended catalog is route-scoped in App.tsx. -->
     
     
