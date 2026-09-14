@@ -1,0 +1,1 @@
+const t=s=>s.replace(/\/+$/,""),a="https://hoirqrkdgbmvpwutwuwj.supabase.co/functions/v1/".trim()??"",r="https://hoirqrkdgbmvpwutwuwj.supabase.co".trim()??"",n=t(a||(r?`${t(r)}/functions/v1`:"")),o=s=>{if(!n)throw new Error("Supabase Functions URL is not configured");return`${n}/${s.replace(/^\/+/,"")}`};export{o as g};
