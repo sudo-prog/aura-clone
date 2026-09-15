@@ -1,6 +1,31 @@
 {
+  "name": "aura-clone",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@codesandbox/sandpack-react": "^2.20.0",
+    "@monaco-editor/react": "^4.7.0",
+    "lucide-react": "^0.468.0",
+    "next": "16.3.5",
+    "octokit": "^5.0.5",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "zod": "^4.1.12"
+  },
   "devDependencies": {
-    "acorn": "^8.18.0",
-    "puppeteer": "^25.11.0"
+    "@types/node": "^24.10.0",
+    "@types/react": "^19.1.16",
+    "@types/react-dom": "^19.1.9",
+    "eslint": "^9.35.0",
+    "eslint-config-next": "16.3.5",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.9.3"
   }
 }

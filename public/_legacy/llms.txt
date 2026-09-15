@@ -1,0 +1,18 @@
+# Aura
+
+> Aura is an AI website and landing page builder for creating polished web designs, editing them visually, exporting to HTML or Figma, and publishing pages with CMS and SEO controls.
+
+Official site: https://www.aura.build
+
+## Primary Pages
+
+- Create with Aura: /
+- Components: /components
+- AI code workspace: /code
+
+## What Aura Does
+
+- Generates landing pages, websites, UI sections, and interactive web experiences from prompts.
+- Supports templates, components, assets, design systems, snippets, and prior projects as references.
+- Exports standard HTML, Tailwind CSS, vanilla JavaScript, and Figma-ready output.
+- Includes visual editing, CMS page generation, custom domains, analytics, SEO metadata, and publishing.

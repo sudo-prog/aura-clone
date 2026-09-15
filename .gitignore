@@ -1,6 +1,12 @@
 # Dependencies
 node_modules/
+.next/
 dist/
+
+# Environment
+.env
+.env.*
+!.env.example
 
 # Logs
 *.log
