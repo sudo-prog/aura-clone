@@ -185,7 +185,7 @@ def create_templates_html(fable51_entries, gallery_entries):
         <span class="card-title">{title}</span>
       </div>
       <div class="iframe-wrapper">
-        <iframe src="gallery/{name}.html" loading="lazy" title="{title}" referrerpolicy="no-referrer"></iframe>
+        <iframe src="gallery/{name}.html" loading="lazy" title="{title}" sandbox="allow-same-origin" referrerpolicy="no-referrer"></iframe>
       </div>
     </div>'''
 
@@ -200,7 +200,7 @@ def create_templates_html(fable51_entries, gallery_entries):
         <span class="card-title">{title}</span>
       </div>
       <div class="iframe-wrapper">
-        <iframe src="fable51/{name}.html" loading="lazy" title="{title}" referrerpolicy="no-referrer"></iframe>
+        <iframe src="fable51/{name}.html" loading="lazy" title="{title}" sandbox="allow-same-origin" referrerpolicy="no-referrer"></iframe>
       </div>
     </div>'''
 
