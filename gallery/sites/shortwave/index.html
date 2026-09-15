@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHORTWAVE — an archive of the numbers stations</title>
+<meta name="description" content="A working shortwave receiver and an archive of Cold-War numbers stations. Drag the needle across 5.8–7.5 MHz, find the carriers, and read the files on five stations that broadcast codes no one has ever broken.">
+<meta property="og:title" content="SHORTWAVE — an archive of the numbers stations">
+<meta property="og:description" content="Tune 5.8–7.5 MHz. Find the ghosts. Station dossiers, one-time pads, and the last night of E-17 MAGPIE.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0E0B08">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230E0B08'/%3E%3Crect x='6' y='10' width='52' height='36' fill='%23051408'/%3E%3Crect x='14' y='10' width='2' height='36' fill='%232f8a4d'/%3E%3Crect x='27' y='10' width='3' height='36' fill='%2354F78C'/%3E%3Crect x='45' y='10' width='2' height='36' fill='%232f8a4d'/%3E%3Crect x='36' y='6' width='2' height='46' fill='%23E23B2E'/%3E%3Crect x='6' y='52' width='52' height='4' fill='%23F0A63C'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/Archivo-03.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/DotGothic16-123.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/Archivo.css">
+<link rel="stylesheet" href="fonts/IBMPlexMono.css">
+<link rel="stylesheet" href="fonts/DotGothic16.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <h1 class="wordmark" id="wordmark">SHORTWAVE</h1>
+    <p class="masthead-sub">AN ARCHIVE OF THE NUMBERS STATIONS</p>
+    <p class="masthead-clock"><span class="engr">COORDINATED UNIVERSAL TIME</span><span class="utc" id="utc-clock">--:--:--</span></p>
+  </div>
+</header>
+
+<main>
+
+<!-- ============================================================ -->
+<!-- THE RECEIVER                                                  -->
+<!-- ============================================================ -->
+<section class="rx-section" id="receiver" aria-label="The receiver">
+  <div class="chassis" id="chassis">
+    <span class="screw screw-tl" aria-hidden="true"></span>
+    <span class="screw screw-tr" aria-hidden="true"></span>
+    <span class="screw screw-bl" aria-hidden="true"></span>
+    <span class="screw screw-br" aria-hidden="true"></span>
+
+    <div class="chassis-head">
+      <p class="engr chassis-model">RECEIVER TYPE 51 · GENERAL COVERAGE 5.800 – 7.500 MC/S</p>
+      <p class="engr chassis-serial">SER. Nº 0447 · PROPERTY OF THE ARCHIVE</p>
+    </div>
+
+    <div class="rx-grid">
+      <!-- glass column -->
+      <div class="glass-col">
+        <div class="glass scope-wrap" aria-hidden="true">
+          <canvas id="scope"></canvas>
+          <span class="glass-label engr">PANORAMIC MONITOR</span>
+        </div>
+
+        <div class="glass fall-wrap" id="fall-wrap"
+             role="slider" tabindex="0" aria-label="Tuning dial, 5.800 to 7.500 megahertz. Arrow keys to tune, Page Up and Page Down to jump between stations."
+             aria-valuemin="5800" aria-valuemax="7500" aria-valuenow="6630" aria-valuetext="6.6300 megahertz">
+          <canvas id="waterfall" aria-hidden="true"></canvas>
+          <canvas id="ruler" aria-hidden="true"></canvas>
+          <div class="passband" id="passband" aria-hidden="true"></div>
+          <div class="ghost" id="ghost" aria-hidden="true"><span class="ghost-freq" id="ghost-freq">6.6300</span></div>
+          <div class="needle" id="needle" aria-hidden="true">
+            <span class="needle-line"></span>
+            <span class="needle-grip"></span>
+          </div>
+          <div class="boot-veil" id="boot-veil" aria-hidden="true"></div>
+        </div>
+
+        <p class="engr rx-hint" id="rx-hint"><span class="hint-fine">DRAG THE NEEDLE · CLICK A TRACE · ARROWS FINE-TUNE · PAGE UP/DN JUMPS STATIONS</span><span class="hint-coarse">DRAG THE NEEDLE · TAP A TRACE · THE DIAL SNAPS ONTO A NEARBY CARRIER</span></p>
+      </div>
+
+      <!-- control column -->
+      <div class="ctrl-col">
+        <div class="readout-block">
+          <p class="engr ctl-label">FREQUENCY · MC/S</p>
+          <p class="freq-readout" id="freq-readout"><span id="freq-digits">6.6300</span></p>
+          <p class="station-line" id="station-line" aria-live="polite">SEARCHING</p>
+        </div>
+
+        <div class="smeter-block">
+          <p class="engr ctl-label">SIGNAL</p>
+          <svg id="smeter" viewBox="0 0 120 64" aria-hidden="true">
+            <path d="M12 56 A 52 52 0 0 1 108 56" fill="none" class="sm-arc"/>
+            <g class="sm-ticks" id="sm-ticks"></g>
+            <text x="16" y="50" class="sm-txt">1</text>
+            <text x="58" y="16" class="sm-txt">5</text>
+            <text x="99" y="50" class="sm-txt">9</text>
+            <line id="sm-peak" x1="60" y1="58" x2="60" y2="20" class="sm-peak"/>
+            <line id="sm-needle" x1="60" y1="58" x2="60" y2="16" class="sm-line"/>
+            <circle cx="60" cy="58" r="4" class="sm-hub"/>
+          </svg>
+        </div>
+
+        <div class="lamp-row" aria-hidden="true">
+          <span class="lamp" id="lamp-carrier"><i></i>CARRIER</span>
+          <span class="lamp" id="lamp-lock"><i></i>LOCK</span>
+          <span class="lamp" id="lamp-audio"><i></i>AUDIO</span>
+        </div>
+
+        <button class="audio-btn" id="audio-btn" aria-pressed="false">
+          <span class="audio-btn-dot" aria-hidden="true"></span>
+          <span class="audio-btn-txt">AUDIO ON</span>
+        </button>
+        <p class="engr audio-note">LOUDSPEAKER — SYNTHESIZED STATIC &amp; VOICE</p>
+
+        <div class="knob-block">
+          <div class="knob" id="knob" aria-hidden="true">
+            <div class="knob-face"><span class="knob-mark"></span></div>
+          </div>
+          <p class="engr ctl-label knob-label">TUNING</p>
+        </div>
+      </div>
+
+      <!-- decode strip -->
+      <div class="decode-strip">
+        <p class="engr decode-label" id="decode-label">DECODE</p>
+        <div class="glass ticker-glass" aria-hidden="true">
+          <span class="ticker" id="ticker"></span><span class="ticker-cursor" id="ticker-cursor"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="rx-caption">
+    Five carriers hold in the noise between 5.800 and 7.500&nbsp;MHz. Each one is a numbers
+    station — a transmitter that reads groups of digits to nobody, on schedule, for decades.
+    Tune onto a trace and the receiver will decode what it hears. What it hears has never
+    meant anything to anyone without the pad.
+  </p>
+</section>
+
+<!-- ============================================================ -->
+<!-- STATION FILES                                                 -->
+<!-- ============================================================ -->
+<section class="stations-section" id="stations" aria-labelledby="stations-h">
+  <header class="sec-head">
+    <p class="sec-eyebrow">REGISTRY — STATION FILES</p>
+    <h2 id="stations-h">FIVE STATIONS,<br>NO EXPLANATIONS</h2>
+    <p class="sec-intro">
+      The registry holds every station logged on this band since 1959. These five are the
+      permanent residents. Designators follow monitoring convention — a letter for the mode,
+      a number for the file. The nicknames came later, from the listeners, because you cannot
+      spend eleven years with a voice and not name it.
+    </p>
+  </header>
+
+  <div class="dossier-grid">
+
+    <!-- E-17 MAGPIE — featured -->
+    <article class="dossier dossier-featured" id="file-e17">
+      <div class="dossier-tab"><span>E-17</span><span class="tab-freq">6.6300 MC/S</span></div>
+      <div class="dossier-body">
+        <header class="d-head">
+          <div>
+            <p class="d-reg">REGISTRY E-17 · FILE 041/76 · SHEET 1 OF 1</p>
+            <h3 class="d-name">MAGPIE</h3>
+            <p class="d-sub">VOICE · ENGLISH · FEMALE · 5-FIGURE GROUPS · AM</p>
+          </div>
+          <span class="stamp stamp-dark" aria-label="Status: dark since 1989">DARK<br>SINCE 1989</span>
+        </header>
+        <dl class="d-fields">
+          <div><dt>FIRST LOGGED</dt><dd>11 MAR 1976, 21:00 UTC — Akrotiri monitoring annex</dd></div>
+          <div><dt>SCHEDULE</dt><dd>21:00 UTC, odd calendar days, never early, never late</dd></div>
+          <div><dt>ATTENTION SIGNAL</dt><dd>Six-note tune on a reed instrument, looped ten minutes before traffic</dd></div>
+          <div><dt>VOICE</dt><dd>Female, received-pronunciation English, digits assembled from tape — the same “nine” for thirteen years</dd></div>
+          <div><dt>BEARING (EST.)</dt><dd>062° from Cheltenham, 344° from Akrotiri — intersection near the inner-German border</dd></div>
+          <div><dt>LAST LOGGED</dt><dd>9 NOV 1989, 21:14 UTC</dd></div>
+        </dl>
+        <p class="d-notes">
+          The most punctual object on the band. In 4,921 logged transmissions the six-note tune
+          never varied by more than a second. On the night the Berlin Wall opened, MAGPIE began
+          traffic as usual, stopped between the fourth and fifth digit of group eleven, held an
+          open carrier for four minutes, and never transmitted again. No sign-off. No final
+          group. The registry keeps the frequency under watch anyway.
+        </p>
+        <p class="d-transcript">86&nbsp;86&nbsp;86&nbsp;86 · COUNT&nbsp;24 · 47702&nbsp;81906&nbsp;03151&nbsp;66890&nbsp;12474 —</p>
+        <button class="tune-btn" data-freq="6630">TUNE 6.6300</button>
+      </div>
+    </article>
+
+    <!-- V-08 CANARIA -->
+    <article class="dossier" id="file-v08">
+      <div class="dossier-tab"><span>V-08</span><span class="tab-freq">5.9120 MC/S</span></div>
+      <div class="dossier-body">
+        <header class="d-head">
+          <div>
+            <p class="d-reg">REGISTRY V-08 · FILE 112/78</p>
+            <h3 class="d-name">CANARIA</h3>
+            <p class="d-sub">VOICE · SPANISH · FEMALE · 5-FIGURE GROUPS · AM</p>
+          </div>
+          <span class="stamp stamp-live" aria-label="Status: active">ON AIR</span>
+        </header>
+        <dl class="d-fields">
+          <div><dt>FIRST LOGGED</dt><dd>19 JUN 1978 — trawler radio room, 40 nm off Key West</dd></div>
+          <div><dt>CALLUP</dt><dd>“¡Atención! ¡Atención!” three times, then the traffic</dd></div>
+          <div><dt>FORMAT</dt><dd>150 groups nightly; 60 Hz mains hum rides the carrier</dd></div>
+          <div><dt>STATUS</dt><dd>Active. Has missed four nights in forty-eight years</dd></div>
+        </dl>
+        <p class="d-notes">
+          The only cheerful thing on the band. The announcer sounds delighted to be reading
+          150 five-figure groups at two in the morning. The mains hum on the carrier matches
+          a 60-cycle grid, which narrows the origin to half a hemisphere and proves nothing.
+        </p>
+        <button class="tune-btn" data-freq="5912">TUNE 5.9120</button>
+      </div>
+    </article>
+
+    <!-- G-04 MUSIKDOSE -->
+    <article class="dossier" id="file-g04">
+      <div class="dossier-tab"><span>G-04</span><span class="tab-freq">6.2140 MC/S</span></div>
+      <div class="dossier-body">
+        <header class="d-head">
+          <div>
+            <p class="d-reg">REGISTRY G-04 · FILE 007/59</p>
+            <h3 class="d-name">MUSIKDOSE</h3>
+            <p class="d-sub">VOICE · GERMAN · CHILD-LIKE · 5-FIGURE GROUPS · AM</p>
+          </div>
+          <span class="stamp stamp-dark" aria-label="Status: dark since 1990">DARK<br>SINCE 1990</span>
+        </header>
+        <dl class="d-fields">
+          <div><dt>FIRST LOGGED</dt><dd>2 OCT 1959 — the oldest file in the registry</dd></div>
+          <div><dt>ATTENTION SIGNAL</dt><dd>Twelve bars of a music box — identified in 1981 as a Saxon lullaby, c. 1870</dd></div>
+          <div><dt>VOICE</dt><dd>Female, pitched like a child’s. Engineers argue tape speed; listeners stopped asking</dd></div>
+          <div><dt>LAST LOGGED</dt><dd>22 MAY 1990, 20:00 UTC — ended with the full lullaby, played once, unhurried</dd></div>
+        </dl>
+        <p class="d-notes">
+          Thirty-one years of “drei… acht… null…” behind a nursery tune. The only station in
+          the registry that signed off properly: no numbers on the last night, just the music
+          box, all the way through, and then the carrier let go.
+        </p>
+        <button class="tune-btn" data-freq="6214">TUNE 6.2140</button>
+      </div>
+    </article>
+
+    <!-- M-12 TAPPER -->
+    <article class="dossier" id="file-m12">
+      <div class="dossier-tab"><span>M-12</span><span class="tab-freq">7.0390 MC/S</span></div>
+      <div class="dossier-body">
+        <header class="d-head">
+          <div>
+            <p class="d-reg">REGISTRY M-12 · FILE 233/83</p>
+            <h3 class="d-name">TAPPER</h3>
+            <p class="d-sub">MORSE · HAND-KEYED · CUT NUMBERS · CW</p>
+          </div>
+          <span class="stamp stamp-int" aria-label="Status: intermittent">INTERMITTENT</span>
+        </header>
+        <dl class="d-fields">
+          <div><dt>FIRST LOGGED</dt><dd>14 FEB 1983, 03:12 UTC</dd></div>
+          <div><dt>FORMAT</dt><dd>90-second bursts, cut numbers: T=0 A=1 U=2 V=3 E=5 B=7 D=8 N=9</dd></div>
+          <div><dt>SCHEDULE</dt><dd>None found. 22 years of logs fit no calendar, lunar or otherwise</dd></div>
+          <div><dt>OPERATOR</dt><dd>Human. The fist is identifiable — the fourth dit shortens when the operator tires</dd></div>
+        </dl>
+        <p class="d-notes">
+          Every other station is a machine. M-12 is a person, keying by hand, and the hand has
+          aged: compare the 1983 tapes to the 2005 tapes and the dits have slowed nine percent.
+          Somewhere, somebody grew old doing this.
+        </p>
+        <button class="tune-btn" data-freq="7039">TUNE 7.0390</button>
+      </div>
+    </article>
+
+    <!-- S-30 THE LATHE -->
+    <article class="dossier" id="file-s30">
+      <div class="dossier-tab"><span>S-30</span><span class="tab-freq">7.3110 MC/S</span></div>
+      <div class="dossier-body">
+        <header class="d-head">
+          <div>
+            <p class="d-reg">REGISTRY S-30 · FILE 019/82</p>
+            <h3 class="d-name">THE LATHE</h3>
+            <p class="d-sub">CHANNEL MARKER · MECHANICAL RASP · RARE VOICE · AM</p>
+          </div>
+          <span class="stamp stamp-live" aria-label="Status: active">ON AIR</span>
+        </header>
+        <dl class="d-fields">
+          <div><dt>FIRST LOGGED</dt><dd>26 AUG 1982 — continuous ever since</dd></div>
+          <div><dt>FORMAT</dt><dd>A mechanical rasp, 25 to the minute, every minute, for forty-four years</dd></div>
+          <div><dt>VOICE INTERRUPTIONS</dt><dd>43 logged total. A man, close to the microphone, reading codewords and groups</dd></div>
+          <div><dt>THEORY OF PURPOSE</dt><dd>Channel-holder. Something worse is filed under Annex C and not summarized here</dd></div>
+        </dl>
+        <p class="d-notes">
+          The rasp is not a recording — room sound changes behind it, and twice a telephone has
+          rung. Whatever the LATHE is guarding the frequency for, it has needed the frequency
+          43 times in forty-four years, and each time, a man was there to speak.
+        </p>
+        <button class="tune-btn" data-freq="7311">TUNE 7.3110</button>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ONE-TIME PAD PRIMER                                           -->
+<!-- ============================================================ -->
+<section class="pad-section" id="pad" aria-labelledby="pad-h">
+  <header class="sec-head">
+    <p class="sec-eyebrow">ANNEX A — CRYPTOGRAPHY</p>
+    <h2 id="pad-h">WHY FIFTY YEARS OF TAPE<br>DECODES TO NOTHING</h2>
+    <p class="sec-intro">
+      Every group ever intercepted from these stations is worthless, and will stay worthless,
+      because of a piece of paper the size of a matchbook: the one-time pad. It is the only
+      cipher with a mathematical proof of unbreakability — and the proof is short enough to
+      fit on the pad itself.
+    </p>
+  </header>
+
+  <div class="pad-grid">
+    <div class="pad-prose">
+      <p>
+        The pad is a booklet of digits generated by pure chance — dice, decay, noise. The
+        sender adds each message digit to the next pad digit, dropping any carry: 7&nbsp;+&nbsp;6
+        becomes 3, not 13. The agent, holding the only other copy, subtracts the same digits
+        and reads the message. Then both pages are burned.
+      </p>
+      <p>
+        Interception gains you everything and nothing. For a ciphertext of twenty digits,
+        every possible twenty-digit message is exactly as likely as every other — the group
+        <span class="inline-code">4&nbsp;7&nbsp;7&nbsp;0&nbsp;2</span> could open a border
+        crossing or order flowers, and no mathematics on earth can prefer one reading. There
+        is nothing to break. There is no pattern, because chance has none.
+      </p>
+      <p>
+        The pad has exactly one weakness, and it is never the arithmetic: it is the paper.
+        A pad copied by a nervous courier, a page reused on a busy week, a print plant that
+        runs the same sheet twice. OPERATION LANTERN (1961–63) read 31 messages — not by
+        cryptanalysis, but because a supply officer in a hurry duplicated four thousand
+        sheets. The mathematics never failed anyone. The people did.
+      </p>
+    </div>
+
+    <div class="worksheet" id="worksheet">
+      <p class="ws-head">CIPHER WORKSHEET · SHEET 0447 · DESTROY AFTER USE</p>
+      <div class="ws-rows" id="ws-rows">
+        <div class="ws-row"><span class="ws-tag">MESSAGE</span><span class="ws-digits" id="ws-msg"></span></div>
+        <div class="ws-row"><span class="ws-tag">PAD 0447</span><span class="ws-digits" id="ws-pad"></span></div>
+        <div class="ws-rule" aria-hidden="true"></div>
+        <div class="ws-row"><span class="ws-tag">SENT</span><span class="ws-digits ws-sent" id="ws-sum"></span></div>
+      </div>
+      <p class="ws-note" id="ws-note">Addition is modulo 10 — no carrying. Press RUN to watch each column.</p>
+      <div class="ws-actions">
+        <button class="ws-btn" id="ws-run">RUN THE ARITHMETIC</button>
+        <button class="ws-btn ws-btn-alt" id="ws-new">ISSUE NEW PAD</button>
+      </div>
+      <span class="stamp stamp-ws" aria-hidden="true">COPY 1 OF 2</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- RECEPTION REPORTS                                             -->
+<!-- ============================================================ -->
+<section class="reports-section" id="reports" aria-labelledby="reports-h">
+  <header class="sec-head">
+    <p class="sec-eyebrow">ANNEX B — LISTENER LOGS</p>
+    <h2 id="reports-h">RECEPTION REPORTS</h2>
+    <p class="sec-intro">
+      The archive accepts reports from anyone with a receiver and the patience. These four
+      are kept under glass. SINPO is the reception scale — signal, interference, noise,
+      propagation, overall — five digits, one to five. Nobody who files a report ever asks
+      what the numbers meant. That is not why they listen.
+    </p>
+  </header>
+
+  <div class="tty-panel">
+    <article class="tty-report">
+      <p class="tty-meta">1989-11-09 · 21:14 UTC · G. HALLIDAY · IPSWICH, GB · RX RACAL RA17, 40 M LONGWIRE · SINPO 43333 · E-17</p>
+      <p class="tty-body">SIX NOTES AT 21:00, AS ALWAYS. GROUPS BEGAN AT 21:03. AT 21:14 THE VOICE STOPPED BETWEEN TWO DIGITS — THE CARRIER HELD FOR FOUR MINUTES, THEN NOTHING. I KEPT THE TAPE ROLLING UNTIL 22:00. THERE IS NO SIGN-OFF ON IT. THERE WAS NEVER ANOTHER BROADCAST.</p>
+    </article>
+    <article class="tty-report">
+      <p class="tty-meta">1984-07-02 · 06:59 UTC · R. OYELARAN · LAGOS, NG · RX BARLOW-WADLEY XCR-30, WHIP · SINPO 32232 · V-08</p>
+      <p class="tty-body">ATENCIÓN ARRIVED THROUGH A THUNDERSTORM, FADING UNDER EVERY CRASH AND SURFACING SMILING. COPIED 61 OF 150 GROUPS BEFORE THE BAND CLOSED. SHE SOUNDS LIKE SHE IS READING GOOD NEWS. SIXTEEN YEARS I HAVE WONDERED WHOSE.</p>
+    </article>
+    <article class="tty-report">
+      <p class="tty-meta">1990-05-22 · 20:00 UTC · H. PIETERSEN · GRONINGEN, NL · RX HOMEBREW 0-V-1, INVERTED L · SINPO 44344 · G-04</p>
+      <p class="tty-body">THE MUSIC BOX PLAYED THE WHOLE LULLABY — NO NUMBERS FOLLOWED. MY DAUGHTER, SEVEN, HUMMED ALONG FROM THE DOORWAY BEFORE I KNEW SHE WAS THERE. THE CARRIER DROPPED AT 20:06 AND THE FILE SAYS THAT WAS THE END. I HAVE NOT PLAYED HER THE TAPE SINCE.</p>
+    </article>
+    <article class="tty-report">
+      <p class="tty-meta">2004-01-17 · 03:40 UTC · D. MERCER · THUNDER BAY, CA · RX DRAKE R8B, BEVERAGE 160 M · SINPO 55444 · S-30</p>
+      <p class="tty-body">RASP STOPPED MID-STROKE AT 03:40 — FIRST SILENCE I HAD EVER HEARD ON THE CHANNEL. A MAN CLEARED HIS THROAT, VERY CLOSE TO THE MICROPHONE, AND READ: LATHE LATHE — KROT 56 74 — 9 3 8 8 2. THEN THE RASP RESUMED AS IF NOTHING. I DID NOT SLEEP AGAIN THAT NIGHT.</p>
+    </article>
+  </div>
+</section>
+
+</main>
+
+<footer class="colophon">
+  <div class="colophon-inner">
+    <p class="colo-mark" aria-hidden="true">SW</p>
+    <p class="colo-line">
+      SHORTWAVE is a fictional archive of a real phenomenon. Numbers stations exist — they have
+      broadcast coded traffic on the shortwave bands since the 1950s, and some are transmitting
+      tonight. Every designator, recording, schedule and transcript on this page is invented.
+      The silence between them is not.
+    </p>
+    <p class="colo-tech">
+      RECEIVER, WATERFALL AND VOICES SYNTHESIZED IN-BROWSER · CANVAS 2D + WEB AUDIO ·
+      NO SAMPLES, NO NETWORK, NO LIBRARIES · ASSEMBLED AT 02:00 UTC BY CLAUDE
+    </p>
+  </div>
+</footer>
+
+<noscript><p style="color:#C6C0B2;text-align:center;padding:2rem;font-family:monospace">The receiver needs JavaScript to warm up. The files below it are still worth reading.</p></noscript>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

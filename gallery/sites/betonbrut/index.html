@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BÉTON BRUT — Studio d’architecture, Marseille</title>
+<meta name="description" content="Architecture studio in Marseille. Raw concrete, cast on site since 2011 — a chapel at Cap Croisette, a library off the Sormiou cliff, a water tower recast as housing.">
+<meta property="og:title" content="BÉTON BRUT — Studio d’architecture, Marseille">
+<meta property="og:description" content="Raw concrete, cast on site since 2011. Three works on file: scroll, and the blueprints cure.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#CBC9C3">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23A3A19B'/%3E%3Ccircle cx='32' cy='32' r='10' fill='%236F6D68'/%3E%3Ccircle cx='32' cy='32' r='10' fill='none' stroke='%2317181A' stroke-opacity='.55' stroke-width='2'/%3E%3Ccircle cx='29' cy='29' r='3' fill='%23CBC9C3' fill-opacity='.5'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/Archivo-03.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/IBMPlexMono-10.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/Archivo.css">
+<link rel="stylesheet" href="fonts/IBMPlexMono.css">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<a class="skip mono" href="#ouvrages">Skip to the works</a>
+
+<!-- shared SVG defs: gradients, patterns, filters used by all three elevations -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="shadeG" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#C0BEB8"/>
+      <stop offset=".55" stop-color="#9D9B95"/>
+      <stop offset="1" stop-color="#7E7C77"/>
+    </linearGradient>
+    <linearGradient id="shadeW" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#CFCDC6"/>
+      <stop offset=".6" stop-color="#B0AEA7"/>
+      <stop offset="1" stop-color="#95938D"/>
+    </linearGradient>
+    <linearGradient id="shadeRock" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8B8880"/>
+      <stop offset="1" stop-color="#66645E"/>
+    </linearGradient>
+    <linearGradient id="rustG" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#9A5A34"/>
+      <stop offset="1" stop-color="#74401F"/>
+    </linearGradient>
+    <pattern id="boardP" width="300" height="34" patternUnits="userSpaceOnUse">
+      <rect width="300" height="34" fill="none"/>
+      <rect y="33" width="300" height="1" fill="rgba(18,18,16,.30)"/>
+      <rect y="0" width="300" height="1" fill="rgba(255,255,255,.14)"/>
+      <rect y="9" width="300" height="1" fill="rgba(20,20,18,.05)"/>
+      <rect y="17" width="300" height="1" fill="rgba(255,255,255,.05)"/>
+      <rect y="25" width="300" height="1" fill="rgba(20,20,18,.05)"/>
+      <rect x="149" width="1" height="34" fill="rgba(18,18,16,.12)"/>
+    </pattern>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+    <filter id="roughen" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="11" stitchTiles="stitch"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.10  0 0 0 0 0.10  0 0 0 0 0.09  0.55 0 0 0 0"/>
+      <feComposite in2="SourceAlpha" operator="in"/>
+    </filter>
+  </defs>
+</svg>
+
+<div class="seams" aria-hidden="true"><div class="wrap"><i class="s1"></i><i class="s2"></i><i class="s3"></i></div></div>
+
+<header class="site-head">
+  <div class="wrap head-row">
+    <a class="brand" href="#top">BÉTON BRUT</a>
+    <nav aria-label="Main">
+      <ul class="mono">
+        <li><a href="#ouvrages">Ouvrages</a></li>
+        <li><a href="#matiere">Matière</a></li>
+        <li><a href="#methode">Méthode</a></li>
+        <li><a href="#studio">Studio</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" aria-label="Béton Brut — architecture studio, Marseille">
+    <div class="wrap hero-grid">
+      <h1 class="hero-title cast-type">
+        <span class="crane-clip"><span class="crane c1">BÉTON</span></span>
+        <span class="crane-clip"><span class="crane c2">BRUT</span></span>
+      </h1>
+      <p class="hero-sub">
+        <span class="crane-clip"><span class="crane c3">Studio d’architecture — Marseille.</span></span>
+        <span class="crane-clip"><span class="crane c4">We cast buildings that stand up to the sea.</span></span>
+      </p>
+      <div class="hero-annot mono stamp" aria-hidden="true">
+        <span>43°17′44″N — 5°21′56″E</span>
+        <span>ALT. +12 M NGF</span>
+        <span>FONDÉ 2011 · EFFECTIF 14</span>
+        <span class="rust">CHANTIER EN COURS : SORMIOU</span>
+      </div>
+      <div class="tie-field" aria-hidden="true">
+        <i class="tie"></i><i class="tie"></i><i class="tie"></i>
+        <i class="tie"></i><i class="tie"></i><i class="tie"></i>
+      </div>
+    </div>
+    <div class="mesure mono stamp" aria-hidden="true">
+      <i class="tick tl"></i>
+      <span class="mesure-label">LARGEUR HORS-TOUT — <b data-vw>0 PX</b></span>
+      <i class="tick tr"></i>
+    </div>
+  </section>
+
+  <div class="joint" role="separator" aria-label="Construction joint"><span class="mono">REPRISE DE BÉTONNAGE — 12.03.2026</span></div>
+
+  <!-- ============ MANIFESTO ============ -->
+  <section class="manifesto">
+    <div class="wrap mani-grid">
+      <p class="mani-big cast-type" lang="fr"><span class="reveal">Le béton n’est pas une finition. C’est la météo, arrêtée.</span></p>
+      <div class="mani-body">
+        <p>Concrete is not a finish. It is the weather, held still. We are fourteen architects, engineers and one concrete lab in a former ship-chandlery on the Madrague-Ville docks. Since 2011 we have poured chapels, libraries, housing and one lighthouse base — always raw, always cast on site, always stripped to show the grain of the boards that held it.</p>
+        <p>The Mistral does our weathering. The sea does our polishing. Every project leaves this office as a cyanotype and comes back as a photograph.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="joint" role="separator" aria-label="Construction joint"><span class="mono">REPRISE DE BÉTONNAGE — 28.06.2025</span></div>
+
+  <!-- ============ OUVRAGES ============ -->
+  <section id="ouvrages" class="ouvrages-intro">
+    <div class="wrap">
+      <p class="kicker mono" lang="fr">TROIS OUVRAGES AU DOSSIER</p>
+      <h2 class="sec-title cast-type" lang="fr"><span class="reveal">OUVRAGES</span></h2>
+      <p class="sec-lede">Each building below is shown as we first drew it — a cyanotype elevation. Keep scrolling and the drawing cures: line becomes mass, paper becomes wall.</p>
+      <ul class="legend mono" aria-hidden="true">
+        <li><svg viewBox="0 0 48 10" width="48" height="10"><path d="M2 5 H46" stroke="currentColor" stroke-width="2.6" fill="none"/></svg>TRAIT FORT — ARÊTES COULÉES</li>
+        <li><svg viewBox="0 0 48 10" width="48" height="10"><path d="M4 9 L16 1 M16 9 L28 1 M28 9 L40 1" stroke="currentColor" stroke-width="1" fill="none"/></svg>HACHURES — ROCHE &amp; EXISTANT</li>
+        <li><svg viewBox="0 0 48 10" width="48" height="10"><path d="M2 5 H46" stroke="currentColor" stroke-width="1.4" stroke-dasharray="6 4" fill="none"/></svg>AXES, TIRANTS &amp; VISÉES</li>
+        <li><svg viewBox="0 0 20 12" width="20" height="12"><path d="M3 2 L10 10 L17 2 Z" stroke="currentColor" stroke-width="1.4" fill="none"/></svg>NIVEAU NGF</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ——— FICHE 07 · CHAPELLE DU RESSAC ——— -->
+  <section class="project" data-project data-h="14.60" id="fiche-07">
+    <div class="track">
+      <div class="stage">
+        <header class="stage-head wrap">
+          <p class="fiche mono">FICHE Nº 07 — CAP CROISETTE, MARSEILLE 8ᴱ</p>
+          <h3 class="proj-title cast-type" lang="fr"><span class="reveal">CHAPELLE DU RESSAC</span></h3>
+        </header>
+        <div class="drawing" aria-hidden="true">
+          <svg viewBox="0 0 1100 640" preserveAspectRatio="xMidYMid meet">
+            <defs>
+              <clipPath id="chapClipShell"><path d="M260 540 L260 424 L618 138 L652 148 L652 540 Z"/></clipPath>
+              <clipPath id="chapAll">
+                <path d="M260 540 L260 424 L618 138 L652 148 L652 540 Z"/>
+                <path d="M228 540 L228 512 L700 512 L700 540 Z"/>
+                <path d="M760 540 L760 176 L798 168 L798 540 Z"/>
+              </clipPath>
+              <clipPath id="pour07"><rect class="pour-rect" x="-20" y="-40" width="1140" height="720"/></clipPath>
+            </defs>
+
+            <!-- formwork ghost: the wooden negative, erected during SERRAGE DES BANCHES -->
+            <g class="ff" opacity="0">
+              <g clip-path="url(#chapAll)">
+                <rect x="210" y="90" width="640" height="470" fill="#A98B5F" opacity=".32"/>
+                <rect x="210" y="90" width="640" height="470" fill="url(#boardP)" opacity=".65"/>
+              </g>
+            </g>
+
+            <g class="cast">
+              <path class="cs" d="M262 538 L1012 538 L964 568 L330 568 Z" fill="#17181A" opacity=".4" filter="url(#soft)"/>
+              <path d="M60 540 H1040" fill="none" stroke="#3A3B3D" stroke-width="2.4"/>
+              <path d="M850 560 H1040 M872 572 H1016" fill="none" stroke="#4A4B4E" stroke-width="1.4" opacity=".7"/>
+              <g class="pour" clip-path="url(#pour07)">
+                <path d="M228 540 L228 512 L700 512 L700 540 Z" fill="url(#shadeW)"/>
+                <path d="M260 540 L260 424 L618 138 L652 148 L652 540 Z" fill="url(#shadeW)"/>
+                <path d="M760 540 L760 176 L798 168 L798 540 Z" fill="url(#shadeG)"/>
+                <g clip-path="url(#chapAll)">
+                  <rect x="210" y="90" width="640" height="470" fill="url(#boardP)" opacity=".5"/>
+                  <rect x="210" y="90" width="640" height="470" filter="url(#roughen)" opacity=".6"/>
+                </g>
+                <rect x="296" y="452" width="58" height="88" fill="#232426"/>
+                <rect x="624" y="220" width="8" height="250" fill="#232426"/>
+                <rect x="604" y="300" width="48" height="8" fill="#232426"/>
+                <rect x="770" y="196" width="16" height="64" fill="#232426"/>
+                <path d="M260 424 L618 138" fill="none" stroke="#E3E1DB" stroke-width="2.4" opacity=".65"/>
+                <path d="M228 512 L700 512" fill="none" stroke="#DDDBD5" stroke-width="1.6" opacity=".5"/>
+                <path d="M760 176 L798 168" fill="none" stroke="#E3E1DB" stroke-width="2" opacity=".6"/>
+              </g>
+              <line class="pour-lvl" x1="218" y1="540" x2="808" y2="540" stroke="#2B2C2E" stroke-width="2.5" opacity="0"/>
+            </g>
+
+            <g class="bp">
+              <path class="s" data-o="0" d="M60 540 H1040"/>
+              <path class="s" data-o="0" d="M850 560 H1040"/>
+              <path class="s" data-o="0" d="M872 572 H1016"/>
+              <path class="s" data-o="0" d="M894 584 H992"/>
+              <path class="s w2" data-o="1" d="M260 540 L260 424 L618 138 L652 148 L652 540"/>
+              <path class="s w2" data-o="1" d="M228 540 L228 512 L700 512"/>
+              <path class="s w2" data-o="1" d="M760 540 L760 176 L798 168 L798 540"/>
+              <path class="s" data-o="2" d="M296 540 V452 H354 V540"/>
+              <path class="s" data-o="2" d="M624 470 V220 H632 V470 Z"/>
+              <path class="s" data-o="2" d="M604 300 H652 M604 308 H652"/>
+              <path class="s" data-o="2" d="M770 196 H786 V260 H770 Z"/>
+              <g clip-path="url(#chapClipShell)">
+                <path class="s th" data-o="3" d="M0 560 L560 0"/>
+                <path class="s th" data-o="3" d="M56 560 L616 0"/>
+                <path class="s th" data-o="3" d="M112 560 L672 0"/>
+                <path class="s th" data-o="3" d="M168 560 L728 0"/>
+                <path class="s th" data-o="3" d="M224 560 L784 0"/>
+                <path class="s th" data-o="3" d="M280 560 L840 0"/>
+                <path class="s th" data-o="3" d="M336 560 L896 0"/>
+                <path class="s th" data-o="3" d="M392 560 L952 0"/>
+                <path class="s th" data-o="3" d="M448 560 L1008 0"/>
+                <path class="s th" data-o="3" d="M504 560 L1064 0"/>
+              </g>
+              <path class="s th" data-o="3" d="M760 208 H798 M760 260 H798 M760 312 H798 M760 364 H798 M760 416 H798 M760 468 H798"/>
+              <!-- dimensions -->
+              <path class="s th" data-o="4" d="M228 548 V596 M798 548 V596"/>
+              <path class="s" data-o="4" d="M228 588 H798"/>
+              <path class="s" data-o="4" d="M222 594 L234 582 M792 594 L804 582"/>
+              <path class="s th" data-o="4" d="M660 138 H976 M806 540 H976"/>
+              <path class="s" data-o="4" d="M968 138 V540"/>
+              <path class="s" data-o="4" d="M962 144 L974 132 M962 546 L974 534"/>
+              <path class="s th" data-o="4" d="M614 132 L560 118"/>
+              <path class="s th" data-o="4" d="M862 534 L874 522"/>
+              <!-- north arrow -->
+              <circle class="s" data-o="4" cx="935" cy="96" r="26"/>
+              <path class="s" data-o="4" d="M935 74 L926 112 L935 104 L944 112 Z"/>
+              <!-- title block -->
+              <path class="s" data-o="4" d="M60 594 H500 V634 H60 Z M148 594 V634"/>
+              <text class="an" data-o="4" x="72" y="620">Fᵉ 07</text>
+              <text class="an sm" data-o="4" x="160" y="610">CHAPELLE DU RESSAC — ÉLÉV. OUEST</text>
+              <text class="an sm" data-o="4" x="160" y="627">ÉCH. 1:200 · CIMENT BLANC · XS3</text>
+              <text class="an sm" data-o="5" x="516" y="580" text-anchor="middle">28 400</text>
+              <text class="an sm" data-o="5" x="984" y="344" transform="rotate(-90 984 344)" text-anchor="middle">18 200</text>
+              <text class="an sm" data-o="5" x="554" y="112" text-anchor="end">▽ +14.60</text>
+              <text class="an sm" data-o="5" x="878" y="518">▽ ±0.00</text>
+              <text class="an sm" data-o="5" x="944" y="598" text-anchor="middle">MER MÉDITERRANÉE</text>
+              <text class="an sm" data-o="5" x="935" y="66" text-anchor="middle">N</text>
+              <g class="fade" data-o="5">
+                <path class="dash" d="M634 304 L1040 456"/>
+                <text class="an sm" x="710" y="378" transform="rotate(20.5 710 378)">AXE SOLSTICE D’HIVER — 21.12 · 17H04</text>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <div class="hud mono" aria-hidden="true">
+          <p><span class="hud-phase">MISE EN PLAN</span><span class="hud-niv">▽ NIVEAU +00.00 M</span><span class="hud-pct">000%</span></p>
+          <div class="hud-bar"><i></i></div>
+        </div>
+      </div>
+    </div>
+    <div class="dossier wrap">
+      <div class="doss-text">
+        <p>A single folded shell of white concrete, sixty seats, one slit of light. The nave is aligned on the winter-solstice sunset: at 17:04 on 21 December the sun lands exactly on the altar — a nine-tonne block lifted from the sea floor of the old Montredon quarry.</p>
+        <p>The shell was board-formed in rough Aleppo pine and records every knot. Salt spray has already begun to darken the west face. That is the elevation we drew first.</p>
+      </div>
+      <dl class="spec mono" lang="fr">
+        <div><dt>Maître d’ouvrage</dt><dd>Diocèse de Marseille</dd></div>
+        <div><dt>Surface</dt><dd>184 m² — 60 places</dd></div>
+        <div><dt>Béton</dt><dd>C40/50 XS3, ciment blanc, calcaire de Cassis 0/14</dd></div>
+        <div><dt>Coffrage</dt><dd>Pin d’Alep brut, 21 planches par levée</dd></div>
+        <div><dt>Coulage</dt><dd>3 levées — 14 jours</dd></div>
+        <div><dt>Livraison</dt><dd>Avril 2024 — ouverte 07h–21h</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ——— FICHE 11 · BIBLIOTHÈQUE DE LA FALAISE ——— -->
+  <section class="project" data-project data-h="42.00" id="fiche-11">
+    <div class="track">
+      <div class="stage">
+        <header class="stage-head wrap">
+          <p class="fiche mono">FICHE Nº 11 — CALANQUE DE SORMIOU, MARSEILLE 9ᴱ</p>
+          <h3 class="proj-title cast-type" lang="fr"><span class="reveal">BIBLIOTHÈQUE DE LA FALAISE</span></h3>
+        </header>
+        <div class="drawing" aria-hidden="true">
+          <svg viewBox="0 0 1100 640" preserveAspectRatio="xMidYMid meet">
+            <defs>
+              <clipPath id="bibAll">
+                <path d="M60 84 L150 128 L210 214 L188 296 L232 368 L214 448 L286 516 L316 560 L60 560 Z"/>
+                <path d="M205 236 H880 V250 H205 Z"/>
+                <path d="M205 318 H880 V334 H205 Z"/>
+                <path d="M240 334 H300 V512 H240 Z"/>
+              </clipPath>
+              <clipPath id="pour11"><rect class="pour-rect" x="-20" y="-40" width="1140" height="720"/></clipPath>
+              <clipPath id="bibBuilt">
+                <path d="M205 236 H880 V250 H205 Z"/>
+                <path d="M205 318 H880 V334 H205 Z"/>
+                <path d="M240 334 H300 V512 H240 Z"/>
+              </clipPath>
+            </defs>
+
+            <!-- formwork ghost: cast-in-place parts only (slabs + pier) — the fins are prefab -->
+            <g class="ff" opacity="0">
+              <g clip-path="url(#bibBuilt)">
+                <rect x="50" y="70" width="840" height="500" fill="#A98B5F" opacity=".32"/>
+                <rect x="50" y="70" width="840" height="500" fill="url(#boardP)" opacity=".65"/>
+              </g>
+            </g>
+
+            <g class="cast">
+              <path class="cs" d="M430 558 L940 558 L900 576 L470 572 Z" fill="#17181A" opacity=".34" filter="url(#soft)"/>
+              <path d="M316 560 H1040 M360 572 H1006 M404 584 H952" fill="none" stroke="#4A4B4E" stroke-width="1.4" opacity=".7"/>
+              <g class="pour" clip-path="url(#pour11)">
+              <path d="M60 84 L150 128 L210 214 L188 296 L232 368 L214 448 L286 516 L316 560 L60 560 Z" fill="url(#shadeRock)"/>
+              <rect x="320" y="250" width="552" height="68" fill="#1F2124"/>
+              <g fill="#BAB8B2">
+                <rect x="320" y="250" width="6" height="68"/><rect x="344" y="250" width="6" height="68"/><rect x="368" y="250" width="6" height="68"/><rect x="392" y="250" width="6" height="68"/><rect x="416" y="250" width="6" height="68"/><rect x="440" y="250" width="6" height="68"/><rect x="464" y="250" width="6" height="68"/><rect x="488" y="250" width="6" height="68"/><rect x="512" y="250" width="6" height="68"/><rect x="536" y="250" width="6" height="68"/><rect x="560" y="250" width="6" height="68"/><rect x="584" y="250" width="6" height="68"/><rect x="608" y="250" width="6" height="68"/><rect x="632" y="250" width="6" height="68"/><rect x="656" y="250" width="6" height="68"/><rect x="680" y="250" width="6" height="68"/><rect x="704" y="250" width="6" height="68"/><rect x="728" y="250" width="6" height="68"/><rect x="752" y="250" width="6" height="68"/><rect x="776" y="250" width="6" height="68"/><rect x="800" y="250" width="6" height="68"/><rect x="824" y="250" width="6" height="68"/><rect x="848" y="250" width="6" height="68"/><rect x="866" y="250" width="6" height="68"/>
+              </g>
+              <path d="M205 236 H880 V250 H205 Z" fill="url(#shadeW)"/>
+              <path d="M205 318 H880 V334 H205 Z" fill="url(#shadeW)"/>
+              <path d="M240 334 H300 V512 H240 Z" fill="url(#shadeG)"/>
+              <g clip-path="url(#bibAll)">
+                <rect x="50" y="70" width="840" height="500" fill="url(#boardP)" opacity=".4"/>
+                <rect x="50" y="70" width="840" height="500" filter="url(#roughen)" opacity=".6"/>
+              </g>
+              <path d="M205 236 H880" fill="none" stroke="#E3E1DB" stroke-width="2.2" opacity=".65"/>
+              <path d="M880 236 V334" fill="none" stroke="#8A8882" stroke-width="2"/>
+              </g>
+              <line class="pour-lvl" x1="50" y1="540" x2="890" y2="540" stroke="#2B2C2E" stroke-width="2.5" opacity="0"/>
+            </g>
+
+            <g class="bp">
+              <path class="s" data-o="0" d="M316 560 H1040"/>
+              <path class="s" data-o="0" d="M360 572 H1006"/>
+              <path class="s" data-o="0" d="M404 584 H952"/>
+              <path class="s w2" data-o="1" d="M60 84 L150 128 L210 214 L188 296 L232 368 L214 448 L286 516 L316 560"/>
+              <path class="s w2" data-o="1" d="M205 236 H880 V250 H205"/>
+              <path class="s w2" data-o="1" d="M205 318 H880 V334 H205"/>
+              <path class="s w2" data-o="1" d="M880 250 V318"/>
+              <path class="s" data-o="2" d="M240 512 V334 M300 512 V334 M240 512 H300"/>
+              <path class="s" data-o="2" d="M320 284 H872"/>
+              <!-- fins -->
+              <path class="s th" data-o="3" d="M320 250 V318 M344 250 V318 M368 250 V318 M392 250 V318 M416 250 V318 M440 250 V318 M464 250 V318 M488 250 V318 M512 250 V318 M536 250 V318 M560 250 V318 M584 250 V318"/>
+              <path class="s th" data-o="3" d="M608 250 V318 M632 250 V318 M656 250 V318 M680 250 V318 M704 250 V318 M728 250 V318 M752 250 V318 M776 250 V318 M800 250 V318 M824 250 V318 M848 250 V318 M868 250 V318"/>
+              <!-- rock + core hatch -->
+              <path class="s th" data-o="3" d="M96 128 L128 108 M120 180 L156 158 M150 250 L184 230 M148 330 L182 308 M186 400 L220 380 M200 470 L236 448 M248 520 L282 498"/>
+              <path class="s th" data-o="3" d="M240 380 L300 340 M240 430 L300 390 M240 480 L300 440 M244 510 L300 472"/>
+              <!-- dimensions -->
+              <path class="s th" data-o="4" d="M300 228 V190 M872 228 V190"/>
+              <path class="s" data-o="4" d="M300 198 H872"/>
+              <path class="s" data-o="4" d="M294 204 L306 192 M866 204 L878 192"/>
+              <path class="s th" data-o="4" d="M888 334 H952 M888 560 H952"/>
+              <path class="s" data-o="4" d="M944 334 V560"/>
+              <path class="s" data-o="4" d="M938 340 L950 328 M938 566 L950 554"/>
+              <circle class="s" data-o="4" cx="700" cy="132" r="26"/>
+              <path class="s" data-o="4" d="M700 110 L691 148 L700 140 L709 148 Z"/>
+              <path class="s" data-o="4" d="M620 40 H1050 V84 H620 Z M706 40 V84"/>
+              <text class="an" data-o="4" x="632" y="68">Fᵉ 11</text>
+              <text class="an sm" data-o="4" x="718" y="56">BIBLIOTHÈQUE DE LA FALAISE</text>
+              <text class="an sm" data-o="4" x="718" y="73">ÉLÉV. SUD · ÉCH. 1:250 · C50/60</text>
+              <text class="an sm" data-o="5" x="586" y="188" text-anchor="middle">PORTE-À-FAUX 14 000</text>
+              <text class="an sm" data-o="5" x="960" y="452" transform="rotate(-90 960 452)" text-anchor="middle">Δ 42 000</text>
+              <text class="an sm" data-o="5" x="896" y="328">▽ +42.00 NGF</text>
+              <text class="an sm" data-o="5" x="700" y="610" text-anchor="middle">CALANQUE DE SORMIOU — ▽ 0.00</text>
+              <text class="an sm" data-o="5" x="700" y="102" text-anchor="middle">N</text>
+              <g class="fade" data-o="5">
+                <path class="dash" d="M330 236 L140 116 M430 236 L185 142"/>
+                <text class="an sm" x="228" y="130" transform="rotate(32 228 130)">TIRANTS 2 × 36 M</text>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <div class="hud mono" aria-hidden="true">
+          <p><span class="hud-phase">MISE EN PLAN</span><span class="hud-niv">▽ NIVEAU +00.00 M</span><span class="hud-pct">000%</span></p>
+          <div class="hud-bar"><i></i></div>
+        </div>
+      </div>
+    </div>
+    <div class="dossier wrap">
+      <div class="doss-text">
+        <p>A reading room cantilevered fourteen metres off the limestone, held by two prestressed ties drilled thirty-six metres back into the cliff. There is no road. Readers arrive by boat, or by the customs trail — forty minutes on foot, and worth it.</p>
+        <p>Twenty-four concrete fins ration the southern light to a steady 210 lux at the tables. On rough days the boom of the swell climbs through the slab; we tuned the fin spacing so it arrives as a low G, not a rattle.</p>
+      </div>
+      <dl class="spec mono" lang="fr">
+        <div><dt>Programme</dt><dd>Bibliothèque du littoral — 1&nbsp;240&nbsp;m²</dd></div>
+        <div><dt>Porte-à-faux</dt><dd>14,0 m au-dessus de la calanque</dd></div>
+        <div><dt>Tirants</dt><dd>2 × 36 m, précontraints à 1&nbsp;900&nbsp;kN</dd></div>
+        <div><dt>Béton</dt><dd>C50/60, fibres inox, cure marine</dd></div>
+        <div><dt>Brise-soleil</dt><dd>24 ailettes préfabriquées, pas de 300 mm</dd></div>
+        <div><dt>Ouverture</dt><dd>Mai 2026 — chantier en cours</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ——— FICHE 04 · CHÂTEAU D’EAU HABITÉ ——— -->
+  <section class="project" data-project data-h="31.00" id="fiche-04">
+    <div class="track">
+      <div class="stage">
+        <header class="stage-head wrap">
+          <p class="fiche mono">FICHE Nº 04 — SAINT-HENRI, MARSEILLE 16ᴱ</p>
+          <h3 class="proj-title cast-type" lang="fr"><span class="reveal">CHÂTEAU D’EAU HABITÉ</span></h3>
+        </header>
+        <div class="drawing" aria-hidden="true">
+          <svg viewBox="0 0 1100 640" preserveAspectRatio="xMidYMid meet">
+            <defs>
+              <clipPath id="towAll">
+                <path d="M470 540 L500 260 L600 260 L630 540 Z"/>
+                <path d="M430 260 L444 150 Q550 100 656 150 L670 260 Z"/>
+              </clipPath>
+              <clipPath id="pour04"><rect class="pour-rect" x="-20" y="-40" width="1140" height="720"/></clipPath>
+            </defs>
+
+            <!-- formwork ghost: banches clamped over the drum for the reprises -->
+            <g class="ff" opacity="0">
+              <g clip-path="url(#towAll)">
+                <rect x="420" y="90" width="260" height="460" fill="#A98B5F" opacity=".32"/>
+                <rect x="420" y="90" width="260" height="460" fill="url(#boardP)" opacity=".65"/>
+              </g>
+            </g>
+
+            <g class="cast">
+              <path class="cs" d="M480 538 L1000 538 L954 566 L560 566 Z" fill="#17181A" opacity=".38" filter="url(#soft)"/>
+              <path d="M100 540 H1000" fill="none" stroke="#3A3B3D" stroke-width="2.4"/>
+              <g class="pour" clip-path="url(#pour04)">
+              <path d="M470 540 L500 260 L600 260 L630 540 Z" fill="url(#shadeG)"/>
+              <path d="M430 260 L444 150 Q550 100 656 150 L670 260 Z" fill="url(#shadeW)"/>
+              <g clip-path="url(#towAll)">
+                <rect x="420" y="90" width="260" height="460" fill="url(#boardP)" opacity=".55"/>
+                <rect x="420" y="90" width="260" height="460" filter="url(#roughen)" opacity=".6"/>
+              </g>
+              <!-- lift tower in oxide concrete -->
+              <rect x="700" y="300" width="42" height="240" fill="url(#rustG)"/>
+              <rect x="694" y="292" width="54" height="10" fill="#8A4E2B"/>
+              <rect x="610" y="340" width="90" height="9" fill="#8A4E2B"/>
+              <rect x="620" y="460" width="80" height="9" fill="#8A4E2B"/>
+              <!-- balconies west flank -->
+              <g fill="#B5B3AD">
+                <rect x="432" y="300" width="66" height="7"/>
+                <rect x="427" y="348" width="66" height="7"/>
+                <rect x="423" y="396" width="66" height="7"/>
+                <rect x="418" y="444" width="66" height="7"/>
+                <rect x="413" y="492" width="66" height="7"/>
+              </g>
+              <g stroke="#3B3C3E" stroke-width="1.6" fill="none" opacity=".8">
+                <path d="M432 300 V282 H492"/>
+                <path d="M427 348 V330 H488"/>
+                <path d="M423 396 V378 H483"/>
+                <path d="M418 444 V426 H479"/>
+                <path d="M413 492 V474 H474"/>
+              </g>
+              <!-- openings -->
+              <g fill="#232426">
+                <rect x="522" y="302" width="18" height="28"/><rect x="560" y="302" width="18" height="28"/>
+                <rect x="520" y="398" width="18" height="28"/><rect x="558" y="398" width="18" height="28"/>
+                <rect x="518" y="494" width="18" height="28"/><rect x="556" y="494" width="18" height="28"/>
+                <rect x="478" y="188" width="10" height="40"/><rect x="528" y="188" width="10" height="40"/><rect x="578" y="188" width="10" height="40"/><rect x="628" y="188" width="10" height="40"/>
+                <rect x="712" y="320" width="18" height="200" opacity=".55"/>
+              </g>
+              <path d="M444 150 Q550 100 656 150" fill="none" stroke="#E3E1DB" stroke-width="2.2" opacity=".65"/>
+              <path d="M500 260 L470 540" fill="none" stroke="#D8D6D0" stroke-width="1.8" opacity=".5"/>
+              </g>
+              <line class="pour-lvl" x1="386" y1="540" x2="758" y2="540" stroke="#2B2C2E" stroke-width="2.5" opacity="0"/>
+            </g>
+
+            <g class="bp">
+              <path class="s" data-o="0" d="M100 540 H1000"/>
+              <path class="s w2" data-o="1" d="M470 540 L500 260 M600 260 L630 540"/>
+              <path class="s w2" data-o="1" d="M430 260 L444 150 Q550 100 656 150 L670 260 Z"/>
+              <path class="s" data-o="2" d="M700 540 V300 H742 V540"/>
+              <path class="s" data-o="2" d="M694 302 V292 H748 V302"/>
+              <path class="s" data-o="2" d="M610 340 H700 M610 349 H700 M620 460 H700 M620 469 H700"/>
+              <path class="s" data-o="2" d="M498 307 H432 V300 H498 M432 300 V282 H492"/>
+              <path class="s" data-o="2" d="M493 355 H427 V348 H493 M427 348 V330 H488"/>
+              <path class="s" data-o="2" d="M489 403 H423 V396 H489 M423 396 V378 H483"/>
+              <path class="s" data-o="2" d="M484 451 H418 V444 H484 M418 444 V426 H479"/>
+              <path class="s" data-o="2" d="M479 499 H413 V492 H479 M413 492 V474 H474"/>
+              <path class="s" data-o="2" d="M522 330 V302 H540 V330 Z M560 330 V302 H578 V330 Z"/>
+              <path class="s" data-o="2" d="M520 426 V398 H538 V426 Z M558 426 V398 H576 V426 Z"/>
+              <path class="s" data-o="2" d="M518 522 V494 H536 V522 Z M556 522 V494 H574 V522 Z"/>
+              <path class="s" data-o="2" d="M478 228 V188 H488 V228 Z M528 228 V188 H538 V228 Z M578 228 V188 H588 V228 Z M628 228 V188 H638 V228 Z"/>
+              <!-- board hatch -->
+              <path class="s th" data-o="3" d="M496 300 H604 M491 344 H609 M486 388 H614 M482 432 H618 M477 476 H623 M472 520 H628"/>
+              <path class="s th" data-o="3" d="M440 180 H660 M436 210 H664 M433 240 H667"/>
+              <!-- dimensions -->
+              <path class="s th" data-o="4" d="M436 123 H388 M462 540 H388"/>
+              <path class="s" data-o="4" d="M396 123 V540"/>
+              <path class="s" data-o="4" d="M390 129 L402 117 M390 546 L402 534"/>
+              <path class="s th" data-o="4" d="M444 142 V80 M656 142 V80"/>
+              <path class="s" data-o="4" d="M444 88 H656"/>
+              <path class="s" data-o="4" d="M438 94 L450 82 M650 94 L662 82"/>
+              <path class="s th" data-o="4" d="M612 176 L760 120"/>
+              <path class="s th" data-o="4" d="M470 416 L330 404"/>
+              <path class="s th" data-o="4" d="M912 534 L924 522"/>
+              <circle class="s" data-o="4" cx="1002" cy="196" r="26"/>
+              <path class="s" data-o="4" d="M1002 174 L993 212 L1002 204 L1011 212 Z"/>
+              <path class="s" data-o="4" d="M100 594 H608 V634 H100 Z M188 594 V634"/>
+              <text class="an" data-o="4" x="112" y="620">Fᵉ 04</text>
+              <text class="an sm" data-o="4" x="200" y="610">CHÂTEAU D’EAU HABITÉ — ÉLÉV. EST</text>
+              <text class="an sm" data-o="4" x="200" y="627">ÉCH. 1:200 · RÉSERVOIR 1954 · 9 LOGEMENTS</text>
+              <text class="an sm" data-o="5" x="380" y="336" transform="rotate(-90 380 336)" text-anchor="middle">31 000</text>
+              <text class="an sm" data-o="5" x="550" y="72" text-anchor="middle">Ø 13 600</text>
+              <text class="an sm" data-o="5" x="766" y="114">CUVE 600 M³ → CITERNE-JARDIN</text>
+              <text class="an sm" data-o="5" x="326" y="398" text-anchor="end">9 LOGEMENTS T2–T4</text>
+              <text class="an sm" data-o="5" x="936" y="520">▽ ±0.00</text>
+              <text class="an sm" data-o="5" x="1002" y="166" text-anchor="middle">N</text>
+              <g class="fade" data-o="5">
+                <path class="dash" d="M742 320 L840 320 M742 452 L840 452"/>
+                <text class="an sm" x="848" y="326">ASCENSEUR HORS ŒUVRE</text>
+                <text class="an sm" x="848" y="458">BÉTON TEINTÉ OXYDE 3%</text>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <div class="hud mono" aria-hidden="true">
+          <p><span class="hud-phase">MISE EN PLAN</span><span class="hud-niv">▽ NIVEAU +00.00 M</span><span class="hud-pct">000%</span></p>
+          <div class="hud-bar"><i></i></div>
+        </div>
+      </div>
+    </div>
+    <div class="dossier wrap">
+      <div class="doss-text">
+        <p>A 1954 water tower, decommissioned in 1998, recast as nine dwellings. We kept every centimetre of the original drum and cut ninety-one new openings with a diamond saw — the cores are numbered and stacked in the courtyard as benches.</p>
+        <p>Balconies rake the seaward flank on cast-in corbels. The lift runs outside, in a new oxide-tinted tower, so the original shaft never had to be touched. The old 600 m³ tank is now a cistern-garden that irrigates the whole quarter.</p>
+      </div>
+      <dl class="spec mono" lang="fr">
+        <div><dt>Programme</dt><dd>9 logements T2–T4</dd></div>
+        <div><dt>Hauteur</dt><dd>31,0 m — existant 1954</dd></div>
+        <div><dt>Ouvertures</dt><dd>91 percements, sciage au diamant</dd></div>
+        <div><dt>Béton</dt><dd>Reprises C35/45, teinté oxyde de fer 3 %</dd></div>
+        <div><dt>Cuve</dt><dd>600&nbsp;m³ → citerne-jardin de quartier</dd></div>
+        <div><dt>Livraison</dt><dd>Septembre 2023 · Équerre d’argent, nomination 2024</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <div class="joint" role="separator" aria-label="Construction joint"><span class="mono">REPRISE DE BÉTONNAGE — 14.11.2024</span></div>
+
+  <!-- ============ MATIÈRE ============ -->
+  <section id="matiere" class="matiere">
+    <div class="wrap">
+      <p class="kicker mono" lang="fr">TROIS FORMULES MAISON</p>
+      <h2 class="sec-title cast-type" lang="fr"><span class="reveal">MATIÈRE</span></h2>
+      <div class="swatches">
+        <figure class="swatch sw1">
+          <div class="chip" aria-hidden="true"><i class="tie"></i><i class="tie t2"></i><span class="chip-no cast-type">Nº 1</span></div>
+          <figcaption>
+            <p class="sw-name">MÉLANGE Nº 1 — <b>CALANQUE</b></p>
+            <p class="sw-desc">White cement, crushed Cassis limestone. The chapel mix — it holds the four o’clock light longer than it should.</p>
+            <p class="sw-spec mono">GRANULAT 0/14 · E/C&nbsp;0,38 · AFFAISSEMENT&nbsp;S3 ·&nbsp;CURE&nbsp;28&nbsp;J</p>
+          </figcaption>
+        </figure>
+        <figure class="swatch sw2">
+          <div class="chip" aria-hidden="true"><i class="tie"></i><i class="tie t2"></i><span class="chip-no cast-type">Nº 2</span></div>
+          <figcaption>
+            <p class="sw-name">MÉLANGE Nº 2 — <b>RADE</b></p>
+            <p class="sw-desc">Blast-furnace grey, Rhône sand, built for salt. The library mix — rated XS3, cured under wet burlap for a month.</p>
+            <p class="sw-spec mono">CEM&nbsp;III/B · E/C&nbsp;0,36 · FIBRES INOX 40&nbsp;KG/M³ ·&nbsp;CURE&nbsp;31&nbsp;J</p>
+          </figcaption>
+        </figure>
+        <figure class="swatch sw3">
+          <div class="chip" aria-hidden="true"><i class="tie"></i><i class="tie t2"></i><span class="chip-no cast-type">Nº 3</span></div>
+          <figcaption>
+            <p class="sw-name">MÉLANGE Nº 3 — <b>OXYDE</b></p>
+            <p class="sw-desc">Iron-oxide tinted, three per cent pigment. For additions that refuse to hide — new work should say so.</p>
+            <p class="sw-spec mono">C35/45 · PIGMENT Fe₂O₃&nbsp;3&nbsp;% · GRANULAT 0/10 ·&nbsp;CURE&nbsp;28&nbsp;J</p>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MÉTHODE ============ -->
+  <section id="methode" class="methode">
+    <div class="wrap">
+      <p class="kicker mono" lang="fr">DE LA PLANCHE AU MUR</p>
+      <h2 class="sec-title cast-type" lang="fr"><span class="reveal">MÉTHODE</span></h2>
+      <ol class="phases">
+        <li>
+          <p class="ph-no mono">PHASE 01</p>
+          <h3>COFFRAGE</h3>
+          <p>We build the building’s negative first, in wood. The carpenters are half our payroll, and the formwork drawings run to more sheets than the building’s.</p>
+        </li>
+        <li>
+          <p class="ph-no mono">PHASE 02</p>
+          <h3>FERRAILLAGE</h3>
+          <p>Rust is structure. Every bar is bent on site, photographed, and archived before it disappears — the building keeps its skeleton a secret.</p>
+        </li>
+        <li>
+          <p class="ph-no mono">PHASE 03</p>
+          <h3>COULAGE</h3>
+          <p>One lift, one day, no joint we didn’t draw. The mixer leaves Saint-Menet at 05:40; by noon the pour is vibrated, struck level, and left alone.</p>
+        </li>
+        <li>
+          <p class="ph-no mono">PHASE 04</p>
+          <h3>DÉCOFFRAGE</h3>
+          <p>The only reveal that matters. We strip at dawn, when the grey is honest, and we keep the first board of every job — signed by the crew.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <div class="joint" role="separator" aria-label="Construction joint"><span class="mono">PREMIÈRE LEVÉE — 03.05.2011</span></div>
+
+  <!-- ============ STUDIO ============ -->
+  <section id="studio" class="studio">
+    <div class="wrap studio-grid">
+      <div>
+        <p class="kicker mono" lang="fr">L’ATELIER</p>
+        <h2 class="sec-title cast-type"><span class="reveal">STUDIO</span></h2>
+        <p class="studio-lede">Founded in 2011 by Inès Verlaque and Rachid Aït-Baali in a former ship-chandlery on the Madrague-Ville docks. Fourteen people, one concrete lab, a slump cone by the coffee machine. We take four projects a year and refuse the fifth.</p>
+      </div>
+      <ul class="roster mono" lang="fr">
+        <li><span>VERLAQUE, INÈS</span><span>ARCHITECTE DPLG · FONDATRICE</span></li>
+        <li><span>AÏT-BAALI, RACHID</span><span>INGÉNIEUR STRUCTURES · FONDATEUR</span></li>
+        <li><span>PIN, MARGAUX</span><span>LABORATOIRE BÉTON</span></li>
+        <li><span>ESCOFFIER, TIMOTHÉE</span><span>CHEF DE CHANTIER</span></li>
+        <li><span>NDIAYE, AWA</span><span>ARCHITECTE · PATRIMOINE</span></li>
+        <li><span>+ 9</span><span>CHARPENTIERS-COFFREURS &amp; DESSINATEURS</span></li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ CONTACT / FOOTER ============ -->
+<footer id="contact" class="footer">
+    <div class="wrap">
+      <h2 class="foot-cast cast-dark" lang="fr"><span class="reveal">COULÉ SUR PLACE</span></h2>
+      <div class="foot-grid">
+        <address class="mono" lang="fr">
+          BÉTON BRUT SARL D’ARCHITECTURE<br>
+          23 TRAVERSE DE LA MADRAGUE-VILLE<br>
+          13015 MARSEILLE — FRANCE
+        </address>
+        <p class="mono foot-contact">
+          <a href="tel:+33491602214">+33 4 91 60 22 14</a><br>
+          <a href="mailto:studio@betonbrut.fr">STUDIO@BETONBRUT.FR</a><br>
+          <span lang="fr">LUN–VEN 08H–18H, ENTRE DEUX COULAGES</span>
+        </p>
+        <ul class="foot-nav mono">
+          <li><a href="#ouvrages">OUVRAGES</a></li>
+          <li><a href="#matiere">MATIÈRE</a></li>
+          <li><a href="#methode">MÉTHODE</a></li>
+          <li><a href="#studio">STUDIO</a></li>
+        </ul>
+      </div>
+      <p class="colophon mono" lang="fr">ORDRE DES ARCHITECTES PACA Nº S-13-4471 · DESSINÉ ET COULÉ À MARSEILLE · MMXXVI</p>
+    </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>

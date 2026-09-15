@@ -1,0 +1,721 @@
+/* ==========================================================================
+   CALDERA 2027 — the site keeps solar time.
+   Every custom property below is a DAWN default; js/main.js re-lerps them
+   continuously against scroll position (dawn → noon → dusk → night).
+   ========================================================================== */
+
+:root {
+  /* sky + terrain */
+  --sky-top: #2E2A4A;
+  --sky-mid: #6B5680;
+  --sky-hor: #D08A5E;
+  --g-far: #46333A;
+  --g-near: #2B211F;
+  --rim: #37262E;
+  /* bodies */
+  --sun-x: 0.10; --sun-y: 0.86;
+  --sun-core: #FFC98F;
+  --glow-a: rgba(255,150,80,.50);
+  --glow-b: rgba(255,110,60,.22);
+  --moon-x: 0.2; --moon-y: 1.4; --moon-o: 0;
+  --stars-o: 0.25;
+  /* reading surface — snaps at the dusk flip (html.after-dusk), eased
+     in *time* by the registered-property transition below, so it can never
+     rest in a gray-on-gray mid-blend at any scroll position */
+  --ink: #201A14;
+  --paper: rgba(238,227,203,.95);
+  --line: rgba(32,26,20,.26);
+  --accent: #B0532B;
+  /* stone + light */
+  --stone-lit: #9C7B66;
+  --stone-shade: #4B3830;
+  --lit-dir: 95deg;
+  --sh-skew: 55deg;
+  --sh-len: 1.9;
+  --sh-col: rgba(43,26,54,.42);
+  /* effects */
+  --glint: 0;
+  --wind-o: 0;
+  --salt-glow: 0.06;
+
+  --font-display: 'Bevan', 'Archivo', serif;
+  --font-body: 'Archivo', system-ui, sans-serif;
+  --font-util: 'Archivo Narrow', 'Archivo', sans-serif;
+  --ease-out: cubic-bezier(.19, 1, .22, 1);
+}
+
+/* registered so the day↔night surface flip crossfades over half a second of
+   TIME instead of blending across scroll distance (fallback: instant snap) */
+@property --ink   { syntax: '<color>'; inherits: true; initial-value: #201A14; }
+@property --paper { syntax: '<color>'; inherits: true; initial-value: rgba(238,227,203,.95); }
+@property --line  { syntax: '<color>'; inherits: true; initial-value: rgba(32,26,20,.26); }
+
+html { transition: --ink .55s var(--ease-out), --paper .55s var(--ease-out), --line .55s var(--ease-out); }
+
+html.after-dusk {
+  --ink: #E9DFC6;
+  --paper: rgba(15,21,49,.92);
+  --line: rgba(233,223,198,.24);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* the scrollbar is the day gauge — it relights with the sun */
+html { scrollbar-color: var(--accent) transparent; }
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--sun-core), var(--accent));
+  border-radius: 5px;
+  border: 2px solid rgba(23,19,14,.35);
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.62;
+  color: var(--ink);
+  background: var(--sky-mid);
+  overflow-x: hidden;
+}
+
+/* desert grain over everything */
+body::after {
+  content: "";
+  position: fixed; inset: 0; z-index: 40;
+  pointer-events: none;
+  opacity: .05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='0.7'/%3E%3C/svg%3E");
+  background-size: 260px 260px;
+}
+
+::selection { background: var(--accent); color: #F2E8D2; }
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.skip {
+  position: absolute; left: 1rem; top: -3rem; z-index: 60;
+  padding: .5rem 1rem; background: #17130E; color: #EADFC8;
+  font-family: var(--font-util); text-decoration: none;
+  transition: top .2s var(--ease-out);
+}
+.skip:focus { top: 1rem; }
+
+.defs { position: absolute; width: 0; height: 0; }
+
+/* ==========================================================================
+   THE SKY — fixed world layer
+   ========================================================================== */
+
+.sky {
+  position: fixed; inset: 0; z-index: 0;
+  overflow: hidden;
+  background: linear-gradient(180deg,
+    var(--sky-top) 0%,
+    var(--sky-mid) 44%,
+    var(--sky-hor) 74%,
+    var(--sky-hor) 100%);
+}
+
+.stars {
+  position: absolute; left: 0; top: 0; width: 100%; height: 80%;
+  opacity: var(--stars-o);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .stars-b { animation: twinkle 5.5s ease-in-out infinite alternate; }
+}
+@keyframes twinkle {
+  from { opacity: calc(var(--stars-o) * .45); }
+  to   { opacity: var(--stars-o); }
+}
+
+/* one meteor, roughly every nine seconds — it only exists while the stars do */
+.meteor {
+  position: absolute; left: 62%; top: 13%;
+  width: 150px; height: 2px;
+  background: linear-gradient(90deg, #FBF4E3 0%, rgba(240,236,222,.55) 30%, rgba(240,236,222,0) 100%);
+  border-radius: 2px;
+  box-shadow: 0 0 7px 1px rgba(240,236,222,.4);
+  opacity: 0;
+  transform: rotate(-24deg);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .meteor { animation: meteor 9.4s cubic-bezier(.5, 0, .8, .4) 2.8s infinite; }
+}
+@keyframes meteor {
+  0%, 86%  { opacity: 0; transform: rotate(-24deg) translateX(0); }
+  88%      { opacity: calc(var(--stars-o) * .85); }
+  93%      { opacity: 0; transform: rotate(-24deg) translateX(-44vw); }
+  100%     { opacity: 0; transform: rotate(-24deg) translateX(-44vw); }
+}
+
+.sun {
+  position: absolute; left: 0; top: 0;
+  width: 84px; height: 84px; margin: -42px 0 0 -42px;
+  border-radius: 50%;
+  background: var(--sun-core);
+  box-shadow: 0 0 60px 28px var(--glow-a), 0 0 190px 90px var(--glow-b),
+              0 0 340px 170px var(--glow-c, transparent);
+  transform: translate3d(calc(var(--sun-x) * 100vw), calc(var(--sun-y) * 100vh), 0)
+             scale(var(--sun-r, 1));
+}
+/* boot: the sun eases up from below the rim — only when the visit starts at dawn */
+html.boot-dawn .sun { animation: sun-up 2.4s var(--ease-out) both; }
+@keyframes sun-up {
+  from {
+    transform: translate3d(calc(var(--sun-x) * 100vw), 118vh, 0) scale(var(--sun-r, 1));
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html.boot-dawn .sun { animation: none; }
+}
+
+.moon {
+  position: absolute; left: 0; top: 0;
+  width: 54px; height: 54px; margin: -27px 0 0 -27px;
+  border-radius: 50%;
+  background: #E9E2CF;
+  opacity: var(--moon-o);
+  box-shadow: 0 0 40px 10px rgba(226,222,238,.28);
+  transform: translate3d(calc(var(--moon-x) * 100vw), calc(var(--moon-y) * 100vh), 0);
+  overflow: hidden;
+}
+.moon::after {
+  content: ""; position: absolute; inset: 0; border-radius: 50%;
+  /* crescent shadow = the sky color AT the moon's own altitude (set by JS),
+     so a low moon never carries a wrong-colored navy disc through orange dusk */
+  background: var(--moon-shade, var(--sky-top));
+  transform: translate(-32%, -14%);
+}
+
+.rim-wrap { position: absolute; left: -2%; right: -2%; bottom: 0; height: 26vh; }
+.rim-far {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 100%;
+  background: var(--rim);
+  clip-path: polygon(0 46%, 5% 38%, 11% 44%, 18% 30%, 24% 41%, 31% 35%, 38% 44%,
+    46% 28%, 53% 40%, 60% 34%, 68% 43%, 75% 31%, 82% 42%, 89% 36%, 95% 44%, 100% 39%,
+    100% 100%, 0 100%);
+}
+.rim-near {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 58%;
+  background: linear-gradient(180deg, var(--g-far), var(--g-near) 82%);
+  clip-path: polygon(0 22%, 8% 30%, 17% 20%, 28% 32%, 40% 24%, 52% 34%, 63% 25%,
+    74% 33%, 85% 24%, 94% 31%, 100% 26%, 100% 100%, 0 100%);
+}
+html.shimmering .rim-far { filter: url(#shimmer); }
+
+/* ==========================================================================
+   CHROME — nav + HUD
+   ========================================================================== */
+
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: .8rem 1.4rem;
+  background: color-mix(in srgb, var(--paper) 72%, transparent);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.mark {
+  font-family: var(--font-display);
+  font-size: 1rem; letter-spacing: .09em;
+  color: var(--ink); text-decoration: none;
+  transition: color .25s var(--ease-out);
+}
+.mark:hover { color: var(--accent); }
+.nav nav { display: flex; gap: 1.4rem; }
+.nav nav a {
+  font-family: var(--font-util); font-size: .72rem;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--ink); text-decoration: none;
+  border-bottom: 2px solid transparent; padding-bottom: 2px;
+  transition: border-color .25s var(--ease-out);
+}
+.nav nav a:hover { border-bottom-color: var(--accent); }
+
+.hud {
+  position: fixed; left: 1.1rem; bottom: 1rem; z-index: 50;
+  display: flex; align-items: baseline; gap: .85rem;
+  padding: .55rem .95rem;
+  background: color-mix(in srgb, var(--paper) 85%, transparent);
+  border: 1px solid var(--line);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  font-family: var(--font-util);
+  opacity: 0;
+}
+html.boot .hud { animation: hud-in 1s var(--ease-out) 2s forwards; }
+@keyframes hud-in { to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  html.boot .hud { animation: none; opacity: 1; }
+}
+.hud-time {
+  font-weight: 600; font-size: 1.02rem; letter-spacing: .04em;
+  font-variant-numeric: tabular-nums; color: var(--ink);
+}
+.hud-phase {
+  font-size: .66rem; letter-spacing: .2em; color: var(--accent); font-weight: 600;
+}
+.hud-temp { font-size: .8rem; color: var(--ink); opacity: .75; font-variant-numeric: tabular-nums; }
+
+/* ==========================================================================
+   LAYOUT PRIMITIVES
+   ========================================================================== */
+
+main { position: relative; z-index: 1; }
+
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 clamp(1.1rem, 4vw, 2.5rem); }
+.wrap.narrow { max-width: 780px; }
+
+.eyebrow {
+  font-family: var(--font-util); font-weight: 600;
+  font-size: .74rem; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.sec-title {
+  font-family: var(--font-display); font-weight: 400;
+  font-size: clamp(1.9rem, 4.2vw, 3.1rem);
+  line-height: 1.12;
+  color: var(--ink);
+  margin-bottom: 1.6rem;
+  max-width: 22ch;
+}
+
+.prose p { max-width: 62ch; }
+.prose p + p { margin-top: 1.1rem; }
+
+.panel {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: clamp(1.2rem, 3vw, 2rem);
+}
+
+/* scroll reveals */
+.reveal { opacity: 0; transform: translateY(16px); }
+.reveal.in {
+  opacity: 1; transform: none;
+  transition: opacity .9s var(--ease-out), transform .9s var(--ease-out);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ==========================================================================
+   HERO — dawn
+   ========================================================================== */
+
+.hero { min-height: 122vh; position: relative; }
+.hero-inner {
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  align-items: center; text-align: center;
+  padding: 0 1rem 27vh;
+}
+.hero .eyebrow { color: color-mix(in srgb, var(--sky-hor) 55%, #F3E7CF); margin-bottom: .4rem; }
+
+.hero-title {
+  font-family: var(--font-display); font-weight: 400;
+  font-size: clamp(3.2rem, 13.5vw, 10.5rem);
+  line-height: 1;
+  letter-spacing: .05em;
+  color: var(--ink);
+  overflow: hidden;
+  padding-bottom: .04em;
+}
+.hero-title i {
+  font-style: normal; display: inline-block;
+  transform: translateY(115%);
+}
+html.boot .hero-title i { animation: rise 1.3s var(--ease-out) forwards; }
+html.boot .hero-title i:nth-child(1) { animation-delay: .10s; }
+html.boot .hero-title i:nth-child(2) { animation-delay: .19s; }
+html.boot .hero-title i:nth-child(3) { animation-delay: .28s; }
+html.boot .hero-title i:nth-child(4) { animation-delay: .37s; }
+html.boot .hero-title i:nth-child(5) { animation-delay: .46s; }
+html.boot .hero-title i:nth-child(6) { animation-delay: .55s; }
+html.boot .hero-title i:nth-child(7) { animation-delay: .64s; }
+@keyframes rise { to { transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) {
+  .hero-title i, html.boot .hero-title i { transform: none; animation: none; }
+}
+
+/* load order: letters rise first, then eyebrow → sub → hint, HUD last
+   (unscoped from .boot: hero reveals only ever run once, at load) */
+.hero .eyebrow.reveal.in { transition-delay: .9s; }
+.hero .hero-sub.reveal.in { transition-delay: 1.15s; }
+.hero .hero-hint.reveal.in { transition-delay: 1.4s; }
+@media (prefers-reduced-motion: reduce) {
+  .hero .reveal.in { transition-delay: 0s; }
+}
+
+.hero-sub {
+  max-width: 44ch; margin-top: 1.2rem;
+  font-size: clamp(.95rem, 1.35vw, 1.08rem);
+  color: var(--ink);
+}
+.hero-hint {
+  margin-top: 1.6rem;
+  font-family: var(--font-util); font-size: .7rem;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: var(--ink); opacity: .68;
+}
+
+/* ==========================================================================
+   SECTIONS
+   ========================================================================== */
+
+.manifesto { min-height: 105vh; display: flex; align-items: center; padding: 14vh 0; }
+.plan { min-height: 115vh; padding: 10vh 0 14vh; }
+.work { min-height: 135vh; padding: 13vh 0; }
+.guide { min-height: 115vh; padding: 14vh 0; }
+.dark { min-height: 112vh; padding: 15vh 0; display: flex; align-items: center; }
+
+.map-panel { padding-bottom: 1.4rem; }
+.map { width: 100%; height: auto; display: block; }
+.map-rim { fill: none; stroke: var(--ink); stroke-width: 1.7; opacity: .82; }
+.map-rim.inner { stroke-dasharray: 5 5; stroke-width: 1.1; opacity: .45; }
+.map-playa { fill: none; stroke: var(--ink); stroke-width: 1; stroke-dasharray: 1.5 3.5; opacity: .6; }
+.map-route { fill: none; stroke: var(--accent); stroke-width: 2.2; stroke-dasharray: 7 5; }
+.map-th { fill: var(--ink); }
+.map-st circle { fill: var(--accent); }
+.map-st text {
+  font-family: var(--font-util); font-size: 13px; font-weight: 600;
+  fill: #F5EBD6;
+}
+.map-label {
+  font-family: var(--font-util); font-size: 13px; letter-spacing: .1em;
+  fill: var(--ink);
+}
+.map-label.dim { opacity: .55; }
+.map-north line, .map-scale line { stroke: var(--ink); stroke-width: 1.5; }
+.map-north path { fill: var(--ink); }
+.map-note {
+  margin-top: 1rem; max-width: 58ch;
+  font-size: .92rem; color: var(--ink); opacity: .85;
+}
+
+/* work sections */
+.work-head { margin-bottom: 2rem; }
+/* station eyebrows ride the horizon band, so they get a catalog-tag chip —
+   paper + ink flip with solar time, so the tag never sinks into the sunset sky */
+.work-head .eyebrow {
+  display: inline-block;
+  padding: .36rem .68rem .3rem;
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+}
+.work-title {
+  font-family: var(--font-display); font-weight: 400;
+  font-size: clamp(2.1rem, 5vw, 3.6rem);
+  line-height: 1.05; text-transform: uppercase; letter-spacing: .03em;
+  color: var(--ink);
+}
+.artist { margin-top: .5rem; font-weight: 500; font-size: .95rem; color: var(--ink); opacity: .85; }
+
+.work-body {
+  display: grid; grid-template-columns: minmax(300px, 5fr) 6fr;
+  gap: clamp(1.4rem, 3.5vw, 3rem);
+  margin-top: 1.8rem; align-items: start;
+}
+.lyric {
+  font-size: clamp(1.12rem, 1.7vw, 1.32rem);
+  font-weight: 500; line-height: 1.55;
+  color: var(--ink);
+  max-width: 48ch;
+}
+
+.cat { display: grid; gap: .85rem; padding: clamp(1.1rem, 2.4vw, 1.5rem); }
+.cat > div {
+  display: grid; grid-template-columns: 7.2rem 1fr; gap: .8rem;
+  border-bottom: 1px solid var(--line); padding-bottom: .8rem;
+}
+.cat > div:last-child { border-bottom: 0; padding-bottom: 0; }
+.cat dt, .cat dd { transition: color .25s var(--ease-out); }
+.cat > div:hover dt { color: color-mix(in srgb, var(--accent) 55%, var(--ink)); }
+
+/* the walk between stations — a dry wayfinding tick fills the distance */
+.wayline {
+  margin-top: 15vh;
+  display: grid; justify-items: center; gap: .95rem;
+  text-align: center;
+}
+.wayline-tick {
+  width: 1px; height: 9vh;
+  background: repeating-linear-gradient(180deg, var(--ink) 0 6px, transparent 6px 14px);
+  opacity: .5;
+}
+.wayline p {
+  font-family: var(--font-util); font-weight: 600; font-size: .68rem;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: var(--ink); opacity: .72;
+  max-width: 44ch;
+}
+.cat dt {
+  font-family: var(--font-util); font-weight: 600; font-size: .7rem;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--accent); padding-top: .18em;
+}
+.cat dd { font-size: .92rem; color: var(--ink); }
+
+/* ==========================================================================
+   PLATES — framed panoramas that relight
+   ========================================================================== */
+
+.plate {
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--paper) 46%, transparent);
+  padding: 9px;
+  transition: border-color .3s var(--ease-out);
+}
+.plate:hover { border-color: color-mix(in srgb, var(--accent) 55%, var(--line)); }
+.plate-cap {
+  font-family: var(--font-util); font-size: .68rem;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--ink); opacity: .78;
+  padding: .7rem .2rem .1rem;
+}
+
+.scene {
+  position: relative;
+  aspect-ratio: 21 / 8;
+  min-height: 240px;
+  overflow: hidden;
+  background: linear-gradient(180deg,
+    var(--sky-top) 0%,
+    var(--sky-mid) 40%,
+    var(--sky-hor) 64%,
+    var(--sky-hor) 66%);
+}
+/* each plate's sky gains stars exactly when the world does (dusk plates) */
+.scene::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 62%;
+  background-image:
+    radial-gradient(circle at 22% 31%, rgba(240,236,222,.9) 0 1px, transparent 1.6px),
+    radial-gradient(circle at 71% 18%, rgba(240,236,222,.7) 0 1px, transparent 1.6px),
+    radial-gradient(circle at 48% 64%, rgba(240,236,222,.55) 0 1px, transparent 1.6px),
+    radial-gradient(circle at 87% 47%, rgba(240,236,222,.75) 0 1px, transparent 1.6px);
+  background-size: 160px 130px, 200px 170px, 240px 190px, 180px 150px;
+  opacity: var(--stars-o);
+}
+.s-rim {
+  position: absolute; left: -1%; right: -1%; bottom: 33.4%; height: 13%;
+  background: var(--rim);
+  clip-path: polygon(0 62%, 7% 40%, 15% 58%, 26% 34%, 36% 55%, 47% 38%, 57% 60%,
+    68% 36%, 78% 56%, 88% 40%, 100% 58%, 100% 100%, 0 100%);
+}
+html.shimmering .scene--mirror .s-rim { filter: url(#shimmer); }
+.s-ground {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 34%;
+  background: linear-gradient(180deg, var(--g-far), var(--g-near));
+}
+.scene--salt .s-ground {
+  background: linear-gradient(180deg,
+    color-mix(in srgb, var(--g-far) 62%, #4A4258),
+    color-mix(in srgb, var(--g-near) 60%, #191627));
+}
+.s-stage { position: absolute; left: 0; right: 0; top: 0; bottom: 34%; }
+
+.mon-wrap { position: absolute; bottom: 0; transform: translateX(-50%); }
+.mon, .mon-sh { position: absolute; inset: 0; }
+.mon {
+  background: linear-gradient(var(--lit-dir), var(--stone-lit), var(--stone-shade));
+  z-index: 2;
+}
+.mon-sh {
+  background: var(--sh-col);
+  transform-origin: 50% 100%;
+  transform: skewX(var(--sh-skew)) scaleY(calc(-1 * var(--sh-len) * var(--shm, 1)));
+  /* local bottom = contact point: keep it dense, fade toward the thrown tip */
+  -webkit-mask-image: linear-gradient(0deg, rgba(0,0,0,.95) 12%, rgba(0,0,0,.45) 62%, transparent 96%);
+  mask-image: linear-gradient(0deg, rgba(0,0,0,.95) 12%, rgba(0,0,0,.45) 62%, transparent 96%);
+  filter: blur(1px);
+  z-index: 1;
+}
+
+/* monument shapes */
+.m-col { clip-path: polygon(0 9%, 22% 0, 58% 3%, 100% 10%, 100% 100%, 0 100%); }
+.m-col.mon { box-shadow: inset -2px 0 0 rgba(20,12,6,.22); }
+
+.m-dome { border-radius: 50% 50% 0 0 / 100% 100% 0 0; }
+.m-dome.mon {
+  background:
+    repeating-linear-gradient(180deg,
+      rgba(23,19,14,.16) 0 1.5px, transparent 1.5px 8.6px),
+    linear-gradient(var(--lit-dir), var(--stone-lit), var(--stone-shade));
+}
+.m-door { border-radius: 45% 45% 0 0 / 90% 90% 0 0; }
+.m-door.mon { background: #191510; }
+
+.m-pipe { border-radius: 3px 3px 0 0; }
+.m-pipe.mon {
+  background: linear-gradient(var(--lit-dir),
+    color-mix(in srgb, var(--stone-lit) 62%, #A3441F),
+    color-mix(in srgb, var(--stone-shade) 70%, #38160B));
+  box-shadow: inset 0 3px 0 rgba(12,7,4,.55);
+}
+
+.m-fig { border-radius: 45% 45% 22% 22% / 26% 26% 6% 6%; }
+.m-fig.mon { background: #1C1610; }
+.m-fig::before {
+  content: ""; position: absolute; left: 50%; top: -21%;
+  width: 72%; aspect-ratio: 1; transform: translateX(-50%);
+  border-radius: 50%; background: inherit;
+}
+
+/* mirrors lie on the ground band; at solar noon the glass itself runs white */
+.mirror {
+  position: absolute;
+  background:
+    linear-gradient(0deg,
+      rgba(255,252,241, calc(var(--glint) * (.30 + var(--gm, .5) * .62))),
+      rgba(255,252,241, calc(var(--glint) * var(--gm, .5) * .5))),
+    linear-gradient(0deg, var(--sky-mid), var(--sky-top));
+  border: 1px solid rgba(18,12,8,.5);
+  box-shadow:
+    0 0 calc(var(--glint) * var(--gm, .5) * 24px)
+      calc(var(--glint) * var(--gm, .5) * 3px)
+      rgba(255,251,238, calc(var(--glint) * var(--gm, .5) * .85));
+}
+
+/* wind arcs */
+.arc {
+  position: absolute; border-radius: 50%;
+  border: 1px solid rgba(238,227,203,.75);
+  opacity: calc(var(--wind-o) * var(--am, .3));
+  transform: translate(-50%, -50%);
+  clip-path: inset(0 0 48% 0); /* sound rises: upper half-rings only */
+}
+
+/* salt spiral svg */
+.spiral-svg { position: absolute; left: 6%; bottom: -6%; width: 88%; height: 46%; overflow: visible; }
+.spiral { fill: none; stroke: #EFE6CF; stroke-width: 4.6; stroke-linecap: round; opacity: .95; }
+.spiral-glow {
+  fill: none; stroke: #F6EEDC; stroke-width: 9; stroke-linecap: round;
+  filter: blur(6px); opacity: var(--salt-glow);
+}
+
+/* ==========================================================================
+   INTERLUDE — fixed colors carry the ink flip
+   ========================================================================== */
+
+.interlude {
+  min-height: 85vh;
+  display: grid; place-items: center; text-align: center;
+  padding: 6vh 1.2rem;
+}
+.interlude-big {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 7vw, 5rem); line-height: 1.1;
+  color: #F3E7CF;
+  text-shadow: 0 2px 30px rgba(24,14,32,.65), 0 1px 3px rgba(24,14,32,.7);
+}
+.interlude-sub {
+  margin-top: 1.1rem;
+  font-family: var(--font-util); font-weight: 600; font-size: .84rem;
+  letter-spacing: .26em; text-transform: uppercase;
+  color: #F8EFDC;
+  text-shadow: 0 1px 10px rgba(24,14,32,.5);
+}
+
+/* ==========================================================================
+   FIELD GUIDE + NIGHT
+   ========================================================================== */
+
+.guide-card { display: grid; gap: 1.4rem; }
+.g-row {
+  display: grid; grid-template-columns: 8.5rem 1fr; gap: 1rem;
+  border-bottom: 1px solid var(--line); padding-bottom: 1.4rem;
+}
+.g-row:last-child { border-bottom: 0; padding-bottom: 0; }
+.g-row h3 {
+  font-family: var(--font-util); font-weight: 600; font-size: .74rem;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--accent); padding-top: .3em;
+}
+.g-row p { font-size: .95rem; max-width: 58ch; }
+.sched p { display: flex; flex-wrap: wrap; gap: .3rem .8rem; font-size: .95rem; }
+.sched p + p { margin-top: .45rem; }
+.sched span { opacity: .75; }
+.sched strong { font-variant-numeric: tabular-nums; letter-spacing: .02em; }
+.sched em { font-style: normal; opacity: .7; }
+.sched-note { margin-top: .6rem; font-size: .85rem; opacity: .7; }
+
+.night-data {
+  list-style: none; margin-top: 2rem;
+  display: flex; flex-wrap: wrap; gap: .8rem;
+}
+.night-data li {
+  border: 1px solid var(--line);
+  background: var(--paper);
+  padding: .7rem 1rem;
+  display: grid; gap: .15rem;
+  transition: border-color .3s var(--ease-out), transform .3s var(--ease-out);
+}
+.night-data li:hover { border-color: var(--accent); transform: translateY(-2px); }
+@media (prefers-reduced-motion: reduce) {
+  .night-data li:hover { transform: none; }
+}
+.night-data span {
+  font-family: var(--font-util); font-size: .64rem;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--accent);
+}
+.night-data strong { font-size: .92rem; font-weight: 500; color: var(--ink); }
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+
+.foot {
+  position: relative; z-index: 1;
+  padding: 9vh 0 12vh;
+  color: var(--ink);
+}
+.foot p { max-width: 68ch; font-size: .9rem; opacity: .88; }
+.foot p + p { margin-top: .55rem; }
+.foot-mark {
+  font-family: var(--font-display); font-size: 1.5rem;
+  letter-spacing: .1em; margin-bottom: 1rem; opacity: 1;
+}
+.foot-fine { font-size: .8rem; opacity: .66; margin-top: 1.2rem; }
+.foot a {
+  color: var(--ink); text-decoration-color: var(--accent); text-underline-offset: 3px;
+  transition: color .25s var(--ease-out);
+}
+.foot a:hover { color: var(--accent); }
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 880px) {
+  .work-body { grid-template-columns: 1fr; }
+  .lyric { max-width: 60ch; }
+}
+
+@media (max-width: 640px) {
+  body { font-size: 1rem; }
+  .nav { padding: .7rem 1rem; }
+  .nav nav { gap: .9rem; }
+  .nav nav a { font-size: .64rem; letter-spacing: .13em; }
+  .nav-dark { display: none; }
+  .scene { aspect-ratio: 4 / 3; min-height: 0; }
+  .hero-inner { padding-bottom: 30vh; }
+  .g-row { grid-template-columns: 1fr; gap: .35rem; }
+  .cat > div { grid-template-columns: 6.4rem 1fr; }
+  .hud { left: .7rem; bottom: .7rem; gap: .6rem; padding: .45rem .7rem; }
+  .hud-temp { display: none; } /* keep the phase word — it carries the voice */
+  .work { min-height: 120vh; }
+  .wayline { margin-top: 10vh; }
+  .wayline p { max-width: 30ch; }
+}
+
+@media (max-width: 400px) {
+  .nav nav { gap: .7rem; }
+}

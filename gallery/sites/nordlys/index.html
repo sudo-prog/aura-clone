@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NORDLYS — Arctic Expedition Outfitters, Tromsø</title>
+<meta name="description" content="Arctic expedition outfitters in Tromsø since 1911. Polar-night photography, dog-sled plateau crossings and ice-fjord kayak — planned, kitted and weighed under a live aurora sky.">
+<meta property="og:title" content="NORDLYS — Arctic Expedition Outfitters, Tromsø">
+<meta property="og:description" content="Outfitters of the polar night, 69.649°N. Three winter expeditions, one gear manifest, and a live aurora forecast read from the roof.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0B1626">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B1626'/%3E%3Cpath d='M8 38 C20 24 34 18 58 10' stroke='%23D96BC8' stroke-width='3' fill='none' opacity='.85'/%3E%3Cpath d='M6 46 C20 32 36 25 58 17' stroke='%235CF0A6' stroke-width='6' fill='none'/%3E%3Cpath d='M0 64 L0 55 L15 45 L29 53 L44 43 L64 53 L64 64 Z' fill='%23060D1A'/%3E%3C/svg%3E">
+<link rel="preload" href="./fonts/Archivo-03.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="./fonts/SchibstedGrotesk-02.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="./fonts/FragmentMono-03.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="./fonts/Archivo.css">
+<link rel="stylesheet" href="./fonts/SchibstedGrotesk.css">
+<link rel="stylesheet" href="./fonts/FragmentMono.css">
+<link rel="stylesheet" href="./css/main.css">
+<script>document.documentElement.classList.add('js');</script>
+<script type="importmap">
+{"imports":{"three":"./vendor/three.module.min.js"}}
+</script>
+</head>
+<body>
+
+<!-- ============ LIVING SKY ============ -->
+<div id="sky" aria-hidden="true">
+  <canvas id="sky-canvas"></canvas>
+  <div class="sky-fallback">
+    <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="fbSky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#030814"/><stop offset=".62" stop-color="#0B1626"/><stop offset="1" stop-color="#12233A"/>
+        </linearGradient>
+        <linearGradient id="fbAur" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#D96BC8" stop-opacity=".34"/>
+          <stop offset=".38" stop-color="#5CF0A6" stop-opacity=".5"/>
+          <stop offset="1" stop-color="#5CF0A6" stop-opacity="0"/>
+        </linearGradient>
+        <filter id="fbBlur" x="-20%" y="-40%" width="140%" height="180%"><feGaussianBlur stdDeviation="26"/></filter>
+      </defs>
+      <rect width="1440" height="900" fill="url(#fbSky)"/>
+      <path d="M-40 320 C 260 180 540 260 820 150 C 1050 70 1280 130 1480 60 L1480 560 C 1200 600 900 520 620 610 C 400 680 140 620 -40 700 Z" fill="url(#fbAur)" filter="url(#fbBlur)"/>
+      <path d="M0 700 L180 640 L340 690 L520 610 L700 670 L880 600 L1060 660 L1240 615 L1440 665 L1440 900 L0 900 Z" fill="#081120"/>
+      <path d="M0 760 L220 700 L420 755 L640 685 L860 745 L1100 690 L1300 740 L1440 710 L1440 900 L0 900 Z" fill="#050B16"/>
+    </svg>
+  </div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="site-head">
+  <a class="brand" href="#himmel">NORDLYS</a>
+  <nav class="site-nav" aria-label="Site">
+    <a href="#ekspedisjoner">Ekspedisjoner</a>
+    <a href="#varsel">Varsel</a>
+    <a href="#utstyr">Utstyr</a>
+    <a href="#kontakt">Kontakt</a>
+  </nav>
+  <p class="head-fix"><span class="live-dot" aria-hidden="true"></span>69.649°N</p>
+</header>
+
+<main>
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="himmel" aria-label="Nordlys — introduction">
+    <div class="wrap hero-core">
+      <p class="hero-eyebrow" data-load="1" lang="nb">Arktisk ekspedisjonsutstyr · Tromsø, Norge · siden 1911</p>
+      <h1 class="hero-mark" data-load="2">NORDLYS</h1>
+      <p class="hero-line" data-load="3">Outfitters of the polar night. We plan the route, issue the kit, and hand you over to the weather.</p>
+      <a class="hero-cue" href="#protokoll" data-load="4"><span class="cue-line" aria-hidden="true"></span>Scroll — the sky is live</a>
+    </div>
+    <div class="wrap hero-strip" data-load="5">
+      <div class="tele"><span class="tele-label">Lat</span><span class="tele-num">69.649°<em>N</em></span></div>
+      <div class="tele"><span class="tele-label">Lon</span><span class="tele-num">018.956°<em>E</em></span></div>
+      <div class="tele"><span class="tele-label">Air, yard</span><span class="tele-num">−11.4°<em>C</em></span></div>
+      <div class="tele is-kp"><span class="tele-label">Kp index</span><span class="tele-num">4.7<em>act</em></span></div>
+    </div>
+  </section>
+
+  <!-- ============ PROTOKOLL ============ -->
+  <section class="panel" id="protokoll" aria-labelledby="protokoll-h">
+    <div class="wrap">
+      <header class="sec-head" data-reveal>
+        <p class="sec-eyebrow">Vinterprotokollen · house rules of the dark season</p>
+        <h2 id="protokoll-h">Fifty days without a&nbsp;sunrise. We dress you for every one of them.</h2>
+      </header>
+      <div class="proto-grid">
+        <p class="lede" data-reveal>Tromsø sits at 69.6° north, four hundred kilometres above the Arctic Circle. From 27 November to 15 January the sun never clears the horizon. We have outfitted travel through that dark since 1911 — first for hunters and telegraph crews, now for people who want to cross a plateau behind their own dogs and sleep warm at minus twenty-four.</p>
+        <p class="lede second" data-reveal>We are not a tour company. We are outfitters: the route is planned to the hour, the kit is weighed to the gram, and the rest is between you and the weather. Groups stay small. Phones stay in the pulk.</p>
+      </div>
+      <dl class="stat-row" data-reveal>
+        <div class="stat"><dt>Sunless days each winter</dt><dd>50</dd></div>
+        <div class="stat"><dt>Alaskan huskies in the yard</dt><dd>48</dd></div>
+        <div class="stat"><dt>Guides · avg seasons</dt><dd>9<span class="stat-sep">·</span>14</dd></div>
+        <div class="stat"><dt>Coldest issue rating</dt><dd>−45°C</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ============ EKSPEDISJONER ============ -->
+  <section class="panel" id="ekspedisjoner" aria-labelledby="eksp-h">
+    <div class="wrap">
+      <header class="sec-head" data-reveal>
+        <p class="sec-eyebrow">Ekspedisjoner · winter 2026–27 · departures from Tromsø</p>
+        <h2 id="eksp-h">Three routes into the dark</h2>
+        <p class="sec-sub">Every departure is guided, provisioned and fully kitted from our own stores. Prices are per traveller, from Tromsø, everything included except your courage and your camera.</p>
+      </header>
+
+      <div class="exp-list">
+        <article class="exp" data-reveal>
+          <h3 class="visually-hidden">Mørketid — polar-night photography</h3>
+          <button class="exp-head" aria-expanded="false" aria-controls="exp-morketid">
+            <span class="exp-id">
+              <span class="exp-name">Mørketid</span>
+              <span class="exp-kind">Polar-night photography&nbsp;· Kvaløya west shore</span>
+            </span>
+            <span class="exp-meta">
+              <span class="exp-dates">9 – 14 Jan 2027</span>
+              <span class="exp-len">5 nights · party of 6</span>
+            </span>
+            <span class="exp-price"><span class="exp-cur">NOK</span>34 800</span>
+            <span class="exp-plus" aria-hidden="true"></span>
+          </button>
+          <div class="exp-body" id="exp-morketid">
+            <div class="exp-body-in">
+              <p>Five nights on the west shore of Kvaløya, where the noon light holds a two-hour blue that photographs like held breath. Days are for sea stacks, drift ice and the patient geometry of the shoreline; nights are for the aurora watch from a heated shore hut at Ersfjordbotn. Tripods and −40° clothing issued. Patience assumed.</p>
+              <dl class="exp-facts">
+                <div><dt>Route</dt><dd>Tromsø — Kattfjord — Ersfjordbotn</dd></div>
+                <div><dt>Party</dt><dd>Max 6 + guide-photographer</dd></div>
+                <div><dt>Issued</dt><dd>Parka, mukluks, carbon tripod, 1.2&nbsp;L thermos</dd></div>
+                <div><dt>Under canvas</dt><dd>0 nights — shore huts, wood stoves</dd></div>
+              </dl>
+              <p class="exp-status"><span class="status-open">4 of 6 places open</span><a class="exp-cta" href="#kontakt">Request a place</a></p>
+            </div>
+          </div>
+        </article>
+
+        <article class="exp" data-reveal>
+          <h3 class="visually-hidden">Vidda — dog-sled plateau crossing</h3>
+          <button class="exp-head" aria-expanded="false" aria-controls="exp-vidda">
+            <span class="exp-id">
+              <span class="exp-name">Vidda</span>
+              <span class="exp-kind">Dog-sled plateau crossing&nbsp;· Dividalen</span>
+            </span>
+            <span class="exp-meta">
+              <span class="exp-dates">20 – 27 Feb 2027</span>
+              <span class="exp-len">8 days · party of 8</span>
+            </span>
+            <span class="exp-price"><span class="exp-cur">NOK</span>61 500</span>
+            <span class="exp-plus" aria-hidden="true"></span>
+          </button>
+          <div class="exp-body" id="exp-vidda">
+            <div class="exp-body-in">
+              <p>Two hundred and twelve kilometres from Camp Tamok over the Dividalen high plateau, each traveller driving their own team of five Alaskan huskies. You feed them before you feed yourself; by day three they will forgive your braking. Nights are spent in expedition tents at minus twenty and below — warm, because the kit is correct and the routine is kept.</p>
+              <dl class="exp-facts">
+                <div><dt>Route</dt><dd>Camp Tamok — Rostadalen — Dividalen · 212 km</dd></div>
+                <div><dt>Party</dt><dd>Max 8 + 2 mushers</dd></div>
+                <div><dt>Issued</dt><dd>Full expedition suit, sleeping system, sled &amp; team</dd></div>
+                <div><dt>Under canvas</dt><dd>7 nights — two-person tents, spirit stoves</dd></div>
+              </dl>
+              <p class="exp-status"><span class="status-wait">Waitlist only</span><a class="exp-cta" href="#kontakt">Join the waitlist</a></p>
+            </div>
+          </div>
+        </article>
+
+        <article class="exp" data-reveal>
+          <h3 class="visually-hidden">Isfjord — ice-fjord kayak</h3>
+          <button class="exp-head" aria-expanded="false" aria-controls="exp-isfjord">
+            <span class="exp-id">
+              <span class="exp-name">Isfjord</span>
+              <span class="exp-kind">Ice-fjord kayak&nbsp;· Lyngen&nbsp;Alps</span>
+            </span>
+            <span class="exp-meta">
+              <span class="exp-dates">12 – 15 Mar 2027</span>
+              <span class="exp-len">4 days · party of 8</span>
+            </span>
+            <span class="exp-price"><span class="exp-cur">NOK</span>26 900</span>
+            <span class="exp-plus" aria-hidden="true"></span>
+          </button>
+          <div class="exp-body" id="exp-isfjord">
+            <div class="exp-body-in">
+              <p>Four days of paddling among drift ice in the Lyngen fjords, under alps that rise eighteen hundred metres straight from the tide line. Sea eagles by day; by night, the aurora over Strupen watched from the pier sauna, eighty metres from your bunk. Drysuits issued and mandatory. Cold water is honest — it tells you everything at once.</p>
+              <dl class="exp-facts">
+                <div><dt>Route</dt><dd>Lyngseidet — Strupskardet — Sørlenangen</dd></div>
+                <div><dt>Party</dt><dd>Max 8 + 2 guides</dd></div>
+                <div><dt>Issued</dt><dd>Drysuit, double kayak, deck compass, dry bags</dd></div>
+                <div><dt>Under canvas</dt><dd>0 nights — moored fjord cabin, pier sauna</dd></div>
+              </dl>
+              <p class="exp-status"><span class="status-open">Open — 8 places</span><a class="exp-cta" href="#kontakt">Request a place</a></p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ NORDLYSVARSEL (clearing — live sky behind) ============ -->
+  <section class="clearing" id="varsel" aria-labelledby="varsel-h">
+    <div class="wrap">
+      <header class="sec-head on-sky" data-reveal>
+        <p class="sec-eyebrow">Nordlysvarsel · station 69.649°N · posted 14:00 daily</p>
+        <h2 id="varsel-h">Tonight’s sky, read from the roof</h2>
+        <p class="sec-sub">The Kp index measures geomagnetic unrest from 0 to 9. Above 4, the aurora stands directly overhead in Tromsø. Above 6, cancel dinner. Our forecaster posts the dial by 14:00 — the sky is under no obligation to agree.</p>
+      </header>
+
+      <div class="instrument" data-reveal>
+        <span class="screw s-tl" aria-hidden="true"></span><span class="screw s-tr" aria-hidden="true"></span>
+        <span class="screw s-bl" aria-hidden="true"></span><span class="screw s-br" aria-hidden="true"></span>
+
+        <div class="dial-col">
+          <svg class="dial" viewBox="0 0 320 320" role="img" aria-label="Kp gauge reading 4.7 — active">
+            <defs>
+              <linearGradient id="brass" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#D8BC85"/><stop offset=".45" stop-color="#B9985F"/>
+                <stop offset=".72" stop-color="#7A5F35"/><stop offset="1" stop-color="#C9AA6E"/>
+              </linearGradient>
+              <radialGradient id="dialFace" cx=".5" cy=".42" r=".75">
+                <stop offset="0" stop-color="#101F35"/><stop offset=".7" stop-color="#0A1524"/><stop offset="1" stop-color="#071020"/>
+              </radialGradient>
+              <radialGradient id="glass" cx=".34" cy=".26" r=".9">
+                <stop offset="0" stop-color="#FFFFFF" stop-opacity=".14"/>
+                <stop offset=".32" stop-color="#FFFFFF" stop-opacity=".04"/>
+                <stop offset=".6" stop-color="#FFFFFF" stop-opacity="0"/>
+              </radialGradient>
+              <filter id="needleGlow" x="-40%" y="-40%" width="180%" height="180%">
+                <feGaussianBlur stdDeviation="4"/>
+              </filter>
+            </defs>
+
+            <circle cx="160" cy="160" r="150" fill="url(#dialFace)"/>
+            <circle cx="160" cy="160" r="151" fill="none" stroke="url(#brass)" stroke-width="9"/>
+            <circle cx="160" cy="160" r="144" fill="none" stroke="#B9985F" stroke-opacity=".38" stroke-width="1"/>
+
+            <!-- zone arcs: quiet 0–3, active 3–5, storm 5–9 -->
+            <path d="M76.56 243.44 A118 118 0 0 1 76.56 76.56" fill="none" stroke="#8FA6BC" stroke-opacity=".38" stroke-width="3"/>
+            <path d="M76.56 76.56 A118 118 0 0 1 190.54 46.02" fill="none" stroke="#5CF0A6" stroke-opacity=".8" stroke-width="3"/>
+            <path d="M190.54 46.02 A118 118 0 0 1 243.44 243.44" fill="none" stroke="#D96BC8" stroke-opacity=".65" stroke-width="3"/>
+
+            <!-- major ticks 0–9 -->
+            <g stroke="#E9F2F6" stroke-opacity=".55" stroke-width="1.6">
+              <line x1="70.90" y1="249.10" x2="62.42" y2="257.58"/>
+              <line x1="38.29" y1="192.61" x2="26.70" y2="195.72"/>
+              <line x1="38.29" y1="127.39" x2="26.70" y2="124.28"/>
+              <line x1="70.90" y1="70.90" x2="62.42" y2="62.42"/>
+              <line x1="127.39" y1="38.29" x2="124.28" y2="26.70"/>
+              <line x1="192.61" y1="38.29" x2="195.72" y2="26.70"/>
+              <line x1="249.10" y1="70.90" x2="257.58" y2="62.42"/>
+              <line x1="281.71" y1="127.39" x2="293.30" y2="124.28"/>
+              <line x1="281.71" y1="192.61" x2="293.30" y2="195.72"/>
+              <line x1="249.10" y1="249.10" x2="257.58" y2="257.58"/>
+            </g>
+
+            <!-- numerals -->
+            <g class="dial-nums" fill="#8FA6BC" text-anchor="middle">
+              <text x="89.3" y="235">0</text><text x="63.4" y="190">1</text><text x="63.4" y="138">2</text>
+              <text x="89.3" y="93">3</text><text x="134.1" y="68">4</text><text x="185.9" y="68">5</text>
+              <text x="230.7" y="93">6</text><text x="256.6" y="138">7</text><text x="256.6" y="190">8</text>
+              <text x="230.7" y="235">9</text>
+            </g>
+
+            <text class="dial-name" x="160" y="118" text-anchor="middle">NORDLYSVARSEL</text>
+            <text class="dial-sub" x="160" y="133" text-anchor="middle">Kp · GEOMAGNETIC UNREST</text>
+
+            <!-- needle: drawn at Kp 0 · rotated to 4.7 (−135° + 4.7×30° = +6°) -->
+            <g class="needle-pos">
+              <g class="needle-quiver">
+                <path d="M157 182 L160 46 L163 182 Z" fill="#5CF0A6" opacity=".5" filter="url(#needleGlow)"/>
+                <path d="M157.6 182 L160 48 L162.4 182 Z" fill="#5CF0A6"/>
+                <path d="M157.6 182 L160 206 L162.4 182 Z" fill="#8FA6BC" opacity=".8"/>
+              </g>
+            </g>
+            <circle cx="160" cy="160" r="11" fill="url(#brass)"/>
+            <circle cx="160" cy="160" r="3.6" fill="#0A1524"/>
+
+            <!-- readout aperture -->
+            <rect x="136" y="240" width="48" height="24" rx="2.5" fill="#060D1A" stroke="#B9985F" stroke-opacity=".5"/>
+            <text class="dial-read" x="160" y="257" text-anchor="middle">4.7</text>
+            <text class="dial-maker" x="160" y="278" text-anchor="middle">FUGLESANG &amp; DØTRE · BERGEN</text>
+
+            <circle cx="160" cy="160" r="149" fill="url(#glass)"/>
+            <path d="M52 118 A118 118 0 0 1 168 42" fill="none" stroke="#FFFFFF" stroke-opacity=".1" stroke-width="14" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <div class="read-col">
+          <dl class="gauge-read">
+            <div><dt>Kp now</dt><dd class="val-green">4.7 · active</dd></div>
+            <div><dt>Bz component</dt><dd>−6.2 nT, holding south</dd></div>
+            <div><dt>Solar wind</dt><dd>512 km/s</dd></div>
+            <div><dt>Cloud, Kvaløya</dt><dd>2 okta, thinning</dd></div>
+            <div><dt>Moon</dt><dd>Waning crescent, 12%</dd></div>
+            <div><dt>Observation window</dt><dd class="val-green">21:40 – 01:10 CET</dd></div>
+            <div><dt>Yard clock</dt><dd><span data-clock>–:–</span> Tromsø</dd></div>
+          </dl>
+
+          <div class="fc-bars" aria-label="Three-night Kp forecast">
+            <div class="fc-row"><span class="fc-night">Tonight</span><span class="fc-track"><span class="fc-fill" style="--kp:4.7"></span></span><span class="fc-val">4.7</span></div>
+            <div class="fc-row"><span class="fc-night">+1 night</span><span class="fc-track"><span class="fc-fill" style="--kp:3.2"></span></span><span class="fc-val">3.2</span></div>
+            <div class="fc-row"><span class="fc-night">+2 nights</span><span class="fc-track"><span class="fc-fill storm" style="--kp:5.1"></span></span><span class="fc-val">5.1</span></div>
+            <p class="fc-key"><span class="key-tick" aria-hidden="true"></span>Kp 4 — the overhead line</p>
+          </div>
+
+          <p class="gauge-note">A fictional index from a real habit: someone climbs to the roof at 14:00, every day, all winter.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ UTSTYRSMANIFEST ============ -->
+  <section class="panel" id="utstyr" aria-labelledby="utstyr-h">
+    <div class="wrap">
+      <header class="sec-head" data-reveal>
+        <p class="sec-eyebrow">Utstyrsmanifest · winter issue · weighed to the gram</p>
+        <h2 id="utstyr-h">The manifest</h2>
+        <p class="sec-sub">Issued to every traveller at the yard, the evening before departure. Checked twice — once by us, once by the cold. Personal items are inspected: cotton next to skin fails.</p>
+      </header>
+
+      <p class="scroll-hint" aria-hidden="true">Slide to read the full sheet →</p>
+      <div class="table-scroll" data-reveal tabindex="0" role="region" aria-label="Gear manifest table">
+        <table class="manifest">
+          <caption class="visually-hidden">Winter issue manifest: reference, item, specification, mass and source for each piece of expedition equipment. Each row carries a toggle to mark the item as packed.</caption>
+          <thead>
+            <tr><th class="c-chk" aria-label="checked"></th><th class="c-ref">Ref</th><th>Item</th><th>Specification</th><th class="c-mass">Mass</th><th class="c-src">Source</th></tr>
+          </thead>
+          <tbody>
+            <tr class="grp"><th colspan="6" scope="rowgroup">Layers</th></tr>
+            <tr><td class="c-chk"><button class="chk" type="button" aria-pressed="false"></button></td><td class="c-ref">NL-L01</td><td>Expedition parka</td><td>850-fill goose down · rated −40°C</td><td class="c-mass">1 480 g</td><td class="c-src">Issued</td></tr>
+            <tr><td class="c-chk"><button class="chk" type="button" aria-pressed="false"></button></td><td class="c-ref">NL-L02</td><td>Wool base layer × 2</td><td>200 g/m² merino, full zip neck</td><td class="c-mass">380 g</td><td class="c-src src-p">Personal</td></tr>
+            <tr><td class="c-chk"><button class="chk" type="button" aria-pressed="false"></button></td><td class="c-ref">NL-L03</td><td>Windsuit</td><td>Ventile cotton · anorak + salopettes</td><td class="c-mass">1 120 g</td><td class="c-src">Issued</td></tr>
+            <tr><td class="c-chk"><button class="chk" type="button" aria-pressed="false"></button></td><td class="c-ref">NL-L04</td><td>Mitten system</td><td>Wool liner / down mid / storm shell</td><td class="c-mass">310 g</td><td class="c-src">Issued</td></tr>
+            <tr><td class="c-chk"><button class="chk" type="button" aria-pressed="false"></button></td><td class="c-ref">NL-L05</td><td>Mukluk boots</td><td>Felt liner · moose hide · rated −45°C</td><td class="c-mass">1 900 g</td><td class="c-src">Issued</td></tr>
+          </tbody>
+          <tbody>
+            <tr class="grp"><th colspan="6" scope="rowgroup">Traverse</th></tr>
+            <tr><td class="c-chk"><button class="chk" type="button" aria-pressed="false"></button></td><td class="c-ref">NL-T01</td><td>Pulk harness</td><td>Padded hip belt · 2 m rigid trace</td><td class="c-mass">640 g</td><td class="c-src">Issued</td></tr>
+            <tr><td class="c-chk"><button class="chk" type="button" aria-pressed="false"></button></td><td class="c-ref">NL-T02</td><td>Snow goggles</td><td>Amber cat. 2 lens, low-light</td><td class="c-mass">140 g</td><td class="c-src">Issued</td></tr>
+            <tr><td class="c-chk"><button class="chk" type="button" aria-pressed="false"></button></td><td class="c-ref">NL-T03</td><td>Headlamp + spare cells</td><td>600 lm · lithium, cold-rated</td><td class="c-mass">210 g</td><td class="c-src src-p">Personal</td></tr>
+            <tr><td class="c-chk"><button class="chk" type="button" aria-pressed="false"></button></td><td class="c-ref">NL-T04</td><td>Thermos 1.2 L</td><td>Steel · holds 70°C through −30°C night</td><td class="c-mass">780 g</td><td class="c-src">Issued</td></tr>
+          </tbody>
+          <tbody>
+            <tr class="grp"><th colspan="6" scope="rowgroup">Camp</th></tr>
+            <tr><td class="c-chk"><button class="chk" type="button" aria-pressed="false"></button></td><td class="c-ref">NL-C01</td><td>Sleeping bag</td><td>Down · comfort −32°C, expedition cut</td><td class="c-mass">2 150 g</td><td class="c-src">Issued</td></tr>
+            <tr><td class="c-chk"><button class="chk" type="button" aria-pressed="false"></button></td><td class="c-ref">NL-C02</td><td>Sleeping mat, double</td><td>Closed-cell + air · R-value 7.1</td><td class="c-mass">890 g</td><td class="c-src">Issued</td></tr>
+            <tr><td class="c-chk"><button class="chk" type="button" aria-pressed="false"></button></td><td class="c-ref">NL-C03</td><td>Storm matches + flint</td><td>Wax-sealed, tin of 40</td><td class="c-mass">60 g</td><td class="c-src">Issued</td></tr>
+          </tbody>
+          <tbody>
+            <tr class="grp"><th colspan="6" scope="rowgroup">Optics</th></tr>
+            <tr><td class="c-chk"><button class="chk" type="button" aria-pressed="false"></button></td><td class="c-ref">NL-O01</td><td>Binoculars 8×42</td><td>Nitrogen-purged · tethered caps</td><td class="c-mass">720 g</td><td class="c-src">Issued</td></tr>
+            <tr><td class="c-chk"><button class="chk" type="button" aria-pressed="false"></button></td><td class="c-ref">NL-O02</td><td>Battery warmers × 12</td><td>Chemical pads, 8 h each</td><td class="c-mass">240 g</td><td class="c-src src-p">Personal</td></tr>
+          </tbody>
+          <tfoot>
+            <tr><td colspan="4">Issued mass per traveller</td><td class="c-mass">10 190 g</td><td class="c-src"></td></tr>
+          </tfoot>
+        </table>
+      </div>
+      <p class="manifest-note" data-reveal>Your shoulders carry 10.2 kg. The pulk — or the dogs, or the hull — carries the rest.</p>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+</main>
+
+<footer class="site-foot" id="kontakt">
+  <div class="wrap">
+    <p class="foot-sign" data-reveal lang="nb">Kle deg riktig. <span>Se opp.</span></p>
+    <p class="foot-sign-tr" data-reveal>Dress correctly. Look up.</p>
+    <div class="foot-grid" data-reveal>
+      <div>
+        <h2 class="foot-h">Yard</h2>
+        <p>NORDLYS Ekspedisjonsutstyr<br>Storgata 88, 9008 Tromsø<br>Org.nr NO 911 693 442 MVA</p>
+      </div>
+      <div>
+        <h2 class="foot-h">Hours, mørketid</h2>
+        <p>Mon – Sat, 10:00 – 16:00<br>Or whenever the yard lights are on.<br>Light returns 15 January.</p>
+      </div>
+      <div>
+        <h2 class="foot-h">Contact</h2>
+        <p><a href="mailto:post@nordlys.example">post@nordlys.example</a><br>+47 776 90 111<br>VHF ch. 68 · callsign LN-NRD</p>
+      </div>
+    </div>
+    <p class="foot-legal" data-reveal>NORDLYS is a fictional outfitter. The aurora above is computed live — like the real one, it never repeats.</p>
+  </div>
+</footer>
+
+<script type="module" src="./js/aurora.js"></script>
+<script type="module" src="./js/main.js"></script>
+</body>
+</html>

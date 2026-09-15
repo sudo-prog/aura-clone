@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HYPERCHROME — Y2K design laboratory</title>
+<meta name="description" content="HYPERCHROME is a Y2K design laboratory releasing digital objects — cursor packs, wallpapers, UI skins — as numbered drops. Liquid chrome, no restocks.">
+<meta property="og:title" content="HYPERCHROME — Y2K design laboratory">
+<meta property="og:description" content="Digital objects from the future we were promised. Numbered drops. Liquid chrome. No restocks.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#EFF2F7">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='c' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23ffffff'/%3E%3Cstop offset='.45' stop-color='%23c9d1de'/%3E%3Cstop offset='.5' stop-color='%23525f7a'/%3E%3Cstop offset='.56' stop-color='%23eef3fa'/%3E%3Cstop offset='1' stop-color='%238fa0ba'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='28' fill='url(%23c)'/%3E%3Cellipse cx='24' cy='20' rx='10' ry='6' fill='%23ffffff' opacity='.85'/%3E%3Cpath d='M8 36a24 24 0 0 0 48 0' fill='none' stroke='%233EE8FF' stroke-width='3' opacity='.7'/%3E%3Cpath d='M12 44a24 24 0 0 0 40 0' fill='none' stroke='%23FF2DB2' stroke-width='3' opacity='.6'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/TitanOne-02.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Michroma-02.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/SpaceGrotesk-03.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/TitanOne.css">
+<link rel="stylesheet" href="fonts/Michroma.css">
+<link rel="stylesheet" href="fonts/SpaceGrotesk.css">
+<link rel="stylesheet" href="css/main.css">
+<script type="importmap">
+{"imports":{"three":"./vendor/three.module.min.js","three/addons/":"./vendor/addons/"}}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#catalog">Skip to the catalog</a>
+
+<header class="nav" id="top">
+  <a class="nav-logo" href="#top">HYPERCHROME<sup>®</sup></a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="#drop">Current drop</a>
+    <a href="#catalog">Catalog</a>
+    <a href="#notes">Lab notes</a>
+    <a href="#manifesto">Manifesto</a>
+  </nav>
+  <a class="btn btn-cobalt btn-small" href="#droplist">Get the drop list</a>
+</header>
+
+<main>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="hero">
+    <div class="hero-stage" id="blob-stage" aria-hidden="true">
+      <div class="orb-fallback" hidden></div>
+    </div>
+
+    <div class="hero-content">
+      <p class="eyebrow hero-eyebrow" data-load="1">Design laboratory · Terminal City · est. 1999</p>
+      <h1 class="hero-title" data-load="2">
+        <span class="chrome" data-text="HYPERCHROME">HYPERCHROME</span>
+      </h1>
+      <p class="hero-tag" data-load="3">Digital objects from the future we were promised. Cursor&nbsp;packs, wallpapers and UI skins, released as numbered drops&nbsp;—&nbsp;polished until they reflect.</p>
+      <div class="hero-actions" data-load="4">
+        <a class="btn btn-cobalt" href="#droplist">Get the drop list</a>
+        <a class="btn btn-chrome" href="#catalog">Browse the catalog</a>
+      </div>
+    </div>
+
+    <div class="sticker sticker-new" data-load="5" aria-hidden="true">
+      <span class="sticker-burst"></span>
+      <span class="sticker-word">NEW!</span>
+    </div>
+
+    <div class="sticker sticker-est" data-load="6" aria-hidden="true">
+      <svg viewBox="0 0 120 120" class="spin-text">
+        <defs><path id="ring" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs>
+        <text><textPath href="#ring">HYPERCHROME · DESIGN LAB · EST 1999 · NO RESTOCKS ·</textPath></text>
+      </svg>
+      <span class="sticker-core">HC</span>
+    </div>
+
+    <div class="hero-scrollcue" data-load="7" aria-hidden="true">▼</div>
+  </section>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span class="ticker-run">HC-006 · CHROME TYPE DISC · DROPS 09.03.49&ensp;✦&ensp;HC-005 LIVE NOW · 1,204 OF 2,000 CLAIMED&ensp;✦&ensp;NO RESTOCKS. EVER.&ensp;✦&ensp;CHROME NEVER SLEEPS&ensp;✦&ensp;EST. 1999 · SHIPPING TO 2049&ensp;✦&ensp;</span><span class="ticker-run">HC-006 · CHROME TYPE DISC · DROPS 09.03.49&ensp;✦&ensp;HC-005 LIVE NOW · 1,204 OF 2,000 CLAIMED&ensp;✦&ensp;NO RESTOCKS. EVER.&ensp;✦&ensp;CHROME NEVER SLEEPS&ensp;✦&ensp;EST. 1999 · SHIPPING TO 2049&ensp;✦&ensp;</span>
+    </div>
+  </div>
+
+  <!-- ================= CURRENT DROP ================= -->
+  <section class="section drop" id="drop">
+    <p class="eyebrow" data-reveal>Current drop · closes when the edition does</p>
+    <div class="drop-card" data-reveal>
+      <div class="drop-preview" role="img" aria-label="Animated liquid crystal preview — slow pours of cyan, magenta and lime light">
+        <div class="lc-pool" aria-hidden="true"></div>
+        <span class="chip chip-id">HC-005</span>
+        <span class="badge-live"><span class="pulse-dot"></span>LIVE NOW</span>
+      </div>
+      <div class="drop-info">
+        <h2 class="drop-title"><span class="chrome chrome-s" data-text="Liquid Crystal Screensaver">Liquid Crystal Screensaver</span></h2>
+        <p class="drop-desc">A screensaver that behaves like weather. Thirty minutes of slow-churning liquid crystal, computed in real time — no loops, no keyframes, never the same pour twice. Ships with a bedside “puddle mode” clock that tells the time in ripples.</p>
+        <dl class="meta">
+          <div><dt>Edition</dt><dd>2,000 · 1,204 claimed</dd></div>
+          <div><dt>Released</dt><dd>08.01.49</dd></div>
+          <div><dt>Formats</dt><dd>.scr / .app / .saver</dd></div>
+          <div><dt>License</dt><dd>Yours forever, one screen at a time</dd></div>
+        </dl>
+        <div class="drop-actions">
+          <a class="btn btn-magenta" href="#droplist">Claim yours — $22</a>
+          <span class="drop-note">796 remain. When they’re gone, they’re a rumor.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CATALOG ================= -->
+  <section class="section catalog" id="catalog">
+    <p class="eyebrow" data-reveal>The catalog · HC-001 → HC-006</p>
+    <h2 class="section-title" data-reveal><span class="chrome chrome-s" data-text="Every object, in order.">Every object, in order.</span></h2>
+    <p class="section-sub" data-reveal>Each drop gets a catalog number before it gets a name. Once an edition sells through, it never returns.</p>
+
+    <div class="grid">
+
+      <article class="card" data-reveal>
+        <div class="card-art art-cursor" aria-hidden="true">
+          <svg viewBox="0 0 100 100"><defs><linearGradient id="curg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".45" stop-color="#c9d1de"/><stop offset=".5" stop-color="#5c6a85"/><stop offset=".56" stop-color="#eef3fa"/><stop offset="1" stop-color="#8fa0ba"/></linearGradient></defs><path d="M38 18 L38 74 L52 61 L61 82 L70 78 L61 57 L79 56 Z" fill="url(#curg)" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/></svg>
+          <span class="art-mini m1"></span><span class="art-mini m2"></span>
+        </div>
+        <div class="card-body">
+          <div class="card-top"><span class="chip chip-id">HC-001</span><span class="status status-out">Sold out</span></div>
+          <h3 class="card-title">Mercury Cursor Set</h3>
+          <p class="card-desc">Twelve pointers cast in liquid metal. The hourglass melts instead of spinning.</p>
+          <div class="card-meta"><span>Edition of 1,000 · 02.14.49</span><span class="price">$12</span></div>
+        </div>
+      </article>
+
+      <article class="card" data-reveal>
+        <div class="card-art art-airport" aria-hidden="true"><span class="art-sun"></span><span class="art-strut s1"></span><span class="art-strut s2"></span></div>
+        <div class="card-body">
+          <div class="card-top"><span class="chip chip-id">HC-002</span><span class="status status-out">Sold out</span></div>
+          <h3 class="card-title">Airport 2000 Wallpaper Suite</h3>
+          <p class="card-desc">Eight departure-lounge horizons at 6016 × 3384. Gate lighting, zero passengers.</p>
+          <div class="card-meta"><span>Edition of 1,500 · 03.28.49</span><span class="price">$18</span></div>
+        </div>
+      </article>
+
+      <article class="card" data-reveal>
+        <div class="card-art art-gel" aria-hidden="true"><span class="gel gel-a"></span><span class="gel gel-b"></span><span class="gel gel-c"></span><span class="gel-bar"></span></div>
+        <div class="card-body">
+          <div class="card-top"><span class="chip chip-id">HC-003</span><span class="status status-live"><span class="pulse-dot"></span>Live</span></div>
+          <h3 class="card-title">Gel Bubble UI Skin</h3>
+          <p class="card-desc">A 214-piece interface skin. Every button filled with something that behaves like it’s refrigerated.</p>
+          <div class="card-meta"><span>Edition of 1,200 · 05.09.49</span><span class="price">$24</span></div>
+        </div>
+      </article>
+
+      <article class="card" data-reveal>
+        <div class="card-art art-holo" aria-hidden="true"><span class="holo h1"></span><span class="holo h2"></span><span class="holo h3"></span><span class="holo h4"></span><span class="holo h5"></span><span class="holo h6"></span></div>
+        <div class="card-body">
+          <div class="card-top"><span class="chip chip-id">HC-004</span><span class="status status-live"><span class="pulse-dot"></span>Live</span></div>
+          <h3 class="card-title">Hologram Sticker Sheet 01</h3>
+          <p class="card-desc">Forty foil badges for desktops and dead laptops. Angle-reactive, aggressively shiny.</p>
+          <div class="card-meta"><span>Edition of 3,000 · 06.17.49</span><span class="price">$9</span></div>
+        </div>
+      </article>
+
+      <article class="card" data-reveal>
+        <div class="card-art art-lc" aria-hidden="true"><span class="lc-mini"></span></div>
+        <div class="card-body">
+          <div class="card-top"><span class="chip chip-id">HC-005</span><span class="status status-live"><span class="pulse-dot"></span>Live</span></div>
+          <h3 class="card-title">Liquid Crystal Screensaver</h3>
+          <p class="card-desc">Real-time liquid crystal weather for idle screens. Featured above — 796 remain.</p>
+          <div class="card-meta"><span>Edition of 2,000 · 08.01.49</span><span class="price">$22</span></div>
+        </div>
+      </article>
+
+      <article class="card" data-reveal>
+        <div class="card-art art-disc" aria-hidden="true"><span class="disc"><span class="disc-hole"></span></span></div>
+        <div class="card-body">
+          <div class="card-top"><span class="chip chip-id">HC-006</span><span class="status status-soon">Drops 09.03.49</span></div>
+          <h3 class="card-title">Chrome Type Specimen Disc</h3>
+          <p class="card-desc">A pressed disc of HC Chromatic, our first typeface. Ships with a poster PDF the size of a bus stop.</p>
+          <div class="card-meta"><span>Edition of 800 · 09.03.49</span><span class="price">$30</span></div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ================= LAB NOTES ================= -->
+  <section class="section notes" id="notes">
+    <p class="eyebrow" data-reveal>Lab notes · dispatches from Studio 7F</p>
+    <h2 class="section-title" data-reveal><span class="chrome chrome-s" data-text="Work in progress.">Work in progress.</span></h2>
+    <ol class="notes-list">
+      <li class="note" data-reveal>
+        <time class="note-date" datetime="2049-08-22">08.22.49</time>
+        <div><h3 class="note-title">Polishing the mercury</h3>
+        <p>We rebuilt the hero blob’s environment map eleven times this month. Chrome is not a color; it is everything the room is willing to admit about itself. The room is now mostly softboxes.</p></div>
+      </li>
+      <li class="note" data-reveal>
+        <time class="note-date" datetime="2049-08-09">08.09.49</time>
+        <div><h3 class="note-title">Gel is a material, not an effect</h3>
+        <p>HC-003’s buttons got denser this week. A gel button should look refrigerated — cold, wet, slightly too full. If it reads as glass, we failed. Glass doesn’t wobble.</p></div>
+      </li>
+      <li class="note" data-reveal>
+        <time class="note-date" datetime="2049-07-30">07.30.49</time>
+        <div><h3 class="note-title">No restocks means no restocks</h3>
+        <p>Four hundred emails about Airport 2000. The edition is closed. A drop that returns is just inventory, and inventory is what 2009 did to the internet.</p></div>
+      </li>
+      <li class="note" data-reveal>
+        <time class="note-date" datetime="2049-07-14">07.14.49</time>
+        <div><h3 class="note-title">Numbering as a promise</h3>
+        <p>Every object receives a catalog ID before it receives a name. HC-011 already exists on a whiteboard. The number is a promise that we will finish it.</p></div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ================= SPECIMEN ================= -->
+  <section class="section specimen" id="specimen">
+    <p class="eyebrow" data-reveal>Type specimen · HC Chromatic</p>
+    <p class="specimen-glyphs" data-reveal role="img" aria-label="HC Chromatic type specimen: Aa Gg Rr 4 7 ampersand, set in liquid chrome"><span class="chrome" data-text="Aa Gg Rr">Aa&nbsp;Gg&nbsp;Rr</span> <span class="chrome" data-text="4 7 &amp;">4&nbsp;7&nbsp;&amp;</span></p>
+    <p class="specimen-caption" data-reveal>HC Chromatic — the lab’s house typeface. Bubble weights inflated to their structural limit, then chromed. Pressed to disc as HC-006.</p>
+  </section>
+
+  <!-- ================= MANIFESTO ================= -->
+  <section class="section manifesto" id="manifesto">
+    <div class="manifesto-inner" data-reveal>
+      <h2 class="manifesto-title">The future looked better in <span class="chrome chrome-s" data-text="1999.">1999.</span></h2>
+      <p class="manifesto-body">So we went back for it. HYPERCHROME manufactures the millennium’s optimism at museum grade — liquid metal, inflatable plastic, holographic foil, interfaces that gleam like they were just unwrapped. Every object is numbered, finished, and released exactly once. We are not nostalgic. We are keeping a promise the future broke.</p>
+      <div class="sticker sticker-chrome" aria-hidden="true"><span class="sticker-burst burst-cyan"></span><span class="sticker-word">100%<br>CHROME</span></div>
+    </div>
+  </section>
+
+  <!-- ================= DROP LIST ================= -->
+  <section class="section droplist" id="droplist">
+    <div class="droplist-card" data-reveal>
+      <h2 class="droplist-title">Be there when <span class="chrome chrome-s" data-text="HC-006">HC-006</span> lands.</h2>
+      <p class="droplist-sub">One email per drop. No newsletters, no “thoughts on design.” Just the number, the name, and the door opening.</p>
+      <form class="droplist-form" id="droplist-form" novalidate>
+        <label class="visually-hidden" for="droplist-email">Email address</label>
+        <input class="droplist-input" id="droplist-email" type="email" name="email" placeholder="you@terminal.city" autocomplete="email" required>
+        <button class="btn btn-cobalt" type="submit">Join the drop list</button>
+      </form>
+      <p class="droplist-confirm" id="droplist-confirm" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="ticker ticker-footer" aria-hidden="true">
+    <div class="ticker-track">
+      <span class="ticker-run">HYPERCHROME®&ensp;✦&ensp;OBJECTS FOR THE MILLENNIUM THAT NEVER ENDED&ensp;✦&ensp;STUDIO 7F · TERMINAL CITY&ensp;✦&ensp;100% CHROME · 0% RESTOCKS&ensp;✦&ensp;</span><span class="ticker-run">HYPERCHROME®&ensp;✦&ensp;OBJECTS FOR THE MILLENNIUM THAT NEVER ENDED&ensp;✦&ensp;STUDIO 7F · TERMINAL CITY&ensp;✦&ensp;100% CHROME · 0% RESTOCKS&ensp;✦&ensp;</span>
+    </div>
+  </div>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <p class="footer-logo">HYPERCHROME<sup>®</sup></p>
+      <p class="footer-line">Y2K design laboratory.<br>Est. 1999 · shipping to 2049.</p>
+    </div>
+    <nav class="footer-col" aria-label="Catalog">
+      <h3>Catalog</h3>
+      <a href="#drop">Current drop</a>
+      <a href="#catalog">All objects</a>
+      <a href="#droplist">Drop list</a>
+    </nav>
+    <nav class="footer-col" aria-label="The lab">
+      <h3>The lab</h3>
+      <a href="#notes">Lab notes</a>
+      <a href="#specimen">Type specimen</a>
+      <a href="#manifesto">Manifesto</a>
+    </nav>
+    <div class="footer-col">
+      <h3>Contact</h3>
+      <p>lab@hyperchrome.net<br>Studio 7F, Terminal City<br>Stockists: none. We only exist here.</p>
+    </div>
+  </div>
+  <p class="colophon">© 1999–2049 HYPERCHROME Laboratory. A fiction, fully chromed. The blob above is computed live with three.js MarchingCubes — it has never repeated itself.</p>
+</footer>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

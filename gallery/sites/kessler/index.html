@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KESSLER WATCH — Orbital Debris Observatory</title>
+<meta name="description" content="A civil orbital situational-awareness observatory. 576 tracked objects orbiting live: LEO clutter, the LODESTAR navigation ring, the GEO belt — with a debris census, fragmentation ledger, and a doctrine for the orbital commons.">
+<meta property="og:title" content="KESSLER WATCH — Orbital Debris Observatory">
+<meta property="og:description" content="The sky is inhabited. A live plot of 576 tracked objects — payloads, rocket bodies, and the fragments they shed — orbiting at true scaled rates.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#05080F">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2305080F'/%3E%3Ccircle cx='32' cy='34' r='11' fill='%230E2138'/%3E%3Cellipse cx='32' cy='34' rx='24' ry='9.5' fill='none' stroke='%23FFB454' stroke-width='2.5' transform='rotate(-20 32 34)'/%3E%3Ccircle cx='50' cy='22' r='3.4' fill='%234FE3A3'/%3E%3C/svg%3E">
+<link rel="preload" href="./fonts/Archivo-03.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="./fonts/B612Mono-01.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="./fonts/Archivo.css">
+<link rel="stylesheet" href="./fonts/B612.css">
+<link rel="stylesheet" href="./fonts/B612Mono.css">
+<link rel="stylesheet" href="./css/main.css">
+<script type="importmap">
+{"imports":{"three":"./vendor/three.module.min.js","three/addons/":"./vendor/addons/"}}
+</script>
+</head>
+<body>
+
+<!-- ================= HERO / THE INHABITED SKY ================= -->
+<section class="hero" id="sky" aria-label="Live orbital traffic display">
+  <canvas id="sky-canvas" aria-hidden="true"></canvas>
+  <div class="sky-fallback" aria-hidden="true"></div>
+  <div class="alert-vignette" aria-hidden="true"></div>
+  <div class="hud-frame" aria-hidden="true"><span class="fc"></span></div>
+
+  <header class="hud-top">
+    <div class="wordmark">
+      <h1>KESSLER<span class="wm-x">✕</span>WATCH</h1>
+      <span class="wm-sub">ORBITAL DEBRIS OBSERVATORY</span>
+    </div>
+    <div class="hud-top-right">
+      <span class="hud-status" id="hud-status"><span class="live-dot"></span><span id="hud-status-text">TRACKING</span></span>
+      <span id="utc-clock">--:--:-- UTC</span>
+    </div>
+  </header>
+
+  <aside class="hud-rail" aria-label="Catalog telemetry">
+    <div class="rail-head">KW/TLM · CATALOG</div>
+    <div class="rail-row"><span class="k">OBJECTS</span><span class="v" id="stat-total">—</span></div>
+    <div class="rail-row"><span class="k">LOW EARTH ORBIT</span><span class="v" id="stat-leo">—</span></div>
+    <div class="rail-row"><span class="k">NAV RING</span><span class="v" id="stat-nav">—</span></div>
+    <div class="rail-row"><span class="k">GEO BELT</span><span class="v" id="stat-geo">—</span></div>
+    <div class="rail-row m-hide"><span class="k">DEBRIS FRACTION</span><span class="v" id="stat-debris">—</span></div>
+    <div class="rail-legend">
+      <span><i class="lg-swatch lg-swatch--amber"></i>DEBRIS · ROCKET BODY</span>
+      <span><i class="lg-swatch lg-swatch--green"></i>ACTIVE PAYLOAD</span>
+    </div>
+    <button class="conj-chip" id="conj-chip" type="button" data-state="idle" disabled
+            aria-label="Next conjunction. Activate to slew orbital time to six minutes before the event.">
+      <span class="chip-k">NEXT CONJUNCTION</span>
+      <span class="chip-v">T−--:--:--</span>
+      <span class="chip-d">SEARCHING CANDIDATE SETS</span>
+    </button>
+  </aside>
+
+  <div class="hero-title-block">
+    <p class="hero-eyebrow">KW/OPS<span class="eyebrow-tail"> · CIVIL ORBITAL SITUATIONAL AWARENESS</span></p>
+    <p class="hero-thesis">The sky<br>is inhabited.</p>
+    <p class="hero-lede">A live plot of <strong><span class="js-total">576</span> tracked objects</strong> — working
+      payloads, spent rocket bodies, and the fragments they shed — circling at true scaled rates.
+      Hover any point of light. It has a name.</p>
+  </div>
+
+  <p class="boot-line" id="boot-line" aria-hidden="true"></p>
+
+  <div class="conj-alert" id="conj-alert" data-state="alert">
+    <div class="al-head">
+      <span class="al-beacon" aria-hidden="true"></span>
+      <span id="conj-alert-title" role="status" aria-live="polite">CONJUNCTION ALERT</span>
+    </div>
+    <div id="conj-alert-body"></div>
+  </div>
+
+  <div class="hud-console">
+    <button class="hold-btn" id="hold-btn" type="button" aria-pressed="false">HOLD</button>
+    <div class="scrub-block">
+      <div class="scrub-head">
+        <label class="k" for="time-slider">ORBITAL TIME</label>
+        <span class="v" id="rate-label">×60</span>
+      </div>
+      <input type="range" id="time-slider" min="0" max="100" step="0.5" value="49"
+             aria-label="Orbital time acceleration, 1 to 4096 times real time">
+      <div class="scrub-ticks" aria-hidden="true">
+        <span>×1</span><span>×8</span><span>×64</span><span>×512</span><span>×4096</span>
+      </div>
+    </div>
+    <div class="sim-elapsed">
+      <span class="k">SIM ELAPSED</span>
+      <span class="v" id="sim-elapsed">T+000:00:00:00</span>
+    </div>
+  </div>
+
+  <div class="catalog-card" id="catalog-card" aria-hidden="true"></div>
+
+  <noscript>
+    <div style="position:absolute;inset:0;display:grid;place-items:center;background:#05080F;z-index:9;padding:24px;">
+      <p style="max-width:52ch;font-family:monospace;color:#ADBDCD;">KESSLER WATCH is a live orbital-traffic
+      display and needs JavaScript to run its plot. The census, fragmentation ledger, and doctrine below
+      remain fully readable.</p>
+    </div>
+  </noscript>
+</section>
+
+<main>
+  <!-- ================= CENSUS ================= -->
+  <section class="section" aria-labelledby="census-title">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <p class="sec-code">KW/CENSUS · POPULATION BY ALTITUDE</p>
+        <h2 class="sec-title" id="census-title">Where the debris lives</h2>
+        <p class="sec-lede">Catalogued fragments larger than ten centimetres, by altitude band.
+          <strong>Below 600 kilometres the atmosphere still charges rent</strong> and clears its floor in years.
+          Above it, drag thins to nothing and the sky keeps what it is given — the bulge between
+          700 and 1,000 km is where forty years of breakups went and stayed.</p>
+      </div>
+      <figure class="census-figure" data-reveal>
+        <div id="census-chart"></div>
+        <div class="census-tip" id="census-tip"></div>
+        <figcaption class="census-caption">FRAGMENTS ≥10 CM · RADAR + OPTICAL, FUSED · CATALOG EPOCH 2026-189 ·
+          BANDS BELOW 400 KM OMITTED — DRAG CLEARS THEM WITHIN MONTHS</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ================= LEDGER ================= -->
+  <section class="section" aria-labelledby="ledger-title">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <p class="sec-code">KW/LEDGER · NOTABLE FRAGMENTATIONS</p>
+        <h2 class="sec-title" id="ledger-title">Seven breakups, one neighborhood</h2>
+        <p class="sec-lede">Fragmentation events write the census. The seven below account for
+          <strong>3,142 of the 5,065 fragments on the books — 62 percent</strong> — and most of them
+          settled between 700 and 1,000 kilometres: the altitude that forgets slowest.</p>
+      </div>
+      <div class="table-shell" data-reveal>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Notable fragmentation events table, scrolls horizontally">
+        <table class="ledger-table">
+          <caption class="visually-hidden">Notable fragmentation events: ledger number, parent object,
+            date, cause, fragments tracked, altitude in kilometres, and percentage still on orbit.</caption>
+          <thead>
+            <tr>
+              <th scope="col" style="padding-left:10px">LEDGER</th>
+              <th scope="col">OBJECT</th>
+              <th scope="col">DATE</th>
+              <th scope="col">CAUSE</th>
+              <th scope="col" class="num">FRAGMENTS</th>
+              <th scope="col" class="num">ALT KM</th>
+              <th scope="col" class="num">ON ORBIT</th>
+            </tr>
+          </thead>
+          <tbody id="ledger-body"></tbody>
+        </table>
+      </div>
+      <div class="table-fade" aria-hidden="true"></div>
+      </div>
+      <p class="table-hint" aria-hidden="true">SCROLL <b>→</b> CAUSE · FRAGMENTS · ALT · ON-ORBIT</p>
+      <p class="ledger-note" data-reveal>FRAGMENT COUNTS ARE OBJECTS ≥10 CM STILL CATALOGUED AT EPOCH.
+        <em>KW/F-011 AND KW/F-014 ALONE PLACED 2,027 FRAGMENTS IN THE SUN-SYNCHRONOUS CORRIDOR.</em></p>
+    </div>
+  </section>
+
+  <!-- ================= DOCTRINE ================= -->
+  <section class="section" aria-labelledby="doctrine-title">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <p class="sec-code">KW/DOCTRINE · ON STEWARDSHIP</p>
+        <h2 class="sec-title" id="doctrine-title">The sky does not clean itself</h2>
+      </div>
+      <p class="doctrine-pull" data-reveal><span class="dp-mark">//</span> Orbit is a commons. There is exactly
+        one, and everyone&rsquo;s grandchildren live downstream of it.</p>
+      <div class="doctrine-grid">
+        <div class="doctrine-prose" data-reveal>
+          <p><span class="drop">At orbital speed, mass is beside the point.</span> A fleck of paint at seven
+            kilometres per second arrives with the energy of a rifle round; a ten-centimetre fragment arrives
+            like a truck. There are no small objects up there — only small warnings.</p>
+          <p>Altitude is destiny. Below about 600 kilometres, the thin last breath of atmosphere drags
+            everything down on a schedule of years, and the sky wipes itself clean. At 800 kilometres a
+            discarded bolt outlives the engineer who torqued it. At 1,000, it outlives her language.
+            The census above is not a snapshot of a problem; it is a map of where we chose to be careless.</p>
+          <p>In 1978, Donald Kessler and Burton Cour-Palais worked out the arithmetic of crowding:
+            collisions make fragments, and fragments make collisions. Past a certain density the cascade
+            feeds itself and stops caring whether anyone keeps launching. The ledger above is not a
+            history. It is a rate.</p>
+          <p>Stewardship is unglamorous work. Vent the tanks. Short the batteries. Clear the lane on
+            schedule, not eventually. Track everything, and publish what you track, because a conjunction
+            warning withheld is a collision co-authored. Lighthouses were never glamorous either.
+            The watch is kept anyway.</p>
+        </div>
+        <div class="tenets" data-reveal role="list" aria-label="The five tenets">
+          <div class="tenet" role="listitem">
+            <span class="t-no">KW/T-1</span>
+            <div><div class="t-name">Passivate everything</div>
+            <p class="t-body">Vent every tank, short every battery, spin down every wheel at end of mission.
+              A dead satellite should be inert, not patient.</p></div>
+          </div>
+          <div class="tenet" role="listitem">
+            <span class="t-no">KW/T-2</span>
+            <div><div class="t-name">Five years, then down</div>
+            <p class="t-body">Clear low orbit within five years of retirement. Twenty-five was a courtesy
+              to a smaller sky.</p></div>
+          </div>
+          <div class="tenet" role="listitem">
+            <span class="t-no">KW/T-3</span>
+            <div><div class="t-name">Track it or don&rsquo;t fly it</div>
+            <p class="t-body">An object you cannot see is a collision you cannot dodge. Radar cross-section
+              is a design requirement.</p></div>
+          </div>
+          <div class="tenet" role="listitem">
+            <span class="t-no">KW/T-4</span>
+            <div><div class="t-name">Share the catalog</div>
+            <p class="t-body">Conjunction data is safety-of-life information, not a trade secret and not
+              a bargaining chip.</p></div>
+          </div>
+          <div class="tenet" role="listitem">
+            <span class="t-no">KW/T-5</span>
+            <div><div class="t-name">Leave GEO clean</div>
+            <p class="t-body">Boost derelicts to the graveyard ring 300 kilometres above the belt while the
+              last kilograms of fuel remain. The belt is finite real estate on an infinite lease.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <p class="footer-head" data-reveal>KW/NET · GROUND STATION NETWORK</p>
+    <div class="station-grid" id="station-grid" data-reveal></div>
+    <div class="footer-foot">
+      <span class="ff-mark"><b>KESSLER✕WATCH</b> · A FICTIONAL OBSERVATORY, BUILT FOR THE RECORD</span>
+      <span>CATALOG EPOCH 2026-189</span>
+      <span>SET YOUR CLOCKS TO UTC</span>
+    </div>
+  </div>
+</footer>
+
+<script src="./vendor/d3.min.js"></script>
+<script type="module" src="./js/main.js"></script>
+</body>
+</html>

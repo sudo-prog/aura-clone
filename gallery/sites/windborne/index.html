@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Windborne — a data poem about the wind</title>
+<meta name="description" content="An editorial scrollytelling essay on the trade winds, the doldrums, the monsoon and the jet stream — written over a living, synthesized global wind field. An artistic model, not a forecast.">
+<meta property="og:title" content="Windborne — a data poem about the wind">
+<meta property="og:description" content="Three thousand tracers ride a synthesized global circulation beneath a lyrical essay on the trades, the doldrums, the monsoon and the jet stream.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#F2F5F1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23F2F5F1'/%3E%3Cpath d='M8 22c14 0 18-8 30-8 8 0 12 4 12 4' fill='none' stroke='%2312776E' stroke-width='4.5' stroke-linecap='round'/%3E%3Cpath d='M6 34c18 0 26-6 40-6 6 0 10 3 10 3' fill='none' stroke='%23B25E14' stroke-width='4.5' stroke-linecap='round'/%3E%3Cpath d='M10 46c12 0 20-7 32-7 6 0 9 3 9 3' fill='none' stroke='%2337454F' stroke-width='4.5' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/Newsreader-06.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Newsreader-03.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/SplineSansMono-02.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/Newsreader.css">
+<link rel="stylesheet" href="fonts/SplineSansMono.css">
+<link rel="stylesheet" href="css/style.css">
+<noscript><style>.card,.rise,.card>*{opacity:1!important;transform:none!important}.card .pull::before{transform:none!important}.field{opacity:1!important}</style></noscript>
+</head>
+<body>
+
+<div class="field" aria-hidden="true">
+  <canvas id="chart"></canvas>
+  <canvas id="trails"></canvas>
+</div>
+
+<header class="hud">
+  <a class="wordmark hud-chip" href="#prologue">WINDBORNE</a>
+  <p class="readout hud-chip" id="readout">
+    <span class="readout-ch" id="readout-ch">PROLOGUE</span>
+    <span class="readout-flow" id="readout-flow">SPOOLING THE FIELD…</span>
+  </p>
+</header>
+
+<div class="lat-rail" id="lat-rail" aria-hidden="true">
+  <span class="rail-bracket" id="rail-bracket"></span>
+</div>
+
+<p class="model-note" aria-hidden="true">AN ARTISTIC MODEL · NOT A FORECAST</p>
+
+<p class="legend hud-chip" id="legend" aria-hidden="true"><span class="legend-cap">TRACER SPEED</span><span class="legend-bar" id="legend-bar"></span><span class="legend-cap">0–110+ KM/H</span></p>
+
+<main>
+  <section class="chapter hero" id="prologue" data-ch="0" aria-labelledby="title">
+    <div class="hero-inner">
+      <p class="eyebrow rise" style="--d:.15s">AN ARTISTIC MODEL OF THE CIRCULATING ATMOSPHERE</p>
+      <h1 id="title" class="rise" style="--d:.3s">Windborne</h1>
+      <hr class="hero-rule rise" style="--d:.55s" aria-hidden="true">
+      <p class="hero-sub rise" style="--d:.7s">a data poem about the wind, in six movements</p>
+    </div>
+    <p class="scroll-cue rise" style="--d:1.2s">SCROLL — <span id="cue-count">3,000</span> TRACERS ALOFT <span class="cue-arrow">↓</span></p>
+  </section>
+
+  <section class="chapter" id="engine" data-ch="1" aria-labelledby="h-engine">
+    <article class="card card--left">
+      <p class="key">0° → 90° · THE GENERAL CIRCULATION</p>
+      <h2 id="h-engine">The Engine</h2>
+      <p>The sun does not simply heat the Earth; it overheats the middle of it. Every day the tropics bank more light than they can spend, and the poles run cold at a loss. Wind is the transfer of that unbalanced account — warm air rising off the equator, sliding poleward ten kilometres up, sinking back near 30° as the dry, desert-making weight of the subtropics.</p>
+      <p>Nothing moves in a straight line on a spinning planet. In 1835 Gaspard-Gustave de Coriolis wrote down the deflection that bears his name, and the sky obeys it everywhere: rightward in the north, leftward in the south. The result is not chaos but architecture — three great cells of turning air in each hemisphere, stacked neatly from equator to pole.</p>
+      <p class="pull">Wind is the sky settling a debt the sun rewrites every morning.</p>
+      <p class="data">HADLEY · FERREL · POLAR — SIX CELLS<br>CORIOLIS DEFLECTION, DESCRIBED 1835</p>
+    </article>
+  </section>
+
+  <section class="chapter" id="trades" data-ch="2" aria-labelledby="h-trades">
+    <article class="card card--right">
+      <p class="key">30°N → 5°N · THE NORTHEAST TRADES</p>
+      <h2 id="h-trades">The Trades</h2>
+      <p>Between the subtropics and the equator the sky exhales in one direction only. The trade winds lean out of the northeast above the line and the southeast below it, day after day, at a walking-to-cycling pace of fourteen to twenty-two kilometres per hour. They are the steadiest wind on Earth — not the strongest; the most dependable.</p>
+      <p>Sailors learned their timetable long before anyone could explain it. Columbus dropped south to the Canaries in 1492 to catch them west. From 1565 the Manila galleons rode the belt across the Pacific for two hundred and fifty years — an empire rigged to a breeze. The name is older than commerce: <em>trade</em> once meant path, or track. This wind kept one.</p>
+      <p class="pull">For four centuries, empires kept their appointments by a wind you could set a watch to.</p>
+      <p class="data">NE TRADES · 14–22 KM/H<br>CONSTANCY &gt; 80% IN THE CORE BELTS</p>
+    </article>
+  </section>
+
+  <section class="chapter" id="doldrums" data-ch="3" aria-labelledby="h-doldrums">
+    <article class="card card--left">
+      <p class="key">5°N → 5°S · THE INTERTROPICAL CONVERGENCE</p>
+      <h2 id="h-doldrums">The Doldrums</h2>
+      <p>Where the two trade belts meet, they cancel. Air arrives from both hemispheres, collides, and — with nowhere else to go — goes up. The Intertropical Convergence Zone is a seam of rising air stitched loosely along five degrees north, wandering with the seasons, boiling with thunderheads and almost perfectly still at the surface.</p>
+      <p>Square-rigged ships could drift here for weeks, sails slack, fresh water souring in the casks. Coleridge gave the stillness its literature — <em>as idle as a painted ship upon a painted ocean</em> — but the calm is a trick of perspective. The doldrums hold some of the most violently vertical weather on Earth. The wind has not died here.</p>
+      <p class="pull">The wind does not stop in the doldrums. It turns, and climbs.</p>
+      <p class="data">ITCZ · MEAN POSITION ≈ 5°N<br>SURFACE FLOW → 0 KM/H · ALL MOTION VERTICAL</p>
+    </article>
+  </section>
+
+  <section class="chapter" id="monsoon" data-ch="4" aria-labelledby="h-monsoon">
+    <article class="card card--right">
+      <p class="key">40°E → 100°E · CROSS-EQUATORIAL FLOW</p>
+      <h2 id="h-monsoon">The Monsoon</h2>
+      <p>Twice a year, over the Indian Ocean, the whole system changes its mind. In summer the Asian landmass heats faster than the sea, the pressure gradient flips, and the southeast trades of the other hemisphere are dragged across the equator, bent rightward, and delivered to India as a river of ocean air out of the southwest.</p>
+      <p>The word comes from the Arabic <em>mausim</em> — season — because for a thousand years dhow captains ran the Africa–India trade on its schedule: out in June, home in December. The southwest monsoon still delivers roughly eighty percent of India's annual rainfall between June and September. It is the only wind on this page that a billion people wait for by name.</p>
+      <p class="pull">Twice a year, half the sky reverses — and a subcontinent looks up.</p>
+      <p class="data">SW MONSOON · JUN–SEP · ≈ 80% OF INDIA'S ANNUAL RAIN<br>SOMALI JET, CROSSING 0° OFFSHORE OF KENYA</p>
+    </article>
+  </section>
+
+  <section class="chapter" id="jetstream" data-ch="5" aria-labelledby="h-jet">
+    <article class="card card--left">
+      <p class="key">35°N → 60°N · 9–12 KM ALOFT</p>
+      <h2 id="h-jet">The Jet Stream</h2>
+      <p>Nine to twelve kilometres up, where cold polar air presses against warm subtropical air, the boundary itself begins to run. The polar jet is a ribbon of wind a few hundred kilometres wide and only a few deep, meandering eastward at one hundred to four hundred kilometres per hour — faster than any gale that ever touched the ground.</p>
+      <p>Wasaburo Oishi charted it first, tracking weather balloons from the Tateno observatory through the 1920s; he published in Esperanto, and the world ignored him. American B-29 crews rediscovered it the hard way in 1944, opening bomb runs into a headwind outrunning their airspeed indicators. Today every eastbound flight you take drafts quietly in its wake.</p>
+      <p class="pull">A river with no banks, running faster than the land below will ever allow.</p>
+      <p class="data">POLAR JET · 100–400 KM/H<br>OISHI, TATENO AEROLOGICAL OBSERVATORY, 1920s</p>
+    </article>
+  </section>
+
+  <section class="chapter" id="coda" data-ch="6" aria-labelledby="h-coda">
+    <article class="card card--center">
+      <p class="key">EVERY LATITUDE · EVERY BREATH</p>
+      <h2 id="h-coda">Coda</h2>
+      <p>Scroll back up: the trades are still leaning west, and they will be after this page is closed — the same belts Columbus borrowed, the same seam of calm, the same high ribbon bending tonight's flights home. The machine does not idle. Every breath you have ever taken arrived by wind.</p>
+      <p class="pull">Nothing on this page was ever still. Nothing above you is, either.</p>
+      <p class="data">FIELD STATUS · CIRCULATING<br>NEXT CALM · NEVER</p>
+    </article>
+  </section>
+</main>
+
+<footer class="colophon">
+  <div class="colophon-inner">
+    <p class="key">WINDBORNE · A DATA POEM</p>
+    <p class="colophon-text">The field beneath this essay is a synthesized climatology — Hadley easterlies, mid-latitude westerlies, a Rossby-wave jet, the ITCZ lull and a cross-equatorial monsoon surge — integrated live by thousands of tracers in d3 + canvas. It is an artistic model, not a forecast; the coastlines are drawn from memory, the way sailors first drew them.</p>
+    <nav class="colophon-nav" aria-label="Chapters">
+      <a href="#engine">Engine</a><span>·</span>
+      <a href="#trades">Trades</a><span>·</span>
+      <a href="#doldrums">Doldrums</a><span>·</span>
+      <a href="#monsoon">Monsoon</a><span>·</span>
+      <a href="#jetstream">Jet&nbsp;Stream</a><span>·</span>
+      <a href="#coda">Coda</a>
+    </nav>
+    <p class="colophon-credit">SET IN NEWSREADER &amp; SPLINE SANS MONO · COMPOSED &amp; CODED BY CLAUDE · 2026</p>
+  </div>
+</footer>
+
+<script src="vendor/d3.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

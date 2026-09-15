@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Halide Process Lab — Film Development Since 1987</title>
+  <meta name="description" content="Halide Process Lab develops, scans, and hand-prints film in Rochester, NY. C-41, E-6, black &amp; white, push and pull — since 1987.">
+  <meta property="og:title" content="Halide Process Lab">
+  <meta property="og:description" content="Develop · Scan · Print. Film development since 1987 — drop your roll through the slot at 47 Fenwick Lane.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#131114">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23131114'/%3E%3Crect x='8' y='6' width='11' height='8' rx='2' fill='%23EFECE3' opacity='.55'/%3E%3Crect x='27' y='6' width='11' height='8' rx='2' fill='%23EFECE3' opacity='.55'/%3E%3Crect x='46' y='6' width='11' height='8' rx='2' fill='%23EFECE3' opacity='.55'/%3E%3Crect x='8' y='50' width='11' height='8' rx='2' fill='%23EFECE3' opacity='.55'/%3E%3Crect x='27' y='50' width='11' height='8' rx='2' fill='%23EFECE3' opacity='.55'/%3E%3Crect x='46' y='50' width='11' height='8' rx='2' fill='%23EFECE3' opacity='.55'/%3E%3Ccircle cx='32' cy='32' r='12' fill='%23FF4132'/%3E%3C/svg%3E">
+  <link rel="preload" href="fonts/LeagueGothic-03.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/SplineSans-02.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="fonts/LeagueGothic.css">
+  <link rel="stylesheet" href="fonts/SplineSans.css">
+  <link rel="stylesheet" href="fonts/IBMPlexMono.css">
+  <link rel="stylesheet" href="fonts/PermanentMarker.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-regime="silver">
+
+  <svg width="0" height="0" aria-hidden="true" style="position:absolute">
+    <filter id="rough">
+      <feTurbulence type="fractalNoise" baseFrequency="0.55" numOctaves="2" result="n" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.6"/>
+    </filter>
+  </svg>
+
+  <a class="skiplink mono" href="#process">Skip to content</a>
+  <canvas id="grain" aria-hidden="true"></canvas>
+  <div id="blackout" aria-hidden="true"></div>
+
+  <header class="marquee">
+    <a class="brand" href="#top"><span class="brand-halide">HALIDE</span><span class="brand-dot" aria-hidden="true"></span><span class="brand-rest">PROCESS LAB</span></a>
+    <nav class="mono" aria-label="Sections">
+      <a href="#process">Process</a>
+      <a href="#contact-sheet">Sheet</a>
+      <a href="#darkroom" class="nav-darkroom">Darkroom</a>
+      <a href="#prices">Prices</a>
+      <a href="#lab">The lab</a>
+    </nav>
+    <span class="mono headcode" aria-hidden="true"><span class="hc-silver">TX&nbsp;5063&nbsp;·&nbsp;EI&nbsp;400</span><span class="hc-dark">SAFELIGHT&nbsp;ON&nbsp;·&nbsp;902</span></span>
+  </header>
+
+  <main id="top">
+
+    <!-- ══════════ HERO ══════════ -->
+    <section class="hero" aria-label="Halide Process Lab">
+      <div class="sprockets sprockets--top" aria-hidden="true"></div>
+      <div class="leak leak--hero" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <p class="eyebrow mono reveal">Rochester, NY&nbsp;&nbsp;·&nbsp;&nbsp;est. March 1987</p>
+        <h1 class="reveal d1"><span class="flicker">Halide<br>Process&nbsp;Lab</span></h1>
+        <p class="hero-sub reveal d2">Thirty-nine years of C-41, E-6, and silver gelatin. Drop your roll
+          through the slot at 47&nbsp;Fenwick&nbsp;Lane — Ruth reads every negative before it leaves the building.</p>
+        <p class="edgeprint mono reveal d3" aria-hidden="true">◂ KODAK 5063 TX&nbsp;&nbsp;▸&nbsp;24&nbsp;&nbsp;·&nbsp;&nbsp;▸&nbsp;24A&nbsp;&nbsp;·&nbsp;&nbsp;▸&nbsp;25</p>
+      </div>
+      <p class="scrollcue mono reveal d4" aria-hidden="true">▼&nbsp;&nbsp;DEVELOP&nbsp;·&nbsp;SCAN&nbsp;·&nbsp;PRINT</p>
+      <div class="sprockets sprockets--bottom" aria-hidden="true"></div>
+    </section>
+
+    <!-- ══════════ TICKER ══════════ -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span class="ticker-copy mono">NOW SOUPING&nbsp;&nbsp;—&nbsp;&nbsp;TRI-X 400 @ 1600 IN DIAFINE&nbsp;&nbsp;▸&nbsp;&nbsp;PORTRA 400, NORMAL&nbsp;&nbsp;▸&nbsp;&nbsp;HP5+ @ 800&nbsp;&nbsp;▸&nbsp;&nbsp;EKTACHROME E100, CROSS-PROCESSED (AGAINST ADVICE)&nbsp;&nbsp;▸&nbsp;&nbsp;DELTA 3200 @ 1250&nbsp;&nbsp;▸&nbsp;&nbsp;FOMAPAN 100 IN RODINAL 1:100, STAND, 60 MIN&nbsp;&nbsp;▸&nbsp;&nbsp;VISION3 250D, ECN-2 REMJET WASHED BY HAND&nbsp;&nbsp;▸&nbsp;&nbsp;</span>
+      </div>
+    </div>
+    <p class="visually-hidden">Now souping: Tri-X 400 at 1600 in Diafine; Portra 400, normal; HP5+ at 800; Ektachrome E100 cross-processed; Delta 3200 at 1250; Fomapan 100 in Rodinal 1:100 stand development; Vision3 250D in ECN-2.</p>
+
+    <!-- ══════════ PROCESS ══════════ -->
+    <section id="process" class="process dimmable">
+      <div class="container">
+        <p class="eyebrow mono reveal">One roll, three rooms</p>
+        <h2 class="reveal d1">The process</h2>
+      </div>
+      <div class="strip reveal d2">
+        <div class="sprockets" aria-hidden="true"></div>
+        <div class="frames">
+          <article class="frame">
+            <p class="fcode mono" aria-hidden="true">▸ 22</p>
+            <h3>Develop</h3>
+            <p>Chemistry mixed fresh every morning. C-41 runs at 37.8° in the Jobo; black &amp; white
+              goes by hand in steel tanks — D-76, Rodinal, or a sixty-minute stand if the roll asks
+              for it. Push or pull to ±3 stops, logged on your sleeve.</p>
+          </article>
+          <article class="frame">
+            <p class="fcode mono" aria-hidden="true">▸ 22A</p>
+            <h3>Scan</h3>
+            <p>Every frame passes the Noritsu at up to 4,800&nbsp;px, dust knocked down by hand,
+              no auto-crop, borders kept on request. Files land in your inbox by six the same
+              evening — flat, honest, ready to grade.</p>
+          </article>
+          <article class="frame">
+            <p class="fcode mono" aria-hidden="true">▸ 23</p>
+            <h3>Print</h3>
+            <p>Fiber-based silver gelatin under the Durst L1200. Dodged and burned the way the
+              negative asks, toned in selenium, washed a full hour, dried flat overnight between
+              blotters. The good ones outlive us all.</p>
+          </article>
+        </div>
+        <div class="sprockets" aria-hidden="true"></div>
+      </div>
+      <div class="leak leak--seam" aria-hidden="true"></div>
+    </section>
+
+    <!-- ══════════ CONTACT SHEET ══════════ -->
+    <section id="contact-sheet" class="sheet-section dimmable">
+      <div class="container">
+        <p class="eyebrow mono reveal">Every roll leaves with one</p>
+        <h2 class="reveal d1">The contact sheet</h2>
+        <p class="lede reveal d2">Ruth proofs each roll on a single sheet of RC paper and marks it up
+          under the loupe. Her grease pencil does the talking: a circle means print it,
+          a strike means let it go, and <em>16×20</em> means she already knows.</p>
+      </div>
+      <div class="sheet reveal d3" role="img" aria-label="A dark contact sheet of twelve black-and-white frames. Frame 18A is circled in red grease pencil with the note “+1 worked”; frame 19 is struck out with the note “dust”; frame 21 — a coastal headland — is circled with the note “print 16×20”.">
+        <div class="sheet-inner">
+          <div class="strip-row">
+            <p class="edgeprint mono" aria-hidden="true">KODAK&nbsp;TRI-X&nbsp;5063&nbsp;&nbsp;▸16&nbsp;&nbsp;&nbsp;▸16A&nbsp;&nbsp;&nbsp;▸17&nbsp;&nbsp;&nbsp;▸17A&nbsp;&nbsp;&nbsp;▸18&nbsp;&nbsp;&nbsp;▸18A</p>
+            <div class="cframes">
+              <figure class="cframe" data-scene="clouds"   data-seed="1601" data-exp="1.00"><canvas aria-hidden="true"></canvas><span class="fnum mono" aria-hidden="true">16</span></figure>
+              <figure class="cframe" data-scene="headland" data-seed="1650" data-exp="0.92"><canvas aria-hidden="true"></canvas><span class="fnum mono" aria-hidden="true">16A</span></figure>
+              <figure class="cframe" data-scene="pier"     data-seed="1702" data-exp="1.00"><canvas aria-hidden="true"></canvas><span class="fnum mono" aria-hidden="true">17</span></figure>
+              <figure class="cframe" data-scene="pier"     data-seed="1702" data-exp="1.28"><canvas aria-hidden="true"></canvas><span class="fnum mono" aria-hidden="true">17A</span></figure>
+              <figure class="cframe" data-scene="dunes"    data-seed="1805" data-exp="1.00"><canvas aria-hidden="true"></canvas><span class="fnum mono" aria-hidden="true">18</span></figure>
+              <figure class="cframe" data-scene="dunes"    data-seed="1805" data-exp="0.78"><canvas aria-hidden="true"></canvas><span class="fnum mono" aria-hidden="true">18A</span>
+                <svg class="grease" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path class="gpath" pathLength="100" d="M50 7 C 82 3, 97 22, 95 50 C 93 81, 74 96, 47 94 C 18 92, 4 74, 6 46 C 8 20, 26 9, 50 7 C 60 6, 68 8, 73 11"/></svg>
+                <span class="gnote gnote--tl" aria-hidden="true">+1 worked</span>
+              </figure>
+            </div>
+          </div>
+          <div class="strip-row">
+            <p class="edgeprint mono" aria-hidden="true">KODAK&nbsp;TRI-X&nbsp;5063&nbsp;&nbsp;▸19&nbsp;&nbsp;&nbsp;▸19A&nbsp;&nbsp;&nbsp;▸20&nbsp;&nbsp;&nbsp;▸20A&nbsp;&nbsp;&nbsp;▸21&nbsp;&nbsp;&nbsp;▸21A</p>
+            <div class="cframes">
+              <figure class="cframe" data-scene="fog"      data-seed="1900" data-exp="1.00"><canvas aria-hidden="true"></canvas><span class="fnum mono" aria-hidden="true">19</span>
+                <svg class="grease" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path class="gpath" pathLength="100" d="M12 14 C 40 38, 62 62, 90 88 M88 12 C 60 40, 38 60, 10 90"/></svg>
+                <span class="gnote gnote--bl" aria-hidden="true">dust</span>
+              </figure>
+              <figure class="cframe" data-scene="headland" data-seed="1951" data-exp="1.10"><canvas aria-hidden="true"></canvas><span class="fnum mono" aria-hidden="true">19A</span></figure>
+              <figure class="cframe" data-scene="clouds"   data-seed="2003" data-exp="0.9"><canvas aria-hidden="true"></canvas><span class="fnum mono" aria-hidden="true">20</span></figure>
+              <figure class="cframe" data-scene="pier"     data-seed="2054" data-exp="1.05"><canvas aria-hidden="true"></canvas><span class="fnum mono" aria-hidden="true">20A</span></figure>
+              <figure class="cframe cframe--pick" data-scene="headland" data-seed="2107" data-exp="1.00"><canvas aria-hidden="true"></canvas><span class="fnum mono" aria-hidden="true">21</span>
+                <svg class="grease" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path class="gpath" pathLength="100" d="M50 6 C 84 2, 98 20, 96 49 C 94 82, 72 97, 45 95 C 16 93, 2 73, 5 44 C 8 18, 25 8, 50 6 C 62 5, 70 7, 76 10"/></svg>
+                <span class="gnote gnote--br" aria-hidden="true">print 16×20&nbsp;→</span>
+              </figure>
+              <figure class="cframe" data-scene="headland" data-seed="2107" data-exp="1.22"><canvas aria-hidden="true"></canvas><span class="fnum mono" aria-hidden="true">21A</span></figure>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="sheet-caption mono reveal" aria-hidden="true">PROOF · OKAFOR ROLL № 41172 · PRINTED 2026-07-06 · GRADE 2½</p>
+    </section>
+
+    <!-- ══════════ DARKROOM (signature) ══════════ -->
+    <section id="darkroom" class="darkroom">
+      <div class="safelamp" aria-hidden="true"><span class="lamp-glow"></span><span class="lamp-housing"></span></div>
+      <div class="container darkroom-head">
+        <p class="eyebrow mono reveal">Past this curtain the lights never come on</p>
+        <h2 class="reveal d1">The darkroom</h2>
+        <p class="lede reveal d2">Ilford 902 safelights, Dektol one-to-two at twenty degrees, and ninety
+          patient seconds while frame 21 decides who it is. Watch the tray — the shadows always arrive first.</p>
+      </div>
+      <div class="bench">
+        <figure class="tray tray--dev" id="devtray">
+          <span class="tape mono" aria-hidden="true">DEV</span>
+          <div class="bath">
+            <canvas id="printcanvas" width="560" height="448" aria-hidden="true"></canvas>
+          </div>
+          <figcaption class="tray-caption mono">Okafor roll № 41172 · frame 21 · 16×20 Ilford MGFB Classic · grade 3</figcaption>
+        </figure>
+        <div class="benchside">
+          <div class="gralab" aria-hidden="true">
+            <svg viewBox="0 0 120 120">
+              <circle cx="60" cy="60" r="56" class="g-face"/>
+              <circle cx="60" cy="60" r="47" class="g-ticks" pathLength="60"/>
+              <g id="ghand"><rect x="58.6" y="16" width="2.8" height="46" rx="1.4" class="g-hand"/></g>
+              <circle cx="60" cy="60" r="4" class="g-hub"/>
+            </svg>
+            <span class="g-brand mono">GRALAB 300</span>
+          </div>
+          <p class="readout mono" id="devreadout" aria-live="off">DEV&nbsp;0:00&nbsp;/&nbsp;1:30&nbsp;·&nbsp;DEKTOL&nbsp;1:2&nbsp;·&nbsp;20.0°C</p>
+          <ol class="chem mono" id="chemsteps">
+            <li data-step="dev" class="active"><span>Develop</span><i class="dots" aria-hidden="true"></i><span>1:30</span></li>
+            <li data-step="stop"><span>Stop</span><i class="dots" aria-hidden="true"></i><span>0:30</span></li>
+            <li data-step="fix"><span>Fix</span><i class="dots" aria-hidden="true"></i><span>5:00</span></li>
+            <li data-step="wash"><span>Wash, fiber</span><i class="dots" aria-hidden="true"></i><span>60:00</span></li>
+          </ol>
+          <div class="minitrays" aria-hidden="true">
+            <span class="minitray"><span class="tape mono">STOP</span></span>
+            <span class="minitray"><span class="tape mono">FIX</span></span>
+          </div>
+          <p class="agitate-hint mono" id="agitatehint">— move your hand through the bath to agitate —</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ PRICES / ORDER FORM ══════════ -->
+    <section id="prices" class="prices dimmable">
+      <div class="leak leak--prices" aria-hidden="true"></div>
+      <div class="container">
+        <p class="eyebrow mono reveal">Lights back on — mind your eyes</p>
+        <h2 class="reveal d1">Services &amp; prices</h2>
+        <p class="lede reveal d2">Everything goes on the order form, in triplicate. The top sheet is yours,
+          the amber copy stays pinned to your film, and the third lives in a drawer Émile refuses to explain.</p>
+      </div>
+      <div class="formwrap reveal d3">
+        <div class="carbonsheet" aria-hidden="true"></div>
+        <div class="orderform">
+          <header class="of-head">
+            <div>
+              <p class="of-brand">Halide Process Lab</p>
+              <p class="mono of-addr">47 FENWICK LANE · ROCHESTER NY 14608 · (585) 555-0147</p>
+            </div>
+            <p class="mono of-no">ORDER<br><strong>№ 41173</strong></p>
+          </header>
+          <div class="of-fields mono" aria-hidden="true">
+            <span class="of-field">NAME<i></i></span>
+            <span class="of-field">PHONE<i></i></span>
+            <span class="of-field of-field--s">DATE<i><b class="of-hand">7/8/26</b></i></span>
+            <span class="of-field of-field--s">FILM&nbsp;&nbsp;☐&nbsp;35&nbsp;&nbsp;☐&nbsp;120&nbsp;&nbsp;☐&nbsp;4×5</span>
+            <span class="of-field of-field--s">EI<i></i></span>
+            <span class="of-field of-field--s">☐&nbsp;PUSH&nbsp;&nbsp;☐&nbsp;PULL&nbsp;&nbsp;___&nbsp;STOPS</span>
+          </div>
+          <ul class="pricelist">
+            <li><span class="svc">C-41 develop only</span><span class="lead" aria-hidden="true"></span><span class="prc mono">$9</span></li>
+            <li><span class="svc">C-41 develop + scan, 2,400 px</span><span class="lead" aria-hidden="true"></span><span class="prc mono">$16</span></li>
+            <li><span class="svc">C-41 develop + scan, 4,800 px TIFF</span><span class="lead" aria-hidden="true"></span><span class="prc mono">$24</span></li>
+            <li><span class="svc">E-6 develop <em class="of-note">slide film — the honest medium</em></span><span class="lead" aria-hidden="true"></span><span class="prc mono">$18</span></li>
+            <li><span class="svc">B&amp;W develop, D-76 or Rodinal</span><span class="lead" aria-hidden="true"></span><span class="prc mono">$12</span></li>
+            <li><span class="svc">B&amp;W stand development, Rodinal 1:100, 60 min</span><span class="lead" aria-hidden="true"></span><span class="prc mono">$16</span></li>
+            <li><span class="svc">Push or pull, per stop <em class="of-note">logged on your sleeve</em></span><span class="lead" aria-hidden="true"></span><span class="prc mono">+$3</span></li>
+            <li><span class="svc">Sheet film 4×5, per sheet</span><span class="lead" aria-hidden="true"></span><span class="prc mono">$6</span></li>
+            <li><span class="svc">Silver gelatin print, 8×10 fiber</span><span class="lead" aria-hidden="true"></span><span class="prc mono">$38</span></li>
+            <li><span class="svc">Silver gelatin print, 16×20 fiber <em class="of-note">selenium toned</em></span><span class="lead" aria-hidden="true"></span><span class="prc mono">$95</span></li>
+            <li><span class="svc">Rush, 24 hours <em class="of-note">Ruth decides what qualifies</em></span><span class="lead" aria-hidden="true"></span><span class="prc mono">+50%</span></li>
+          </ul>
+          <p class="of-fine mono">PRINTS TONED IN SELENIUM UNLESS YOU SAY OTHERWISE. UNCOLLECTED FILM KEPT COLD FOR ONE YEAR. NO FILM IS EVER THROWN AWAY.</p>
+          <span class="stamp" aria-hidden="true">EST · 1987</span>
+          <span class="copytag mono" aria-hidden="true">CUSTOMER COPY</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ THE LAB ══════════ -->
+    <section id="lab" class="lab dimmable">
+      <div class="container">
+        <p class="eyebrow mono reveal">Since March 1987</p>
+        <h2 class="reveal d1">The lab</h2>
+        <div class="lab-cols">
+          <div class="lab-story reveal d2">
+            <p>Émile Charbonneau opened Halide in March 1987 with a used Durst enlarger, a loan from
+              his sister, and a lease nobody else wanted — three rooms behind a shuttered camera store
+              on Fenwick Lane. Ruth Okafor came in 1991 to run black &amp; white and never left.</p>
+            <p>Between them: roughly 1.4 million rolls, four floods, two chemical spills worth
+              mentioning, and one wall of prints they will not sell at any price. The Jobo arrived
+              in '98, the Noritsu in '07. The safelights are older than most of the customers.</p>
+            <p>Digital came for the neighborhood in 2003. Halide stayed. Somebody had to.</p>
+          </div>
+          <div class="lab-side reveal d3">
+            <ul class="gear mono">
+              <li><span class="gyear">'87</span><span>DURST L1200 — mural enlarger</span></li>
+              <li><span class="gyear">'89</span><span>KINDERMANN steel tanks × 40</span></li>
+              <li><span class="gyear">'91</span><span>OMEGA D5500 — 4×5 condenser</span></li>
+              <li><span class="gyear">'98</span><span>JOBO ATL-2300 — C-41 / E-6 line</span></li>
+              <li><span class="gyear">'07</span><span>NORITSU HS-1800 — scanner</span></li>
+              <li><span class="gyear">'12</span><span>ILFORD 902 safelights × 6</span></li>
+            </ul>
+            <p class="hours mono">TUE–SAT&nbsp;&nbsp;10:00–18:00<br>FILM SLOT IN THE DOOR&nbsp;&nbsp;24 H</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="sprockets" aria-hidden="true"></div>
+    <p class="tail mono" aria-hidden="true">◼◼&nbsp;&nbsp;TAIL&nbsp;—&nbsp;EXPOSED 2026·07&nbsp;—&nbsp;PROCESS PROMPTLY&nbsp;&nbsp;◼◼</p>
+    <p class="foot-line">Halide Process Lab&nbsp;&nbsp;·&nbsp;&nbsp;47 Fenwick Lane, Rochester NY&nbsp;&nbsp;·&nbsp;&nbsp;(585) 555-0147</p>
+    <p class="foot-small mono">A FICTIONAL LAB, LOVINGLY IMAGINED · SITE DESIGNED &amp; BUILT BY CLAUDE · NO FILM IS EVER THROWN AWAY</p>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

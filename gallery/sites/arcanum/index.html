@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arcanum · Apothecary &amp; Bindery of the Hermetic Arts</title>
+<meta name="description" content="Arcanum, No. 7 Vesper Court, Blackfriars — moon-steeped tinctures, restored grimoires, and bindings sworn to outlast their readers. Established 1792.">
+<meta property="og:title" content="Arcanum · Apothecary &amp; Bindery of the Hermetic Arts">
+<meta property="og:description" content="Moon-steeped tinctures, restored grimoires, and bindings sworn to outlast their readers. No. 7 Vesper Court, Blackfriars. Established 1792.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#EDE0C4">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23EDE0C4'/%3E%3Cpath d='M32 8 L43.3 57.4 L11.7 17.8 L57.3 39.8 L6.7 39.8 L52.3 17.8 L20.7 57.4 Z' fill='none' stroke='%23A22E17' stroke-width='2.6' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/CormorantUnicase-15.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/EBGaramond-14.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/CormorantSC-10.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/CormorantUnicase.css">
+<link rel="stylesheet" href="fonts/EBGaramond.css">
+<link rel="stylesheet" href="fonts/CormorantSC.css">
+<link rel="stylesheet" href="css/arcanum.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+<!-- shared SVG defs: gold-leaf gradient, ink-bleed filters -->
+<svg class="shared-defs" width="0" height="0" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0.25">
+      <stop offset="0" stop-color="#8C6D1A"/>
+      <stop offset="0.35" stop-color="#C9A227"/>
+      <stop offset="0.5" stop-color="#F0D98C"/>
+      <stop offset="0.65" stop-color="#C9A227"/>
+      <stop offset="1" stop-color="#8C6D1A"/>
+      <animateTransform attributeName="gradientTransform" type="translate" values="-1 0; 1 0; -1 0" dur="9s" repeatCount="indefinite"/>
+    </linearGradient>
+    <filter id="inkbleed" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.55" numOctaves="2" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.1" xChannelSelector="R" yChannelSelector="G" result="disp"/>
+      <feGaussianBlur in="disp" stdDeviation="1.1" result="halo"/>
+      <feComponentTransfer in="halo" result="haloA"><feFuncA type="linear" slope="0.5"/></feComponentTransfer>
+      <feMerge><feMergeNode in="haloA"/><feMergeNode in="disp"/></feMerge>
+    </filter>
+    <filter id="inkrough" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="1" seed="11" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="1.2" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="waxedge" x="-15%" y="-15%" width="130%" height="130%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.09" numOctaves="2" seed="4" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="7" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+</svg>
+
+<header class="masthead">
+  <a class="brand reveal" style="--i:0" href="#top" aria-label="Arcanum — return to the seal">
+    <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4 L27.1 34.9 L7.3 10.1 L35.8 24 L4.2 24 L32.7 10.1 L12.9 34.9 Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+    <span class="brand-word">Arcanum</span>
+  </a>
+  <nav class="compass" aria-label="Sections">
+    <a class="reveal" style="--i:1" href="#dispensary">Dispensary</a>
+    <a class="reveal" style="--i:2" href="#grimoires">Grimoires</a>
+    <a class="reveal" style="--i:3" href="#bindery">Bindery</a>
+    <a class="reveal" style="--i:4" href="#correspondence">Correspondence</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO — THE GREAT SEAL ============ -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-text">
+      <p class="kicker reveal" style="--i:0">Officina et Ligatorium · Blackfriars · Anno 1792</p>
+      <h1 id="hero-title" class="reveal" style="--i:2">Apothecary <span class="amp">&amp;</span> Bindery of the Hermetic&nbsp;Arts</h1>
+      <p class="lede reveal" style="--i:4">We distil tinctures under the correct moon, restore grimoires that other binderies decline to touch, and keep whatever we learn in the process. Seventh door on Vesper Court — the one without a sign.</p>
+      <p class="hero-actions reveal" style="--i:6">
+        <a class="quill-link" href="#dispensary">Consult the dispensary</a>
+        <a class="quill-link" href="#bindery">Commission a binding</a>
+      </p>
+    </div>
+
+    <div class="hero-seal">
+      <svg id="great-seal" class="sig" viewBox="0 0 600 600" role="img" aria-label="The great seal of the Arcanum, a seven-pointed star ringed by planetary sigils" data-total="3300" data-nib="1">
+        <g id="seal-art" transform="translate(300,300)" filter="url(#inkbleed)">
+          <!-- outer rings -->
+          <circle class="k1" r="290" data-ink></circle>
+          <circle class="ticks" r="281" data-fade></circle>
+          <circle class="k2" r="272" data-ink></circle>
+          <!-- ring text -->
+          <path id="ringpath" d="M 0,-249 A 249,249 0 1 1 -0.1,-249" fill="none"/>
+          <text class="ringtext" data-write><textPath href="#ringpath" startOffset="0">Sigillvm Arcani · Officina et Ligatorivm · Vesper Covrt · Blackfriars · Anno MDCCXCII ·</textPath></text>
+          <!-- inner rings -->
+          <circle class="k2" r="232" data-ink></circle>
+          <circle class="k1" r="224" data-ink></circle>
+          <!-- heptagram, one continuous stroke -->
+          <path class="star" d="M 0,-200 L 86.8,180.2 L -156.4,-124.7 L 195,44.5 L -195,44.5 L 156.4,-124.7 L -86.8,180.2 Z" data-ink></path>
+          <!-- seven planetary medallions, Chaldean order from the top -->
+          <g transform="translate(0,-200)"><!-- Moon -->
+            <circle class="pad" r="21" data-fade></circle>
+            <circle class="k3" r="21" data-ink></circle>
+            <path class="gly" d="M 4.2,-9 A 9.4 9.4 0 1 0 4.2,9 A 11.8 11.8 0 1 1 4.2,-9 Z" data-ink></path>
+          </g>
+          <g transform="translate(156.4,-124.7)"><!-- Mercury -->
+            <circle class="pad" r="21" data-fade></circle>
+            <circle class="k3" r="21" data-ink></circle>
+            <g class="gly"><circle cy="-1.8" r="5.4" data-ink></circle><path d="M 0,3.6 V 12 M -4,7.8 H 4" data-ink></path><path d="M -6,-11.4 A 6 6 0 0 0 6,-11.4" data-ink></path></g>
+          </g>
+          <g transform="translate(195,44.5)"><!-- Venus -->
+            <circle class="pad" r="21" data-fade></circle>
+            <circle class="k3" r="21" data-ink></circle>
+            <g class="gly"><circle cy="-3.8" r="6" data-ink></circle><path d="M 0,2.2 V 12 M -4,7 H 4" data-ink></path></g>
+          </g>
+          <g transform="translate(86.8,180.2)"><!-- Sun -->
+            <circle class="pad" r="21" data-fade></circle>
+            <circle class="k3" r="21" data-ink></circle>
+            <g class="gly"><circle r="9.4" data-ink></circle><circle class="dot" r="2" data-fade></circle></g>
+          </g>
+          <g transform="translate(-86.8,180.2)"><!-- Mars -->
+            <circle class="pad" r="21" data-fade></circle>
+            <circle class="k3" r="21" data-ink></circle>
+            <g class="gly"><circle cx="-2.4" cy="2.4" r="5.8" data-ink></circle><path d="M 1.6,-1.6 L 9.4,-9.4 M 3.6,-9.8 H 9.8 V -3.6" data-ink></path></g>
+          </g>
+          <g transform="translate(-195,44.5)"><!-- Jupiter -->
+            <circle class="pad" r="21" data-fade></circle>
+            <circle class="k3" r="21" data-ink></circle>
+            <g class="gly"><path d="M -9,4.6 H 7.4 M 3,-10.4 V 11.2" data-ink></path><path d="M -9,4.6 C -9,-1 -8.2,-10 -3,-10 C 0.4,-10 0.8,-5.6 -1.2,-3" data-ink></path></g>
+          </g>
+          <g transform="translate(-156.4,-124.7)"><!-- Saturn -->
+            <circle class="pad" r="21" data-fade></circle>
+            <circle class="k3" r="21" data-ink></circle>
+            <g class="gly"><path d="M -3,-11 V 5.2 M -6.8,-6.4 H 1.2" data-ink></path><path d="M -3,-0.8 C 1.8,-3.4 6.4,0.4 4.2,5.2 C 2.6,8.6 3,9.8 5.2,11" data-ink></path></g>
+          </g>
+          <!-- central boss: the still at work -->
+          <circle class="pad" r="58" data-fade></circle>
+          <circle class="gold-ring" r="58" data-ink></circle>
+          <circle class="k2" r="52" data-ink></circle>
+          <g transform="translate(0,7) scale(0.82)">
+            <path class="k4" d="M -9,-34 L -9,-12 A 21 21 0 1 0 9,-12 L 9,-34" data-ink></path>
+            <path class="k4" d="M -13,-34 H 13" data-ink></path>
+            <path class="k3" d="M -20.5,9 H 20.5" data-ink></path>
+            <path class="k4" d="M 15.5,-7 C 25,-11 33,-19 37,-29" data-ink></path>
+            <circle class="drop" cx="39.2" cy="-21" r="1.9" data-fade></circle>
+            <path class="flame" d="M -11,46 C -11,38 -5,36 0,29 C 5,36 11,38 11,46" data-ink></path>
+            <path class="flame" d="M -5.5,46 C -5.5,41 -2,40 0,36 C 2,40 5.5,41 5.5,46" data-ink></path>
+          </g>
+          <path class="cres" transform="translate(0,-36) scale(0.62)" d="M 4.2,-9 A 9.4 9.4 0 1 0 4.2,9 A 11.8 11.8 0 1 1 4.2,-9 Z" data-ink></path>
+        </g>
+      </svg>
+      <button class="reinscribe" type="button">Re-inscribe the seal</button>
+    </div>
+  </section>
+
+  <!-- divider: sulphur -->
+  <div class="divider" aria-hidden="true">
+    <span class="rule"></span>
+    <svg class="sig div-sig" viewBox="-22 -22 44 44"><g filter="url(#inkrough)"><path d="M 0,-16 L 11,2 L -11,2 Z" data-ink></path><path d="M 0,2 V 16 M -5.5,9 H 5.5" data-ink></path></g></svg>
+    <span class="rule"></span>
+  </div>
+
+  <!-- ============ DISPENSARY ============ -->
+  <section id="dispensary" class="codex" aria-labelledby="dispensary-title">
+    <header class="section-head reveal">
+      <p class="eyebrow">Dispensarium</p>
+      <h2 id="dispensary-title">The Dispensary</h2>
+    </header>
+
+    <div class="folio-body">
+      <p class="has-dropcap reveal">
+        <svg class="dropcap sig" viewBox="0 0 96 96" aria-hidden="true" data-letter="T">
+          <rect class="dc-field dc-verdigris" x="3" y="3" width="90" height="90" data-fade></rect>
+          <rect class="dc-frame" x="9" y="9" width="78" height="78" data-ink></rect>
+          <path class="dc-vine" d="M 14,84 C 30,80 27,64 16,62 C 8,60.5 8,71 15,71 M 82,12 C 66,16 69,32 80,34 C 88,35.5 88,25 81,25" data-ink></path>
+          <text class="dc-letter" x="48" y="50" data-fade>T</text>
+        </svg><span class="dc-rest"><span class="sr-only">T</span>he dispensary shelves run four deep and one hundred and forty-one bottles long. Everything is steeped, rendered, or distilled on the premises, dated in iron-gall ink, and stoppered with beeswax from the roof.<sup class="fn">*</sup> Six preparations travel well enough to be sold to strangers; the rest require an introduction.</span>
+      </p>
+      <aside class="nota reveal"><span class="star">*</span>Shake twice. Apologise once. The tincture can tell.</aside>
+    </div>
+
+    <ul class="labels">
+      <li class="label reveal" style="--i:0">
+        <svg class="stamp sig" viewBox="-24 -24 48 48" aria-hidden="true"><g filter="url(#inkrough)"><circle r="19" data-ink></circle><circle class="dash" r="15.5" data-fade></circle><path d="M 3.6,-7.7 A 8 8 0 1 0 3.6,7.7 A 10 10 0 1 1 3.6,-7.7 Z" data-ink></path></g></svg>
+        <p class="label-house">Arcanum · Londini</p>
+        <h3 class="label-title">Tinctura Lunaria</h3>
+        <p class="label-use">For sleep that argues back.</p>
+        <p class="row"><span class="k">Volume</span><span class="dots"></span><span class="v">30 ml</span></p>
+        <p class="row"><span class="k">Steeped</span><span class="dots"></span><span class="v">28 nights, waxing</span></p>
+        <p class="row"><span class="k">Dose</span><span class="dots"></span><span class="v">three drops, never four</span></p>
+        <p class="row tail"><span class="k">№ T-07</span><span class="dots"></span><span class="v price">£24</span></p>
+      </li>
+      <li class="label reveal" style="--i:1">
+        <svg class="stamp sig" viewBox="-24 -24 48 48" aria-hidden="true"><g filter="url(#inkrough)"><circle r="19" data-ink></circle><circle class="dash" r="15.5" data-fade></circle><path d="M 0,-10 L 9,7 L -9,7 Z" data-ink></path><path d="M 0,-3.4 L 4,4 L -4,4 Z" data-ink></path></g></svg>
+        <p class="label-house">Arcanum · Londini</p>
+        <h3 class="label-title">Oleum Salamandrae</h3>
+        <p class="label-use">For cold hands and colder feet.</p>
+        <p class="row"><span class="k">Volume</span><span class="dots"></span><span class="v">15 ml</span></p>
+        <p class="row"><span class="k">Rendered</span><span class="dots"></span><span class="v">over ash-fire<sup class="fn">†</sup></span></p>
+        <p class="row"><span class="k">Apply</span><span class="dots"></span><span class="v">sparingly, at dusk</span></p>
+        <p class="row tail"><span class="k">№ T-12</span><span class="dots"></span><span class="v price">£31</span></p>
+      </li>
+      <li class="label reveal" style="--i:2">
+        <svg class="stamp sig" viewBox="-24 -24 48 48" aria-hidden="true"><g filter="url(#inkrough)"><circle r="19" data-ink></circle><circle class="dash" r="15.5" data-fade></circle><circle r="8.6" data-ink></circle><path d="M -8.6,0 H 8.6" data-ink></path></g></svg>
+        <p class="label-house">Arcanum · Londini</p>
+        <h3 class="label-title">Sal Memoriae</h3>
+        <p class="label-use">For names that slip their moorings.</p>
+        <p class="row"><span class="k">Weight</span><span class="dots"></span><span class="v">9 g</span></p>
+        <p class="row"><span class="k">Ground</span><span class="dots"></span><span class="v">with rosemary, thrice</span></p>
+        <p class="row"><span class="k">Dose</span><span class="dots"></span><span class="v">one breath, held</span></p>
+        <p class="row tail"><span class="k">№ T-03</span><span class="dots"></span><span class="v price">£18</span></p>
+      </li>
+      <li class="label reveal" style="--i:3">
+        <svg class="stamp sig" viewBox="-24 -24 48 48" aria-hidden="true"><g filter="url(#inkrough)"><circle r="19" data-ink></circle><circle class="dash" r="15.5" data-fade></circle><circle cx="-2.2" cy="2.2" r="5.4" data-ink></circle><path d="M 1.6,-1.6 L 8.8,-8.8 M 3.4,-9.2 H 9.2 V -3.4" data-ink></path></g></svg>
+        <p class="label-house">Arcanum · Londini</p>
+        <h3 class="label-title">Vinum Martis</h3>
+        <p class="label-use">For resolve before difficult letters.</p>
+        <p class="row"><span class="k">Volume</span><span class="dots"></span><span class="v">200 ml</span></p>
+        <p class="row"><span class="k">Steeped</span><span class="dots"></span><span class="v">on iron filings, a Tuesday</span></p>
+        <p class="row"><span class="k">Serve</span><span class="dots"></span><span class="v">one thimble, standing</span></p>
+        <p class="row tail"><span class="k">№ T-19</span><span class="dots"></span><span class="v price">£27</span></p>
+      </li>
+      <li class="label reveal" style="--i:4">
+        <svg class="stamp sig" viewBox="-24 -24 48 48" aria-hidden="true"><g filter="url(#inkrough)"><circle r="19" data-ink></circle><circle class="dash" r="15.5" data-fade></circle><path d="M 0,-10.5 L 9,-5.2 L 9,5.2 L 0,10.5 L -9,5.2 L -9,-5.2 Z" data-ink></path><circle class="dot" r="1.8" data-fade></circle></g></svg>
+        <p class="label-house">Arcanum · Londini</p>
+        <h3 class="label-title">Balsamum Chartae</h3>
+        <p class="label-use">For the hands of those who handle old paper.</p>
+        <p class="row"><span class="k">Weight</span><span class="dots"></span><span class="v">45 g</span></p>
+        <p class="row"><span class="k">Of</span><span class="dots"></span><span class="v">beeswax &amp; benzoin</span></p>
+        <p class="row"><span class="k">Apply</span><span class="dots"></span><span class="v">before folio, after tea</span></p>
+        <p class="row tail"><span class="k">№ T-22</span><span class="dots"></span><span class="v price">£16</span></p>
+      </li>
+      <li class="label reveal" style="--i:5">
+        <svg class="stamp sig" viewBox="-24 -24 48 48" aria-hidden="true"><g filter="url(#inkrough)"><circle r="19" data-ink></circle><circle class="dash" r="15.5" data-fade></circle><path d="M 0,-10.5 L 6.2,8.5 L -10,-3.2 L 10,-3.2 L -6.2,8.5 Z" data-ink></path></g></svg>
+        <p class="label-house">Arcanum · Londini</p>
+        <h3 class="label-title">Tinctura Stellaria</h3>
+        <p class="label-use">For wishes requiring aim.</p>
+        <p class="row"><span class="k">Volume</span><span class="dots"></span><span class="v">10 ml</span></p>
+        <p class="row"><span class="k">Distilled</span><span class="dots"></span><span class="v">while the Perseids fall</span></p>
+        <p class="row"><span class="k">Dose</span><span class="dots"></span><span class="v">once, and mean it</span></p>
+        <p class="row tail"><span class="k">№ T-31</span><span class="dots"></span><span class="v price">£48</span></p>
+      </li>
+    </ul>
+
+    <div class="folio-body">
+      <aside class="nota nota-flat reveal"><span class="star">†</span>Rendered from ash-fire, not from salamanders. They supervise.</aside>
+    </div>
+  </section>
+
+  <!-- divider: mercury -->
+  <div class="divider" aria-hidden="true">
+    <span class="rule"></span>
+    <svg class="sig div-sig" viewBox="-22 -22 44 44"><g filter="url(#inkrough)"><circle cy="-2.6" r="7" data-ink></circle><path d="M 0,4.4 V 16 M -5,10 H 5" data-ink></path><path d="M -7.6,-13.6 A 7.6 7.6 0 0 0 7.6,-13.6" data-ink></path></g></svg>
+    <span class="rule"></span>
+  </div>
+
+  <!-- ============ GRIMOIRES ============ -->
+  <section id="grimoires" class="codex" aria-labelledby="grimoires-title">
+    <header class="section-head reveal">
+      <p class="eyebrow">Bibliotheca Venalis</p>
+      <h2 id="grimoires-title">Grimoires &amp; Printed Shadows</h2>
+    </header>
+
+    <div class="folio-body">
+      <p class="has-dropcap reveal">
+        <svg class="dropcap sig" viewBox="0 0 96 96" aria-hidden="true" data-letter="E">
+          <rect class="dc-field dc-cinnabar" x="3" y="3" width="90" height="90" data-fade></rect>
+          <rect class="dc-frame" x="9" y="9" width="78" height="78" data-ink></rect>
+          <path class="dc-vine" d="M 14,84 C 30,80 27,64 16,62 C 8,60.5 8,71 15,71 M 82,12 C 66,16 69,32 80,34 C 88,35.5 88,25 81,25" data-ink></path>
+          <text class="dc-letter" x="48" y="50" data-fade>E</text>
+        </svg><span class="dc-rest"><span class="sr-only">E</span>very volume under the glass arrived owing something — a spine, a clasp, forty folios, an explanation. We settle those debts before sale. Provenance is recorded to the best of our knowledge and the limits of our courage.</span>
+      </p>
+
+      <article class="tome reveal">
+        <h3 class="tome-title">Clavis Umbrarum</h3>
+        <p class="tome-sub">“The Key of Shadows” · Prague, 1614</p>
+        <p class="tome-collation">Quarto · 212 folios · 9 extant diagrams, 1 deliberately removed</p>
+        <p>Rebound by this house in black morocco with a verdigris inlay; the clasp locks from the inside, as the previous binder intended.<sup class="fn">*</sup> Sole surviving copy of an edition of eleven.</p>
+        <p class="row tome-row"><span class="k">№ G-114</span><span class="dots"></span><span class="v price">Price on application</span></p>
+      </article>
+      <aside class="nota reveal"><span class="star">*</span>Do not read folio 88 aloud. The previous owner did.</aside>
+
+      <article class="tome reveal">
+        <h3 class="tome-title">Herbarium Nocturnum</h3>
+        <p class="tome-sub">Antwerp, 1588</p>
+        <p class="tome-collation">Folio · 96 leaves · 41 hand-coloured plates</p>
+        <p>Night-flowering plants drawn from life by candle, several of which no longer occur in nature and one of which never did. Original limp vellum; our conservation, 2019.</p>
+        <p class="row tome-row"><span class="k">№ G-097</span><span class="dots"></span><span class="v price">£2,400</span></p>
+      </article>
+      <aside class="nota reveal"><span class="star">N.B.</span>Plate XXII still smells faintly of a garden at night. We have stopped explaining this.</aside>
+
+      <article class="tome reveal">
+        <h3 class="tome-title">De Ligaturis Animae</h3>
+        <p class="tome-sub">“On the Bindings of the Soul” · Vesper Court, 2025</p>
+        <p class="tome-collation">Octavo · letterpress on flax vellum · sewn on five raised cords</p>
+        <p>Our own press. An edition of sixty-six, of which sixty-one remain.<sup class="fn">†</sup> Blind-tooled oak boards; the endpapers are marbled with oxgall in the yard, weather permitting.</p>
+        <p class="row tome-row"><span class="k">№ G-201</span><span class="dots"></span><span class="v price">£180</span></p>
+      </article>
+      <aside class="nota reveal"><span class="star">†</span>Two sold, two given, one came back on its own.</aside>
+    </div>
+  </section>
+
+  <!-- divider: salt -->
+  <div class="divider" aria-hidden="true">
+    <span class="rule"></span>
+    <svg class="sig div-sig" viewBox="-22 -22 44 44"><g filter="url(#inkrough)"><circle r="12" data-ink></circle><path d="M -12,0 H 12" data-ink></path></g></svg>
+    <span class="rule"></span>
+  </div>
+
+  <!-- ============ BINDERY ============ -->
+  <section id="bindery" class="codex" aria-labelledby="bindery-title">
+    <header class="section-head reveal">
+      <p class="eyebrow">Ligatorium</p>
+      <h2 id="bindery-title">The Bindery</h2>
+    </header>
+
+    <div class="folio-body">
+      <p class="has-dropcap reveal">
+        <svg class="dropcap sig" viewBox="0 0 96 96" aria-hidden="true" data-letter="A">
+          <rect class="dc-field dc-verdigris" x="3" y="3" width="90" height="90" data-fade></rect>
+          <rect class="dc-frame" x="9" y="9" width="78" height="78" data-ink></rect>
+          <path class="dc-vine" d="M 14,84 C 30,80 27,64 16,62 C 8,60.5 8,71 15,71 M 82,12 C 66,16 69,32 80,34 C 88,35.5 88,25 81,25" data-ink></path>
+          <text class="dc-letter" x="48" y="50" data-fade>A</text>
+        </svg><span class="dc-rest"><span class="sr-only">A </span>binding is a promise that a text will outlive its reader. We make the promise in linen, oak, and gold, and we have kept it, so far, for two hundred and thirty-four years. Every book passes through the same four rites, in the same order, because the order is the point.</span>
+      </p>
+    </div>
+
+    <ol class="rites">
+      <li class="rite reveal" style="--i:0">
+        <span class="rite-numeral">I</span>
+        <h3 class="rite-name">Collatio</h3>
+        <p>Folios counted thrice: once by daylight, once by candlelight, once by someone who has not been told what the book is.</p>
+      </li>
+      <li class="rite reveal" style="--i:1">
+        <span class="rite-numeral">II</span>
+        <h3 class="rite-name">Consutura</h3>
+        <p>Sewn on linen cords in a herringbone stitch, waxed with our own bees’ wax. A book should open flat and close without being asked.</p>
+      </li>
+      <li class="rite reveal" style="--i:2">
+        <span class="rite-numeral">III</span>
+        <h3 class="rite-name">Corpus</h3>
+        <p>Boards of quarter-sawn oak; the spine rounded by hand with a hammer older than the shop. The book acquires a back, and opinions.</p>
+      </li>
+      <li class="rite reveal" style="--i:3">
+        <span class="rite-numeral">IV</span>
+        <h3 class="rite-name">Ornatus</h3>
+        <p>Gold leaf laid at dawn, when the air argues less.<sup class="fn">*</sup> Titles in 14-carat gold; sigils by arrangement, and only on the inside.</p>
+      </li>
+    </ol>
+
+    <div class="folio-body">
+      <aside class="nota nota-flat reveal"><span class="star">*</span>The leaf is beaten to a ten-thousandth of a millimetre. It rides a draught the way rumour rides a parish.</aside>
+
+      <div class="services reveal">
+        <p class="row svc"><span class="k">Conservation <em>— cleaning, mending, re-sewing</em></span><span class="dots"></span><span class="v">from £120 · six weeks</span></p>
+        <p class="row svc"><span class="k">Rebinding <em>— full leather, blind or gold tooling</em></span><span class="dots"></span><span class="v">from £340 · a season</span></p>
+        <p class="row svc"><span class="k">Commission <em>— a new grimoire, blank or otherwise</em></span><span class="dots"></span><span class="v">from £900 · quoted by candlelight</span></p>
+      </div>
+      <aside class="nota reveal"><span class="star">N.B.</span>“A season” is the book’s season, not the calendar’s. Oak is patient. Be likewise.</aside>
+    </div>
+  </section>
+
+  <!-- divider: water -->
+  <div class="divider" aria-hidden="true">
+    <span class="rule"></span>
+    <svg class="sig div-sig" viewBox="-22 -22 44 44"><g filter="url(#inkrough)"><path d="M 0,14 L 13,-8 L -13,-8 Z" data-ink></path></g></svg>
+    <span class="rule"></span>
+  </div>
+
+  <!-- ============ CORRESPONDENCE ============ -->
+  <section id="correspondence" class="codex" aria-labelledby="correspondence-title">
+    <header class="section-head reveal">
+      <p class="eyebrow">Epistolae</p>
+      <h2 id="correspondence-title">Correspondence</h2>
+    </header>
+
+    <div class="folio-body">
+      <p class="has-dropcap reveal">
+        <svg class="dropcap sig" viewBox="0 0 96 96" aria-hidden="true" data-letter="W">
+          <rect class="dc-field dc-oxgall" x="3" y="3" width="90" height="90" data-fade></rect>
+          <rect class="dc-frame" x="9" y="9" width="78" height="78" data-ink></rect>
+          <path class="dc-vine" d="M 14,84 C 30,80 27,64 16,62 C 8,60.5 8,71 15,71 M 82,12 C 66,16 69,32 80,34 C 88,35.5 88,25 81,25" data-ink></path>
+          <text class="dc-letter" x="48" y="50" data-fade>W</text>
+        </svg><span class="dc-rest"><span class="sr-only">W</span>rite before visiting. The shop moves less than the street does, but the hours obey the moon,<sup class="fn">*</sup> and the bell on the door is only painted on. Knock as if you mean it.</span>
+      </p>
+
+      <div class="whereabouts reveal">
+        <div class="where-block">
+          <p class="where-head">Premises</p>
+          <p>№ 7 Vesper Court<br>Blackfriars, London<br>EC4V 6XX</p>
+        </div>
+        <div class="where-block">
+          <p class="where-head">Hours</p>
+          <p>Tuesday to Saturday<br>ten o’clock until dusk<br>closed at the dark of the moon<br>and on the feast of St. Jerome</p>
+        </div>
+      </div>
+
+      <aside class="nota reveal"><span class="star">*</span>Letters are answered in the order the moon permits, which is not always the order received.</aside>
+
+      <form class="letter reveal" novalidate>
+        <p class="letter-salutation">To the proprietors of the Arcanum —</p>
+        <div class="field">
+          <label for="f-name">Your name</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" spellcheck="false">
+        </div>
+        <div class="field">
+          <label for="f-matter">Your matter</label>
+          <textarea id="f-matter" name="matter" rows="4" placeholder="State the book, the ailment, or the apparition."></textarea>
+        </div>
+        <div class="letter-foot">
+          <button class="post-btn" type="submit">Send by evening post</button>
+          <p class="letter-status" role="status" aria-live="polite"></p>
+        </div>
+        <svg class="wax" viewBox="-45 -45 90 90" aria-hidden="true">
+          <g filter="url(#waxedge)">
+            <path class="wax-blob" d="M0,-34 C14,-34 26,-28 30,-16 C36,-4 32,12 22,22 C12,32 -6,36 -18,28 C-30,21 -36,6 -32,-8 C-28,-24 -14,-34 0,-34 Z"/>
+            <circle class="wax-ring" r="22"/>
+            <text class="wax-letter" y="9">A</text>
+          </g>
+        </svg>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="colophon">
+  <svg class="colophon-mark" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4 L27.1 34.9 L7.3 10.1 L35.8 24 L4.2 24 L32.7 10.1 L12.9 34.9 Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="20" cy="19.5" r="17.5" fill="none" stroke="currentColor" stroke-width="0.8"/></svg>
+  <p class="colophon-line">Arcanum · № 7 Vesper Court, Blackfriars · set in Cormorant Unicase &amp; EB Garamond · illuminated by hand, lit by candle</p>
+  <p class="colophon-fine">MMXXVI. No part of this codex may be copied without the consent of the binder and the approval of at least one planet.</p>
+</footer>
+
+<div class="candle" aria-hidden="true"></div>
+<div class="fibers" aria-hidden="true"></div>
+
+<script src="js/arcanum.js" defer></script>
+</body>
+</html>

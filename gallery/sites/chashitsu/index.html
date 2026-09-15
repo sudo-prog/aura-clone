@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en" data-season="summer">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Seifū-an — a tea room in the mountains</title>
+  <meta name="description" content="Seifū-an is a four-and-a-half-mat tea room on a cedar ridge above Ōdaira, Nagano. Morning tea, the full chaji, and evening seatings — four guests at most. Reservations open on the first of each month.">
+  <meta property="og:title" content="Seifū-an — a tea room in the mountains">
+  <meta property="og:description" content="Four and a half mats, one window, tea twice a day. A mountain tea room above Ōdaira, Nagano, reached by a forty-minute path. The page paints itself in ink and follows the seasons.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#F5F1E6">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23F5F1E6'/%3E%3Cpath d='M32 9a23 23 0 1 0 15 40' fill='none' stroke='%23211E1B' stroke-width='5.5' stroke-linecap='round'/%3E%3C/svg%3E">
+  <script>
+    (function () {
+      document.documentElement.classList.add('js');
+      var s = null;
+      try { s = localStorage.getItem('seifuan-season'); } catch (e) {}
+      if (['spring', 'summer', 'autumn', 'winter'].indexOf(s) < 0) {
+        var m = new Date().getMonth();
+        s = (m >= 2 && m <= 4) ? 'spring' : (m >= 5 && m <= 7) ? 'summer' : (m >= 8 && m <= 10) ? 'autumn' : 'winter';
+      }
+      document.documentElement.setAttribute('data-season', s);
+    })();
+  </script>
+  <link rel="preload" href="fonts/CormorantGaramond-10.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/EBGaramond-14.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="fonts/CormorantGaramond.css">
+  <link rel="stylesheet" href="fonts/EBGaramond.css">
+  <link rel="stylesheet" href="fonts/NotoSerifJP.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-head">
+    <a class="mark" href="#top">
+      <span class="mark-ja" lang="ja">清風庵</span>
+      <span class="mark-en">Seifū-an</span>
+    </a>
+    <div class="seasons" role="group" aria-label="Choose a season">
+      <button class="season-btn" type="button" data-s="spring" aria-pressed="false" aria-label="Spring" title="Spring"><span lang="ja">春</span></button>
+      <button class="season-btn" type="button" data-s="summer" aria-pressed="true" aria-label="Summer" title="Summer"><span lang="ja">夏</span></button>
+      <button class="season-btn" type="button" data-s="autumn" aria-pressed="false" aria-label="Autumn" title="Autumn"><span lang="ja">秋</span></button>
+      <button class="season-btn" type="button" data-s="winter" aria-pressed="false" aria-label="Winter" title="Winter"><span lang="ja">冬</span></button>
+    </div>
+    <a class="head-reserve ink-link" href="#reserve">Reserve</a>
+  </header>
+
+  <div class="visually-hidden" aria-live="polite" id="seasonStatus"></div>
+
+  <main id="main">
+
+    <section class="hero" id="top" aria-label="Seifū-an">
+      <canvas id="heroInk" class="ink-canvas" aria-hidden="true"></canvas>
+      <div class="hero-text">
+        <p class="eyebrow rise rise-1">Ōdaira ridge · Nagano · 1,240&nbsp;m</p>
+        <h1 class="rise rise-2">A tea room in<br>the mountains.</h1>
+        <p class="hero-sub rise rise-3">Seifū-an is four and a half mats at the top of a cedar ridge — two seatings most days, four guests at most, tea made the slow way.</p>
+        <p class="hero-season rise rise-4"><span data-swap id="heroSeason">It is summer at the ridge. The path is deep green, the stream is loud, and the room stays cool until evening.</span></p>
+        <p class="hero-cta rise rise-5">
+          <a class="ink-link" href="#reserve">Reserve a seat</a>
+          <a class="ink-link quiet" href="#seatings">See the seatings</a>
+        </p>
+      </div>
+      <div class="scroll-cue" aria-hidden="true"></div>
+    </section>
+
+    <div class="divider" aria-hidden="true"><canvas class="ink-canvas"></canvas></div>
+
+    <section id="room">
+      <p class="ma-mark" lang="ja" aria-hidden="true">松風</p>
+      <div class="col" data-reveal>
+        <p class="label">The room</p>
+        <h2>Four and a half mats, one&nbsp;window.</h2>
+        <p>The room was raised in 1957 by the carpenter Ōta Kanjirō and has been rebuilt twice since, both times with the same cedar. The ceiling is woven bark. The tokonoma holds one scroll and one flower, changed for every seating. A low window faces the ravine; on clear mornings the light reaches the third mat, and that is the whole show.</p>
+        <p>The fire is laid an hour before you arrive. Water comes from the spring behind the room and boils in an iron kettle from Morioka. You will hear it — the sound has a name, <em>matsukaze</em>, wind in the pines — and for a while it is the only sound.</p>
+        <div class="at-door">
+          <p class="label">At the door</p>
+          <p>Shoes stay on the stone step; the room is entered in socks or tabi — we keep clean spares in three sizes. Watches, phones, and rings rest in a paulownia box in the waiting arbor and are returned when you leave. Nothing else is asked of you. Kneeling is not required; sit as you can sit for an hour.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true"><canvas class="ink-canvas"></canvas></div>
+
+    <section id="seatings">
+      <div class="col" data-reveal>
+        <p class="label">The seatings</p>
+        <h2>Tea twice a day, four guests at most.</h2>
+
+        <article class="seating">
+          <div class="seating-head">
+            <h3>Asa-cha — morning tea</h3>
+            <span class="seating-jp" lang="ja">朝茶</span>
+            <span class="seating-price">¥4,500 a guest</span>
+          </div>
+          <p class="seating-meta">Daily · 06:30 · 50 minutes</p>
+          <p class="seating-desc">Thin tea and one sweet, taken while the mountain is still deciding on the weather. The simplest seating and, in the opinion of the house, the best one.</p>
+        </article>
+
+        <article class="seating">
+          <div class="seating-head">
+            <h3>Shōgo no chaji — the full ceremony</h3>
+            <span class="seating-jp" lang="ja">正午の茶事</span>
+            <span class="seating-price">¥28,000 a guest</span>
+          </div>
+          <p class="seating-meta">Friday – Sunday · 11:00 · about four hours</p>
+          <p class="seating-desc">The complete form: charcoal laid before you, a small kaiseki meal, thick tea passed in one bowl, then thin tea to close. One party only. We explain each step as it comes; nothing is assumed.</p>
+        </article>
+
+        <article class="seating">
+          <div class="seating-head">
+            <h3>Yoi no chakai — evening tea</h3>
+            <span class="seating-jp" lang="ja">宵の茶会</span>
+            <span class="seating-price">¥6,800 a guest</span>
+          </div>
+          <p class="seating-meta">Thursday – Monday · 17:00 &amp; 18:45 · 70 minutes</p>
+          <p class="seating-desc">Thin tea by lantern light with the day's sweet. In summer the window stays open for the evening birds; in winter, the kettle does the talking.</p>
+        </article>
+
+        <p class="seatings-note">First visit? Say so when you book — the host serves a little slower and names each utensil as it is used.</p>
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true"><canvas class="ink-canvas"></canvas></div>
+
+    <section class="haiku-section" id="haiku" aria-label="A haiku for the season">
+      <canvas id="haikuInk" class="ink-canvas haiku-ink" aria-hidden="true"></canvas>
+      <div class="haiku-west" data-reveal>
+        <p class="haiku-romaji" data-swap id="haikuRomaji">shizukasa ya / iwa ni shimiiru / semi no koe</p>
+        <p class="haiku-en" data-swap id="haikuEn">Stillness — sinking into the rocks, the cicada’s cry.</p>
+        <p class="haiku-cite" data-swap id="haikuCite">— Matsuo Bashō, 1689</p>
+      </div>
+      <p class="haiku-jp" lang="ja" data-swap id="haikuJp"><span class="haiku-line">閑さや</span><span class="haiku-line">岩にしみ入る</span><span class="haiku-line">蝉の声</span></p>
+    </section>
+
+    <div class="divider" aria-hidden="true"><canvas class="ink-canvas"></canvas></div>
+
+    <section id="wagashi">
+      <div class="col" data-reveal>
+        <p class="label">The sweets</p>
+        <h2>The confection changes with the&nbsp;mountain.</h2>
+        <p>Wagashi are made each morning in the lower kitchen and carried up with the day's charcoal. One is served before the tea and is part of your seating; the others can be asked for after, with a second bowl.</p>
+        <ul class="wagashi-plate" id="wagashiList" data-swap>
+          <li class="wagashi-item">
+            <div class="wagashi-head">
+              <span class="wagashi-jp" lang="ja">水羊羹</span>
+              <span class="wagashi-name">Mizu-yōkan</span>
+              <span class="wagashi-price">¥700</span>
+            </div>
+            <p class="wagashi-desc">Chilled azuki jelly set with spring water, cut cold in the well house.</p>
+          </li>
+          <li class="wagashi-item">
+            <div class="wagashi-head">
+              <span class="wagashi-jp" lang="ja">葛饅頭</span>
+              <span class="wagashi-name">Kuzu-manjū</span>
+              <span class="wagashi-price">¥750</span>
+            </div>
+            <p class="wagashi-desc">Bean paste inside a clear kudzu skin — held to the window, it shows the ravine.</p>
+          </li>
+          <li class="wagashi-item">
+            <div class="wagashi-head">
+              <span class="wagashi-jp" lang="ja">蕨餅</span>
+              <span class="wagashi-name">Warabi-mochi</span>
+              <span class="wagashi-price">¥700</span>
+            </div>
+            <p class="wagashi-desc">Bracken-starch mochi under roasted soy flour and a thread of black sugar.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true"><canvas class="ink-canvas"></canvas></div>
+
+    <section id="path">
+      <div class="col" data-reveal>
+        <p class="label">The path</p>
+        <h2>There is no road.</h2>
+        <p>Leave the car — or the 14:10 bus from Kiso-Fukushima — at the Ōdaira foot station, where the keeper takes your luggage and anything you would rather not carry. The path climbs 310 metres in about forty minutes: packed earth through the cedars, then eighty-two stone steps for the last stretch. There are three benches on the way and one spring you can drink from.</p>
+        <p>From dusk the steps are lit with paper lanterns. In snow we come down and walk up with you — say so when you book, and the morning seating moves from 06:30 to 08:00. Umbrellas, sticks, and dry socks wait in the arbor at the top.</p>
+        <p class="path-aside">The climb is honest but not hard. If stairs are a difficulty, write to us first; there is a longer, gentler way used by the kettle-carrier.</p>
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true"><canvas class="ink-canvas"></canvas></div>
+
+    <section id="reserve">
+      <div class="col" data-reveal>
+        <p class="label">Reservations</p>
+        <h2>Four seats a seating, held&nbsp;quietly.</h2>
+        <p class="reserve-intro">Reservations open on the first morning of each month for the month following. We hold seats rather than take deposits; if your plans change, three days' notice is enough.</p>
+
+        <form class="reserve-form" id="reserveForm">
+          <div class="field wide">
+            <label for="f-seating">Seating</label>
+            <select id="f-seating" name="seating" required>
+              <option value="asa">Asa-cha — morning, 06:30</option>
+              <option value="chaji">Shōgo no chaji — 11:00, Fri–Sun</option>
+              <option value="yoi1">Yoi no chakai — evening, 17:00</option>
+              <option value="yoi2">Yoi no chakai — evening, 18:45</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-date">Date</label>
+            <input id="f-date" name="date" type="date" required>
+          </div>
+          <div class="field">
+            <label for="f-guests">Guests</label>
+            <select id="f-guests" name="guests" required>
+              <option value="1">One guest</option>
+              <option value="2" selected>Two guests</option>
+              <option value="3">Three guests</option>
+              <option value="4">Four — the whole room</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-name">Name</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="f-email">Email</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field wide">
+            <label for="f-note">Anything we should know</label>
+            <textarea id="f-note" name="note" rows="2" placeholder="A first visit, a stiff knee, a quiet celebration…"></textarea>
+          </div>
+          <div class="reserve-actions">
+            <button class="btn-ink" type="submit">Request the seat</button>
+            <p class="reserve-smallprint">No payment is taken now; you pay at the room.</p>
+          </div>
+        </form>
+
+        <div class="reserve-done" id="reserveDone" hidden aria-live="polite">
+          <canvas id="ensoInk" class="ink-canvas" aria-hidden="true"></canvas>
+          <div class="reserve-done-text">
+            <h3>Received.</h3>
+            <p id="reserveDoneText"></p>
+            <p class="kettle">The kettle will be on.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="col">
+      <p class="foot-mark"><span lang="ja">清風庵</span><canvas id="footSeal" class="ink-canvas foot-seal" aria-hidden="true"></canvas></p>
+      <div class="foot-lines">
+        <p>Seifū-an · 1892-4 Ōdaira, Kiso, Nagano 397-0301</p>
+        <p>Letters answered in Japanese or English · <a class="ink-link quiet" href="tel:+81264552141">0264-55-2141</a> · <a class="ink-link quiet" href="mailto:mizusashi@seifuan.jp">mizusashi@seifuan.jp</a></p>
+        <p>Closed Tuesdays, and the first week of June, when we re-plaster the walls.</p>
+      </div>
+      <p class="foot-credit">The ink on this page is brushed by the page itself, fresh each visit, and repaints with the season.</p>
+    </div>
+  </footer>
+
+  <script src="js/sumi.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Palimpsest Lab — Manuscript Recovery &amp; Multispectral Imaging</title>
+<meta name="description" content="A conservation laboratory that recovers erased texts. Drag the wavelength from visible light into ultraviolet and a fifth-century Greek treatise, scraped from its vellum in 1213, rises back to legibility.">
+<meta property="og:title" content="Palimpsest Lab — Manuscript Recovery &amp; Multispectral Imaging">
+<meta property="og:description" content="Drag the light. The erased text answers. Multispectral recovery of scraped manuscripts: case files, the ORPHEUS-12 bench, and an essay on erasure and survival.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#1A140E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%231A140E'/%3E%3Crect x='14' y='10' width='36' height='44' rx='3' fill='%23E9DDC2'/%3E%3Cpath d='M20 20h24M20 27h24M20 34h16' stroke='%233B2A16' stroke-width='3' stroke-linecap='round'/%3E%3Cpath d='M20 44h24' stroke='%23C8D6FF' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/EBGaramond-14.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/IBMPlexMono-05.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/EBGaramond.css">
+<link rel="stylesheet" href="fonts/Cardo.css">
+<link rel="stylesheet" href="fonts/IBMPlexMono.css">
+<link rel="stylesheet" href="fonts/UnifrakturMaguntia.css">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<header class="site-head">
+  <a class="mark" href="#top" aria-label="Palimpsest Lab — home">
+    <span class="mark-folio" aria-hidden="true"></span>
+    <span class="mark-word">Palimpsest&nbsp;Lab</span>
+    <span class="mark-geo">GE&middot;CH</span>
+  </a>
+  <nav class="site-nav" aria-label="Sections">
+    <a href="#folio">Folio</a>
+    <a href="#cases">Case files</a>
+    <a href="#bench">The bench</a>
+    <a href="#essay">Essay</a>
+  </nav>
+</header>
+
+<main id="top">
+
+<!-- ================= HERO / IMAGING BENCH ================= -->
+<section class="hero" id="folio" aria-labelledby="hero-title">
+  <div class="hero-grid">
+
+    <figure class="stage" id="stage" data-band="vis">
+      <div class="well">
+        <span class="corner c-bl" aria-hidden="true"></span>
+        <span class="corner c-br" aria-hidden="true"></span>
+        <div class="uvlamp" aria-hidden="true"></div>
+        <div class="specimen">
+          <svg id="folioSvg" viewBox="0 0 760 980" aria-hidden="true" focusable="false">
+            <defs>
+              <radialGradient id="vellumShade" cx="45%" cy="38%" r="85%">
+                <stop offset="0%"  stop-color="#F0E7CF"/>
+                <stop offset="55%" stop-color="#E7DBBE"/>
+                <stop offset="85%" stop-color="#D9C9A4"/>
+                <stop offset="100%" stop-color="#C7B285"/>
+              </radialGradient>
+              <filter id="grain" x="0" y="0" width="100%" height="100%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="7" stitchTiles="stitch"/>
+                <feColorMatrix type="matrix" values="0 0 0 0 0.42  0 0 0 0 0.35  0 0 0 0 0.24  0 0 0 0.55 0"/>
+              </filter>
+              <filter id="uvGlow" x="-15%" y="-15%" width="130%" height="130%">
+                <feGaussianBlur stdDeviation="3.4" result="b"/>
+                <feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              <radialGradient id="fluorLamp" cx="50%" cy="40%" r="75%">
+                <stop offset="0%" stop-color="#97A6F4"/>
+                <stop offset="55%" stop-color="#6E7FD8"/>
+                <stop offset="100%" stop-color="#333D85"/>
+              </radialGradient>
+              <radialGradient id="uvVig" cx="50%" cy="46%" r="72%">
+                <stop offset="52%" stop-color="#050412" stop-opacity="0"/>
+                <stop offset="100%" stop-color="#050412" stop-opacity="0.85"/>
+              </radialGradient>
+              <radialGradient id="irHotspot" cx="50%" cy="47%" r="68%">
+                <stop offset="0%" stop-color="#FFD9A8" stop-opacity="0.85"/>
+                <stop offset="55%" stop-color="#E8A96E" stop-opacity="0.28"/>
+                <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+              </radialGradient>
+              <filter id="veinBlur"><feGaussianBlur stdDeviation="2.2"/></filter>
+              <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="10"/></filter>
+              <clipPath id="folioClip"><use href="#folioPath"/></clipPath>
+
+              <!-- folio outline, hand-wavered -->
+              <path id="folioPath" d="M34,26 C160,14 420,20 726,30 C738,34 736,120 733,300 C731,520 740,760 728,946 C520,962 300,952 40,950 C26,940 30,760 27,540 C25,340 22,120 34,26 Z"/>
+
+              <!-- ============ UNDERTEXT (drawn once, used twice) ============ -->
+              <g id="undertext-content" font-family="Cardo, serif" font-size="19.5" letter-spacing="0.4" fill="currentColor">
+                <!-- column A -->
+                <text x="-58" y="150">Περὶ ἑλίκων ἰσορροπίας ιζ′.</text>
+                <text x="-58" y="180">ἔστω ἕλιξ ἁ ΑΒΓ γεγραμμένα</text>
+                <text x="-58" y="210">ἐν τᾷ πρώτᾳ περιφορᾷ, κέντρον</text>
+                <text x="-58" y="240">δὲ τὸ Κ, καὶ εὐθεῖα ἁ ΚΑ.</text>
+                <text x="-58" y="270">λέγω ὅτι τὸ χωρίον τὸ περιεχό-</text>
+                <text x="-58" y="300">μενον ὑπό τε τᾶς ἕλικος καὶ</text>
+                <text x="-58" y="330">τᾶς εὐθείας τρίτον μέρος ἐστὶ</text>
+                <text x="-58" y="360">τοῦ κύκλου τοῦ πρώτου.</text>
+                <text x="-58" y="390">ἔστω γὰρ κύκλος ὁ ΑΔΕ περὶ</text>
+                <text x="-58" y="420">κέντρον τὸ Κ, διάμετρος δὲ</text>
+                <text x="-58" y="450">ἁ ΑΔ· καὶ τετμάσθω ἁ γωνία</text>
+                <!-- column B -->
+                <text x="486" y="150">εἰς ἴσα ὁποσαοῦν τμάματα.</text>
+                <text x="486" y="180">ἐπεὶ οὖν αἱ ἐκ τοῦ Κ ποτὶ τὰν</text>
+                <text x="486" y="210">ἕλικα ἐπιζευγνύμεναι ἴσον</text>
+                <text x="486" y="240">ἀλλάλαν ὑπερέχοντι, ἐγγρά-</text>
+                <text x="486" y="270">φεται σχῆμα ἐκ τομέων ὁμοίων</text>
+                <text x="486" y="300">συγκείμενον· ὥστε τὸ μὲν</text>
+                <text x="486" y="330">ἐγγραφὲν ἔλασσον ἦμεν τοῦ</text>
+                <text x="486" y="360">χωρίου, τὸ δὲ περιγραφὲν</text>
+                <text x="486" y="390">μεῖζον· ὅπερ ἔδει δεῖξαι.</text>
+                <text x="486" y="420" font-size="16" letter-spacing="1.2">⊢ διάγραμμα· ἕλιξ σὺν κύκλῳ ⊣</text>
+                <!-- diagram: circle, diameter, spiral, division radii -->
+                <g stroke="currentColor" fill="none" stroke-width="1.4">
+                  <circle cx="390" cy="640" r="142"/>
+                  <line x1="390" y1="498" x2="390" y2="782"/>
+                  <line x1="390" y1="640" x2="513" y2="569"/>
+                  <line x1="390" y1="640" x2="513" y2="711" stroke-dasharray="4 5" stroke-width="1"/>
+                  <line x1="390" y1="640" x2="248" y2="640" stroke-dasharray="4 5" stroke-width="1"/>
+                  <path stroke-width="1.7" d="M390.0 640.0L391.2 640.1L392.4 640.5L393.6 641.1L394.6 641.9L395.4 643.0L396.1 644.2L396.6 645.6L396.9 647.1L396.9 648.7L396.7 650.4L396.2 652.2L395.4 653.9L394.3 655.5L393.0 657.1L391.3 658.6L389.4 659.8L387.3 660.9L384.9 661.7L382.4 662.3L379.7 662.6L376.9 662.5L373.9 662.1L371.0 661.3L368.1 660.1L365.2 658.6L362.4 656.6L359.7 654.3L357.3 651.6L355.1 648.6L353.2 645.2L351.6 641.6L350.4 637.7L349.6 633.5L349.2 629.2L349.4 624.8L350.0 620.2L351.1 615.7L352.7 611.2L354.9 606.7L357.6 602.5L360.8 598.4L364.5 594.6L368.6 591.2L373.2 588.1L378.2 585.5L383.6 583.3L389.3 581.7L395.2 580.7L401.3 580.3L407.6 580.5L413.9 581.5L420.2 583.0L426.4 585.3L432.5 588.3L438.3 591.9L443.9 596.2L449.0 601.1L453.7 606.6L457.9 612.6L461.4 619.2L464.4 626.2L466.6 633.6L468.1 641.3L468.8 649.2L468.7 657.3L467.8 665.5L466.0 673.6L463.3 681.7L459.8 689.5L455.4 697.0L450.3 704.2L444.3 710.9L437.6 717.0L430.2 722.5L422.2 727.2L413.7 731.2L404.6 734.4L395.2 736.6L385.5 737.9L375.6 738.1L365.5 737.4L355.5 735.7L345.6 732.9L335.9 729.0L326.5 724.2L317.6 718.3L309.2 711.5L301.5 703.8L294.5 695.3L288.3 686.0L283.1 676.0L278.8 665.4L275.6 654.4L273.5 642.9L272.5 631.1L272.8 619.2L274.2 607.3L276.9 595.5L280.8 583.8L286.0 572.5L292.2 561.7L299.7 551.5L308.2 542.0L317.7 533.2L328.1 525.5L339.4 518.7L351.4 513.1L364.0 508.6L377.1 505.5L390.6 503.6"/>
+                </g>
+                <g font-size="17" letter-spacing="0">
+                  <text x="381" y="490">Α</text>
+                  <text x="398" y="662">Κ</text>
+                  <text x="381" y="802">Δ</text>
+                  <text x="521" y="564">Β</text>
+                  <text x="522" y="726">Γ</text>
+                </g>
+              </g>
+            </defs>
+
+            <!-- shadow under folio -->
+            <path d="M44,46 C170,34 430,40 736,50 C748,54 746,140 743,320 C741,540 750,780 738,966 C530,982 310,972 50,970 C36,960 40,780 37,560 C35,360 32,140 44,46 Z" fill="#000" opacity="0.5" filter="url(#softShadow)"/>
+
+            <!-- L1 · vellum base -->
+            <g id="L-vellum">
+              <use href="#folioPath" fill="url(#vellumShade)"/>
+              <use href="#folioPath" fill="none" stroke="#B89F73" stroke-width="1.5"/>
+              <g clip-path="url(#folioClip)">
+                <rect x="0" y="0" width="760" height="980" filter="url(#grain)" opacity="0.16" style="mix-blend-mode:multiply"/>
+                <!-- ruling: verticals + baselines + pricking -->
+                <g stroke="#B7A582" stroke-width="0.8" opacity="0.55">
+                  <line x1="88" y1="120" x2="88" y2="880"/>
+                  <line x1="688" y1="120" x2="688" y2="880"/>
+                  <line x1="60" y1="168" x2="700" y2="168"/><line x1="60" y1="204.5" x2="700" y2="204.5"/>
+                  <line x1="60" y1="241" x2="700" y2="241"/><line x1="60" y1="277.5" x2="700" y2="277.5"/>
+                  <line x1="60" y1="314" x2="700" y2="314"/><line x1="60" y1="350.5" x2="700" y2="350.5"/>
+                  <line x1="60" y1="387" x2="700" y2="387"/><line x1="60" y1="423.5" x2="700" y2="423.5"/>
+                  <line x1="60" y1="460" x2="700" y2="460"/><line x1="60" y1="496.5" x2="700" y2="496.5"/>
+                  <line x1="60" y1="533" x2="700" y2="533"/><line x1="60" y1="569.5" x2="700" y2="569.5"/>
+                  <line x1="60" y1="606" x2="700" y2="606"/><line x1="60" y1="642.5" x2="700" y2="642.5"/>
+                  <line x1="60" y1="679" x2="700" y2="679"/><line x1="60" y1="715.5" x2="700" y2="715.5"/>
+                  <line x1="60" y1="752" x2="700" y2="752"/><line x1="60" y1="788.5" x2="700" y2="788.5"/>
+                  <line x1="60" y1="825" x2="700" y2="825"/><line x1="60" y1="861.5" x2="700" y2="861.5"/>
+                </g>
+                <g fill="#8A7658" opacity="0.5">
+                  <circle cx="712" cy="168" r="1.6"/><circle cx="712" cy="241" r="1.6"/><circle cx="712" cy="314" r="1.6"/>
+                  <circle cx="712" cy="387" r="1.6"/><circle cx="712" cy="460" r="1.6"/><circle cx="712" cy="533" r="1.6"/>
+                  <circle cx="712" cy="606" r="1.6"/><circle cx="712" cy="679" r="1.6"/><circle cx="712" cy="752" r="1.6"/>
+                  <circle cx="712" cy="825" r="1.6"/>
+                </g>
+                <!-- sparse follicles visible even in raking daylight -->
+                <g fill="#A98F63" opacity="0.28">
+                  <circle cx="226.5" cy="144.0" r="1.4"/><circle cx="208.0" cy="385.6" r="0.8"/><circle cx="347.3" cy="169.5" r="1.8"/><circle cx="686.7" cy="786.7" r="1.3"/><circle cx="468.0" cy="793.6" r="1.5"/><circle cx="126.3" cy="187.8" r="1.8"/>
+                  <circle cx="643.2" cy="817.2" r="1.4"/><circle cx="181.9" cy="532.1" r="1.1"/><circle cx="654.7" cy="760.1" r="1.0"/><circle cx="584.2" cy="462.2" r="0.9"/><circle cx="83.9" cy="521.3" r="1.7"/><circle cx="594.1" cy="642.0" r="1.2"/>
+                  <circle cx="433.1" cy="655.0" r="1.6"/><circle cx="515.5" cy="901.8" r="1.3"/><circle cx="130.7" cy="230.9" r="1.3"/><circle cx="148.7" cy="715.8" r="1.5"/><circle cx="568.9" cy="397.1" r="1.0"/><circle cx="238.7" cy="86.0" r="1.1"/>
+                  <circle cx="277.1" cy="811.6" r="1.9"/><circle cx="189.5" cy="801.9" r="1.4"/><circle cx="278.7" cy="334.0" r="0.9"/><circle cx="677.6" cy="156.5" r="1.8"/><circle cx="569.6" cy="433.7" r="1.6"/><circle cx="260.1" cy="169.6" r="1.4"/>
+                  <circle cx="142.8" cy="274.6" r="1.5"/><circle cx="502.7" cy="482.2" r="1.0"/><circle cx="210.9" cy="653.2" r="1.8"/><circle cx="576.5" cy="655.6" r="1.7"/><circle cx="319.0" cy="198.7" r="0.9"/><circle cx="404.7" cy="617.4" r="1.9"/>
+                </g>
+                <!-- scraped sheen band -->
+                <path d="M150,880 L420,120 L520,120 L250,880 Z" fill="#F4ECD8" opacity="0.16"/>
+              </g>
+              <!-- lacuna: wormhole near lower left -->
+              <path d="M138,822 C155,812 182,814 192,828 C202,842 196,862 178,868 C158,874 136,866 132,850 C129,838 130,827 138,822 Z" fill="#0F0B07"/>
+              <path d="M138,822 C155,812 182,814 192,828 C202,842 196,862 178,868 C158,874 136,866 132,850 C129,838 130,827 138,822 Z" fill="none" stroke="#A98A5C" stroke-width="2.5" opacity="0.8"/>
+            </g>
+
+            <!-- L2 · dermal structure (IR) -->
+            <g id="L-structure" clip-path="url(#folioClip)" opacity="0">
+              <g stroke="#5E4426" stroke-width="4" fill="none" opacity="0.65" filter="url(#veinBlur)">
+                <path d="M90,180 C200,230 260,210 340,290 C420,370 400,470 470,520 C540,570 600,560 690,620"/>
+                <path d="M340,290 C380,250 470,260 560,230 C620,210 650,160 700,150"/>
+                <path d="M470,520 C460,610 500,690 480,780 C470,830 430,870 420,930"/>
+                <path d="M120,540 C200,560 260,540 330,600 C370,635 380,690 370,740"/>
+              </g>
+              <g fill="#F6EEDA" opacity="0.5" filter="url(#veinBlur)">
+                <ellipse cx="560" cy="380" rx="90" ry="60"/>
+                <ellipse cx="220" cy="700" rx="70" ry="48"/>
+                <ellipse cx="360" cy="160" rx="60" ry="36"/>
+              </g>
+              <g fill="#54401F">
+                <circle cx="331.9" cy="704.9" r="1.4" opacity="0.27"/><circle cx="105.2" cy="773.4" r="2.3" opacity="0.65"/><circle cx="164.6" cy="391.3" r="1.2" opacity="0.49"/><circle cx="601.6" cy="850.0" r="1.0" opacity="0.41"/><circle cx="399.5" cy="284.8" r="1.3" opacity="0.26"/>
+                <circle cx="476.2" cy="374.0" r="1.5" opacity="0.38"/><circle cx="440.8" cy="664.6" r="1.6" opacity="0.55"/><circle cx="205.7" cy="385.5" r="1.4" opacity="0.72"/><circle cx="208.0" cy="856.1" r="2.2" opacity="0.54"/><circle cx="656.2" cy="77.1" r="1.1" opacity="0.52"/>
+                <circle cx="381.4" cy="883.5" r="2.3" opacity="0.60"/><circle cx="585.5" cy="323.7" r="1.6" opacity="0.59"/><circle cx="87.3" cy="350.2" r="1.4" opacity="0.63"/><circle cx="687.0" cy="88.3" r="1.6" opacity="0.40"/><circle cx="474.3" cy="636.1" r="1.4" opacity="0.38"/>
+                <circle cx="523.7" cy="495.3" r="0.8" opacity="0.67"/><circle cx="530.4" cy="841.6" r="1.9" opacity="0.52"/><circle cx="702.7" cy="910.0" r="1.7" opacity="0.64"/><circle cx="90.5" cy="527.9" r="1.7" opacity="0.37"/><circle cx="540.7" cy="75.9" r="2.2" opacity="0.47"/>
+                <circle cx="284.2" cy="555.5" r="1.6" opacity="0.27"/><circle cx="319.9" cy="567.9" r="0.8" opacity="0.32"/><circle cx="125.2" cy="278.1" r="1.2" opacity="0.53"/><circle cx="334.6" cy="903.1" r="1.8" opacity="0.55"/><circle cx="289.9" cy="664.4" r="1.1" opacity="0.71"/>
+                <circle cx="628.4" cy="537.9" r="1.7" opacity="0.62"/><circle cx="438.2" cy="296.4" r="0.9" opacity="0.37"/><circle cx="122.1" cy="352.9" r="1.4" opacity="0.64"/><circle cx="473.7" cy="774.8" r="1.2" opacity="0.60"/><circle cx="332.1" cy="363.2" r="1.9" opacity="0.51"/>
+                <circle cx="544.9" cy="650.5" r="1.1" opacity="0.65"/><circle cx="679.3" cy="747.0" r="2.1" opacity="0.33"/><circle cx="437.4" cy="504.3" r="1.8" opacity="0.25"/><circle cx="339.3" cy="100.6" r="2.0" opacity="0.36"/><circle cx="306.3" cy="902.3" r="1.8" opacity="0.55"/>
+                <circle cx="132.1" cy="489.8" r="1.6" opacity="0.71"/><circle cx="149.2" cy="188.6" r="2.0" opacity="0.73"/><circle cx="553.6" cy="158.4" r="1.1" opacity="0.64"/><circle cx="620.1" cy="815.1" r="2.1" opacity="0.30"/><circle cx="496.8" cy="864.5" r="1.7" opacity="0.54"/>
+                <circle cx="634.0" cy="717.9" r="1.9" opacity="0.47"/><circle cx="564.3" cy="262.2" r="1.5" opacity="0.55"/><circle cx="211.4" cy="190.5" r="1.4" opacity="0.32"/><circle cx="570.8" cy="651.1" r="1.1" opacity="0.37"/><circle cx="114.4" cy="764.3" r="2.3" opacity="0.45"/>
+                <circle cx="337.0" cy="162.4" r="0.9" opacity="0.67"/><circle cx="222.8" cy="445.3" r="1.6" opacity="0.43"/><circle cx="523.3" cy="312.2" r="1.1" opacity="0.73"/><circle cx="551.0" cy="98.3" r="2.1" opacity="0.34"/><circle cx="254.7" cy="340.9" r="2.2" opacity="0.65"/>
+                <circle cx="355.6" cy="98.0" r="2.0" opacity="0.47"/><circle cx="635.9" cy="90.6" r="1.8" opacity="0.30"/><circle cx="533.3" cy="296.0" r="1.1" opacity="0.68"/><circle cx="507.7" cy="108.1" r="2.0" opacity="0.34"/><circle cx="209.9" cy="696.2" r="1.0" opacity="0.44"/>
+                <circle cx="693.0" cy="715.8" r="1.4" opacity="0.51"/><circle cx="519.9" cy="225.7" r="0.8" opacity="0.50"/><circle cx="484.7" cy="919.3" r="1.1" opacity="0.44"/><circle cx="625.9" cy="563.2" r="1.1" opacity="0.71"/><circle cx="672.8" cy="631.2" r="1.7" opacity="0.75"/>
+                <circle cx="279.7" cy="234.6" r="1.9" opacity="0.52"/><circle cx="113.4" cy="122.5" r="1.8" opacity="0.69"/><circle cx="473.7" cy="724.8" r="1.4" opacity="0.63"/><circle cx="137.6" cy="180.5" r="1.3" opacity="0.51"/><circle cx="232.2" cy="246.5" r="0.8" opacity="0.27"/>
+                <circle cx="551.1" cy="364.1" r="1.5" opacity="0.47"/><circle cx="594.5" cy="396.4" r="1.6" opacity="0.69"/><circle cx="224.6" cy="575.1" r="1.0" opacity="0.51"/><circle cx="188.0" cy="467.6" r="1.1" opacity="0.75"/><circle cx="324.9" cy="727.0" r="2.3" opacity="0.53"/>
+                <circle cx="591.3" cy="299.6" r="1.3" opacity="0.70"/><circle cx="436.4" cy="250.5" r="1.6" opacity="0.40"/><circle cx="689.6" cy="354.2" r="0.9" opacity="0.60"/><circle cx="573.2" cy="916.3" r="1.6" opacity="0.58"/><circle cx="169.0" cy="759.4" r="1.3" opacity="0.43"/>
+                <circle cx="631.9" cy="793.7" r="1.8" opacity="0.40"/><circle cx="452.3" cy="189.2" r="0.9" opacity="0.28"/><circle cx="535.3" cy="227.1" r="2.0" opacity="0.49"/><circle cx="475.4" cy="670.9" r="0.9" opacity="0.27"/><circle cx="416.5" cy="689.4" r="2.1" opacity="0.42"/>
+                <circle cx="304.1" cy="919.0" r="1.2" opacity="0.65"/><circle cx="193.1" cy="861.0" r="1.2" opacity="0.41"/><circle cx="241.7" cy="816.1" r="2.0" opacity="0.40"/><circle cx="483.1" cy="377.5" r="0.8" opacity="0.27"/><circle cx="627.1" cy="510.4" r="1.4" opacity="0.70"/>
+                <circle cx="310.6" cy="802.8" r="0.9" opacity="0.46"/><circle cx="373.5" cy="220.8" r="2.1" opacity="0.40"/><circle cx="702.5" cy="349.7" r="1.7" opacity="0.30"/><circle cx="97.7" cy="747.6" r="0.9" opacity="0.69"/><circle cx="525.6" cy="617.6" r="1.4" opacity="0.37"/>
+                <circle cx="90.6" cy="341.6" r="1.9" opacity="0.47"/><circle cx="164.3" cy="116.4" r="1.6" opacity="0.54"/><circle cx="277.2" cy="108.9" r="2.1" opacity="0.28"/><circle cx="689.4" cy="677.8" r="2.1" opacity="0.64"/><circle cx="218.4" cy="552.9" r="0.9" opacity="0.53"/>
+                <circle cx="466.9" cy="653.5" r="1.4" opacity="0.35"/><circle cx="452.6" cy="563.6" r="2.1" opacity="0.71"/><circle cx="258.0" cy="129.7" r="1.5" opacity="0.68"/><circle cx="628.3" cy="593.3" r="1.7" opacity="0.42"/><circle cx="559.0" cy="759.4" r="1.9" opacity="0.63"/>
+                <circle cx="277.2" cy="449.1" r="1.8" opacity="0.44"/><circle cx="282.7" cy="210.5" r="2.1" opacity="0.50"/><circle cx="278.1" cy="402.8" r="1.3" opacity="0.53"/><circle cx="679.6" cy="371.9" r="1.5" opacity="0.40"/><circle cx="461.2" cy="397.3" r="1.5" opacity="0.32"/>
+                <circle cx="200.4" cy="605.2" r="2.3" opacity="0.33"/><circle cx="503.0" cy="829.8" r="1.7" opacity="0.45"/><circle cx="448.7" cy="404.8" r="1.9" opacity="0.52"/><circle cx="212.2" cy="562.1" r="2.2" opacity="0.25"/><circle cx="474.5" cy="153.3" r="1.9" opacity="0.31"/>
+                <circle cx="505.8" cy="857.6" r="1.1" opacity="0.67"/><circle cx="208.2" cy="845.2" r="1.1" opacity="0.31"/><circle cx="526.0" cy="455.6" r="1.4" opacity="0.32"/><circle cx="685.5" cy="166.1" r="1.2" opacity="0.62"/><circle cx="647.8" cy="921.7" r="1.2" opacity="0.68"/>
+                <circle cx="412.3" cy="590.0" r="2.1" opacity="0.73"/><circle cx="327.1" cy="525.7" r="0.9" opacity="0.48"/><circle cx="221.4" cy="782.9" r="0.8" opacity="0.64"/><circle cx="539.5" cy="136.3" r="1.7" opacity="0.67"/><circle cx="368.2" cy="763.0" r="1.4" opacity="0.51"/>
+                <circle cx="409.6" cy="252.3" r="2.2" opacity="0.67"/><circle cx="268.6" cy="808.6" r="1.9" opacity="0.62"/><circle cx="381.1" cy="481.3" r="1.3" opacity="0.64"/><circle cx="226.5" cy="201.8" r="2.3" opacity="0.33"/><circle cx="227.4" cy="594.6" r="1.6" opacity="0.52"/>
+                <circle cx="602.4" cy="160.1" r="1.2" opacity="0.32"/><circle cx="352.9" cy="549.4" r="1.5" opacity="0.62"/><circle cx="372.4" cy="514.2" r="1.4" opacity="0.45"/><circle cx="535.0" cy="347.8" r="1.9" opacity="0.47"/><circle cx="277.7" cy="573.3" r="1.4" opacity="0.70"/>
+                <circle cx="656.3" cy="602.6" r="1.5" opacity="0.26"/><circle cx="165.6" cy="696.0" r="1.1" opacity="0.39"/><circle cx="178.3" cy="330.0" r="0.8" opacity="0.46"/><circle cx="269.5" cy="220.0" r="2.1" opacity="0.50"/><circle cx="254.4" cy="669.3" r="2.2" opacity="0.55"/>
+                <circle cx="581.4" cy="446.8" r="2.0" opacity="0.60"/><circle cx="685.0" cy="609.2" r="1.2" opacity="0.52"/><circle cx="263.6" cy="504.8" r="1.3" opacity="0.50"/><circle cx="162.2" cy="381.2" r="1.9" opacity="0.41"/><circle cx="351.4" cy="877.8" r="1.1" opacity="0.57"/>
+                <circle cx="455.5" cy="339.9" r="1.0" opacity="0.53"/><circle cx="647.1" cy="681.9" r="2.2" opacity="0.60"/><circle cx="237.8" cy="550.1" r="1.0" opacity="0.40"/><circle cx="553.7" cy="868.0" r="1.8" opacity="0.51"/><circle cx="652.9" cy="210.4" r="2.0" opacity="0.27"/>
+                <circle cx="599.5" cy="302.0" r="1.6" opacity="0.49"/><circle cx="522.6" cy="394.6" r="0.8" opacity="0.35"/><circle cx="103.7" cy="381.5" r="2.3" opacity="0.52"/><circle cx="694.6" cy="539.1" r="1.0" opacity="0.65"/><circle cx="82.4" cy="789.3" r="1.8" opacity="0.33"/>
+              </g>
+              <g stroke="#F6EDD6" stroke-width="1.4">
+                <line x1="587.1" y1="821.0" x2="603.9" y2="688.9" opacity="0.44"/><line x1="339.9" y1="337.7" x2="351.9" y2="243.3" opacity="0.63"/><line x1="251.1" y1="283.3" x2="273.1" y2="110.1" opacity="0.26"/>
+                <line x1="500.4" y1="122.8" x2="521.4" y2="-42.0" opacity="0.33"/><line x1="427.1" y1="152.2" x2="446.0" y2="3.7" opacity="0.21"/><line x1="507.6" y1="544.3" x2="527.3" y2="389.2" opacity="0.39"/>
+                <line x1="509.2" y1="202.0" x2="527.9" y2="55.3" opacity="0.31"/><line x1="340.1" y1="229.3" x2="348.2" y2="165.2" opacity="0.61"/><line x1="172.7" y1="298.1" x2="192.4" y2="143.1" opacity="0.58"/>
+                <line x1="481.2" y1="702.0" x2="499.1" y2="561.1" opacity="0.31"/><line x1="529.9" y1="273.9" x2="553.4" y2="89.6" opacity="0.38"/><line x1="152.8" y1="299.6" x2="174.4" y2="129.7" opacity="0.63"/>
+                <line x1="281.7" y1="424.8" x2="288.3" y2="373.1" opacity="0.65"/><line x1="623.5" y1="865.4" x2="636.7" y2="762.2" opacity="0.56"/><line x1="303.2" y1="340.6" x2="314.4" y2="252.4" opacity="0.37"/>
+                <line x1="152.9" y1="618.9" x2="161.4" y2="551.7" opacity="0.43"/><line x1="425.1" y1="634.3" x2="436.9" y2="542.1" opacity="0.46"/><line x1="169.3" y1="564.5" x2="190.6" y2="397.1" opacity="0.51"/>
+                <line x1="169.7" y1="728.9" x2="176.6" y2="674.2" opacity="0.52"/><line x1="284.1" y1="876.4" x2="295.5" y2="787.1" opacity="0.25"/><line x1="641.9" y1="302.0" x2="656.8" y2="184.5" opacity="0.26"/>
+                <line x1="619.9" y1="182.1" x2="626.1" y2="133.7" opacity="0.30"/><line x1="295.4" y1="587.3" x2="301.5" y2="540.0" opacity="0.65"/><line x1="254.4" y1="782.7" x2="270.6" y2="655.2" opacity="0.25"/>
+                <line x1="254.0" y1="214.2" x2="261.3" y2="156.6" opacity="0.62"/><line x1="178.6" y1="811.1" x2="193.4" y2="694.9" opacity="0.49"/><line x1="147.2" y1="784.2" x2="167.4" y2="625.4" opacity="0.32"/>
+                <line x1="131.0" y1="687.6" x2="148.1" y2="553.2" opacity="0.63"/><line x1="141.6" y1="145.6" x2="161.0" y2="-6.8" opacity="0.34"/><line x1="505.5" y1="312.5" x2="514.0" y2="246.2" opacity="0.38"/>
+              </g>
+            </g>
+
+            <!-- L3 · undertext ghost (visible-light residue) -->
+            <g clip-path="url(#folioClip)">
+              <g id="under-rot" transform="rotate(90 380 490)">
+                <use id="underGhost" href="#undertext-content" style="color:#8A7154" opacity="0.16"/>
+              </g>
+            </g>
+
+            <!-- L3.5 · transmissive IR glow — BELOW the ink: iron gall blocks transmitted IR -->
+            <g clip-path="url(#folioClip)">
+              <rect id="irGlow" x="0" y="0" width="760" height="980" fill="url(#irHotspot)" opacity="0" style="mix-blend-mode:screen"/>
+            </g>
+
+            <!-- L4 · overtext: Hours of the Virgin, s. XIII -->
+            <g id="L-over" clip-path="url(#folioClip)" font-family="'UnifrakturMaguntia', serif" font-size="28" fill="#3B2A16">
+              <text class="rubric" x="95" y="133" font-size="21" fill="#A6392E">Incipiunt hore beate marie uirginis s&#39;m usum romanum.</text>
+              <text class="versal big-versal" x="86" y="243" font-size="104" fill="#33518F">D</text>
+              <g fill="none" stroke="#A6392E" stroke-width="1.6" opacity="0.85" class="versal">
+                <path d="M84,152 C74,170 76,210 70,238 M78,160 C72,186 74,220 66,244"/>
+              </g>
+              <text x="182" y="168" textLength="500" lengthAdjust="spacingAndGlyphs">omine labia mea aperies.</text>
+              <text x="182" y="204.5" textLength="500" lengthAdjust="spacingAndGlyphs">Et os meum annuncia-</text>
+              <text x="182" y="241" textLength="500" lengthAdjust="spacingAndGlyphs">bit laudem tuam.</text>
+              <text x="95" y="277.5" textLength="588" lengthAdjust="spacingAndGlyphs"><tspan class="versal" fill="#A6392E">D</tspan>eus in adiutorium meum in-</text>
+              <text x="95" y="314" textLength="588" lengthAdjust="spacingAndGlyphs">tende. Domine ad adiuuan-</text>
+              <text x="95" y="350.5">dum me festina.</text>
+              <text x="95" y="387" textLength="588" lengthAdjust="spacingAndGlyphs"><tspan class="versal" fill="#33518F">G</tspan>loria patri et filio: et spiri-</text>
+              <text x="95" y="423.5" textLength="588" lengthAdjust="spacingAndGlyphs">tui sancto. Sicut erat in prin-</text>
+              <text x="95" y="460" textLength="588" lengthAdjust="spacingAndGlyphs">cipio et nunc et semper: et in</text>
+              <text x="95" y="496.5">secula seculorum. Amen. All&#39;a.</text>
+              <text x="95" y="533" textLength="588" lengthAdjust="spacingAndGlyphs"><tspan class="rubric" fill="#A6392E">Inuitator&#39;.</tspan> Aue maria gratia</text>
+              <text x="95" y="569.5">plena: dominus tecum.</text>
+              <text x="95" y="606" textLength="588" lengthAdjust="spacingAndGlyphs"><tspan class="versal" fill="#A6392E">V</tspan>enite exultemus domino iubi-</text>
+              <text x="95" y="642.5" textLength="588" lengthAdjust="spacingAndGlyphs">lemus deo salutari nostro: pre-</text>
+              <text x="95" y="679" textLength="588" lengthAdjust="spacingAndGlyphs">occupemus faciem eius in con-</text>
+              <text x="95" y="715.5" textLength="588" lengthAdjust="spacingAndGlyphs">fessione: et in psalmis iubile-</text>
+              <text x="95" y="752" textLength="588" lengthAdjust="spacingAndGlyphs">mus ei. Aue maria gratia ple-</text>
+              <text x="95" y="788.5" textLength="588" lengthAdjust="spacingAndGlyphs">na: dominus tecum. Quoniam</text>
+              <text x="95" y="825" textLength="588" lengthAdjust="spacingAndGlyphs">deus magnus dominus: et rex</text>
+              <text x="95" y="861.5">magnus super omnes deos.</text>
+              <text x="560" y="922" font-size="19" opacity="0.75">quoniam</text>
+            </g>
+
+            <!-- L5 · spectral washes (multiply / screen grading) -->
+            <g clip-path="url(#folioClip)">
+              <rect id="washIRgrey" x="0" y="0" width="760" height="980" fill="#8C8378" opacity="0" style="mix-blend-mode:multiply"/>
+              <rect id="washIR" x="0" y="0" width="760" height="980" fill="#7E2A1D" opacity="0" style="mix-blend-mode:multiply"/>
+              <rect id="washVis" x="0" y="0" width="760" height="980" fill="#4C63D6" opacity="0" style="mix-blend-mode:multiply"/>
+              <rect id="washUV" x="0" y="0" width="760" height="980" fill="#1D1660" opacity="0" style="mix-blend-mode:multiply"/>
+              <rect id="pageFluor" x="0" y="0" width="760" height="980" fill="url(#fluorLamp)" opacity="0" style="mix-blend-mode:screen"/>
+              <rect id="uvVignette" x="0" y="0" width="760" height="980" fill="url(#uvVig)" opacity="0"/>
+            </g>
+
+            <!-- L6 · undertext fluorescence (above the washes: it EMITS) -->
+            <g clip-path="url(#folioClip)">
+              <g transform="rotate(90 380 490)">
+                <use id="underFluor" href="#undertext-content" style="color:#EEF3FF" filter="url(#uvGlow)" opacity="0"/>
+              </g>
+            </g>
+          </svg>
+
+          <!-- one-shot calibration sweep on boot -->
+          <div class="scanline" aria-hidden="true"></div>
+
+          <!-- lab annotation overlay (instrument UI, above all light) -->
+          <div class="anno-layer" aria-hidden="true">
+            <div class="anno-set anno-uv" id="annoUV">
+              <div class="anno-box" style="left:10.2%;top:35.4%;width:38.5%;height:30.4%"></div>
+              <div class="anno anno-r" style="left:48.7%;top:38.2%"><i></i><span>prop.&nbsp;ιζ′ — spiral quadrature<br>diagram recovered whole</span></div>
+              <div class="anno anno-l" style="left:76.5%;top:16.5%"><i></i><span>scribe B · greek uncial · s.&nbsp;V<br>doric forms — sicilian exemplar?</span></div>
+              <div class="anno anno-l" style="left:63%;top:79%"><i></i><span>fluorescence quenched where gall<br>etched — text read as its shadow</span></div>
+            </div>
+            <div class="anno-set anno-ir" id="annoIR">
+              <div class="anno anno-r" style="left:27%;top:22%"><i></i><span>hair follicles — calf<br>scrape striations run NNE</span></div>
+              <div class="anno anno-r" style="left:14%;top:55.5%"><i></i><span>iron-gall intrusion ≈ 60&nbsp;µm<br>minium rubrics drop out</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- bench furniture -->
+        <div class="furniture">
+          <div class="checker" role="presentation">
+            <i style="--c:#f2f2ee"></i><i style="--c:#b5b5af"></i><i style="--c:#6e6e69"></i><i style="--c:#2c2c29"></i><i style="--c:#a6392e"></i><i style="--c:#c3b23f"></i><i style="--c:#4fa85b"></i><i style="--c:#33518f"></i>
+          </div>
+          <div class="scalebar" aria-hidden="true"><i></i><span>0&thinsp;—&thinsp;5&thinsp;cm</span></div>
+          <div class="platemark">PL&nbsp;MS&nbsp;7 · fol.&nbsp;24v · cradle&nbsp;2</div>
+        </div>
+
+        <!-- wavelength control -->
+        <div class="lambda" role="group" aria-label="Illumination wavelength control">
+          <div class="lambda-regions" aria-hidden="true">
+            <span class="reg reg-uv" style="left:4.8%">UV</span>
+            <span class="reg reg-vis" style="left:33.9%">visible · reflectance</span>
+            <span class="reg reg-ir" style="left:79.1%">IR · transmissive</span>
+            <i class="notch" style="left:9.57%"></i>
+            <i class="notch" style="left:58.26%"></i>
+          </div>
+          <input type="range" id="lambdaSlider" min="365" max="940" step="5" value="550"
+                 aria-label="Illumination wavelength, nanometres" aria-describedby="lambdaHint">
+          <div class="lambda-ticks" aria-hidden="true">
+            <span style="left:0%">365</span><span style="left:14.78%">450</span><span style="left:32.17%">550</span>
+            <span style="left:58.26%">700</span><span style="left:84.35%">850</span><span style="left:100%">940</span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="stage-caption">
+        <span class="mono">PL&nbsp;MS&nbsp;7 (olim Tolosa, Bibl. mun. 887), fol. 24v</span> — Horae B.M.V., s.&nbsp;XIII² · under: Herakleides of Kyzikos, <i lang="grc">Περὶ ἑλίκων ἰσορροπίας</i>, s.&nbsp;V. Synthetic reconstruction; the original never leaves its nitrogen case.
+      </figcaption>
+      <p class="visually-hidden">Interactive exhibit: a vellum folio carrying a thirteenth-century Latin Book of Hours written over an erased fifth-century Greek mathematical treatise. Moving the wavelength slider from visible light to ultraviolet makes the erased Greek text and its spiral diagram fluoresce into legibility; moving it to infrared deepens the Latin ink and reveals the parchment&#8217;s follicles, veining and scrape marks.</p>
+    </figure>
+
+    <div class="hero-side">
+      <p class="eyebrow boot b1">Manuscript recovery · multispectral imaging · Genève</p>
+      <h1 id="hero-title" class="boot b2">Two books share this page. Only&nbsp;one was meant to survive.</h1>
+      <p class="lede boot b3">Under the lamp: a Book of Hours copied about 1240 — over a fifth-century Greek treatise on spiral equilibrium that a scribe scraped away to reuse the skin. Iron-gall ink bites deeper than any knife can reach. <strong>Drag the wavelength to 365&nbsp;nm</strong> and the erased mathematics fluoresces back.</p>
+
+      <dl class="readout boot b4" id="readout">
+        <div class="ro-lambda"><dt>λ</dt><dd><span id="roLambda">550</span><em>nm</em></dd></div>
+        <div><dt>band</dt><dd id="roBand">VISIBLE · reflectance</dd></div>
+        <div><dt>source</dt><dd id="roSource">LED bank 06/12 · 550 nm ±10</dd></div>
+        <div><dt>barrier</dt><dd id="roBarrier">—</dd></div>
+        <div><dt>exposure</dt><dd id="roExposure">1/8 s · f/5.6 · 12 frames</dd></div>
+        <div class="ro-leg"><dt>undertext legibility</dt><dd><span class="leg-track"><span class="leg-fill" id="legFill"></span></span><span id="roLeg">04%</span></dd></div>
+      </dl>
+
+      <div class="presets boot b5" role="group" aria-label="Wavelength presets">
+        <button type="button" class="preset preset-uv" data-nm="365"><b>UV 365</b><span>fluoresce</span></button>
+        <button type="button" class="preset preset-vis" data-nm="550" aria-pressed="true"><b>VIS 550</b><span>reference</span></button>
+        <button type="button" class="preset preset-ir" data-nm="940"><b>IR 940</b><span>transmit</span></button>
+      </div>
+      <p class="hint boot b6" id="lambdaHint">Drag the spectrum under the folio — or focus it and use ← → (PgUp/PgDn hops band to band). The slider is the lamp.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CASE FILES ================= -->
+<section class="cases" id="cases" aria-labelledby="cases-title">
+  <header class="sec-head reveal">
+    <p class="slug">§ case files</p>
+    <h2 id="cases-title">Six texts that came back.</h2>
+    <p class="sec-lede">Recovery is counted in characters read to consensus by two independent editors — never in hope. Shelf marks are ours; former homes are given as <i>olim</i>.</p>
+  </header>
+
+  <ul class="case-list">
+    <li class="case reveal" style="--d:0ms">
+      <div class="c-mark"><span class="mono">PL&nbsp;MS&nbsp;7</span><span class="c-olim mono">olim Tolosa 887</span><span class="chip chip-live">on the bench</span></div>
+      <div class="c-texts">
+        <span class="c-over">over — Horae B.M.V., Latin, s.&nbsp;XIII²</span>
+        <strong class="c-under">Herakleides of Kyzikos, <i>On the Equilibrium of Spirals</i> — Greek, s.&nbsp;V</strong>
+      </div>
+      <div class="c-rec"><span class="rec-bar" style="--p:91%"></span><span class="mono rec-num">91%</span></div>
+      <p class="c-sig">The only witness to Hellenistic spiral quadrature outside Archimedes.</p>
+    </li>
+    <li class="case reveal" style="--d:60ms">
+      <div class="c-mark"><span class="mono">PL&nbsp;MS&nbsp;19</span><span class="c-olim mono">olim Wien, priv.</span></div>
+      <div class="c-texts">
+        <span class="c-over">over — Cistercian account roll, Latin, s.&nbsp;XIV</span>
+        <strong class="c-under">Ptolemaic star tables with scholia — Greek, s.&nbsp;IX</strong>
+      </div>
+      <div class="c-rec"><span class="rec-bar" style="--p:83%"></span><span class="mono rec-num">83%</span></div>
+      <p class="c-sig">Every position silently recomputed for the meridian of Baghdad.</p>
+    </li>
+    <li class="case reveal" style="--d:120ms">
+      <div class="c-mark"><span class="mono">PL&nbsp;MS&nbsp;12</span><span class="c-olim mono">olim Sinai, N.F.</span></div>
+      <div class="c-texts">
+        <span class="c-over">over — Georgian hymnal, s.&nbsp;X</span>
+        <strong class="c-under">Galen, <i>On Simple Drugs</i>, Syriac version of Sergius — s.&nbsp;VI</strong>
+      </div>
+      <div class="c-rec"><span class="rec-bar" style="--p:78%"></span><span class="mono rec-num">78%</span></div>
+      <p class="c-sig">Carries the pharmacology chapter missing from every Greek copy.</p>
+    </li>
+    <li class="case reveal" style="--d:180ms">
+      <div class="c-mark"><span class="mono">PL&nbsp;MS&nbsp;3</span><span class="c-olim mono">olim Bobbio</span></div>
+      <div class="c-texts">
+        <span class="c-over">over — Priscian, <i>Institutiones</i>, Carolingian minuscule, s.&nbsp;IX</span>
+        <strong class="c-under">Gothic Bible, Epistle to the Romans — s.&nbsp;VI</strong>
+      </div>
+      <div class="c-rec"><span class="rec-bar" style="--p:64%"></span><span class="mono rec-num">64%</span></div>
+      <p class="c-sig">Adds forty-one verses to the entire surviving Gothic language.</p>
+    </li>
+    <li class="case reveal" style="--d:240ms">
+      <div class="c-mark"><span class="mono">PL&nbsp;MS&nbsp;22</span><span class="c-olim mono">olim Nonantola</span></div>
+      <div class="c-texts">
+        <span class="c-over">over — Rule of St&nbsp;Benedict, Latin, s.&nbsp;XII</span>
+        <strong class="c-under">Latin comedy, author unknown, iambic senarii — s.&nbsp;IV</strong>
+      </div>
+      <div class="c-rec"><span class="rec-bar" style="--p:41%"></span><span class="mono rec-num">41%</span></div>
+      <p class="c-sig">Eleven complete verses of a play with no surviving title.</p>
+    </li>
+    <li class="case reveal" style="--d:300ms">
+      <div class="c-mark"><span class="mono">PL&nbsp;MS&nbsp;31</span><span class="c-olim mono">acq. 2025</span><span class="chip chip-prog">capture 6/12</span></div>
+      <div class="c-texts">
+        <span class="c-over">over — Notarial formulary, Latin, s.&nbsp;XV</span>
+        <strong class="c-under">Unidentified — Greek musical notation suspected</strong>
+      </div>
+      <div class="c-rec"><span class="rec-bar" style="--p:12%"></span><span class="mono rec-num">12%</span></div>
+      <p class="c-sig">Six bands captured; the neumes brighten at 505&nbsp;nm, which is odd.</p>
+    </li>
+  </ul>
+</section>
+
+<!-- ================= THE BENCH / RIG ================= -->
+<section class="bench" id="bench" aria-labelledby="bench-title">
+  <header class="sec-head reveal">
+    <p class="slug">§ the bench</p>
+    <h2 id="bench-title">ORPHEUS-12.</h2>
+    <p class="sec-lede">One lamp is a liar. Twelve narrow bands, two raking arms and a barrier filter tell the truth slowly — about forty minutes a folio. Named for the only imaging protocol older than ours: look back carefully, and you may keep what you love.</p>
+  </header>
+
+  <div class="bench-grid">
+    <figure class="rig-fig reveal" style="--d:60ms">
+      <svg viewBox="0 0 640 430" aria-hidden="true" focusable="false" class="rig-svg">
+        <defs>
+          <linearGradient id="coneUV" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#8fa0f0" stop-opacity="0.55"/><stop offset="100%" stop-color="#8fa0f0" stop-opacity="0"/>
+          </linearGradient>
+          <linearGradient id="coneIR" x1="1" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#b3462b" stop-opacity="0.5"/><stop offset="100%" stop-color="#b3462b" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <g stroke="#6B6255" stroke-width="1.5" fill="none">
+          <rect x="60" y="386" width="520" height="10" rx="2"/>
+          <line x1="120" y1="386" x2="120" y2="60"/>
+          <rect x="104" y="48" width="230" height="34" rx="4"/>
+          <rect x="286" y="82" width="52" height="40" rx="4"/>
+          <circle cx="312" cy="150" r="26"/>
+          <circle cx="312" cy="150" r="7"/>
+          <circle cx="312" cy="132" r="4.5"/><circle cx="328" cy="141" r="4.5"/><circle cx="328" cy="159" r="4.5"/>
+          <circle cx="312" cy="168" r="4.5"/><circle cx="296" cy="159" r="4.5"/><circle cx="296" cy="141" r="4.5"/>
+          <line x1="312" y1="176" x2="312" y2="196"/>
+          <rect x="150" y="196" width="90" height="22" rx="3" transform="rotate(38 195 207)"/>
+          <rect x="400" y="196" width="90" height="22" rx="3" transform="rotate(-38 445 207)"/>
+          <rect x="216" y="352" width="192" height="12" rx="2"/>
+          <rect x="238" y="330" width="148" height="22" rx="2"/>
+          <line x1="240" y1="386" x2="240" y2="364"/><line x1="384" y1="386" x2="384" y2="364"/>
+        </g>
+        <path d="M196,226 L312,330 L240,330 Z" fill="url(#coneUV)"/>
+        <path d="M444,226 L312,330 L384,330 Z" fill="url(#coneIR)"/>
+        <rect x="252" y="322" width="120" height="9" rx="1.5" fill="#E9DDC2"/>
+        <g class="rig-label" fill="#8B8272">
+          <text x="112" y="40">achromat · 151 MP · 14-bit</text>
+          <text x="348" y="106">barrier wheel · LP 420</text>
+          <text x="64" y="262">LED arm W · 10° rake</text>
+          <text x="446" y="262">LED arm E · 10° rake</text>
+          <text x="200" y="308" fill="#C8D6FF">365 nm</text>
+          <text x="392" y="308" fill="#CF6A50">940 nm</text>
+          <text x="252" y="379" fill="#B9AE99">folio on cradle</text>
+          <text x="416" y="348">transmissive panel</text>
+          <text x="130" y="132">column</text>
+        </g>
+      </svg>
+      <figcaption class="rig-cap mono">ORPHEUS-12 · side elevation · not to scale</figcaption>
+    </figure>
+
+    <div class="rig-side reveal" style="--d:120ms">
+      <table class="spec" aria-label="ORPHEUS-12 specifications">
+        <tbody>
+          <tr><th scope="row">sensor</th><td>151&nbsp;MP achromatic CMOS, 14-bit, Peltier-cooled</td></tr>
+          <tr><th scope="row">illumination</th><td>12 narrowband LED banks, 365–940&nbsp;nm, ±10&nbsp;nm</td></tr>
+          <tr><th scope="row">fluorescence</th><td>UV-A excitation 365&nbsp;nm · long-pass 420&nbsp;nm barrier</td></tr>
+          <tr><th scope="row">raking</th><td>2 arms at 10°, E/W — reads erasure by shadow</td></tr>
+          <tr><th scope="row">registration</th><td>sub-pixel, σ ≤ 0.22&nbsp;px across the 15-frame stack</td></tr>
+          <tr><th scope="row">separation</th><td>PCA + MNF; pseudocolour keyed per scribal hand</td></tr>
+          <tr><th scope="row">throughput</th><td>≈ 40&nbsp;min per folio · 12 bands + 2 raking + 1 transmissive</td></tr>
+          <tr><th scope="row">dose</th><td>≤ 2.1&nbsp;klx·h per campaign — under one gallery-day of light</td></tr>
+        </tbody>
+      </table>
+
+      <ol class="pipeline" aria-label="Recovery pipeline">
+        <li><b>Collate &amp; cradle</b> — folio mapped, lacunae logged, spine angle fixed at 104°.</li>
+        <li><b>Capture</b> — twelve bands, two raking passes, one transmissive.</li>
+        <li><b>Register</b> — every frame warped to the 550&nbsp;nm reference.</li>
+        <li><b>Separate</b> — principal components pull ink from ink, hand from hand.</li>
+        <li><b>Edit</b> — two editors read blind; only agreement counts as recovered.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="bands reveal" style="--d:180ms" role="group" aria-label="The twelve capture bands — select one to tune the lamp upstairs">
+    <button type="button" class="band" aria-pressed="false" data-nm="365" style="--bc:#6A5BD8"><b>365</b><i>UV-A</i></button>
+    <button type="button" class="band" aria-pressed="false" data-nm="385" style="--bc:#7460E0"><b>385</b><i>violet</i></button>
+    <button type="button" class="band" aria-pressed="false" data-nm="420" style="--bc:#5A63DC"><b>420</b><i>blue</i></button>
+    <button type="button" class="band" aria-pressed="false" data-nm="450" style="--bc:#4C6BD8"><b>450</b><i>blue</i></button>
+    <button type="button" class="band" aria-pressed="false" data-nm="490" style="--bc:#3F9BB8"><b>490</b><i>cyan</i></button>
+    <button type="button" class="band" aria-pressed="false" data-nm="550" style="--bc:#4FA85B"><b>550</b><i>green</i></button>
+    <button type="button" class="band" aria-pressed="false" data-nm="570" style="--bc:#C3B23F"><b>570</b><i>yellow</i></button>
+    <button type="button" class="band" aria-pressed="false" data-nm="615" style="--bc:#C87F35"><b>615</b><i>orange</i></button>
+    <button type="button" class="band" aria-pressed="false" data-nm="660" style="--bc:#B3462B"><b>660</b><i>red</i></button>
+    <button type="button" class="band" aria-pressed="false" data-nm="735" style="--bc:#7E2A1D"><b>735</b><i>far red</i></button>
+    <button type="button" class="band" aria-pressed="false" data-nm="850" style="--bc:#451711"><b>850</b><i>NIR</i></button>
+    <button type="button" class="band" aria-pressed="false" data-nm="940" style="--bc:#2A100B"><b>940</b><i>NIR</i></button>
+  </div>
+  <p class="bands-hint reveal mono" style="--d:220ms">Select a band to retune the lamp on the folio above.</p>
+</section>
+
+<!-- ================= ESSAY ================= -->
+<section class="essay" id="essay" aria-labelledby="essay-title">
+  <header class="sec-head reveal">
+    <p class="slug">§ essay</p>
+    <h2 id="essay-title">What the Knife Leaves.</h2>
+    <p class="byline">E.&nbsp;Maravall, Keeper of Manuscripts — read at the winter colloquium of the Comité international de paléographie, Geneva, 30&nbsp;January&nbsp;2026.</p>
+  </header>
+
+  <div class="essay-body reveal">
+    <p>A monastery kitchen ledger will tell you what a book cost before it was a book: sixty-eight sheep for one lectern Bible, dressed and limed and scraped thin through a Burgundian winter.<sup><a href="#fn1" id="fnref1" role="doc-noteref">1</a></sup> Parchment was land, weather and labour pressed flat enough to write on. When the words on a skin stopped earning their keep — the liturgy reformed, the language died, the mathematics went out of fashion — the skin was still worth a flock. So the knife came out, and the pumice after it, and the page went back to being a field.</p>
+
+    <p>The scribe who erased the treatise now on our bench did nothing shameful by his own lights. He was recycling. But iron-gall ink is not a coating; it is a provoked chemistry — oak-gall tannin set against green vitriol — and it does not rest on parchment so much as bite into it, forty to eighty microns down into the collagen weave.<sup><a href="#fn2" id="fnref2" role="doc-noteref">2</a></sup> A knife can take the body of a letter. It cannot reach the grave.</p>
+
+    <p>Ultraviolet is how we read the grave. At 365 nanometres, parchment fluoresces: the skin answers invisible light with a pale blue-white of its own making. Where old ink once etched the collagen, the answer fails — fluorescence is quenched, and the dead letters print themselves as shadows on the glow.<sup><a href="#fn3" id="fnref3" role="doc-noteref">3</a></sup> Note what this means. We never photograph the erased ink; there is no ink left to photograph. We photograph the skin&#8217;s memory of being written on. The text survives the way a scar survives.</p>
+
+    <blockquote class="pull" lang="grc">ὅπερ ἔδει δεῖξαι.
+      <footer><span lang="en">&#8220;Which was to be proved.&#8221; The last legible words of the undertext — recovered 8 November 2024, 21:41, band 2 of 12.</span></footer>
+    </blockquote>
+
+    <p>It is tempting to resent the prayer book for standing on the mathematics. That has it backwards. The Hours are why this vellum stayed bound, dry, shelved and wanted for eight centuries; erasure was the rent the treatise paid for shelter. Nearly every great recovered undertext survives by the same unhappy bargain — the <i>Method</i> of Archimedes lived inside a prayer book for seven hundred years precisely because somebody kept valuing the prayers.<sup><a href="#fn4" id="fnref4" role="doc-noteref">4</a></sup> The eraser and the author are co-donors to the archive. Only one of them meant to be.</p>
+
+    <p>So the laboratory does not take sides. We will not lift the Hours to reach the Greek, and we will not pretend the Greek is not there. The folio leaves the bench exactly as it arrived — one skin, two voices, eight centuries apart — except that now both can be heard at once, each in its own light. What the knife left, the lamp returns.</p>
+  </div>
+
+  <aside class="footnotes reveal" role="doc-endnotes" aria-label="Footnotes">
+    <ol>
+      <li id="fn1" role="doc-endnote">Priory of Saint-Aubin-des-Champs, cellarer&#8217;s roll for 1213/14; edited in M.&nbsp;Vasseur, <i>The Economics of the Scriptorium</i> (Lyon, 1987), 141–63.&nbsp;<a href="#fnref1" class="fn-back" role="doc-backlink" aria-label="Back to reference 1">↩</a></li>
+      <li id="fn2" role="doc-endnote">H.&nbsp;Okabe and F.&nbsp;Lindqvist, &#8220;Depth Profiles of Iron-Gall Intrusion in Historic Parchment,&#8221; <i>Journal of Cultural Heritage</i> 22 (2019): 87–95. Intrusion is deepest where the scribe pressed a fresh nib: downstrokes outlive hairlines.&nbsp;<a href="#fnref2" class="fn-back" role="doc-backlink" aria-label="Back to reference 2">↩</a></li>
+      <li id="fn3" role="doc-endnote">Strictly, quenching plus absorption: gallotannate residue both darkens and de-excites. The camera images the difference between what the skin gives and what it withholds.&nbsp;<a href="#fnref3" class="fn-back" role="doc-backlink" aria-label="Back to reference 3">↩</a></li>
+      <li id="fn4" role="doc-endnote">The Archimedes Palimpsest — sold for two million dollars in 1998, read by 2008 — remains the field&#8217;s founding rebuke: nobody who owned it across a millennium knew what it was.&nbsp;<a href="#fnref4" class="fn-back" role="doc-backlink" aria-label="Back to reference 4">↩</a></li>
+    </ol>
+  </aside>
+</section>
+
+</main>
+
+<footer class="colophon">
+  <div class="col-grid">
+    <div>
+      <p class="mark-word">Palimpsest&nbsp;Lab</p>
+      <p class="col-addr">Rue des Tanneurs 11<br>CH-1204 Genève<br><span class="mono">imaging by appointment · loans travel under seal</span></p>
+    </div>
+    <div>
+      <p class="col-label mono">citation</p>
+      <p>Cite recovered texts as: <i>Palimpsest Lab, PL&nbsp;MS&nbsp;n (undertext), ed.&nbsp;cit.</i> — recovery percentages are edition-specific and dated.</p>
+    </div>
+    <div>
+      <p class="col-label mono">colophon</p>
+      <p>Set in EB&nbsp;Garamond, Cardo &amp; IBM&nbsp;Plex&nbsp;Mono. Every folio shown here is a synthetic reconstruction — no manuscript is photographed on this site, and none was harmed by it.</p>
+    </div>
+  </div>
+  <p class="col-fine mono">© MMXXVI Palimpsest Lab · fondation de droit suisse · CH-660.1.024.887-3</p>
+</footer>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>

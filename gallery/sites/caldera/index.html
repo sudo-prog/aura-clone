@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CALDERA 2027 — Third High-Desert Land Art Biennale</title>
+<meta name="description" content="Five monuments on the floor of Frayle Caldera, Owyhee Plateau. The third high-desert land art biennale, 21 June – 23 September 2027. The site keeps solar time — scroll from first light to full dark.">
+<meta property="og:title" content="CALDERA 2027 — Third High-Desert Land Art Biennale">
+<meta property="og:description" content="Five monuments, one walking route, timed to the sun. Frayle Caldera, Owyhee Plateau. 21 June – 23 September 2027.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#2E2A4A">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%232E2A4A'/%3E%3Ccircle cx='32' cy='34' r='11' fill='%23FF8A4A'/%3E%3Cpath d='M0 44 L12 39 L24 43 L38 37 L50 42 L64 39 V64 H0 Z' fill='%2317130E'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/Bevan-03.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Archivo-03.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/ArchivoNarrow-03.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/Bevan.css">
+<link rel="stylesheet" href="fonts/Archivo.css">
+<link rel="stylesheet" href="fonts/ArchivoNarrow.css">
+<link rel="stylesheet" href="css/main.css">
+<noscript><style>
+  .reveal { opacity: 1; transform: none; }
+  .hero-title i { transform: none; }
+  .plate, .hud { display: none; } /* the plates are drawn by the solar model */
+</style></noscript>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ======= THE SKY (fixed world layer, relit by scroll) ======= -->
+<div class="sky" aria-hidden="true">
+  <div class="stars" id="stars"></div>
+  <div class="stars stars-b" id="starsB"></div>
+  <div class="meteor"></div>
+  <div class="sun"></div>
+  <div class="moon"></div>
+  <div class="rim-wrap" id="rimWrap">
+    <div class="rim-far"></div>
+    <div class="rim-near"></div>
+  </div>
+</div>
+
+<svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+  <filter id="shimmer" x="-6%" y="-30%" width="112%" height="160%">
+    <feTurbulence id="shimmerTurb" type="fractalNoise" baseFrequency="0.014 0.11" numOctaves="2" seed="7" result="n">
+      <animate attributeName="baseFrequency" values="0.014 0.11;0.019 0.087;0.014 0.11" dur="2.6s" repeatCount="indefinite"/>
+    </feTurbulence>
+    <feDisplacementMap id="shimmerDisp" in="SourceGraphic" in2="n" scale="0" xChannelSelector="R" yChannelSelector="G"/>
+    <feGaussianBlur stdDeviation="0.55"/>
+  </filter>
+</svg>
+
+<header class="nav">
+  <a class="mark" href="#top">CALDERA</a>
+  <nav aria-label="Sections">
+    <a href="#works">Works</a>
+    <a href="#plan">Site&nbsp;plan</a>
+    <a href="#guide">Field&nbsp;guide</a>
+    <a href="#dark" class="nav-dark">After&nbsp;dark</a>
+  </nav>
+</header>
+
+<div class="hud" aria-hidden="true">
+  <span class="hud-time" id="hudTime">05:07</span>
+  <span class="hud-phase" id="hudPhase">FIRST LIGHT</span>
+  <span class="hud-temp" id="hudTemp">9°</span>
+</div>
+
+<main id="main">
+
+  <!-- ======= DAWN · HERO ======= -->
+  <section class="hero" id="top">
+    <div class="hero-inner">
+      <p class="eyebrow reveal">Third High-Desert Land Art Biennale</p>
+      <h1 class="hero-title" aria-label="Caldera">
+        <span aria-hidden="true"><i>C</i><i>A</i><i>L</i><i>D</i><i>E</i><i>R</i><i>A</i></span>
+      </h1>
+      <p class="hero-sub reveal">Five monuments on the floor of Frayle Caldera, Owyhee Plateau.
+      One walking route, timed to the sun. <strong>21&nbsp;June&nbsp;–&nbsp;23&nbsp;September&nbsp;2027.</strong></p>
+      <p class="hero-hint reveal">Scroll — the site keeps solar time.</p>
+    </div>
+  </section>
+
+  <!-- ======= MORNING · MANIFESTO ======= -->
+  <section class="manifesto">
+    <div class="wrap narrow">
+      <p class="eyebrow reveal">The premise</p>
+      <h2 class="sec-title reveal">A room with no roof, eleven kilometers wide.</h2>
+      <div class="prose reveal">
+        <p>Frayle Caldera is a basalt bowl on the Owyhee Plateau — eleven kilometers across, four
+        hundred meters deep, one hour of gravel past the last paved road. Every two years the Trust
+        commissions five permanent works for its floor. There is no gate, no ticket, and no shade.</p>
+        <p>You walk the route the sun walks: east rim to playa, 7.5 kilometers, five stations. The
+        works are built to be read slowly — at first light, at blazing noon, at dusk, and again under
+        a sky dark enough to see your shadow by starlight. Heat, distance, patience. These are the
+        materials.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= SITE PLAN ======= -->
+  <section class="plan" id="plan">
+    <div class="wrap">
+      <p class="eyebrow reveal">Orientation</p>
+      <h2 class="sec-title reveal">Site plan</h2>
+      <div class="panel map-panel reveal">
+        <svg class="map" viewBox="0 0 820 560" role="img" aria-label="Site plan of Frayle Caldera: a walking route from the east trailhead west across the caldera floor past five numbered stations to the playa.">
+          <path class="map-rim" d="M90 300 C70 190 180 90 330 70 C470 50 660 90 720 190 C770 270 750 380 640 450 C520 520 300 530 190 470 C100 420 100 380 90 300 Z"/>
+          <path class="map-rim inner" d="M150 300 C140 220 220 140 340 120 C460 100 620 130 670 210 C710 280 690 370 600 420 C490 480 320 480 230 430 C160 390 160 360 150 300 Z"/>
+          <ellipse class="map-playa" cx="248" cy="332" rx="84" ry="48"/>
+          <text class="map-label dim" x="248" y="376" text-anchor="middle">PLAYA</text>
+          <path class="map-route" d="M694 262 C636 238 588 234 545 240 C489 249 470 262 445 280 C414 302 396 310 380 315 C352 324 332 336 315 345 C296 354 274 340 258 330"/>
+          <rect class="map-th" x="688" y="255" width="13" height="13"/>
+          <text class="map-label" x="700" y="245" text-anchor="middle">TRAILHEAD</text>
+          <g class="map-st"><circle cx="545" cy="240" r="12"/><text x="545" y="244" text-anchor="middle">1</text></g>
+          <text class="map-label" x="545" y="215" text-anchor="middle">BASALT CHOIR</text>
+          <g class="map-st"><circle cx="445" cy="280" r="12"/><text x="445" y="284" text-anchor="middle">2</text></g>
+          <text class="map-label" x="452" y="308">MIRROR FALLOW</text>
+          <g class="map-st"><circle cx="380" cy="315" r="12"/><text x="380" y="319" text-anchor="middle">3</text></g>
+          <text class="map-label" x="388" y="343">SEED VAULT DOME</text>
+          <g class="map-st"><circle cx="315" cy="345" r="12"/><text x="315" y="349" text-anchor="middle">4</text></g>
+          <text class="map-label" x="322" y="373">WIND ORGAN</text>
+          <g class="map-st"><circle cx="258" cy="330" r="12"/><text x="258" y="334" text-anchor="middle">5</text></g>
+          <text class="map-label" x="252" y="305" text-anchor="end">SALT SPIRAL</text>
+          <g class="map-north"><line x1="762" y1="96" x2="762" y2="62"/><path d="M762 56 L756 70 L768 70 Z"/><text class="map-label" x="762" y="112" text-anchor="middle">N</text></g>
+          <g class="map-scale"><line x1="92" y1="512" x2="212" y2="512"/><line x1="92" y1="506" x2="92" y2="518"/><line x1="212" y1="506" x2="212" y2="518"/><text class="map-label" x="222" y="516">2 KM</text></g>
+        </svg>
+        <p class="map-note">The route is one-way, westbound. Allow five hours walking — longer if you
+        stop, and you will stop. Last water is the trailhead cistern.</p>
+      </div>
+    </div>
+  </section>
+
+  <div id="works">
+
+  <!-- ======= STATION 1 · BASALT CHOIR ======= -->
+  <section class="work" id="w1">
+    <div class="wrap">
+      <header class="work-head reveal">
+        <p class="eyebrow">Station 1 · 1.4 km from trailhead · best light 09:35</p>
+        <h2 class="work-title">Basalt Choir</h2>
+        <p class="artist">Tsering Lhamo — b. 1981, Lhasa · works in Marfa, Texas</p>
+      </header>
+      <figure class="plate reveal">
+        <div class="scene" data-scene="choir" role="img" aria-label="Elevation drawing of Basalt Choir: thirty-three basalt columns of varying heights standing in clustered intervals on the caldera floor, casting long shadows."></div>
+        <figcaption class="plate-cap">Plate 01 · Elevation looking north · figure 1.7 m for scale · CAL·27·01</figcaption>
+      </figure>
+      <div class="work-body">
+        <dl class="panel cat reveal">
+          <div><dt>Materials</dt><dd>Quarried columnar basalt, unpolished</dd></div>
+          <div><dt>Dimensions</dt><dd>33 columns, 2.1–7.4 m · field 60 × 18 m</dd></div>
+          <div><dt>Coordinates</dt><dd>42°17′08″ N · 116°42′51″ W</dd></div>
+          <div><dt>Catalog</dt><dd>CAL·27·01</dd></div>
+        </dl>
+        <p class="lyric reveal">Thirty-three columns stand in the phrasing of a chant — long interval,
+        short interval, rest. In the morning their shadows lie down together and point west, deeper
+        into the route, as if the stone already knew where you were going.</p>
+      </div>
+      <div class="wayline reveal">
+        <span class="wayline-tick" aria-hidden="true"></span>
+        <p>1.7 km on · cairns every 200 m · no shade</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= STATION 2 · MIRROR FALLOW ======= -->
+  <section class="work" id="w2">
+    <div class="wrap">
+      <header class="work-head reveal">
+        <p class="eyebrow">Station 2 · 3.1 km · best light 12:00</p>
+        <h2 class="work-title">Mirror Fallow</h2>
+        <p class="artist">Ana Reyes Contreras — b. 1974, Zacatecas</p>
+      </header>
+      <figure class="plate reveal">
+        <div class="scene scene--mirror" data-scene="mirror" role="img" aria-label="Elevation drawing of Mirror Fallow: rows of square mirrors set flat on fallow ground, each reflecting the sky overhead; at noon the field blazes white."></div>
+        <figcaption class="plate-cap">Plate 02 · Partial elevation, 49 of 217 units · CAL·27·02</figcaption>
+      </figure>
+      <div class="work-body">
+        <dl class="panel cat reveal">
+          <div><dt>Materials</dt><dd>Low-iron glass, powder-coated steel cradles</dd></div>
+          <div><dt>Dimensions</dt><dd>217 units, 90 × 90 cm · field 120 × 80 m</dd></div>
+          <div><dt>Coordinates</dt><dd>42°16′44″ N · 116°44′02″ W</dd></div>
+          <div><dt>Catalog</dt><dd>CAL·27·02</dd></div>
+        </dl>
+        <p class="lyric reveal">A fallow field replanted with 217 ground-set mirrors, each pitched two
+        degrees toward the pole star. They grow nothing but sky. At solar noon the field runs white,
+        and the horizon above it starts to swim.</p>
+      </div>
+      <div class="wayline reveal">
+        <span class="wayline-tick" aria-hidden="true"></span>
+        <p>1.6 km on · the dome reads as a hill until it doesn't</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= STATION 3 · SEED VAULT DOME ======= -->
+  <section class="work" id="w3">
+    <div class="wrap">
+      <header class="work-head reveal">
+        <p class="eyebrow">Station 3 · 4.7 km · best light 13:55</p>
+        <h2 class="work-title">Seed Vault Dome</h2>
+        <p class="artist">Prairie Bank Collective — est. 2019, Boise</p>
+      </header>
+      <figure class="plate reveal">
+        <div class="scene" data-scene="dome" role="img" aria-label="Elevation drawing of Seed Vault Dome: a low rammed-earth dome with visible strata lifts and a single dark door, casting a swinging shadow."></div>
+        <figcaption class="plate-cap">Plate 03 · Elevation looking west · fourteen rammed lifts · CAL·27·03</figcaption>
+      </figure>
+      <div class="work-body">
+        <dl class="panel cat reveal">
+          <div><dt>Materials</dt><dd>Rammed earth (site soil, 4% lime), juniper door</dd></div>
+          <div><dt>Dimensions</dt><dd>Ø 11 m · h 4.6 m · interior a constant 14 °C</dd></div>
+          <div><dt>Coordinates</dt><dd>42°16′21″ N · 116°45′17″ W</dd></div>
+          <div><dt>Catalog</dt><dd>CAL·27·03</dd></div>
+        </dl>
+        <p class="lyric reveal">Fourteen lifts of rammed earth over 1,204 accessions of native seed —
+        bluebunch, biscuit-root, big sagebrush. The door opens one day a year, on the autumn equinox,
+        and the seeds leave by hand.</p>
+      </div>
+      <div class="wayline reveal">
+        <span class="wayline-tick" aria-hidden="true"></span>
+        <p>1.5 km on · when the wind is up you will hear station 4 first</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= STATION 4 · WIND ORGAN ======= -->
+  <section class="work" id="w4">
+    <div class="wrap">
+      <header class="work-head reveal">
+        <p class="eyebrow">Station 4 · 6.2 km · best light 17:30</p>
+        <h2 class="work-title">Wind Organ</h2>
+        <p class="artist">Levent Aksoy — b. 1968, İzmir</p>
+      </header>
+      <figure class="plate reveal">
+        <div class="scene" data-scene="organ" role="img" aria-label="Elevation drawing of Wind Organ: nineteen weathering-steel pipes of different heights clustered on the caldera floor, sounding in the evening wind."></div>
+        <figcaption class="plate-cap">Plate 04 · Elevation looking northwest · CAL·27·04</figcaption>
+      </figure>
+      <div class="work-body">
+        <dl class="panel cat reveal">
+          <div><dt>Materials</dt><dd>Weathering steel, cast bronze reeds</dd></div>
+          <div><dt>Dimensions</dt><dd>19 pipes, 3.0–11.2 m · sounds at ≥&nbsp;12&nbsp;kn</dd></div>
+          <div><dt>Coordinates</dt><dd>42°15′58″ N · 116°46′30″ W</dd></div>
+          <div><dt>Catalog</dt><dd>CAL·27·04</dd></div>
+        </dl>
+        <p class="lyric reveal">Nineteen weathering-steel pipes tuned to the caldera's evening
+        westerly. Below twelve knots it says nothing at all. Then the rim cools, the air falls
+        downslope, and the organ holds a low D for as long as the light lasts.</p>
+      </div>
+    </div>
+  </section>
+
+  </div>
+
+  <!-- ======= SUNSET INTERLUDE (the ink flips here) ======= -->
+  <section class="interlude" aria-label="Sunset">
+    <div>
+      <p class="interlude-big">20:04 — sunset</p>
+      <p class="interlude-sub">The rim keeps the last of it. Walk on; the salt is close.</p>
+    </div>
+  </section>
+
+  <!-- ======= STATION 5 · SALT SPIRAL ======= -->
+  <section class="work" id="w5">
+    <div class="wrap">
+      <header class="work-head reveal">
+        <p class="eyebrow">Station 5 · 7.5 km · best light 20:40</p>
+        <h2 class="work-title">Salt Spiral</h2>
+        <p class="artist">Mei Onodera — b. 1990, Wakayama</p>
+      </header>
+      <figure class="plate reveal">
+        <div class="scene scene--salt" data-scene="spiral" role="img" aria-label="Oblique drawing of Salt Spiral at dusk: a wide spiral of raked white salt on dark playa ground, glowing in the last light, a single figure at its center."></div>
+        <figcaption class="plate-cap">Plate 05 · Oblique plan at dusk · CAL·27·05</figcaption>
+      </figure>
+      <div class="work-body">
+        <dl class="panel cat reveal">
+          <div><dt>Materials</dt><dd>Harvested playa salt, re-raked monthly</dd></div>
+          <div><dt>Dimensions</dt><dd>400 m unwound · Ø 38 m</dd></div>
+          <div><dt>Coordinates</dt><dd>42°15′40″ N · 116°47′55″ W</dd></div>
+          <div><dt>Catalog</dt><dd>CAL·27·05</dd></div>
+        </dl>
+        <p class="lyric reveal">Four hundred meters of hand-raked playa salt, wound to a center wide
+        enough to stand in. It is the last thing on the floor to give up the light, and the first
+        thing the moon finds.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= FIELD GUIDE ======= -->
+  <section class="guide" id="guide">
+    <div class="wrap narrow">
+      <p class="eyebrow reveal">Before you walk</p>
+      <h2 class="sec-title reveal">Field guide</h2>
+      <div class="panel guide-card reveal">
+        <div class="g-row"><h3>Water</h3><p>Carry four liters per person. There is no potable water on
+        the caldera floor; the nearest tap is the trailhead cistern — 7.5 km behind you once you reach
+        the spiral.</p></div>
+        <div class="g-row"><h3>Heat</h3><p>The route closes at a shade temperature of 41 °C — check the
+        flag at the trailhead kiosk. In July and August, walk before 10:00 or after 17:00.</p></div>
+        <div class="g-row"><h3>Shuttles</h3>
+          <div class="sched">
+            <p><span>Out from Bruneau Junction</span><strong>05:10 · 08:40 · 16:20</strong></p>
+            <p><span>Return from trailhead</span><strong>14:00 · 21:30 · 00:40 <em>(star shuttle)</em></strong></p>
+            <p class="sched-note">No private vehicles past the cattle grid.</p>
+          </div>
+        </div>
+        <div class="g-row"><h3>Dark sky</h3><p>Bortle class 1. Astronomical dark 22:41–03:55 in
+        midsummer. Red-filter headlamps only past station 4; the spiral viewing circle holds forty.</p></div>
+        <div class="g-row"><h3>Pack</h3><p>Broad hat, salt tablets, red-filter lamp, one warm layer —
+        the floor loses 25 °C between noon and midnight.</p></div>
+        <div class="g-row"><h3>Permits</h3><p>Day walking is free. Overnight star camps require permit
+        OLB-27-114-C, issued at the kiosk, twelve per night.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= AFTER DARK ======= -->
+  <section class="dark" id="dark">
+    <div class="wrap narrow">
+      <p class="eyebrow reveal">22:40 · night</p>
+      <h2 class="sec-title reveal">The biennale does not close.</h2>
+      <div class="prose reveal">
+        <p>Moonlight is written into every commission. Lhamo's columns go silver on their east faces,
+        and the intervals between them read like a second, slower chant. The mirror field fills with
+        stars — 217 rectangles of them, lying in the dirt like something spilled. The dome holds the
+        day's heat until midnight; put a palm on it. And the spiral, re-raked at each new moon, is
+        bright enough to walk by starlight alone.</p>
+      </div>
+      <ul class="night-data reveal">
+        <li><span>New moons 2027</span><strong>4 Jul · 2 Aug · 1 Sep</strong></li>
+        <li><span>Moonlight walks</span><strong>Fridays 22:00, station 1</strong></li>
+        <li><span>Astronomical dark</span><strong>22:41 – 03:55</strong></li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p class="foot-mark">CALDERA</p>
+    <p>Third High-Desert Land Art Biennale · 21 June – 23 September 2027 · Frayle Caldera, Owyhee Plateau.</p>
+    <p>Commissioned by the High Desert Art Trust with the Owyhee Land Bureau. The caldera lies on the
+    traditional lands of the Northern Paiute and Shoshone peoples.</p>
+    <p class="foot-fine">Identity &amp; catalog: Studio Bunchgrass, Boise · Typeset in Bevan and Archivo ·
+    © 2027 High Desert Art Trust. <a href="#top">Back to first light ↑</a></p>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>

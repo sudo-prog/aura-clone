@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Officina Serafin — Violin Maker, Cremona</title>
+<meta name="description" content="Violins, violas and violoncellos built one at a time by Elia Serafin in Cremona. Pluck the four live strings — real standing-wave physics, real Karplus–Strong sound.">
+<meta property="og:title" content="Officina Serafin — Violin Maker, Cremona">
+<meta property="og:description" content="One maker, one bench. Four strings that really vibrate under your pointer: modal string physics, touch harmonics, Karplus–Strong sound.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#150F08">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='12'%20fill='%23150F08'/%3E%3Cg%20fill='%23C79A52'%20stroke='%23C79A52'%3E%3Ccircle%20cx='39'%20cy='14'%20r='5'%20stroke='none'/%3E%3Ccircle%20cx='25'%20cy='50'%20r='6'%20stroke='none'/%3E%3Cpath%20d='M38%2019%20C35%2026%2032%2030%2032.5%2038%20C33%2046%2028%2048%2026%2044'%20fill='none'%20stroke-width='3.6'%20stroke-linecap='round'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preload" href="fonts/Cinzel-02.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Cardo-16.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/Cinzel.css">
+<link rel="stylesheet" href="fonts/Cardo.css">
+<link rel="stylesheet" href="fonts/CutiveMono.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="fhole" viewBox="0 0 40 100">
+    <circle cx="27.5" cy="10.5" r="6.6" fill="currentColor"/>
+    <circle cx="12" cy="89" r="7.6" fill="currentColor"/>
+    <path d="M26.6 17 C 23 30, 20.4 38, 20.8 50 C 21.2 63, 16.6 71, 13.4 81.5"
+          fill="none" stroke="currentColor" stroke-width="5.2" stroke-linecap="round"/>
+    <path d="M16.2 44.6 l -6.4 2 M25.6 52 l 6.4 -2"
+          fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </symbol>
+</svg>
+
+<header class="site-head">
+  <a class="wordmark" href="#corde">SERAFIN</a>
+  <nav aria-label="Sections">
+    <a href="#corde">Corde</a>
+    <a href="#armonici">Armonici</a>
+    <a href="#legni">Legni</a>
+    <a href="#diario">Diario</a>
+    <a href="#strumenti">Strumenti</a>
+    <a href="#cura">Cura</a>
+  </nav>
+</header>
+
+<main>
+
+<!-- ============ HERO / LE CORDE ============ -->
+<section class="hero" id="corde" aria-labelledby="site-title">
+  <p class="eyebrow mono">Cremona &middot; contrada dei liutai 11 &middot; est. 2009</p>
+  <h1 class="title" id="site-title" aria-label="Officina Serafin">
+    <span class="tw" aria-hidden="true"><i style="--i:0">O</i><i style="--i:1">F</i><i style="--i:2">F</i><i style="--i:3">I</i><i style="--i:4">C</i><i style="--i:5">I</i><i style="--i:6">N</i><i style="--i:7">A</i></span>
+    <span class="tw" aria-hidden="true"><i style="--i:8">S</i><i style="--i:9">E</i><i style="--i:10">R</i><i style="--i:11">A</i><i style="--i:12">F</i><i style="--i:13">I</i><i style="--i:14">N</i></span>
+  </h1>
+  <p class="lede">Violins, violas and violoncellos, built one at a time by Elia Serafin&nbsp;&mdash;
+  diploma of the Scuola Internazionale di Liuteria di Cremona, sixteen years of shavings
+  on this floor. One bench, one pair of hands.</p>
+
+  <div class="strings-stage reveal-strings">
+    <canvas id="stringsCanvas" role="img"
+      aria-label="Four live violin strings — G at 196 hertz, D at 293.66, A at 440, E at 659.26. Drag a string to bend and release it; sweep quickly across them to strum. Each pluck vibrates as a damped standing wave."></canvas>
+    <p class="sr-only">The G string is silver wound on gut, the D aluminium on gut, the A plain gut,
+    the E gilded steel. Where you pluck decides the voice: near the end is bright and overtone-rich,
+    the middle is hollow and flute-like. The strings are tuned in fifths and share partials,
+    so plucking one sets its neighbours shimmering in sympathy.</p>
+  </div>
+
+  <div class="hero-controls">
+    <button id="soundToggle" class="sound-btn" aria-pressed="false">
+      <svg class="fh-ic" aria-hidden="true"><use href="#fhole"/></svg>
+      <span data-off="Let the strings sound" data-on="Sound on &middot; Karplus&ndash;Strong">Let the strings sound</span>
+    </button>
+    <div class="pegs" role="group" aria-label="Pluck a string">
+      <button class="peg" data-string="0" aria-label="Pluck the G string — Sol, 196 hertz">SOL</button>
+      <button class="peg" data-string="1" aria-label="Pluck the D string — Re, 293.66 hertz">RE</button>
+      <button class="peg" data-string="2" aria-label="Pluck the A string — La, 440 hertz">LA</button>
+      <button class="peg" data-string="3" aria-label="Pluck the E string — Mi, 659.26 hertz">MI</button>
+    </div>
+  </div>
+  <p class="hint mono">trascina &middot; pull to bend, sweep to strum &mdash; where you pluck decides the voice &middot; the neighbouring fifth answers in sympathy</p>
+</section>
+
+<!-- ============ GLI ARMONICI ============ -->
+<section class="section" id="armonici" aria-labelledby="h-armonici">
+  <header class="sec-head reveal">
+    <svg class="fh" aria-hidden="true"><use href="#fhole"/></svg>
+    <div>
+      <h2 id="h-armonici">Gli Armonici</h2>
+      <p class="sub">the harmonic series, under one finger</p>
+    </div>
+    <svg class="fh flip" aria-hidden="true"><use href="#fhole"/></svg>
+  </header>
+
+  <p class="prose reveal">Touch a sounding string lightly — don&rsquo;t press it to the fingerboard —
+  and you force a point of stillness. Every motion that cannot hold still at that point dies.
+  What survives is a harmonic: higher, purer, faintly unearthly. Violinists call these notes
+  <em>flautati</em> — flute notes. The string below is live: pluck it open, then set a finger
+  at the half, the third, the quarter.</p>
+
+  <div class="harm-controls reveal">
+    <div class="string-pick" role="group" aria-label="Choose a string">
+      <button class="pick" data-hstring="0">SOL</button>
+      <button class="pick" data-hstring="1">RE</button>
+      <button class="pick is-on" data-hstring="2">LA</button>
+      <button class="pick" data-hstring="3">MI</button>
+    </div>
+    <button class="open-btn" id="openString">corda libera &mdash; open string</button>
+  </div>
+
+  <div class="harm-stage reveal">
+    <canvas id="harmCanvas" role="img"
+      aria-label="One long live string with touch points marked at one half, one third, two thirds, one quarter and three quarters of its length. Touching a point silences every mode of vibration that moves there; the surviving modes ring on as a pure harmonic. Above the string, a live spectrum shows the strength of the twelve lowest modes as they sound and decay."></canvas>
+    <div class="nodes" id="nodeLayer" role="group" aria-label="Touch the string at a node">
+      <button class="node" data-m="4" data-p="0.25" aria-label="Touch at one quarter — the double octave"><span>&frac14;</span></button>
+      <button class="node" data-m="3" data-p="0.333333" aria-label="Touch at one third — octave and a fifth"><span>&#8531;</span></button>
+      <button class="node" data-m="2" data-p="0.5" aria-label="Touch at one half — the octave"><span>&frac12;</span></button>
+      <button class="node" data-m="3" data-p="0.666667" aria-label="Touch at two thirds — octave and a fifth"><span>&#8532;</span></button>
+      <button class="node" data-m="4" data-p="0.75" aria-label="Touch at three quarters — the double octave"><span>&frac34;</span></button>
+    </div>
+  </div>
+
+  <div class="readout mono" id="harmReadout" aria-live="polite">
+    <span class="ro-main">corda libera &mdash; LA4 &middot; 440.00 Hz &mdash; all modes speak</span>
+    <span class="ro-sub">the kink you see travelling is the sum of every harmonic at once</span>
+  </div>
+</section>
+
+<!-- ============ I LEGNI ============ -->
+<section class="section" id="legni" aria-labelledby="h-legni">
+  <header class="sec-head reveal">
+    <svg class="fh" aria-hidden="true"><use href="#fhole"/></svg>
+    <div>
+      <h2 id="h-legni">I Legni</h2>
+      <p class="sub">two woods, one voice</p>
+    </div>
+    <svg class="fh flip" aria-hidden="true"><use href="#fhole"/></svg>
+  </header>
+
+  <div class="woods">
+    <article class="wood reveal" aria-labelledby="w-spruce">
+      <div class="wood-panel" id="sprucePanel" role="img"
+        aria-label="Bookmatched spruce top: fine growth rings, tightest at the centre joint, widening toward the flanks, drawn as fine line topography."></div>
+      <div class="wood-copy">
+        <p class="w-label mono">Abete rosso &middot; Picea abies</p>
+        <h3 id="w-spruce">The speaking wood</h3>
+        <p>Every top I carve comes from a single stand above Paneveggio, in the Val di
+        Fiemme, at 1,600 metres — the forest that supplied the Cremonese two and a half
+        centuries before me. Slow cold summers make narrow rings; narrow rings make stiff,
+        light plates. The billets are split, never sawn, so the grain runs unbroken from
+        block to edge, and they wait in my attic twelve years before I look at them again.</p>
+        <dl class="ledger mono">
+          <div><dt>Felled</dt><dd>November 2011, waning moon</dd></div>
+          <div><dt>Rings</dt><dd>21 per cm at the joint</dd></div>
+          <div><dt>Density</dt><dd>0.362 g/cm&sup3;</dd></div>
+          <div><dt>Seasoned</dt><dd>14 years, attic air</dd></div>
+          <div><dt>Tap tone</dt><dd>F&sharp;4 &middot; ring mode 358 Hz</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <article class="wood wood-rev reveal" aria-labelledby="w-maple">
+      <div class="wood-panel" id="maplePanel" role="img"
+        aria-label="Flamed Bosnian maple back: tiger-stripe curl running across the grain in mirrored chevrons, drawn as fine line topography."></div>
+      <div class="wood-copy">
+        <p class="w-label mono">Acero marezzato &middot; Acer pseudoplatanus</p>
+        <h3 id="w-maple">The singing wood</h3>
+        <p>The back, ribs and scroll are Bosnian maple, bought as a lot of forty billets in
+        Udine in 2004 and hoarded like wine ever since. The flame is not grain — it is a
+        ripple that runs <em>across</em> the grain, and light moves through it like weather:
+        tilt the finished back and every stripe reverses. It is harder than the spruce,
+        slower to work, and it answers the gouge with a ring instead of a whisper.</p>
+        <dl class="ledger mono">
+          <div><dt>Origin</dt><dd>Bosnia, high-valley stock</dd></div>
+          <div><dt>Cut</dt><dd>quarter-sawn, bookmatched</dd></div>
+          <div><dt>Density</dt><dd>0.588 g/cm&sup3;</dd></div>
+          <div><dt>Curl</dt><dd>9 flames per 10 cm</dd></div>
+          <div><dt>Tap tone</dt><dd>C&sharp;4 &middot; ring mode 349 Hz</dd></div>
+        </dl>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ DIARIO DEL BANCO ============ -->
+<section class="section" id="diario" aria-labelledby="h-diario">
+  <header class="sec-head reveal">
+    <svg class="fh" aria-hidden="true"><use href="#fhole"/></svg>
+    <div>
+      <h2 id="h-diario">Diario del Banco</h2>
+      <p class="sub">nine months, one violin &mdash; opus 74, after Guarneri del Ges&ugrave;</p>
+    </div>
+    <svg class="fh flip" aria-hidden="true"><use href="#fhole"/></svg>
+  </header>
+
+  <p class="prose reveal">A violin is nine months of decisions you cannot take back.
+  I keep the diary on the bench, in pencil, with the hygrometer&rsquo;s word first —
+  hide glue and dry air conspire against joints, so humidity is a tool like any other.
+  Opus&nbsp;74, begun in September, strung in June.</p>
+
+  <ol class="diary">
+    <li class="entry reveal"><div class="when mono"><span class="d">12 Sept</span><span class="rh">61% RH</span><span class="gauge" style="--rh:61" aria-hidden="true"></span></div>
+      <p>Chose the wood by tapping every billet on the attic stairs. The 2011 spruce —
+      split face like combed silk. Joined the two halves of the top before lunch: hide glue,
+      rubbed joint, no clamps. An honest joint closes with a squeak.</p></li>
+    <li class="entry reveal"><div class="when mono"><span class="d">30 Sept</span><span class="rh">58% RH</span><span class="gauge" style="--rh:58" aria-hidden="true"></span></div>
+      <p>Ribs bent on the hot iron. Maple resists for a second, then gives all at once —
+      you learn to hear the fibres relax. Both C-bouts before the iron cooled.</p></li>
+    <li class="entry reveal"><div class="when mono"><span class="d">18 Oct</span><span class="rh">55% RH</span><span class="gauge" style="--rh:55" aria-hidden="true"></span></div>
+      <p>Outline traced from my del Ges&ugrave; mould — the one with the corner I never
+      corrected. The asymmetry is the signature. Willow blocks in, corners left proud.</p></li>
+    <li class="entry reveal"><div class="when mono"><span class="d">7 Nov</span><span class="rh">47% RH</span><span class="gauge" style="--rh:47" aria-hidden="true"></span></div>
+      <p>Arching begun: gouge, then thumb planes down to the no.&nbsp;2. This is the fortnight
+      that decides everything. A violin is its arching; the rest is furniture.</p></li>
+    <li class="entry reveal"><div class="when mono"><span class="d">26 Nov</span><span class="rh">41% RH</span><span class="gauge" style="--rh:41" aria-hidden="true"></span></div>
+      <p>Cold snap. Humidifier on, gluing suspended three days. Carved arching by lamplight
+      instead and sharpened everything twice.</p></li>
+    <li class="entry reveal"><div class="when mono"><span class="d">15 Dec</span><span class="rh">39% RH</span><span class="gauge" style="--rh:39" aria-hidden="true"></span></div>
+      <p>Graduation. Top thicknessed to 2.7&nbsp;mm in the centre, 2.4 at the flanks.
+      Tap, flex, listen, scrape, again. Mid-afternoon the plate went from a knock to a ring —
+      you never miss the moment.</p></li>
+    <li class="entry reveal"><div class="when mono"><span class="d">9 Jan</span><span class="rh">38% RH</span><span class="gauge" style="--rh:38" aria-hidden="true"></span></div>
+      <p>F-holes cut. One knife-slip from ruin for forty minutes; I take no visitors in
+      f-hole week. The tone moved the instant the second eye opened.</p></li>
+    <li class="entry reveal"><div class="when mono"><span class="d">2 Feb</span><span class="rh">42% RH</span><span class="gauge" style="--rh:42" aria-hidden="true"></span></div>
+      <p>Bass bar chalk-fitted until the chalk had nothing left to say, then sprung in —
+      a whisper of tension, two tenths proud at the ends.</p></li>
+    <li class="entry reveal"><div class="when mono"><span class="d">24 Feb</span><span class="rh">44% RH</span><span class="gauge" style="--rh:44" aria-hidden="true"></span></div>
+      <p>Neck carved; the scroll took four days. Nobody hears a scroll, but everyone looks
+      at it first. Flutes carried right through the throat, the way my maestro insisted.</p></li>
+    <li class="entry reveal"><div class="when mono"><span class="d">19 Mar</span><span class="rh">49% RH</span><span class="gauge" style="--rh:49" aria-hidden="true"></span></div>
+      <p>Box closed, neck set: overstand 6.2&nbsp;mm, projection 27 at the bridge. The white
+      violin is complete. It already speaks — quietly, like someone about to be given a voice.</p></li>
+    <li class="entry reveal"><div class="when mono"><span class="d">8 Apr</span><span class="rh">52% RH</span><span class="gauge" style="--rh:52" aria-hidden="true"></span></div>
+      <p>Ground coat rubbed to nothing, then the first amber. The white violin disappears.
+      Grief and relief in equal parts.</p></li>
+    <li class="entry reveal"><div class="when mono"><span class="d">14 May</span><span class="rh">54% RH</span><span class="gauge" style="--rh:54" aria-hidden="true"></span></div>
+      <p>Varnish, coat after coat: oil and resin, red over gold, sun-thickened on the sill.
+      Twelve days between coats four and five because the weather refused to dry it.
+      Patience is an ingredient.</p></li>
+    <li class="entry reveal"><div class="when mono"><span class="d">11 June</span><span class="rh">57% RH</span><span class="gauge" style="--rh:57" aria-hidden="true"></span></div>
+      <p>Soundpost of split spruce, bridge cut over two evenings. Strung at noon; first open
+      fifths at 12:20. Nine months, and already it asks questions I didn&rsquo;t teach it.
+      It goes to its first audition on Friday.</p></li>
+  </ol>
+</section>
+
+<!-- ============ STRUMENTI ============ -->
+<section class="section" id="strumenti" aria-labelledby="h-strumenti">
+  <header class="sec-head reveal">
+    <svg class="fh" aria-hidden="true"><use href="#fhole"/></svg>
+    <div>
+      <h2 id="h-strumenti">Strumenti</h2>
+      <p class="sub">finished instruments at the bench</p>
+    </div>
+    <svg class="fh flip" aria-hidden="true"><use href="#fhole"/></svg>
+  </header>
+
+  <p class="prose reveal">Each instrument leaves with its bench diary and a certificate.
+  Trials at the workshop by appointment; I do not ship an instrument I have not heard
+  played by its buyer.</p>
+
+  <div class="cards">
+    <article class="card reveal">
+      <p class="opus mono">Opus 71 &middot; 2024</p>
+      <div class="chip chip-71" aria-hidden="true"></div>
+      <h3>Violin &mdash; after Guarneri del Ges&ugrave; &ldquo;Kochanski&rdquo; 1741</h3>
+      <p>Two-piece back of tight Bosnian curl; oil varnish, deep red over a gold ground.
+      Dark, immediate, wide at the bottom of the register.</p>
+      <p class="price mono">Price on application &middot; available</p>
+    </article>
+    <article class="card reveal">
+      <p class="opus mono">Opus 68 &middot; 2023</p>
+      <div class="chip chip-68" aria-hidden="true"></div>
+      <h3>Violin &mdash; Stradivari &ldquo;P&rdquo; form, 1705</h3>
+      <p>One-piece quarter-cut back; amber varnish left thin at the wear points.
+      A soprano voice — effortless at the top, silver rather than gold.</p>
+      <p class="price mono">Price on application &middot; in trial with a quartet in Basel</p>
+    </article>
+    <article class="card reveal">
+      <p class="opus mono">Opus 66 &middot; 2022</p>
+      <div class="chip chip-66" aria-hidden="true"></div>
+      <h3>Viola &mdash; modello Serafin, 41.2&nbsp;cm</h3>
+      <p>Cut for a violist&rsquo;s left hand: short in the body, deep in the ribs.
+      A true alto — cloth of dark wool.</p>
+      <p class="price mono">Price on application &middot; available</p>
+    </article>
+    <article class="card reveal">
+      <p class="opus mono">Opus 62 &middot; 2021</p>
+      <div class="chip chip-62" aria-hidden="true"></div>
+      <h3>Violoncello &mdash; after Montagnana, Venice 1739</h3>
+      <p>Broad model, ribs of astonishing flame. It fills a church without being pushed.</p>
+      <p class="price mono">Price on application &middot; on loan to a conservatory student until spring</p>
+    </article>
+  </div>
+
+  <p class="commissions reveal">Commissions open for 2027. One bench makes three
+  instruments a year; the waiting list is honest — about eighteen months.</p>
+</section>
+
+<!-- ============ LA CURA ============ -->
+<section class="section" id="cura" aria-labelledby="h-cura">
+  <header class="sec-head reveal">
+    <svg class="fh" aria-hidden="true"><use href="#fhole"/></svg>
+    <div>
+      <h2 id="h-cura">La Cura</h2>
+      <p class="sub">how to keep it alive</p>
+    </div>
+    <svg class="fh flip" aria-hidden="true"><use href="#fhole"/></svg>
+  </header>
+
+  <ul class="care">
+    <li class="reveal"><h3>Humidity</h3><p>Keep it between 45 and 55%. The violin was born at
+      50 and will always try to go home. A ten-euro hygrometer in the case outranks a
+      thousand-euro case.</p></li>
+    <li class="reveal"><h3>After playing</h3><p>Wipe rosin from the strings and the top with a
+      dry cloth kept only for this. Rosin is varnish&rsquo;s slowest enemy.</p></li>
+    <li class="reveal"><h3>The bow</h3><p>Loosen the hair every time. A bow left tense
+      overnight forgets its camber.</p></li>
+    <li class="reveal"><h3>The bridge</h3><p>Glance at it weekly from the side — the back face
+      square to the top. Tuning pulls it forward a hair at a time until one evening,
+      loudly, it goes over. Stand it up before it leans.</p></li>
+    <li class="reveal"><h3>Seasons</h3><p>Bring it to the bench at the turn of each season.
+      The soundpost is a tenth of a millimetre from perfect in winter, and a different
+      tenth in summer.</p></li>
+    <li class="reveal"><h3>Never</h3><p>Never polish it yourself, never leave it in a car,
+      never lend it to the ambitious.</p></li>
+  </ul>
+</section>
+
+</main>
+
+<footer class="site-foot">
+  <svg class="fh foot-fh" aria-hidden="true"><use href="#fhole"/></svg>
+  <p class="foot-name">Officina Serafin</p>
+  <p class="mono">Contrada dei Liutai 11 &middot; 26100 Cremona &middot; visits by appointment, Thursday&ndash;Saturday<br>
+  +39 0372 41 07 74 &middot; bottega@officinaserafin.it</p>
+  <p class="colophon">The strings on this page vibrate by modal synthesis; their voices are
+  Karplus&ndash;Strong. Set in Cinzel &amp; Cardo, at one bench.</p>
+</footer>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

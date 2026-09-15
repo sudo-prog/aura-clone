@@ -1,0 +1,8 @@
+@font-face {
+  font-family: 'Noto Serif JP';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(./NotoSerifJP-sub-1.woff2) format('woff2');
+  unicode-range: U+306e, U+308a, U+4e00, U+4eac, U+548c, U+5c71, U+5de5, U+5f62, U+623f, U+624b, U+6298, U+65b9, U+679a, U+67d3, U+67ff, U+685c, U+696e, U+6e0b, U+72d0, U+7adc, U+7d19, U+8272, U+83d6, U+84b2, U+85cd, U+8c37, U+90fd, U+9ce5, U+9db4;
+}

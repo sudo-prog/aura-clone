@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orikata — paper studio, Kyoto &amp; Portland</title>
+<meta name="description" content="Orikata prints crease patterns on hand-made washi and teaches your hands the rest. Folding kits — crane, fox, iris, dragon — and slow origami workshops in Kyoto and Portland.">
+<meta property="og:title" content="Orikata — paper studio, Kyoto &amp; Portland">
+<meta property="og:description" content="Folding kits on hand-made washi. One sheet, no cuts, no glue. Workshops in Kyoto and Portland.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#F4EFE3">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23F4EFE3'/%3E%3Cpath d='M14 50 L50 50 L50 14 Z' fill='%23C03F16'/%3E%3Cpath d='M14 50 L50 14' stroke='%231E3A56' stroke-width='2.5' stroke-dasharray='5 4'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/ZenKakuGothicNew-363.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/ZenKakuGothicNew-121.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/ZenKakuGothicNew.css">
+<link rel="stylesheet" href="fonts/NotoSerifJP.css">
+<link rel="stylesheet" href="fonts/SplineSansMono.css">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<header class="site-head">
+  <a class="wordmark" href="#top">
+    <span class="wm-latin">ORIKATA</span>
+    <span class="wm-jp" lang="ja">折り方</span>
+  </a>
+  <nav class="site-nav" aria-label="Site">
+    <a href="#kits">Kits</a>
+    <a href="#paper">Paper</a>
+    <a href="#workshops">Workshops</a>
+  </nav>
+  <div class="head-right">
+    <span class="cities">Kyoto · Portland</span>
+    <span class="basket" id="basket" aria-live="polite">Basket · <span id="basketCount">0</span></span>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" aria-labelledby="hero-h">
+    <div class="hero-copy">
+      <h1 id="hero-h" class="hl">
+        <span class="line">Paper remembers</span>
+        <span class="line">every fold.</span>
+      </h1>
+      <p class="hero-sub">We print crease patterns on hand-made <span lang="ja" class="jp">和紙</span> washi,
+        cut nothing, glue nothing, and teach your hands the rest. Folding kits and
+        slow workshops from two small rooms — Sanjō-dōri, Kyoto and SE Ankeny, Portland.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#kits">Browse the kits</a>
+        <a class="btn btn-ghost" href="#workshops">Workshop dates</a>
+      </div>
+      <p class="hero-note mono">Kits ship folded flat — obviously. Kyoto ⇄ Portland since 2017.</p>
+    </div>
+
+    <figure class="crane-fig">
+      <div class="crane-stage" id="craneStage" aria-hidden="true">
+        <div class="crane-world" id="craneWorld">
+          <div class="gshadow"></div>
+
+          <!-- the sheet: stage 1 (square, first fold) -->
+          <div class="sheet">
+            <div class="sh1">
+              <div class="sh1-bot"></div>
+              <div class="sh1-flap">
+                <div class="face front"></div>
+                <div class="face back"></div>
+              </div>
+            </div>
+            <!-- stage 2 (rectangle, second fold) -->
+            <div class="sh2">
+              <div class="sh2-right"></div>
+              <div class="sh2-flap">
+                <div class="face front"></div>
+                <div class="face back"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- the crane rig -->
+          <div class="crane">
+            <div class="keel k-l"></div>
+            <div class="keel k-r"></div>
+            <div class="wing w-l"></div>
+            <div class="wing w-r"></div>
+            <div class="neck">
+              <div class="head"></div>
+            </div>
+            <div class="tail"></div>
+          </div>
+        </div>
+      </div>
+      <figcaption class="crane-cap mono">OK-01 · <span lang="ja" class="jp">鶴</span> crane —
+        one uncut square, 15 cm. Folded and unfolded in pure CSS.</figcaption>
+    </figure>
+
+    <p class="hero-vert jp" lang="ja" title="one sheet of paper">一枚の紙</p>
+  </section>
+
+  <!-- ============ MANIFESTO TRI-FOLD ============ -->
+  <section class="manifesto" aria-labelledby="mani-h">
+    <header class="sec-head">
+      <p class="eyebrow mono">The studio rule <span lang="ja" class="jp">折り方</span></p>
+      <h2 id="mani-h">Three lines we never cross</h2>
+    </header>
+
+    <div class="letter" id="letter">
+      <div class="lp p1">
+        <div class="pc">
+          <h3><span class="big">One sheet.</span></h3>
+          <p>Every model in this studio begins as a single square of Kurotani washi.
+             Nothing is added and nothing is taken away — the bird was in the sheet all along.</p>
+        </div>
+      </div>
+      <div class="lw2" id="lw2">
+        <div class="lp p2">
+          <div class="pc">
+            <h3><span class="big">No cuts.</span></h3>
+            <p>A scissor line is a shortcut your hands never learn from.
+               Our patterns fold clean from corner to corner, and the paper keeps its whole memory.</p>
+          </div>
+          <div class="fshade" aria-hidden="true"></div>
+        </div>
+        <div class="lw3" id="lw3">
+          <div class="lp p3">
+            <div class="pc">
+              <h3><span class="big">No glue.</span></h3>
+              <p>Tension holds the crane together — the same tension that holds your attention
+                 for the forty quiet minutes it takes to fold one.</p>
+            </div>
+            <div class="fshade" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ KITS ============ -->
+  <section class="kits" id="kits" aria-labelledby="kits-h">
+    <header class="sec-head">
+      <p class="eyebrow mono">Folding kits <span lang="ja" class="jp">折り形</span></p>
+      <h2 id="kits-h">Four birds, beasts and blooms</h2>
+      <p class="sec-sub">Difficulty is not a star rating here. It is the crease count, printed
+         on every sheet — count the lines and you know exactly what you are in for.</p>
+    </header>
+
+    <div class="kit-grid">
+
+      <article class="kit fold" style="--fd:0s">
+        <div class="cp-wrap">
+          <svg class="cp" viewBox="0 0 200 200" role="img" aria-label="Crane crease pattern: 16 creases">
+            <rect class="edge" x="1.5" y="1.5" width="197" height="197"/>
+            <path class="m" d="M0 0L200 200M200 0L0 200"/>
+            <path class="v" d="M100 0V200M0 100H200M100 0L200 100L100 200L0 100L100 0"/>
+            <path class="v" d="M0 0L83 34M0 0L34 83M200 0L117 34M200 0L166 83M0 200L34 117M0 200L83 166M200 200L166 117M200 200L117 166"/>
+          </svg>
+        </div>
+        <div class="kit-body">
+          <p class="kit-id mono">OK-01</p>
+          <h3 class="kit-name">Crane <span lang="ja" class="jp">鶴</span></h3>
+          <p class="kit-spec mono">16 creases · 24 steps · level 1</p>
+          <p class="kit-desc">The fold everyone begins with. Ours ends with wings that hold
+             their curve, because 42 gsm kozo holds a crease like linen holds a press.</p>
+          <p class="kit-stock mono">Paper: <span class="dot d-kozo" title="kozo natural"></span>
+            <span class="dot d-kaki" title="kakishibu"></span>
+            <span class="dot d-ai" title="aizome"></span> 10 sheets + 2 spares</p>
+          <div class="kit-buy">
+            <span class="price">$18</span>
+            <button class="btn btn-primary btn-add" type="button">Add to basket</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="kit fold" style="--fd:.1s">
+        <div class="cp-wrap">
+          <svg class="cp" viewBox="0 0 200 200" role="img" aria-label="Fox crease pattern: 9 creases">
+            <rect class="edge" x="1.5" y="1.5" width="197" height="197"/>
+            <path class="m" d="M200 0L0 200M138 20L180 62M0 100L100 100M0 0L100 100"/>
+            <path class="v" d="M0 0L200 83M0 0L83 200M100 100L200 100M20 138L62 180M100 0L100 100"/>
+          </svg>
+        </div>
+        <div class="kit-body">
+          <p class="kit-id mono">OK-02</p>
+          <h3 class="kit-name">Fox <span lang="ja" class="jp">狐</span></h3>
+          <p class="kit-spec mono">9 creases · 18 steps · level 2</p>
+          <p class="kit-desc">Fewer creases than the crane, sharper judgement per crease.
+             The ears only stand if your diagonal was honest back at step two.</p>
+          <p class="kit-stock mono">Paper: <span class="dot d-kozo" title="kozo natural"></span>
+            <span class="dot d-kaki" title="kakishibu"></span> 10 sheets + 2 spares</p>
+          <div class="kit-buy">
+            <span class="price">$22</span>
+            <button class="btn btn-primary btn-add" type="button">Add to basket</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="kit fold" style="--fd:.05s">
+        <div class="cp-wrap">
+          <svg class="cp" viewBox="0 0 200 200" role="img" aria-label="Iris crease pattern: 20 creases">
+            <rect class="edge" x="1.5" y="1.5" width="197" height="197"/>
+            <path class="m" d="M0 0L200 200M200 0L0 200M100 50L150 100L100 150L50 100L100 50"/>
+            <path class="v" d="M100 0V200M0 100H200M100 0L200 100L100 200L0 100L100 0"/>
+            <path class="v" d="M0 0L83 34M0 0L34 83M200 0L117 34M200 0L166 83M0 200L34 117M0 200L83 166M200 200L166 117M200 200L117 166"/>
+          </svg>
+        </div>
+        <div class="kit-body">
+          <p class="kit-id mono">OK-03</p>
+          <h3 class="kit-name">Iris <span lang="ja" class="jp">菖蒲</span></h3>
+          <p class="kit-spec mono">20 creases · 41 steps · level 3</p>
+          <p class="kit-desc">Petal folds, four of them, each one a small act of faith.
+             Wet-fold the last step and the bloom keeps a soft, living edge.</p>
+          <p class="kit-stock mono">Paper: <span class="dot d-kozo" title="kozo natural"></span>
+            <span class="dot d-sakura" title="sakura"></span> 8 sheets + 4 spares</p>
+          <div class="kit-buy">
+            <span class="price">$26</span>
+            <button class="btn btn-primary btn-add" type="button">Add to basket</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="kit fold" style="--fd:.15s">
+        <div class="cp-wrap">
+          <svg class="cp" viewBox="0 0 200 200" role="img" aria-label="Dragon crease pattern: 32 creases">
+            <rect class="edge" x="1.5" y="1.5" width="197" height="197"/>
+            <path class="m" d="M0 0L200 200M200 0L0 200M50 0V200M150 0V200M0 50H200M0 150H200"/>
+            <path class="v" d="M100 0V200M0 100H200M25 0V200M75 0V200M125 0V200M175 0V200M0 25H200M0 75H200M0 125H200M0 175H200"/>
+            <path class="m" d="M0 50L50 0M150 0L200 50M0 150L50 200M150 200L200 150M50 100L100 50L150 100L100 150L50 100M25 50L50 25M150 25L175 50M25 150L50 175M150 175L175 150"/>
+            <path class="v" d="M100 0L200 100L100 200L0 100L100 0"/>
+          </svg>
+        </div>
+        <div class="kit-body">
+          <p class="kit-id mono">OK-04</p>
+          <h3 class="kit-name">Dragon <span lang="ja" class="jp">竜</span></h3>
+          <p class="kit-spec mono">32 creases · 88 steps · level 4</p>
+          <p class="kit-desc">Box-pleated spine, reverse-folded claws, and a jaw that opens.
+             Set aside an evening. Set aside your pride, too — sheet one is a rehearsal.</p>
+          <p class="kit-stock mono">Paper: <span class="dot d-ai" title="aizome"></span>
+            <span class="dot d-kaki" title="kakishibu"></span> 6 sheets + 6 spares</p>
+          <div class="kit-buy">
+            <span class="price">$34</span>
+            <button class="btn btn-primary btn-add" type="button">Add to basket</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ NOTATION LEGEND ============ -->
+  <section class="notation" aria-labelledby="nota-h">
+    <div class="nota-inner fold">
+      <h2 id="nota-h" class="nota-title">Read the folds</h2>
+      <div class="nota-cols">
+        <div class="nota-item">
+          <svg class="nota-line" viewBox="0 0 220 12" aria-hidden="true">
+            <path class="m" d="M2 6H218"/>
+          </svg>
+          <p class="nota-name">Mountain <span lang="ja" class="jp">山折り</span></p>
+          <p class="nota-desc">The paper folds away from you. The crease forms a ridge.</p>
+        </div>
+        <div class="nota-item">
+          <svg class="nota-line" viewBox="0 0 220 12" aria-hidden="true">
+            <path class="v" d="M2 6H218"/>
+          </svg>
+          <p class="nota-name">Valley <span lang="ja" class="jp">谷折り</span></p>
+          <p class="nota-desc">The paper folds toward you. The crease forms a trough.</p>
+        </div>
+      </div>
+      <p class="nota-note">Two line styles, persimmon and indigo, are the entire written language
+         of origami. Every diagram above is set in it — nothing else is needed.</p>
+    </div>
+  </section>
+
+  <!-- ============ PAPER ============ -->
+  <section class="paper" id="paper" aria-labelledby="paper-h">
+    <header class="sec-head">
+      <p class="eyebrow mono eyebrow-light">The paper <span lang="ja" class="jp">和紙</span></p>
+      <h2 id="paper-h">The paper is half the model</h2>
+      <p class="sec-sub">Our sheets come from the Yamamoto family workshop in Kurotani,
+         a village that has made paper for eight hundred years. Long-fibre kozo,
+         beaten by hand, dyed in small vats.</p>
+    </header>
+
+    <div class="swatch-grid">
+      <figure class="swatch fold" style="--fd:0s">
+        <svg class="swatch-svg" viewBox="0 0 260 320" aria-hidden="true">
+          <defs>
+            <filter id="pk1" x="-6%" y="-6%" width="112%" height="112%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.02 0.033" numOctaves="4" seed="11" result="n"/>
+              <feDisplacementMap in="SourceGraphic" in2="n" scale="10" result="torn"/>
+              <feTurbulence type="fractalNoise" baseFrequency="0.12 0.9" numOctaves="2" seed="8" result="f"/>
+              <feColorMatrix in="f" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 0.96 0 0 0 0.14 0" result="fw"/>
+              <feComposite in="fw" in2="torn" operator="in" result="fib"/>
+              <feMerge><feMergeNode in="torn"/><feMergeNode in="fib"/></feMerge>
+            </filter>
+          </defs>
+          <rect x="16" y="16" width="228" height="288" fill="#EDE5CF" filter="url(#pk1)"/>
+        </svg>
+        <figcaption>
+          <p class="sw-name">Kozo natural <span lang="ja" class="jp">楮</span></p>
+          <p class="sw-spec mono">42 gsm · unbleached · Kurotani</p>
+          <p class="sw-desc">The workhorse. Takes twenty folds in the same place before it complains.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="swatch fold" style="--fd:.08s">
+        <svg class="swatch-svg" viewBox="0 0 260 320" aria-hidden="true">
+          <defs>
+            <filter id="pk2" x="-6%" y="-6%" width="112%" height="112%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.022 0.03" numOctaves="4" seed="27" result="n"/>
+              <feDisplacementMap in="SourceGraphic" in2="n" scale="10" result="torn"/>
+              <feTurbulence type="fractalNoise" baseFrequency="0.1 0.85" numOctaves="2" seed="4" result="f"/>
+              <feColorMatrix in="f" values="0 0 0 0 0.35 0 0 0 0 0.1 0 0 0 0 0.02 0 0 0 0.18 0" result="fd"/>
+              <feComposite in="fd" in2="torn" operator="in" result="fib"/>
+              <feMerge><feMergeNode in="torn"/><feMergeNode in="fib"/></feMerge>
+            </filter>
+          </defs>
+          <rect x="16" y="16" width="228" height="288" fill="#C4622F" filter="url(#pk2)"/>
+        </svg>
+        <figcaption>
+          <p class="sw-name">Kakishibu <span lang="ja" class="jp">柿渋</span></p>
+          <p class="sw-spec mono">38 gsm · persimmon tannin · sun-cured</p>
+          <p class="sw-desc">Dyed with fermented persimmon juice. Darkens a shade every year, like a good verdict.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="swatch fold" style="--fd:.16s">
+        <svg class="swatch-svg" viewBox="0 0 260 320" aria-hidden="true">
+          <defs>
+            <filter id="pk3" x="-6%" y="-6%" width="112%" height="112%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.018 0.035" numOctaves="4" seed="41" result="n"/>
+              <feDisplacementMap in="SourceGraphic" in2="n" scale="11" result="torn"/>
+              <feTurbulence type="fractalNoise" baseFrequency="0.11 0.9" numOctaves="2" seed="14" result="f"/>
+              <feColorMatrix in="f" values="0 0 0 0 0.75 0 0 0 0 0.82 0 0 0 0 0.95 0 0 0 0.13 0" result="fl"/>
+              <feComposite in="fl" in2="torn" operator="in" result="fib"/>
+              <feMerge><feMergeNode in="torn"/><feMergeNode in="fib"/></feMerge>
+            </filter>
+          </defs>
+          <rect x="16" y="16" width="228" height="288" fill="#31517A" filter="url(#pk3)"/>
+        </svg>
+        <figcaption>
+          <p class="sw-name">Aizome <span lang="ja" class="jp">藍染</span></p>
+          <p class="sw-spec mono">45 gsm · indigo vat · dipped eight times</p>
+          <p class="sw-desc">Eight dips, eight days. Fold a white-bellied crane from the reverse side.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="swatch fold" style="--fd:.24s">
+        <svg class="swatch-svg" viewBox="0 0 260 320" aria-hidden="true">
+          <defs>
+            <filter id="pk4" x="-6%" y="-6%" width="112%" height="112%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.021 0.031" numOctaves="4" seed="63" result="n"/>
+              <feDisplacementMap in="SourceGraphic" in2="n" scale="9" result="torn"/>
+              <feTurbulence type="fractalNoise" baseFrequency="0.13 0.88" numOctaves="2" seed="22" result="f"/>
+              <feColorMatrix in="f" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.16 0" result="fw"/>
+              <feComposite in="fw" in2="torn" operator="in" result="fib"/>
+              <feMerge><feMergeNode in="torn"/><feMergeNode in="fib"/></feMerge>
+            </filter>
+          </defs>
+          <rect x="16" y="16" width="228" height="288" fill="#E5B7AC" filter="url(#pk4)"/>
+        </svg>
+        <figcaption>
+          <p class="sw-name">Sakura <span lang="ja" class="jp">桜</span></p>
+          <p class="sw-spec mono">40 gsm · blush pigment · spring runs only</p>
+          <p class="sw-desc">Made for six weeks a year while the Kamo river banks bloom. Then it is gone.</p>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ WORKSHOPS ============ -->
+  <section class="workshops" id="workshops" aria-labelledby="ws-h">
+    <header class="sec-head">
+      <p class="eyebrow mono">Workshops <span lang="ja" class="jp">工房</span></p>
+      <h2 id="ws-h">Slow classes, small tables</h2>
+      <p class="sec-sub">Eight seats in Kyoto, ten in Portland. Every seat includes the kit,
+         the spare sheets, and a pot of hojicha. Phones sleep in a paper box by the door.</p>
+    </header>
+
+    <div class="sched fold" role="table" aria-label="Workshop schedule, autumn 2026">
+      <div class="sched-scroll" role="rowgroup" tabindex="0">
+      <div class="sched-row sched-head" role="row">
+        <span role="columnheader">Date</span><span role="columnheader">City</span>
+        <span role="columnheader">Class</span><span role="columnheader">Seats</span>
+        <span role="columnheader">Price</span>
+      </div>
+      <div class="sched-row" role="row">
+        <span role="cell">Sat Sep 12</span><span role="cell">Kyoto</span>
+        <span role="cell">First Crane — beginner</span><span role="cell">8</span>
+        <span role="cell">¥6,500</span>
+      </div>
+      <div class="sched-row" role="row">
+        <span role="cell">Sun Sep 20</span><span role="cell">Portland</span>
+        <span role="cell">First Crane — beginner</span><span role="cell">10</span>
+        <span role="cell">$45</span>
+      </div>
+      <div class="sched-row" role="row">
+        <span role="cell">Sat Oct 3</span><span role="cell">Kyoto</span>
+        <span role="cell">Iris &amp; wet-folding</span><span role="cell">6</span>
+        <span role="cell">¥9,000</span>
+      </div>
+      <div class="sched-row is-soldout" role="row">
+        <span role="cell">Sun Oct 18</span><span role="cell">Portland</span>
+        <span role="cell">Fox to Dragon — series of four</span><span role="cell">Waitlist</span>
+        <span role="cell">$160</span>
+      </div>
+      <div class="sched-row" role="row">
+        <span role="cell">Sat Nov 7</span><span role="cell">Kyoto</span>
+        <span role="cell">Reading crease patterns</span><span role="cell">6</span>
+        <span role="cell">¥7,500</span>
+      </div>
+      </div>
+    </div>
+
+    <aside class="private fold">
+      <h3>Private tables</h3>
+      <p>Six or more hands? We close the studio door, warm the second teapot,
+         and fold whatever your table can manage. Weekday evenings in both cities.</p>
+      <p class="mono private-mail">Write to <a href="mailto:studio@orikata.jp">studio@orikata.jp</a></p>
+    </aside>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-foot" id="studio">
+  <p class="watermark jp" lang="ja" aria-hidden="true">折り方</p>
+  <div class="foot-grid">
+    <div class="foot-col">
+      <h3 class="foot-h mono">Kyoto <span lang="ja" class="jp">京都</span></h3>
+      <address>Orikata Kyoto<br>415-2 Sanjō-dōri, Nakagyō-ku<br>Kyoto 604-8035<br>Thu–Sun · 11:00–18:00</address>
+    </div>
+    <div class="foot-col">
+      <h3 class="foot-h mono">Portland</h3>
+      <address>Orikata Portland<br>1114 SE Ankeny St<br>Portland, OR 97214<br>Wed–Sun · 10:00–17:00</address>
+    </div>
+    <div class="foot-col foot-news">
+      <h3 class="foot-h mono">Fold of the month</h3>
+      <p>One new pattern, mailed flat, twelve times a year.</p>
+      <form class="news-form" id="newsForm" aria-live="polite">
+        <label class="visually-hidden" for="newsEmail">Email address</label>
+        <input id="newsEmail" type="email" required placeholder="you@example.com" autocomplete="email">
+        <button class="btn btn-primary" type="submit">Fold me in</button>
+      </form>
+    </div>
+  </div>
+  <p class="foot-fine mono">© 2026 Orikata Paper Co. · OK-00 · No sheets were cut in the making of this site.</p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

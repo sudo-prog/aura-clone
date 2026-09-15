@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HANABI — The Kawaragi Fireworks Guild, est. 1873</title>
+<meta name="description" content="Five generations of hand-packed shells over the Tonegawa. Shell catalog, the 2026 summer program, and the lineage of the Kawaragi fireworks guild.">
+<meta property="og:title" content="HANABI — The Kawaragi Fireworks Guild">
+<meta property="og:description" content="A choreographed show over dark water: chrysanthemum, peony, willow, kamuro. Fire each shell by name. Stay for the finale.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#060810">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23060810'/%3E%3Cg stroke='%23e9b34c' stroke-width='2.6' stroke-linecap='round'%3E%3Cpath d='M32 32V13M32 32l13.4-13.4M32 32H51M32 32l13.4 13.4M32 32v19M32 32L18.6 45.4M32 32H13M32 32L18.6 18.6'/%3E%3C/g%3E%3Ccircle cx='32' cy='32' r='4.2' fill='%23ef7f9b'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/ShipporiMincho-366.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/ShipporiMincho-122.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/CormorantSC-10.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/ShipporiMincho.css">
+<link rel="stylesheet" href="fonts/CormorantSC.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<canvas id="sky" aria-hidden="true"></canvas>
+<div class="veil" aria-hidden="true"></div>
+
+<header class="site-head">
+  <a class="mark" href="#top" aria-label="HANABI — Kawaragi Fireworks Guild, top of page">
+    <svg class="mon" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+      <circle cx="20" cy="20" r="18.5" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      <g stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+        <path d="M20 20V8.5M20 20l8.1-8.1M20 20h11.5M20 20l8.1 8.1M20 20v11.5M20 20l-8.1 8.1M20 20H8.5M20 20l-8.1-8.1"/>
+      </g>
+      <circle cx="20" cy="20" r="2.6" fill="currentColor" stroke="none"/>
+    </svg>
+    <span class="mark-text">Hanabi <span class="mark-jp" lang="ja">川原木煙火店</span></span>
+  </a>
+  <nav class="site-nav" aria-label="Program sections">
+    <a href="#catalog">Catalog</a>
+    <a href="#program">Program</a>
+    <a href="#lineage">Lineage</a>
+    <a href="#finale">Finale</a>
+    <button class="sound-toggle" id="sound-toggle" aria-pressed="false">
+      <span class="snd-dot" aria-hidden="true"></span>Sound
+    </button>
+  </nav>
+</header>
+
+<div id="captions" aria-hidden="true"></div>
+<p class="sr-only" id="sr-live" role="status"></p>
+
+<main id="top">
+
+  <!-- ═══════════ HERO ═══════════ -->
+  <section class="hero" aria-label="Hanabi — the Kawaragi fireworks guild">
+    <div class="hero-inner">
+      <p class="hero-eyebrow" lang="ja">花火 <span class="dot">·</span> 五代目</p>
+      <h1 class="wordmark">Hanabi</h1>
+      <p class="hero-line">The Kawaragi Fireworks Guild <span class="dot">·</span> <span class="nb">est. 1873</span>
+        <span class="hero-sub">On the Tonegawa, north of the Jōshū plain</span></p>
+    </div>
+    <a class="scroll-cue" href="#manifesto"><span class="cue-line" aria-hidden="true"></span>The program begins</a>
+  </section>
+
+  <!-- ═══════════ MANIFESTO ═══════════ -->
+  <section class="manifesto reveal" id="manifesto" aria-labelledby="manifesto-h">
+    <span class="vertical-orn" lang="ja" aria-hidden="true">間を打つ</span>
+    <h2 class="sr-only" id="manifesto-h">The guild's craft</h2>
+    <p class="mani-lead">We measure a show by its silences.</p>
+    <p>A shell climbs for nine seconds. In that hush ten thousand people on the
+    river bank stop talking, stop fanning themselves, stop breathing — and the
+    dark water goes still enough to hold the whole sky. Then the break. Since
+    1873 the Kawaragi family has packed every star by hand: pine charcoal,
+    rice paste, patience. The colour lasts two seconds. The silence is ours to
+    shape; the colour is merely how we end it.</p>
+    <p class="mani-note">When a shell breaks perfectly round, the old crowds
+    shouted the maker's name. Listen for ours: <em lang="ja">Tamaya!</em></p>
+  </section>
+
+  <!-- ═══════════ SHELL CATALOG ═══════════ -->
+  <section class="catalog reveal" id="catalog" aria-labelledby="catalog-h">
+    <span class="vertical-orn" lang="ja" aria-hidden="true">玉名鑑</span>
+    <header class="sec-head">
+      <p class="sec-kicker">Shell Catalog <span lang="ja" class="sec-kanji">玉名鑑</span></p>
+      <h2 id="catalog-h">Four breaks, one river</h2>
+      <p class="sec-note">Every shell below is live. Choose a caliber, press
+      fire, and watch the sky above this page — the mortar stands on our barge,
+      mid-river. Climb time is true to gravity; larger shells climb longer.</p>
+    </header>
+
+    <fieldset class="caliber" aria-describedby="caliber-note">
+      <legend class="caliber-legend">Caliber</legend>
+      <div class="caliber-row" role="radiogroup" aria-label="Shell caliber">
+        <button class="cal-btn" data-cal="4" role="radio" aria-checked="false">
+          <span lang="ja" class="cal-jp">四寸</span><span class="cal-en">4-sun</span><span class="cal-cm">12.1 cm</span></button>
+        <button class="cal-btn is-active" data-cal="8" role="radio" aria-checked="true">
+          <span lang="ja" class="cal-jp">八寸</span><span class="cal-en">8-sun</span><span class="cal-cm">24.2 cm</span></button>
+        <button class="cal-btn" data-cal="12" role="radio" aria-checked="false">
+          <span lang="ja" class="cal-jp">尺二寸</span><span class="cal-en">12-sun</span><span class="cal-cm">36.4 cm</span></button>
+      </div>
+      <p class="caliber-sr sr-only" id="caliber-note">Selecting a caliber changes the size of every shell fired from the catalog.</p>
+    </fieldset>
+
+    <ul class="shell-grid">
+      <li class="shell-card" data-type="kiku" style="--shell:#e9b34c">
+        <span class="card-kanji" lang="ja" aria-hidden="true">菊</span>
+        <p class="card-id">No. 07</p>
+        <h3 class="card-name">Kiku <span class="card-en">Chrysanthemum</span></h3>
+        <p class="card-copy">The strictest test of a maker. Every star carries a
+        tail, so the break must be a perfect sphere — one lazy afternoon at the
+        packing bench and the whole town sees your ellipse. Gold into amber,
+        edge sharp as a compass line.</p>
+        <p class="card-spec">tailed stars&nbsp;· sharp sphere&nbsp;· burn&nbsp;1.8&nbsp;s</p>
+        <button class="fire-btn" data-type="kiku">Fire the Kiku</button>
+      </li>
+      <li class="shell-card" data-type="botan" style="--shell:#ef7f9b">
+        <span class="card-kanji" lang="ja" aria-hidden="true">牡丹</span>
+        <p class="card-id">No. 12</p>
+        <h3 class="card-name">Botan <span class="card-en">Peony</span></h3>
+        <p class="card-copy">The chrysanthemum's quieter sister: same sphere, no
+        tails. Pure points of colour that swell and vanish, pink to rose to a
+        violet ember. Our peony stars are rolled thirty-eight layers deep and
+        cut the night like pinpricks.</p>
+        <p class="card-spec">bare stars&nbsp;· no trails&nbsp;· burn&nbsp;1.5&nbsp;s</p>
+        <button class="fire-btn" data-type="botan">Fire the Botan</button>
+      </li>
+      <li class="shell-card" data-type="yanagi" style="--shell:#9cc178">
+        <span class="card-kanji" lang="ja" aria-hidden="true">柳</span>
+        <p class="card-id">No. 19</p>
+        <h3 class="card-name">Yanagi <span class="card-en">Willow</span></h3>
+        <p class="card-copy">Stars cut heavy with charcoal burn long and fall
+        far. The break droops into gold-green branches that reach down for the
+        river and very nearly touch their own reflection — the only shell we
+        aim at the water, not the sky.</p>
+        <p class="card-spec">drooping streamers&nbsp;· long fall&nbsp;· burn&nbsp;3.8&nbsp;s</p>
+        <button class="fire-btn" data-type="yanagi">Fire the Yanagi</button>
+      </li>
+      <li class="shell-card" data-type="kamuro" style="--shell:#e0a743">
+        <span class="card-kanji" lang="ja" aria-hidden="true">冠</span>
+        <p class="card-id">No. 23</p>
+        <h3 class="card-name">Kamuro <span class="card-en">Crown</span></h3>
+        <p class="card-copy">Named for a child's bobbed haircut. Slow-burning
+        gold that refuses to leave: the crown hangs, glitters, sinks almost to
+        the far bank's lanterns before it lets go. Fourth-generation Isao spent
+        eleven years on this star. It shows.</p>
+        <p class="card-spec">persistent glitter&nbsp;· crown&nbsp;4.5&nbsp;s&nbsp;· signature&nbsp;shell</p>
+        <button class="fire-btn" data-type="kamuro">Fire the Kamuro</button>
+      </li>
+    </ul>
+
+    <div class="calibers-table">
+      <p class="table-title" id="calibers-title">The calibers <span class="table-note">1 sun 寸 = 3.03 cm</span></p>
+      <div role="table" aria-labelledby="calibers-title">
+      <div class="tr th" role="row">
+        <span role="columnheader">Caliber</span><span role="columnheader">Shell Ø</span>
+        <span role="columnheader">Weight</span><span role="columnheader">Apex</span>
+        <span role="columnheader">Bloom Ø</span>
+      </div>
+      <div class="tr" role="row">
+        <span role="cell"><b lang="ja">四寸</b> 4-sun</span><span role="cell">12.1 cm</span>
+        <span role="cell">0.65 kg</span><span role="cell">190 m</span><span role="cell">130 m</span>
+      </div>
+      <div class="tr" role="row">
+        <span role="cell"><b lang="ja">八寸</b> 8-sun</span><span role="cell">24.2 cm</span>
+        <span role="cell">4.8 kg</span><span role="cell">300 m</span><span role="cell">260 m</span>
+      </div>
+      <div class="tr" role="row">
+        <span role="cell"><b lang="ja">尺二寸</b> 12-sun</span><span role="cell">36.4 cm</span>
+        <span role="cell">14.0 kg</span><span role="cell">380 m</span><span role="cell">360 m</span>
+      </div>
+      </div>
+      <p class="table-foot">The 12-sun is fired from a steel mortar sunk in the
+      far bank and is permitted twice a night. The workhorse of any river
+      program is the 4-sun; the 8-sun is where a maker's hand shows.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════ PROGRAM ═══════════ -->
+  <section class="program reveal" id="program" aria-labelledby="program-h">
+    <span class="vertical-orn" lang="ja" aria-hidden="true">夏の番組</span>
+    <header class="sec-head">
+      <p class="sec-kicker">Summer Program <span lang="ja" class="sec-kanji">夏の番組</span></p>
+      <h2 id="program-h">The 2026 season</h2>
+    </header>
+    <ol class="cal-list">
+      <li><span class="cal-date">Sat 18 July</span><span class="cal-name">Kawaragi River Opening <span lang="ja" class="cal-jp2">川開き</span><span class="cal-detail">Left bank, from first dark. The season's proof shell is a single 8-sun kiku at 19:40 sharp.</span></span><span class="cal-count">4,200 shells</span></li>
+      <li><span class="cal-date">Sat 25 July</span><span class="cal-name">Numata Lantern Float<span class="cal-detail">Fired between drifting lanterns; nothing larger than 6-sun, out of respect for the paper.</span></span><span class="cal-count">1,800 shells</span></li>
+      <li><span class="cal-date">Sat 1 Aug</span><span class="cal-name">Twin-Barge Night<span class="cal-detail">Two barges, four hundred meters apart, answering each other shell for shell.</span></span><span class="cal-count">6,000 shells</span></li>
+      <li><span class="cal-date">Sat 8 Aug</span><span class="cal-name">Ōmagari Competition — guest entry<span class="cal-detail">Away fixture. Free-style 10-sun, judged. Second place in 2024 and 2025; Ren does not discuss it.</span></span><span class="cal-count">competition</span></li>
+      <li><span class="cal-date">Sat 15 Aug</span><span class="cal-name">Obon Memorial<span class="cal-detail">One white chrysanthemum every minute, for one hour. No music, no announcements. The river does the rest.</span></span><span class="cal-count">60 shells</span></li>
+      <li><span class="cal-date">Sat 29 Aug</span><span class="cal-name">Season Finale — Sky of a Hundred Crowns<span class="cal-detail">Closes with our 12-sun kamuro over a gold strobe volley. Book the far bank by June.</span></span><span class="cal-count">12,000 shells</span></li>
+    </ol>
+    <p class="program-note">The guild accepts two private commissions each
+    season outside the fixed calendar. Write to the office in winter; we plan
+    a summer sky six months before we pack it.</p>
+  </section>
+
+  <!-- ═══════════ LINEAGE ═══════════ -->
+  <section class="lineage reveal" id="lineage" aria-labelledby="lineage-h">
+    <span class="vertical-orn" lang="ja" aria-hidden="true">五代の系譜</span>
+    <header class="sec-head">
+      <p class="sec-kicker">Lineage <span lang="ja" class="sec-kanji">五代の系譜</span></p>
+      <h2 id="lineage-h">Five generations</h2>
+    </header>
+    <ol class="gen-list">
+      <li class="gen">
+        <span class="gen-no">I</span>
+        <div class="gen-body">
+          <h3 class="gen-name">Kawaragi Genzō <span lang="ja" class="gen-jp">川原木源蔵</span></h3>
+          <p class="gen-years">master 1873 – 1901</p>
+          <p class="gen-copy">A saltpeter merchant's third son who fired his
+          first shell off a rice barge to mark the end of a cholera summer.
+          Founded the workshop; set the house rule that still stands — every
+          star passes through a family hand.</p>
+        </div>
+      </li>
+      <li class="gen">
+        <span class="gen-no">II</span>
+        <div class="gen-body">
+          <h3 class="gen-name">Kawaragi Shinpachi <span lang="ja" class="gen-jp">川原木新八</span></h3>
+          <p class="gen-years">master 1901 – 1934</p>
+          <p class="gen-copy">Brought magnesium white to the valley and burned
+          off both eyebrows proving it. After the 1923 earthquake he fired
+          three silent white shells over the river every night for a month,
+          for the dead of Tokyo.</p>
+        </div>
+      </li>
+      <li class="gen">
+        <span class="gen-no">III</span>
+        <div class="gen-body">
+          <h3 class="gen-name">Kawaragi Tomiko <span lang="ja" class="gen-jp">川原木富子</span></h3>
+          <p class="gen-years">master 1934 – 1968</p>
+          <p class="gen-copy">The guild's first woman master. Kept the license
+          alive through the wartime powder ban by making signal flares, then
+          spent the 1950s perfecting the peony core — thirty-eight layers,
+          rolled wet, dried on the roof in June wind.</p>
+        </div>
+      </li>
+      <li class="gen">
+        <span class="gen-no">IV</span>
+        <div class="gen-body">
+          <h3 class="gen-name">Kawaragi Isao <span lang="ja" class="gen-jp">川原木勲</span></h3>
+          <p class="gen-years">master 1968 – 2002</p>
+          <p class="gen-copy">Eleven years on a single star formula: the slow
+          gold that became our kamuro crown. Refused every offer to
+          mass-produce it. "A crown you can buy in a box," he said, "is a
+          hat."</p>
+        </div>
+      </li>
+      <li class="gen is-current">
+        <span class="gen-no">V</span>
+        <div class="gen-body">
+          <h3 class="gen-name">Kawaragi Ren <span lang="ja" class="gen-jp">川原木蓮</span></h3>
+          <p class="gen-years">master 2002 – present</p>
+          <p class="gen-copy">Choreographs firing sequences on a laptop and
+          still packs stars at the same bench as Genzō. Under Ren the guild
+          fires eleven towns a summer. Her rule for the finale: "Fill the sky
+          once. Then stop while they're still looking up."</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ═══════════ FINALE ═══════════ -->
+  <section class="finale reveal" id="finale" aria-labelledby="finale-h">
+    <header class="sec-head">
+      <p class="sec-kicker">The Finale <span lang="ja" class="sec-kanji">大団円</span></p>
+      <h2 id="finale-h">You have reached the end of the program</h2>
+    </header>
+    <p class="finale-copy">By Ren's rule, there is only one thing left to do.
+    Look up. The page will get out of the way.</p>
+    <div id="finale-sentinel" aria-hidden="true"></div>
+    <button class="encore-btn" id="encore" hidden>Encore <span lang="ja">もう一度</span></button>
+  </section>
+
+</main>
+
+<footer class="colophon">
+  <p class="colo-mark" lang="ja" aria-hidden="true">川原木煙火店</p>
+  <p>The Kawaragi Fireworks Guild · 3-14 Hanabishi-chō, Kawaragi, Gunma<br>
+  Licensed pyrotechnics office no. 1873-G · Fifth-generation master: Kawaragi Ren</p>
+  <p class="colo-small">Please watch from the far bank. Every burst on this page is fired
+  live in your browser — gravity included; no photographs were used.</p>
+</footer>
+
+<script src="js/pyro.js" defer></script>
+<script src="js/audio.js" defer></script>
+<script src="js/main.js" defer></script>
+</body>
+</html>

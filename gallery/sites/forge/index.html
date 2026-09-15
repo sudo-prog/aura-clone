@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blackwater Forge — Bladesmith &amp; Architectural Ironwork, Stroud</title>
+<meta name="description" content="One-anvil bladesmith and architectural ironwork shop at Rooksmoor Mills, Stroud. Damascus knives, estate gates, stair rails — and courses at the fire. Steel tells you its temperature in colour.">
+<meta property="og:title" content="Blackwater Forge — Bladesmith &amp; Architectural Ironwork">
+<meta property="og:description" content="Heat you can read temperature from. A live forge fire, a cooling billet, sparks that obey gravity — and three commissions from the ledger.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0B0907">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230B0907'/%3E%3Cpath d='M7 23c8 0 15-2 20-6v7h30v9H43l5 13H20l4-13h-9c-5 0-8-4-8-10z' fill='%23FF7A29'/%3E%3Crect x='18' y='50' width='28' height='6' rx='1' fill='%23E2A93E'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/AlfaSlabOne-03.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/IBMPlexMono-05.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/AlfaSlabOne.css">
+<link rel="stylesheet" href="fonts/Archivo.css">
+<link rel="stylesheet" href="fonts/IBMPlexMono.css">
+<link rel="stylesheet" href="css/main.css">
+<noscript><style>
+  .stamp, .hero .eyebrow, .hero .lede, .hero .hud, .rv { opacity:1; transform:none; }
+  .heats::before { transform:none; }
+</style></noscript>
+</head>
+<body>
+<a class="skip" href="#work">Skip to the work</a>
+
+<header class="site-head">
+  <a class="brand" href="#top" aria-label="Blackwater Forge — back to the fire">
+    <svg viewBox="0 0 64 64" width="22" height="22" aria-hidden="true"><path d="M7 23c8 0 15-2 20-6v7h30v9H43l5 13H20l4-13h-9c-5 0-8-4-8-10z" fill="currentColor"/><rect x="18" y="50" width="28" height="6" rx="1" fill="currentColor" opacity=".6"/></svg>
+    <span>Blackwater&nbsp;Forge</span>
+  </a>
+  <nav class="site-nav" aria-label="Site">
+    <a href="#work">Work</a>
+    <a href="#process">Five&nbsp;heats</a>
+    <a href="#courses">Courses</a>
+    <a href="#visit">Visit</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO — the live fire ============ -->
+  <section class="hero" aria-label="The forge, live">
+    <canvas id="forge" aria-hidden="true"></canvas>
+    <div class="hero-fallback" aria-hidden="true"></div>
+    <div class="hero-inner wrap">
+      <p class="eyebrow mono">Rooksmoor Mills · Stroud · one anvil since 2013</p>
+      <h1 class="wordmark"><span class="stamp">Blackwater</span> <span class="stamp">Forge</span></h1>
+      <p class="lede">Bladesmith &amp; architectural ironwork by Effie Blackwater. This fire is live — the bar
+      in it is cooling as you read. Steel announces its temperature in colour, and everything in this
+      shop runs on knowing what the colours mean.</p>
+
+      <div class="hud mono" role="group" aria-label="Forge instruments">
+        <div class="hud-read">
+          <span class="hud-label">Bar at the tip</span>
+          <span class="hud-temp"><b id="tempVal">20</b>&thinsp;°C</span>
+          <span class="hud-band" id="tempBand">Black heat</span>
+        </div>
+        <div class="hud-gauge" aria-hidden="true"><i id="gaugeMark"></i></div>
+        <div class="hud-actions">
+          <button class="btn" id="strikeBtn" type="button">Strike<span class="btn-sub">hold for rhythm</span></button>
+          <button class="btn" id="bellowsBtn" type="button">Bellows<span class="btn-sub">hold to pump</span></button>
+          <p class="hint" id="hudHint">Or click the anvil. Sparks obey gravity — and cold bars don’t spark.</p>
+        </div>
+        <p class="toast" id="toast" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ READING STRIP — the shop thermometer ============ -->
+  <section class="strip" aria-label="Forging colour scale">
+    <div class="wrap strip-head">
+      <h2 class="strip-title mono">How to read the bar</h2>
+      <p class="strip-note">The shop’s only thermometer. Colour <em>is</em> temperature — the marker is the bar in the fire above.</p>
+    </div>
+    <div class="strip-bar" role="img" aria-label="Blackbody colour scale from 480 to 1,350 degrees Celsius: black heat, first red at 550, dull red at 650, cherry at 850, orange at 1,000, yellow at 1,150, welding white at 1,300.">
+      <span class="tick" style="--p:8.05%"><i></i><b>550°</b><small>first red</small></span>
+      <span class="tick" style="--p:19.5%"><i></i><b>650°</b><small>dull red</small></span>
+      <span class="tick" style="--p:42.5%"><i></i><b>850°</b><small>cherry</small></span>
+      <span class="tick" style="--p:59.8%"><i></i><b>1000°</b><small>orange</small></span>
+      <span class="tick" style="--p:77%"><i></i><b>1150°</b><small>yellow</small></span>
+      <span class="tick" style="--p:94.25%"><i></i><b>1300°</b><small>welding</small></span>
+      <span class="strip-live" id="stripLive"><i></i><em class="mono"><b id="stripTemp">1&thinsp;250&thinsp;°</b> · the bar above</em></span>
+    </div>
+  </section>
+
+  <!-- ============ WORK — the ledger ============ -->
+  <section class="section" id="work">
+    <div class="wrap">
+      <header class="sect-head rv">
+        <p class="eyebrow mono">From the ledger · 2013–2026</p>
+        <h2>Commissioned work</h2>
+        <p class="sect-intro">Three commissions, three scales of the same trade. Nothing on this page is photographed —
+        the drawings below are the shop’s own elevations, and the damascus is drawn layer by layer, the way it was folded.</p>
+      </header>
+
+      <article class="work rv" id="harrowden">
+        <figure class="panel drawing">
+          <svg id="gateSvg" viewBox="0 0 1000 620" role="img" aria-label="Shop elevation of the Harrowden gate: double-leaf wrought iron entrance gate with scrollwork panels, vertical bars and spear finials, 4,620 millimetres across."></svg>
+          <figcaption class="mono">Elevation · 1:20 · BWF-2024-07</figcaption>
+        </figure>
+        <div class="work-info">
+          <p class="ledger-id mono">BWF-2024-07 · Northamptonshire</p>
+          <h3>The Harrowden gate</h3>
+          <p>Double-leaf entrance gate for Harrowden Park. 4.6 metres across, 611 kilograms of hot-rolled
+          EN3 bar — drawn, scrolled and set entirely by hand. Ninety-six scrolls, two hundred and fourteen
+          rivets, and no visible welds: every joint is a collar or a mortise-and-tenon, the way estate
+          gates were built when they were expected to outlive the estate.</p>
+          <dl class="spec mono">
+            <div><dt>Span</dt><dd>4 620 mm</dd></div>
+            <div><dt>Mass</dt><dd>611 kg</dd></div>
+            <div><dt>Joints</dt><dd>96 scrolls · 214 rivets</dd></div>
+            <div><dt>Finish</dt><dd>zinc spray + linseed black wax</dd></div>
+            <div><dt>Hours</dt><dd>1 140 over nine months</dd></div>
+            <div><dt>Price</dt><dd>£48,500</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <article class="work work-knife rv" id="gyuto41">
+        <div class="work-info">
+          <p class="ledger-id mono">BWF-2025-41 · sold — waitlist open</p>
+          <h3>Gyuto Nº 41</h3>
+          <p>A 210&nbsp;mm chef’s knife in 168 layers of 1084 and 15N20, folded and drawn into a ladder
+          pattern. The bright bands are nickel steel, the dark are carbon — and the wave below is the
+          actual geometry of the fold, not a texture. Quenched edge-first in warmed canola at 815&nbsp;°C;
+          tempered twice at 205&nbsp;°C, until the polished tang turned exactly straw.</p>
+        </div>
+        <figure class="panel drawing knife-fig">
+          <svg id="knifeSvg" viewBox="0 0 1180 300" role="img" aria-label="Drawing of Gyuto number 41: a 210 millimetre chef's knife with a layered damascus pattern of light and dark waves, octagonal bog-oak handle and copper ferrule."></svg>
+          <figcaption class="mono">Pattern as folded · 168 layers · BWF-2025-41</figcaption>
+        </figure>
+        <dl class="spec spec-row mono">
+          <div><dt>Edge</dt><dd>210 mm gyuto</dd></div>
+          <div><dt>Layers</dt><dd>168 · 1084/15N20</dd></div>
+          <div><dt>Hardness</dt><dd>61 HRC at the edge</dd></div>
+          <div><dt>Handle</dt><dd>bog oak, copper ferrule</dd></div>
+          <div><dt>Heat</dt><dd>815° quench · 205° temper ×2</dd></div>
+          <div><dt>Price</dt><dd>£1,450</dd></div>
+        </dl>
+      </article>
+
+      <article class="work work-flip rv" id="vessey">
+        <figure class="panel drawing">
+          <svg id="railSvg" viewBox="0 0 1000 560" role="img" aria-label="Shop elevation of the Vessey stair rail: a handrail rising over eight steps with tapered balusters and a wreathed volute at the bottom newel, plus a detail circle of the rail cross-section."></svg>
+          <figcaption class="mono">Flight one of three · 1:25 · BWF-2023-19</figcaption>
+        </figure>
+        <div class="work-info">
+          <p class="ledger-id mono">BWF-2023-19 · Bath</p>
+          <h3>The Vessey stair rail</h3>
+          <p>Fourteen metres of continuous handrail through three flights of a Georgian townhouse on
+          Vessey Lane. Forty-two hand-tapered balusters and a wreathed volute over the curtail step —
+          no baluster interchangeable with its neighbour, each fitted to its own tread by eye.
+          Burnished and waxed, never painted. The steel keeps its hammer marks; that is the point of it.</p>
+          <dl class="spec mono">
+            <div><dt>Run</dt><dd>14.2 m over three flights</dd></div>
+            <div><dt>Balusters</dt><dd>42, hand-tapered</dd></div>
+            <div><dt>Newel</dt><dd>wreathed volute, curtail step</dd></div>
+            <div><dt>Finish</dt><dd>burnished + beeswax</dd></div>
+            <div><dt>Hours</dt><dd>640</dd></div>
+            <div><dt>Price</dt><dd>£27,900</dd></div>
+          </dl>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ PROCESS — five heats ============ -->
+  <section class="section section-heats" id="process">
+    <div class="wrap">
+      <header class="sect-head rv">
+        <p class="eyebrow mono">One bar of steel, in order</p>
+        <h2>The five heats</h2>
+        <p class="sect-intro">The temperatures are real, and the colours are what those temperatures look
+        like on steel. This is the entire craft. Everything else is repetition.</p>
+      </header>
+
+      <ol class="heats">
+        <li class="heat rv">
+          <span class="heat-node" style="--hc:#FFE9AA" aria-hidden="true"></span>
+          <p class="heat-step mono">Heat 1</p>
+          <h3>Forge</h3>
+          <p class="heat-temp mono" style="--hc:#FFE9AA">1 250&thinsp;°C</p>
+          <p class="heat-name mono">bright yellow</p>
+          <p>Out of the fire soft as clay. The first blows do the shaping, and you have perhaps forty
+          seconds before the bar drops out of yellow and starts arguing back.</p>
+        </li>
+        <li class="heat rv">
+          <span class="heat-node" style="--hc:#FC9927" aria-hidden="true"></span>
+          <p class="heat-step mono">Heat 2</p>
+          <h3>Draw out</h3>
+          <p class="heat-temp mono" style="--hc:#FC9927">1 050&thinsp;°C</p>
+          <p class="heat-name mono">orange</p>
+          <p>The bar lengthens a few millimetres a blow and the section squares up. Rhythm beats force —
+          the anvil returns half of every strike, if you let it.</p>
+        </li>
+        <li class="heat rv">
+          <span class="heat-node" style="--hc:#C9410D" aria-hidden="true"></span>
+          <p class="heat-step mono">Heat 3</p>
+          <h3>Normalize</h3>
+          <p class="heat-temp mono" style="--hc:#C9410D">830&thinsp;°C</p>
+          <p class="heat-name mono">cherry · three cycles</p>
+          <p>Past critical, then cooled in still air, three times. Each cycle shrinks the grain — and fine
+          grain is the difference between a blade and a bar that merely looks like one.</p>
+        </li>
+        <li class="heat heat-quench rv">
+          <span class="heat-node" style="--hc:#C23D0C" aria-hidden="true"></span>
+          <p class="heat-step mono">Heat 4</p>
+          <h3>Quench</h3>
+          <p class="heat-temp mono" style="--hc:#C23D0C">815&thinsp;°C</p>
+          <p class="heat-name mono">cherry, then violence</p>
+          <p>Edge-first into warmed oil. The surface <b class="flash-word">flashes flame<span class="flash" aria-hidden="true"></span></b> for
+          half a second; the steel falls from 815° to under 200° in four, and comes out
+          Rockwell&nbsp;65 — glass-hard, and nearly as brittle.</p>
+        </li>
+        <li class="heat heat-temper rv">
+          <span class="heat-node heat-node-temper" style="--hc:#E2A93E" aria-hidden="true"></span>
+          <p class="heat-step mono">Heat 5</p>
+          <h3>Temper</h3>
+          <p class="heat-temp mono heat-temp-straw" style="--hc:#E2A93E">205&thinsp;°C</p>
+          <p class="heat-name mono">straw gold · 2 h, twice</p>
+          <p>Two hours in the oven, twice over. Polished steel passes pale straw and is pulled at straw
+          gold — 205° exactly, Rockwell 61. Hard enough to hold an edge, tough enough to keep it.</p>
+        </li>
+      </ol>
+
+      <div class="temper-strip rv">
+        <p class="temper-cap mono">A different thermometer for low heat — oxide colours on polished steel. One shop, one rule: pull it at straw.</p>
+        <div class="temper-scale" role="img" aria-label="Oxide temper colours on polished steel from 176 to 310 degrees: pale straw, straw, brown, bronze, purple, blue, grey-blue. The shop pulls at straw, 205 degrees.">
+          <span style="--tc:#EFDDAE"><b>176° pale straw</b></span>
+          <span class="pull" style="--tc:#E2A93E"><b>205° straw</b><em class="mono">pull it here</em></span>
+          <span style="--tc:#B67B34"><b>226° brown</b></span>
+          <span style="--tc:#8E5A46"><b>246° bronze</b></span>
+          <span style="--tc:#6E4A6B"><b>266° purple</b></span>
+          <span style="--tc:#3F5E80"><b>282° blue</b></span>
+          <span style="--tc:#5A6B77"><b>310° grey</b></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COURSES ============ -->
+  <section class="section" id="courses">
+    <div class="wrap">
+      <header class="sect-head rv">
+        <p class="eyebrow mono">At the fire · autumn 2026</p>
+        <h2>Courses</h2>
+        <p class="sect-intro">Four people, a fire between each pair, every tool in the rack. Steel, fuel,
+        aprons and tea are included. No experience needed — heat is a fair teacher.</p>
+      </header>
+
+      <div class="course rv">
+        <div class="course-info">
+          <h3>One day, one knife</h3>
+          <p>Forge, grind, harden and temper a full-tang camp knife from 1084 bar. You leave with a
+          finished blade, an edge you made, and a burn story that is probably not true.</p>
+        </div>
+        <ul class="course-dates mono">
+          <li>Sat 12 Sep 2026</li>
+          <li>Sat 10 Oct 2026</li>
+          <li>Sat 7 Nov 2026</li>
+          <li class="dim">09:00–17:30</li>
+        </ul>
+        <div class="course-price">
+          <p class="price">£240</p>
+          <p class="places mono">4 places per date</p>
+        </div>
+      </div>
+
+      <div class="course rv">
+        <div class="course-info">
+          <h3>Damascus weekend</h3>
+          <p>Stack, weld and fold a 168-layer billet of 1084 and 15N20, then forge it into a blade and
+          etch the pattern you made. Saturday ends at welding heat — wear cotton, not fleece.</p>
+        </div>
+        <ul class="course-dates mono">
+          <li>26–27 Sep 2026</li>
+          <li>24–25 Oct 2026</li>
+          <li class="dim">two days, 09:00–18:00</li>
+        </ul>
+        <div class="course-price">
+          <p class="price">£520</p>
+          <p class="places mono">4 places</p>
+        </div>
+      </div>
+
+      <div class="course rv">
+        <div class="course-info">
+          <h3>The scroll &amp; the collar</h3>
+          <p>Six Thursday evenings of architectural ironwork — scrolls, collars, rivets, tenons — building
+          a fire screen panel by panel. By week six you will read heat without looking at the fire.</p>
+        </div>
+        <ul class="course-dates mono">
+          <li>Thursdays from 8 Oct 2026</li>
+          <li class="dim">six weeks, 18:30–21:30</li>
+        </ul>
+        <div class="course-price">
+          <p class="price">£380</p>
+          <p class="places mono">6 places</p>
+        </div>
+      </div>
+
+      <p class="booking rv">Hold a place with a £60 deposit — write to
+      <a href="mailto:courses@blackwaterforge.co.uk">courses@blackwaterforge.co.uk</a>.
+      Under-16s forge free alongside a paying adult, one hammer each.</p>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-foot" id="visit">
+    <div class="wrap foot-grid">
+      <div>
+        <h2 class="foot-title">Visit</h2>
+        <p class="mono">Unit 3, Rooksmoor Mills<br>Bath Road, Stroud GL5 5EY</p>
+        <p>Thursday–Saturday, 09:00–17:00,<br>or by the ring of the anvil.</p>
+      </div>
+      <div>
+        <h2 class="foot-title">Write or ring</h2>
+        <p class="mono"><a href="mailto:forge@blackwaterforge.co.uk">forge@blackwaterforge.co.uk</a><br>01453 297 414</p>
+        <p>Commission enquiries are answered on Mondays, when the fire is cold.</p>
+      </div>
+      <div>
+        <h2 class="foot-title">Colophon</h2>
+        <p>No photographs. The fire, the sparks and the cooling bar are drawn live from a blackbody
+        colour ramp; the gate, the rail and the damascus are the shop’s own SVG elevations.
+        Set in Alfa Slab One, Archivo &amp; IBM Plex Mono.</p>
+      </div>
+    </div>
+    <div class="wrap foot-line mono">
+      <span>© 2026 Blackwater Forge · E. Blackwater, smith</span>
+      <span>Strike while it’s hot — you saw the gauge.</span>
+    </div>
+  </footer>
+
+</main>
+
+<script src="js/forge.js" defer></script>
+<script src="js/drawings.js" defer></script>
+<script src="js/main.js" defer></script>
+</body>
+</html>

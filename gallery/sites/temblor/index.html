@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TEMBLOR — Seismological Observatory, Alvarado Fault</title>
+<meta name="description" content="The public reading room of station ALV-03 on the Alvarado Fault: a live helicorder drum, the 1989 M 6.7 replayed through the page with true P and S arrival times, isoseismal shake map, and the magnitude scale drawn honestly.">
+<meta property="og:title" content="TEMBLOR — Seismological Observatory, Alvarado Fault">
+<meta property="og:description" content="A live drum seismograph that never sleeps — and an archived M 6.7 that travels through the page, P wave first, S wave 5.1 seconds later.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#F4F0E3">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23F4F0E3'/%3E%3Cpath d='M5 36h12l4-5 4 8' fill='none' stroke='%23181510' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M25 39l5-26 6 40 5-28' fill='none' stroke='%23C3271E' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M41 25l3 11 4-5h11' fill='none' stroke='%23181510' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/Archivo-03.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/Archivo.css">
+<link rel="stylesheet" href="fonts/IBMPlexMono.css">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<!-- Phase HUD lives OUTSIDE the shake wrapper so it stays still while the page moves -->
+<aside id="hud" class="hud" hidden aria-label="Replay wavefront tracker">
+  <div class="hud-clock" id="hud-clock">T + 00.00 s</div>
+  <div class="hud-phase" id="hud-phase">RUPTURE INITIATED — CERRO COLORADO</div>
+  <div class="hud-track" aria-hidden="true">
+    <div class="hud-station-tick"></div>
+    <div class="hud-front hud-front-p" id="hud-front-p"></div>
+    <div class="hud-front hud-front-s" id="hud-front-s"></div>
+  </div>
+  <div class="hud-scale" aria-hidden="true"><span>0 KM</span><span>STATION · 43.3 KM</span></div>
+</aside>
+
+<div id="page">
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="wordmark" href="#top">TEMBLOR</a>
+      <span class="topbar-sub">SEISMOLOGICAL OBSERVATORY · ALVARADO FAULT</span>
+      <span class="topbar-spacer"></span>
+      <span class="topbar-status" id="net-status"><i class="led" aria-hidden="true"></i><span id="net-status-text">TELEMETRY NOMINAL</span></span>
+      <time class="topbar-clock" id="utc-clock" datetime="">00:00:00 UTC</time>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ FIG. 1 — THE DRUM ============ -->
+    <section class="hero" id="drum-section" aria-labelledby="hero-title">
+      <div class="wrap">
+        <p class="eyebrow reveal">STATION ALV-03 <b aria-hidden="true">■</b> PIEDRA BLANCA VAULT <b aria-hidden="true">■</b> 36.842°N 121.377°W <b aria-hidden="true">■</b> CONTINUOUS SINCE 1954</p>
+        <h1 id="hero-title" class="reveal">THE NEEDLE<br>NEVER SLEEPS<span class="stop">.</span></h1>
+        <p class="lede reveal">Thirty-four metres inside the granodiorite of Piedra Blanca, a broadband
+        seismometer listens to the planet and a drum writes down what it hears. Below is that record,
+        live: the slow breathing of the Pacific microseism, the 02:10 freight passing the Km-12 bridge,
+        and — when the Alvarado Fault moves — everything. Drum time is compressed ×15 so you can watch it write.</p>
+      </div>
+
+      <div class="wrap-wide">
+        <figure class="plate drum-plate reveal" role="group" aria-labelledby="fig1-caption">
+          <div class="plate-head">
+            <span class="plate-label">FIG. 1 — CONTINUOUS GROUND-MOTION RECORD</span>
+            <span class="plate-meta">HHZ · 200 SPS · DRUM ×15 · 15 MIN/LINE</span>
+          </div>
+          <div class="drum-body">
+            <div class="drum-stage">
+              <canvas id="drum" aria-hidden="true"></canvas>
+              <p class="sr-only">Live simulated helicorder: a continuous seismic trace writes left to
+              right and wraps line by line, showing background microseism. During the 1989 replay the
+              P-wave onset is drawn in cobalt and the S-wave eruption in red.</p>
+            </div>
+            <aside class="drum-rail">
+              <h2 class="rail-title">STATION READOUTS</h2>
+              <dl class="readouts">
+                <div><dt>GROUND VEL, RMS</dt><dd><span id="ro-rms">0.84</span> µm/s</dd></div>
+                <div><dt>SAMPLE RATE</dt><dd>200 sps · 24-bit</dd></div>
+                <div><dt>DRUM ROTATION</dt><dd>15 min/line</dd></div>
+                <div><dt>VAULT TEMP</dt><dd>11.2 °C ± 0.3</dd></div>
+                <div><dt>LAST LOCATED</dt><dd>M<sub>L</sub> 2.4 · 02:47 UTC</dd></div>
+              </dl>
+              <div class="rail-divider" aria-hidden="true"></div>
+              <h2 class="rail-title">ARCHIVE PLAYBACK</h2>
+              <p class="rail-note">Feed the 1989 rupture into the drum — and into this page —
+              with true P and S arrival times.</p>
+              <button class="btn btn-replay" id="replay-btn" type="button">
+                <span class="btn-line">REPLAY — 1989 M 6.7</span>
+                <span class="btn-sub">P AT +7.10 s · S AT +12.19 s</span>
+              </button>
+              <p class="replay-status" id="replay-status" role="status">DRUM ARMED · AWAITING COMMAND</p>
+            </aside>
+          </div>
+          <figcaption class="plate-foot" id="fig1-caption">
+            <span>FIG. 1 — Vertical component (HHZ), station ALV-03, drawn in drum time. Stamps in UTC.
+            During playback: <i class="key key-p"></i> P phase, <i class="key key-s"></i> S phase.</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="wrap event-stamp-slot" id="event-stamp-slot" aria-live="polite"></div>
+    </section>
+
+    <!-- ============ FIG. 2 — THE 1989 EVENT ============ -->
+    <section class="band" id="event-1989" aria-labelledby="fig2-title">
+      <div class="wrap">
+        <p class="eyebrow reveal">ARCHIVE Nº 1989-0804 <b aria-hidden="true">■</b> ALVARADO FAULT RUPTURE</p>
+        <h2 class="section-title reveal" id="fig2-title">FIVE SECONDS <br>OF WARNING</h2>
+        <div class="cols">
+          <div class="col-text reveal">
+            <p>At <strong>04:15:22 UTC on 4 August 1989</strong> — a quarter past nine in the evening,
+            local, the shops on Calle Ancha an hour closed — a thirty-four-kilometre stretch of the
+            Alvarado Fault ruptured at a depth of 9.2 km beneath Cerro Colorado. Station ALV-03,
+            42 kilometres to the southeast, kept writing through all of it. The pen tore across four
+            neighbouring drum lines and the record survived. It is the most requested page in our archive.</p>
+            <p>The <strong class="tint-p">P wave</strong>, a compressional pulse travelling at 6.1 km/s,
+            reached the vault 7.1 seconds after rupture began — a sharp knock, more heard than felt.
+            The <strong class="tint-s">S wave</strong> — slower, transverse, carrying most of the
+            energy — arrived 5.1 seconds later and did the damage. That gap is the oldest trick in
+            seismology: multiply the S−P interval by eight and you have the distance to the source in
+            kilometres. In earthquake country it is also, almost exactly, how long you have to get
+            under the table.</p>
+            <p class="cta-line"><button class="text-btn" type="button" data-replay>Replay the record — send both waves through this page ▸</button></p>
+          </div>
+          <aside class="origin-card reveal" aria-label="1989 event source parameters">
+            <div class="origin-head"><span>SOURCE PARAMETERS</span><span class="origin-stamp">ARCHIVE</span></div>
+            <dl class="origin-list">
+              <div><dt>ORIGIN TIME</dt><dd>1989-08-04 04:15:22.4 UTC</dd></div>
+              <div><dt>MAGNITUDE</dt><dd>M<sub>W</sub> 6.7</dd></div>
+              <div><dt>HYPOCENTRE</dt><dd>36.982°N 121.684°W · 9.2 km</dd></div>
+              <div><dt>EPICENTRAL DIST.</dt><dd>42.3 km · az 118°</dd></div>
+              <div><dt>P ARRIVAL</dt><dd class="tint-p">+7.10 s (α 6.1 km/s)</dd></div>
+              <div><dt>S ARRIVAL</dt><dd class="tint-s">+12.19 s (β 3.55 km/s)</dd></div>
+              <div><dt>S − P INTERVAL</dt><dd>5.10 s</dd></div>
+              <div><dt>PEAK VELOCITY</dt><dd>8.4 cm/s at ALV-03</dd></div>
+              <div><dt>INTENSITY, LOCAL</dt><dd>MMI VII at station</dd></div>
+              <div><dt>AFTERSHOCKS</dt><dd>1,412 located in 90 days</dd></div>
+            </dl>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FIG. 3 — SHAKE MAP ============ -->
+    <section class="band" id="shakemap-section" aria-labelledby="fig3-title">
+      <div class="wrap">
+        <p class="eyebrow reveal">MODIFIED MERCALLI INTENSITY <b aria-hidden="true">■</b> 1,912 FELT REPORTS</p>
+        <h2 class="section-title reveal" id="fig3-title">SHAKING IS NOT <br>A CIRCLE</h2>
+        <p class="section-lede reveal">Intensity is the shadow a fault casts. The 1989 rupture propagated
+        northwest to southeast, so its isoseismals stretch along strike — Alvarado, thirteen kilometres
+        from the epicentre, took MMI VIII while Las Brisas, off-axis at fifty-five, barely rattled
+        its glassware at V. During a replay you can watch both wavefronts sweep this map in real time.</p>
+      </div>
+      <div class="wrap-wide">
+        <figure class="plate reveal" role="group" aria-labelledby="fig3-caption">
+          <div class="plate-head">
+            <span class="plate-label">FIG. 3 — ISOSEISMAL MAP, 1989-08-04 EVENT</span>
+            <span class="plate-meta" id="map-coords">CURSOR — °N — °W</span>
+          </div>
+          <div id="shakemap" class="shakemap"></div>
+          <p class="sr-only">Map of the Alvarado Fault region. Irregular concentric intensity contours,
+          MMI IV through VIII, stretch northwest–southeast around the 1989 epicentre near Cerro Colorado.
+          Alvarado experienced intensity VIII; Puerto Alto and Yerba Seca VII; San Nicandro VI;
+          Las Brisas V; Punta Gaviota IV. Station ALV-03 sits 42 km southeast of the epicentre.</p>
+          <figcaption class="plate-foot" id="fig3-caption">
+            <span>FIG. 3 — Contours enclose regions of equal felt intensity (MMI). Compiled 1990 from
+            postal questionnaires; re-drafted 2024.</span>
+            <span class="map-legend" aria-hidden="true">
+              <i class="sw sw-8"></i>VIII <i class="sw sw-7"></i>VII <i class="sw sw-6"></i>VI
+              <i class="sw sw-5"></i>V <i class="sw sw-4"></i>IV
+            </span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ FIG. 4 — MAGNITUDE TO SCALE ============ -->
+    <section class="band" id="magnitude-section" aria-labelledby="fig4-title">
+      <div class="wrap">
+        <p class="eyebrow reveal">ONE UNIT = ×10 AMPLITUDE = ×31.6 ENERGY</p>
+        <h2 class="section-title reveal" id="fig4-title">MAGNITUDE, <br>DRAWN HONESTLY</h2>
+        <p class="section-lede reveal">Every chart you have ever seen flattens the magnitude scale with a
+        logarithm. Below, we refuse. Four earthquakes are drawn at one common gain: M 4.0 is a
+        hairline. M 7.0 is the full height of the plate — a thousand times the trace of the M 4.
+        To draw a magnitude 9.2 at this gain, the plate would need to be about <strong>26 metres
+        tall</strong> — a nine-storey building of ink.</p>
+        <div class="scale-toggle reveal" role="group" aria-label="Trace gain mode">
+          <button class="btn btn-toggle is-active" id="btn-true" type="button" aria-pressed="true">TRUE SCALE</button>
+          <button class="btn btn-toggle" id="btn-norm" type="button" aria-pressed="false">NORMALIZED (THE LIE)</button>
+        </div>
+      </div>
+      <div class="wrap-wide">
+        <figure class="plate reveal" role="group" aria-labelledby="fig4-caption">
+          <div class="plate-head">
+            <span class="plate-label">FIG. 4 — FOUR EVENTS, ONE GAIN</span>
+            <span class="plate-meta" id="mag-mode-meta">COMMON GAIN · PEAK-TO-PEAK TO SCALE</span>
+          </div>
+          <div id="magplot" class="magplot"></div>
+          <p class="sr-only">Four synthetic seismograms drawn at a single shared gain. The magnitude 4
+          trace is a nearly flat hairline; magnitude 5 is ten times taller; magnitude 6 one hundred
+          times; magnitude 7 one thousand times, filling the plate top to bottom.</p>
+          <figcaption class="plate-foot" id="fig4-caption">
+            <span>FIG. 4 — Trace amplitude scales as 10<sup>M</sup>; radiated energy as 10<sup>1.5M</sup>.
+            "Normalized" is how magnitudes are usually shown — each trace quietly re-gained until they look alike.</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ FIG. 5 — STATION LOG ============ -->
+    <section class="band" id="log-section" aria-labelledby="fig5-title">
+      <div class="wrap">
+        <p class="eyebrow reveal">LOCATED EVENTS <b aria-hidden="true">■</b> LAST 17 DAYS <b aria-hidden="true">■</b> ANALYST-REVIEWED</p>
+        <h2 class="section-title reveal" id="fig5-title">STATION LOG</h2>
+        <p class="section-lede reveal">The fault produces something almost every day; nearly all of it is
+        too small to feel. Each line below is a located event within 80 km of the vault. The duty
+        analyst reviews picks at 06:00 and 18:00 UTC. Quarry blasts are flagged and kept — the drum
+        does not editorialize.</p>
+      </div>
+      <div class="wrap-wide">
+        <figure class="plate reveal" role="group" aria-labelledby="fig5-caption">
+          <div class="plate-head">
+            <span class="plate-label">FIG. 5 — EVENT LOG, STATION ALV-03</span>
+            <span class="plate-meta">M<sub>L</sub> · DEPTH KM · EPICENTRAL KM</span>
+          </div>
+          <div class="log-scroll">
+            <table class="log-table">
+              <thead>
+                <tr><th scope="col">ORIGIN (UTC)</th><th scope="col">EVENT ID</th><th scope="col" class="num">MAG</th><th scope="col" class="num">DEPTH</th><th scope="col" class="num">DIST</th><th scope="col">REGION</th><th scope="col">TRACE</th></tr>
+              </thead>
+              <tbody id="log-body">
+                <tr class="row-archive">
+                  <td>1989-08-04 04:15:22</td><td>alv1989qkzt</td><td class="num mag-cell">6.70</td><td class="num">9.2</td><td class="num">42.3</td>
+                  <td>Cerro Colorado — <span class="tag tag-red">ARCHIVE</span></td>
+                  <td class="spark-cell"><button class="text-btn" type="button" data-replay>REPLAY ▸</button></td>
+                </tr>
+                <tr><td>2026-07-08 02:47:31</td><td>alv2026nbxq</td><td class="num mag-cell">2.41</td><td class="num">7.8</td><td class="num">18.2</td><td>Yerba Seca Creek</td><td class="spark-cell" data-mag="2.41"></td></tr>
+                <tr><td>2026-07-07 22:15:04</td><td>alv2026nbko</td><td class="num mag-cell">1.62</td><td class="num">5.1</td><td class="num">9.7</td><td>Piedra Blanca ridge</td><td class="spark-cell" data-mag="1.62"></td></tr>
+                <tr><td>2026-07-06 14:03:58</td><td>alv2026myrr</td><td class="num mag-cell">3.12</td><td class="num">11.4</td><td class="num">33.0</td><td>Offshore, Punta Gaviota</td><td class="spark-cell" data-mag="3.12"></td></tr>
+                <tr><td>2026-07-05 06:51:12</td><td>alv2026mwcd</td><td class="num mag-cell">1.21</td><td class="num">0.1</td><td class="num">6.2</td><td>Vault perimeter — <span class="tag">BLAST</span></td><td class="spark-cell" data-mag="1.21" data-blast="1"></td></tr>
+                <tr><td>2026-07-03 19:26:40</td><td>alv2026mqhz</td><td class="num mag-cell">2.93</td><td class="num">9.6</td><td class="num">27.5</td><td>Cerro Colorado</td><td class="spark-cell" data-mag="2.93"></td></tr>
+                <tr><td>2026-07-01 11:44:19</td><td>alv2026mkpt</td><td class="num mag-cell">3.81</td><td class="num">12.7</td><td class="num">44.1</td><td>San Nicandro segment — <span class="tag tag-amber">FELT III</span></td><td class="spark-cell" data-mag="3.81"></td></tr>
+                <tr><td>2026-06-28 03:12:55</td><td>alv2026mdvf</td><td class="num mag-cell">1.94</td><td class="num">6.0</td><td class="num">12.9</td><td>Las Brisas</td><td class="spark-cell" data-mag="1.94"></td></tr>
+                <tr><td>2026-06-25 17:38:26</td><td>alv2026lzsn</td><td class="num mag-cell">2.23</td><td class="num">8.4</td><td class="num">21.6</td><td>Puerto Alto shelf</td><td class="spark-cell" data-mag="2.23"></td></tr>
+                <tr><td>2026-06-22 09:05:47</td><td>alv2026lswb</td><td class="num mag-cell">1.43</td><td class="num">3.9</td><td class="num">8.8</td><td>Piedra Blanca ridge</td><td class="spark-cell" data-mag="1.43"></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <figcaption class="plate-foot" id="fig5-caption">
+            <span>FIG. 5 — Local magnitude M<sub>L</sub> from peak Wood–Anderson-equivalent amplitude.
+            Trace column drawn at per-row gain — see FIG. 4 for why that flatters the small ones.</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ FIG. 6 — THE INSTRUMENT ============ -->
+    <section class="band" id="instrument-section" aria-labelledby="fig6-title">
+      <div class="wrap">
+        <p class="eyebrow reveal">MERIDIAN VBB-120 <b aria-hidden="true">■</b> VAULT INSTALLATION 2011-03-14</p>
+        <h2 class="section-title reveal" id="fig6-title">THE INSTRUMENT</h2>
+        <p class="section-lede reveal">A force-balance seismometer does not swing like a pendulum; it
+        refuses to move. Electromagnetic feedback holds a 210-gram proof mass perfectly still against
+        the shaking earth, and the current required to hold it is the signal. The VBB-120 resolves
+        ground motion smaller than the width of a hydrogen atom — and it rode out 8.4 cm/s in 1989
+        without losing lock.</p>
+      </div>
+      <div class="wrap-wide">
+        <figure class="plate reveal" role="group" aria-labelledby="fig6-caption">
+          <div class="plate-head">
+            <span class="plate-label">FIG. 6 — INSTRUMENT SPECIFICATION &amp; VELOCITY RESPONSE</span>
+            <span class="plate-meta">MERIDIAN VBB-120 · S/N 0447 · dB REL. PASSBAND</span>
+          </div>
+          <div class="instrument-body">
+            <dl class="spec-list">
+              <div><dt>SENSOR</dt><dd>Meridian VBB-120, three-component force-balance broadband; flat to velocity 120 s – 50 Hz</dd></div>
+              <div><dt>DIGITIZER</dt><dd>Kestrel DL-24 · 24-bit · 200 sps/channel · 141 dB dynamic range</dd></div>
+              <div><dt>TIMING</dt><dd>GPS-disciplined oven oscillator, ±1 µs; holdover drift &lt; 1 ms/day</dd></div>
+              <div><dt>SELF-NOISE</dt><dd>Below the Peterson low-noise reference, 0.03 – 10 Hz</dd></div>
+              <div><dt>VAULT</dt><dd>34 m adit in granodiorite, twin thermal doors; pier decoupled from floor slab</dd></div>
+              <div><dt>PROOF MASS</dt><dd>210 g per axis, leaf-spring suspension, capacitive displacement bridge</dd></div>
+              <div><dt>LINEAGE</dt><dd>Photographic drum 1954–1988 · ink drum 1988–2011 · digital since, drum kept running</dd></div>
+              <div><dt>TELEMETRY</dt><dd>Licensed microwave to Puerto Alto relay; 2.1 s latency to this page</dd></div>
+            </dl>
+            <div class="resp-cell">
+              <div id="respplot" class="respplot"></div>
+              <p class="sr-only">Log-frequency response curve: flat from 120 seconds period to 50 hertz,
+              rolling off steeply outside that band.</p>
+              <p class="resp-note">Flat from 120 s to 50 Hz — whole-Earth hum to quarry blast on one instrument.</p>
+            </div>
+          </div>
+          <figcaption class="plate-foot" id="fig6-caption">
+            <span>FIG. 6 — Velocity response, vertical channel, verified against the reference shake
+            table at Puerto Alto, 2025-11-02. Corners marked in red.</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ FIG. 7 — WHEN IT SHAKES ============ -->
+    <section class="band band-safety" id="safety-section" aria-labelledby="fig7-title">
+      <div class="wrap">
+        <p class="eyebrow reveal">FIG. 7 <b aria-hidden="true">■</b> CUT OUT AND PIN UP <b aria-hidden="true">■</b> REVISED 2026</p>
+        <h2 class="section-title reveal" id="fig7-title">WHEN IT SHAKES</h2>
+      </div>
+      <div class="wrap-wide">
+        <div class="safety-card reveal">
+          <div class="safety-moves">
+            <div class="move">
+              <svg class="pictogram" viewBox="0 0 96 96" aria-hidden="true">
+                <circle cx="40" cy="26" r="9" class="pg-stroke"/>
+                <path d="M40 35 L36 56 L20 66 M36 56 L58 62 L72 58" class="pg-stroke"/>
+                <path d="M10 80 H86" class="pg-ground"/>
+                <path d="M64 22 l6 8 m2-12 l6 10" class="pg-accent"/>
+              </svg>
+              <h3>DROP</h3>
+              <p>Get low before the shaking knocks you down. Hands and knees — you can still move, and you cannot fall.</p>
+            </div>
+            <div class="move">
+              <svg class="pictogram" viewBox="0 0 96 96" aria-hidden="true">
+                <path d="M14 42 H82 M20 42 V78 M76 42 V78" class="pg-stroke"/>
+                <circle cx="44" cy="56" r="7" class="pg-stroke"/>
+                <path d="M44 63 L42 74 L32 78 M42 71 L56 74" class="pg-stroke"/>
+                <path d="M10 84 H86" class="pg-ground"/>
+              </svg>
+              <h3>COVER</h3>
+              <p>Under a sturdy table, head and neck shielded. No table? Inside wall, away from glass — never a doorway.</p>
+            </div>
+            <div class="move">
+              <svg class="pictogram" viewBox="0 0 96 96" aria-hidden="true">
+                <path d="M14 40 H82 M22 40 V78 M74 40 V78" class="pg-stroke"/>
+                <circle cx="46" cy="55" r="7" class="pg-stroke"/>
+                <path d="M46 62 L44 74 M46 64 L24 58" class="pg-stroke"/>
+                <path d="M8 30 q4 -6 0 -12 M88 30 q-4 -6 0 -12" class="pg-accent"/>
+                <path d="M10 84 H86" class="pg-ground"/>
+              </svg>
+              <h3>HOLD ON</h3>
+              <p>Grip a table leg and keep the cover over you — in strong shaking, furniture walks across the room.</p>
+            </div>
+          </div>
+          <div class="safety-strip">
+            <p><strong>THE PAUSE IS THE WARNING.</strong> A sharp jolt, then a beat of quiet? That was the P wave,
+            and the S wave is on its way. Every second of that pause is eight kilometres of distance —
+            and time you should already be spending under the table.</p>
+          </div>
+          <div class="safety-after">
+            <h3>AFTER THE CODA</h3>
+            <ul>
+              <li><input type="checkbox" class="safety-check" id="sc-1"><label for="sc-1">Expect aftershocks — the first hours are the busiest. Drop again each time.</label></li>
+              <li><input type="checkbox" class="safety-check" id="sc-2"><label for="sc-2">Smell for gas before you flip any switch. If in doubt, shut the main and open the windows.</label></li>
+              <li><input type="checkbox" class="safety-check" id="sc-3"><label for="sc-3">Shoes before glass. Most earthquake injuries in this county are cut feet.</label></li>
+              <li><input type="checkbox" class="safety-check" id="sc-4"><label for="sc-4">Text, don't call — voice lines jam. One message out of the area beats ten local calls.</label></li>
+              <li><input type="checkbox" class="safety-check" id="sc-5"><label for="sc-5">Check the drum. If ALV-03 is still writing, so are we: <span class="mono">temblor.obs/live</span></label></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="wrap-wide footer-inner">
+      <div class="footer-col footer-brand">
+        <span class="wordmark wordmark-light">TEMBLOR</span>
+        <p>Public reading room of the Alvarado Fault Seismological Observatory.
+        Every event on this page is fictional; the physics is not.</p>
+      </div>
+      <div class="footer-col">
+        <h3>STATION</h3>
+        <p class="mono">ALV-03 · PIEDRA BLANCA<br>36.842°N 121.377°W · 412 m<br>HHZ HHN HHE · 200 sps</p>
+      </div>
+      <div class="footer-col">
+        <h3>BULLETIN</h3>
+        <p class="mono">PICKS REVIEWED 06:00 / 18:00 UTC<br>ARCHIVE Nº 1989-0804<br>DRAWN WITH CANVAS, D3 &amp; INK</p>
+      </div>
+      <div class="footer-col">
+        <h3>MOTTO</h3>
+        <p class="mono">THE NEEDLE<br>NEVER SLEEPS.</p>
+      </div>
+    </div>
+    <div class="footer-trace" aria-hidden="true"><canvas id="footer-spark"></canvas></div>
+  </footer>
+
+</div><!-- /#page -->
+
+<script src="vendor/d3.min.js"></script>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

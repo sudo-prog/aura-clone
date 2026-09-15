@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ESCAPEMENT — Kaliber 72 · Werkstatt Mathis Brandt, Glashütte i/SA</title>
+<meta name="description" content="One caliber, made by hand in Glashütte. A working Swiss-lever escapement beating 21,600 times an hour — keeping your local time on this page, right now.">
+<meta property="og:title" content="ESCAPEMENT — Kaliber 72">
+<meta property="og:description" content="A hand-made Glashütte movement, drawn and running in your browser: 21,600 A/h, 72-hour reserve, 23 jewels, hand-blued screws. It is showing your local time.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0D0B09">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='13' fill='%230D0B09'/%3E%3Ccircle cx='32' cy='32' r='17' fill='none' stroke='%23C29B4A' stroke-width='9' stroke-dasharray='4.5 2.62'/%3E%3Ccircle cx='32' cy='32' r='5.5' fill='%23A62639'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/Cinzel-02.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/IBMPlexMono-15.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/Cinzel.css">
+<link rel="stylesheet" href="fonts/EBGaramond.css">
+<link rel="stylesheet" href="fonts/IBMPlexMono.css">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<header class="site-head">
+  <span class="wordmark">ESCAPEMENT</span>
+  <span class="head-right">GLASHÜTTE&nbsp;I/SA&nbsp;·&nbsp;EST.&nbsp;2011</span>
+</header>
+
+<main>
+
+  <!-- ============ THE CALIBER — sticky scene, beats & disassembles ============ -->
+  <section class="scene" id="scene" aria-label="Kaliber 72 — the movement, running and exploded">
+    <div class="scene-sticky">
+      <svg id="caliber" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false"></svg>
+
+      <div class="hero-overlay" id="heroOverlay">
+        <p class="eyebrow">WERKSTATT MATHIS BRANDT — GLASHÜTTE IN SACHSEN</p>
+        <h1 class="hero-title">KALIBER&nbsp;72</h1>
+        <p class="hero-sub">A Swiss-lever escapement beating six times a second —<br>
+        and it is keeping <em>your</em> time, right now.</p>
+      </div>
+
+      <div class="scene-foot">
+        <button type="button" class="readout" id="readout" title="Set the watch again" aria-label="Local time, kept by the movement. Activate to run the hand-setting again.">
+          <span class="readout-label">LOCAL TIME</span>
+          <span class="readout-time" id="clock">--:--:--</span>
+          <span class="readout-tz" id="tz"></span>
+        </button>
+        <div class="scroll-cue" id="scrollCue" aria-hidden="true">SCROLL&nbsp;—&nbsp;THE&nbsp;CALIBER&nbsp;COMES&nbsp;APART&nbsp;<span class="cue-tick">▾</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CLAIM ============ -->
+  <section class="claim rv" aria-label="Principle">
+    <p class="claim-line"><span class="dim-tick" aria-hidden="true"></span><span class="claim-text">ONE CALIBER. NO VARIATIONS. NO DIAL TO HIDE BEHIND.</span><span class="dim-tick" aria-hidden="true"></span></p>
+  </section>
+
+  <!-- ============ SPECIFICATION ============ -->
+  <section class="spec" aria-labelledby="spec-h">
+    <h2 id="spec-h" class="section-title rv">SPECIFICATION</h2>
+    <p class="section-note rv">Engraved on the ratchet-wheel side of every movement.</p>
+
+    <div class="plate rv" role="group" aria-label="Kaliber 72 technical specification">
+      <i class="screw s-tl" aria-hidden="true"></i><i class="screw s-tr" aria-hidden="true"></i>
+      <i class="screw s-bl" aria-hidden="true"></i><i class="screw s-br" aria-hidden="true"></i>
+
+      <div class="plate-head">
+        <span class="plate-cal">KALIBER&nbsp;72</span>
+        <span class="plate-sub">WERKSTATT&nbsp;M.&nbsp;BRANDT&nbsp;·&nbsp;GLASHÜTTE&nbsp;I/SA&nbsp;·&nbsp;NR.&nbsp;037</span>
+      </div>
+
+      <div class="plate-grid">
+        <div class="srow"><span class="sk">CALIBRE</span><span class="sv">72 · manual winding</span></div>
+        <div class="srow"><span class="sk">DIAMETER</span><span class="sv">32.60 mm</span></div>
+        <div class="srow"><span class="sk">HEIGHT</span><span class="sv">5.10 mm</span></div>
+        <div class="srow"><span class="sk">FREQUENCY</span><span class="sv">21,600 A/h — 3 Hz</span></div>
+        <div class="srow"><span class="sk">POWER RESERVE</span><span class="sv">72 hours</span></div>
+        <div class="srow"><span class="sk">JEWELS</span><span class="sv">23, set in gold chatons</span></div>
+        <div class="srow"><span class="sk">ESCAPEMENT</span><span class="sv">Swiss lever, 15-tooth wheel</span></div>
+        <div class="srow"><span class="sk">BALANCE</span><span class="sv">screwed, Ø 10.2 mm</span></div>
+        <div class="srow"><span class="sk">HAIRSPRING</span><span class="sv">hand-formed, flat, pinned to stud</span></div>
+        <div class="srow"><span class="sk">REGULATION</span><span class="sv">swan-neck fine adjustment</span></div>
+        <div class="srow"><span class="sk">ADJUSTED</span><span class="sv">5 positions, −1 / +4 s per day</span></div>
+        <div class="srow"><span class="sk">PLATES</span><span class="sv">German silver, Glashütte ribbing</span></div>
+        <div class="srow"><span class="sk">SCREWS</span><span class="sv">hand-blued over an open flame</span></div>
+        <div class="srow"><span class="sk">FINISHING</span><span class="sv">c. 340 hours per movement</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ THE BENCH ============ -->
+  <section class="bench" aria-labelledby="bench-h">
+    <svg class="tweezers rv" viewBox="0 0 340 72" aria-hidden="true" focusable="false">
+      <path d="M18 22 C 100 24 220 36 306 33.4" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <path d="M18 50 C 100 48 220 40 306 38.6" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <path d="M18 22 C 12 30 12 42 18 50" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <path d="M30 26 L 30 46" stroke="currentColor" stroke-width=".8" opacity=".6"/>
+      <circle cx="314" cy="36" r="5" fill="none" stroke="currentColor" stroke-width="1.1"/>
+      <path d="M310.5 32.5 L 317.5 39.5" stroke="currentColor" stroke-width="1"/>
+    </svg>
+    <h2 id="bench-h" class="section-title rv">THE BENCH</h2>
+
+    <div class="bench-cols">
+      <div class="bench-copy rv">
+        <p>There is one bench in this workshop. It stands where the kitchen of Haus Färberstraße&nbsp;9 used to be, two streets below the Glashütte church, and it has held every movement finished here since 2011. The lamp is a fifty-year-old Waldmann with a new bulb. The tweezers are Dumont No.&nbsp;3, dressed every Monday morning before anything else is touched.</p>
+        <p>Kaliber&nbsp;72 is assembled twice. The first assembly is for truth — every wheel run in, every pivot burnished, the escapement matched and adjusted until the trace goes quiet. Then the movement comes apart completely. Every steel part is blued over a spirit flame, every plate takes its final grain, and it is assembled again — this time for good.</p>
+        <p>Between first and final assembly lie some three hundred and forty hours. None of them are interesting to watch. All of them are in the watch.</p>
+      </div>
+      <ul class="bench-log rv" aria-label="Notes from the bench journal">
+        <li>DI 04:12 — amplitude 301° dial-up, 296° crown left</li>
+        <li>beat error 0.0 ms after third truing of the roller</li>
+        <li>barrel-bridge screw No. 11 blued twice — first ran to plum</li>
+        <li>swan-neck tensioned; rate −0.8 s/d. leave it.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ PROVENANCE / ORDER ============ -->
+  <section class="provenance" aria-labelledby="prov-h">
+    <h2 id="prov-h" class="section-title rv">TWELVE A YEAR</h2>
+    <div class="prov-cols">
+      <div class="prov-copy rv">
+        <p>Kaliber&nbsp;72 is made in a series without end but not without patience: twelve movements a year, numbered from No.&nbsp;001 in the order the letters arrive. The movement is finished, cased, regulated and rated here — no part of it is sent out, and no year’s twelve are alike in their engraving.</p>
+        <p>Delivery is quoted honestly: fourteen months from the day an order is confirmed, and only what can be finished is confirmed. Orders are taken by correspondence. A letter tells more than a form ever will.</p>
+      </div>
+      <dl class="order-plate rv" aria-label="Ordering details">
+        <div class="orow"><dt>EDITION</dt><dd>12 movements a year</dd></div>
+        <div class="orow"><dt>NEXT NUMBER</dt><dd>No. 038</dd></div>
+        <div class="orow"><dt>MOVEMENT</dt><dd>€ 48,500</dd></div>
+        <div class="orow"><dt>CASED, SILVER</dt><dd>€ 61,200</dd></div>
+        <div class="orow"><dt>DELIVERY</dt><dd>14 months</dd></div>
+        <div class="orow addr"><dt>WRITE TO</dt><dd><a href="mailto:bestellung@escapement-glashuette.de">BESTELLUNG@ESCAPEMENT-GLASHUETTE.DE</a><br>Färberstraße 9 · 01768 Glashütte</dd></div>
+      </dl>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="hallmarks rv" aria-hidden="true">
+    <svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="10" fill="none" stroke="currentColor" stroke-width="5" stroke-dasharray="2.64 1.55"/></svg>
+    <svg viewBox="0 0 36 36"><path d="M18 4 L32 18 L18 32 L4 18 Z" fill="none" stroke="currentColor" stroke-width="1.4"/><text x="18" y="21.6" text-anchor="middle" font-size="9.5" fill="currentColor" font-family="IBM Plex Mono, monospace">MB</text></svg>
+    <svg viewBox="0 0 36 36"><rect x="6" y="6" width="24" height="24" rx="3" fill="none" stroke="currentColor" stroke-width="1.4"/><text x="18" y="21.8" text-anchor="middle" font-size="9.5" fill="currentColor" font-family="IBM Plex Mono, monospace">23</text></svg>
+    <svg viewBox="0 0 36 36"><ellipse cx="18" cy="18" rx="14" ry="10" fill="none" stroke="currentColor" stroke-width="1.4"/><text x="18" y="21.4" text-anchor="middle" font-size="8.5" fill="currentColor" font-family="IBM Plex Mono, monospace">i/SA</text></svg>
+  </div>
+  <p class="foot-line rv">© MMXXVI WERKSTATT MATHIS BRANDT · GLASHÜTTE IN SACHSEN · NO PART OF THIS MOVEMENT IS OUTSOURCED.</p>
+  <p class="foot-line foot-quiet rv">The movement above is running at 21,600 A/h and showing your local time. If it is fast, write to me.</p>
+</footer>
+
+<script src="js/caliber.js" defer></script>
+<script src="js/page.js" defer></script>
+</body>
+</html>

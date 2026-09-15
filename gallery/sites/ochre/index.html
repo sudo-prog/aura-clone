@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>OCHRE — the painted cave of Vayrac · digital archive</title>
+<meta name="description" content="The official digital archive of the painted cave of Vayrac — discovered 1954, sealed 1979. It is genuinely dark inside. Your cursor carries the torch.">
+<meta property="og:title" content="OCHRE — the painted cave of Vayrac">
+<meta property="og:description" content="A sealed paleolithic cave, open here always. Carry your torch 260 metres into the dark; what your light finds, the archive keeps.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#080605">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23080605'/%3E%3Ccircle cx='32' cy='34' r='21' fill='%233a1c0d'/%3E%3Ccircle cx='32' cy='34' r='13' fill='%23a8432b'/%3E%3Ccircle cx='32' cy='34' r='6' fill='%23ffc178'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/OldStandardTT-10.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Archivo-03.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/OldStandardTT.css">
+<link rel="stylesheet" href="fonts/Archivo.css">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<noscript><div class="nojs">The cave requires light. This archive draws its walls with JavaScript — enable it to carry a torch. The panel texts below remain readable in the dark.</div></noscript>
+
+<canvas id="cave" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+<div id="labels" aria-hidden="true"></div>
+
+<header class="masthead" id="mouth">
+  <p class="mast-eyebrow rv">Dossier VAY-54 · Service régional de l’archéologie · Division des grottes ornées</p>
+  <h1 class="mast-title rv">OCHRE</h1>
+  <p class="mast-sub rv" lang="fr">la grotte peinte de Vayrac <span class="mast-dot">·</span> <span lang="en">digital archive</span></p>
+  <p class="mast-meta rv"><span>Discovered 16 October 1954</span> — <span>Sealed 12 April 1979</span> — <span>Open here, always</span></p>
+  <p class="mast-note rv">
+    <span class="if-fine">The cave is genuinely dark. Your cursor carries the torch.</span>
+    <span class="if-coarse">The cave is genuinely dark. Tap anywhere to move your torch.</span>
+    <span class="mast-kbd if-fine">keyboard: <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> steers the light</span>
+  </p>
+  <p class="mast-cue rv" aria-hidden="true">the daylight ends at 40 m<span class="cue-tick"></span></p>
+</header>
+
+<main>
+
+  <section class="prose threshold" id="threshold">
+    <p class="eyebrow rv">12 m · the twilight zone</p>
+    <h2 class="rv">Past the reach of the sun</h2>
+    <p class="rv">Beyond this point no daylight has ever fallen. Every image in the Vayrac cave was made by someone holding fire — a juniper-wick lamp or a resin-soaked pine torch, a pool of light two metres wide, carried two hundred and sixty metres into the mountain. This archive reproduces that condition faithfully. We could floodlight the survey scans. We choose not to.</p>
+    <p class="rv">Seven painted works survive along the passage. Hold your light on a wall until it answers, and what you find is yours: the archive keeps your traverse, panel by panel, until you extinguish it at the door. Most visitors leave something in the dark.</p>
+  </section>
+
+  <section class="gallery" id="g-hands" data-gallery="hands">
+    <p class="zonemark" lang="fr">Galerie des mains — 87 m <span class="zonemark-hint" lang="en">move your light along the wall</span></p>
+  </section>
+
+  <section class="prose">
+    <article class="card rv" id="card-p01">
+      <p class="cat"><span class="cat-id">VAY-P01</span> Galerie des mains · 87 m</p>
+      <h2>Twenty-seven hands, none of them drawn</h2>
+      <p>No brush touched the wall here. Each hand was pressed flat against the limestone while pigment — red hematite or yellow goethite, ground fine and slaked with cave water — was sprayed over it from the mouth in a fast, exhaled cloud. The hand lifted away; its absence stayed. Twenty-seven negative stencils crowd the panel: nineteen left hands, eight right, exactly what you would expect of right-handed people holding the spray pipe in the dominant hand.</p>
+      <p>Four hands fold the last two fingers below the knuckle. The same folded-finger forms repeat at Gargas and Cosquer, five hundred kilometres apart — a signal code, most researchers now argue, not mutilation. And at a height of 2.1 metres, far above any adult’s flat-footed reach, one stencil is eleven centimetres long. A child of five, perhaps six. Someone stood in the dark and lifted them up.</p>
+      <dl class="specs">
+        <div><dt>Pigments</dt><dd>hematite Fe₂O₃ · goethite α-FeO(OH)</dd></div>
+        <div><dt>Technique</dt><dd>oral spray over living hand (negative stencil)</dd></div>
+        <div><dt>Dating</dt><dd>indirect, by overlying calcite · ≥ 17,000 cal BP</dd></div>
+      </dl>
+    </article>
+  </section>
+
+  <section class="prose story" id="story">
+    <p class="eyebrow rv">16 October 1954</p>
+    <h2 class="rv">The boy, the dog, the storm</h2>
+    <p class="rv dropcap">The storm crossed the Causse on the night of the 13th, and by morning a sinkhole had opened in the Delmas sheep pasture above Vayrac — a slot of black air where yesterday there had been grass. Rémy Cassagne, thirteen, was sent up to count the ewes. He brought the farm dog, Bécassine, which is the only reason any of this happened: she went down the slot after the smell of cold stone, and she would not come back.</p>
+    <p class="rv">He walked home for the bicycle lamp and a pocketful of matches, and told no one. The lamp was weak and yellow. He followed the barking down a scree slope, across a chamber whose ceiling his light never found, and along a passage that swallowed every sound except hers. At what the survey now calls 87 metres, he raised the lamp to look for a way up the wall. The wall was covered in hands.</p>
+    <p class="rv">He came back the next morning with his schoolmaster, M. Delfau, and a paraffin lantern. By 3 November, Professor Hélène Marsac of the Institut de Paléontologie Humaine had descended the doline, matched the calcite skin over the pigment against every forgery test she had, and wired Paris four words: <em>authentic — seal the field</em>. Her monograph <em>Vayrac I</em> (1958) is still the reference. Rémy carried her instruments on every campaign until the cave closed.</p>
+    <blockquote class="rv">
+      <p>“People always ask whether I was afraid. Not of the dark — of the hands. The lamp found them all at once, and they were exactly the size of mine.”</p>
+      <cite>— Rémy Cassagne, interviewed for the fortieth anniversary, 1994</cite>
+    </blockquote>
+  </section>
+
+  <section class="gallery" id="g-aurochs" data-gallery="aurochs">
+    <p class="zonemark" lang="fr">Rotonde de l’aurochs — 141 m</p>
+  </section>
+
+  <section class="prose">
+    <article class="card rv" id="card-p02">
+      <p class="cat"><span class="cat-id">VAY-P02</span> Rotonde de l’aurochs · 141 m</p>
+      <h2>Three and a half metres of charging bull</h2>
+      <p>The aurochs takes the whole east wall of the rotunda. The outline went up in one campaign — pine-charcoal strokes as wide as four centimetres, laid down without a single hesitation the survey can detect — then the shoulder and flank were washed with hematite pressed in by pad. The horns are drawn in twisted perspective, both curving forward while the head runs in profile: a convention shared with Lascaux, not an error. Under raking light, ten faint engraved lines shadow the back and chest. The painter sketched first. Then committed.</p>
+      <table class="data">
+        <caption>Radiocarbon determinations, Rotonde de l’aurochs</caption>
+        <thead><tr><th scope="col">Lab code</th><th scope="col">Material</th><th scope="col">¹⁴C age BP</th><th scope="col">cal BP</th></tr></thead>
+        <tbody>
+          <tr><td>GifA-4127</td><td>charcoal, outline</td><td>14,180 ± 90</td><td>17,240 ± 160</td></tr>
+          <tr><td>GifA-4310</td><td>charcoal, muzzle rework</td><td>14,410 ± 110</td><td>17,560 ± 190</td></tr>
+          <tr><td>GifA-4522</td><td>torch soot, ceiling smear</td><td>13,980 ± 130</td><td>16,950 ± 210</td></tr>
+        </tbody>
+      </table>
+      <p class="tablenote">Three dates, six centuries. The rotunda was not decorated once — it was returned to, for generations.</p>
+    </article>
+  </section>
+
+  <section class="prose" id="lab">
+    <p class="eyebrow rv">Pigment analysis · campaigns 1996 / 2011</p>
+    <h2 class="rv">The laboratory reads the wall</h2>
+    <p class="rv">Nothing enters the cave now except instruments. Portable X-ray fluorescence and Raman spectroscopy go down the doline twice a year, carried by two conservators in clean suits who are budgeted six hours of breath each. This is what the wall has told them.</p>
+    <table class="data rv">
+      <caption>Identified pigments and sources</caption>
+      <thead><tr><th scope="col">Colour</th><th scope="col">Mineral</th><th scope="col">Source</th></tr></thead>
+      <tbody>
+        <tr><td>Red</td><td>hematite Fe₂O₃</td><td>Puy-d’Issolud outcrop, 6 km NE</td></tr>
+        <tr><td>Yellow</td><td>goethite α-FeO(OH)</td><td>local Causse clays</td></tr>
+        <tr><td>Black — outlines</td><td>pine charcoal</td><td>hearth traces at 141 m</td></tr>
+        <tr><td>Black — horse dapples</td><td>manganese oxide MnO₂</td><td>non-local · nearest bed 40 km S</td></tr>
+      </tbody>
+    </table>
+    <p class="rv">The manganese matters. Recipe V — manganese cut with potassium feldspar and a trace of talc — matches, measure for measure, the horse paint at Pech Merle, forty kilometres south. Either the pigment travelled, or the painters did. Both readings mean the same thing: the dark places of the valley were talking to each other.</p>
+  </section>
+
+  <section class="gallery" id="g-horses" data-gallery="horses">
+    <p class="zonemark" lang="fr">Panneau des chevaux — 203 m</p>
+  </section>
+
+  <section class="prose">
+    <article class="card rv" id="card-p03">
+      <p class="cat"><span class="cat-id">VAY-P03</span> Panneau des chevaux · 203 m</p>
+      <h2>Spotted horses, and the argument they ended</h2>
+      <p>Two horses stand rump to rump, small-headed and heavy-bellied, their coats stippled with manganese-black dapples that spill past the outlines onto bare rock. For a century the dots were read as anything but dots — trance patterns, star maps, abstraction. Then, in 2011, palaeogeneticists recovered the leopard-spotting gene from Pleistocene horse bone. Spotted horses were real, and the painters had watched them. The panel is not a vision. It is a portrait.</p>
+      <p>Beside the horses: a claviform sign and a pair of red dots that repeat, identically, in four other caves of the valley. A vocabulary we can map and cannot read.</p>
+    </article>
+  </section>
+
+  <section class="gallery" id="g-shaft" data-gallery="shaft">
+    <p class="zonemark" lang="fr">Le Puits — 260 m <span class="zonemark-hint" lang="en">the deepest light in the cave</span></p>
+  </section>
+
+  <section class="prose">
+    <article class="card rv" id="card-p04">
+      <p class="cat"><span class="cat-id">VAY-P04</span> Le Puits · 260 m</p>
+      <h2>The one human figure</h2>
+      <p>At the end of the painted passage the floor simply stops: a shaft, six metres down, walls of wet flowstone. At its base is the only human figure in the cave — a man with a bird’s head, arms thrown wide, tipping backwards before a wounded bison whose entrails loop below it like rope. A bird on a staff stands apart, watching. Nothing else at Vayrac is narrative; this is.</p>
+      <p>On the ledge beside the scene the 1955 campaign found a carved limestone lamp, catalogue VAY-L01, its bowl still greasy, its wick of juniper. Someone climbed down with fire to paint the hardest picture in the cave, and left the light behind when they went up. Above the drop, four parallel claw-marks score the flowstone — cave bear, and older than everything painted here.</p>
+      <p class="shaft-close">You are 260 metres from the sun. Whatever looks back at you here has been waiting seventeen thousand years.</p>
+    </article>
+  </section>
+
+  <section class="prose" id="sealed">
+    <p class="eyebrow rv">The ascent · 1957 – 1979</p>
+    <h2 class="rv">Breath is the enemy</h2>
+    <p class="rv">Vayrac opened to the public in June 1957 — a concrete stair down the doline, a steel handrail through the galleries, floodlights on the aurochs. One hundred and eighteen thousand people came in 1972 alone, and every one of them exhaled: warmth, carbon dioxide, moisture, and the spores that ride on daylight. By 1974, green algae haloed every lamp — conservators call it <em>lampenflora</em>, as if naming it could tame it. By 1977 a calcite veil, measurable in microns and growing, was clouding the Panel of the Hands. The rock ran 2.6 °C above its ten-thousand-year baseline.</p>
+    <p class="rv">Lascaux had already shown everyone how the story ends. On 12 April 1979 the Direction du Patrimoine ordered Vayrac sealed behind a climate door, and the stair was broken out behind it. A facsimile was proposed in 1991; the commune voted it down, sixty-one to fourteen. Vayrac chose absence.</p>
+    <p class="rv">The paintings survived one hundred and seventy centuries. They very nearly did not survive twenty-five years of being loved. The door is not a punishment. The door is the treatment.</p>
+    <p class="rv sealed-remy">Rémy Cassagne stood at the entrance the morning it closed — thirty-eight years old, the only person alive who had seen the hands by bicycle lamp. “I found it,” he told the prefect, “so I get to say this: lock it well.”</p>
+  </section>
+
+  <section class="prose door" id="door">
+    <p class="eyebrow rv">0 m · the entrance</p>
+    <h2 class="rv">The door, and your traverse</h2>
+    <div class="doorplate rv" lang="fr" role="img" aria-label="Sign on the sealed door: painted cave of Vayrac, entry strictly forbidden, prefectural order of 12 April 1979">
+      <span>Grotte ornée de Vayrac</span>
+      <span class="doorplate-big">Entrée strictement interdite</span>
+      <span>Arrêté préfectoral du 12.04.1979</span>
+    </div>
+    <p class="rv">You are back at the mouth. Behind you, the dark holds everything you found — and keeps everything you missed.</p>
+    <figure class="surveymap rv">
+      <svg id="planmap" viewBox="0 0 560 168" role="img" aria-label="Survey plan of the cave passage with the painted panels you found marked in ochre">
+        <path class="plan-passage" d="M18,78 C58,36 96,96 138,66 C178,38 208,100 248,72 C288,44 322,98 362,68 C402,40 442,92 484,62 L516,100" />
+        <path class="plan-sump" d="M516,100 l20,26" />
+        <circle class="plan-mouth" cx="18" cy="78" r="4.5"/>
+        <text class="plan-label" x="18" y="102">0 m · mouth</text>
+        <text class="plan-label plan-label-end" x="500" y="140">sump — unsurveyed</text>
+        <g id="plan-stations"></g>
+      </svg>
+      <figcaption id="traverse-line">Light a panel to add it to your survey.</figcaption>
+    </figure>
+    <p class="door-actions rv"><button type="button" id="reset-visit">Extinguish the torch — begin a new visit</button></p>
+  </section>
+
+</main>
+
+<footer class="colophon">
+  <p>OCHRE · digital archive of the painted cave of Vayrac (Lot, France). The cave, the boy and the dates are fiction; the sealed doors of Lascaux, Altamira and Chauvet are not.</p>
+  <p>Typeset in Old Standard &amp; Archivo. Every painting here is rendered in code the way it was rendered in pigment: hematite, goethite, charcoal, manganese.</p>
+  <p>Designed &amp; built by Claude for the OCHRE archive · MMXXVI</p>
+</footer>
+
+<aside class="survey" aria-label="Survey position">
+  <div class="survey-track" aria-hidden="true" id="survey-track"><i class="survey-pos" id="survey-pos"></i></div>
+  <div class="survey-read">
+    <span class="survey-m"><span id="hud-m">0</span><span class="survey-unit">m</span></span>
+    <span class="survey-zone" id="hud-zone">the cave mouth</span>
+    <span class="survey-count" id="hud-count">0 / 7 found</span>
+  </div>
+</aside>
+
+<div class="hint" id="hint" aria-hidden="true">hold your light on the wall</div>
+<div class="snuff" aria-hidden="true"></div>
+<div class="sr-live" aria-live="polite" id="live"></div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

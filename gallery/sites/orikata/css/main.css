@@ -1,0 +1,956 @@
+/* ==========================================================================
+   ORIKATA 折り方 — the page that folds
+   washi / persimmon / indigo / sakura / paper-shadow
+   ========================================================================== */
+
+:root {
+  --crane-scale: 1.12;
+  --washi:   #F4EFE3;
+  --washi2:  #EAE3D1;
+  --sumi:    #26221B;
+  --kaki:    #C03F16;   /* persimmon, text-safe */
+  --kaki-b:  #E4602F;   /* persimmon, bright — graphics only */
+  --ai:      #1E3A56;   /* indigo dye */
+  --kon:     #101E2E;   /* night indigo */
+  --sakura:  #EFC9C0;
+  --kage:    #6E6557;   /* paper-shadow, text-safe */
+  --kage-ln: #B4AA95;   /* paper-shadow, rules only */
+
+  --paper-hi: #FBF7EC;
+  --paper-lo: #E6DEC9;
+
+  --sans: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", sans-serif;
+  --serif-jp: "Noto Serif JP", "Hiragino Mincho ProN", serif;
+  --mono: "Spline Sans Mono", ui-monospace, monospace;
+
+  --ease-fold: cubic-bezier(.22, 1, .36, 1);
+  --maxw: 1160px;
+
+  /* crane pose defaults = final pose (no-JS fallback shows a standing crane) */
+  --f1: 180; --f2: 180; --o1: 0; --o2: 0; --oc: 1; --bloom: 1;
+  --lie: 0; --splay: 26; --tail: 38; --neck: -30; --head: -108;
+  --wing: 74; --flap: 0; --spin: -14; --bob: 0; --sdx: -58;
+  --shs: .78; --sha: .3; --cs2: var(--crane-scale);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--sumi);
+  background: var(--washi);
+  overflow-x: clip;
+}
+
+/* washi fibre ground */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.38 0 0 0 0 0.28 0 0 0 0.055 0'/%3E%3C/filter%3E%3Crect width='280' height='280' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+::selection { background: var(--sakura); color: var(--sumi); }
+
+::-webkit-scrollbar { width: 13px; height: 13px; }
+::-webkit-scrollbar-track { background: var(--washi2); }
+::-webkit-scrollbar-thumb {
+  background: var(--kage-ln);
+  border: 3.5px solid var(--washi2);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--kaki); }
+/* Firefox has no ::-webkit-scrollbar; give it the same studio palette */
+@supports not selector(::-webkit-scrollbar) {
+  html { scrollbar-color: var(--kage-ln) var(--washi2); }
+}
+
+:focus-visible { outline: 2px solid var(--kaki); outline-offset: 3px; border-radius: 2px; }
+
+.jp { font-family: var(--serif-jp); font-weight: 600; }
+.mono { font-family: var(--mono); font-size: .8125rem; letter-spacing: .01em; }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px;
+  overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+.btn {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: .95rem;
+  font-weight: 500;
+  line-height: 1;
+  padding: .85em 1.5em;
+  border: 1.5px solid transparent;
+  border-radius: 3px;
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform .35s var(--ease-fold), box-shadow .35s var(--ease-fold);
+}
+.btn-primary { background: var(--kaki); color: var(--washi); }
+/* the kon sheet slides up under the label (z:-1 paints above bg, below text) */
+.btn-primary::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: var(--kon);
+  transform: translateY(101%);
+  transition: transform .4s var(--ease-fold);
+  z-index: -1;
+}
+.btn-primary:hover::after, .btn-primary:focus-visible::after { transform: translateY(0); }
+.btn-primary:hover, .btn-primary:focus-visible { box-shadow: 0 6px 18px -6px rgba(38,34,27,.4); }
+.btn-ghost {
+  background: transparent;
+  color: var(--sumi);
+  border-color: rgba(38,34,27,.35);
+}
+.btn-ghost:hover, .btn-ghost:focus-visible { border-color: var(--sumi); transform: translateY(-2px); }
+.btn:active { transform: translateY(1px); }
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+.site-head {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: .8rem clamp(1rem, 4vw, 3rem);
+  background: rgba(244,239,227,.92);
+  backdrop-filter: blur(9px) saturate(1.1);
+  -webkit-backdrop-filter: blur(9px) saturate(1.1);
+  /* paper edge: the header is a washi strip laid over the page, not a blur smear */
+  border-bottom: 1px solid rgba(38,34,27,.12);
+}
+html.js .site-head {
+  transform-origin: 50% 0;
+  animation: head-settle .7s var(--ease-fold) both;
+}
+@keyframes head-settle {
+  from { transform: perspective(700px) rotateX(-34deg); opacity: 0; }
+  to   { transform: none; opacity: 1; }
+}
+
+.wordmark {
+  display: flex; align-items: baseline; gap: .55rem;
+  text-decoration: none; color: var(--sumi);
+}
+.wm-latin { font-weight: 700; letter-spacing: .22em; font-size: 1.05rem; }
+.wm-jp { font-family: var(--serif-jp); font-size: .85rem; color: var(--kaki); }
+
+.site-nav { display: flex; gap: 1.6rem; margin-left: auto; }
+.site-nav a {
+  color: var(--sumi); text-decoration: none;
+  font-size: .92rem; font-weight: 500;
+  position: relative; padding-bottom: 2px;
+}
+.site-nav a::after {
+  content: "";
+  position: absolute; left: 0; bottom: 0;
+  width: 100%; height: 2px;
+  background: var(--kaki);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform .35s var(--ease-fold);
+}
+.site-nav a:hover::after, .site-nav a:focus-visible::after { transform: scaleX(1); }
+
+.head-right { display: flex; align-items: center; gap: 1.4rem; }
+.cities { font-family: var(--mono); font-size: .72rem; letter-spacing: .12em; color: var(--kage); text-transform: uppercase; }
+.basket { font-family: var(--mono); font-size: .78rem; color: var(--sumi); }
+.basket.bump { animation: bump .45s var(--ease-fold); }
+@keyframes bump { 40% { transform: scale(1.18) rotate(-2deg); } }
+.basket { display: inline-block; }
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  /* padding sits outside the measure so the copy's left edge lands on the
+     same 1160px column every section below uses */
+  max-width: calc(var(--maxw) + 2 * clamp(1.25rem, 4vw, 3rem));
+  margin: 0 auto;
+  padding: clamp(7rem, 14vh, 9.5rem) clamp(1.25rem, 4vw, 3rem) clamp(3rem, 7vh, 5rem);
+  display: grid;
+  grid-template-columns: minmax(0, 1.02fr) minmax(0, .98fr);
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: center;
+  min-height: 92vh;
+}
+
+html.js .hero-copy { perspective: 900px; }
+
+.hl {
+  font-size: clamp(2.7rem, 6.4vw, 5rem);
+  line-height: 1.06;
+  font-weight: 700;
+  letter-spacing: -.022em;
+  margin-bottom: 1.4rem;
+}
+.hl .line { display: block; transform-origin: 50% 0; }
+html.js .hl .line { animation: line-unfold .95s var(--ease-fold) both .12s; }
+html.js .hl .line:nth-child(2) { animation-delay: .28s; }
+@keyframes line-unfold {
+  from { transform: rotateX(-74deg); opacity: 0; }
+  to   { transform: none; opacity: 1; }
+}
+
+.hero-sub {
+  max-width: 34rem;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+.hero-sub .jp { color: var(--kaki); }
+html.js .hero-sub, html.js .cta-row, html.js .hero-note {
+  animation: soft-unfold .8s var(--ease-fold) both;
+}
+html.js .hero-sub { animation-delay: .44s; }
+html.js .cta-row { animation-delay: .56s; }
+html.js .hero-note { animation-delay: .68s; }
+@keyframes soft-unfold {
+  from { transform: rotateX(-28deg); opacity: 0; transform-origin: 50% 0; }
+  to   { transform: none; opacity: 1; }
+}
+
+.cta-row { display: flex; gap: .9rem; flex-wrap: wrap; margin-bottom: 2.2rem; }
+.hero-note { color: var(--kage); }
+
+.hero-vert {
+  position: absolute;
+  right: clamp(.2rem, 1.5vw, 1.2rem);
+  top: 52%;
+  writing-mode: vertical-rl;
+  font-size: 1rem;
+  letter-spacing: .35em;
+  color: var(--kage);
+  opacity: .55;
+}
+
+/* ==========================================================================
+   The crane — CSS-only folding loop
+   ========================================================================== */
+
+.crane-fig { margin: 0; position: relative; }
+
+.crane-stage {
+  position: relative;
+  height: clamp(340px, 46vw, 470px);
+  perspective: 1150px;
+  perspective-origin: 50% 24%;
+}
+html.js .crane-fig { animation: soft-unfold 1s var(--ease-fold) both .6s; }
+
+.crane-world {
+  position: absolute;
+  left: 50%; top: 57%;
+  width: 0; height: 0;
+  transform-style: preserve-3d;
+  transform:
+    scale3d(var(--cs2), var(--cs2), var(--cs2))
+    rotateX(-28deg)
+    rotateY(calc(var(--spin) * 1deg));
+}
+.crane-world * { transform-style: preserve-3d; }
+
+/* ---- ground shadow ---- */
+.gshadow {
+  position: absolute;
+  left: -120px; top: -120px;
+  width: 240px; height: 240px;
+  transform: translateX(calc(var(--shx, 0) * 1px)) rotateX(90deg) scale3d(var(--shs), calc(var(--shs) * .78), 1);
+  background: radial-gradient(closest-side, rgba(30,58,86,.42), rgba(30,58,86,.18) 42%, rgba(30,58,86,0) 68%);
+  opacity: var(--sha);
+}
+
+/* ---- the sheet ---- */
+.sheet {
+  position: absolute;
+  left: -120px; top: -120px;
+  width: 240px; height: 240px;
+  /* -1.5px lift keeps the sheet strictly above its own shadow plane.
+     89.97° not 90°: at exactly 90° the layer's screen projection degenerates
+     and Chrome rasterizes url() textures at zero height — the printed crease
+     pattern vanishes. 0.03° restores the texture, invisibly. */
+  transform: translateX(calc(var(--sdx) * 1px)) translateY(-1.5px) rotateX(89.97deg);
+}
+
+.sheet .face { position: absolute; inset: 0; backface-visibility: hidden; }
+.sheet .face.back { transform: rotateX(180deg); background: linear-gradient(150deg, var(--paper-hi), var(--paper-lo)); }
+.sh2 .face.back { transform: rotateY(180deg); }
+
+/* crane crease pattern, printed on the sheet */
+.sh1 { position: absolute; inset: 0; opacity: var(--o1); }
+.sh1-bot, .sh1-flap .face.front {
+  background-color: var(--paper-hi);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cg fill='none'%3E%3Cpath d='M0 0L240 240M240 0L0 240' stroke='%23E4602F' stroke-width='1.6' stroke-dasharray='9 4 2 4'/%3E%3Cpath d='M120 0V240M0 120H240M120 0L240 120L120 240L0 120L120 0' stroke='%231E3A56' stroke-width='1.4' stroke-dasharray='7 6'/%3E%3Cpath d='M0 0L99 41M0 0L41 99M240 0L141 41M240 0L199 99M0 240L41 141M0 240L99 199M240 240L199 141M240 240L141 199' stroke='%231E3A56' stroke-width='1.2' stroke-dasharray='6 6'/%3E%3Crect x='1' y='1' width='238' height='238' stroke='%23B4AA95' stroke-width='1.5'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 240px 240px;
+}
+.sh1-bot {
+  position: absolute; left: 0; top: 120px;
+  width: 240px; height: 120px;
+  background-position: 0 -120px;
+  transform: translateZ(-.5px);
+}
+.sh1-flap {
+  position: absolute; left: 0; top: 0;
+  width: 240px; height: 120px;
+  transform-origin: 50% 100%;
+  transform: rotateX(calc(var(--f1) * -1deg));
+}
+.sh1-flap .face.front { background-position: 0 0; }
+/* flap shade grows as it lifts, fades as it lands */
+.sh1-flap::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(30,58,86,.32), rgba(30,58,86,.04));
+  opacity: calc((90 - max(var(--f1) - 90, 90 - var(--f1))) / 90 * .55);
+  pointer-events: none;
+}
+
+.sh2 {
+  position: absolute; left: 0; top: 120px;
+  width: 240px; height: 120px;
+  opacity: var(--o2);
+}
+.sh2-right, .sh2-flap .face.front, .sh2-flap .face.back, .sh2 .face {
+  background: linear-gradient(150deg, var(--paper-hi), var(--paper-lo));
+}
+.sh2-right {
+  position: absolute; left: 120px; top: 0;
+  width: 120px; height: 120px;
+  transform: translateZ(-.5px);
+}
+.sh2-flap {
+  position: absolute; left: 0; top: 0;
+  width: 120px; height: 120px;
+  transform-origin: 100% 50%;
+  transform: rotateY(calc(var(--f2) * 1deg));
+}
+.sh2-flap::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(to left, rgba(30,58,86,.3), rgba(30,58,86,.04));
+  opacity: calc((90 - max(var(--f2) - 90, 90 - var(--f2))) / 90 * .55);
+  pointer-events: none;
+}
+
+/* 42 gsm kozo shows through: every "blank" face carries a faint ghost of the
+   printed pattern (the 180° face flips mirror it exactly like real show-through),
+   so the paper reads as the printed sheet at every moment of the loop */
+.sheet .face.back,
+.sh2-right, .sh2-flap .face.front {
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cg fill='none' opacity='.32'%3E%3Cpath d='M0 0L240 240M240 0L0 240' stroke='%23E4602F' stroke-width='1.6' stroke-dasharray='9 4 2 4'/%3E%3Cpath d='M120 0V240M0 120H240M120 0L240 120L120 240L0 120L120 0' stroke='%231E3A56' stroke-width='1.4' stroke-dasharray='7 6'/%3E%3Cpath d='M0 0L99 41M0 0L41 99M240 0L141 41M240 0L199 99M0 240L41 141M0 240L99 199M240 240L199 141M240 240L141 199' stroke='%231E3A56' stroke-width='1.2' stroke-dasharray='6 6'/%3E%3Crect x='1' y='1' width='238' height='238' stroke='%23B4AA95' stroke-width='1.5'/%3E%3C/g%3E%3C/svg%3E"),
+    linear-gradient(150deg, var(--paper-hi), var(--paper-lo));
+  background-size: 240px 240px, auto;
+}
+.sh1-flap .face.back { background-position: 0 0, 0 0; }
+.sh2-flap .face.front { background-position: 0 -120px, 0 0; }
+.sh2-right { background-position: -120px -120px, 0 0; }
+.sh2 .face.back {
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cg fill='none' opacity='.32'%3E%3Cpath d='M0 0L240 240M240 0L0 240' stroke='%23E4602F' stroke-width='1.6' stroke-dasharray='9 4 2 4'/%3E%3Cpath d='M120 0V240M0 120H240M120 0L240 120L120 240L0 120L120 0' stroke='%231E3A56' stroke-width='1.4' stroke-dasharray='7 6'/%3E%3Cpath d='M0 0L99 41M0 0L41 99M240 0L141 41M240 0L199 99M0 240L41 141M0 240L99 199M240 240L199 141M240 240L141 199' stroke='%231E3A56' stroke-width='1.2' stroke-dasharray='6 6'/%3E%3Crect x='1' y='1' width='238' height='238' stroke='%23B4AA95' stroke-width='1.5'/%3E%3C/g%3E%3C/svg%3E"),
+    linear-gradient(150deg, var(--paper-hi), var(--paper-lo));
+  background-size: 240px 240px, auto;
+  background-position: 0 -120px, 0 0;
+}
+
+/* ---- the crane rig ---- */
+.crane {
+  position: absolute;
+  left: -160px; top: -238px;
+  width: 320px; height: 238px;
+  transform-origin: 50% 100%;
+  transform: translate3d(0, calc(var(--bob) * 1px), 0) rotateX(calc(var(--lie) * 1deg)) scale3d(var(--bloom), var(--bloom), var(--bloom));
+  opacity: var(--oc);
+}
+
+.crane > div, .neck .head { position: absolute; backface-visibility: visible; }
+
+.keel {
+  left: 78px; top: 120px; width: 170px; height: 118px;
+  clip-path: polygon(0 48px, 82px 0, 170px 48px, 82px 118px);
+  transform-origin: 50% 48px;
+  background: linear-gradient(155deg, var(--paper-hi) 20%, #EFE8D6 60%, var(--paper-lo));
+}
+.k-l { transform: translateZ(.4px) rotateX(calc(var(--splay) * 1deg)); }
+.k-r { transform: translateZ(-.4px) rotateX(calc(var(--splay) * -1deg)); background: linear-gradient(155deg, #F3EDDD 20%, #E9E1CC 60%, #E0D7BE); }
+.keel::after {
+  content: "";
+  position: absolute; inset: 0;
+  clip-path: inherit;
+  background: linear-gradient(to bottom, rgba(30,58,86,.22), rgba(30,58,86,.02) 60%);
+  opacity: calc(var(--splay) / 26 * .38);
+}
+
+.wing {
+  left: 100px; top: 26px; width: 135px; height: 142px;
+  clip-path: polygon(0 100%, 53% 0, 100% 100%);
+  transform-origin: 50% 100%;
+}
+.w-l {
+  transform: translateZ(.7px) rotateX(calc((var(--wing) + var(--flap)) * 1deg));
+  background: linear-gradient(200deg, var(--paper-hi) 30%, #EDE6D2);
+}
+.w-r {
+  transform: translateZ(-.7px) rotateX(calc((var(--wing) + var(--flap)) * -1deg));
+  background: linear-gradient(160deg, #F1EADA 30%, #E3DAC2);
+}
+.wing::after {
+  content: "";
+  position: absolute; inset: 0;
+  clip-path: inherit;
+  background: linear-gradient(to top, rgba(30,58,86,.26), rgba(30,58,86,.03) 70%);
+  opacity: calc((74 - var(--wing)) / 74 * .42 + .05);
+}
+
+/* neck carries the head as a child, so the shape lives on ::before
+   (clip-path on .neck itself would clip the head away) */
+.neck {
+  left: 64px; top: 66px; width: 28px; height: 104px;
+  transform-origin: 50% 100%;
+  transform: translateZ(.2px) rotateZ(calc(var(--neck) * 1deg));
+}
+.neck::before {
+  content: "";
+  position: absolute; inset: 0;
+  clip-path: polygon(12% 100%, 92% 100%, 66% 5%, 40% 0);
+  background: linear-gradient(190deg, var(--paper-hi), #E9E1CC);
+}
+
+.head {
+  left: 0; top: -9px; width: 25px; height: 26px;
+  clip-path: polygon(50% 0, 96% 52%, 58% 100%, 10% 48%);
+  transform-origin: 52% 94%;
+  transform: rotateZ(calc(var(--head) * 1deg));
+  background: linear-gradient(180deg, var(--kaki-b), var(--kaki));
+}
+
+.tail {
+  left: 234px; top: 66px; width: 28px; height: 104px;
+  clip-path: polygon(8% 100%, 88% 100%, 60% 0, 34% 5%);
+  transform-origin: 50% 100%;
+  transform: translateZ(-.2px) rotateZ(calc(var(--tail) * 1deg));
+  background: linear-gradient(170deg, #F3EDDD, #E3DAC2);
+}
+
+.crane-cap {
+  margin-top: .4rem;
+  text-align: center;
+  color: var(--kage);
+}
+.crane-cap .jp { color: var(--kaki); font-size: .95em; }
+
+@media (max-width: 720px) {
+  .crane-stage { --cs2: .78; }
+}
+
+/* ==========================================================================
+   Fold-into-view engine (the page grammar)
+   ========================================================================== */
+
+.fold { position: relative; }
+html.js .fold {
+  transform: perspective(1200px) rotateX(-58deg);
+  transform-origin: 50% 0;
+  transition:
+    transform 1.05s var(--ease-fold) var(--fd, 0s);
+}
+html.js .fold::after {
+  content: "";
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(to bottom, rgba(16,30,46,.34), rgba(16,30,46,.04) 75%);
+  opacity: 1;
+  pointer-events: none;
+  transition: opacity 1.05s var(--ease-fold) var(--fd, 0s);
+  z-index: 5;
+}
+html.js .fold.open { transform: perspective(1200px) rotateX(0); }
+html.js .fold.open::after { opacity: 0; }
+/* once landed, hand transform control back to hover styles */
+html.js .fold.done {
+  transform: none;
+  transition: transform .45s var(--ease-fold), box-shadow .45s var(--ease-fold);
+}
+html.js .fold.done::after { content: none; }
+html.js .kit.fold.done:hover { transform: translateY(-4px); }
+/* swatches are non-rectangular: no rectangular shade overlay
+   (html.js prefix required — must outrank html.js .fold::after) */
+html.js .swatch.fold::after { content: none; }
+
+/* ==========================================================================
+   Section furniture
+   ========================================================================== */
+
+section { padding: clamp(4rem, 9vh, 7rem) clamp(1.25rem, 4vw, 3rem); }
+section[id], footer[id] { scroll-margin-top: 4.2rem; }
+
+.sec-head { max-width: var(--maxw); margin: 0 auto 2.8rem; }
+.eyebrow {
+  color: var(--kaki);
+  text-transform: uppercase;
+  letter-spacing: .22em;
+  font-size: .72rem;
+  margin-bottom: .8rem;
+}
+.eyebrow .jp {
+  text-transform: none;
+  letter-spacing: .1em;
+  font-size: 1.05rem;
+  vertical-align: -.08em;
+  margin-left: .4rem;
+}
+.sec-head h2 {
+  font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: -.015em;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+.sec-sub { max-width: 40rem; margin-top: 1rem; color: var(--kage); }
+
+/* ==========================================================================
+   Manifesto — the tri-fold letter
+   ========================================================================== */
+
+.manifesto { padding-bottom: clamp(5rem, 11vh, 8rem); }
+.manifesto .sec-head { text-align: center; }
+.manifesto .sec-sub { margin-left: auto; margin-right: auto; }
+
+.letter {
+  max-width: 720px;
+  margin: 0 auto;
+  perspective: 1500px;
+}
+
+.lw2, .lw3 {
+  transform-origin: 50% 0;
+  transform-style: preserve-3d;
+}
+html.js .lw2 { transform: rotateX(calc(var(--a2, 0) * 1deg)); }
+html.js .lw3 { transform: rotateX(calc(var(--a3, 0) * 1deg)); }
+
+.lp {
+  position: relative;
+  min-height: clamp(190px, 30vw, 236px);
+  padding: clamp(1.6rem, 4vw, 2.6rem) clamp(1.4rem, 5vw, 3.2rem);
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='280' height='280' filter='url(%23n)'/%3E%3C/svg%3E"),
+    linear-gradient(168deg, #24435F, var(--ai) 55%, #19314A);
+  color: var(--washi);
+  transform-style: preserve-3d;
+}
+.p1 { border-radius: 4px 4px 0 0; }
+.p3 { border-radius: 0 0 4px 4px; }
+
+/* crease highlight at each hinge */
+.p2::after, .p3::after {
+  content: "";
+  position: absolute; left: 0; right: 0; top: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(244,239,227,.4), transparent);
+}
+
+/* back face of a folded panel */
+.lp::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, #16293D, #101E2E);
+  transform: rotateX(180deg);
+  backface-visibility: hidden;
+  border-radius: inherit;
+}
+.pc { backface-visibility: hidden; position: relative; }
+
+/* content dims while its panel is mid-fold (a3n = |a3|, set from JS) */
+html.js .lw2 .p2 .pc { opacity: calc(1 - var(--a2, 0) / 170 * .92); }
+html.js .lw3 .p3 .pc { opacity: calc(1 - var(--a3n, 0) / 170 * .92); }
+
+/* soft shadow that moves with the fold angle: strongest when the panel has
+   barely lifted off its neighbour, gone when the letter lies open */
+.fshade {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  backface-visibility: hidden;
+  background: linear-gradient(to bottom, rgba(8,15,24,.55), rgba(8,15,24,.06) 80%);
+  opacity: 0;
+}
+html.js .p2 .fshade { opacity: calc(var(--a2, 0) / 176 * .8); }
+html.js .p3 .fshade { opacity: calc(var(--a3n, 0) / 176 * .8); }
+
+.lp h3 { margin-bottom: .5rem; }
+.lp .big {
+  font-size: clamp(1.7rem, 4.4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -.015em;
+}
+.p1 .big { color: var(--washi); }
+.p2 .big { color: var(--sakura); }
+.p3 .big { color: var(--kaki-b); }
+.lp p { max-width: 33rem; color: rgba(244,239,227,.86); }
+
+/* ==========================================================================
+   Kits
+   ========================================================================== */
+
+.kit-grid {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.2rem, 2.5vw, 2rem);
+}
+
+.kit {
+  display: grid;
+  grid-template-columns: minmax(150px, 205px) minmax(0, 1fr);
+  gap: clamp(1rem, 2vw, 1.6rem);
+  background: var(--paper-hi);
+  border-radius: 5px;
+  padding: clamp(1.1rem, 2.2vw, 1.6rem);
+  box-shadow: 0 1px 2px rgba(38,34,27,.08), 0 10px 28px -18px rgba(38,34,27,.35);
+  transition: transform .45s var(--ease-fold), box-shadow .45s var(--ease-fold);
+}
+.kit:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 2px 4px rgba(38,34,27,.08), 0 22px 44px -20px rgba(38,34,27,.42);
+}
+/* dog-eared corner — folds further open on hover */
+.kit::before {
+  content: "";
+  position: absolute; top: 0; right: 0;
+  width: 46px; height: 46px;
+  background: linear-gradient(to bottom left,
+    var(--washi) 0 49.2%,
+    rgba(38,34,27,.2) 49.2% 51%,
+    #E7DFCB 51% 60%,
+    #F3EDDD 78%, #FAF5E9 100%);
+  transform: scale(.6);
+  transform-origin: 100% 0;
+  transition: transform .4s var(--ease-fold);
+  z-index: 2;
+  pointer-events: none;
+}
+.kit:hover::before, .kit:focus-within::before { transform: scale(1); }
+
+.cp-wrap {
+  background: var(--washi2);
+  border-radius: 4px;
+  padding: 10%;
+  align-self: start;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+}
+.cp { width: 100%; height: auto; display: block; overflow: visible; }
+.cp .edge { fill: none; stroke: var(--kage-ln); stroke-width: 1.5; }
+.cp .m { fill: none; stroke: var(--kaki-b); stroke-width: 1.7; stroke-dasharray: 9 4 2 4; }
+.cp .v { fill: none; stroke: var(--ai); stroke-width: 1.4; stroke-dasharray: 7 6; }
+.kit:hover .cp .m, .kit:hover .cp .v { animation: crease-march 1.6s linear infinite; }
+@keyframes crease-march { to { stroke-dashoffset: -19; } }
+
+.kit-id { color: var(--kage); letter-spacing: .18em; }
+.kit-name {
+  font-size: clamp(1.35rem, 2.4vw, 1.7rem);
+  font-weight: 700;
+  letter-spacing: -.01em;
+  line-height: 1.2;
+  margin: .1rem 0 .2rem;
+}
+.kit-name .jp { color: var(--kaki); font-size: .88em; margin-left: .3rem; }
+.kit-spec { color: var(--kaki); margin-bottom: .55rem; }
+.kit-desc { font-size: .95rem; margin-bottom: .7rem; }
+.kit-stock { color: var(--kage); margin-bottom: 1rem; }
+
+.dot {
+  display: inline-block;
+  width: 13px; height: 13px;
+  border-radius: 50%;
+  vertical-align: -2px;
+  margin: 0 1px;
+  border: 1px solid rgba(38,34,27,.25);
+}
+.d-kozo { background: #EDE5CF; }
+.d-kaki { background: #C4622F; }
+.d-ai { background: #31517A; }
+.d-sakura { background: #E5B7AC; }
+
+.kit-buy { display: flex; align-items: center; gap: 1rem; }
+.price { font-family: var(--mono); font-size: 1.25rem; font-weight: 500; color: var(--sumi); }
+.btn-add { font-size: .88rem; padding: .8em 1.3em; }
+.btn-add.added { background: var(--ai); }
+
+/* ==========================================================================
+   Notation legend
+   ========================================================================== */
+
+.notation { background: var(--washi2); padding-top: clamp(3rem, 7vh, 5rem); padding-bottom: clamp(3rem, 7vh, 5rem); }
+
+.nota-inner {
+  max-width: 880px;
+  margin: 0 auto;
+  background: var(--paper-hi);
+  border-radius: 5px;
+  padding: clamp(1.8rem, 4vw, 3rem);
+  box-shadow: 0 1px 2px rgba(38,34,27,.08), 0 14px 34px -22px rgba(38,34,27,.4);
+}
+.nota-title { font-size: clamp(1.4rem, 2.6vw, 1.8rem); font-weight: 700; margin-bottom: 1.6rem; text-wrap: balance; }
+.nota-cols {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: clamp(1.2rem, 3vw, 2.4rem);
+  margin-bottom: 1.4rem;
+}
+.nota-line { width: 100%; max-width: 260px; height: 12px; display: block; margin-bottom: .5rem; }
+.nota-line .m { fill: none; stroke: var(--kaki-b); stroke-width: 2.4; stroke-dasharray: 12 5 3 5; }
+.nota-line .v { fill: none; stroke: var(--ai); stroke-width: 2.2; stroke-dasharray: 9 7; }
+.nota-name { font-weight: 700; }
+.nota-name .jp { color: var(--kaki); font-size: .9em; margin-left: .3rem; }
+.nota-desc { font-size: .92rem; color: var(--kage); }
+.nota-note { font-size: .95rem; max-width: 34rem; }
+
+/* ==========================================================================
+   Paper — washi swatches on indigo
+   ========================================================================== */
+
+.paper {
+  background: linear-gradient(180deg, #1B3550, var(--ai) 40%, #1A334C);
+  color: var(--washi);
+}
+.paper .sec-head h2 { color: var(--washi); }
+.paper .sec-sub { color: rgba(244,239,227,.72); }
+.eyebrow-light { color: var(--sakura); }
+.eyebrow-light .jp { color: var(--sakura); }
+
+.swatch-grid {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: clamp(1.2rem, 2.5vw, 2rem);
+}
+/* tablet band: 2×2 instead of an orphaned fourth swatch under a row of three */
+@media (min-width: 641px) and (max-width: 1023px) {
+  .swatch-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+.swatch {
+  margin: 0;
+  text-align: left;
+}
+.swatch-svg {
+  width: 100%; height: auto; display: block;
+  filter: drop-shadow(0 14px 22px rgba(6,12,20,.45));
+  transition: transform .5s var(--ease-fold);
+}
+.swatch:hover .swatch-svg { transform: translateY(-6px) rotate(-.8deg); }
+.sw-name { font-weight: 700; margin-top: .9rem; }
+.sw-name .jp { color: var(--sakura); font-size: .9em; margin-left: .25rem; }
+.sw-spec { color: rgba(244,239,227,.66); margin: .15rem 0 .3rem; }
+.sw-desc { font-size: .92rem; color: rgba(244,239,227,.85); }
+
+/* ==========================================================================
+   Workshops
+   ========================================================================== */
+
+.workshops { max-width: calc(var(--maxw) + 2 * clamp(1.25rem, 4vw, 3rem)); margin: 0 auto; }
+
+.sched {
+  position: relative;
+  max-width: var(--maxw);
+  margin: 0 auto 2rem;
+  background: var(--paper-hi);
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(38,34,27,.08), 0 14px 34px -22px rgba(38,34,27,.4);
+  font-family: var(--mono);
+  font-size: .85rem;
+}
+.sched-scroll { overflow-x: auto; }
+.sched-row {
+  display: grid;
+  grid-template-columns: 120px 100px minmax(0, 1fr) 90px 90px;
+  gap: .8rem;
+  padding: .9rem 1.4rem;
+  align-items: baseline;
+  border-top: 1px solid var(--washi2);
+}
+.sched-head {
+  border-top: none;
+  background: var(--washi2);
+  color: var(--kage);
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  font-size: .7rem;
+}
+.sched-row:not(.sched-head):hover { background: var(--washi2); }
+.sched-row span:nth-child(4), .sched-row span:nth-child(5) { text-align: right; }
+.sched-row span:nth-child(5) { color: var(--kaki); }
+.sched-head span:nth-child(5) { color: var(--kage); }
+.is-soldout { color: var(--kage); }
+.is-soldout span:nth-child(4) { color: var(--kaki); }
+
+.private {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  background: linear-gradient(160deg, #F3D3CA, var(--sakura));
+  border-radius: 5px;
+  padding: clamp(1.6rem, 3.5vw, 2.4rem);
+  box-shadow: 0 1px 2px rgba(38,34,27,.06), 0 12px 30px -20px rgba(38,34,27,.35);
+}
+.private h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: .4rem; }
+.private p { max-width: 38rem; }
+.private-mail { margin-top: .8rem; }
+.private a { color: var(--kaki); font-weight: 500; }
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.site-foot {
+  position: relative;
+  background: var(--kon);
+  color: rgba(244,239,227,.85);
+  padding: clamp(3.5rem, 8vh, 6rem) clamp(1.25rem, 4vw, 3rem) 2rem;
+  overflow: hidden;
+}
+
+.watermark {
+  position: absolute;
+  right: clamp(.5rem, 4vw, 3rem);
+  top: 50%;
+  transform: translateY(-50%);
+  writing-mode: vertical-rl;
+  font-size: clamp(5rem, 14vw, 11rem);
+  color: var(--washi);
+  opacity: .05;
+  pointer-events: none;
+  line-height: 1;
+}
+
+.foot-grid {
+  position: relative;
+  max-width: var(--maxw);
+  margin: 0 auto 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: clamp(2rem, 4vw, 3.5rem);
+}
+.foot-h {
+  color: var(--sakura);
+  text-transform: uppercase;
+  letter-spacing: .18em;
+  font-size: .72rem;
+  margin-bottom: .9rem;
+}
+.foot-h .jp { text-transform: none; font-size: 1rem; margin-left: .3rem; color: var(--sakura); }
+address { font-style: normal; line-height: 1.9; font-size: .95rem; }
+
+.foot-news p { font-size: .95rem; margin-bottom: 1rem; max-width: 26rem; }
+.news-form { display: flex; gap: .6rem; flex-wrap: wrap; }
+.news-form input {
+  flex: 1 1 200px;
+  font-family: var(--mono);
+  font-size: .85rem;
+  padding: .8em 1em;
+  border: 1.5px solid rgba(244,239,227,.3);
+  border-radius: 3px;
+  background: rgba(244,239,227,.06);
+  color: var(--washi);
+}
+.news-form input::placeholder { color: rgba(244,239,227,.4); }
+.news-form input:focus-visible { outline-color: var(--sakura); }
+.news-done { font-family: var(--mono); font-size: .9rem; color: var(--sakura); }
+
+.foot-fine {
+  position: relative;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding-top: 1.4rem;
+  border-top: 1px solid rgba(244,239,227,.14);
+  color: rgba(244,239,227,.5);
+  font-size: .72rem;
+  letter-spacing: .06em;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 960px) {
+  .hero { grid-template-columns: 1fr; min-height: 0; padding-top: 6.5rem; }
+  .crane-fig { order: 2; }
+  .hero-vert { display: none; }
+  .kit-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  section { padding-top: 3.4rem; padding-bottom: 3.4rem; }
+  .sec-head { margin-bottom: 2rem; }
+  .cities { display: none; }
+  .site-nav { gap: 1rem; }
+  .site-nav a { font-size: .85rem; }
+  .kit { grid-template-columns: 1fr; }
+  .cp-wrap { max-width: 300px; }
+  .sched { font-size: .78rem; }
+  /* fixed row width > any phone viewport: header wash + right padding survive
+     the horizontal scroll, and every row's columns stay aligned */
+  .sched-row { grid-template-columns: 88px 72px minmax(140px, 1fr) 64px 70px; padding: .8rem .9rem; gap: .5rem; min-width: 500px; }
+  /* right-edge fade = "more columns this way"; lifts once scrolled to the end */
+  html.js .sched::before {
+    content: "";
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 36px;
+    background: linear-gradient(to left, var(--paper-hi) 15%, rgba(251,247,236,0));
+    pointer-events: none;
+    z-index: 4;
+    opacity: 1;
+    transition: opacity .35s var(--ease-fold);
+  }
+  html.js .sched.at-end::before { opacity: 0; }
+}
+
+@media (max-width: 420px) {
+  .wm-jp { display: none; }
+  .site-head { gap: 1rem; }
+  .site-nav { gap: .8rem; }
+  .basket { font-size: .72rem; }
+}
+
+/* ==========================================================================
+   Reduced motion — everything opens, nothing spins
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html.js .fold { transform: none; transition: none; }
+  html.js .fold::after { opacity: 0; transition: none; }
+  html.js .hl .line, html.js .hero-sub, html.js .cta-row,
+  html.js .hero-note, html.js .crane-fig, html.js .site-head { animation: none; }
+  html.js .lw2, html.js .lw3 { transform: none; }
+  html.js .lw2 .p2 .pc, html.js .lw3 .p3 .pc { opacity: 1; }
+  html.js .p2 .fshade, html.js .p3 .fshade { opacity: 0; }
+  .kit:hover .cp .m, .kit:hover .cp .v { animation: none; }
+  .btn, .site-nav a::after, .swatch-svg, .kit, .kit::before { transition: none; }
+  html.js .sched::before { transition: none; }
+}

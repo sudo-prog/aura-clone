@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NIGHTDRIVE RECORDS — music for the last hour of the night</title>
+<meta name="description" content="Independent synthwave label. Fourteen releases, four artists, zero songs about the daytime. Pressed after dark in Duarte, California.">
+<meta property="og:title" content="NIGHTDRIVE RECORDS">
+<meta property="og:description" content="Music for the last hour of the night. Fourteen releases, four artists, zero songs about the daytime.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0B0614">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Cdefs%3E%3ClinearGradient%20id='g'%20x1='0'%20y1='0'%20x2='0'%20y2='1'%3E%3Cstop%20offset='0'%20stop-color='%23FF8A3C'/%3E%3Cstop%20offset='1'%20stop-color='%23FF2E88'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width='32'%20height='32'%20rx='6'%20fill='%230B0614'/%3E%3Ccircle%20cx='16'%20cy='14'%20r='9'%20fill='url(%23g)'/%3E%3Crect%20x='5'%20y='16.5'%20width='22'%20height='1.4'%20fill='%230B0614'/%3E%3Crect%20x='5'%20y='19.5'%20width='22'%20height='2'%20fill='%230B0614'/%3E%3Crect%20x='4'%20y='25'%20width='24'%20height='1.6'%20fill='%233CE6FF'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/Orbitron-01.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/Orbitron.css">
+<link rel="stylesheet" href="fonts/Syncopate.css">
+<link rel="stylesheet" href="fonts/ChakraPetch.css">
+<link rel="stylesheet" href="css/style.css">
+<script type="importmap">
+{"imports":{"three":"./vendor/three.module.min.js","three/addons/":"./vendor/addons/"}}
+</script>
+</head>
+<body>
+
+<canvas id="drive" aria-hidden="true"></canvas>
+<div id="drive-fallback" aria-hidden="true"></div>
+<div id="ignition-veil" aria-hidden="true"></div>
+<div id="crt" aria-hidden="true"></div>
+<div id="speedwind" aria-hidden="true"></div>
+
+<header class="signage">
+  <a class="wordmark" href="#top" aria-label="Nightdrive Records — home">
+    <span class="wm-night">NIGHTDRIVE</span><span class="wm-rec">RECORDS</span>
+  </a>
+  <nav aria-label="Main">
+    <a href="#roster">Roster</a>
+    <a href="#catalog">Catalog</a>
+    <a href="#transmission">Transmission</a>
+  </nav>
+  <span class="est">EST. 2021 · DUARTE, CA</span>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" aria-label="Nightdrive Records">
+    <p class="eyebrow rv"><span class="nb">INDEPENDENT SYNTHWAVE LABEL</span> <span class="eyebrow-sep">·</span> <span class="nb">NDR-001 → NDR-014</span></p>
+    <h1 class="chrome-title">
+      NIGHTDRIVE
+      <span class="records-sub">RECORDS</span>
+    </h1>
+    <p class="tagline rv">Music for the last hour of the night.<br>
+    <span class="tagline-dim"><span class="nb">2 AM highway.</span> <span class="nb">Tank full.</span> <span class="nb">Nowhere to be.</span></span></p>
+    <a class="scroll-cue rv" href="#label">
+      <span class="cue-label">SCROLL TO ACCELERATE</span>
+      <span class="cue-arrow" aria-hidden="true">▼</span>
+    </a>
+  </section>
+
+  <!-- ============ THE LABEL ============ -->
+  <section id="label" class="panel-wrap">
+    <div class="panel rv">
+      <p class="eyebrow">THE LABEL</p>
+      <h2 class="chrome-h2">PRESSED AFTER DARK</h2>
+      <div class="prose">
+        <p>Nightdrive Records started in October 2021 in a two-car garage off
+        Huntington Drive in Duarte, California — one Juno-60 with a sticky G key,
+        one four-track, one busted VCR used as a mastering reference. We press
+        music for the hour when the interstate empties out and the radio starts
+        telling the truth.</p>
+        <p>Every release ships on chrome cassette and translucent 12-inch vinyl,
+        mastered loud enough to survive factory car speakers. Mixed for the
+        driver's seat, not the listening room. If a track doesn't work at 88
+        miles per hour with the windows down, it doesn't come out.</p>
+      </div>
+      <dl class="label-stats" aria-label="Label statistics">
+        <div><dt>RELEASES</dt><dd>14</dd></div>
+        <div><dt>ARTISTS</dt><dd>4</dd></div>
+        <div><dt>SONGS ABOUT DAYTIME</dt><dd>0</dd></div>
+        <div><dt>REFERENCE SPEED</dt><dd>88<span class="unit">MPH</span></dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ============ ROSTER ============ -->
+  <section id="roster" class="panel-wrap">
+    <div class="section-head rv">
+      <p class="eyebrow">THE ROSTER</p>
+      <h2 class="chrome-h2">FOUR ARTISTS. ONE HIGHWAY.</h2>
+    </div>
+    <div class="roster-grid">
+
+      <article class="artist-card rv" data-accent="cyan">
+        <div class="tilt-zone">
+          <div class="cassette">
+            <div class="cassette-screw sc-tl"></div><div class="cassette-screw sc-tr"></div>
+            <div class="cassette-screw sc-bl"></div><div class="cassette-screw sc-br"></div>
+            <div class="cassette-label">
+              <div class="label-stripes" aria-hidden="true"><i></i><i></i><i></i></div>
+              <p class="label-side">SIDE A · STEREO · TYPE II CrO₂</p>
+              <p class="label-artist">MIDNIGHT<br>INTERCHANGE</p>
+            </div>
+            <div class="cassette-window">
+              <div class="spool spool-l"><i></i></div>
+              <div class="tape-run"></div>
+              <div class="spool spool-r"><i></i></div>
+            </div>
+            <div class="cassette-foot">
+              <span>NDR-011</span><span>C-43</span><span>NR · OFF</span>
+            </div>
+            <div class="glare" aria-hidden="true"></div>
+          </div>
+        </div>
+        <h3>Midnight Interchange</h3>
+        <p class="artist-tag">FOUR-LEVEL OVERPASS MUSIC</p>
+        <p class="artist-bio">Twin brothers Ray and Sal Okafor record one take per
+        song, live, from a hatchback parked under the I-10/I-110 stack. Their
+        sequencers clock-sync to the streetlight timers overhead.</p>
+        <p class="artist-key"><span>KEY RELEASE</span> <a href="#catalog">NDR-011 · FOUR LEVEL · 43:11</a></p>
+      </article>
+
+      <article class="artist-card rv" data-accent="orange">
+        <div class="tilt-zone">
+          <div class="cassette">
+            <div class="cassette-screw sc-tl"></div><div class="cassette-screw sc-tr"></div>
+            <div class="cassette-screw sc-bl"></div><div class="cassette-screw sc-br"></div>
+            <div class="cassette-label">
+              <div class="label-stripes" aria-hidden="true"><i></i><i></i><i></i></div>
+              <p class="label-side">SIDE B · STEREO · TYPE II CrO₂</p>
+              <p class="label-artist">PALM<br>STATIC</p>
+            </div>
+            <div class="cassette-window">
+              <div class="spool spool-l"><i></i></div>
+              <div class="tape-run"></div>
+              <div class="spool spool-r"><i></i></div>
+            </div>
+            <div class="cassette-foot">
+              <span>NDR-007</span><span>C-45</span><span>NR · OFF</span>
+            </div>
+            <div class="glare" aria-hidden="true"></div>
+          </div>
+        </div>
+        <h3>Palm Static</h3>
+        <p class="artist-tag">FM GHOSTS FROM A DROWNED BEACH TOWN</p>
+        <p class="artist-bio">Nobody at the label has met Palm Static. Masters
+        arrive as TDK SA-90 cassettes postmarked Cocoa Beach, wrapped in pages
+        torn from 1986 TV listings. We press exactly what's on the tape.</p>
+        <p class="artist-key"><span>KEY RELEASE</span> <a href="#catalog">NDR-007 · CHANNEL 6 SIGN-OFF · 44:56</a></p>
+      </article>
+
+      <article class="artist-card rv" data-accent="magenta">
+        <div class="tilt-zone">
+          <div class="cassette">
+            <div class="cassette-screw sc-tl"></div><div class="cassette-screw sc-tr"></div>
+            <div class="cassette-screw sc-bl"></div><div class="cassette-screw sc-br"></div>
+            <div class="cassette-label">
+              <div class="label-stripes" aria-hidden="true"><i></i><i></i><i></i></div>
+              <p class="label-side">SIDE A · STEREO · TYPE II CrO₂</p>
+              <p class="label-artist">VECTOR<br>HEART</p>
+            </div>
+            <div class="cassette-window">
+              <div class="spool spool-l"><i></i></div>
+              <div class="tape-run"></div>
+              <div class="spool spool-r"><i></i></div>
+            </div>
+            <div class="cassette-foot">
+              <span>NDR-005</span><span>C-39</span><span>NR · OFF</span>
+            </div>
+            <div class="glare" aria-hidden="true"></div>
+          </div>
+        </div>
+        <h3>Vector Heart</h3>
+        <p class="artist-tag">ITALO ROMANCE FOR ARCADE CARPET</p>
+        <p class="artist-bio">Lucia Vann wrote her first EP inside a circuit-bent
+        Konami cabinet at Galaxy Zone, Reseda — the one that still shows her
+        initials, LUV, on every high-score table it has left.</p>
+        <p class="artist-key"><span>KEY RELEASE</span> <a href="#catalog">NDR-005 · HIGH SCORE INITIALS · 38:37</a></p>
+      </article>
+
+      <article class="artist-card rv" data-accent="chrome">
+        <div class="tilt-zone">
+          <div class="cassette">
+            <div class="cassette-screw sc-tl"></div><div class="cassette-screw sc-tr"></div>
+            <div class="cassette-screw sc-bl"></div><div class="cassette-screw sc-br"></div>
+            <div class="cassette-label">
+              <div class="label-stripes" aria-hidden="true"><i></i><i></i><i></i></div>
+              <p class="label-side">SIDE B · STEREO · TYPE II CrO₂</p>
+              <p class="label-artist">CHROME<br>TEARS</p>
+            </div>
+            <div class="cassette-window">
+              <div class="spool spool-l"><i></i></div>
+              <div class="tape-run"></div>
+              <div class="spool spool-r"><i></i></div>
+            </div>
+            <div class="cassette-foot">
+              <span>NDR-013</span><span>C-46</span><span>NR · OFF</span>
+            </div>
+            <div class="glare" aria-hidden="true"></div>
+          </div>
+        </div>
+        <h3>Chrome Tears</h3>
+        <p class="artist-tag">BALLADS FOR THE LONG WAY HOME</p>
+        <p class="artist-bio">Everything Chrome Tears records passes through a
+        contact mic taped to a rained-on windshield. 68 BPM, always. He says
+        anything faster is showing off.</p>
+        <p class="artist-key"><span>KEY RELEASE</span> <a href="#catalog">NDR-013 · CHROME TEARS · 45:58</a></p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ CATALOG ============ -->
+  <section id="catalog" class="panel-wrap">
+    <div class="panel panel-wide rv">
+      <p class="eyebrow">FULL CATALOG</p>
+      <h2 class="chrome-h2"><span class="nb">NDR-001</span> → <span class="nb">NDR-014</span></h2>
+      <p class="catalog-note">Every title in print. Chrome cassette unless noted.
+      Runtimes are exact — we time them at the pressing plant.</p>
+      <div class="table-wrap">
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Release catalog">
+        <table class="catalog">
+          <thead>
+            <tr><th scope="col">CAT №</th><th scope="col">ARTIST</th><th scope="col">TITLE</th><th scope="col">YEAR</th><th scope="col">FORMAT</th><th scope="col" class="num">RUNTIME</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>NDR-001</td><td>Midnight Interchange</td><td>Onramp EP</td><td>2021</td><td>CS</td><td class="num">22:14</td></tr>
+            <tr><td>NDR-002</td><td>Vector Heart</td><td>Insert Coin, Insert Heart EP</td><td>2021</td><td>CS</td><td class="num">19:48</td></tr>
+            <tr><td>NDR-003</td><td>Palm Static</td><td>Weather for Ghosts</td><td>2022</td><td>LP + CS</td><td class="num">41:02</td></tr>
+            <tr><td>NDR-004</td><td>Midnight Interchange</td><td>Carpool Lane (Empty)</td><td>2022</td><td>DIGITAL</td><td class="num">06:51</td></tr>
+            <tr><td>NDR-005</td><td>Vector Heart</td><td>High Score Initials</td><td>2022</td><td>LP</td><td class="num">38:37</td></tr>
+            <tr><td>NDR-006</td><td>Chrome Tears</td><td>Wiper Blades EP</td><td>2022</td><td>CS</td><td class="num">24:19</td></tr>
+            <tr><td>NDR-007</td><td>Palm Static</td><td>Channel 6 Sign-Off</td><td>2023</td><td>LP + CS</td><td class="num">44:56</td></tr>
+            <tr><td>NDR-008</td><td>Various Artists</td><td>NIGHTDRIVE: Year One</td><td>2023</td><td>LP</td><td class="num">52:40</td></tr>
+            <tr><td>NDR-009</td><td>Chrome Tears</td><td>The Long Way Home</td><td>2023</td><td>LP</td><td class="num">47:23</td></tr>
+            <tr><td>NDR-010</td><td>Vector Heart</td><td>Continue? (10…9…) EP</td><td>2023</td><td>CS</td><td class="num">21:05</td></tr>
+            <tr><td>NDR-011</td><td>Midnight Interchange</td><td>Four Level</td><td>2024</td><td>LP + CS</td><td class="num">43:11</td></tr>
+            <tr><td>NDR-012</td><td>Palm Static</td><td>Rewind Weather EP</td><td>2024</td><td>CS</td><td class="num">18:26</td></tr>
+            <tr><td>NDR-013</td><td>Chrome Tears</td><td>Chrome Tears</td><td>2024</td><td>LP</td><td class="num">45:58</td></tr>
+            <tr><td>NDR-014</td><td>Various Artists</td><td>88 MPH: A Nightdrive Sampler</td><td>2025</td><td>LP + CS + DIG</td><td class="num">58:12</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-hint">DRAG FOR RUNTIMES →</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRANSMISSION ============ -->
+  <section id="transmission" class="panel-wrap">
+    <div class="panel rv">
+      <p class="eyebrow">TRANSMISSION</p>
+      <h2 class="chrome-h2">SEND US THE NIGHT</h2>
+      <div class="prose">
+        <p>Demo policy, in full: one track, no edits, recorded after midnight or
+        don't bother. Tell us the speed you mixed it at — we will check.</p>
+      </div>
+      <ul class="transmit-list">
+        <li><span>DEMOS</span><a href="mailto:demos@nightdriverecords.example">demos@nightdriverecords.example</a></li>
+        <li><span>SYNC + LICENSING</span><a href="mailto:sync@nightdriverecords.example">sync@nightdriverecords.example</a></li>
+        <li><span>MAIL</span>P.O. Box 1984, Duarte, CA 91010</li>
+        <li><span>RADIO</span>NIGHTDRIVE FM · 88.8 The Grid · Thursdays 2–4 AM</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <p class="foot-mark">NIGHTDRIVE RECORDS</p>
+  <p class="foot-line">© 2026 Nightdrive Records · Duarte, California · Pressed after dark.</p>
+  <p class="foot-line dim">Drive safe. Listen loud. Every artist, release and frequency on this page is fiction.</p>
+</footer>
+
+<!-- ============ DASHBOARD HUD ============ -->
+<div class="dash" role="region" aria-label="Dashboard: engine audio and speed">
+  <button id="engine-btn" type="button" aria-pressed="false">
+    <span class="btn-ring" aria-hidden="true"></span>
+    <span class="btn-text">ENGINE<br>START</span>
+  </button>
+  <div class="viz-wrap" aria-hidden="true">
+    <canvas id="viz" width="280" height="44"></canvas>
+    <span class="viz-label">AUX · SYNTH BUS</span>
+  </div>
+  <div class="dash-meters" aria-hidden="true">
+    <div class="meter speed">
+      <span class="meter-value" id="speed-val">088</span>
+      <span class="meter-label">MPH</span>
+    </div>
+    <div class="meter trip">
+      <span class="meter-value" id="trip-val">000.0</span>
+      <span class="meter-label">TRIP MI</span>
+    </div>
+  </div>
+  <p class="visually-hidden">Speed readout responds to how fast you scroll. Engine start plays generated synthesizer audio.</p>
+</div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

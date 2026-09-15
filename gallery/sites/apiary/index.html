@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tenth Floor Apiary — Rooftop Beekeeping Cooperative</title>
+<meta name="description" content="Seven hives on three rooftops, ten floors above Delancey Street. Single-rooftop honey, named queens, Sunday inspections. Veils provided.">
+<meta property="og:title" content="Tenth Floor Apiary — Rooftop Beekeeping Cooperative">
+<meta property="og:description" content="Seven hives, three rooftops, 348,000 workers on the wing. Single-rooftop honey and named queens, ten floors above Delancey Street.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#FAF0DB">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 3 L57 17.5 V46.5 L32 61 L7 46.5 V17.5 Z' fill='%23DE8F0A' stroke='%2338220D' stroke-width='4'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/Fredoka-03.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Archivo-03.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/Fredoka.css">
+<link rel="stylesheet" href="fonts/Archivo.css">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<canvas id="bees" aria-hidden="true"></canvas>
+
+<header class="topbar">
+  <a class="brand" href="#top" aria-label="Tenth Floor Apiary — back to top">
+    <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 3 L57 17.5 V46.5 L32 61 L7 46.5 V17.5 Z" fill="var(--nectar)" stroke="var(--propolis)" stroke-width="4"/><path d="M32 20 L43 26.5 V39.5 L32 46 L21 39.5 V26.5 Z" fill="var(--cream)"/></svg>
+    <span class="brand-name">Tenth Floor Apiary</span>
+  </a>
+  <nav class="topnav" aria-label="Sections">
+    <a href="#coop">The Co-op</a>
+    <a href="#registry">Registry</a>
+    <a href="#harvest">Harvest</a>
+    <a href="#dance">The Dance</a>
+    <a class="topnav-cta" href="#join">Join</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="top" aria-label="Introduction">
+    <div class="hero-comb comb" data-comb data-mode="field" data-flower="edges" aria-hidden="true"></div>
+    <div class="hive-door" aria-hidden="true">
+      <span class="hive-door-slot"></span>
+      <span class="hive-door-label">Hive entrance</span>
+      <span id="hiveEntrance"></span>
+    </div>
+    <div class="hero-copy">
+      <p class="eyebrow">Rooftop beekeeping cooperative · Est. 2019 · Lower East Side</p>
+      <h1>Ten floors up,<br>the city hums.</h1>
+      <p class="hero-sub">Tenth Floor Apiary keeps seven hives on three rooftops above
+      Delancey Street — forty-one members, one shared smoker, and roughly 348,000
+      workers on the wing by July.</p>
+      <div class="hero-actions">
+        <a class="btn btn--solid" href="#harvest">Reserve a jar</a>
+        <a class="btn btn--line" href="#registry">Meet the queens</a>
+      </div>
+      <p class="hero-note">Sunday inspections, 9 a.m. sharp · Veils provided</p>
+    </div>
+  </section>
+
+  <!-- ============ THE CO-OP ============ -->
+  <section class="section" id="coop">
+    <div class="wrap coop-grid">
+      <div class="coop-text reveal">
+        <p class="eyebrow"><span class="hexglyph" aria-hidden="true"></span>The Co-op</p>
+        <h2>Forty-one members, one smoker, and no landlord among the bees.</h2>
+        <p>We started in 2019 with two hives beside the water tower at 143 Delancey,
+        because the deck was empty and the lindens two blocks over were not. The
+        building said yes before anyone thought to ask what a swarm looks like from
+        the eighth-floor window.</p>
+        <p>Seven seasons later the co-op runs seven Langstroth hives across three
+        rooftops. We raise our own queens rather than ordering them by mail, split
+        strong colonies instead of buying packages, and jar every harvest by rooftop
+        and season — never blended, never heated past hive temperature. Every drop
+        came from a roof you can see from the fire escape.</p>
+        <p>Dues cover woodenware, sugar for the lean months, and the honey share.
+        Arguments about frame spacing are settled by whoever is holding the smoker.</p>
+      </div>
+      <div class="coop-stats comb" data-comb data-halo="1" data-halo-p="0.55" data-flower role="group" aria-label="Co-op by the numbers">
+        <div class="cell cell--content stat" data-q="0" data-r="0"><div class="cell-in">
+          <strong data-count="348" data-suffix="k">348k</strong><span>summer workers</span>
+        </div></div>
+        <div class="cell cell--content stat" data-q="1" data-r="0"><div class="cell-in">
+          <strong data-count="7">7</strong><span>hives in the registry</span>
+        </div></div>
+        <div class="cell cell--content stat" data-q="0" data-r="1"><div class="cell-in">
+          <strong data-count="3">3</strong><span>rooftops, one block apart</span>
+        </div></div>
+        <div class="cell cell--content stat" data-q="1" data-r="1"><div class="cell-in">
+          <strong data-count="612">612</strong><span>pounds jarred in 2025</span>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HIVE REGISTRY ============ -->
+  <section class="section section--tint" id="registry">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <p class="eyebrow"><span class="hexglyph" aria-hidden="true"></span>Hive Registry · Season 2026</p>
+        <h2>Every queen has a name, a&nbsp;mother, and a paint dot.</h2>
+        <p class="lede">Marking colors follow the international five-year code — 2025
+        queens wear blue, 2026 queens wear white. Strength is deep frames of brood,
+        counted at Sunday inspections, April through September.</p>
+      </header>
+
+      <div class="registry comb" data-comb data-mode="wrap" data-flower
+           data-decor='[{"c":-1,"r":0,"t":"capped"},{"c":3,"r":0,"t":"capped"},{"c":-1,"r":1,"t":"open","land":1},{"c":2,"r":1,"t":"open","land":1},{"c":-1,"r":2,"t":"empty"},{"c":2,"r":2,"t":"capped"}]'>
+
+        <div class="cell cell--content hive" data-cell><div class="cell-in">
+          <span class="hive-id">H01 · Delancey Roof</span>
+          <h3 class="hive-queen">Odessa III <span class="dot dot--blue" title="Marked blue — 2025"><span class="visually-hidden">marked blue, 2025</span></span></h3>
+          <p class="hive-line">Carniolan · dam Odessa II · overwintered strong</p>
+          <svg class="brood" role="img" viewBox="0 0 132 44" aria-label="Brood frames April to September: 4, 6, 8, 9, 8, 6">
+            <rect x="4"  y="21.2" width="12" height="12.8" rx="2"/><rect x="26" y="14.8" width="12" height="19.2" rx="2"/><rect x="48" y="8.4" width="12" height="25.6" rx="2"/><rect x="70" y="5.2" width="12" height="28.8" rx="2"/><rect x="92" y="8.4" width="12" height="25.6" rx="2"/><rect x="114" y="14.8" width="12" height="19.2" rx="2"/>
+            <text x="10" y="42">A</text><text x="32" y="42">M</text><text x="54" y="42">J</text><text x="76" y="42">J</text><text x="98" y="42">A</text><text x="120" y="42">S</text>
+          </svg>
+          <span class="hive-note">Nine frames of brood at July peak — our seed line.</span>
+        </div></div>
+
+        <div class="cell cell--content hive" data-cell><div class="cell-in">
+          <span class="hive-id">H02 · Delancey Roof</span>
+          <h3 class="hive-queen">Marisol <span class="dot dot--blue" title="Marked blue — 2025"><span class="visually-hidden">marked blue, 2025</span></span></h3>
+          <p class="hive-line">Italian · swarm caught on the Bowery Annex flue</p>
+          <svg class="brood" role="img" viewBox="0 0 132 44" aria-label="Brood frames April to September: 3, 5, 7, 8, 7, 5">
+            <rect x="4" y="24.4" width="12" height="9.6" rx="2"/><rect x="26" y="18" width="12" height="16" rx="2"/><rect x="48" y="11.6" width="12" height="22.4" rx="2"/><rect x="70" y="8.4" width="12" height="25.6" rx="2"/><rect x="92" y="11.6" width="12" height="22.4" rx="2"/><rect x="114" y="18" width="12" height="16" rx="2"/>
+            <text x="10" y="42">A</text><text x="32" y="42">M</text><text x="54" y="42">J</text><text x="76" y="42">J</text><text x="98" y="42">A</text><text x="120" y="42">S</text>
+          </svg>
+          <span class="hive-note">Gentlest colony on the block. Heavy propolis habit.</span>
+        </div></div>
+
+        <div class="cell cell--content hive" data-cell><div class="cell-in">
+          <span class="hive-id">H03 · Delancey Roof</span>
+          <h3 class="hive-queen">Beatrix II <span class="dot dot--white" title="Marked white — 2026"><span class="visually-hidden">marked white, 2026</span></span></h3>
+          <p class="hive-line">Carniolan · dam Beatrix I, superseded in April</p>
+          <svg class="brood" role="img" viewBox="0 0 132 44" aria-label="Brood frames April to September: 2, 3, 5, 7, 7, 5">
+            <rect x="4" y="27.6" width="12" height="6.4" rx="2"/><rect x="26" y="24.4" width="12" height="9.6" rx="2"/><rect x="48" y="18" width="12" height="16" rx="2"/><rect x="70" y="11.6" width="12" height="22.4" rx="2"/><rect x="92" y="11.6" width="12" height="22.4" rx="2"/><rect x="114" y="18" width="12" height="16" rx="2"/>
+            <text x="10" y="42">A</text><text x="32" y="42">M</text><text x="54" y="42">J</text><text x="76" y="42">J</text><text x="98" y="42">A</text><text x="120" y="42">S</text>
+          </svg>
+          <span class="hive-note">Slow spring, strong finish. Her mother's daughter.</span>
+        </div></div>
+
+        <div class="cell cell--content hive" data-cell><div class="cell-in">
+          <span class="hive-id">H04 · Bowery Annex</span>
+          <h3 class="hive-queen">Juniper <span class="dot dot--green" title="Marked green — 2024"><span class="visually-hidden">marked green, 2024</span></span></h3>
+          <p class="hive-line">Russian hybrid · our eldest queen, third season</p>
+          <svg class="brood" role="img" viewBox="0 0 132 44" aria-label="Brood frames April to September: 3, 4, 6, 7, 6, 4">
+            <rect x="4" y="24.4" width="12" height="9.6" rx="2"/><rect x="26" y="21.2" width="12" height="12.8" rx="2"/><rect x="48" y="14.8" width="12" height="19.2" rx="2"/><rect x="70" y="11.6" width="12" height="22.4" rx="2"/><rect x="92" y="14.8" width="12" height="19.2" rx="2"/><rect x="114" y="21.2" width="12" height="12.8" rx="2"/>
+            <text x="10" y="42">A</text><text x="32" y="42">M</text><text x="54" y="42">J</text><text x="76" y="42">J</text><text x="98" y="42">A</text><text x="120" y="42">S</text>
+          </svg>
+          <span class="hive-note">Frugal, winter-proof, mildly opinionated in August.</span>
+        </div></div>
+
+        <div class="cell cell--content hive" data-cell><div class="cell-in">
+          <span class="hive-id">H05 · Bowery Annex</span>
+          <h3 class="hive-queen">Odessa IV <span class="dot dot--white" title="Marked white — 2026"><span class="visually-hidden">marked white, 2026</span></span></h3>
+          <p class="hive-line">Carniolan · grafted from H01 · May split</p>
+          <svg class="brood" role="img" viewBox="0 0 132 44" aria-label="Brood frames May to September: 2, 4, 6, 7, 6. No April count — the colony began as a May split.">
+            <rect x="4" y="33" width="12" height="1.4" rx="0.7" class="brood-none"/><rect x="26" y="27.6" width="12" height="6.4" rx="2"/><rect x="48" y="21.2" width="12" height="12.8" rx="2"/><rect x="70" y="14.8" width="12" height="19.2" rx="2"/><rect x="92" y="11.6" width="12" height="22.4" rx="2"/><rect x="114" y="14.8" width="12" height="19.2" rx="2"/>
+            <text x="10" y="42">A</text><text x="32" y="42">M</text><text x="54" y="42">J</text><text x="76" y="42">J</text><text x="98" y="42">A</text><text x="120" y="42">S</text>
+          </svg>
+          <span class="hive-note">The lineage continues, one rooftop over.</span>
+        </div></div>
+
+        <div class="cell cell--content hive" data-cell><div class="cell-in">
+          <span class="hive-id">H06 · Clinton Street</span>
+          <h3 class="hive-queen">Calla <span class="dot dot--blue" title="Marked blue — 2025"><span class="visually-hidden">marked blue, 2025</span></span></h3>
+          <p class="hive-line">Caucasian · raised from a Clinton St swarm cell</p>
+          <svg class="brood" role="img" viewBox="0 0 132 44" aria-label="Brood frames April to September: 3, 5, 6, 8, 7, 5">
+            <rect x="4" y="24.4" width="12" height="9.6" rx="2"/><rect x="26" y="18" width="12" height="16" rx="2"/><rect x="48" y="14.8" width="12" height="19.2" rx="2"/><rect x="70" y="8.4" width="12" height="25.6" rx="2"/><rect x="92" y="11.6" width="12" height="22.4" rx="2"/><rect x="114" y="18" width="12" height="16" rx="2"/>
+            <text x="10" y="42">A</text><text x="32" y="42">M</text><text x="54" y="42">J</text><text x="76" y="42">J</text><text x="98" y="42">A</text><text x="120" y="42">S</text>
+          </svg>
+          <span class="hive-note">Propolis champion. Glues everything, forgives nothing.</span>
+        </div></div>
+
+        <div class="cell cell--content hive" data-cell><div class="cell-in">
+          <span class="hive-id">H07 · Clinton Street</span>
+          <h3 class="hive-queen">Thea <span class="dot dot--white" title="Marked white — 2026"><span class="visually-hidden">marked white, 2026</span></span></h3>
+          <p class="hive-line">Italian · requeened in July after a laying-worker scare</p>
+          <svg class="brood" role="img" viewBox="0 0 132 44" aria-label="Brood frames April to September: 4, 5, 3, 2, 5, 6 — a dip, then recovery after requeening">
+            <rect x="4" y="21.2" width="12" height="12.8" rx="2"/><rect x="26" y="18" width="12" height="16" rx="2"/><rect x="48" y="24.4" width="12" height="9.6" rx="2"/><rect x="70" y="27.6" width="12" height="6.4" rx="2"/><rect x="92" y="18" width="12" height="16" rx="2"/><rect x="114" y="14.8" width="12" height="19.2" rx="2"/>
+            <text x="10" y="42">A</text><text x="32" y="42">M</text><text x="54" y="42">J</text><text x="76" y="42">J</text><text x="98" y="42">A</text><text x="120" y="42">S</text>
+          </svg>
+          <span class="hive-note">The comeback story of the season. Watch this space.</span>
+        </div></div>
+      </div>
+
+      <div class="marking-legend reveal" role="group" aria-label="International queen marking color code">
+        <span class="legend-title">Queen marking code</span>
+        <span class="legend-item"><span class="dot dot--white"></span>1 / 6</span>
+        <span class="legend-item"><span class="dot dot--yellow"></span>2 / 7</span>
+        <span class="legend-item"><span class="dot dot--red"></span>3 / 8</span>
+        <span class="legend-item"><span class="dot dot--green"></span>4 / 9</span>
+        <span class="legend-item"><span class="dot dot--blue"></span>5 / 0</span>
+        <span class="legend-note">Year’s last digit → color. 2026 queens wear white.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HARVEST ============ -->
+  <section class="section" id="harvest">
+    <div class="wrap">
+      <header class="sec-head sec-head--split reveal">
+        <div class="sec-head-main">
+          <p class="eyebrow"><span class="hexglyph" aria-hidden="true"></span>The Harvest</p>
+          <h2>We lift the frame. It does the rest.</h2>
+          <p class="lede">Two extractions a year, in the stairwell landing we are not
+          technically allowed to call a honey house. Every jar is single-rooftop and
+          single-season — strained once through a coarse sieve so the pollen stays in,
+          never heated past the 95°F the hive already keeps.</p>
+        </div>
+        <aside class="ext-ticket" aria-label="Extraction log number fourteen">
+          <span class="ext-ticket-label">Extraction log · Nº 14</span>
+          <dl class="ext-rows">
+            <div><dt>Date</dt><dd>June 2, 2026 — first pull</dd></div>
+            <div><dt>Roof</dt><dd>Delancey, stair C landing</dd></div>
+            <div><dt>Frames</dt><dd>18 uncapped, hot knife</dd></div>
+            <div><dt>Crank</dt><dd>3 h 40 min, by hand</dd></div>
+            <div><dt>Yield</dt><dd>31 lb — 62 jars of Black Locust</dd></div>
+            <div><dt>Sticky</dt><dd>every doorknob in stair C</dd></div>
+          </dl>
+          <span class="ext-stamp" aria-hidden="true">TFA</span>
+        </aside>
+      </header>
+
+      <figure class="drip-stage reveal" data-flower>
+        <div id="dripSvg" role="img" aria-label="A lifted honeycomb frame dripping honey into the uncapping tank, drawn live"></div>
+        <figcaption class="drip-caption">
+          Frame nine, lifted from Hive H02 <span aria-hidden="true">·</span>
+          <span class="drip-count"><output id="dripCount" aria-live="off">0 drops</output> · <output id="dripOz" aria-live="off">0.00</output> oz this visit</span>
+        </figcaption>
+      </figure>
+
+      <div class="jars" role="list" aria-label="Harvest jars by rooftop and season">
+        <article class="jar-card reveal" role="listitem" style="--honey:#F5E6AE; --level:0.72">
+          <svg class="jar" viewBox="0 0 72 96" aria-hidden="true">
+            <rect class="jar-fill" x="13" y="30" width="46" height="58" rx="9"/>
+            <rect class="jar-glass" x="10" y="26" width="52" height="65" rx="11"/>
+            <rect class="jar-band" x="20" y="8" width="32" height="12" rx="4"/>
+            <path class="jar-shoulder" d="M22 20 L20 26 M50 20 L52 26"/>
+            <line class="jar-shine" x1="18" y1="34" x2="18" y2="80"/>
+          </svg>
+          <div class="jar-info">
+            <span class="jar-origin">Delancey Roof · Spring 2026</span>
+            <h3 class="jar-name">Black Locust</h3>
+            <p class="jar-notes">Water-white, nearly clear. Pear skin, white tea, rock candy.</p>
+            <p class="jar-meta">62 jars pulled June 2 · 8 oz</p>
+          </div>
+          <span class="jar-price" aria-label="Price: 14 dollars">$14</span>
+        </article>
+
+        <article class="jar-card jar-card--soldout reveal" role="listitem" style="--honey:#EFC868; --level:0.18">
+          <svg class="jar" viewBox="0 0 72 96" aria-hidden="true">
+            <rect class="jar-fill" x="13" y="30" width="46" height="58" rx="9"/>
+            <rect class="jar-glass" x="10" y="26" width="52" height="65" rx="11"/>
+            <rect class="jar-band" x="20" y="8" width="32" height="12" rx="4"/>
+            <path class="jar-shoulder" d="M22 20 L20 26 M50 20 L52 26"/>
+            <line class="jar-shine" x1="18" y1="34" x2="18" y2="80"/>
+          </svg>
+          <div class="jar-info">
+            <span class="jar-origin">Delancey Roof · Summer 2025</span>
+            <h3 class="jar-name">Linden</h3>
+            <p class="jar-notes">Pale straw. Fresh mint, hay loft, apricot.</p>
+            <p class="jar-meta">Gone by September. Sign up early next year.</p>
+          </div>
+          <span class="jar-price jar-price--out">Sold out</span>
+        </article>
+
+        <article class="jar-card reveal" role="listitem" style="--honey:#5E2E0C; --level:0.82">
+          <svg class="jar" viewBox="0 0 72 96" aria-hidden="true">
+            <rect class="jar-fill" x="13" y="30" width="46" height="58" rx="9"/>
+            <rect class="jar-glass" x="10" y="26" width="52" height="65" rx="11"/>
+            <rect class="jar-band" x="20" y="8" width="32" height="12" rx="4"/>
+            <path class="jar-shoulder" d="M22 20 L20 26 M50 20 L52 26"/>
+            <line class="jar-shine" x1="18" y1="34" x2="18" y2="80"/>
+          </svg>
+          <div class="jar-info">
+            <span class="jar-origin">Bowery Annex · Fall 2025</span>
+            <h3 class="jar-name">Japanese Knotweed</h3>
+            <p class="jar-notes">Deep mahogany. Fig, malt, blackstrap molasses.</p>
+            <p class="jar-meta">The dark one people argue over · 8 oz</p>
+          </div>
+          <span class="jar-price" aria-label="Price: 18 dollars">$18</span>
+        </article>
+
+        <article class="jar-card reveal" role="listitem" style="--honey:#E09A28; --level:0.6">
+          <svg class="jar" viewBox="0 0 72 96" aria-hidden="true">
+            <rect class="jar-fill" x="13" y="30" width="46" height="58" rx="9"/>
+            <rect class="jar-glass" x="10" y="26" width="52" height="65" rx="11"/>
+            <rect class="jar-band" x="20" y="8" width="32" height="12" rx="4"/>
+            <path class="jar-shoulder" d="M22 20 L20 26 M50 20 L52 26"/>
+            <line class="jar-shine" x1="18" y1="34" x2="18" y2="80"/>
+          </svg>
+          <div class="jar-info">
+            <span class="jar-origin">Clinton Street · Summer 2025</span>
+            <h3 class="jar-name">Wildflower</h3>
+            <p class="jar-notes">Marigold. Citrus peel, warm toast, chamomile.</p>
+            <p class="jar-meta">Whatever bloomed within three miles · 8 oz</p>
+          </div>
+          <span class="jar-price" aria-label="Price: 15 dollars">$15</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ THE WAGGLE DANCE ============ -->
+  <section class="section section--tint" id="dance">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <p class="eyebrow"><span class="hexglyph" aria-hidden="true"></span>Field Science</p>
+        <h2>Direction is an angle. Distance is a duration.</h2>
+        <p class="lede">A forager who finds nectar worth telling the room about comes
+        home and dances it. On the vertical comb, straight up stands in for the sun:
+        she runs her waggle line at the angle her flight made with the sun’s bearing,
+        and the length of the waggle — about one second per kilometer — says how far.
+        Karl von Frisch decoded it in 1945. Our bees never stopped broadcasting.</p>
+      </header>
+
+      <div class="waggle-grid">
+        <div class="waggle-dial reveal" data-flower>
+          <div id="waggleSvg" role="img" aria-label="Waggle dance diagram: a bee runs a figure-eight on the vertical comb. The angle of the central waggle run from vertical equals the angle of the food source from the sun; the duration of the run encodes distance."></div>
+        </div>
+        <div class="waggle-side reveal">
+          <p class="waggle-side-label">Live from the dance floor of Hive H01 — pick a forage run our bees actually dance:</p>
+          <div class="waggle-targets" role="group" aria-label="Choose a foraging destination">
+            <button class="target-btn" data-target="seward" aria-pressed="true">
+              <strong>Seward Park lindens</strong><span>0.4 km · late June bloom</span>
+            </button>
+            <button class="target-btn" data-target="mckinley" aria-pressed="false">
+              <strong>McKinley Community Garden</strong><span>1.1 km · squash &amp; borage</span>
+            </button>
+            <button class="target-btn" data-target="river" aria-pressed="false">
+              <strong>East River meadow</strong><span>2.6 km · knotweed in September</span>
+            </button>
+          </div>
+          <p class="waggle-readout" id="waggleReadout" aria-live="polite"></p>
+          <ul class="waggle-facts">
+            <li>She repeats the circuit up to a hundred times per dance.</li>
+            <li>Followers read it in the dark, by touch and by air current.</li>
+            <li>Livelier waggle, richer nectar — enthusiasm is part of the message.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ JOIN ============ -->
+  <section class="section" id="join">
+    <div class="wrap join-grid">
+      <div class="join-text reveal">
+        <p class="eyebrow"><span class="hexglyph" aria-hidden="true"></span>Membership</p>
+        <h2>No experience required. Veils provided.</h2>
+        <p>Dues are $85 a season and cover gear, sugar, and your share of the harvest —
+        members jar first, before a single label goes on sale. Inspections run Sundays
+        at 9 a.m., April through October, rain postponed to the same afternoon.
+        You’ll be handed the smoker on your second Sunday and trusted with a frame
+        by your fourth.</p>
+        <p>We take twelve new members a year, drawn from the waitlist in January.
+        Sponsorship of Hive H08 — the 2027 expansion split, Odessa line — is open now.</p>
+        <button class="btn btn--solid" id="joinBtn">Apply for the 2027 season</button>
+        <p class="join-confirm" id="joinConfirm" hidden>Applications open January 12 at
+        the winter meeting — 143 Delancey St, stair C, tenth floor. Bring gloves;
+        we have veils.</p>
+      </div>
+      <div class="join-card reveal">
+        <span class="join-card-label">A season, briefly</span>
+        <dl class="season-list">
+          <div><dt>April</dt><dd>First inspections. Alive counts as a win.</dd></div>
+          <div><dt>May</dt><dd>Splits, swarm patrol, black locust flow.</dd></div>
+          <div><dt>June</dt><dd>Lindens. The whole roof smells like tea.</dd></div>
+          <div><dt>July</dt><dd>Peak brood — 348,000 tenants, give or take.</dd></div>
+          <div><dt>August</dt><dd>Knotweed starts. The dark honey month.</dd></div>
+          <div><dt>September</dt><dd>Second extraction, jars labeled by hand.</dd></div>
+          <div><dt>October</dt><dd>Mouse guards on, wind straps checked twice.</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 3 L57 17.5 V46.5 L32 61 L7 46.5 V17.5 Z" fill="var(--nectar)" stroke="var(--cream)" stroke-width="4"/><path d="M32 20 L43 26.5 V39.5 L32 46 L21 39.5 V26.5 Z" fill="var(--propolis)"/></svg>
+      <p class="footer-name">Tenth Floor Apiary</p>
+      <p class="footer-line">143 Delancey Street, tenth floor — by the water tower.<br>
+      Est. 2019 · 41 members · 7 hives · 3 rooftops</p>
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="#coop">The Co-op</a>
+      <a href="#registry">Hive Registry</a>
+      <a href="#harvest">Harvest</a>
+      <a href="#dance">The Waggle Dance</a>
+      <a href="#join">Membership</a>
+    </nav>
+    <p class="footer-colophon">Built by the co-op, powered by 348,000 workers.
+    Set in Fredoka and Archivo. Comb drawn cell by cell, the way it’s done.</p>
+  </div>
+</footer>
+
+<script src="js/comb.js"></script>
+<script src="js/bees.js"></script>
+<script src="js/drip.js"></script>
+<script src="js/waggle.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

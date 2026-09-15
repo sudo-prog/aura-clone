@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Moth Who Mapped the Moon — a bedtime story</title>
+<meta name="description" content="An original illustrated bedtime story in six chapters: Etta the moth flies up to map the waning moon, and finds the way home instead. One unbroken night, read aloud in about seven minutes.">
+<meta property="og:title" content="The Moth Who Mapped the Moon">
+<meta property="og:description" content="An original illustrated bedtime story in six chapters. Etta the moth flies up to map the waning moon, and finds the way home instead.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0E1030">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230E1030'/%3E%3Cpath d='M40 12 A20 20 0 1 0 40 52 A26 26 0 0 1 40 12 Z' fill='%23EFB65E'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/Fraunces-06.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Alegreya-14.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/Fraunces.css">
+<link rel="stylesheet" href="fonts/Alegreya.css">
+<link rel="stylesheet" href="fonts/AlegreyaSC.css">
+<link rel="stylesheet" href="css/main.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+<!-- ======================= THE NIGHT (fixed illustrated stage) ======================= -->
+<div id="stage" aria-hidden="true">
+  <div id="sky"></div>
+
+  <!-- stars, milky way, constellations, moon, glint, trail — built by JS -->
+  <svg id="celestial"></svg>
+
+  <!-- FAR: sea, headland, lighthouse -->
+  <div class="layer" id="far">
+    <svg viewBox="0 0 2200 1000" preserveAspectRatio="xMinYMax meet" aria-hidden="true">
+      <defs>
+        <linearGradient id="seaG" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#2B4C77"/><stop offset=".45" stop-color="#1F3D63"/><stop offset="1" stop-color="#13253F"/>
+        </linearGradient>
+        <linearGradient id="towerG" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#EFE3C4"/><stop offset=".55" stop-color="#CBBB96"/><stop offset="1" stop-color="#8F8166"/>
+        </linearGradient>
+        <radialGradient id="glowR">
+          <stop offset="0" stop-color="#FFE2A8" stop-opacity=".85"/><stop offset=".4" stop-color="#FFE2A8" stop-opacity=".28"/><stop offset="1" stop-color="#FFE2A8" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="beamG1" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#FFE2A8" stop-opacity=".55"/><stop offset="1" stop-color="#FFE2A8" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="beamG2" x1="1" y1="0" x2="0" y2="0">
+          <stop offset="0" stop-color="#FFE2A8" stop-opacity=".45"/><stop offset="1" stop-color="#FFE2A8" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="stripG" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#D7DDF4" stop-opacity=".85"/><stop offset="1" stop-color="#9FB3D9" stop-opacity=".5"/>
+        </linearGradient>
+      </defs>
+
+      <rect x="0" y="620" width="2200" height="380" fill="url(#seaG)"/>
+      <rect x="0" y="615" width="2200" height="5" fill="#7E93B8" opacity=".28"/>
+
+      <path class="wave w1" fill="none" stroke="#8FA6CC" stroke-width="3" opacity=".16"
+        d="M-140 664 q55 -8 110 0 t110 0 t110 0 t110 0 t110 0 t110 0 t110 0 t110 0 t110 0 t110 0 t110 0 t110 0 t110 0 t110 0 t110 0 t110 0 t110 0 t110 0 t110 0 t110 0 t110 0 t110 0"/>
+      <path class="wave w2" fill="none" stroke="#8FA6CC" stroke-width="4" opacity=".11"
+        d="M-220 726 q80 -10 160 0 t160 0 t160 0 t160 0 t160 0 t160 0 t160 0 t160 0 t160 0 t160 0 t160 0 t160 0 t160 0 t160 0 t160 0 t160 0"/>
+      <path class="wave w3" fill="none" stroke="#8FA6CC" stroke-width="5" opacity=".07"
+        d="M-300 826 q110 -13 220 0 t220 0 t220 0 t220 0 t220 0 t220 0 t220 0 t220 0 t220 0 t220 0 t220 0 t220 0"/>
+
+      <!-- the sea's second moon (chapter three) -->
+      <g id="seaMoon" opacity="0">
+        <ellipse cx="1320" cy="678" rx="72" ry="46" fill="#C9CFEF" opacity=".10"/>
+        <rect class="ss" x="1300" y="642" width="40"  height="9" rx="4.5" fill="url(#stripG)"/>
+        <rect class="ss" x="1286" y="654" width="68"  height="9" rx="4.5" fill="url(#stripG)"/>
+        <rect class="ss" x="1278" y="666" width="84"  height="9" rx="4.5" fill="url(#stripG)"/>
+        <rect class="ss" x="1276" y="678" width="88"  height="9" rx="4.5" fill="url(#stripG)"/>
+        <rect class="ss" x="1280" y="690" width="80"  height="9" rx="4.5" fill="url(#stripG)"/>
+        <rect class="ss" x="1290" y="702" width="60"  height="9" rx="4.5" fill="url(#stripG)"/>
+        <rect class="ss" x="1304" y="714" width="32"  height="9" rx="4.5" fill="url(#stripG)"/>
+      </g>
+
+      <!-- the lamp's reflection on the water -->
+      <g class="lamp-glint" opacity=".8">
+        <rect x="1064" y="638" width="34" height="4" rx="2" fill="#FFE2A8" opacity=".34"/>
+        <rect x="1072" y="654" width="26" height="4" rx="2" fill="#FFE2A8" opacity=".28"/>
+        <rect x="1060" y="672" width="30" height="4" rx="2" fill="#FFE2A8" opacity=".22"/>
+        <rect x="1074" y="692" width="20" height="4" rx="2" fill="#FFE2A8" opacity=".17"/>
+        <rect x="1066" y="714" width="24" height="4" rx="2" fill="#FFE2A8" opacity=".12"/>
+        <rect x="1076" y="738" width="14" height="4" rx="2" fill="#FFE2A8" opacity=".09"/>
+      </g>
+
+      <!-- left foothill running down to the water -->
+      <path d="M0 1000 L0 640 C200 608 420 618 640 660 C800 690 910 730 1020 1000 Z" fill="#10262C"/>
+      <!-- headland -->
+      <path d="M1020 1000 C1080 780 1150 660 1300 620 C1400 594 1520 580 2200 572 L2200 1000 Z" fill="#0E2429"/>
+
+      <!-- lighthouse -->
+      <g id="lighthouse">
+        <ellipse cx="1270" cy="618" rx="64" ry="15" fill="#0B1D22"/>
+        <path d="M1233 615 L1247 320 L1293 320 L1307 615 Z" fill="url(#towerG)"/>
+        <polygon points="1242,498 1298,498 1301,540 1239,540" fill="#2A2D5F" opacity=".9"/>
+        <polygon points="1245,398 1295,398 1297,430 1243,430" fill="#2A2D5F" opacity=".9"/>
+        <path d="M1256 615 L1256 584 Q1270 572 1284 584 L1284 615 Z" fill="#132A46"/>
+        <rect x="1236" y="312" width="68" height="10" rx="4" fill="#1E2547"/>
+        <rect x="1240" y="290" width="60" height="3" rx="1.5" fill="#1E2547"/>
+        <line x1="1244" y1="292" x2="1244" y2="312" stroke="#1E2547" stroke-width="3"/>
+        <line x1="1257" y1="292" x2="1257" y2="312" stroke="#1E2547" stroke-width="3"/>
+        <line x1="1270" y1="292" x2="1270" y2="312" stroke="#1E2547" stroke-width="3"/>
+        <line x1="1283" y1="292" x2="1283" y2="312" stroke="#1E2547" stroke-width="3"/>
+        <line x1="1296" y1="292" x2="1296" y2="312" stroke="#1E2547" stroke-width="3"/>
+        <circle id="lampGlow" cx="1270" cy="277" r="78" fill="url(#glowR)"/>
+        <g id="beam" opacity=".8">
+          <polygon points="1270,277 2010,235 2010,319" fill="url(#beamG1)" opacity=".33"/>
+          <polygon points="1270,277 530,235 530,319" fill="url(#beamG2)" opacity=".27"/>
+        </g>
+        <rect x="1246" y="262" width="48" height="30" rx="3" fill="#FFDF9E"/>
+        <circle cx="1270" cy="277" r="9" fill="#FFF3D3"/>
+        <rect x="1246" y="262" width="5" height="30" fill="#1E2547"/>
+        <rect x="1289" y="262" width="5" height="30" fill="#1E2547"/>
+        <path d="M1240 262 L1270 230 L1300 262 Z" fill="#1E2547"/>
+        <circle cx="1270" cy="224" r="5" fill="#EFB65E"/>
+        <g id="lampmoths" opacity="0">
+          <ellipse rx="4.5" ry="2.6" fill="#F4EAD2" opacity=".85"/>
+          <ellipse rx="3.6" ry="2.2" fill="#F4EAD2" opacity=".7"/>
+          <ellipse rx="4.2" ry="2.4" fill="#F4EAD2" opacity=".8"/>
+          <ellipse rx="3.2" ry="2"   fill="#F4EAD2" opacity=".65"/>
+          <ellipse rx="4"   ry="2.4" fill="#F4EAD2" opacity=".75"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+
+  <!-- MID: rolling hills, the owl's oak -->
+  <div class="layer" id="mid">
+    <svg viewBox="0 0 2400 700" preserveAspectRatio="xMinYMax meet" aria-hidden="true">
+      <path d="M0 700 L0 400 C300 330 600 340 900 400 C1200 460 1500 470 1800 520 C2000 552 2200 562 2400 556 L2400 700 Z" fill="#122B31"/>
+      <g id="oak">
+        <ellipse cx="395" cy="338" rx="98" ry="56" fill="#0F2E35"/>
+        <ellipse cx="322" cy="372" rx="72" ry="46" fill="#0F2E35"/>
+        <ellipse cx="472" cy="366" rx="82" ry="49" fill="#0F2E35"/>
+        <path d="M386 474 C382 420 372 396 360 378 L376 370 C384 390 392 410 396 432 C400 410 407 391 418 374 L432 383 C419 400 410 424 408 474 Z" fill="#0C2125"/>
+        <circle class="owl-eye" cx="391" cy="399" r="4" fill="#EFB65E"/>
+        <circle class="owl-eye" cx="407" cy="399" r="4" fill="#EFB65E"/>
+      </g>
+      <path d="M0 700 L0 500 C260 430 520 440 820 500 C1100 556 1400 582 1750 616 C2000 639 2250 646 2400 646 L2400 700 Z" fill="#173A38"/>
+      <g stroke="#1E453F" stroke-width="4" stroke-linecap="round" fill="none">
+        <path d="M240 470 C238 452 242 440 250 428"/><path d="M256 472 C258 452 254 444 246 434"/>
+        <path d="M700 486 C698 468 702 456 710 446"/><path d="M716 488 C718 470 714 460 706 452"/>
+        <path d="M1060 540 C1058 524 1062 512 1070 502"/>
+        <path d="M1480 588 C1478 572 1482 562 1490 552"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- NEAR: meadow foreground, foxgloves, the toadstool of seventeen maps -->
+  <div class="layer" id="near">
+    <svg viewBox="0 0 2600 500" preserveAspectRatio="xMinYMax meet" aria-hidden="true">
+      <defs>
+        <linearGradient id="foxG" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#96729F"/><stop offset="1" stop-color="#6E4E7B"/>
+        </linearGradient>
+        <path id="bell" d="M0 0 C-10 2 -13 15 -8 21 C-4 26 4 26 7 21 C11 14 9 3 0 0 Z" fill="url(#foxG)"/>
+      </defs>
+      <path d="M0 500 L0 310 C300 268 600 284 900 310 C1300 342 1700 330 2100 346 C2350 353 2500 350 2600 348 L2600 500 Z" fill="#0B1F1D"/>
+
+      <g stroke="#17403A" fill="none" stroke-linecap="round">
+        <path stroke-width="4" d="M90 330 C88 296 94 270 106 246"/>
+        <path stroke-width="3" d="M118 328 C120 298 116 276 104 258"/>
+        <path stroke-width="4" d="M140 326 C142 292 138 266 126 244"/>
+        <path stroke-width="3" d="M330 322 C328 292 334 268 346 248"/>
+        <path stroke-width="4" d="M352 320 C356 288 350 262 338 242"/>
+        <path stroke-width="3" d="M380 320 C378 294 384 274 394 256"/>
+        <path stroke-width="4" d="M520 316 C518 286 524 262 536 242"/>
+        <path stroke-width="3" d="M548 314 C552 286 546 264 534 246"/>
+        <path stroke-width="4" d="M720 312 C718 284 724 262 736 244"/>
+        <path stroke-width="3" d="M748 312 C752 286 746 266 734 250"/>
+        <path stroke-width="4" d="M950 316 C948 290 954 268 966 250"/>
+        <path stroke-width="3" d="M1180 322 C1178 296 1184 276 1194 258"/>
+        <path stroke-width="4" d="M1420 326 C1418 298 1424 276 1436 258"/>
+        <path stroke-width="3" d="M1650 330 C1648 304 1654 284 1664 266"/>
+        <path stroke-width="4" d="M1870 336 C1868 308 1874 286 1886 268"/>
+      </g>
+
+      <!-- foxglove cluster (left) — Etta's home -->
+      <g id="foxgloves">
+        <path d="M170 332 C172 276 174 214 179 148" stroke="#1E4A42" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <path d="M212 334 C214 284 216 232 221 176" stroke="#1E4A42" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <path d="M252 336 C254 292 256 250 260 208" stroke="#1E4A42" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <use href="#bell" transform="translate(174 292) rotate(-24) scale(1.15)"/>
+        <use href="#bell" transform="translate(170 268) rotate(22) scale(1.1) scale(-1 1)"/>
+        <use href="#bell" transform="translate(175 244) rotate(-20) scale(1.05)"/>
+        <use href="#bell" transform="translate(172 221) rotate(24) scale(.95) scale(-1 1)"/>
+        <use href="#bell" transform="translate(177 199) rotate(-18) scale(.85)"/>
+        <use href="#bell" transform="translate(175 178) rotate(20) scale(.7) scale(-1 1)"/>
+        <circle cx="179" cy="156" r="5" fill="#7A5787"/><circle cx="180" cy="146" r="3.6" fill="#7A5787"/>
+        <use href="#bell" transform="translate(216 296) rotate(20) scale(1.1) scale(-1 1)"/>
+        <use href="#bell" transform="translate(214 272) rotate(-22) scale(1.05)"/>
+        <use href="#bell" transform="translate(218 248) rotate(18) scale(.9) scale(-1 1)"/>
+        <use href="#bell" transform="translate(216 226) rotate(-18) scale(.8)"/>
+        <use href="#bell" transform="translate(220 205) rotate(14) scale(.65) scale(-1 1)"/>
+        <circle cx="221" cy="184" r="4.6" fill="#7A5787"/><circle cx="222" cy="175" r="3.2" fill="#7A5787"/>
+        <use href="#bell" transform="translate(256 300) rotate(-18) scale(.95)"/>
+        <use href="#bell" transform="translate(254 278) rotate(18) scale(.85) scale(-1 1)"/>
+        <use href="#bell" transform="translate(258 256) rotate(-14) scale(.72)"/>
+        <circle cx="260" cy="216" r="4" fill="#7A5787"/>
+      </g>
+
+      <!-- the toadstool of seventeen maps -->
+      <g id="toadstool">
+        <rect x="296" y="290" width="17" height="36" rx="8" fill="#E3D6B8"/>
+        <path d="M272 294 C276 260 330 260 334 294 C318 303 288 303 272 294 Z" fill="#8E5560"/>
+        <circle cx="288" cy="280" r="4" fill="#F4EAD2" opacity=".85"/>
+        <circle cx="306" cy="272" r="3" fill="#F4EAD2" opacity=".85"/>
+        <circle cx="318" cy="284" r="3.4" fill="#F4EAD2" opacity=".85"/>
+        <rect x="318" y="318" width="15" height="6" rx="3" fill="#E3D6B8"/>
+        <rect x="330" y="312" width="13" height="5" rx="2.5" fill="#D9CBAA" transform="rotate(14 336 314)"/>
+        <line x1="325" y1="318" x2="325" y2="324" stroke="#B7A98A" stroke-width="1.4"/>
+        <!-- the eighteenth map — appears at The End -->
+        <g id="map18" opacity="0">
+          <rect x="271" y="300" width="7" height="20" rx="3.5" fill="#F4EAD2" transform="rotate(-16 274 310)"/>
+          <line x1="269" y1="310" x2="277" y2="308" stroke="#EFB65E" stroke-width="1.6"/>
+        </g>
+      </g>
+
+      <!-- foxgloves (right edge) -->
+      <g id="foxgloves-r">
+        <path d="M1880 340 C1882 296 1884 252 1888 206" stroke="#1E4A42" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <path d="M1918 342 C1920 304 1922 268 1926 230" stroke="#1E4A42" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <use href="#bell" transform="translate(1884 304) rotate(-22) scale(1.1)"/>
+        <use href="#bell" transform="translate(1881 280) rotate(20) scale(1) scale(-1 1)"/>
+        <use href="#bell" transform="translate(1886 257) rotate(-18) scale(.85)"/>
+        <use href="#bell" transform="translate(1884 235) rotate(16) scale(.7) scale(-1 1)"/>
+        <circle cx="1888" cy="214" r="4.4" fill="#7A5787"/>
+        <use href="#bell" transform="translate(1922 310) rotate(18) scale(.95) scale(-1 1)"/>
+        <use href="#bell" transform="translate(1920 288) rotate(-16) scale(.8)"/>
+        <use href="#bell" transform="translate(1924 266) rotate(14) scale(.65) scale(-1 1)"/>
+        <circle cx="1926" cy="242" r="3.8" fill="#7A5787"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- fireflies -->
+  <svg id="fx"></svg>
+
+  <!-- Etta -->
+  <div id="moth">
+    <svg viewBox="0 0 120 120" aria-hidden="true">
+      <defs>
+        <radialGradient id="mothGlow">
+          <stop offset="0" stop-color="#FFE2A8" stop-opacity=".3"/><stop offset="1" stop-color="#FFE2A8" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="wingG" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#F8F0DC"/><stop offset="1" stop-color="#DECFA9"/>
+        </linearGradient>
+        <linearGradient id="wingG2" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#EFE4C8"/><stop offset="1" stop-color="#CDBB92"/>
+        </linearGradient>
+      </defs>
+      <g transform="translate(60 60)">
+      <circle r="52" fill="url(#mothGlow)"/>
+      <g class="wing wingL">
+        <path d="M-3 -12 C-22 -30 -44 -32 -50 -20 C-55 -8 -44 6 -28 10 C-16 13 -6 8 -3 -2 Z" fill="url(#wingG)"/>
+        <path d="M-4 4 C-18 10 -30 22 -26 32 C-22 40 -8 38 -3 26 Z" fill="url(#wingG2)"/>
+        <circle cx="-30" cy="-12" r="5" fill="#8E6E9E" opacity=".38"/>
+        <circle cx="-30" cy="-12" r="2.2" fill="#6E4E7B" opacity=".5"/>
+        <path d="M-10 -14 C-20 -20 -32 -24 -42 -22" stroke="#C9B88F" stroke-width="1.6" fill="none" opacity=".7"/>
+      </g>
+      <g class="wing wingR">
+        <path d="M3 -12 C22 -30 44 -32 50 -20 C55 -8 44 6 28 10 C16 13 6 8 3 -2 Z" fill="url(#wingG)"/>
+        <path d="M4 4 C18 10 30 22 26 32 C22 40 8 38 3 26 Z" fill="url(#wingG2)"/>
+        <circle cx="30" cy="-12" r="5" fill="#8E6E9E" opacity=".38"/>
+        <circle cx="30" cy="-12" r="2.2" fill="#6E4E7B" opacity=".5"/>
+        <path d="M10 -14 C20 -20 32 -24 42 -22" stroke="#C9B88F" stroke-width="1.6" fill="none" opacity=".7"/>
+      </g>
+      <ellipse cx="0" cy="4" rx="6" ry="18" fill="#E8DBBD"/>
+      <ellipse cx="0" cy="10" rx="5" ry="10" fill="#C9B88F" opacity=".6"/>
+      <circle cx="0" cy="-14" r="6" fill="#EFE2C2"/>
+      <circle cx="-2.4" cy="-15.5" r="1.3" fill="#2A2118"/>
+      <circle cx="2.4" cy="-15.5" r="1.3" fill="#2A2118"/>
+      <g stroke="#D9C89E" stroke-width="1.8" fill="none" stroke-linecap="round">
+        <path d="M-3 -19 C-8 -27 -12 -31 -17 -33"/>
+        <path d="M3 -19 C8 -27 12 -31 17 -33"/>
+        <path d="M-9 -26 L-13 -27"/><path d="M-12 -30 L-16 -31"/>
+        <path d="M9 -26 L13 -27"/><path d="M12 -30 L16 -31"/>
+      </g>
+      </g>
+    </svg>
+  </div>
+
+  <div id="vignette"></div>
+</div>
+
+<!-- ======================= CHAPTER RAIL ======================= -->
+<nav id="rail" aria-label="Chapters"></nav>
+
+<!-- ======================= THE STORY ======================= -->
+<header id="cover">
+  <p class="eyebrow">A bedtime story in six chapters</p>
+  <h1>The Moth Who<br>Mapped the <em>Moon</em></h1>
+  <p class="byline">being the true account of Etta of Foxglove Meadow,<br class="bl"> who flew farther up than any moth has sensibly gone</p>
+  <p class="covermeta">Written &amp; illustrated by Claude &nbsp;·&nbsp; about seven minutes aloud</p>
+  <a class="begin" href="#ch1">Begin the story
+    <svg viewBox="0 0 16 20" width="14" height="18" aria-hidden="true"><path d="M8 2 V15 M3 11 L8 16 L13 11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+</header>
+
+<main>
+  <!-- ============ CHAPTER ONE ============ -->
+  <section class="chapter" id="ch1" aria-labelledby="ch1t">
+    <header class="plate">
+      <p class="caps">· Chapter One ·</p>
+      <h2 id="ch1t">In Which the Moon Grows Thin</h2>
+      <svg class="orn" viewBox="0 0 140 16" aria-hidden="true"><line x1="0" y1="8" x2="52" y2="8" stroke="currentColor" stroke-width="1.6" stroke-dasharray="1 7" stroke-linecap="round"/><path d="M70 8 C66 3 60 2 59 5 C58 8 63 10 70 8 C77 10 82 8 81 5 C80 2 74 3 70 8 Z" fill="currentColor"/><line x1="88" y1="8" x2="140" y2="8" stroke="currentColor" stroke-width="1.6" stroke-dasharray="1 7" stroke-linecap="round"/></svg>
+    </header>
+    <div class="beat first"><div class="panel"><p>At the bottom of Foxglove Meadow, where the grass leans toward the sea, there lived a small cream-colored moth named Etta. She was not the fastest moth in the meadow, nor the bravest. But she was the only one who kept a map collection under a toadstool — seventeen maps, borrowed from mice, mostly of pantries.</p></div></div>
+    <div class="beat"><div class="panel"><p>Every evening the other moths flew up to circle the great lamp of the lighthouse, which is simply a thing moths do, and not one of them can tell you why. Etta went too. But she had a habit of looking past the lamp — up, and further up — at the moon.</p></div></div>
+    <div class="beat"><div class="panel"><p>And the moon, Etta had noticed, was getting thinner. On Monday it had been round as a dinner plate. By Thursday, a slice of one. Tonight it looked like a paring of soap. She consulted all seventeen maps. Not one of them showed the moon at all.</p></div></div>
+    <div class="beat"><div class="panel"><p>“That’s it exactly,” she whispered. “Nobody has ever mapped it. And things that aren’t mapped get forgotten. And things that are forgotten—” She did not finish the sentence, because it frightened her.</p></div></div>
+    <div class="beat"><div class="panel"><p>So she packed. A length of spider silk, for measuring. A drop of dew, for thirst. A poppy seed, in case of hunger, and a second poppy seed, in case of making a friend. Then Etta of Foxglove Meadow opened her wings and flew straight up.</p></div></div>
+  </section>
+
+  <!-- ============ CHAPTER TWO ============ -->
+  <section class="chapter" id="ch2" aria-labelledby="ch2t">
+    <header class="plate">
+      <p class="caps">· Chapter Two ·</p>
+      <h2 id="ch2t">In Which a Lantern Makes Its Case</h2>
+      <svg class="orn" viewBox="0 0 140 16" aria-hidden="true"><line x1="0" y1="8" x2="52" y2="8" stroke="currentColor" stroke-width="1.6" stroke-dasharray="1 7" stroke-linecap="round"/><path d="M70 8 C66 3 60 2 59 5 C58 8 63 10 70 8 C77 10 82 8 81 5 C80 2 74 3 70 8 Z" fill="currentColor"/><line x1="88" y1="8" x2="140" y2="8" stroke="currentColor" stroke-width="1.6" stroke-dasharray="1 7" stroke-linecap="round"/></svg>
+    </header>
+    <div class="beat left first"><div class="panel"><p>Up she went — past the foxgloves, past the owl’s oak, whose owl said “Hm,” in an educated way. Up, at last, level with the great glass eye of the lighthouse, where every moth she had ever known was turning in slow, happy circles.</p></div></div>
+    <div class="beat left"><div class="panel"><p>“Little miller,” the lamp hummed, warm as a kitchen window, wide as a harvest sun. “Why strain your wings? I am a moon you can reach. I burn all night, every night, and I never once have waned.”</p></div></div>
+    <div class="beat left"><div class="panel"><p>And oh, it was warm. Etta felt the old pull in her wings, the pull every moth is born already owing. She circled once. She circled twice.</p></div></div>
+    <div class="beat left"><div class="panel"><p>Then she looked up — at the thin and patient moon, so far past the glass. “You are a very good lamp,” she said kindly. “But nobody needs a map of a thing they can reach.” And she flew on up, which is the hardest direction a moth can choose.</p></div></div>
+  </section>
+
+  <!-- ============ CHAPTER THREE ============ -->
+  <section class="chapter" id="ch3" aria-labelledby="ch3t">
+    <header class="plate">
+      <p class="caps">· Chapter Three ·</p>
+      <h2 id="ch3t">In Which the Sea Keeps a Second Moon</h2>
+      <svg class="orn" viewBox="0 0 140 16" aria-hidden="true"><line x1="0" y1="8" x2="52" y2="8" stroke="currentColor" stroke-width="1.6" stroke-dasharray="1 7" stroke-linecap="round"/><path d="M70 8 C66 3 60 2 59 5 C58 8 63 10 70 8 C77 10 82 8 81 5 C80 2 74 3 70 8 Z" fill="currentColor"/><line x1="88" y1="8" x2="140" y2="8" stroke="currentColor" stroke-width="1.6" stroke-dasharray="1 7" stroke-linecap="round"/></svg>
+    </header>
+    <div class="beat left first"><div class="panel"><p>Above the lighthouse the wind had opinions. It took Etta by the wings and carried her out — out over the black glass of the sea, farther from the meadow than any of her seventeen maps had ever thought to go.</p></div></div>
+    <div class="beat left"><div class="panel"><p>And there below her, floating on the water, was the moon. A second one. Silver, rippling, and much, much closer than the first. “Well,” said Etta, being sensible, “I shall map this one instead.”</p></div></div>
+    <div class="beat left"><div class="panel"><p>She dipped down and began to measure it with her spider silk. But each time she got the edges right, the sea breathed, and the moon broke into a thousand silver pieces, and put itself back together slightly differently.</p></div></div>
+    <div class="beat left"><div class="panel"><p>“Hold still,” Etta begged. “Can’t,” said the sea, not unkindly. “I’m a mirror, not a moon. You can’t map a reflection, little one. You can only love the thing it reflects.” Etta looked up. The real moon was thinner than ever. She flew higher.</p></div></div>
+  </section>
+
+  <!-- ============ CHAPTER FOUR ============ -->
+  <section class="chapter" id="ch4" aria-labelledby="ch4t">
+    <header class="plate">
+      <p class="caps">· Chapter Four ·</p>
+      <h2 id="ch4t">In Which the Stars Are Named for Home</h2>
+      <svg class="orn" viewBox="0 0 140 16" aria-hidden="true"><line x1="0" y1="8" x2="52" y2="8" stroke="currentColor" stroke-width="1.6" stroke-dasharray="1 7" stroke-linecap="round"/><path d="M70 8 C66 3 60 2 59 5 C58 8 63 10 70 8 C77 10 82 8 81 5 C80 2 74 3 70 8 Z" fill="currentColor"/><line x1="88" y1="8" x2="140" y2="8" stroke="currentColor" stroke-width="1.6" stroke-dasharray="1 7" stroke-linecap="round"/></svg>
+    </header>
+    <div class="beat low first"><div class="panel"><p>The air grew cold and quiet, and dark as the inside of a pocket. When her wings tired, Etta rested on the stars — which you can do, if you are light enough, and if it is late enough, and if the stars are in a good mood.</p></div></div>
+    <div class="beat low"><div class="panel"><p>To keep from being lonely, she named them as she went, and strung her spider silk between them. Four stars leaning together: <span class="star-name">the Foxglove</span>. A little ring of five: <span class="star-name">the Thimble</span>. That crooked line, mid-pounce: <span class="star-name">the Keeper’s Cat</span>. And two, close and bright, like a door left glowing: <span class="star-name">the Doorlatch</span>.</p></div></div>
+    <div class="beat low"><div class="panel"><p>She rested a while inside the Thimble, which fit her exactly, and ate the first poppy seed, and thought about the second.</p></div></div>
+    <div class="beat low"><div class="panel"><p>Then she looked back at the silk shining behind her, star to star to star, all the way down toward home. “That’s funny,” said Etta. “I set out to map the moon, and I seem to be drawing the meadow.” The stars said nothing. Stars are excellent listeners.</p></div></div>
+  </section>
+
+  <!-- ============ CHAPTER FIVE ============ -->
+  <section class="chapter" id="ch5" aria-labelledby="ch5t">
+    <header class="plate">
+      <p class="caps">· Chapter Five ·</p>
+      <h2 id="ch5t">In Which the Moon Explains Itself</h2>
+      <svg class="orn" viewBox="0 0 140 16" aria-hidden="true"><line x1="0" y1="8" x2="52" y2="8" stroke="currentColor" stroke-width="1.6" stroke-dasharray="1 7" stroke-linecap="round"/><path d="M70 8 C66 3 60 2 59 5 C58 8 63 10 70 8 C77 10 82 8 81 5 C80 2 74 3 70 8 Z" fill="currentColor"/><line x1="88" y1="8" x2="140" y2="8" stroke="currentColor" stroke-width="1.6" stroke-dasharray="1 7" stroke-linecap="round"/></svg>
+    </header>
+    <div class="beat low first"><div class="panel"><p>And then there was no more up. The moon was there — enormous, silver-shouldered, worn smooth like a doorknob loved by many hands — and so thin now that Etta could see the dark of it. The part everyone forgets.</p></div></div>
+    <div class="beat low"><div class="panel"><p>“I’ve come to map you,” Etta announced, holding out her spider silk, “before you’re forgotten all the way to nothing.” The moon was quiet for a moment, the way old things are quiet. Then it said: “Is that what you think is happening to me?”</p></div></div>
+    <div class="beat low"><div class="panel"><p>“You wane,” said Etta. “Smaller every night. I’ve watched.” “I turn,” said the moon, gently. “The way a sleeper turns under a blanket. My whole self is here — you are simply seeing my dark shoulder. Little mapmaker, I have never once been less than round.”</p></div></div>
+    <div class="beat low"><div class="panel"><p>Etta was quiet. The moon leaned closer, which moons can do at that hour. “Nothing loved is lost by going dark awhile. The meadow will go dark tonight; you will close your wings; and morning will find everything still whole and still round. Including you.”</p></div></div>
+    <div class="beat low"><div class="panel"><p>“Then you don’t need a map,” Etta said, a little sadly. The moon laughed — a slow, silver laugh she felt in her feet. “Look behind you, small one. You have already made the only map worth making.”</p></div></div>
+  </section>
+
+  <!-- ============ CHAPTER SIX ============ -->
+  <section class="chapter" id="ch6" aria-labelledby="ch6t">
+    <header class="plate">
+      <p class="caps">· Chapter Six ·</p>
+      <h2 id="ch6t">In Which a Map Finds Its Use</h2>
+      <svg class="orn" viewBox="0 0 140 16" aria-hidden="true"><line x1="0" y1="8" x2="52" y2="8" stroke="currentColor" stroke-width="1.6" stroke-dasharray="1 7" stroke-linecap="round"/><path d="M70 8 C66 3 60 2 59 5 C58 8 63 10 70 8 C77 10 82 8 81 5 C80 2 74 3 70 8 Z" fill="currentColor"/><line x1="88" y1="8" x2="140" y2="8" stroke="currentColor" stroke-width="1.6" stroke-dasharray="1 7" stroke-linecap="round"/></svg>
+    </header>
+    <div class="beat first"><div class="panel"><p>And Etta looked. There behind her, strung in spider silk from star to star, was the way home: past the Doorlatch, down through the Thimble, along the Keeper’s Cat, to the Foxglove — and below the Foxglove, small and green and certain, the meadow. She had mapped it without meaning to. The love had leaked in, the way it does.</p></div></div>
+    <div class="beat"><div class="panel"><p>Before she went, she took out the second poppy seed — the one packed in case of making a friend — and set it down on the moon’s dark shoulder. “In case,” she said. Moons don’t eat. That isn’t the point of a gift.</p></div></div>
+    <div class="beat"><div class="panel"><p>Down she went, star to star, hand over hand along her own silver lines. The sea waved. The lighthouse lamp watched her pass and dipped its beam — which, from a lamp, is a bow.</p></div></div>
+    <div class="beat"><div class="panel"><p>By the time she reached Foxglove Meadow, the moon had gone all the way dark, the way it does one night a month. But Etta wasn’t afraid of that anymore. Under the toadstool, beside the seventeen, she pinned the eighteenth map: the one that starts at the moon and ends at home. Both of them fit on it. That is the whole trick of maps.</p></div></div>
+    <div class="beat"><div class="panel"><p>So if you are ever awake at the very edge of sleep, and the night looks like it might be getting thinner — it isn’t. It is only turning, like you, under its blanket. The moon is round. The meadow is mapped. And somewhere in the foxgloves, a small cream moth has folded her wings for the night.</p></div></div>
+  </section>
+
+  <!-- ============ THE END ============ -->
+  <section id="the-end" aria-label="The end">
+    <svg class="orn" viewBox="0 0 140 16" aria-hidden="true"><line x1="0" y1="8" x2="52" y2="8" stroke="currentColor" stroke-width="1.6" stroke-dasharray="1 7" stroke-linecap="round"/><path d="M70 8 C66 3 60 2 59 5 C58 8 63 10 70 8 C77 10 82 8 81 5 C80 2 74 3 70 8 Z" fill="currentColor"/><line x1="88" y1="8" x2="140" y2="8" stroke="currentColor" stroke-width="1.6" stroke-dasharray="1 7" stroke-linecap="round"/></svg>
+    <p class="caps theend">The End</p>
+    <p class="whisper">Good night, little mapmaker.<br>Sleep round. Sleep whole.</p>
+    <a class="again" href="#cover">Read it again, softly</a>
+  </section>
+</main>
+
+<footer id="colophon">
+  <p>Written, drawn, and hung in the sky by Claude · Set in Fraunces &amp; Alegreya · No moths were kept up past their bedtime.</p>
+</footer>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>

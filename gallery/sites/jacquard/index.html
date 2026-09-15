@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jacquard &amp; Daughters — Handweaving Atelier, Frome</title>
+<meta name="description" content="A handweaving atelier in Frome, Somerset. Watch the loom weave plain weave, twill and satin at thread scale, draft your own cloth in a real weaver's draft, and commission a length.">
+<meta property="og:title" content="Jacquard &amp; Daughters — Handweaving Atelier">
+<meta property="og:description" content="The loom on this page is threaded and working now. Choose a structure, draft your own, and watch cloth woven live — thread over, thread under.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#E7DFCC">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2016%2016'%3E%3Crect%20width='16'%20height='16'%20fill='%23E7DFCC'/%3E%3Crect%20x='2'%20width='3'%20height='16'%20fill='%2326406C'/%3E%3Crect%20x='7'%20width='3'%20height='16'%20fill='%2326406C'/%3E%3Crect%20x='12'%20width='3'%20height='16'%20fill='%2326406C'/%3E%3Crect%20y='6.5'%20width='16'%20height='3'%20fill='%23A63D2F'/%3E%3Crect%20x='7'%20y='6.5'%20width='3'%20height='3'%20fill='%2326406C'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/Besley-04.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/IBMPlexMono-05.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/Besley.css">
+<link rel="stylesheet" href="fonts/IBMPlexMono.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body id="top">
+
+<header class="site-head">
+  <a class="wordmark" href="#top">JACQUARD <span class="amp">&amp;</span> DAUGHTERS</a>
+  <nav class="site-nav" aria-label="Sections">
+    <a href="#loom-sec">The Loom</a>
+    <a href="#cloth">Cloth</a>
+    <a href="#draft-room">Draft Room</a>
+    <a href="#punched">1801</a>
+    <a href="#commissions">Commissions</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============================== HERO / LOOM ============================== -->
+  <section class="hero" id="loom-sec" aria-label="The live loom">
+    <div class="hero-copy">
+      <p class="eyebrow rise-in">Handweaving atelier · Frome · est. 1974</p>
+      <h1><span class="w">Thread</span> <span class="w">over,</span> <span class="w">thread</span> <span class="w">under.</span> <span class="w">Everything</span> <span class="w">else</span> <span class="w">is</span> <span class="w">arithmetic.</span></h1>
+      <p class="lede rise-in">We weave linen and wool on eight-shaft looms, one shuttle pass at a time. The loom on this page is threaded and working now — choose a structure and watch the cloth take it, or draft your own in the <a href="#draft-room">Draft Room</a>.</p>
+      <p class="hero-note rise-in">Changing structure keeps everything already woven — the length becomes a sampler, the way a weaver's blanket records every experiment.</p>
+    </div>
+    <div class="hero-loom">
+      <div class="loom-panel" id="loom-panel">
+        <canvas id="loom" aria-hidden="true"></canvas>
+      </div>
+      <p class="loom-counter rise-in">
+        <span class="mono">pick <span id="pick-num">0000</span></span>
+        <span class="mono" id="pick-struct">2/2 twill</span>
+        <span class="mono" id="pick-ends">— ends</span>
+        <span class="mono" id="pick-dir">shuttle →</span>
+      </p>
+      <div class="chips rise-in" role="group" aria-label="Choose a weave structure">
+        <button class="chip" type="button" data-structure="plain" aria-pressed="false">Plain</button>
+        <button class="chip" type="button" data-structure="twill" aria-pressed="true">2/2 Twill</button>
+        <button class="chip" type="button" data-structure="satin" aria-pressed="false">8-End Satin</button>
+        <button class="chip" type="button" data-structure="herringbone" aria-pressed="false">Herringbone</button>
+        <button class="chip" type="button" data-structure="gooseeye" aria-pressed="false">Goose-Eye</button>
+        <button class="chip" type="button" data-structure="yours" aria-pressed="false">Your Draft</button>
+      </div>
+      <p class="sr-only">A live animation of a handloom: vertical indigo warp threads are strung from the warp beam, the shed opens, a wooden shuttle carries the madder weft across, and the reed beats each pick into cloth that scrolls slowly onto the cloth beam below, rippling as if handled.</p>
+    </div>
+  </section>
+
+  <!-- ================================ CLOTH ================================= -->
+  <section class="cloth" id="cloth">
+    <header class="sec-head rv">
+      <p class="eyebrow">The standing collection</p>
+      <h2>Five cloths, woven to order.</h2>
+      <p class="intro">There are no photographs on this page. Every swatch below is woven thread by thread from the same draft we tie onto the loom — what you see is the structure itself, at the scale we work at. Press <em>set the loom</em> and the big loom re-warps in that cloth's yarns.</p>
+    </header>
+    <ul class="cards">
+      <li class="card rv">
+        <div class="swatch"><canvas data-draft="plain" data-warp="indigo" data-weft="wool" role="img" aria-label="Plain weave swatch: indigo warp crossed with undyed weft in a tight checkerboard"></canvas></div>
+        <div class="card-body">
+          <p class="cat">No. 01 · plain weave</p>
+          <h3>Vat &amp; Chalk</h3>
+          <dl class="specs">
+            <div><dt>fibre</dt><dd>100% Normandy linen</dd></div>
+            <div><dt>weight</dt><dd>168 gsm</dd></div>
+            <div><dt>sett</dt><dd>24 epi × 22 ppi</dd></div>
+            <div><dt>width</dt><dd>92 cm</dd></div>
+            <div><dt>price</dt><dd>€74 / m</dd></div>
+          </dl>
+          <p class="note">The oldest structure we know: one up, one down, nowhere to hide an error. Washes to a dry, grainy hand that improves for thirty years.</p>
+          <button class="set-loom" type="button" data-draft="plain" data-warp="indigo" data-weft="wool">Set the loom →</button>
+        </div>
+      </li>
+      <li class="card rv">
+        <div class="swatch"><canvas data-draft="twill" data-warp="walnut" data-weft="madder" role="img" aria-label="2/2 twill swatch: walnut warp and madder weft forming a diagonal wale"></canvas></div>
+        <div class="card-body">
+          <p class="cat">No. 04 · 2/2 twill</p>
+          <h3>Wale</h3>
+          <dl class="specs">
+            <div><dt>fibre</dt><dd>lambswool, woollen-spun</dd></div>
+            <div><dt>weight</dt><dd>296 gsm</dd></div>
+            <div><dt>sett</dt><dd>20 epi × 18 ppi</dd></div>
+            <div><dt>width</dt><dd>148 cm</dd></div>
+            <div><dt>price</dt><dd>€88 / m</dd></div>
+          </dl>
+          <p class="note">A twill climbing right at forty-five degrees, two over, two under. Coating weight; drapes heavy and turns a shower.</p>
+          <button class="set-loom" type="button" data-draft="twill" data-warp="walnut" data-weft="madder">Set the loom →</button>
+        </div>
+      </li>
+      <li class="card rv">
+        <div class="swatch"><canvas data-draft="satin" data-warp="indigo" data-weft="madder" role="img" aria-label="8-end satin swatch: long madder weft floats over an indigo warp"></canvas></div>
+        <div class="card-body">
+          <p class="cat">No. 07 · 8-end satin</p>
+          <h3>Madder Face</h3>
+          <dl class="specs">
+            <div><dt>fibre</dt><dd>silk 22 / wool 78</dd></div>
+            <div><dt>weight</dt><dd>214 gsm</dd></div>
+            <div><dt>sett</dt><dd>36 epi × 30 ppi</dd></div>
+            <div><dt>width</dt><dd>92 cm</dd></div>
+            <div><dt>price</dt><dd>€126 / m</dd></div>
+          </dl>
+          <p class="note">The weft floats seven ends before it ducks — the face reads as unbroken madder with an indigo whisper at every turn.</p>
+          <button class="set-loom" type="button" data-draft="satin" data-warp="indigo" data-weft="madder">Set the loom →</button>
+        </div>
+      </li>
+      <li class="card rv">
+        <div class="swatch"><canvas data-draft="herringbone" data-warp="wool" data-weft="indigo" role="img" aria-label="Herringbone swatch: undyed warp and indigo weft in a chevron"></canvas></div>
+        <div class="card-body">
+          <p class="cat">No. 09 · herringbone</p>
+          <h3>Broken Bone</h3>
+          <dl class="specs">
+            <div><dt>fibre</dt><dd>worsted wool</dd></div>
+            <div><dt>weight</dt><dd>342 gsm</dd></div>
+            <div><dt>sett</dt><dd>22 epi × 20 ppi</dd></div>
+            <div><dt>width</dt><dd>150 cm</dd></div>
+            <div><dt>price</dt><dd>€96 / m</dd></div>
+          </dl>
+          <p class="note">A twill that changes its mind every six ends. The break hides wear; the chevron hides everything else.</p>
+          <button class="set-loom" type="button" data-draft="herringbone" data-warp="wool" data-weft="indigo">Set the loom →</button>
+        </div>
+      </li>
+      <li class="card rv">
+        <div class="swatch"><canvas data-draft="gooseeye" data-warp="flax" data-weft="walnut" role="img" aria-label="Goose-eye swatch: flax warp and walnut weft forming small diamonds"></canvas></div>
+        <div class="card-body">
+          <p class="cat">No. 12 · goose-eye</p>
+          <h3>Goose-Eye</h3>
+          <dl class="specs">
+            <div><dt>fibre</dt><dd>linen-wool union</dd></div>
+            <div><dt>weight</dt><dd>236 gsm</dd></div>
+            <div><dt>sett</dt><dd>22 epi × 20 ppi</dd></div>
+            <div><dt>width</dt><dd>118 cm</dd></div>
+            <div><dt>price</dt><dd>€102 / m</dd></div>
+          </dl>
+          <p class="note">Point twill turned back on itself until diamonds hatch. Our towelling — and the draft the editor below opens with.</p>
+          <button class="set-loom" type="button" data-draft="gooseeye" data-warp="flax" data-weft="walnut">Set the loom →</button>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ============================== DRAFT ROOM ============================== -->
+  <section class="draft-room" id="draft-room">
+    <header class="sec-head rv">
+      <p class="eyebrow">The draft room</p>
+      <h2>Draft your own cloth.</h2>
+      <p class="intro">A draft is a weaving program, three grids long. The <strong>threading</strong> assigns each warp end to a shaft. The <strong>tie-up</strong> wires shafts to treadles. The <strong>treadling</strong> plays the treadles in order. Toggle any cell — the drawdown weaves your pattern at once, and the card chain in the 1801 room is repunched to match.</p>
+    </header>
+
+    <div class="presets rv">
+      <span class="label">Load a draft</span>
+      <button class="preset-load" type="button" data-preset="plain" aria-pressed="false">Plain</button>
+      <button class="preset-load" type="button" data-preset="twill" aria-pressed="false">2/2 Twill</button>
+      <button class="preset-load" type="button" data-preset="satin" aria-pressed="false">8-End Satin</button>
+      <button class="preset-load" type="button" data-preset="herringbone" aria-pressed="false">Herringbone</button>
+      <button class="preset-load" type="button" data-preset="gooseeye" aria-pressed="true">Goose-Eye</button>
+    </div>
+
+    <div class="draft-bench rv">
+      <div class="draft-scroll">
+        <p class="bench-hint" aria-hidden="true">the bench is wider than the page — drag →</p>
+        <div class="draft-grid">
+          <div class="dg">
+            <span class="dg-label" id="lbl-threading">threading · 24 ends into 8 shafts</span>
+            <div id="threading" class="grid" role="group" aria-labelledby="lbl-threading"></div>
+          </div>
+          <div class="dg">
+            <span class="dg-label" id="lbl-tieup">tie-up · treadles × shafts</span>
+            <div id="tieup" class="grid" role="group" aria-labelledby="lbl-tieup"></div>
+          </div>
+          <div class="dg">
+            <span class="dg-label">drawdown · woven now</span>
+            <canvas id="drawdown" aria-label="Live drawdown: the cloth your draft produces, woven at thread scale" role="img"></canvas>
+          </div>
+          <div class="dg">
+            <span class="dg-label" id="lbl-treadling">treadling · one treadle per pick</span>
+            <div id="treadling" class="grid" role="group" aria-labelledby="lbl-treadling"></div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="bench-side" aria-label="Yarn and loom controls">
+        <h3 class="bench-title">The yarn wall</h3>
+        <div class="yarn-group" role="group" aria-label="Warp colour">
+          <span class="label">warp</span>
+          <div class="pegs">
+            <button class="peg peg-indigo" type="button" data-role="warp" data-color="indigo" aria-pressed="true" aria-label="Warp: indigo"></button>
+            <button class="peg peg-madder" type="button" data-role="warp" data-color="madder" aria-pressed="false" aria-label="Warp: madder"></button>
+            <button class="peg peg-walnut" type="button" data-role="warp" data-color="walnut" aria-pressed="false" aria-label="Warp: walnut"></button>
+            <button class="peg peg-wool" type="button" data-role="warp" data-color="wool" aria-pressed="false" aria-label="Warp: undyed wool"></button>
+            <button class="peg peg-flax" type="button" data-role="warp" data-color="flax" aria-pressed="false" aria-label="Warp: flax"></button>
+          </div>
+        </div>
+        <div class="yarn-group" role="group" aria-label="Weft colour">
+          <span class="label">weft</span>
+          <div class="pegs">
+            <button class="peg peg-indigo" type="button" data-role="weft" data-color="indigo" aria-pressed="false" aria-label="Weft: indigo"></button>
+            <button class="peg peg-madder" type="button" data-role="weft" data-color="madder" aria-pressed="true" aria-label="Weft: madder"></button>
+            <button class="peg peg-walnut" type="button" data-role="weft" data-color="walnut" aria-pressed="false" aria-label="Weft: walnut"></button>
+            <button class="peg peg-wool" type="button" data-role="weft" data-color="wool" aria-pressed="false" aria-label="Weft: undyed wool"></button>
+            <button class="peg peg-flax" type="button" data-role="weft" data-color="flax" aria-pressed="false" aria-label="Weft: flax"></button>
+          </div>
+        </div>
+        <p id="yarn-note">indigo warp × madder weft</p>
+        <button id="hang-draft" type="button">Hang this draft on the loom ↑</button>
+        <p class="bench-tip">Reading order: the threading sends warp end 14 to shaft 3; the tie-up wires treadle 2 to shafts 3 and 4; when the treadling fires treadle 2, every end on those shafts rises and the shuttle passes beneath. That is the whole computer.</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ================================= 1801 ================================= -->
+  <section class="punched" id="punched">
+    <header>
+      <p class="eyebrow rv">Sidebar · Lyon, 1801</p>
+      <h2 class="rv">The loom that taught machines to read.</h2>
+    </header>
+    <div class="punched-cols">
+      <div class="punched-copy rv">
+        <p>In 1801 Joseph-Marie Jacquard showed a loom that read its pattern from a chain of punched cards — one card per pick, one hole per hook. A hole lifted a thread; blank card left it down. Change the cards and the same machine wove different cloth. For the first time anywhere, the pattern had become data.</p>
+        <p>To prove the point, the Lyon workshops wove a portrait of Jacquard himself in black and white silk. It took 24,000 cards, and the result looked so exactly like an engraving that Charles Babbage hung a copy in his drawing room to unsettle his guests — then borrowed the card chain outright for the Analytical Engine.</p>
+        <blockquote>
+          “The Analytical Engine weaves algebraical patterns just as the Jacquard-loom weaves flowers and leaves.”
+          <cite>Ada Lovelace, 1843</cite>
+        </blockquote>
+      </div>
+      <div class="punched-live rv">
+        <div id="card-chain"></div>
+        <p class="mono" id="card-fact"></p>
+        <p class="punched-hint">These cards are compiled, live, from your draft in the room above. If you toggled a single cell up there, you have already programmed a machine today.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== COMMISSIONS ============================= -->
+  <section class="commissions" id="commissions">
+    <header class="sec-head rv">
+      <p class="eyebrow">Commissions</p>
+      <h2>From sitting to selvedge in five steps.</h2>
+    </header>
+    <div class="commissions-inner">
+      <ol class="steps rv">
+        <li>
+          <span class="step-no" aria-hidden="true">01</span>
+          <div>
+            <h3>The sitting</h3>
+            <p>Bring a use, not a design: a window that needs softening, a coat that wants a cloth, a table that seats ten. We talk fibre, weight and wear for three quarters of an hour, at the mill or by letter.</p>
+          </div>
+          <span class="step-meta">45 min · free</span>
+        </li>
+        <li>
+          <span class="step-no" aria-hidden="true">02</span>
+          <div>
+            <h3>Draft &amp; sample</h3>
+            <p>Nell drafts three structures against your use and weaves a 30&nbsp;cm strip of each on the trial loom. You keep the strips. Cloth should be argued with in the hand, never on a screen.</p>
+          </div>
+          <span class="step-meta">2 weeks · €120, credited</span>
+        </li>
+        <li>
+          <span class="step-no" aria-hidden="true">03</span>
+          <div>
+            <h3>Warping</h3>
+            <p>We wind your warp end by end at the warping wall — 480 ends of twelve metres is a day and a half of counting aloud — then dress the loom: threading, sleying, tying on.</p>
+          </div>
+          <span class="step-meta">3 days at the wall</span>
+        </li>
+        <li>
+          <span class="step-no" aria-hidden="true">04</span>
+          <div>
+            <h3>Weaving</h3>
+            <p>Marta weaves a disciplined metre a day, twills slower, satins slower still. You are welcome on Thursdays to stand where the noise is and watch your yardage grow.</p>
+          </div>
+          <span class="step-meta">≈ 1 m per day</span>
+        </li>
+        <li>
+          <span class="step-no" aria-hidden="true">05</span>
+          <div>
+            <h3>Finishing</h3>
+            <p>No cloth is finished off the loom. It is washed, dried under tension and pressed hard — it goes into the bath as string and comes out as fabric.</p>
+          </div>
+          <span class="step-meta">1 week</span>
+        </li>
+      </ol>
+      <aside class="terms rv" aria-label="Commission terms">
+        <h3>Terms, plainly</h3>
+        <dl>
+          <div><dt>lead time</dt><dd>6–10 weeks from sample</dd></div>
+          <div><dt>minimum</dt><dd>4 m of cloth</dd></div>
+          <div><dt>pricing</dt><dd>from €68 / m</dd></div>
+          <div><dt>sampling</dt><dd>€120, credited</dd></div>
+          <div><dt>visits</dt><dd>Thursdays, at the loom</dd></div>
+        </dl>
+        <p class="write">Write to <a href="mailto:commissions@jacquardanddaughters.co.uk">commissions@jacquardanddaughters.co.uk</a> with the use, the room or the body it is for, and any yarn you already love.</p>
+      </aside>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot-cols">
+    <div>
+      <h3>The atelier</h3>
+      <p>Jacquard &amp; Daughters<br>The Old Dyeworks, Willow Vale<br>Frome, Somerset BA11 1BG</p>
+      <p style="margin-top:10px">Thursday–Saturday, 10:00–17:00.<br>The looms rest on Mondays; so do we.</p>
+    </div>
+    <div>
+      <h3>The looms</h3>
+      <p>Two eight-shaft counterbalance looms in elm (1962), one sixteen-shaft dobby (1987), and a trial loom that has never once behaved.</p>
+      <p style="margin-top:10px">Founded by Edith Jacquard, 1974. At the benches now: her daughters, Nell &amp; Marta.</p>
+    </div>
+    <div>
+      <h3>Colophon</h3>
+      <p>Set in Besley — a Clarendon, the sturdy vernacular of mill-town signage — and IBM Plex Mono, the punched card's grandchild. Every swatch on this page is computed from its draft and woven in your browser. No photographs anywhere.</p>
+    </div>
+  </div>
+  <div class="foot-line">
+    <span>© 2026 Jacquard &amp; Daughters</span>
+    <span>woven in-browser · roughly sixty picks a minute</span>
+  </div>
+</footer>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

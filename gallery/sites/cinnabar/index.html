@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en" data-room="vault">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cinnabar &amp; Smalt — A Library of Historical Pigments</title>
+<meta name="description" content="The pigment vault of the Meridian Museum: five rooms for five colors that were once worth fleets, wars, and lifetimes — ultramarine, vermilion, Tyrian purple, orpiment, Prussian blue.">
+<meta property="og:title" content="Cinnabar &amp; Smalt">
+<meta property="og:description" content="A library of historical pigments. Enter a room — the vault takes its color.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#17151A">
+<script>document.documentElement.classList.add("js")</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2317151A'/%3E%3Ccircle cx='6.4' cy='16' r='2.5' fill='%235D7DFF'/%3E%3Ccircle cx='11.2' cy='16' r='2.5' fill='%23FF4B26'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='%23D2639F'/%3E%3Ccircle cx='20.8' cy='16' r='2.5' fill='%23E5A912'/%3E%3Ccircle cx='25.6' cy='16' r='2.5' fill='%234C93D8'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/BodoniModa-08.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/BodoniModa.css">
+<link rel="stylesheet" href="fonts/Spectral.css">
+<link rel="stylesheet" href="fonts/FragmentMono.css">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<a class="skip" href="#room-ultramarine">Skip to Room I</a>
+<div class="lights" aria-hidden="true"></div>
+
+<header class="masthead">
+  <a class="brand" href="#vestibule">Cinnabar <span class="amp">&amp;</span> Smalt</a>
+  <p class="climate" aria-label="Vault climate"><span id="whereami">VAULT B3</span>&ensp;·&ensp;17.0&thinsp;°C&ensp;·&ensp;45&thinsp;% RH&ensp;·&ensp;50 LUX</p>
+</header>
+
+<nav class="rail" aria-label="Vault rooms">
+  <a href="#room-ultramarine" data-room-link="ultramarine" aria-label="Room I · Ultramarine"><span class="chip chip--ultramarine"></span><span class="rail-name" aria-hidden="true">I · Ultramarine</span></a>
+  <a href="#room-vermilion" data-room-link="vermilion" aria-label="Room II · Vermilion"><span class="chip chip--vermilion"></span><span class="rail-name" aria-hidden="true">II · Vermilion</span></a>
+  <a href="#room-tyrian" data-room-link="tyrian" aria-label="Room III · Tyrian Purple"><span class="chip chip--tyrian"></span><span class="rail-name" aria-hidden="true">III · Tyrian Purple</span></a>
+  <a href="#room-orpiment" data-room-link="orpiment" aria-label="Room IV · Orpiment"><span class="chip chip--orpiment"></span><span class="rail-name" aria-hidden="true">IV · Orpiment</span></a>
+  <a href="#room-prussian" data-room-link="prussian" aria-label="Room V · Prussian Blue"><span class="chip chip--prussian"></span><span class="rail-name" aria-hidden="true">V · Prussian Blue</span></a>
+</nav>
+
+<main>
+
+<!-- ══════════════ VESTIBULE ══════════════ -->
+<section class="vestibule" id="vestibule" data-theme="vault" aria-label="Vestibule">
+  <p class="eyebrow rise r1">MERIDIAN MUSEUM · PIGMENT VAULT · BASEMENT LEVEL THREE</p>
+  <h1 class="rise r2">Cinnabar <em class="amp">&amp;</em> Smalt</h1>
+  <p class="sub rise r3">A library of historical pigments. Five rooms hold five colors that were once worth
+  fleets, wars, and lifetimes: ground lapis, Roman red, imperial purple, arsenic gold,
+  and an accident from Berlin.</p>
+
+  <div class="tray rise r4" role="group" aria-label="The five specimens">
+    <a class="specimen" href="#room-ultramarine">
+      <canvas class="mini" data-pigment="ultramarine" aria-hidden="true"></canvas>
+      <span class="spec-tag"><b>I</b> ULTRAMARINE <i>121&thinsp;g</i></span>
+    </a>
+    <a class="specimen" href="#room-vermilion">
+      <canvas class="mini" data-pigment="vermilion" aria-hidden="true"></canvas>
+      <span class="spec-tag"><b>II</b> VERMILION <i>340&thinsp;g</i></span>
+    </a>
+    <a class="specimen" href="#room-tyrian">
+      <canvas class="mini" data-pigment="tyrian" aria-hidden="true"></canvas>
+      <span class="spec-tag"><b>III</b> TYRIAN <i>0.41&thinsp;g</i></span>
+    </a>
+    <a class="specimen" href="#room-orpiment">
+      <canvas class="mini" data-pigment="orpiment" aria-hidden="true"></canvas>
+      <span class="spec-tag"><b>IV</b> ORPIMENT <i>188&thinsp;g</i></span>
+    </a>
+    <a class="specimen" href="#room-prussian">
+      <canvas class="mini" data-pigment="prussian" aria-hidden="true"></canvas>
+      <span class="spec-tag"><b>V</b> PRUSSIAN <i>212&thinsp;g</i></span>
+    </a>
+  </div>
+
+  <p class="hint rise r5">Enter a room — the vault takes its color.</p>
+  <p class="hint-sub rise r5">COLLECTION OF FIVE · VISITED IN VAULT ORDER · MOUNDS DRAWN TO HOLDING</p>
+</section>
+
+<!-- ══════════════ ROOM I — ULTRAMARINE ══════════════ -->
+<section class="room" id="room-ultramarine" data-theme="ultramarine" aria-labelledby="h-ultramarine">
+  <header class="roomhead" data-numeral="I">
+    <p class="room-no">ROOM I · SPECIMEN CS.011</p>
+    <h2 class="room-name" id="h-ultramarine">Ultramarine</h2>
+    <p class="room-epithet">the blue from beyond the sea</p>
+  </header>
+
+  <figure class="stage">
+    <div class="mound-box"><canvas class="mound" data-pigment="ultramarine" aria-hidden="true"></canvas></div>
+    <figcaption class="plate">
+      <span class="plate-row"><span>NO.</span><span>CS.011</span></span>
+      <span class="plate-row"><span>PIGMENT</span><span>NATURAL ULTRAMARINE</span></span>
+      <span class="plate-row"><span>MINERAL</span><span>LAZURITE, FROM LAPIS LAZULI</span></span>
+      <span class="plate-row"><span>FORMULA</span><span>Na<sub>8</sub>Al<sub>6</sub>Si<sub>6</sub>O<sub>24</sub>S<sub>4</sub></span></span>
+      <span class="plate-row"><span>ORIGIN</span><span>SAR-E-SANG, BADAKHSHAN</span></span>
+      <span class="plate-row"><span>HOLDING</span><span>121 G · ACQ. 1911</span></span>
+      <span class="plate-row"><span>KEPT</span><span>CASE II · DRAWER 4</span></span>
+    </figcaption>
+  </figure>
+
+  <p class="lede rv"><em>Ultramarinus</em> — the blue that came from beyond the sea, and for four
+  centuries cost more than the gold it was asked to outshine.</p>
+
+  <div class="study">
+  <div class="prose">
+    <p class="rv">Every grain in this drawer began in one mountainside. The lapis mines of
+    Sar-e-Sang hang above the Kokcha river in Badakhshan, in the far northeast of Afghanistan,
+    and they have been worked for over six thousand years — miners set fires against the rock
+    face and quenched the hot stone with water until it split. Lapis went west to Egypt as
+    beads and amulets and the inlaid brows of Tutankhamun's mask. But that was stone. The
+    secret of turning it into paint took another four millennia.</p>
+
+    <p class="rv">Grind lapis and you get grey — the blue lazurite is locked in with calcite
+    and flecks of pyrite. The trick, written down by Cennino Cennini around 1400, is to knead
+    the powder into a dough of wax, pine resin and gum mastic, then work the dough in lye.
+    The blue releases first; the grey stays behind. The first kneading yields the finest
+    grade, and each pass after it something paler, down to the ash the workshop swept.</p>
+
+    <p class="rv">At that price the color was contractual. Venetian market grades ran to eight
+    ducats the ounce — above gold — and patrons wrote the blue into altarpiece commissions by
+    grade and by placement: this mantle, that heaven, nothing else. Michelangelo's
+    <em>Entombment</em> sits unfinished in the National Gallery with a bare patch where the
+    Virgin's robe waited on blue. Vermeer never waited — he ground it into shadows, wall
+    plaster, the turban of a girl with a pearl earring — and left his widow bankrupt for it.</p>
+
+    <p class="rv">The monopoly fell to chemistry. In 1824 the Société d'Encouragement offered
+    six thousand francs for a synthetic route; by 1826 Jean-Baptiste Guimet of Toulouse had
+    one, and his ultramarine sold at roughly a four-hundredth the price of the stone. The sea
+    kept the name. It gave up everything else.</p>
+  </div>
+  <aside class="marginalia rv" aria-label="Curator's file, ultramarine">
+    <p class="note"><b>CONSERVATOR</b>Grade I powder. Pyrite flecks visible at 10× — do not
+    test with acid; see sickness file, 1972.</p>
+    <p class="note"><b>LOAN HISTORY</b>Requested 1994, 2011. Refused both times. The blue
+    does not travel.</p>
+  </aside>
+  </div>
+
+  <blockquote class="pull rv">
+    <p>“A color illustrious, beautiful, and most perfect, beyond all other colors.”</p>
+    <cite>CENNINO CENNINI · IL LIBRO DELL'ARTE · C. 1400</cite>
+  </blockquote>
+
+  <div class="cards">
+    <article class="card rv">
+      <h3>LEDGER</h3>
+      <ul class="ledger">
+        <li><span>1508 · VENICE</span><span>8 ducats the ounce, best grade — above gold</span></li>
+        <li><span>1515 · ROME</span><span>written into contracts by grade &amp; placement</span></li>
+        <li><span>1828 · PARIS</span><span>Guimet's synthetic, 400 francs the kilogram</span></li>
+        <li><span>1830 · EUROPE</span><span>price of the natural grade collapses ≈400-fold</span></li>
+      </ul>
+    </article>
+    <article class="card rv">
+      <h3>BENCH NOTES</h3>
+      <p>The chromophore is no metal but a trapped radical: S<sub>3</sub><sup>−</sup> anions
+      caged in a sodalite lattice, Na<sub>8</sub>Al<sub>6</sub>Si<sub>6</sub>O<sub>24</sub>S<sub>4</sub>.
+      Lightfast for centuries; ruined in minutes by acid — the pallor conservators call
+      ultramarine sickness. The raw stone carries pyrite, which is why this mound glitters
+      faintly gold.</p>
+    </article>
+    <article class="card rv">
+      <h3>PROVENANCE</h3>
+      <ul class="works">
+        <li><span>Giotto, Scrovegni Chapel vault</span><span>1305</span></li>
+        <li><span>Titian, <em>Bacchus and Ariadne</em></span><span>1523</span></li>
+        <li><span>Sassoferrato, <em>The Virgin in Prayer</em></span><span>c.&thinsp;1645</span></li>
+        <li><span>Vermeer, <em>Girl with a Pearl Earring</em></span><span>c.&thinsp;1665</span></li>
+      </ul>
+    </article>
+  </div>
+
+  <a class="threshold rv" href="#room-vermilion">
+    <span class="threshold-line" aria-hidden="true"></span>
+    <span class="threshold-label">ALONG THE CORRIDOR</span>
+    <span class="threshold-door"><span class="chip chip--vermilion" aria-hidden="true"></span>ROOM II · VERMILION</span>
+  </a>
+</section>
+
+<!-- ══════════════ ROOM II — VERMILION ══════════════ -->
+<section class="room" id="room-vermilion" data-theme="vermilion" aria-labelledby="h-vermilion">
+  <header class="roomhead" data-numeral="II">
+    <p class="room-no">ROOM II · SPECIMEN CS.002</p>
+    <h2 class="room-name" id="h-vermilion">Vermilion</h2>
+    <p class="room-epithet">the red that Rome fixed by law</p>
+  </header>
+
+  <figure class="stage">
+    <div class="mound-box"><canvas class="mound" data-pigment="vermilion" aria-hidden="true"></canvas></div>
+    <figcaption class="plate">
+      <span class="plate-row"><span>NO.</span><span>CS.002</span></span>
+      <span class="plate-row"><span>PIGMENT</span><span>VERMILION · GROUND CINNABAR</span></span>
+      <span class="plate-row"><span>MINERAL</span><span>CINNABAR, α-HgS</span></span>
+      <span class="plate-row"><span>FORMULA</span><span>HgS · MERCURY(II) SULFIDE</span></span>
+      <span class="plate-row"><span>ORIGIN</span><span>ALMADÉN, CASTILE</span></span>
+      <span class="plate-row"><span>HOLDING</span><span>340 G · ACQ. 1897</span></span>
+      <span class="plate-row"><span>KEPT</span><span>CASE I · DRAWER 2</span></span>
+    </figcaption>
+  </figure>
+
+  <p class="lede rv">Rome wanted this red so badly it capped the price by statute and staffed
+  the mine with the condemned.</p>
+
+  <div class="study">
+  <div class="prose">
+    <p class="rv">Cinnabar came to Rome from Almadén in Castile, the richest mercury deposit
+    on earth, worked by convicts under the sentence <em>damnatio ad metalla</em> — condemned
+    to the mines, a sentence whose brevity was the point. Pliny records the state fixing
+    vermilion at seventy sesterces the pound so speculators could not corner it. Rome spent
+    it anyway: the great frieze of the Villa of the Mysteries at Pompeii is drenched in a red
+    that still radiates from the wall two thousand years on.</p>
+
+    <p class="rv">China knew the color earlier and kept it longer. Shang diviners rubbed
+    cinnabar into oracle-bone inscriptions; Sima Qian wrote that the tomb of the First Emperor
+    held rivers of mercury; the carved lacquer of the Yongle workshops built vermilion up in
+    two hundred coats and cut landscapes into the thickness. And it was Chinese and Arab
+    alchemists who learned, by the eighth century, to make the red without the mine — mercury
+    and sulfur sealed in a vessel and heated until they sublime into synthetic cinnabar. A
+    thousand years before the word existed, vermilion was already a triumph of chemistry.</p>
+
+    <p class="rv">Medieval scriptoria poured it into initial letters and headings — the
+    <em>rubrica</em>, red earth, that gives us “rubric” and the red-letter day. When Titian
+    raised the Virgin off the ground in the <em>Assunta</em>, he did it in vermilion robes
+    against a golden sky: the loudest red in the loudest room in Venice.</p>
+
+    <p class="rv">Its flaw is a slow betrayal. Under light and trace halides, red α-HgS
+    converts to black metacinnabar — grain by grain, the color eats itself. The reds of
+    Pompeii have been darkening since the day they were dug out of the ash. The drawer note
+    reads: <em>keep dark; the specimen is doing what the frescoes did.</em></p>
+  </div>
+  <aside class="marginalia rv" aria-label="Curator's file, vermilion">
+    <p class="note"><b>CONDITION</b>Darkening at drawer-front edge; metacinnabar suspected.
+    Specimen rotated 03/2024.</p>
+    <p class="note"><b>HANDLING</b>Mercury. Weigh in the hood; log to the mercury register,
+    not the day book.</p>
+  </aside>
+  </div>
+
+  <blockquote class="pull rv">
+    <p>“Sound vermilion is made only in the fire; the friar who taught me kept the vessel
+    sealed and prayed the color through it.”</p>
+    <cite>WORKSHOP NOTE · BOLOGNESE MS. 214 · 15TH C.</cite>
+  </blockquote>
+
+  <div class="cards">
+    <article class="card rv">
+      <h3>LEDGER</h3>
+      <ul class="ledger">
+        <li><span>77 CE · ROME</span><span>capped at 70 sesterces the pound — Pliny, XXXIII</span></li>
+        <li><span>c.&thinsp;750</span><span>dry-process synthesis undercuts the mine</span></li>
+        <li><span>1687 · AMSTERDAM</span><span>Dutch-process vermilion shipped by the ton</span></li>
+        <li><span>1919</span><span>cadmium red begins the long retirement</span></li>
+      </ul>
+    </article>
+    <article class="card rv">
+      <h3>BENCH NOTES</h3>
+      <p>HgS. Refractive index 3.1 — few substances carry more light per grain, which is why a
+      thin film of it covers so completely. Photosensitive: red α-cinnabar inverts to black
+      metacinnabar where chlorides ride in with the binder. Grind it coarse and it cools;
+      fine, and it flares orange.</p>
+    </article>
+    <article class="card rv">
+      <h3>PROVENANCE</h3>
+      <ul class="works">
+        <li><span>Frieze, Villa of the Mysteries, Pompeii</span><span>c.&thinsp;60 BCE</span></li>
+        <li><span>Lindisfarne Gospels, rubrics</span><span>c.&thinsp;700</span></li>
+        <li><span>Yongle carved red lacquer</span><span>c.&thinsp;1420</span></li>
+        <li><span>Titian, <em>Assunta</em>, Frari</span><span>1518</span></li>
+      </ul>
+    </article>
+  </div>
+
+  <a class="threshold rv" href="#room-tyrian">
+    <span class="threshold-line" aria-hidden="true"></span>
+    <span class="threshold-label">ALONG THE CORRIDOR</span>
+    <span class="threshold-door"><span class="chip chip--tyrian" aria-hidden="true"></span>ROOM III · TYRIAN PURPLE</span>
+  </a>
+</section>
+
+<!-- ══════════════ ROOM III — TYRIAN PURPLE ══════════════ -->
+<section class="room" id="room-tyrian" data-theme="tyrian" aria-labelledby="h-tyrian">
+  <header class="roomhead" data-numeral="III">
+    <p class="room-no">ROOM III · SPECIMEN CS.017</p>
+    <h2 class="room-name" id="h-tyrian">Tyrian Purple</h2>
+    <p class="room-epithet">a quarter-million snails to the ounce</p>
+  </header>
+
+  <figure class="stage">
+    <div class="mound-box"><canvas class="mound" data-pigment="tyrian" aria-hidden="true"></canvas></div>
+    <figcaption class="plate">
+      <span class="plate-row"><span>NO.</span><span>CS.017</span></span>
+      <span class="plate-row"><span>PIGMENT</span><span>TYRIAN PURPLE</span></span>
+      <span class="plate-row"><span>SOURCE</span><span>MUREX GLANDS, B. BRANDARIS</span></span>
+      <span class="plate-row"><span>FORMULA</span><span>C<sub>16</sub>H<sub>8</sub>Br<sub>2</sub>N<sub>2</sub>O<sub>2</sub> · 6,6′-DIBROMOINDIGO</span></span>
+      <span class="plate-row"><span>ORIGIN</span><span>TYRE, PHOENICIA</span></span>
+      <span class="plate-row"><span>HOLDING</span><span>0.41 G · ACQ. 1963</span></span>
+      <span class="plate-row"><span>KEPT</span><span>CASE III · SEALED VIAL</span></span>
+    </figcaption>
+  </figure>
+
+  <p class="lede rv">The smallest holding in the vault: less than half a gram, and the vault
+  is rich to have it.</p>
+
+  <div class="study">
+  <div class="prose">
+    <p class="rv">The purple comes from a gland the size of a rice grain in two Mediterranean
+    sea snails, <em>Bolinus brandaris</em> and <em>Hexaplex trunculus</em>. Each yields a
+    drop. The arithmetic never improves: a quarter of a million snails to one ounce of dye.
+    The crushed-shell middens of Tyre and Sidon still stand as hills, and Strabo noted that
+    the dye works made the city rich and unbearable in the same breath — the vats were
+    banished downwind.</p>
+
+    <p class="rv">What the money bought was not brightness but permanence. Pliny called the
+    best grade the color of clotted blood — dark, almost sullen — and unlike every plant dye
+    it deepened with sun and weather instead of dying. Diocletian's price edict of 301 CE
+    lists a pound of purple-dyed silk at one hundred fifty thousand denarii, against a farm
+    laborer's twenty-five a day. Wearing it was legislation; counterfeiting it, treason.</p>
+
+    <p class="rv">Byzantium turned the color into constitutional law. Empresses were
+    delivered in the Porphyra, a chamber walled in purple stone, so that heirs would be
+    <em>porphyrogénnētos</em> — born in the purple; emperors signed in purple ink no other
+    hand might use. When Constantinople fell in 1453 the vats went cold for good, and the
+    church that had dressed in murex resorted to the scale insect: cardinals wear kermes red
+    because the purple died with the city.</p>
+
+    <p class="rv">The molecule kept its secret until 1909, when Paul Friedländer took twelve
+    thousand murex from the Trieste fish market and won 1.37 grams of pure dye — the assay
+    that fixed the legend in decimal places. It proved to be indigo carrying two bromine
+    atoms: ordinary blue, salted by the sea into empire.</p>
+  </div>
+  <aside class="marginalia rv" aria-label="Curator's file, Tyrian purple">
+    <p class="note"><b>SECURITY</b>Vial weighed monthly. Last check 0.4102 g — the missing
+    milligrams are on the balance pan, 1963.</p>
+    <p class="note"><b>PROVENANCE FILE</b>Friedländer stock, via Vienna. One of eleven
+    surviving assay vials.</p>
+  </aside>
+  </div>
+
+  <blockquote class="pull rv">
+    <p>“Two coats of it, and the wool holds the price of the estate that grazed the sheep.”</p>
+    <cite>DYER'S RECKONING · TYRE · 4TH C. CE</cite>
+  </blockquote>
+
+  <div class="cards">
+    <article class="card rv">
+      <h3>LEDGER</h3>
+      <ul class="ledger">
+        <li><span>301 CE · EDICT</span><span>150,000 denarii the pound, dyed silk</span></li>
+        <li><span>c.&thinsp;950 · BYZANTIUM</span><span>reserved to the imperial house on pain of death</span></li>
+        <li><span>1453</span><span>the vats of Constantinople go cold</span></li>
+        <li><span>1909 · VIENNA</span><span>Friedländer: 12,000 snails → 1.37 g</span></li>
+      </ul>
+    </article>
+    <article class="card rv">
+      <h3>BENCH NOTES</h3>
+      <p>6,6′-dibromoindigo. The gland's secretion is colorless; air and light develop the
+      purple on the fiber itself — the dye is born, not applied. Under hard UV it sheds its
+      bromine and drifts toward plain indigo, which is why some imperial silks now read
+      almost blue.</p>
+    </article>
+    <article class="card rv">
+      <h3>PROVENANCE</h3>
+      <ul class="works">
+        <li><span>Mantle of Justinian, San Vitale mosaic</span><span>c.&thinsp;547</span></li>
+        <li><span>Codex Purpureus Rossanensis, purple vellum</span><span>6th c.</span></li>
+        <li><span>The Porphyra, Great Palace, Constantinople</span><span>c.&thinsp;750</span></li>
+      </ul>
+    </article>
+  </div>
+
+  <a class="threshold rv" href="#room-orpiment">
+    <span class="threshold-line" aria-hidden="true"></span>
+    <span class="threshold-label">ALONG THE CORRIDOR · GLOVES ON</span>
+    <span class="threshold-door"><span class="chip chip--orpiment" aria-hidden="true"></span>ROOM IV · ORPIMENT</span>
+  </a>
+</section>
+
+<!-- ══════════════ ROOM IV — ORPIMENT ══════════════ -->
+<section class="room" id="room-orpiment" data-theme="orpiment" aria-labelledby="h-orpiment">
+  <header class="roomhead" data-numeral="IV">
+    <p class="room-no">ROOM IV · SPECIMEN CS.023 · GLOVES REQUIRED</p>
+    <h2 class="room-name" id="h-orpiment">Orpiment</h2>
+    <p class="room-epithet">the gold that kills</p>
+  </header>
+
+  <figure class="stage">
+    <div class="mound-box"><canvas class="mound" data-pigment="orpiment" aria-hidden="true"></canvas></div>
+    <figcaption class="plate">
+      <span class="plate-row"><span>NO.</span><span>CS.023</span></span>
+      <span class="plate-row"><span>PIGMENT</span><span>ORPIMENT · KING'S YELLOW</span></span>
+      <span class="plate-row"><span>MINERAL</span><span>ORPIMENT, MONOCLINIC</span></span>
+      <span class="plate-row"><span>FORMULA</span><span>As<sub>2</sub>S<sub>3</sub> · ARSENIC TRISULFIDE</span></span>
+      <span class="plate-row"><span>ORIGIN</span><span>EASTERN ANATOLIA</span></span>
+      <span class="plate-row"><span>HOLDING</span><span>188 G · ACQ. 1902</span></span>
+      <span class="plate-row"><span>KEPT</span><span>CASE IV · DOUBLE-SEALED</span></span>
+    </figcaption>
+  </figure>
+
+  <p class="lede rv"><em>Auripigmentum</em> — “gold paint.” The one room in the vault where
+  the lights seem to come from the drawer.</p>
+
+  <div class="study">
+  <div class="prose">
+    <p class="rv">No yellow in the pre-modern world burned like it. Orpiment is arsenic
+    trisulfide, dug in glittering, micaceous plates, and its Latin name says exactly what
+    everyone hoped: gold pigment. Alchemists reasoned that a stone this color must hold gold
+    the way ore holds metal, and spent centuries trying to talk it out. The stone held
+    arsenic, and it never once lied about that.</p>
+
+    <p class="rv">Egypt used it where radiance mattered most: the yellows of the Book of the
+    Dead of Ani, the painted goods of Tutankhamun's tomb, skin of gods rendered in a mineral
+    that outshone ochre the way flame outshines brick. Persian and Byzantine illuminators
+    laid it beside real gold leaf and let the two argue across the page.</p>
+
+    <p class="rv">Cennini entered the warning into the handbook itself: <em>beware of soiling
+    your mouth with it, lest you suffer personal injury.</em> Venice ignored him — with
+    lagoon light to answer, Titian and Veronese glazed orpiment over its orange twin realgar
+    and got draperies that seem lit from inside the canvas. The workshops paid in the usual
+    coin: shaking hands, ruined guts, short careers.</p>
+
+    <p class="rv">Even its chemistry is antisocial. Set beside lead- or copper-bearing colors
+    it trades sulfur and blackens both parties, so it had to be laid alone, quarantined on
+    the palette like the poison it is. Cadmium yellow finally retired it in the 1840s. The
+    vault keeps its 188 grams double-sealed, and the room keeps the label short:
+    <strong>handle with gloves; admire without them.</strong></p>
+  </div>
+  <aside class="marginalia rv" aria-label="Curator's file, orpiment">
+    <p class="note"><b>HAZARD</b>Arsenic. Gloves and mask; no open handling since 1977.
+    The drawer liner is changed sealed.</p>
+    <p class="note"><b>INCOMPATIBLE</b>Lead white, verdigris, all copper greens. Stored
+    four cases from each.</p>
+  </aside>
+  </div>
+
+  <blockquote class="pull rv">
+    <p>“Beware of soiling your mouth with it, lest you suffer personal injury.”</p>
+    <cite>CENNINO CENNINI · ON ORPIMENT · C. 1400</cite>
+  </blockquote>
+
+  <div class="cards">
+    <article class="card rv">
+      <h3>LEDGER</h3>
+      <ul class="ledger">
+        <li><span>ROME</span><span>sold openly as pigment, cosmetic, depilatory</span></li>
+        <li><span>c.&thinsp;1400</span><span>Cennini's warning enters the handbook</span></li>
+        <li><span>1846</span><span>cadmium yellow retires the king</span></li>
+        <li><span>TODAY</span><span>survives mostly in vaults, behind seals</span></li>
+      </ul>
+    </article>
+    <article class="card rv">
+      <h3>BENCH NOTES</h3>
+      <p>As<sub>2</sub>S<sub>3</sub>, monoclinic, with a pearly cleavage that glitters in the
+      grind — the sparkle in this mound is the mineral's own. Lightfast, but a sulfide
+      brawler: blackens lead white and verdigris on contact. Arsenic in every grain; the
+      dust is the danger.</p>
+    </article>
+    <article class="card rv">
+      <h3>PROVENANCE</h3>
+      <ul class="works">
+        <li><span>Book of the Dead of Ani</span><span>c.&thinsp;1250 BCE</span></li>
+        <li><span>Painted chest, tomb of Tutankhamun</span><span>c.&thinsp;1323 BCE</span></li>
+        <li><span>Veronese, <em>The Wedding at Cana</em></span><span>1563</span></li>
+      </ul>
+    </article>
+  </div>
+
+  <a class="threshold rv" href="#room-prussian">
+    <span class="threshold-line" aria-hidden="true"></span>
+    <span class="threshold-label">ALONG THE CORRIDOR</span>
+    <span class="threshold-door"><span class="chip chip--prussian" aria-hidden="true"></span>ROOM V · PRUSSIAN BLUE</span>
+  </a>
+</section>
+
+<!-- ══════════════ ROOM V — PRUSSIAN BLUE ══════════════ -->
+<section class="room" id="room-prussian" data-theme="prussian" aria-labelledby="h-prussian">
+  <header class="roomhead" data-numeral="V">
+    <p class="room-no">ROOM V · SPECIMEN CS.031</p>
+    <h2 class="room-name" id="h-prussian">Prussian Blue</h2>
+    <p class="room-epithet">the accident that made blue cheap</p>
+  </header>
+
+  <figure class="stage">
+    <div class="mound-box"><canvas class="mound" data-pigment="prussian" aria-hidden="true"></canvas></div>
+    <figcaption class="plate">
+      <span class="plate-row"><span>NO.</span><span>CS.031</span></span>
+      <span class="plate-row"><span>PIGMENT</span><span>PRUSSIAN BLUE · BERLIN BLUE</span></span>
+      <span class="plate-row"><span>CLASS</span><span>SYNTHETIC · THE FIRST MODERN</span></span>
+      <span class="plate-row"><span>FORMULA</span><span>Fe<sub>4</sub>[Fe(CN)<sub>6</sub>]<sub>3</sub></span></span>
+      <span class="plate-row"><span>ORIGIN</span><span>BERLIN · 1706</span></span>
+      <span class="plate-row"><span>HOLDING</span><span>212 G · ACQ. 1889</span></span>
+      <span class="plate-row"><span>KEPT</span><span>CASE V · DRAWER 9</span></span>
+    </figcaption>
+  </figure>
+
+  <p class="lede rv">A colorman reached for the wrong potash and red came out blue. Every
+  century since has been painted with the mistake.</p>
+
+  <div class="study">
+  <div class="prose">
+    <p class="rv">Berlin, 1706. Johann Jacob Diesbach, renting bench space in the laboratory
+    of the alchemist Johann Konrad Dippel, set out to precipitate a batch of cochineal red
+    lake. The potash he borrowed was fouled with Dippel's animal oil — a distillate of bone
+    and blood. The vat refused to go red. It went a deep, foreign blue that no European
+    workshop had ever mixed: iron and cyanide locked in a lattice, the first synthetic
+    pigment of the modern age.</p>
+
+    <p class="rv">The recipe was hoarded for nearly twenty years until John Woodward published
+    it in the <em>Philosophical Transactions</em> of 1724, and then the color went everywhere
+    at once. It sold for a tenth the price of ultramarine. For the first time in the history
+    of painting, deep blue belonged to whoever wanted it — guild master or journeyman,
+    Canaletto's skies or a shop sign in a market town.</p>
+
+    <p class="rv">It crossed to Japan in Dutch cargo through Nagasaki, where printmakers
+    called it <em>bero-ai</em>, Berlin indigo. Hokusai took it and pulled a wave over Mount
+    Fuji: the Great Wave is a Prussian-blue picture, and so is the whole late flowering of
+    the ukiyo-e sky. It came back west in Van Gogh's night and Picasso's three blue years —
+    the pigment of grief bought by the tube.</p>
+
+    <p class="rv">The vault's least precious specimen is the one the world still uses most.
+    Its open lattice cages heavy atoms, so hospitals stock Prussian blue as the antidote for
+    thallium and radioactive cesium; Herschel's cyanotype prints in it, which is why plans
+    are blueprints. Two hundred grams, drawer nine — the cheapest room in the vault, and the
+    one the modern world walked out of.</p>
+  </div>
+  <aside class="marginalia rv" aria-label="Curator's file, Prussian blue">
+    <p class="note"><b>ACQUISITIONS</b>Replaced freely; the vault buys it by the jar. The
+    1889 accession is kept for sentiment.</p>
+    <p class="note"><b>STORAGE</b>Keep from lime and alkali. Otherwise the least demanding
+    tenant on the floor.</p>
+  </aside>
+  </div>
+
+  <blockquote class="pull rv">
+    <p>“NB — the blue arises only when the potash has stood over the oil of bones. The error
+    is the recipe.”</p>
+    <cite>LABORATORY MEMORANDUM · BERLIN · 1706</cite>
+  </blockquote>
+
+  <div class="cards">
+    <article class="card rv">
+      <h3>LEDGER</h3>
+      <ul class="ledger">
+        <li><span>1710 · BERLIN</span><span>sold at a tenth the price of ultramarine</span></li>
+        <li><span>1724 · LONDON</span><span>Woodward publishes the guarded recipe</span></li>
+        <li><span>c.&thinsp;1831 · EDO</span><span>imported bero-ai colors the Great Wave</span></li>
+        <li><span>1968 · WHO</span><span>listed as antidote — cesium, thallium</span></li>
+      </ul>
+    </article>
+    <article class="card rv">
+      <h3>BENCH NOTES</h3>
+      <p>Fe<sub>4</sub>[Fe(CN)<sub>6</sub>]<sub>3</sub> — iron in two oxidation states, and
+      the blue is the electron caught commuting between them. The lattice's cages swallow
+      cesium and thallium whole, a pigment moonlighting as medicine. Weak against alkali:
+      lime walls bleach it, so it never conquered fresco.</p>
+    </article>
+    <article class="card rv">
+      <h3>PROVENANCE</h3>
+      <ul class="works">
+        <li><span>Hokusai, <em>Under the Wave off Kanagawa</em></span><span>c.&thinsp;1831</span></li>
+        <li><span>Anna Atkins, <em>Photographs of British Algae</em></span><span>1843</span></li>
+        <li><span>Van Gogh, <em>The Starry Night</em></span><span>1889</span></li>
+        <li><span>Picasso, <em>La Vie</em></span><span>1903</span></li>
+      </ul>
+    </article>
+  </div>
+
+  <a class="threshold rv" href="#register">
+    <span class="threshold-line" aria-hidden="true"></span>
+    <span class="threshold-label">THE CORRIDOR ENDS</span>
+    <span class="threshold-door"><span class="chip chip--vault" aria-hidden="true"></span>THE REGISTER</span>
+  </a>
+</section>
+
+<!-- ══════════════ REGISTER ══════════════ -->
+<section class="register" id="register" data-theme="vault" aria-labelledby="h-register">
+  <header class="roomhead">
+    <p class="room-no">BASEMENT LEVEL THREE · END OF CORRIDOR</p>
+    <h2 class="room-name room-name--sm" id="h-register">The Register</h2>
+  </header>
+
+  <div class="table-wrap rv">
+    <table class="registry">
+      <caption class="visually-hidden">Register of the five exhibited pigments</caption>
+      <thead>
+        <tr><th>ROOM</th><th>NO.</th><th>PIGMENT</th><th>FORMULA</th><th>ORIGIN</th><th>HOLDING</th><th>ACQ.</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>I</td><td>CS.011</td><td><a href="#room-ultramarine">Ultramarine</a></td><td>Na<sub>8</sub>Al<sub>6</sub>Si<sub>6</sub>O<sub>24</sub>S<sub>4</sub></td><td>Sar-e-Sang</td><td>121 g</td><td>1911</td></tr>
+        <tr><td>II</td><td>CS.002</td><td><a href="#room-vermilion">Vermilion</a></td><td>HgS</td><td>Almadén</td><td>340 g</td><td>1897</td></tr>
+        <tr><td>III</td><td>CS.017</td><td><a href="#room-tyrian">Tyrian purple</a></td><td>C<sub>16</sub>H<sub>8</sub>Br<sub>2</sub>N<sub>2</sub>O<sub>2</sub></td><td>Tyre</td><td>0.41 g</td><td>1963</td></tr>
+        <tr><td>IV</td><td>CS.023</td><td><a href="#room-orpiment">Orpiment</a></td><td>As<sub>2</sub>S<sub>3</sub></td><td>E. Anatolia</td><td>188 g</td><td>1902</td></tr>
+        <tr><td>V</td><td>CS.031</td><td><a href="#room-prussian">Prussian blue</a></td><td>Fe<sub>4</sub>[Fe(CN)<sub>6</sub>]<sub>3</sub></td><td>Berlin</td><td>212 g</td><td>1889</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="register-notes rv">
+    <p>Also held, unexhibited: smalt (CS.007), verdigris (CS.019), lead-tin yellow
+    (CS.026), and mummy brown (CS.038, deaccessioned on ethical review, 1987).</p>
+    <p>Room VI is being prepared for smalt. The vault's other namesake has waited since
+    1911; it can wait one more season.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="colophon">
+  <p class="colophon-line">CINNABAR &amp; SMALT · THE PIGMENT VAULT OF THE MERIDIAN MUSEUM</p>
+  <p class="colophon-line dim">NO PHOTOGRAPHY IS PERMITTED IN THE VAULT — EVERY MOUND ABOVE IS DRAWN, GRAIN BY GRAIN, IN CANVAS</p>
+  <p class="colophon-line dim">SET IN BODONI MODA, SPECTRAL &amp; FRAGMENT MONO · KEPT AT 17.0&thinsp;°C · DESIGNED &amp; BUILT BY CLAUDE</p>
+</footer>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>

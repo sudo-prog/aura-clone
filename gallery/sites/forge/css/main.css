@@ -1,0 +1,487 @@
+/* ============================================================
+   BLACKWATER FORGE — soot, ember, quench-steel, straw
+   Heat colours appear only where a temperature is meaningful.
+   ============================================================ */
+
+:root {
+  --soot:    #0B0907;
+  --clinker: #161110;
+  --scale:   #2C221B;
+  --bone:    #EDE4D6;
+  --bone-dim:#B7AB99;
+  --ember:   #FF7A29;
+  --straw:   #E2A93E;
+  --quench:  #8CA0AC;
+  --quench-dim:#73838D;
+  --fl: .5; /* live forge light, 0..1, written by js/forge.js */
+  --ramp: linear-gradient(90deg,
+    #1A0C06 0%, #4A120A 11.5%, #7A1A06 23%, #B03208 34.5%, #D84A10 43.7%,
+    #F06511 52.9%, #FB8B1E 62.1%, #FFB43A 72.4%, #FFD978 82.8%, #FFF3C8 92%, #FFFDF4 100%);
+  --ease-tap: cubic-bezier(.22,.9,.28,1);
+  --ease-stamp: cubic-bezier(.34,1.4,.36,1);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior:smooth; }
+@media (prefers-reduced-motion:reduce){ html{ scroll-behavior:auto; } }
+
+body {
+  background:var(--soot);
+  color:var(--bone);
+  font-family:"Archivo", system-ui, sans-serif;
+  font-size:17px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+::selection { background:var(--ember); color:var(--soot); }
+
+::-webkit-scrollbar { width:10px; }
+::-webkit-scrollbar-track { background:#080606; }
+::-webkit-scrollbar-thumb { background:var(--scale); border-radius:5px; }
+::-webkit-scrollbar-thumb:hover { background:#4a382b; }
+
+:focus-visible { outline:2px solid var(--straw); outline-offset:3px; border-radius:2px; }
+
+.mono { font-family:"IBM Plex Mono", ui-monospace, monospace; }
+
+.wrap { max-width:1180px; margin-inline:auto; padding-inline:clamp(20px,4vw,48px); }
+
+h1,h2,h3,.price { font-family:"Alfa Slab One", "Archivo", serif; font-weight:400; line-height:1.02; }
+
+a { color:var(--bone); text-decoration-color:var(--quench-dim); text-underline-offset:3px; transition:color .25s var(--ease-tap), text-decoration-color .25s var(--ease-tap); }
+a:hover { color:var(--ember); text-decoration-color:var(--ember); }
+
+.skip { position:absolute; left:-999px; top:0; z-index:99; background:var(--straw); color:var(--soot); padding:.6em 1em; font-weight:600; }
+.skip:focus { left:12px; top:12px; }
+
+/* ---------- header ---------- */
+.site-head {
+  position:absolute; inset:0 0 auto 0; z-index:10;
+  display:flex; justify-content:space-between; align-items:center; gap:1rem;
+  padding:20px clamp(20px,4vw,48px);
+}
+.brand {
+  display:flex; align-items:center; gap:.6em;
+  font-family:"Alfa Slab One", serif; font-size:1.02rem; letter-spacing:.02em;
+  text-decoration:none; color:var(--bone);
+}
+.brand svg { color:var(--ember); flex:none; }
+.site-nav { display:flex; gap:clamp(.9rem,2.4vw,2rem); font-family:"IBM Plex Mono",monospace; font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; }
+.site-nav a { text-decoration:none; position:relative; padding-block:.2em; color:var(--bone-dim); }
+.site-nav a::after { content:""; position:absolute; left:0; bottom:0; height:1px; width:100%; background:var(--ember); transform:scaleX(0); transform-origin:left; transition:transform .3s var(--ease-tap); }
+.site-nav a:hover { color:var(--ember); }
+.site-nav a:hover::after { transform:scaleX(1); }
+
+/* ---------- hero ---------- */
+.hero {
+  position:relative;
+  min-height:100svh;
+  display:flex; align-items:stretch;
+  background:linear-gradient(#0B0907, #070605 88%, #060504);
+  overflow:hidden;
+  isolation:isolate;
+}
+#forge {
+  position:absolute; inset:0; width:100%; height:100%; z-index:1; touch-action:manipulation;
+  cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cg transform='rotate(-38 14 14)'%3E%3Crect x='8' y='3' width='12' height='7' rx='1' fill='%23EDE4D6' stroke='%230B0907'/%3E%3Crect x='12.7' y='10' width='2.8' height='14' rx='1.3' fill='%23E2A93E' stroke='%230B0907' stroke-width='.6'/%3E%3C/g%3E%3C/svg%3E") 14 7, crosshair;
+}
+
+/* breathing firelight over the whole hero — driven by --fl */
+.hero::after {
+  content:""; position:absolute; inset:0; z-index:2; pointer-events:none;
+  background:radial-gradient(52% 44% at 46% 70%, rgba(255,122,41,.16), rgba(255,122,41,.05) 55%, transparent 75%);
+  opacity:calc(.25 + .75 * var(--fl));
+}
+
+.hero-inner {
+  position:relative; z-index:3;
+  display:flex; flex-direction:column; justify-content:flex-start;
+  padding-top:clamp(92px, 14vh, 150px);
+  padding-bottom:clamp(24px, 4vh, 48px);
+  width:100%;
+  pointer-events:none; /* clicks fall through to the anvil */
+}
+.hero-inner a, .hero-inner button { pointer-events:auto; }
+
+.eyebrow {
+  font-size:.75rem; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--quench); margin-bottom:1.1rem;
+}
+
+.wordmark {
+  font-size:clamp(3.2rem, 9.6vw, 8.4rem);
+  letter-spacing:.005em;
+  text-transform:uppercase;
+  color:var(--bone);
+  max-width:8ch;
+  text-shadow:0 3px 0 rgba(0,0,0,.55),
+              0 0 calc(18px + 42px * var(--fl)) rgb(255 122 41 / calc(.10 + .26 * var(--fl)));
+}
+.wordmark .stamp { display:inline-block; }
+
+.lede { max-width:44ch; margin-top:1.4rem; color:var(--bone-dim); font-size:clamp(1rem, 1.25vw, 1.13rem); text-wrap:pretty; text-shadow:0 1px 10px rgba(5,4,3,.85), 0 0 3px rgba(5,4,3,.6); }
+
+/* load choreography: stamp the words in like hammer blows */
+.stamp { opacity:0; transform:translateY(.35em) scale(1.05); }
+body.loaded .stamp { animation:stamp .5s var(--ease-stamp) forwards; }
+body.loaded .stamp:nth-child(2) { animation-delay:.16s; }
+@keyframes stamp {
+  0% { opacity:0; transform:translateY(.35em) scale(1.05); }
+  60% { opacity:1; }
+  100% { opacity:1; transform:none; }
+}
+.hero .eyebrow, .hero .lede, .hero .hud { opacity:0; transform:translateY(10px); }
+body.loaded .hero .eyebrow { animation:rise .5s var(--ease-tap) .05s forwards; }
+body.loaded .hero .lede { animation:rise .5s var(--ease-tap) .42s forwards; }
+body.loaded .hero .hud { animation:rise .5s var(--ease-tap) .58s forwards; }
+@keyframes rise { to { opacity:1; transform:none; } }
+
+/* every hot strike thumps the whole hero — hammer rhythm you can feel */
+.hero-inner.jolt { animation:jolt .16s var(--ease-tap); }
+@keyframes jolt {
+  0% { transform:none; }
+  35% { transform:translateY(2px); }
+  100% { transform:none; }
+}
+
+/* ---------- HUD ---------- */
+.hud {
+  margin-top:clamp(1.6rem, 3.5vh, 3rem);
+  width:min(390px, 100%);
+  border:1px solid var(--scale);
+  background:rgba(11,9,7,.72);
+  -webkit-backdrop-filter:blur(6px);
+  backdrop-filter:blur(6px);
+  padding:16px 18px 14px;
+  position:relative;
+  pointer-events:auto; /* the panel is solid — clicks must not strike the anvil behind it */
+}
+.hud::before { /* rivet corners */
+  content:""; position:absolute; inset:6px; pointer-events:none;
+  background:
+    radial-gradient(circle 2px at 2px 2px, var(--scale) 98%, transparent) top left,
+    radial-gradient(circle 2px at calc(100% - 2px) 2px, var(--scale) 98%, transparent) top right,
+    radial-gradient(circle 2px at 2px calc(100% - 2px), var(--scale) 98%, transparent) bottom left,
+    radial-gradient(circle 2px at calc(100% - 2px) calc(100% - 2px), var(--scale) 98%, transparent) bottom right;
+  background-size:6px 6px; background-repeat:no-repeat;
+}
+.hud-read { display:flex; align-items:baseline; gap:.9em; flex-wrap:wrap; }
+.hud-label { font-size:.68rem; letter-spacing:.18em; text-transform:uppercase; color:var(--quench-dim); }
+.hud-temp { font-size:1.7rem; font-weight:600; color:var(--bone); font-variant-numeric:tabular-nums; }
+.hud-temp b { font-weight:600; }
+.hud-band { font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--straw); }
+
+.hud-gauge {
+  margin-top:12px; height:12px; position:relative;
+  background:var(--ramp); border:1px solid #000;
+  box-shadow:0 0 14px rgb(255 122 41 / calc(.12 + .2 * var(--fl)));
+}
+.hud-gauge::after { /* band notches: 650 / 800 / 950 / 1150 / 1300 °C */
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:
+    linear-gradient(90deg, transparent calc(19.5% - .5px), rgba(11,9,7,.85) 0, rgba(11,9,7,.85) calc(19.5% + .5px), transparent 0),
+    linear-gradient(90deg, transparent calc(36.8% - .5px), rgba(11,9,7,.85) 0, rgba(11,9,7,.85) calc(36.8% + .5px), transparent 0),
+    linear-gradient(90deg, transparent calc(54% - .5px), rgba(11,9,7,.85) 0, rgba(11,9,7,.85) calc(54% + .5px), transparent 0),
+    linear-gradient(90deg, transparent calc(77% - .5px), rgba(11,9,7,.85) 0, rgba(11,9,7,.85) calc(77% + .5px), transparent 0),
+    linear-gradient(90deg, transparent calc(94.25% - .5px), rgba(11,9,7,.85) 0, rgba(11,9,7,.85) calc(94.25% + .5px), transparent 0);
+}
+.hud-gauge i {
+  position:absolute; top:-5px; bottom:-5px; left:0; width:2px;
+  background:var(--bone);
+  box-shadow:0 0 6px rgba(237,228,214,.9);
+  transform:translateX(-1px);
+  transition:left .3s var(--ease-tap);
+}
+
+.hud-actions { margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+.btn {
+  font-family:"IBM Plex Mono",monospace; font-size:.78rem; letter-spacing:.16em; text-transform:uppercase;
+  display:inline-flex; flex-direction:column; align-items:flex-start; gap:2px;
+  color:var(--bone); background:#0e0b09;
+  border:1px solid var(--scale); padding:.6em 1em .55em;
+  cursor:pointer; touch-action:manipulation;
+  transition:border-color .25s var(--ease-tap), color .25s var(--ease-tap), box-shadow .25s var(--ease-tap), transform .08s var(--ease-tap);
+}
+.btn-sub { font-size:.6rem; letter-spacing:.12em; color:var(--quench-dim); text-transform:none; }
+.btn:hover { border-color:var(--ember); color:var(--ember); box-shadow:0 0 14px rgb(255 122 41/.22), inset 0 0 10px rgb(255 122 41/.07); }
+.btn:hover .btn-sub { color:var(--ember); opacity:.75; }
+.btn:active, .btn.held { transform:translateY(1px); border-color:var(--straw); }
+.hint { flex-basis:100%; font-size:.68rem; letter-spacing:.06em; color:var(--quench-dim); margin-top:2px; }
+
+.toast {
+  position:absolute; left:0; right:0; bottom:calc(100% + 9px);
+  font-size:.72rem; letter-spacing:.08em; color:var(--straw);
+  text-shadow:0 1px 4px rgba(5,4,3,.9);
+  opacity:0; transform:translateY(4px); transition:opacity .3s var(--ease-tap), transform .3s var(--ease-tap);
+}
+.toast.show { opacity:1; transform:none; }
+
+/* hero fallback if canvas is unavailable */
+.hero-fallback { display:none; }
+body.no-canvas #forge { display:none; }
+body.no-canvas .hero-fallback {
+  display:block; position:absolute; inset:0; z-index:1;
+  background:
+    radial-gradient(34% 30% at 46% 70%, rgba(255,180,58,.5), rgba(216,74,16,.24) 45%, transparent 70%),
+    radial-gradient(60% 40% at 70% 88%, rgba(255,122,41,.14), transparent 70%),
+    linear-gradient(#0B0907, #070605);
+}
+body.no-canvas .hero-fallback::after {
+  content:""; position:absolute; left:62%; bottom:10%; width:220px; height:110px;
+  background:#080606;
+  clip-path:polygon(0 22%, 30% 22%, 42% 0, 100% 0, 100% 34%, 78% 34%, 86% 78%, 30% 78%, 38% 34%, 12% 40%);
+  filter:drop-shadow(0 0 24px rgba(255,122,41,.25));
+}
+
+/* ---------- reading strip ---------- */
+.strip { padding:clamp(3rem,6vh,4.5rem) 0 clamp(3.4rem,7vh,5rem); border-top:1px solid var(--scale); background:var(--clinker); }
+.strip-head { display:flex; align-items:baseline; gap:2rem; flex-wrap:wrap; margin-bottom:2.4rem; }
+.strip-title { font-size:.8rem; letter-spacing:.22em; text-transform:uppercase; color:var(--straw); font-weight:500; }
+.strip-note { color:var(--bone-dim); font-size:.95rem; max-width:52ch; }
+.strip-note em { color:var(--bone); font-style:normal; }
+
+.strip-bar {
+  position:relative; height:46px; margin-inline:clamp(20px,4vw,48px);
+  background:var(--ramp);
+  border:1px solid #000;
+  box-shadow:0 0 30px rgba(255,122,41,.10);
+  margin-bottom:4.4rem;
+}
+.tick { position:absolute; left:var(--p); top:100%; transform:translateX(-50%); text-align:center; font-family:"IBM Plex Mono",monospace; }
+.tick i { display:block; width:1px; height:10px; background:var(--quench-dim); margin:4px auto 6px; transition:background .5s var(--ease-tap), box-shadow .5s var(--ease-tap); }
+.tick b { display:block; font-size:.74rem; font-weight:600; color:var(--bone); transition:color .5s var(--ease-tap), text-shadow .5s var(--ease-tap); }
+.tick small { display:block; font-size:.64rem; letter-spacing:.1em; text-transform:uppercase; color:var(--quench-dim); margin-top:2px; transition:color .5s var(--ease-tap); }
+/* ticks the live bar has passed are lit — the thermometer reads itself */
+.tick.past i { background:var(--ember); box-shadow:0 0 6px rgba(255,122,41,.7); }
+.tick.past b { color:#FFB43A; text-shadow:0 0 10px rgba(255,180,58,.35); }
+.tick.past small { color:#B8722F; }
+
+.strip-live { position:absolute; left:94%; bottom:100%; transform:translateX(-50%); text-align:center; transition:left .6s var(--ease-tap); }
+.strip-live i {
+  display:block; width:0; height:0; margin:6px auto 4px;
+  border-left:7px solid transparent; border-right:7px solid transparent; border-top:9px solid var(--ember);
+  filter:drop-shadow(0 0 6px rgba(255,122,41,.8));
+}
+.strip-live em { display:block; font-style:normal; font-size:.64rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ember); white-space:nowrap; margin-bottom:2px; }
+.strip-live em b { font-weight:600; color:#FFD978; font-variant-numeric:tabular-nums; }
+
+/* ---------- sections ---------- */
+.section { padding-block:clamp(4.5rem, 10vh, 8.5rem); }
+.sect-head { margin-bottom:clamp(3rem, 6vh, 4.5rem); max-width:62ch; }
+.sect-head h2 { font-size:clamp(2.2rem, 4.6vw, 3.6rem); margin-top:.5rem; }
+.sect-intro { margin-top:1.2rem; color:var(--bone-dim); }
+
+/* scroll reveal: a tap, not a float */
+.rv { opacity:0; transform:translateY(14px); }
+.rv.lit { opacity:1; transform:none; transition:opacity .42s var(--ease-tap), transform .42s var(--ease-tap); }
+
+/* ---------- work / ledger ---------- */
+.work {
+  display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr);
+  gap:clamp(1.6rem, 4vw, 4rem); align-items:center;
+  padding-block:clamp(2.6rem, 5vh, 4rem);
+  border-top:1px solid var(--scale);
+}
+.work-flip { grid-template-columns:minmax(0,7fr) minmax(0,5fr); }
+.work-knife { display:block; }
+.work-knife .work-info { max-width:62ch; margin-bottom:2rem; }
+
+.panel {
+  position:relative; background:var(--clinker); border:1px solid var(--scale);
+  padding:clamp(14px, 2.4vw, 28px);
+}
+.panel:hover { animation:afterglow 1.15s var(--ease-tap) both; }
+@keyframes afterglow {
+  0% { border-color:#FFD978; box-shadow:0 0 22px rgb(255 122 41/.30), inset 0 0 16px rgb(255 122 41/.10); }
+  35% { border-color:var(--ember); }
+  100% { border-color:var(--scale); box-shadow:0 0 0 rgb(255 122 41/0), inset 0 0 0 rgb(255 122 41/0); }
+}
+.drawing svg { display:block; width:100%; height:auto; }
+.dwg-label { font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:13px; letter-spacing:.08em; fill:var(--quench-dim); }
+.drawing figcaption {
+  position:absolute; right:12px; bottom:10px;
+  font-size:.62rem; letter-spacing:.14em; text-transform:uppercase; color:var(--quench-dim);
+  border:1px solid var(--scale); padding:.35em .7em; background:rgba(11,9,7,.6);
+}
+
+.ledger-id { font-size:.72rem; letter-spacing:.18em; text-transform:uppercase; color:var(--quench); margin-bottom:.8rem; }
+.work h3 { font-size:clamp(1.6rem, 2.6vw, 2.3rem); margin-bottom:1rem; }
+.work-info p { color:var(--bone-dim); }
+.work-info > p:not(.ledger-id) { max-width:56ch; }
+
+.spec { margin-top:1.6rem; font-size:.78rem; display:grid; gap:.45em .5em; }
+.spec div { display:flex; gap:1em; border-bottom:1px dashed #241c16; padding-bottom:.45em; }
+.spec dt { color:var(--quench-dim); text-transform:uppercase; letter-spacing:.12em; flex:0 0 7.5em; }
+.spec dd { color:var(--bone); }
+.spec-row { grid-template-columns:repeat(3, minmax(0,1fr)); margin-top:2rem; }
+.spec-row div { border-bottom:none; border-top:1px solid var(--scale); padding-top:.7em; padding-bottom:.3em; flex-direction:column; gap:.35em; }
+.spec-row dt { flex:0 0 auto; }
+
+.knife-fig { padding-block:clamp(24px, 4vw, 44px); overflow:hidden; }
+.knife-fig::after { /* a polish glint along the blade on hover */
+  content:""; position:absolute; top:0; bottom:0; left:0; width:20%;
+  background:linear-gradient(100deg, transparent, rgba(240,247,250,.05) 42%, rgba(240,247,250,.12) 50%, rgba(240,247,250,.05) 58%, transparent);
+  transform:translateX(-130%); pointer-events:none;
+}
+.knife-fig:hover::after { animation:glint 1.15s cubic-bezier(.3,.55,.25,1) forwards; }
+@keyframes glint { to { transform:translateX(560%); } }
+
+/* ---------- five heats ---------- */
+.section-heats { background:var(--clinker); border-block:1px solid var(--scale); }
+.heats {
+  list-style:none; position:relative;
+  display:grid; grid-template-columns:repeat(5, minmax(0,1fr));
+  gap:clamp(1.2rem, 2.4vw, 2.2rem);
+  padding-top:34px;
+}
+.heats::before { /* the temperature rail — colours ARE the step temperatures */
+  content:""; position:absolute; top:0; left:2%; right:2%; height:5px;
+  background:linear-gradient(90deg, #FFE9AA 10%, #FC9927 30%, #C9410D 50%, #C23D0C 62%, #17110c 82%, #17110c 100%);
+  box-shadow:0 0 18px rgba(255,150,60,.25);
+  transform:scaleX(0); transform-origin:left;
+  transition:transform 1.15s var(--ease-tap) .1s;
+}
+.heats.lit::before { transform:scaleX(1); } /* the bar pours down the rail as the heats ignite */
+.heat { position:relative; }
+.heat-node {
+  position:absolute; top:-34px; left:calc(50% - 7px);
+  width:14px; height:14px; border-radius:50%;
+  background:var(--hc); box-shadow:0 0 14px var(--hc), 0 0 3px #000 inset;
+}
+.heat-node-temper { background:#14100c; box-shadow:0 0 0 2px var(--straw), 0 0 12px rgba(226,169,62,.5); }
+.heat-step { font-size:.66rem; letter-spacing:.2em; text-transform:uppercase; color:var(--quench-dim); margin-bottom:.5rem; }
+.heat h3 { font-size:1.35rem; margin-bottom:.6rem; }
+.heat-temp { font-size:clamp(1.5rem, 2vw, 1.9rem); font-weight:600; color:var(--hc); text-shadow:0 0 16px var(--hc); font-variant-numeric:tabular-nums; }
+.heat-temp-straw { text-shadow:0 0 10px rgba(226,169,62,.45); }
+.heat-name { font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; color:var(--quench); margin:.3rem 0 .9rem; }
+.heat > p:last-of-type { font-size:.92rem; color:var(--bone-dim); }
+
+/* staggered ignition, timed to the rail pour (desktop only — mobile items reveal solo) */
+@media (min-width: 981px) {
+  .heats .heat.lit { transition-delay:calc(80ms + var(--i, 0) * 200ms); }
+}
+
+/* quench oil-flash */
+.flash-word { position:relative; color:var(--bone); font-weight:600; white-space:nowrap; }
+.flash {
+  position:absolute; left:50%; top:50%; width:64px; height:64px; margin:-32px 0 0 -32px;
+  pointer-events:none; border-radius:50%;
+  background:radial-gradient(circle, #FFF3C8 0%, #FFB43A 28%, #F06511 52%, rgba(176,50,8,.5) 68%, transparent 75%);
+  opacity:0; transform:scale(.2);
+}
+.flash.go { animation:oilflash .8s cubic-bezier(.16,.84,.3,1) .35s; }
+@keyframes oilflash {
+  0% { opacity:0; transform:scale(.2); }
+  18% { opacity:.95; transform:scale(1.15); }
+  45% { opacity:.5; transform:scale(1.5); }
+  100% { opacity:0; transform:scale(1.9); }
+}
+
+/* temper oxide strip — a second thermometer, full width */
+.temper-strip { margin-top:clamp(3rem, 6vh, 4.5rem); border-top:1px solid var(--scale); padding-top:2rem; }
+.temper-cap { font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--quench-dim); margin-bottom:2.6rem; }
+.temper-scale { display:flex; }
+.temper-scale span { flex:1; position:relative; }
+.temper-scale span::before { content:""; display:block; height:30px; background:var(--tc); }
+.temper-scale b { display:block; font-family:"IBM Plex Mono",monospace; font-weight:500; font-size:.62rem; letter-spacing:.06em; color:var(--quench-dim); text-align:center; margin-top:.6em; }
+.temper-scale .pull::before { outline:2px solid var(--bone); outline-offset:2px; }
+.temper-scale .pull b { color:var(--straw); }
+.temper-scale .pull em {
+  position:absolute; bottom:calc(100% + .8em); left:50%; transform:translateX(-50%);
+  font-style:normal; font-size:.6rem; letter-spacing:.14em; text-transform:uppercase; color:var(--straw); white-space:nowrap;
+}
+.temper-scale .pull em::after {
+  content:""; position:absolute; top:calc(100% + 1px); left:50%; width:1px; height:7px; background:var(--straw);
+}
+
+/* ---------- courses ---------- */
+.course {
+  display:grid; grid-template-columns:minmax(0,7fr) minmax(0,3fr) minmax(0,2fr);
+  gap:clamp(1.4rem, 3vw, 3rem);
+  padding-block:2.4rem;
+  border-top:1px solid var(--scale);
+  position:relative;
+}
+.course::before { content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--ember); transform:scaleY(0); transform-origin:top; transition:transform .4s var(--ease-tap); box-shadow:0 0 12px rgba(255,122,41,.5); }
+.course:hover::before { transform:scaleY(1); }
+.course h3 { font-size:clamp(1.4rem, 2.2vw, 1.9rem); margin-bottom:.7rem; }
+.course-info p { color:var(--bone-dim); max-width:52ch; }
+.course-dates { list-style:none; font-size:.8rem; letter-spacing:.06em; align-self:center; }
+.course-dates li { padding-block:.3em; border-bottom:1px dashed #241c16; }
+.course-dates li:last-child { border-bottom:none; }
+.course-dates .dim { color:var(--quench-dim); }
+.course-price { text-align:right; align-self:center; }
+.price { font-size:clamp(1.9rem, 3vw, 2.6rem); color:var(--straw); }
+.places { font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--quench-dim); margin-top:.4em; }
+
+.booking { margin-top:2.6rem; padding-top:1.6rem; border-top:1px solid var(--scale); color:var(--bone-dim); max-width:62ch; }
+.booking a { color:var(--straw); }
+
+/* ---------- footer ---------- */
+.site-foot { border-top:1px solid var(--scale); background:var(--clinker); padding-top:clamp(3rem,7vh,5rem); }
+.foot-grid { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:clamp(1.6rem,3vw,3rem); padding-bottom:3rem; }
+.foot-title { font-family:"Alfa Slab One",serif; font-weight:400; font-size:1.15rem; margin-bottom:1rem; }
+.foot-grid p { color:var(--bone-dim); font-size:.92rem; margin-bottom:.8rem; }
+.foot-grid .mono { font-size:.82rem; letter-spacing:.04em; color:var(--bone); }
+.foot-line {
+  display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap;
+  border-top:1px solid var(--scale);
+  padding-block:1.4rem; font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--quench-dim);
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 980px) {
+  .heats { grid-template-columns:repeat(2, minmax(0,1fr)); gap:2.4rem 1.8rem; padding-top:0; }
+  .heats::before { display:none; }
+  .heat { padding-left:26px; }
+  .heat-node { top:4px; left:0; }
+  .course { grid-template-columns:1fr 1fr; }
+  .course-info { grid-column:1 / -1; }
+  .course-price { text-align:left; }
+}
+
+@media (max-width: 760px) {
+  body { font-size:16px; }
+  .site-nav { font-size:.68rem; gap:.9rem; }
+  .brand span { display:none; }
+  .hero-inner { padding-top:76px; padding-bottom:14px; }
+  .wordmark { font-size:clamp(2.4rem, 11.6vw, 4.4rem); }
+  .lede { margin-top:1rem; }
+  /* the fire needs its stage: HUD drops to the bottom, scene breathes between */
+  .hud { margin-top:auto; width:100%; padding:12px 14px 12px; }
+  .hud-temp { font-size:1.45rem; }
+  .hud-gauge { margin-top:9px; }
+  .hud-actions { margin-top:10px; }
+  .hint { font-size:.62rem; }
+  .toast { top:auto; bottom:calc(100% + 8px); text-shadow:0 1px 3px #000; }
+  .hero::after { background:radial-gradient(70% 40% at 30% 68%, rgba(255,122,41,.16), rgba(255,122,41,.05) 55%, transparent 78%); }
+  .work, .work-flip { grid-template-columns:1fr; gap:1.6rem; }
+  .work-flip figure { order:-1; } /* drawings first on mobile */
+  .spec-row { grid-template-columns:1fr 1fr; }
+  .heats { grid-template-columns:1fr; }
+  .foot-grid { grid-template-columns:1fr; }
+  .strip-bar { margin-bottom:5rem; }
+  .tick small { display:none; }
+  .tick:nth-child(2) { display:none; } /* 650° tick crowds at 390px */
+  .course { grid-template-columns:1fr; }
+  .temper-scale { display:grid; grid-template-columns:repeat(7, 1fr); }
+  .temper-scale b { font-size:.5rem; letter-spacing:0; word-spacing:100vw; } /* stack °C and name */
+}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .stamp, .hero .eyebrow, .hero .lede, .hero .hud { opacity:1 !important; transform:none !important; animation:none !important; }
+  .rv { opacity:1; transform:none; transition:none; }
+  .rv.lit { transition:none; }
+  .panel:hover, .flash.go, .knife-fig:hover::after { animation:none; }
+  .hero::after { opacity:.5; }
+  .course::before { transition:none; }
+  .strip-live { transition:none; }
+  .hud-gauge i { transition:none; }
+  .hero-inner.jolt { animation:none; }
+  .heats::before { transform:none; transition:none; }
+  .tick i, .tick b, .tick small { transition:none; }
+}

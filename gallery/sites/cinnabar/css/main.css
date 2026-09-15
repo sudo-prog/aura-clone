@@ -1,0 +1,520 @@
+/* ═══════════════════════════════════════════════════════════════
+   CINNABAR & SMALT — the vault takes its color
+   Six worlds, swapped on html[data-room]; every themed surface
+   crossfades. The drench is the event; everything else holds still.
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  --ease-drench: cubic-bezier(.55, .06, .28, .99);
+  --ease-out: cubic-bezier(.2, .7, .2, 1);
+  --drench: 1.1s;
+  --font-display: "Bodoni Moda", "Didot", serif;
+  --font-body: "Spectral", Georgia, serif;
+  --font-mono: "Fragment Mono", "Courier New", monospace;
+}
+
+/* ── the six worlds ── */
+html[data-room="vault"] {
+  --bg: #17151A; --bg-deep: #100E12; --ink: #E9E4D8; --muted: #A79F8E;
+  --accent: #B79D62; --accent-ink: #C9B078;
+  --line: rgba(233, 228, 216, .16); --panel: rgba(233, 228, 216, .045);
+}
+html[data-room="ultramarine"] {
+  --bg: #0E1B4D; --bg-deep: #0A1338; --ink: #E8ECFF; --muted: #A9B4E4;
+  --accent: #5D7DFF; --accent-ink: #8FA5FF;
+  --line: rgba(232, 236, 255, .17); --panel: rgba(232, 236, 255, .05);
+}
+html[data-room="vermilion"] {
+  --bg: #3E0D08; --bg-deep: #2C0805; --ink: #FFE9DC; --muted: #DCA893;
+  --accent: #FF4B26; --accent-ink: #FF8259;
+  --line: rgba(255, 233, 220, .17); --panel: rgba(255, 233, 220, .05);
+}
+html[data-room="tyrian"] {
+  --bg: #2F0E2C; --bg-deep: #22081F; --ink: #F4E5F0; --muted: #C9A0BE;
+  --accent: #D2639F; --accent-ink: #E88FC0;
+  --line: rgba(244, 229, 240, .17); --panel: rgba(244, 229, 240, .05);
+}
+html[data-room="orpiment"] {
+  --bg: #E5A912; --bg-deep: #D69C0D; --ink: #271A02; --muted: #4E3805;
+  --accent: #7A2E0A; --accent-ink: #6E2906;
+  --line: rgba(39, 26, 2, .28); --panel: rgba(39, 26, 2, .06);
+}
+html[data-room="prussian"] {
+  --bg: #081726; --bg-deep: #050F1A; --ink: #DCEBF7; --muted: #93AEC6;
+  --accent: #4C93D8; --accent-ink: #74ADE4;
+  --line: rgba(220, 235, 247, .16); --panel: rgba(220, 235, 247, .05);
+}
+
+/* ── reset & base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-color: var(--accent) var(--bg-deep);
+}
+::-webkit-scrollbar { width: 11px; }
+::-webkit-scrollbar-track { background: var(--bg-deep); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 6px; border: 2px solid var(--bg-deep); }
+
+::selection { background: var(--accent); color: var(--bg); }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color var(--drench) var(--ease-drench),
+              color var(--drench) var(--ease-drench);
+  overflow-x: hidden;
+}
+
+/* every themed surface rides the same drench */
+.masthead, .plate, .card, .pull, .registry th, .registry td,
+.stage, .rail, .rail-name, .table-wrap, .specimen, .tray, .colophon {
+  transition: background-color var(--drench) var(--ease-drench),
+              color var(--drench) var(--ease-drench),
+              border-color var(--drench) var(--ease-drench);
+}
+.room-no, .room-epithet, .climate, .hint-sub, .spec-tag, .ledger li span:first-child,
+.works li span:last-child, .works li, .plate-row span:first-child, .plate-row span:last-child,
+.pull cite, .card h3, .card p, .register-notes, .colophon-line, .sub, .eyebrow, .hint,
+.brand, .registry td, .registry th, .ledger li span:last-child,
+.marginalia .note, .marginalia .note b, .threshold-label {
+  transition: color var(--drench) var(--ease-drench);
+}
+
+img, canvas { max-width: 100%; display: block; }
+
+a { color: var(--accent-ink); text-decoration-color: color-mix(in oklab, var(--accent-ink) 45%, transparent); text-underline-offset: 3px; transition: color .22s ease, text-decoration-color .22s ease; }
+a:hover { text-decoration-color: var(--accent-ink); }
+:focus-visible { outline: 2px solid var(--accent-ink); outline-offset: 3px; border-radius: 2px; }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap;
+}
+
+.skip {
+  position: fixed; top: -60px; left: 50%; transform: translateX(-50%);
+  z-index: 60; padding: .6em 1.2em; background: var(--ink); color: var(--bg);
+  font-family: var(--font-mono); font-size: .72rem; letter-spacing: .12em;
+  text-decoration: none; transition: top .2s ease;
+}
+.skip:focus-visible { top: 10px; }
+
+/* ── lights-up load ──
+   hidden states live behind html.js so a script failure never leaves
+   the vault dark: no JS → lights already up, content visible */
+.lights {
+  position: fixed; inset: 0; z-index: 50; background: #000;
+  pointer-events: none; opacity: 0;
+  transition: opacity 1.4s cubic-bezier(.33, .12, .18, 1) .15s;
+}
+html.js .lights { opacity: 1; }
+html.js body.lit .lights { opacity: 0; }
+
+html.js .rise { opacity: 0; transform: translateY(14px); transition: opacity .8s ease, transform .8s var(--ease-out); }
+body.lit .rise { opacity: 1; transform: none; }
+body.lit .r1 { transition-delay: .25s; }
+body.lit .r2 { transition-delay: .40s; }
+body.lit .r3 { transition-delay: .58s; }
+body.lit .r4 { transition-delay: .74s; }
+body.lit .r5 { transition-delay: .95s; }
+
+/* ── masthead ── */
+.masthead {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 40;
+  display: flex; align-items: baseline; justify-content: space-between;
+  padding: .9rem clamp(1.1rem, 3vw, 2.2rem);
+  background: color-mix(in oklab, var(--bg) 78%, transparent);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  font-family: var(--font-display); font-weight: 500; font-size: 1.05rem;
+  letter-spacing: .02em; color: var(--ink); text-decoration: none;
+}
+.brand .amp { font-style: italic; color: var(--accent-ink); }
+.climate {
+  font-family: var(--font-mono); font-size: .62rem; letter-spacing: .14em;
+  color: var(--muted);
+}
+#whereami { color: var(--accent-ink); transition: opacity .22s ease, color var(--drench) var(--ease-drench); }
+#whereami.swap { opacity: 0; }
+
+/* ── rail (color as navigation) ── */
+.rail {
+  position: fixed; left: clamp(.7rem, 1.8vw, 1.6rem); top: 50%;
+  transform: translateY(-50%); z-index: 40;
+  display: flex; flex-direction: column; gap: 1.05rem;
+}
+.rail a {
+  position: relative; display: flex; align-items: center;
+  text-decoration: none; padding: 2px;
+}
+.chip {
+  width: 15px; height: 15px; border-radius: 50%; flex: none;
+  transform: scale(1); transition: transform .22s var(--ease-out), box-shadow .22s ease;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.3), inset -2px -3px 5px rgba(0,0,0,.38); /* matte pigment tablet, no gloss */
+}
+.chip--ultramarine { background: #3D5BE0; }
+.chip--vermilion   { background: #E43B1B; }
+.chip--tyrian      { background: #A34680; }
+.chip--orpiment    { background: #EBB01C; }
+.chip--prussian    { background: #1E4E80; }
+.chip--vault       { background: #B79D62; }
+.rail a:hover .chip, .rail a:focus-visible .chip { transform: scale(1.35); }
+.rail a[aria-current="true"] .chip {
+  transform: scale(1.45);
+  box-shadow: 0 0 0 1px rgba(0,0,0,.3), inset -2px -3px 5px rgba(0,0,0,.38),
+              0 0 0 5px color-mix(in oklab, var(--ink) 22%, transparent);
+}
+.rail-name {
+  position: absolute; left: 30px; white-space: nowrap;
+  font-family: var(--font-mono); font-size: .6rem; letter-spacing: .16em;
+  color: var(--ink); background: color-mix(in oklab, var(--bg) 88%, transparent);
+  padding: .35em .7em; border: 1px solid var(--line);
+  opacity: 0; transform: translateX(-6px); pointer-events: none;
+  transition: opacity .2s ease, transform .2s var(--ease-out);
+}
+.rail a:hover .rail-name, .rail a:focus-visible .rail-name { opacity: 1; transform: none; }
+
+/* ── vestibule ── */
+.vestibule {
+  min-height: 100svh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center;
+  padding: clamp(6rem, 14vh, 9rem) clamp(1.2rem, 5vw, 3rem) clamp(3rem, 8vh, 5rem);
+}
+.eyebrow {
+  font-family: var(--font-mono); font-size: .66rem; letter-spacing: .3em;
+  color: var(--accent-ink);
+}
+.vestibule h1 {
+  font-family: var(--font-display); font-optical-sizing: auto;
+  font-size: clamp(2.9rem, 8.5vw, 6.8rem); font-weight: 480;
+  letter-spacing: .005em; line-height: 1.04; margin-top: 1.4rem;
+  text-wrap: balance;
+}
+.vestibule h1 .amp { font-style: italic; font-weight: 400; color: var(--accent-ink); }
+.sub {
+  max-width: 56ch; margin-top: 1.6rem;
+  font-size: clamp(.98rem, 1.4vw, 1.13rem); line-height: 1.75; color: var(--muted);
+}
+.sub, .hint { font-weight: 300; }
+
+/* the shelf of five */
+.tray {
+  display: flex; gap: clamp(.6rem, 2.2vw, 2rem); align-items: flex-end;
+  margin-top: clamp(2.4rem, 6vh, 4rem);
+  border-bottom: 1px solid var(--line);
+  padding: 0 clamp(.5rem, 2vw, 1.5rem);
+}
+.specimen {
+  display: flex; flex-direction: column; align-items: center; gap: .7rem;
+  text-decoration: none; padding: .4rem .2rem 1rem;
+  transform: translateY(0); transition: transform .3s var(--ease-out);
+}
+.specimen:hover, .specimen:focus-visible { transform: translateY(-6px); }
+/* case light: hovering a specimen switches on its own pigment's lamp */
+.tray .specimen:nth-child(1) { --pig: #5D7DFF; }
+.tray .specimen:nth-child(2) { --pig: #FF4B26; }
+.tray .specimen:nth-child(3) { --pig: #D2639F; }
+.tray .specimen:nth-child(4) { --pig: #EBB01C; }
+.tray .specimen:nth-child(5) { --pig: #4C93D8; }
+.specimen .mini { transition: box-shadow .35s var(--ease-out); }
+.specimen:hover .mini, .specimen:focus-visible .mini {
+  box-shadow: 0 18px 42px -14px color-mix(in oklab, var(--pig) 60%, transparent);
+}
+.specimen .spec-tag b { transition: color .3s ease; }
+.specimen:hover .spec-tag b, .specimen:focus-visible .spec-tag b { color: var(--pig); }
+.mini { width: clamp(88px, 12vw, 150px); aspect-ratio: 4 / 3; }
+.spec-tag {
+  font-family: var(--font-mono); font-size: .58rem; letter-spacing: .13em;
+  color: var(--muted); display: flex; gap: .7em; align-items: baseline;
+}
+.spec-tag b { font-weight: 400; color: var(--accent-ink); }
+.spec-tag i { font-style: normal; opacity: .85; }
+.hint {
+  margin-top: clamp(2rem, 5vh, 3.2rem);
+  font-family: var(--font-display); font-style: italic;
+  font-size: clamp(1.05rem, 1.7vw, 1.3rem); color: var(--ink);
+}
+.hint-sub {
+  margin-top: .8rem; font-family: var(--font-mono); font-size: .6rem;
+  letter-spacing: .22em; color: var(--muted);
+}
+
+/* ── rooms ── */
+.room, .register {
+  max-width: 1120px; margin-inline: auto;
+  padding: clamp(7rem, 16vh, 11rem) clamp(1.2rem, 5vw, 3rem) clamp(4rem, 9vh, 6.5rem);
+}
+.room { min-height: 100svh; }
+
+.roomhead { margin-bottom: clamp(2.2rem, 5vh, 3.6rem); position: relative; }
+/* museum wayfinding: the room's numeral ghosted on the wall */
+.roomhead::after {
+  content: attr(data-numeral);
+  position: absolute; right: clamp(0rem, 4vw, 3rem); top: -0.12em;
+  z-index: -1; pointer-events: none; line-height: 1;
+  font-family: var(--font-display); font-style: italic; font-weight: 400;
+  font-size: clamp(9rem, 24vw, 19rem);
+  color: color-mix(in oklab, var(--ink) 7%, transparent);
+  transition: color var(--drench) var(--ease-drench);
+}
+.room-no {
+  font-family: var(--font-mono); font-size: .64rem; letter-spacing: .28em;
+  color: var(--accent-ink);
+}
+.room-name {
+  font-family: var(--font-display); font-optical-sizing: auto;
+  font-size: clamp(3rem, 10vw, 7.6rem); font-weight: 520; line-height: 1.02;
+  letter-spacing: .002em; margin-top: .9rem;
+}
+.room-name--sm { font-size: clamp(2.2rem, 6vw, 4.2rem); }
+.room-epithet {
+  font-family: var(--font-display); font-style: italic; font-weight: 400;
+  font-size: clamp(1.1rem, 2vw, 1.45rem); color: var(--muted); margin-top: .7rem;
+}
+
+/* specimen stage: mound + plate on one shelf */
+.stage {
+  display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+  gap: clamp(1.4rem, 4vw, 3.2rem); align-items: end;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 0; margin-bottom: clamp(2.6rem, 6vh, 4rem);
+}
+.mound-box { position: relative; }
+.mound { width: 100%; aspect-ratio: 4 / 2.6; }
+.plate {
+  border: 1px solid var(--line); background: var(--panel);
+  padding: clamp(1rem, 2.2vw, 1.6rem) clamp(1.1rem, 2.4vw, 1.8rem);
+  margin-bottom: clamp(1.2rem, 3vh, 2rem);
+  display: flex; flex-direction: column; gap: .52em;
+}
+.plate-row {
+  display: flex; justify-content: space-between; gap: 1.5em;
+  font-family: var(--font-mono); font-size: .63rem; letter-spacing: .1em;
+}
+.plate-row span:first-child { color: var(--muted); flex: none; }
+.plate-row span:last-child { text-align: right; color: var(--ink); }
+.plate sub { font-size: .72em; }
+
+/* lede + prose */
+.lede {
+  font-family: var(--font-display); font-optical-sizing: auto;
+  font-size: clamp(1.5rem, 3vw, 2.15rem); font-weight: 440; line-height: 1.32;
+  max-width: 30em; margin-bottom: clamp(2rem, 5vh, 3rem);
+  text-wrap: balance;
+}
+.lede em { font-style: italic; }
+.prose { max-width: 66ch; }
+.prose p + p { margin-top: 1.35em; }
+.prose em { font-style: italic; }
+.prose strong { font-weight: 500; }
+
+/* scholarly margin notes — the curator's file card */
+.study { display: grid; grid-template-columns: minmax(0, 66ch); gap: 2.2rem; }
+.marginalia { display: flex; flex-direction: column; gap: 1.5rem; max-width: 44ch; }
+.marginalia .note {
+  border-top: 1px solid var(--line); padding-top: .85rem;
+  font-family: var(--font-mono); font-size: .63rem; letter-spacing: .08em;
+  line-height: 1.9; color: var(--muted);
+  transition: color var(--drench) var(--ease-drench),
+              border-color var(--drench) var(--ease-drench);
+}
+.marginalia .note b {
+  display: block; font-weight: 400; letter-spacing: .26em;
+  color: var(--accent-ink); margin-bottom: .45rem;
+}
+@media (min-width: 1100px) {
+  .study { grid-template-columns: minmax(0, 66ch) minmax(200px, 1fr); gap: clamp(2.5rem, 5vw, 5rem); align-items: start; }
+  .marginalia { position: sticky; top: 7.5rem; margin-top: .4rem; }
+}
+
+/* pull quote */
+.pull {
+  margin: clamp(2.6rem, 6vh, 4rem) auto;
+  max-width: 34em; text-align: center;
+  padding: 0 clamp(.5rem, 3vw, 2rem);
+}
+.pull p {
+  font-family: var(--font-display); font-style: italic; font-weight: 420;
+  font-size: clamp(1.3rem, 2.4vw, 1.8rem); line-height: 1.4;
+  text-wrap: balance;
+}
+.pull cite {
+  display: block; margin-top: 1.1rem; font-style: normal;
+  font-family: var(--font-mono); font-size: .6rem; letter-spacing: .24em;
+  color: var(--accent-ink);
+}
+
+/* cards */
+.cards {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(.9rem, 2vw, 1.4rem);
+  margin-top: clamp(2.4rem, 5vh, 3.4rem);
+}
+.card {
+  border: 1px solid var(--line); background: var(--panel);
+  padding: clamp(1.1rem, 2.4vw, 1.6rem);
+  transition: background-color var(--drench) var(--ease-drench),
+              border-color .3s ease, color var(--drench) var(--ease-drench);
+}
+.card:hover { border-color: color-mix(in oklab, var(--accent) 55%, var(--line)); }
+.card h3 {
+  font-family: var(--font-mono); font-weight: 400; font-size: .62rem;
+  letter-spacing: .3em; color: var(--accent-ink);
+  padding-bottom: .9rem; margin-bottom: 1rem;
+  border-bottom: 1px solid var(--line);
+  transition: color var(--drench) var(--ease-drench),
+              border-color var(--drench) var(--ease-drench);
+}
+.card p { font-size: .89rem; line-height: 1.72; color: var(--muted); font-weight: 300; }
+.card p sub { font-size: .7em; }
+
+.ledger { list-style: none; }
+.ledger li {
+  display: flex; flex-direction: column; gap: .18em;
+  padding: .6em 0; border-bottom: 1px solid var(--line);
+  font-size: .85rem;
+  transition: border-color .3s ease, color var(--drench) var(--ease-drench);
+}
+.ledger li:hover { border-color: color-mix(in oklab, var(--accent) 45%, transparent); }
+.ledger li:hover span:last-child { color: var(--ink); }
+.ledger li:last-child { border-bottom: 0; }
+.ledger li span:first-child {
+  font-family: var(--font-mono); font-size: .6rem; letter-spacing: .14em;
+  color: var(--accent-ink);
+}
+.ledger li span:last-child { color: var(--muted); line-height: 1.5; }
+
+.works { list-style: none; }
+.works li {
+  display: flex; justify-content: space-between; gap: 1em; align-items: baseline;
+  padding: .55em 0; border-bottom: 1px solid var(--line);
+  font-size: .89rem; color: var(--muted);
+  transition: border-color .3s ease, color var(--drench) var(--ease-drench);
+}
+.works li:hover { border-color: color-mix(in oklab, var(--accent) 45%, transparent); color: var(--ink); }
+.works li:last-child { border-bottom: 0; }
+.works li em { font-style: italic; }
+.works li span:last-child {
+  font-family: var(--font-mono); font-size: .62rem; letter-spacing: .08em;
+  color: var(--accent-ink); flex: none;
+}
+
+/* ── corridor thresholds — the next room's doorplate ── */
+.threshold {
+  display: flex; flex-direction: column; align-items: center; gap: 1rem;
+  margin: clamp(4rem, 9vh, 6rem) auto 0; width: fit-content;
+  text-decoration: none; text-align: center;
+}
+.threshold-line {
+  width: 1px; height: 2.8rem; background: var(--line);
+  transform-origin: top; transform: scaleY(.4); opacity: .5;
+  transition: transform .5s var(--ease-out), opacity .5s ease,
+              background-color var(--drench) var(--ease-drench);
+}
+.rv.in .threshold-line, html:not(.js) .threshold-line { transform: none; opacity: 1; }
+.threshold-label {
+  font-family: var(--font-mono); font-size: .56rem; letter-spacing: .32em;
+  color: var(--muted);
+}
+.threshold-door {
+  display: inline-flex; align-items: center; gap: .75em;
+  font-family: var(--font-mono); font-size: .64rem; letter-spacing: .2em;
+  color: var(--ink); border: 1px solid var(--line); background: var(--panel);
+  padding: .8em 1.3em;
+  transition: background-color var(--drench) var(--ease-drench),
+              color var(--drench) var(--ease-drench),
+              border-color .3s ease;
+}
+.threshold .chip { width: 10px; height: 10px; }
+.threshold:hover .threshold-door, .threshold:focus-visible .threshold-door {
+  border-color: color-mix(in oklab, var(--accent) 55%, var(--line));
+}
+.threshold:hover .chip, .threshold:focus-visible .chip { transform: scale(1.35); }
+
+/* ── register ── */
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); background: var(--panel); }
+.registry { width: 100%; border-collapse: collapse; min-width: 640px; }
+.registry th, .registry td {
+  font-family: var(--font-mono); font-size: .66rem; letter-spacing: .08em;
+  text-align: left; padding: .85em 1.1em; white-space: nowrap;
+}
+.registry th { color: var(--accent-ink); letter-spacing: .2em; font-weight: 400; border-bottom: 1px solid var(--line); }
+.registry td { color: var(--muted); border-bottom: 1px solid var(--line); }
+.registry tbody tr { transition: background-color .25s ease; }
+.registry tbody tr:hover { background: color-mix(in oklab, var(--ink) 5%, transparent); }
+.registry tbody tr:hover td { color: var(--ink); }
+.registry tbody tr:last-child td { border-bottom: 0; }
+.registry td a { color: var(--ink); }
+.registry sub { font-size: .72em; }
+
+.register-notes { max-width: 60ch; margin-top: 2rem; color: var(--muted); font-size: .95rem; }
+.register-notes p + p { margin-top: .9em; }
+
+/* ── colophon ── */
+.colophon {
+  border-top: 1px solid var(--line);
+  padding: 2.6rem clamp(1.2rem, 5vw, 3rem) 3rem;
+  text-align: center;
+}
+.colophon-line {
+  font-family: var(--font-mono); font-size: .62rem; letter-spacing: .2em;
+  color: var(--ink); line-height: 2.2;
+}
+.colophon-line.dim { color: var(--muted); }
+
+/* ── scroll reveals (quiet) ──
+   transition lists don't merge: .rv must carry the drench properties too.
+   gated behind html.js so content is never hidden without script */
+html.js .rv {
+  opacity: 0; transform: translateY(12px);
+  transition: opacity .65s ease, transform .65s var(--ease-out),
+              background-color var(--drench) var(--ease-drench),
+              color var(--drench) var(--ease-drench),
+              border-color .5s ease;
+}
+html.js .rv.in { opacity: 1; transform: none; }
+
+/* ── responsive ── */
+@media (max-width: 900px) {
+  .stage { grid-template-columns: 1fr; align-items: start; }
+  .plate { margin-bottom: 1.6rem; order: 2; }
+  .mound-box { order: 1; }
+  .cards { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  body { font-size: 1rem; }
+  .rail {
+    left: 50%; top: auto; bottom: .9rem; transform: translateX(-50%);
+    flex-direction: row; gap: 1.15rem;
+    background: color-mix(in oklab, var(--bg) 82%, transparent);
+    -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+    border: 1px solid var(--line); border-radius: 999px;
+    padding: .55rem 1rem;
+  }
+  .rail-name { display: none; }
+  .climate { display: none; }
+  .tray { flex-wrap: wrap; justify-content: center; }
+  .mini { width: clamp(80px, 24vw, 130px); }
+  .vestibule { padding-bottom: 6rem; }
+  .room, .register { padding-bottom: 6rem; }
+  .colophon { padding-bottom: 7.5rem; } /* clear the bottom rail */
+}
+
+/* ── reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  :root { --drench: 0.2s; }
+  .lights { transition: none !important; opacity: 0 !important; }
+  .rise, .rv { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .specimen, .chip, .specimen .mini { transition: none; }
+  .threshold-line { transform: none !important; opacity: 1 !important; transition: none !important; }
+}

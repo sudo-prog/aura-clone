@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ephemeris · A Celestial Almanac for the Year MMXXVI · 174th Edition</title>
+<meta name="description" content="The Meridian Press of Harrowgate presents the 174th annual edition of Ephemeris: an engraved star atlas you can hold and turn, with this night's risings, settings, moon and planets computed to the minute.">
+<meta property="og:title" content="Ephemeris · Celestial Almanac · 174th Edition">
+<meta property="og:description" content="A sky you can hold and turn. Published every year since 1853 by The Meridian Press, Harrowgate.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#080C18">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='12'%20fill='%23080C18'/%3E%3Cpath%20d='M32%207%20L36.6%2027.4%20L57%2032%20L36.6%2036.6%20L32%2057%20L27.4%2036.6%20L7%2032%20L27.4%2027.4%20Z'%20fill='%23C7A55E'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/Cormorant-10.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/CormorantSC-05.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/CormorantSC-10.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/EBGaramond-14.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/Cormorant.css">
+<link rel="stylesheet" href="fonts/CormorantSC.css">
+<link rel="stylesheet" href="fonts/EBGaramond.css">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<a class="skip" href="#atlas">Skip to the atlas</a>
+
+<header class="masthead">
+  <p class="mast-press">The Meridian Press · Harrowgate<span class="me-sep"> · </span><span class="me-b">Founded 1853</span></p>
+  <h1 class="mast-title">Ephemeris</h1>
+  <p class="mast-sub"><span class="rule rule-l" aria-hidden="true"></span>A Celestial Almanac for the Year <span class="roman">MMXXVI</span><span class="rule rule-r" aria-hidden="true"></span></p>
+  <p class="mast-edition">The Hundred-and-Seventy-Fourth Edition<span class="me-sep"> &nbsp;·&nbsp; </span><span class="me-b">Every Rising Computed Twice</span></p>
+  <nav class="mast-nav" aria-label="Contents">
+    <a href="#atlas">The Atlas</a><span aria-hidden="true">·</span>
+    <a href="#press">The Press</a><span aria-hidden="true">·</span>
+    <a href="#editions">The Editions</a><span aria-hidden="true">·</span>
+    <a href="#specimen">Specimen Pages</a>
+  </nav>
+</header>
+
+<main>
+<!-- ═══════════════ PLATE I · THE ATLAS ═══════════════ -->
+<section class="atlas-section" id="atlas" aria-label="Plate I — the visible heavens">
+  <div class="atlas-grid">
+
+    <figure class="plate-fig">
+      <div class="plate-frame" id="plateFrame">
+        <canvas id="sky" aria-hidden="true"></canvas>
+        <p class="plate-hint" id="plateHint" aria-hidden="true">Hold the sky and turn it<span class="hint-more"> &mdash; the figures keep their shapes</span></p>
+        <aside class="const-card" id="constCard" aria-live="polite" hidden>
+          <h3 class="cc-name" id="ccName"></h3>
+          <p class="cc-gen" id="ccGen"></p>
+          <p class="cc-note" id="ccNote"></p>
+          <p class="cc-data" id="ccData"></p>
+        </aside>
+        <noscript><p class="plate-noscript">The engraved atlas turns by script. Without it, the Press directs you to the printed edition — every figure holds still on paper.</p></noscript>
+      </div>
+      <figcaption class="plate-caption">
+        <span>Plate I</span>
+        <span class="pc-mid">The Visible Heavens from Harrowgate at 21<sup>h</sup></span>
+        <span>Stereographic</span>
+      </figcaption>
+      <div class="legend" role="group" aria-label="Constellations charted on this plate">
+        <button class="chip" data-const="ori">Orion</button>
+        <button class="chip" data-const="uma">Ursa Major</button>
+        <button class="chip" data-const="cas">Cassiopeia</button>
+        <button class="chip" data-const="cyg">Cygnus</button>
+        <button class="chip" data-const="sco">Scorpius</button>
+      </div>
+      <p class="sr-only">An interactive star chart of about twelve hundred stars. Dragging turns the celestial
+      sphere; the year dial sweeps the sky through the seasons. The five charted constellations may be
+      selected with the buttons above, which draw their figures and show their particulars.</p>
+    </figure>
+
+    <aside class="rail">
+      <div class="rail-block dial-block">
+        <h2 class="rail-head">The Year Dial</h2>
+        <div class="dial-wrap" id="dialWrap">
+          <svg id="dial" viewBox="0 0 320 320" role="slider" tabindex="0"
+               aria-label="Almanac date — arrow keys step the days"
+               aria-valuemin="0" aria-valuemax="364" aria-valuenow="0" aria-valuetext=""></svg>
+          <div class="dial-read" aria-hidden="true">
+            <span class="dr-day" id="drDay">1</span>
+            <span class="dr-mon" id="drMon">January</span>
+            <span class="dr-year">MMXXVI</span>
+          </div>
+        </div>
+        <div class="dial-ctl">
+          <button class="dctl" id="dayBack" aria-label="Previous day">&#8249;</button>
+          <button class="dctl dctl-today" id="dialToday">This night</button>
+          <button class="dctl" id="dayFwd" aria-label="Next day">&#8250;</button>
+        </div>
+        <button class="dial-note" id="eclipseBtn" type="button" title="Turn the dial to the eclipse"><span class="ecl-dot" aria-hidden="true"></span>12 August &mdash; total eclipse of the Sun</button>
+      </div>
+
+      <div class="rail-block tonight">
+        <h2 class="rail-head">This Night</h2>
+        <dl class="sunrows" id="sunRows"></dl>
+        <div class="moonrow">
+          <svg id="moonSvg" viewBox="0 0 72 72" aria-hidden="true"></svg>
+          <div class="moon-facts">
+            <b class="mf-name" id="moonName"></b>
+            <span class="mf-line" id="moonPct"></span>
+            <span class="mf-line" id="moonTimes"></span>
+          </div>
+        </div>
+        <h3 class="rail-subhead">The Planets</h3>
+        <ul class="planets" id="planetList"></ul>
+        <p class="computed-note">Computed for Harrowgate Observatory, 51°17′&thinsp;N 0°54′&thinsp;W. Local mean time.</p>
+      </div>
+    </aside>
+
+  </div>
+</section>
+
+<!-- ═══════════════ THE PRESS ═══════════════ -->
+<section class="press reveal" id="press">
+  <header class="sec-head">
+    <h2>The Press</h2>
+    <p class="sec-intro">Publishers of the heavens, by appointment to no one.</p>
+  </header>
+  <div class="press-grid">
+    <div class="press-copy">
+      <p class="has-dropcap">In the winter of 1853, Aurelia Voss &mdash; lately dismissed from the Harrowgate
+      Observatory for the impertinence of publishing her own reduction tables &mdash; set six columns of
+      figures in borrowed type and sold four hundred copies from a stationer&rsquo;s window. She called the
+      pamphlet <i>Ephemeris</i>, and promised her readers one thing only: that the heavens would keep the
+      appointments printed herein.</p>
+      <p>They have kept them for one hundred and seventy-three years since. Every rising, every occultation,
+      every grudging minute of winter daylight in this volume is computed twice, by two computers working
+      apart, and admitted to the page only when their figures agree. The Press still keeps Voss&rsquo;s rule
+      pinned above the composing stone: <i>print nothing the sky will not honour.</i></p>
+    </div>
+    <dl class="particulars">
+      <div><dt>Founded</dt><dd>1853, Harrowgate</dd></div>
+      <div><dt>Founder</dt><dd>Aurelia Voss, computress</dd></div>
+      <div><dt>Seat</dt><dd>Harrowgate Observatory, 51°17′&thinsp;N</dd></div>
+      <div><dt>Computed</dt><dd>Twice, independently, in disagreement never</dd></div>
+      <div><dt>Circulation</dt><dd>12,000 cloth &nbsp;·&nbsp; 41,000 paper</dd></div>
+      <div><dt>Motto</dt><dd><i>Print nothing the sky will not honour</i></dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- ═══════════════ THE EDITIONS ═══════════════ -->
+<section class="editions reveal" id="editions">
+  <header class="sec-head">
+    <h2>The Editions, 1853&ndash;2026</h2>
+    <p class="sec-intro">One hundred and seventy-four volumes, unbroken. War thinned the paper; nothing has stopped the figures.</p>
+  </header>
+  <div class="shelf-scroll" tabindex="0" role="region" aria-label="Shelf of editions — scroll sideways">
+    <div class="shelf" id="shelf"></div>
+  </div>
+  <p class="shelf-note">Rest on a starred spine for its story. Eleven copies of the first edition survive; the Press owns three and knows where the others sleep.</p>
+</section>
+
+<!-- ═══════════════ SPECIMEN PAGES ═══════════════ -->
+<section class="specimen reveal" id="specimen">
+  <header class="sec-head">
+    <h2>Specimen Pages</h2>
+    <p class="sec-intro">Pages 118&ndash;119 of the present edition, reduced. The figures below are set by the same engine that turns the atlas above.</p>
+  </header>
+  <div class="spread">
+    <article class="page page-left">
+      <h3 class="page-title">The Sun &amp; the Moon &mdash; August <span class="roman">MMXXVI</span></h3>
+      <table class="eph-table" id="augTable">
+        <thead>
+          <tr class="th-groups"><th scope="col" rowspan="2">Day</th><th scope="colgroup" colspan="3">The Sun</th><th scope="colgroup" colspan="3">The Moon</th></tr>
+          <tr><th scope="col">Rises</th><th scope="col">Sets</th><th scope="col">Decl.</th><th scope="col">Rises</th><th scope="col">Sets</th><th scope="col">Age</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <p class="page-foot" id="pageFootLeft">On the 12<sup>th</sup>, a total eclipse of the Sun &mdash; see Plate IX.</p>
+      <span class="folio folio-l">118</span>
+    </article>
+    <article class="page page-right">
+      <h3 class="page-title">Phenomena of the Month</h3>
+      <ol class="phenomena" id="phenomena"></ol>
+      <h4 class="phase-head">Phases of the Moon</h4>
+      <div class="phases-row" id="phasesRow"></div>
+      <p class="page-foot">Times are local mean time at Harrowgate. The Perseids fall on a moonless night this year; the Press recommends a coat.</p>
+      <span class="folio folio-r">119</span>
+    </article>
+  </div>
+</section>
+</main>
+
+<!-- ═══════════════ COLOPHON ═══════════════ -->
+<footer class="colophon">
+  <p class="col-star" aria-hidden="true">✦</p>
+  <h2 class="col-head">Colophon</h2>
+  <p><i>Ephemeris</i> is published each October for the year following by <span class="sc">The Meridian Press</span>,
+  No.&thinsp;9 Quadrant Court, Harrowgate. The 174th edition: cloth £38, paper £24, post free within the kingdom.
+  Agents: Bickerstaff &amp; Daughter, Strand; The Long Glass, Edinburgh; Wetherell&rsquo;s, Boston.</p>
+  <p>Errata are corrected in ink, by hand, until the plates are amended. ISSN 0301-7134.</p>
+  <p class="col-fine">Set in Cormorant &amp; EB Garamond. Charted by hand, computed by machine, and read by lantern.</p>
+</footer>
+
+<script src="js/almanac.js" defer></script>
+<script src="js/atlas.js" defer></script>
+<script src="js/main.js" defer></script>
+</body>
+</html>

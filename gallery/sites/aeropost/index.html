@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ligne Australe — Courrier de nuit par avion, 1931</title>
+<meta name="description" content="The night airmail line, 1931. Toulouse to Santiago in six days: timetable, postage rates in francs, the pilot roster, and the mail flying its route while you read.">
+<meta property="og:title" content="Ligne Australe — night airmail, 1931">
+<meta property="og:description" content="Toulouse · Casablanca · Dakar · Natal · Santiago. Six days, five nights, 13 110 kilometres — the mail flies its route while you read.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0D1F38">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230D1F38'/%3E%3Cpath d='M32 9 L37.5 26.5 L55 32 L37.5 37.5 L32 55 L26.5 37.5 L9 32 L26.5 26.5 Z' fill='%23D9A648'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/Limelight-02.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/JosefinSans-06.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/Limelight.css">
+<link rel="stylesheet" href="fonts/JosefinSans.css">
+<link rel="stylesheet" href="fonts/EBGaramond.css">
+<link rel="stylesheet" href="fonts/CutiveMono.css">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<a class="skip" href="#ligne">Skip to the route map</a>
+
+<header class="nav" id="top">
+  <a class="nav-mark" href="#top">Ligne<span class="dia" aria-hidden="true"></span>Australe</a>
+  <nav class="nav-links" aria-label="Sections">
+    <a href="#ligne">La ligne</a>
+    <a href="#horaires">Horaires</a>
+    <a href="#equipage">Équipage</a>
+    <a href="#escales">Escales</a>
+    <a href="#journal">Journal</a>
+  </nav>
+  <p class="nav-clock">T.U. <time id="clock">--:--</time></p>
+</header>
+
+<main>
+  <!-- ============ HERO POSTER ============ -->
+  <section class="hero" aria-label="Ligne Australe travel poster">
+    <div class="poster" id="poster">
+      <svg class="poster-art" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#081527"/>
+            <stop offset=".72" stop-color="#0E2340"/>
+            <stop offset="1" stop-color="#173254"/>
+          </linearGradient>
+          <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#2F6B5E"/>
+            <stop offset=".45" stop-color="#1C4A44"/>
+            <stop offset="1" stop-color="#0A1D2C"/>
+          </linearGradient>
+          <clipPath id="sunclip"><circle cx="600" cy="558" r="112"/></clipPath>
+          <linearGradient id="rayfade" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#D9A648" stop-opacity="0"/>
+            <stop offset=".55" stop-color="#D9A648" stop-opacity=".55"/>
+            <stop offset="1" stop-color="#D9A648" stop-opacity=".9"/>
+          </linearGradient>
+        </defs>
+        <rect x="0" y="0" width="1200" height="560" fill="url(#sky)"/>
+        <!-- deco sunburst -->
+        <g class="art-rays">
+          <g fill="url(#rayfade)" opacity=".12">
+            <path d="M600 560 L587 40 L613 40 Z" transform="rotate(-81 600 560)"/>
+            <path d="M600 560 L587 40 L613 40 Z" transform="rotate(-63 600 560)"/>
+            <path d="M600 560 L587 40 L613 40 Z" transform="rotate(-45 600 560)"/>
+            <path d="M600 560 L587 40 L613 40 Z" transform="rotate(-27 600 560)"/>
+            <path d="M600 560 L587 40 L613 40 Z" transform="rotate(-9 600 560)"/>
+            <path d="M600 560 L587 40 L613 40 Z" transform="rotate(9 600 560)"/>
+            <path d="M600 560 L587 40 L613 40 Z" transform="rotate(27 600 560)"/>
+            <path d="M600 560 L587 40 L613 40 Z" transform="rotate(45 600 560)"/>
+            <path d="M600 560 L587 40 L613 40 Z" transform="rotate(63 600 560)"/>
+            <path d="M600 560 L587 40 L613 40 Z" transform="rotate(81 600 560)"/>
+          </g>
+          <g fill="url(#rayfade)" opacity=".2">
+            <path d="M600 560 L593 250 L607 250 Z" transform="rotate(-72 600 560)"/>
+            <path d="M600 560 L593 250 L607 250 Z" transform="rotate(-36 600 560)"/>
+            <path d="M600 560 L593 250 L607 250 Z"/>
+            <path d="M600 560 L593 250 L607 250 Z" transform="rotate(36 600 560)"/>
+            <path d="M600 560 L593 250 L607 250 Z" transform="rotate(72 600 560)"/>
+          </g>
+        </g>
+        <!-- slatted deco sun on the horizon -->
+        <g class="art-sun">
+          <g clip-path="url(#sunclip)">
+            <circle cx="600" cy="558" r="112" fill="#D9A648"/>
+            <rect x="470" y="472" width="260" height="7" fill="#0E2340"/>
+            <rect x="470" y="497" width="260" height="9" fill="#0E2340"/>
+            <rect x="470" y="524" width="260" height="12" fill="#0E2340"/>
+          </g>
+        </g>
+        <!-- stars -->
+        <g class="art-stars" fill="#E9D9AC">
+          <path d="M150 120 l4 12 12 4 -12 4 -4 12 -4 -12 -12 -4 12 -4 Z" opacity=".8"/>
+          <path d="M310 210 l3 9 9 3 -9 3 -3 9 -3 -9 -9 -3 9 -3 Z" opacity=".5"/>
+          <path d="M1044 96 l4 12 12 4 -12 4 -4 12 -4 -12 -12 -4 12 -4 Z" opacity=".75"/>
+          <path d="M935 235 l3 9 9 3 -9 3 -3 9 -3 -9 -9 -3 9 -3 Z" opacity=".45"/>
+          <path d="M1128 300 l2.5 7.5 7.5 2.5 -7.5 2.5 -2.5 7.5 -2.5 -7.5 -7.5 -2.5 7.5 -2.5 Z" opacity=".55"/>
+          <path d="M74 330 l2.5 7.5 7.5 2.5 -7.5 2.5 -2.5 7.5 -2.5 -7.5 -7.5 -2.5 7.5 -2.5 Z" opacity=".5"/>
+        </g>
+        <!-- sea with deco scallop waves -->
+        <rect x="0" y="558" width="1200" height="242" fill="url(#sea)"/>
+        <g fill="none" class="art-waves">
+          <path stroke="#E9D9AC" stroke-opacity=".38" stroke-width="2" d="M-30 592 q30 -16 60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0"/>
+          <path stroke="#7FB5A4" stroke-opacity=".3" stroke-width="2" d="M-60 628 q30 -14 60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0"/>
+          <path stroke="#7FB5A4" stroke-opacity=".18" stroke-width="2" d="M-15 672 q30 -12 60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0"/>
+          <path stroke="#7FB5A4" stroke-opacity=".1" stroke-width="2" d="M-45 724 q30 -10 60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0"/>
+        </g>
+        <!-- the courier, a solid silhouette crossing the sun -->
+        <g class="art-plane">
+          <path class="art-course" d="M775 468 Q985 428 1185 362" stroke="#E9D9AC" stroke-opacity=".5" stroke-width="2.5" stroke-dasharray="7 10" fill="none"/>
+          <g class="bob"><g transform="translate(645 502) scale(1.12)">
+            <g fill="#0A1A2E">
+              <!-- fuselage with fin and tailplane, nose left -->
+              <path d="M-132 -2 Q-128 -10 -112 -12 L-20 -15 L96 -11 L120 -34 L131 -30 L114 -7 L132 -6 L132 0 L96 3 L-30 8 Q-118 10 -132 -2 Z"/>
+              <!-- parasol wing -->
+              <path d="M-80 -25 L60 -32 L66 -24 L-74 -17 Z"/>
+            </g>
+            <!-- struts -->
+            <path d="M-54 -14 L-46 -23 M-6 -15 L-12 -28" stroke="#0A1A2E" stroke-width="3" fill="none"/>
+            <!-- undercarriage -->
+            <path d="M-88 6 L-92 13 M-70 6 L-73 13" stroke="#0A1A2E" stroke-width="3.4" fill="none"/>
+            <circle cx="-93" cy="18" r="6.5" fill="#0A1A2E"/>
+            <circle cx="-72" cy="19" r="6.5" fill="#0A1A2E"/>
+            <!-- propeller disc -->
+            <ellipse cx="-137" cy="-4" rx="3" ry="23" fill="#D9A648" opacity=".6"/>
+            <!-- gold spine highlight + red rudder -->
+            <path d="M-112 -12 L-20 -15 L96 -11" stroke="#D9A648" stroke-opacity=".55" stroke-width="1.4" fill="none"/>
+            <path d="M121 -31 L128 -28 L117 -12 L111 -14 Z" fill="#BE3A2B"/>
+          </g></g>
+        </g>
+      </svg>
+
+      <div class="poster-type">
+        <p class="poster-eyebrow reveal-line">Compagnie générale de navigation aérienne</p>
+        <h1 class="poster-mark reveal-line">Ligne Australe</h1>
+        <p class="poster-sub reveal-line"><span class="rule" aria-hidden="true"></span>Courrier de nuit par avion<span class="rule" aria-hidden="true"></span></p>
+        <p class="poster-route reveal-line">Toulouse<span class="dia" aria-hidden="true"></span>Casablanca<span class="dia" aria-hidden="true"></span>Dakar<span class="dia" aria-hidden="true"></span>Natal<span class="dia" aria-hidden="true"></span>Santiago</p>
+      </div>
+      <p class="poster-foot reveal-line">Service hebdomadaire — départs de Toulouse le jeudi — saison 1931</p>
+      <span class="poster-corner c-tl" aria-hidden="true"></span>
+      <span class="poster-corner c-tr" aria-hidden="true"></span>
+      <span class="poster-corner c-bl" aria-hidden="true"></span>
+      <span class="poster-corner c-br" aria-hidden="true"></span>
+    </div>
+  </section>
+
+  <!-- ============ LA LIGNE : SIGNATURE ============ -->
+  <section class="ligne" id="ligne" aria-label="The route, flown live">
+    <div class="ligne-grid">
+      <div class="ligne-left">
+        <div class="globe-wrap">
+          <canvas id="globe" aria-hidden="true"></canvas>
+          <p class="globe-caption">Projection azimutale <span class="dia" aria-hidden="true"></span> hémisphère de vol <span class="dia" aria-hidden="true"></span> la nuit balaie la carte</p>
+        </div>
+        <div class="wireless">
+          <div class="wireless-head">
+            <span>T.S.F.<span class="wh-long"> — journal de route</span></span>
+            <button type="button" id="replay" class="wireless-replay">rejouer l’étape</button>
+            <span class="wireless-call">F&#8209;LAUS</span>
+          </div>
+          <ol id="log" class="wireless-log" aria-hidden="true"></ol>
+        </div>
+      </div>
+
+      <div class="ligne-cards">
+        <header class="ligne-intro">
+          <p class="eyebrow">La ligne</p>
+          <h2>Thirteen thousand kilometres of night</h2>
+          <p class="lede">Five étapes carry the mail from the Garonne to the Pacific. Scroll them slowly: the globe turns to each leg, the course draws itself in dashes, and the courier flies it — waypoint by waypoint — while the wireless log keeps time below the map.</p>
+        </header>
+
+        <article class="leg" data-leg="0" id="etape-1" tabindex="0">
+          <p class="leg-eyebrow">Étape I <span class="dia" aria-hidden="true"></span> La descente d’Espagne</p>
+          <h3 class="leg-title">Toulouse → Casablanca</h3>
+          <p class="leg-meta">1 850 km · vol 13 h 40 · Latécoère 26 · dép. jeudi 04:10</p>
+          <p class="leg-body">Out of Toulouse before the birds, south over a Spain still asleep. The Pyrenees pass in the dark like a rumour of mountains; day breaks over the sea at Alicante. By late afternoon the Strait — and Africa opens under the wings.</p>
+          <ul class="leg-stops">
+            <li><b>0410</b> Toulouse</li><li><b>0630</b> Barcelone</li><li><b>0940</b> Alicante</li><li><b>1510</b> Tanger</li><li><b>1750</b> Casablanca</li>
+          </ul>
+          <span class="cachet" aria-hidden="true">En vol</span>
+        </article>
+
+        <article class="leg" data-leg="1" id="etape-2" tabindex="0">
+          <p class="leg-eyebrow">Étape II <span class="dia" aria-hidden="true"></span> La côte des sables</p>
+          <h3 class="leg-title">Casablanca → Dakar</h3>
+          <p class="leg-meta">2 580 km · vol 19 h 35 · Latécoère 26 · dép. jeudi 19:30</p>
+          <p class="leg-body">The desert leg. Nineteen hours along a coast with three lights and a thousand kilometres of nothing between them. Juby refuels by lantern, Port-Étienne by starlight. Pilots fly it with two ears — one for the engine, one for the silence.</p>
+          <ul class="leg-stops">
+            <li><b>1930</b> Casablanca</li><li><b>2215</b> Agadir</li><li><b>0055</b> Cap Juby</li><li><b>0320</b> Villa Cisneros</li><li><b>0555</b> Port-Étienne</li><li><b>1245</b> Saint-Louis</li><li><b>1505</b> Dakar</li>
+          </ul>
+          <span class="cachet" aria-hidden="true">En vol</span>
+        </article>
+
+        <article class="leg" data-leg="2" id="etape-3" tabindex="0">
+          <p class="leg-eyebrow">Étape III <span class="dia" aria-hidden="true"></span> L’Atlantique Sud</p>
+          <h3 class="leg-title">Dakar → Natal</h3>
+          <p class="leg-meta">3 180 km · vol 21 h 10 · hydravion Latécoère 28 « Austral » · dép. samedi 03:00</p>
+          <p class="leg-body">At Dakar the mail changes wings. The seaplane <em>Austral</em> takes the hold at three in the morning and climbs out over the swell: twenty-one hours of open ocean, held on course by sextant, dead reckoning and the radio’s thin thread. Landfall at Natal, where the palms begin.</p>
+          <ul class="leg-stops">
+            <li><b>0300</b> Dakar</li><li><b>1330</b> 30° Ouest</li><li><b>2210</b> Noronha</li><li><b>0010</b> Natal</li>
+          </ul>
+          <span class="cachet" aria-hidden="true">En vol</span>
+        </article>
+
+        <article class="leg" data-leg="3" id="etape-4" tabindex="0">
+          <p class="leg-eyebrow">Étape IV <span class="dia" aria-hidden="true"></span> La côte du Brésil</p>
+          <h3 class="leg-title">Natal → Buenos Aires</h3>
+          <p class="leg-meta">4 110 km · vol 25 h 50 · Latécoère 26 · dép. dimanche 05:40</p>
+          <p class="leg-body">The Brazilian coast runs south like an uncoiling rope — Recife in the first heat, Rio at sundown with the Sugarloaf black against the bay, then the long lagoons and the mouth of the Plate. The mail lands at Buenos Aires with sand from two continents still in the hold.</p>
+          <ul class="leg-stops">
+            <li><b>0540</b> Natal</li><li><b>0725</b> Recife</li><li><b>1850</b> Rio de Janeiro</li><li><b>0535</b> Montevideo</li><li><b>0730</b> Buenos Aires</li>
+          </ul>
+          <span class="cachet" aria-hidden="true">En vol</span>
+        </article>
+
+        <article class="leg" data-leg="4" id="etape-5" tabindex="0">
+          <p class="leg-eyebrow">Étape V <span class="dia" aria-hidden="true"></span> La Cordillère</p>
+          <h3 class="leg-title">Buenos Aires → Santiago</h3>
+          <p class="leg-meta">1 390 km · vol 7 h 20 · Potez 25 · dép. mardi 06:00</p>
+          <p class="leg-body">The last wall. At Mendoza the mail waits for the mountain’s permission; when the wind allows, the Potez climbs to five thousand nine hundred metres, where the propeller bites at thin air and the Andes stand close enough to touch. Then Chile arrives all at once, green and vertical — Santiago by early afternoon.</p>
+          <ul class="leg-stops">
+            <li><b>0600</b> Buenos Aires</li><li><b>1005</b> Mendoza</li><li><b>1140</b> Col de la Cumbre</li><li><b>1320</b> Santiago</li>
+          </ul>
+          <span class="cachet" aria-hidden="true">En vol</span>
+        </article>
+
+        <footer class="ligne-outro">
+          <p>A letter posted in Toulouse on Thursday at dawn is read in Santiago the following Tuesday. Six days. Five nights. Eleven fields lit with acetylene flares, and one ocean.</p>
+        </footer>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HORAIRES & TARIFS ============ -->
+  <section class="paper" id="horaires" aria-label="Timetable and postage rates">
+    <div class="paper-inner">
+      <header class="sec-head">
+        <p class="eyebrow eyebrow-red">Horaires &amp; tarifs</p>
+        <h2>Posted Thursday. Read Tuesday.</h2>
+        <p class="lede lede-dark">One departure a week, held to the minute. The Compagnie flies at night so that commerce may answer by return of post — a season’s schedule, printed for the counter at 12 quai de la Daurade.</p>
+      </header>
+
+      <div class="paper-grid">
+        <div class="timetable-block">
+          <h3 class="table-title">L’horaire hebdomadaire — saison 1931</h3>
+          <table class="timetable">
+            <thead>
+              <tr><th scope="col">Étape</th><th scope="col">Départ</th><th scope="col">Arrivée</th><th scope="col">Vol</th><th scope="col">Appareil</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><b>I</b> Toulouse → Casablanca</td><td>jeu. 04:10</td><td>jeu. 17:50</td><td>13 h 40</td><td>Latécoère 26</td></tr>
+              <tr><td><b>II</b> Casablanca → Dakar</td><td>jeu. 19:30</td><td>ven. 15:05</td><td>19 h 35</td><td>Latécoère 26</td></tr>
+              <tr><td><b>III</b> Dakar → Natal</td><td>sam. 03:00</td><td>dim. 00:10</td><td>21 h 10</td><td>Laté 28 « Austral »</td></tr>
+              <tr><td><b>IV</b> Natal → Buenos Aires</td><td>dim. 05:40</td><td>lun. 07:30</td><td>25 h 50</td><td>Latécoère 26</td></tr>
+              <tr><td><b>V</b> Buenos Aires → Santiago</td><td>mar. 06:00</td><td>mar. 13:20</td><td>7 h 20</td><td>Potez 25</td></tr>
+            </tbody>
+            <tfoot>
+              <tr><td colspan="3">Toulouse → Santiago, bout en bout</td><td colspan="2">13 110 km — six jours</td></tr>
+            </tfoot>
+          </table>
+          <p class="table-note">The Cordillère stage waits at Buenos Aires for the dawn wind over the passes. In winter, when la Cumbre closes, the mail crosses by Malargüe — add one day, subtract no letters.</p>
+        </div>
+
+        <aside class="tarifs-block">
+          <h3 class="table-title">Tarifs postaux — francs 1931</h3>
+          <table class="tarifs">
+            <thead>
+              <tr><th scope="col">Destination</th><th scope="col">Lettre 20 g</th><th scope="col">Surtaxe avion</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Maroc</td><td>1,50 F</td><td>4,50 F</td></tr>
+              <tr><td>Sénégal — A.O.F.</td><td>1,50 F</td><td>7,00 F</td></tr>
+              <tr><td>Brésil</td><td>1,50 F</td><td>11,50 F</td></tr>
+              <tr><td>Argentine — Uruguay</td><td>1,50 F</td><td>14,50 F</td></tr>
+              <tr><td>Chili</td><td>1,50 F</td><td>16,00 F</td></tr>
+            </tbody>
+          </table>
+          <div class="par-avion" aria-hidden="true"><span>Par avion</span><span class="pa-sub">voie Ligne Australe</span></div>
+          <p class="table-note">Air surcharge per 5 grammes beyond the first 20. Registered mail accepted to all stages; declared values to Casablanca and Buenos Aires only. Post before 22:00 Wednesday at the Toulouse air counter.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ÉQUIPAGE ============ -->
+  <section class="equipage" id="equipage" aria-label="Pilot roster">
+    <header class="sec-head">
+      <p class="eyebrow">Équipage</p>
+      <h2>The men who fly the winter</h2>
+      <p class="lede">The Compagnie employs eleven pilots, four radio operators and thirty-one mechanics between Toulouse and Santiago. The register below is posted, as required, with hours flown to 1 April 1931.</p>
+    </header>
+    <ul class="crew-grid">
+      <li class="crew-card">
+        <span class="crew-monogram" aria-hidden="true">HS</span>
+        <h3>Henri Sérac</h3>
+        <p class="crew-role">Chef pilote · la Cordillère</p>
+        <p class="crew-hours">6 140 h</p>
+        <p class="crew-note">Has crossed the Andes one hundred and eleven times, and claims to know the passes by the sound of their winds.</p>
+      </li>
+      <li class="crew-card">
+        <span class="crew-monogram" aria-hidden="true">JM</span>
+        <h3>Jean Malvaux</h3>
+        <p class="crew-role">Pilote · ligne du désert</p>
+        <p class="crew-hours">4 890 h</p>
+        <p class="crew-note">Twice down in the Rio de Oro; both times walked out with the mailbags on his back. Keeps the flight diary printed below.</p>
+      </li>
+      <li class="crew-card">
+        <span class="crew-monogram" aria-hidden="true">AP</span>
+        <h3>Augustin Peyral</h3>
+        <p class="crew-role">Capitaine d’hydravion · Atlantique Sud</p>
+        <p class="crew-hours">3 760 h</p>
+        <p class="crew-note">Nineteen ocean crossings in the <em>Austral</em>. Calls the swell “the second sky” and navigates both without complaint.</p>
+      </li>
+      <li class="crew-card">
+        <span class="crew-monogram" aria-hidden="true">ER</span>
+        <h3>Émile Roubaud</h3>
+        <p class="crew-role">Pilote · côte du Brésil</p>
+        <p class="crew-hours">2 980 h</p>
+        <p class="crew-note">Learned Recife’s squalls by flying into them, and then — the Compagnie is pleased to record — learned to go around.</p>
+      </li>
+      <li class="crew-card">
+        <span class="crew-monogram" aria-hidden="true">JB</span>
+        <h3>Joaquim Barros</h3>
+        <p class="crew-role">Pilote · escale de Natal</p>
+        <p class="crew-hours">2 315 h</p>
+        <p class="crew-note">Flies the palm coast by lighthouse and memory. Has never once been late for the ocean mail, which does not wait.</p>
+      </li>
+      <li class="crew-card">
+        <span class="crew-monogram" aria-hidden="true">LB</span>
+        <h3>Lucien Bosc</h3>
+        <p class="crew-role">Radiotélégraphiste · Toulouse</p>
+        <p class="crew-hours">9 400 h d’écoute</p>
+        <p class="crew-note">Reads the line’s weather in dots and dashes before it happens. The pilots say his silence is the loudest thing on the band.</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ============ ESCALES ============ -->
+  <section class="escales" id="escales" aria-label="Ports of call">
+    <header class="sec-head">
+      <p class="eyebrow">Escales</p>
+      <h2>Five fields, five lights</h2>
+      <p class="lede">Every trunk that travels the line wears its labels. Collect all five.</p>
+    </header>
+    <ul class="badge-row">
+      <li class="badge b-toulouse">
+        <svg viewBox="0 0 220 150" role="img" aria-label="Toulouse luggage label — tête de ligne, altitude 152 metres">
+          <path d="M30 6 h160 l24 24 v90 l-24 24 h-160 l-24 -24 v-90 Z" fill="#F0E5C9" stroke="#D9A648" stroke-width="4"/>
+          <path d="M36 14 h148 l20 20 v82 l-20 20 h-148 l-20 -20 v-82 Z" fill="none" stroke="#0D1F38" stroke-width="1.6"/>
+          <text x="110" y="52" class="bt-eyebrow">Tête de ligne</text>
+          <text x="110" y="82" class="bt-city">Toulouse</text>
+          <text x="110" y="106" class="bt-coords">43°36′ N · 01°26′ E · alt. 152 m</text>
+          <path d="M62 122 h96" stroke="#BE3A2B" stroke-width="3"/>
+          <path d="M110 116 l6 6 -6 6 -6 -6 Z" fill="#BE3A2B"/>
+        </svg>
+      </li>
+      <li class="badge b-casablanca">
+        <svg viewBox="0 0 220 150" role="img" aria-label="Casablanca luggage label — escale d'Afrique, kilometre 1850">
+          <circle cx="110" cy="75" r="71" fill="#2F6B5E" stroke="#F0E5C9" stroke-width="4"/>
+          <circle cx="110" cy="75" r="61" fill="none" stroke="#D9A648" stroke-width="1.6"/>
+          <text x="110" y="53" class="bt-eyebrow bt-light" textLength="98" lengthAdjust="spacingAndGlyphs">Porte d’Afrique</text>
+          <text x="110" y="80" class="bt-city bt-light bt-tiny" textLength="112" lengthAdjust="spacingAndGlyphs">Casablanca</text>
+          <text x="110" y="99" class="bt-coords bt-light" textLength="104" lengthAdjust="spacingAndGlyphs">33°34′ N · 07°36′ W</text>
+          <text x="110" y="112" class="bt-coords bt-light">km 1 850</text>
+          <path d="M84 124 q13 -8 26 0 t26 0" stroke="#D9A648" stroke-width="1.8" fill="none"/>
+        </svg>
+      </li>
+      <li class="badge b-dakar">
+        <svg viewBox="0 0 220 150" role="img" aria-label="Dakar luggage label — the ocean gate, kilometre 4430">
+          <path d="M52 16 L168 16 L200 75 L168 134 L52 134 L20 75 Z" fill="#BE3A2B" stroke="#F0E5C9" stroke-width="4"/>
+          <path d="M58 26 L162 26 L188 75 L162 124 L58 124 L32 75 Z" fill="none" stroke="#E9D9AC" stroke-width="1.4"/>
+          <text x="110" y="52" class="bt-eyebrow bt-light" textLength="110" lengthAdjust="spacingAndGlyphs">Porte de l’océan</text>
+          <text x="110" y="82" class="bt-city bt-light bt-smaller">Dakar</text>
+          <text x="110" y="102" class="bt-coords bt-light" textLength="100" lengthAdjust="spacingAndGlyphs">14°41′ N · 17°27′ W</text>
+          <text x="110" y="116" class="bt-coords bt-light">km 4 430</text>
+        </svg>
+      </li>
+      <li class="badge b-natal">
+        <svg viewBox="0 0 220 150" role="img" aria-label="Natal luggage label — landfall of the Americas, kilometre 7610">
+          <path d="M18 10 h184 v96 l-92 34 -92 -34 Z" fill="#F0E5C9" stroke="#2F6B5E" stroke-width="4"/>
+          <path d="M28 20 h164 v80 l-82 30 -82 -30 Z" fill="none" stroke="#BE3A2B" stroke-width="1.4"/>
+          <text x="110" y="50" class="bt-eyebrow">Terre d’Amérique</text>
+          <text x="110" y="80" class="bt-city bt-green">Natal</text>
+          <text x="110" y="99" class="bt-coords" textLength="156" lengthAdjust="spacingAndGlyphs">05°47′ S · 35°12′ W · km 7 610</text>
+          <path d="M92 114 l8 10 M110 110 v14 M128 114 l-8 10" stroke="#2F6B5E" stroke-width="2.4" fill="none"/>
+        </svg>
+      </li>
+      <li class="badge b-santiago">
+        <svg viewBox="0 0 220 150" role="img" aria-label="Santiago luggage label — end of the line, kilometre 13110">
+          <path d="M110 4 L206 46 V146 H14 V46 Z" fill="#0D1F38" stroke="#D9A648" stroke-width="4"/>
+          <path d="M110 18 L194 54 V134 H26 V54 Z" fill="none" stroke="#E9D9AC" stroke-width="1.2"/>
+          <path d="M48 72 l14 -14 10 10 14 -17 12 12 16 -19 13 13 10 -8 12 12" stroke="#D9A648" stroke-width="2.4" fill="none"/>
+          <text x="110" y="98" class="bt-city bt-light bt-smaller">Santiago</text>
+          <text x="110" y="115" class="bt-coords bt-light">33°27′ S · 70°40′ W</text>
+          <text x="110" y="128" class="bt-coords bt-light">km 13 110</text>
+        </svg>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ============ JOURNAL DE NUIT ============ -->
+  <section class="journal" id="journal" aria-label="Night flight diary">
+    <div class="journal-inner">
+      <header class="sec-head">
+        <p class="eyebrow">Journal de nuit</p>
+        <h2>Carnet de vol n°&nbsp;214</h2>
+        <p class="journal-dateline">Jean Malvaux, pilote — nuit du 16 au 17 avril 1931, au-dessus du Rio de Oro</p>
+      </header>
+      <div class="diary">
+        <p class="diary-open"><span class="dropcap">T</span>wenty-three forty. The moon went down an hour ago and the desert has given up its colour the way the sea gives up a drowned thing — slowly, and without protest. Below me there is nothing I could call a landmark: a coast drawn once in chalk and half erased, a surf line phosphorescent where it breaks. I fly by the compass, the altimeter, and a certain amount of faith.</p>
+        <p>The engine is my whole geography. While it runs, there is a France of the air stretched thin along this coast — Agadir behind me, Juby ahead, each with its keeper and its ring of flares. When it coughs, the empire shrinks to the size of my cockpit.</p>
+        <p>At five to one, Juby’s beacon rose out of the sand haze, orange as a struck match. The sergeant signalled the wind with a lantern: north-north-east, fresh. I put down between the flares, and while they filled the tanks I stood a moment on the sand. Cold stars. The fort asleep. Somewhere inland, a dog.</p>
+        <p>In the hold I carry one hundred and forty kilos of letters. Contracts, remittances, photographs of children a season older, and — the postmaster at Toulouse tells me — a pressed flower for a man in Buenos Aires who waits at the harbor every mail day. None of it is mine, and all of it is. That is the whole trade: we carry what people cannot say in person, faster than their doubt can travel.</p>
+        <p class="diary-close">One o’clock. Engine full and even. Villa Cisneros next — four hundred kilometres of dark, and letters enough to light the way.</p>
+        <p class="diary-sig">— J. Malvaux</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <p class="footer-mark">Ligne<span class="dia" aria-hidden="true"></span>Australe</p>
+      <p class="footer-line">Compagnie générale de navigation aérienne, fondée 1927.<br>Siège : 12 quai de la Daurade, Toulouse. Indicatif T.S.F. : F&#8209;LAUS.</p>
+    </div>
+    <div>
+      <p class="footer-head">Agences</p>
+      <p class="footer-line">Casablanca · Dakar · Natal<br>Buenos Aires · Santiago du Chili</p>
+    </div>
+    <div>
+      <p class="footer-head">Colophon</p>
+      <p class="footer-line">A fictional line, flown in loving memory of the real ones. Set in Limelight, Josefin Sans, EB Garamond &amp; Cutive Mono; the map is drawn by d3-geo. MCMXXXI.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="vendor/d3.min.js"></script>
+<script src="js/land50m.js"></script>
+<script src="js/globe.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

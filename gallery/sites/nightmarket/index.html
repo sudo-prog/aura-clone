@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GŎNG SÌ 公司 NIGHT MARKET — Street Food, 2049</title>
+<meta name="description" content="Five stalls under the old flyover, Kowloon Underline Deck 3. Typhoon noodles, char siu skewers, tofu flower, pineapple bun 2.0. Open 18:00–04:00, rain or rain.">
+<meta property="og:title" content="GŎNG SÌ 公司 NIGHT MARKET — Street Food, 2049">
+<meta property="og:description" content="The tower went dark. The sign stayed on. Eight dishes, five stalls, one flyover. Open 18:00–04:00, rain or rain.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#07070C">
+<link rel="icon" href="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2307070C'/%3E%3Cpath d='M14 34h36a18 18 0 0 1-36 0z' fill='none' stroke='%23FF3D9A' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M24 26c-3-4 3-6 0-10M33 26c-3-4 3-6 0-10M42 26c-3-4 3-6 0-10' fill='none' stroke='%233DD8FF' stroke-width='3' stroke-linecap='round'/%3E%3Cpath d='M46 16l8 14M54 14l4 16' stroke='%23FFD84A' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/BigShoulders-03.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/BigShoulders-02.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/NotoSansTC-subset-01.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/BigShoulders.css">
+<link rel="stylesheet" href="fonts/IBMPlexMono.css">
+<link rel="stylesheet" href="fonts/VT323.css">
+<link rel="stylesheet" href="fonts/NotoSansTC-subset.css">
+<link rel="stylesheet" href="css/main.css">
+<script>document.documentElement.classList.replace('no-js','js');</script>
+</head>
+<body>
+
+<header class="topbar">
+  <p class="topbar-inner">
+    <span class="topbar-item"><span lang="zh-Hant" class="tc">公司</span> GŎNG SÌ NIGHT MARKET</span>
+    <span class="topbar-item">KOWLOON UNDERLINE · DECK 3</span>
+    <span class="topbar-item">OPEN 18:00–04:00</span>
+    <span class="topbar-item"><span lang="zh-Hant" class="tc">雨</span> RAIN 92% · DELICIOUS</span>
+  </p>
+</header>
+
+<main>
+
+<!-- ======================= HERO: THE SIGNBOARD ======================= -->
+<section class="hero" id="sign" aria-label="The market signboard">
+  <canvas class="hero-fx" aria-hidden="true"></canvas>
+
+  <div class="hero-stage">
+    <div class="cjk-tube" aria-hidden="true" lang="zh-Hant"><span class="cjk-ch">公</span><span class="cjk-ch">司</span></div>
+
+    <div class="sign-block">
+      <h1 class="sign" aria-label="Gong Si Night Market">
+        <span class="sign-line sign-line--pink" aria-hidden="true"><!--
+          --><span class="lt" data-ch="G">G</span><!--
+          --><span class="lt" data-ch="Ŏ">Ŏ</span><!--
+          --><span class="lt" data-ch="N">N</span><!--
+          --><span class="lt" data-ch="G">G</span><!--
+          --><span class="lt-gap"></span><!--
+          --><span class="lt" data-ch="S">S</span><!--
+          --><span class="lt" data-ch="Ì">Ì</span><!--
+        --></span>
+        <span class="sign-line sign-line--blue" aria-hidden="true"><!--
+          --><span class="lt" data-ch="N">N</span><!--
+          --><span class="lt" data-ch="I">I</span><!--
+          --><span class="lt" data-ch="G">G</span><!--
+          --><span class="lt" data-ch="H">H</span><!--
+          --><span class="lt" data-ch="T">T</span><!--
+          --><span class="lt-gap"></span><!--
+          --><span class="lt" data-ch="M">M</span><!--
+          --><span class="lt" data-ch="A">A</span><!--
+          --><span class="lt lt--dying" data-ch="R">R</span><!--
+          --><span class="lt" data-ch="K">K</span><!--
+          --><span class="lt" data-ch="E">E</span><!--
+          --><span class="lt" data-ch="T">T</span><!--
+        --></span>
+      </h1>
+      <span class="sign-underline" aria-hidden="true"></span>
+    </div>
+
+    <p class="tagline"><span class="tagline-text" data-text="street food · est. 2049 · under the old flyover · rain daily"></span><span class="caret" aria-hidden="true"></span></p>
+  </div>
+
+  <div class="asphalt" aria-hidden="true">
+    <div class="mirror-wrap"></div>
+    <div class="asphalt-sheen"></div>
+  </div>
+
+  <a class="scroll-cue" href="#menu">▼ THE BOARD</a>
+  <button class="buzz" id="buzzBtn" type="button" aria-pressed="false">BUZZ <span class="buzz-state">OFF</span></button>
+</section>
+
+<!-- ======================= TICKER ======================= -->
+<div class="ticker" role="marquee" aria-label="Market notices">
+  <div class="ticker-track">
+    <p class="ticker-run">
+      <span>TYPHOON SIGNAL 3 HOISTED — MARKET STAYS OPEN</span>
+      <span>OCTOPUS 9 · PALM · COIN ACCEPTED — CASH PREFERRED BY AH PO</span>
+      <span><span lang="zh-Hant" class="tc">走冰</span> NO-ICE UPGRADE FREE AFTER MIDNIGHT</span>
+      <span>STALL 09 REQUIRES A WAIVER ABOVE HEAT LEVEL 4</span>
+      <span>LOST: ONE UMBRELLA, BLUE, SENTIMENTAL — RETURN TO STALL 11</span>
+      <span>TONIGHT'S RAIN 92% · ACID INDEX LOW · DELICIOUS</span>
+    </p>
+    <p class="ticker-run" aria-hidden="true">
+      <span>TYPHOON SIGNAL 3 HOISTED — MARKET STAYS OPEN</span>
+      <span>OCTOPUS 9 · PALM · COIN ACCEPTED — CASH PREFERRED BY AH PO</span>
+      <span><span lang="zh-Hant" class="tc">走冰</span> NO-ICE UPGRADE FREE AFTER MIDNIGHT</span>
+      <span>STALL 09 REQUIRES A WAIVER ABOVE HEAT LEVEL 4</span>
+      <span>LOST: ONE UMBRELLA, BLUE, SENTIMENTAL — RETURN TO STALL 11</span>
+      <span>TONIGHT'S RAIN 92% · ACID INDEX LOW · DELICIOUS</span>
+    </p>
+  </div>
+</div>
+
+<!-- ======================= THE MENU ======================= -->
+<section class="menu" id="menu">
+  <header class="section-head reveal">
+    <p class="eyebrow"><span lang="zh-Hant" class="tc">今晚餐牌</span> · SERVED 18:00–04:00</p>
+    <h2 class="section-title glitch" data-text="TONIGHT'S BOARD">TONIGHT'S BOARD</h2>
+    <p class="section-intro">The tower upstairs went dark in 2041. The landlord's sign still worked, so we kept it: <span lang="zh-Hant" class="tc">公司</span> — “the Company.” Five stalls squat in the old loading bay under the flyover, the rain comes through the same hole it always has, and the board changes when the sea allows it. Eight dishes tonight. No substitutions, except the ones Ah&nbsp;Po decides.</p>
+    <div class="tally" aria-label="Board status">
+      <p><span>DISHES</span><span class="tv">08</span></p>
+      <p><span>STALLS</span><span class="tv">05</span></p>
+      <p><span>SOLD OUT</span><span class="tv">00</span></p>
+      <p><span>RAIN</span><span class="tv">92%</span></p>
+    </div>
+  </header>
+
+  <ul class="board">
+
+    <li class="dish reveal" data-name="TYPHOON NOODLES" data-cjk="颱風麵" data-price="68">
+      <div class="dish-head">
+        <span class="stall-tag">STALL 03 · CHAN KEE</span>
+        <span class="dish-cjk tc" lang="zh-Hant">颱風麵</span>
+      </div>
+      <div class="dish-art" aria-hidden="true">
+        <svg class="dish-icon icon-pink" viewBox="0 0 120 80"><path d="M20 38h80a40 40 0 0 1-80 0z"/><path d="M30 38c0-10 8-14 14-8m8 8c0-12 10-16 16-8m8 8c0-10 8-14 14-6"/><path d="M78 6l26 26M90 2l22 22"/></svg>
+        <canvas class="steam"></canvas>
+      </div>
+      <h3 class="dish-name">TYPHOON NOODLES</h3>
+      <p class="dish-desc">Hand-pulled while the wind does the shaking. Storm broth: dried scallop, white pepper, ginger torched on the coil. Ships with one (1) napkin — the second costs your dignity.</p>
+      <div class="dish-meta">
+        <div class="heat" role="img" aria-label="Heat level 4 of 5"><span class="heat-label"><span lang="zh-Hant" class="tc">辣度</span></span><span class="seg lit"></span><span class="seg lit"></span><span class="seg lit"></span><span class="seg lit"></span><span class="seg"></span></div>
+        <p class="price"><sup>HK$</sup>68</p>
+      </div>
+      <button class="add" type="button">ADD TO ORDER</button>
+    </li>
+
+    <li class="dish reveal" data-name="CHAR SIU SKEWERS" data-cjk="叉燒串" data-price="42">
+      <div class="dish-head">
+        <span class="stall-tag">STALL 07 · SPARK BROS</span>
+        <span class="dish-cjk tc" lang="zh-Hant">叉燒串</span>
+      </div>
+      <div class="dish-art" aria-hidden="true">
+        <svg class="dish-icon icon-blue" viewBox="0 0 120 80"><path d="M14 66L98 14m-8 -4l16 12"/><path d="M30 56l10-6 4 6-10 6zM50 44l10-6 4 6-10 6zM70 32l10-6 4 6-10 6z"/></svg>
+        <canvas class="steam"></canvas>
+      </div>
+      <h3 class="dish-name">CHAR SIU SKEWERS</h3>
+      <p class="dish-desc">Three cuts of shoulder lacquered in maltose and soy, finished over a salvaged maglev coil. The burnt corner is not a defect. It is the point.</p>
+      <div class="dish-meta">
+        <div class="heat" role="img" aria-label="Heat level 1 of 5"><span class="heat-label"><span lang="zh-Hant" class="tc">辣度</span></span><span class="seg lit"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span></div>
+        <p class="price"><sup>HK$</sup>42</p>
+      </div>
+      <button class="add" type="button">ADD TO ORDER</button>
+    </li>
+
+    <li class="dish reveal" data-name="TOFU FLOWER" data-cjk="豆花" data-price="28">
+      <div class="dish-head">
+        <span class="stall-tag">STALL 11 · AH PO</span>
+        <span class="dish-cjk tc" lang="zh-Hant">豆花</span>
+      </div>
+      <div class="dish-art" aria-hidden="true">
+        <svg class="dish-icon icon-yellow" viewBox="0 0 120 80"><path d="M26 42h68a34 34 0 0 1-68 0z"/><path d="M38 42c8-8 18-8 22 0m6 0c6-6 14-6 18 0"/><path d="M88 20c8-2 12 4 8 10"/></svg>
+        <canvas class="steam"></canvas>
+      </div>
+      <h3 class="dish-name">TOFU FLOWER</h3>
+      <p class="dish-desc">Set at dawn in the steel churn, ladled at midnight in one unbroken sheet. Ginger syrup from a dispenser that remembers your usual. Ah Po does not.</p>
+      <div class="dish-meta">
+        <div class="heat" role="img" aria-label="No heat"><span class="heat-label"><span lang="zh-Hant" class="tc">辣度</span></span><span class="seg"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span></div>
+        <p class="price"><sup>HK$</sup>28</p>
+      </div>
+      <button class="add" type="button">ADD TO ORDER</button>
+    </li>
+
+    <li class="dish reveal" data-name="PINEAPPLE BUN 2.0" data-cjk="菠蘿包" data-price="24">
+      <div class="dish-head">
+        <span class="stall-tag">STALL 04 · BAKERY FOUR</span>
+        <span class="dish-cjk tc" lang="zh-Hant">菠蘿包</span>
+      </div>
+      <div class="dish-art" aria-hidden="true">
+        <svg class="dish-icon icon-pink" viewBox="0 0 120 80"><path d="M22 62c0-26 17-40 38-40s38 14 38 40z"/><path d="M40 40l10-8 10 8 10-8 10 8M36 52l10-8 10 8 10-8 10 8 8-6"/></svg>
+        <canvas class="steam"></canvas>
+      </div>
+      <h3 class="dish-name">PINEAPPLE BUN 2.0</h3>
+      <p class="dish-desc">The crust prints in hexagons now — patent pending since 2043. Still contains no pineapple. Served split around a slab of butter colder than the landlord's heart.</p>
+      <div class="dish-meta">
+        <div class="heat" role="img" aria-label="No heat"><span class="heat-label"><span lang="zh-Hant" class="tc">辣度</span></span><span class="seg"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span></div>
+        <p class="price"><sup>HK$</sup>24</p>
+      </div>
+      <button class="add" type="button">ADD TO ORDER</button>
+    </li>
+
+    <li class="dish reveal" data-name="CURRY FISHBALLS" data-cjk="咖喱魚蛋" data-price="35">
+      <div class="dish-head">
+        <span class="stall-tag">STALL 07 · SPARK BROS</span>
+        <span class="dish-cjk tc" lang="zh-Hant">咖喱魚蛋</span>
+      </div>
+      <div class="dish-art" aria-hidden="true">
+        <svg class="dish-icon icon-yellow" viewBox="0 0 120 80"><path d="M30 70L84 8m-6-2l14 10"/><path d="M40 56a7 7 0 1 0 8-10M52 42a7 7 0 1 0 8-10M64 28a7 7 0 1 0 8-10"/></svg>
+        <canvas class="steam"></canvas>
+      </div>
+      <h3 class="dish-name">CURRY FISHBALLS</h3>
+      <p class="dish-desc">Six to a skewer, drowned not dipped. The sauce is licensed from a man in Sham Shui Po who no longer answers his door. The heat is unlicensed.</p>
+      <div class="dish-meta">
+        <div class="heat" role="img" aria-label="Heat level 3 of 5"><span class="heat-label"><span lang="zh-Hant" class="tc">辣度</span></span><span class="seg lit"></span><span class="seg lit"></span><span class="seg lit"></span><span class="seg"></span><span class="seg"></span></div>
+        <p class="price"><sup>HK$</sup>35</p>
+      </div>
+      <button class="add" type="button">ADD TO ORDER</button>
+    </li>
+
+    <li class="dish reveal" data-name="GLITCH CLAYPOT RICE" data-cjk="煲仔飯" data-price="88">
+      <div class="dish-head">
+        <span class="stall-tag">STALL 03 · CHAN KEE</span>
+        <span class="dish-cjk tc" lang="zh-Hant">煲仔飯</span>
+      </div>
+      <div class="dish-art" aria-hidden="true">
+        <svg class="dish-icon icon-blue" viewBox="0 0 120 80"><path d="M26 34h68v6a34 30 0 0 1-68 0z"/><path d="M34 26c8-8 44-8 52 0M56 14h8"/><path d="M14 40h8M98 40h8"/></svg>
+        <canvas class="steam"></canvas>
+      </div>
+      <h3 class="dish-name">GLITCH CLAYPOT RICE</h3>
+      <p class="dish-desc">Lap cheong and preserved duck over rice that crackles at the bottom like a dying feed. Crust certified by thermal camera. Twenty minutes. Watch the rain.</p>
+      <div class="dish-meta">
+        <div class="heat" role="img" aria-label="Heat level 2 of 5"><span class="heat-label"><span lang="zh-Hant" class="tc">辣度</span></span><span class="seg lit"></span><span class="seg lit"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span></div>
+        <p class="price"><sup>HK$</sup>88</p>
+      </div>
+      <button class="add" type="button">ADD TO ORDER</button>
+    </li>
+
+    <li class="dish reveal" data-name="MALA CRAWLER CUP" data-cjk="麻辣杯" data-price="56">
+      <div class="dish-head">
+        <span class="stall-tag">STALL 09 · NUMB UNIT</span>
+        <span class="dish-cjk tc" lang="zh-Hant">麻辣杯</span>
+      </div>
+      <div class="dish-art" aria-hidden="true">
+        <svg class="dish-icon icon-pink" viewBox="0 0 120 80"><path d="M38 26h44l-6 46H44zM34 26h52"/><path d="M48 18c-2-6 4-8 2-14M62 18c-2-6 4-8 2-14M76 18c-2-6 4-8 2-14"/><path d="M52 44l6 8 6-10 6 8"/></svg>
+        <canvas class="steam"></canvas>
+      </div>
+      <h3 class="dish-name">MALA CRAWLER CUP</h3>
+      <p class="dish-desc">Lotus root, tripe, and quail egg in a broth that files a report on you. Level five numbs to the elbow. Signature required. We keep the pen.</p>
+      <div class="dish-meta">
+        <div class="heat" role="img" aria-label="Heat level 5 of 5 — maximum"><span class="heat-label"><span lang="zh-Hant" class="tc">辣度</span></span><span class="seg lit"></span><span class="seg lit"></span><span class="seg lit"></span><span class="seg lit"></span><span class="seg lit max"></span></div>
+        <p class="price"><sup>HK$</sup>56</p>
+      </div>
+      <button class="add" type="button">ADD TO ORDER</button>
+    </li>
+
+    <li class="dish reveal" data-name="NITRO MILK TEA" data-cjk="絲襪奶茶" data-price="22">
+      <div class="dish-head">
+        <span class="stall-tag">STALL 11 · AH PO</span>
+        <span class="dish-cjk tc" lang="zh-Hant">絲襪奶茶</span>
+      </div>
+      <div class="dish-art" aria-hidden="true">
+        <svg class="dish-icon icon-blue" viewBox="0 0 120 80"><path d="M42 10h36l-4 60H46zM40 30h39"/><path d="M50 42c6 4 14 4 20 0M50 52c6 4 14 4 20 0"/></svg>
+        <canvas class="steam"></canvas>
+      </div>
+      <h3 class="dish-name">NITRO MILK TEA</h3>
+      <p class="dish-desc">Pulled eight times through the same stocking since 1997, then hit with nitrogen because it is 2049. The cream falls like weather. <span lang="zh-Hant" class="tc">走冰</span> free after midnight.</p>
+      <div class="dish-meta">
+        <div class="heat" role="img" aria-label="No heat"><span class="heat-label"><span lang="zh-Hant" class="tc">辣度</span></span><span class="seg"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span></div>
+        <p class="price"><sup>HK$</sup>22</p>
+      </div>
+      <button class="add" type="button">ADD TO ORDER</button>
+    </li>
+
+  </ul>
+</section>
+
+<!-- ======================= CRT ORDER TERMINAL ======================= -->
+<section class="terminal" id="terminal">
+  <header class="section-head reveal">
+    <p class="eyebrow"><span lang="zh-Hant" class="tc">收銀機</span> · CASH LANE CLOSED SINCE 2047</p>
+    <h2 class="section-title glitch" data-text="ORDER TERMINAL">ORDER TERMINAL</h2>
+    <p class="section-intro">Add dishes from the board. The machine types slower than the cooks cook. Print your chit, show the number, and wait in the rain like everyone else.</p>
+  </header>
+
+  <div class="term-grid reveal">
+    <div class="crt-shell">
+      <div class="crt">
+        <div class="crt-screen">
+          <p class="crt-fixed">GONGSI POS v9.4 · DECK 3 · UPLINK: NONE (GOOD)</p>
+          <div class="crt-lines" aria-live="polite"></div>
+          <p class="crt-prompt"><span class="crt-cursor"></span></p>
+        </div>
+      </div>
+      <div class="crt-keys">
+        <button class="key key--print" type="button" id="printBtn">PRINT CHIT</button>
+        <button class="key key--clear" type="button" id="clearBtn">CLEAR</button>
+      </div>
+    </div>
+
+    <div class="printer">
+      <div class="printer-slot" aria-hidden="true"></div>
+      <div class="stub-well" aria-hidden="true"><div class="stub" id="stub"><span>Nº ···· · UNCLAIMED · 03:11</span></div></div>
+      <div class="receipt-window">
+        <div class="receipt" id="receipt" aria-live="polite"></div>
+      </div>
+      <p class="printer-note">THERMAL CHIT PRINTER · SHOW THE Nº, GET THE FOOD · NO REFUNDS</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= THE ROW ======================= -->
+<section class="row" id="row">
+  <header class="section-head reveal">
+    <p class="eyebrow"><span lang="zh-Hant" class="tc">五攤</span> · FIVE STALLS, ONE FLYOVER</p>
+    <h2 class="section-title">THE ROW</h2>
+  </header>
+
+  <ul class="stalls reveal">
+    <li class="stall">
+      <span class="stall-no">03</span>
+      <span class="stall-name">CHAN KEE <span lang="zh-Hant" class="tc">陳記</span></span>
+      <span class="stall-trade">noodles · claypot</span>
+      <span class="stall-hours"><i class="led" aria-hidden="true"></i>18:00–02:00</span>
+      <span class="stall-note">Third generation. The wok predates the flyover.</span>
+    </li>
+    <li class="stall">
+      <span class="stall-no">04</span>
+      <span class="stall-name">BAKERY FOUR <span lang="zh-Hant" class="tc">電爐</span></span>
+      <span class="stall-trade">buns · butter</span>
+      <span class="stall-hours"><i class="led led--amber" aria-hidden="true"></i>18:00–00:30</span>
+      <span class="stall-note">Hexagon crust, patent pending. Do not mention the sourdough incident.</span>
+    </li>
+    <li class="stall">
+      <span class="stall-no">07</span>
+      <span class="stall-name">SPARK BROS <span lang="zh-Hant" class="tc">火花</span></span>
+      <span class="stall-trade">skewers · fishballs</span>
+      <span class="stall-hours"><i class="led" aria-hidden="true"></i>19:00–04:00</span>
+      <span class="stall-note">Two brothers, one coil, zero fire permits.</span>
+    </li>
+    <li class="stall">
+      <span class="stall-no">09</span>
+      <span class="stall-name">NUMB UNIT <span lang="zh-Hant" class="tc">麻</span></span>
+      <span class="stall-trade">mala · regret</span>
+      <span class="stall-hours"><i class="led" aria-hidden="true"></i>20:00–03:00</span>
+      <span class="stall-note">Waiver above level 4. Milk sold separately by Stall 11.</span>
+    </li>
+    <li class="stall">
+      <span class="stall-no">11</span>
+      <span class="stall-name">AH PO <span lang="zh-Hant" class="tc">阿婆</span></span>
+      <span class="stall-trade">tofu · tea</span>
+      <span class="stall-hours"><i class="led" aria-hidden="true"></i>18:00–04:00</span>
+      <span class="stall-note">Was here before the deck. Will be here after.</span>
+    </li>
+  </ul>
+</section>
+
+</main>
+
+<!-- ======================= FOOTER ======================= -->
+<footer class="footer">
+  <div class="footer-receipt">
+    <div class="tear" aria-hidden="true"><span>TEAR HERE</span></div>
+    <p class="foot-line"><span>MARKET</span><span>GŎNG SÌ <span lang="zh-Hant" class="tc">公司</span> NIGHT MARKET</span></p>
+    <p class="foot-line"><span>WHERE</span><span>KOWLOON UNDERLINE · DECK 3 · UNDER THE OLD FLYOVER</span></p>
+    <p class="foot-line"><span>WHEN</span><span>18:00–04:00 · RAIN OR RAIN</span></p>
+    <p class="foot-line"><span>SUBTOTAL</span><span>one good night</span></p>
+    <p class="foot-line"><span>SERVICE</span><span>included, reluctantly</span></p>
+    <p class="foot-line"><span>MSG</span><span>yes</span></p>
+    <div class="barcode" aria-hidden="true"></div>
+    <p class="foot-thanks"><span lang="zh-Hant" class="tc">多謝光臨</span> · THANK YOU, COME AGAIN</p>
+    <p class="foot-fiction">This market is a fiction set in 2049. The rain is real somewhere. Built entirely self-contained — no external requests, and no pineapple in the bun.</p>
+    <p class="foot-back"><a href="#sign">▲ BACK TO THE SIGN</a></p>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>

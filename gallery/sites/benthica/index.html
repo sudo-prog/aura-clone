@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BENTHICA — Descent Log of DSV VELA</title>
+<meta name="description" content="Benthica — the complete descent log of research submersible VELA: 10,911 meters from sunlight to the floor of the Cassiel Deep, with live instruments.">
+<meta property="og:title" content="BENTHICA — Descent Log of DSV VELA">
+<meta property="og:description" content="Dive 47: surface to the floor of the Cassiel Deep. 10,911 meters, two crew, live instruments all the way down.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#010409">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23010409'/%3E%3Ccircle cx='32' cy='32' r='6' fill='%2364F0D2'/%3E%3Ccircle cx='32' cy='32' r='16' fill='none' stroke='%2364F0D2' stroke-opacity='.5' stroke-width='3'/%3E%3Ccircle cx='32' cy='32' r='26' fill='none' stroke='%2364F0D2' stroke-opacity='.22' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="fonts/Archivo-03.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/IBMPlexMono-05.woff2" crossorigin>
+<link rel="stylesheet" href="fonts/Archivo.css">
+<link rel="stylesheet" href="fonts/IBMPlexMono.css">
+<link rel="stylesheet" href="css/main.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+
+<a class="skip" href="#log-start">Skip to the dive log</a>
+
+<div id="ambient" aria-hidden="true"></div>
+<canvas id="sea" aria-hidden="true"></canvas>
+<div id="vignette" aria-hidden="true"></div>
+<canvas id="tape" aria-hidden="true"></canvas>
+<div id="sonar" aria-hidden="true"></div>
+
+<header class="hud-top">
+  <p class="wordmark">BENTHICA</p>
+  <p class="mission">DSV VELA · DIVE 47 · CASSIEL DEEP</p>
+  <p class="linkline"><span class="dot" aria-hidden="true"></span>LINK — R/V ALDEBARAN</p>
+</header>
+
+<aside class="hud-cluster" aria-label="Dive telemetry">
+  <span class="prog" id="r-prog" aria-hidden="true"></span>
+  <p class="sr-note">Live dive telemetry — depth, pressure, temperature and mission elapsed time update as the page scrolls from the surface to 10,911 meters.</p>
+  <div aria-hidden="true">
+    <div class="readout readout--depth"><span class="lbl">DEPTH</span><span class="val" id="r-depth">····</span><span class="unit">M</span></div>
+    <div class="readout"><span class="lbl">PRESS</span><span class="val" id="r-press">····</span><span class="unit">ATM</span></div>
+    <div class="readout"><span class="lbl">TEMP</span><span class="val" id="r-temp">····</span><span class="unit">°C</span></div>
+    <div class="readout"><span class="lbl">M.E.T.</span><span class="val" id="r-met">····</span></div>
+  </div>
+</aside>
+
+<div class="hud-bottom" aria-hidden="true">
+  <p class="zoneline"><span class="lbl">ZONE</span><span id="r-zone">SURFACE</span></p>
+  <p class="rateline"><span class="lbl">RATE</span><span id="r-rate">0</span><span class="unit">M/MIN</span></p>
+</div>
+
+<main>
+
+  <section class="hero" id="surface">
+    <div class="hero-inner">
+      <p class="eyebrow">HALEWOOD OCEANOGRAPHIC · BENTHICA PROGRAM · ARCHIVE COPY 47-B</p>
+      <h1>BENTHICA</h1>
+      <p class="standfirst">The complete descent log of research submersible <em>VELA</em> — Dive 47, surface to the floor of the Cassiel Deep. 10,911 meters. Two crew. One viewport. Past a thousand meters, every light is made by something alive.</p>
+      <p class="fixline">R/V ALDEBARAN HOLDING STATION · 11°22′S 142°35′W · SEA STATE 2 · 14 MARCH 2026 · HATCH SEALED 06:12</p>
+      <a class="begin" href="#log-start">BEGIN DESCENT<span class="arr" aria-hidden="true">▾</span></a>
+    </div>
+  </section>
+
+  <div class="log">
+
+    <section class="zone zone--epi" aria-label="Epipelagic zone">
+      <h2 class="stratum" id="log-start" tabindex="-1" data-depth="0" data-met="0">EPIPELAGIC<span class="sub">THE SUNLIT ZONE · 0 – 200 M</span></h2>
+
+      <article class="entry" data-depth="0" data-met="0" style="--drop:26vh">
+        <h3 class="stamp">T+00:00 · 0 M</h3>
+        <p>Hatch sealed at 06:12. Iversen floods the ballast tanks and the sea closes over the viewport in one green heave. The swell still owns us; VELA rolls like a bottle. Eleven kilometers below, where we are going, the water has not felt weather since the Pleistocene.</p>
+      </article>
+
+      <article class="entry" data-depth="40" data-met="2" style="--drop:105vh">
+        <h3 class="stamp">T+00:02 · 40 M</h3>
+        <p>The rolling stops all at once, like a hand laid flat on the hull. First silence of the dive. Iversen trims us to forty-four meters a minute and takes his hands off the sticks. From here down, gravity is the pilot.</p>
+      </article>
+
+      <article class="entry" data-depth="150" data-met="9" style="--drop:115vh">
+        <h3 class="stamp">T+00:09 · 150 M</h3>
+        <p>Red went first, then orange, then the idea of yellow. I press my thumb to the viewport and it comes back grey. We are leaving the last photosynthesis behind — everything below this line borrows its living from the thin rain of what dies above.</p>
+      </article>
+    </section>
+
+    <section class="zone zone--meso" aria-label="Mesopelagic zone">
+      <h2 class="stratum" data-depth="200" data-met="12" style="--drop:90vh">MESOPELAGIC<span class="sub">THE TWILIGHT ZONE · 200 – 1,000 M</span></h2>
+
+      <article class="entry" data-depth="340" data-met="16" style="--drop:105vh">
+        <h3 class="stamp">T+00:16 · 340 M</h3>
+        <p>Cabin at sixteen degrees and falling. Condensation gathers on the steel above my head and drips on a schedule, every forty seconds. Iversen switches us to red light to keep our eyes dark-adapted. Outside: a blue so deep it is almost a sound.</p>
+      </article>
+
+      <article class="entry entry--contact" data-depth="612" data-met="24" style="--drop:125vh">
+        <h3 class="stamp">T+00:24 · 612 M<span class="chip">CONTACT</span></h3>
+        <p>It crosses the viewport for a full minute before I understand it is one animal. Siphonophore — a colony longer than VELA, forty meters of transparent bells towing one another through the dark. When our wake touches it, light runs the whole chain, stem to stern, blue-green, a fuse that never reaches anything. Iversen kills the thrusters. Neither of us breathes.</p>
+      </article>
+
+      <article class="entry" data-depth="800" data-met="31" style="--drop:115vh">
+        <h3 class="stamp">T+00:31 · 800 M</h3>
+        <p>The oxygen minimum. Life here idles — hatchetfish holding still as coins, jellies pulsing at half speed. On sonar, the deep scattering layer reads as a false seafloor: ten billion small bodies beginning their nightly commute toward the surface as we fall through them. The largest migration on Earth, done daily, in the dark.</p>
+      </article>
+    </section>
+
+    <section class="zone zone--bathy" aria-label="Bathypelagic zone">
+      <h2 class="stratum" data-depth="1000" data-met="38" style="--drop:100vh">BATHYPELAGIC<span class="sub">THE MIDNIGHT ZONE · 1,000 – 4,000 M</span></h2>
+
+      <article class="entry entry--contact" data-depth="1210" data-met="44" style="--drop:115vh">
+        <h3 class="stamp">T+00:44 · 1,210 M<span class="chip">CONTACT</span></h3>
+        <p>A school of lanternfish finds us — or finds our glow. Dozens, each the length of a finger, hulls stitched with photophores blinking codes I cannot read and their predators cannot resist. For three minutes they school at the glass, rewriting their constellations. Then every light goes out at once, and they are gone.</p>
+      </article>
+
+      <article class="entry" data-depth="1900" data-met="65" style="--drop:125vh">
+        <h3 class="stamp">T+01:05 · 1,900 M</h3>
+        <p>One hundred ninety atmospheres. The hull ticks as it cools — titanium settling its accounts. Iversen pours tea from the thermos with the unhurried precision of a man doing something ordinary at nineteen hundred meters. Half the water column is still below us.</p>
+      </article>
+
+      <article class="entry entry--contact" data-depth="2507" data-met="82" style="--drop:135vh">
+        <h3 class="stamp">T+01:22 · 2,507 M<span class="chip">CONTACT</span></h3>
+        <p>A light where no light should be, forty meters off the port quarter, swinging in small patient arcs. Anglerfish — female; the males carry no lantern. We go dark and drift. When she turns, the lure throws its glow across a jaw built like a sprung trap, teeth the shape of commitment. She is fishing. Everything down here is fishing. She does not rate us worth the wattage.</p>
+      </article>
+
+      <article class="entry" data-depth="3300" data-met="107" style="--drop:125vh">
+        <h3 class="stamp">T+01:47 · 3,300 M</h3>
+        <p>The snow is heavier now, streaming up past the viewport — we fall faster than it does. Every flake is a ledger line from the sunlit world: diatom glass, fish scale, somebody's lost summer. It settles on the floor at a centimeter per thousand years. We will be landing on a million years of patience.</p>
+      </article>
+    </section>
+
+    <section class="zone zone--abysso" aria-label="Abyssopelagic zone">
+      <h2 class="stratum" data-depth="4000" data-met="128" style="--drop:115vh">ABYSSOPELAGIC<span class="sub">THE ABYSS · 4,000 – 6,000 M</span></h2>
+
+      <article class="entry entry--contact" data-depth="4050" data-met="130" style="--drop:55vh">
+        <h3 class="stamp">T+02:10 · 4,050 M<span class="chip">CONTACT</span></h3>
+        <p>Something pale wheels through the port floodlight: a dumbo octopus, ear-fins rowing, arms gathered under the web like a held skirt. It circles once, unhurried — a resident of a country that has never had weather, checking the strangers' papers — then banks away into the black and is a rumor again.</p>
+      </article>
+
+      <article class="entry" data-depth="5200" data-met="151" style="--drop:145vh">
+        <h3 class="stamp">T+02:31 · 5,200 M</h3>
+        <p>Nothing for an hour, and I have stopped waiting for something. The cabin is down to eleven degrees; the tea is long gone. Iversen hums two notes and stops. We are the only warm thing for a hundred kilometers in any direction.</p>
+      </article>
+    </section>
+
+    <section class="zone zone--hadal" aria-label="Hadal zone">
+      <h2 class="stratum" data-depth="6000" data-met="172" style="--drop:125vh">HADAL<span class="sub">THE TRENCH · 6,000 – 10,911 M</span></h2>
+
+      <article class="entry" data-depth="7400" data-met="184" style="--drop:145vh">
+        <h3 class="stamp">T+03:04 · 7,400 M</h3>
+        <p>Seven hundred thirty-six atmospheres. Once — only once — the hull speaks: a single low note, like a struck bell heard through the floor. We both watch the pressure display say nothing at all for ten long seconds. Titanium is allowed one word per dive, Iversen says. That was it.</p>
+      </article>
+
+      <article class="entry" data-depth="9100" data-met="219" style="--drop:145vh">
+        <h3 class="stamp">T+03:39 · 9,100 M</h3>
+        <p>The sonar has stopped finding the bottom below us and started finding walls beside us. We are inside the trench now, descending a corridor. Somewhere overhead, our entire sunlit species is asleep on a film of warm water thinner than this trench is deep.</p>
+      </article>
+
+      <article class="entry" data-depth="10300" data-met="242" style="--drop:125vh">
+        <h3 class="stamp">T+04:02 · 10,300 M</h3>
+        <p>Iversen wakes the thrusters and begins to brake. Down-sonar returns firm and flat: floor at six hundred meters. Four hundred. Two-fifty. My handwriting has become very careful.</p>
+      </article>
+
+      <article class="entry entry--contact entry--bottom" data-depth="10911" data-met="258" style="--drop:115vh">
+        <h3 class="stamp">T+04:18 · 10,911 M<span class="chip">BOTTOM</span></h3>
+        <p>Floodlights on. The floor of the Cassiel Deep develops out of the black like a photograph: pale ochre sediment, perfectly still, printed with ripples by a current too patient to see. Within a minute the amphipods find us — pale, thumb-sized, swarming the beams like winter moths. VELA settles onto her skids with a sound like a held breath let go. One thousand eighty-five atmospheres hold the hull like a hand. The lights make a room of the floor of the world — the first room there has ever been here.</p>
+      </article>
+
+      <article class="entry" data-depth="10911" data-met="269" style="--drop:85vh">
+        <h3 class="stamp">T+04:29 · 10,911 M</h3>
+        <p>We stay eleven minutes. We take two sediment cores, one amphipod, three hundred photographs, and less water than a swimmer swallows. Then the weights drop away, the floor lets go of the light, and VELA rises like a slow bubble toward a surface no instrument aboard can see. Above us: eleven kilometers, and morning. The log ends where the light begins.</p>
+      </article>
+    </section>
+
+  </div>
+
+</main>
+
+<footer class="credits" style="--drop:65vh">
+  <p class="cline">BENTHICA PROGRAM — DIVE 47 · CASSIEL DEEP, MERIDIAN TRENCH</p>
+  <p class="cline">DSV VELA · PILOT R. IVERSEN · OBSERVER M. OKONKWO</p>
+  <p class="cline">SURFACE SUPPORT R/V ALDEBARAN · HALEWOOD OCEANOGRAPHIC PARTNERSHIP</p>
+  <p class="cline">LOG RECORDED 14 MARCH 2026 · RELEASED TO THE ARCHIVE 02 JUNE 2026</p>
+  <p class="cnote">The trench is fictional. The physics is not — every depth, pressure and temperature on this page is computed from the descent profile.</p>
+</footer>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

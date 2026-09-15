@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lido Solare — Piscina comunale all'aperto, est. 1936</title>
+<meta name="description" content="Municipal open-air swimming pool in Santa Lucia al Mare. Fifty metres of 1936 concrete, water at 26,4°, a ten-metre tower, and the whole of summer. Season: 30 May – 13 September.">
+<meta property="og:title" content="Lido Solare — est. 1936">
+<meta property="og:description" content="Ninety years, forty-five summers. The municipal open-air pool of Santa Lucia al Mare — reopened, retiled, and 26,4° at two in the afternoon.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#3EC5D6">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%233EC5D6'/%3E%3Ccircle cx='32' cy='32' r='16' fill='none' stroke='%23F7F3E9' stroke-width='9'/%3E%3Ccircle cx='32' cy='32' r='16' fill='none' stroke='%23E2372B' stroke-width='9' stroke-dasharray='12.57 12.57' stroke-dashoffset='6.28'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/JosefinSans-03.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/JosefinSans.css">
+<link rel="stylesheet" href="fonts/AlegreyaSans.css">
+<link rel="stylesheet" href="fonts/ArchivoNarrow.css">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="Lido Solare — back to top">LIDO SOLARE <span class="nav__est">1936</span></a>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#lido">Il Lido</a>
+    <a href="#regolamento">Regolamento</a>
+    <a href="#tessere">Tessere</a>
+    <a href="#torre">La Torre</a>
+  </nav>
+  <span class="nav__temp" title="Water temperature, measured at 14:00">ACQUA 26,4°</span>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO — THE WATER ============ -->
+  <section class="hero" id="hero" aria-label="The pool">
+    <canvas class="hero__water" id="water" aria-hidden="true"></canvas>
+    <div class="hero__fallback" aria-hidden="true"></div>
+
+    <div class="hero__content">
+      <p class="hero__eyebrow reveal-load" style="--d:.15s">Piscina comunale all'aperto · Santa Lucia al Mare</p>
+      <h1 class="hero__title">
+        <span class="hero__line"><span class="hero__word" style="--d:.30s">LIDO</span></span>
+        <span class="hero__line"><span class="hero__word" style="--d:.42s">SOLARE</span></span>
+      </h1>
+      <p class="hero__sub reveal-load" style="--d:.62s">Fifty metres of 1936 concrete. Water at 26,4°.<br>Open every day, 30 May – 13 September.</p>
+    </div>
+
+    <svg class="hero__roundel reveal-load" style="--d:.8s" viewBox="0 0 160 160" role="img" aria-label="Seal: Piscina Comunale, MCMXXXVI">
+      <defs><path id="ringpath" d="M80,80 m-58,0 a58,58 0 1,1 116,0 a58,58 0 1,1 -116,0"/></defs>
+      <circle cx="80" cy="80" r="76" fill="none" stroke="currentColor" stroke-width="2"/>
+      <circle cx="80" cy="80" r="42" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <g class="hero__roundel-spin">
+        <text class="hero__roundel-text"><textPath href="#ringpath" startOffset="0" textLength="362" lengthAdjust="spacing">PISCINA COMUNALE · EST. MCMXXXVI ·</textPath></text>
+      </g>
+      <g stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round">
+        <path d="M56,86 q6,-7 12,0 t12,0 t12,0 t12,0"/>
+        <path d="M60,98 q6,-7 12,0 t12,0 t12,0"/>
+      </g>
+      <circle cx="80" cy="62" r="9" fill="currentColor"/>
+    </svg>
+
+    <a class="hero__cue reveal-load" style="--d:.95s" href="#lido" aria-label="Down to the shallow end — Il Lido"><span class="hero__cue-tile">1,2 m</span><span class="hero__cue-arrow" aria-hidden="true">↓</span></a>
+  </section>
+
+  <div class="coping" aria-hidden="true"></div>
+
+  <!-- ============ IL LIDO ============ -->
+  <section class="section" id="lido">
+    <svg class="footprints" aria-hidden="true" viewBox="0 0 120 560" width="120" height="560">
+      <defs>
+        <g id="fp">
+          <ellipse cx="0" cy="0" rx="7.5" ry="10.5"/>
+          <ellipse cx="0.8" cy="21" rx="5.2" ry="6.6"/>
+          <circle cx="-7.2" cy="-12.2" r="2.1"/>
+          <circle cx="-3.4" cy="-14.4" r="2.5"/>
+          <circle cx="0.8" cy="-15" r="2.5"/>
+          <circle cx="4.8" cy="-13.8" r="2.3"/>
+          <circle cx="8" cy="-11.4" r="1.9"/>
+        </g>
+      </defs>
+      <use href="#fp" transform="translate(40,42) rotate(9)" opacity=".40"/>
+      <use href="#fp" transform="translate(80,130) scale(-1,1) rotate(7)" opacity=".32"/>
+      <use href="#fp" transform="translate(42,224) rotate(12)" opacity=".24"/>
+      <use href="#fp" transform="translate(82,318) scale(-1,1) rotate(5)" opacity=".17"/>
+      <use href="#fp" transform="translate(46,412) rotate(10)" opacity=".11"/>
+      <use href="#fp" transform="translate(84,506) scale(-1,1) rotate(8)" opacity=".06"/>
+    </svg>
+    <div class="container">
+      <p class="depth-tile reveal">— 1,2 m · la parte bassa —</p>
+      <h2 class="section__title reveal">Novant'anni,<br>quarantacinque estati</h2>
+      <div class="lido-grid">
+        <div class="lido-prose reveal">
+          <p>The basin was poured in the spring of 1936 — fifty metres of white concrete on the headland above the old harbour, finished in forty-one days by crews under municipal architect <em>Attilio Bonfante</em>. It opened on 21 June with a brass band, a bishop, and a hundred and forty children who refused to get out at closing.</p>
+          <p>The pumps failed in October 1978, and the town, short of money, let the water go. For forty-six years the empty basin baked in the sun — skateboarded on, argued about, never unloved. Divers still climbed the fence at dusk just to sit on the ten-metre board.</p>
+          <p>Restoration began in 2023, tile by original tile. Lido Solare reopened on <strong>21 June 2025</strong> — eighty-nine years to the day. Same basin. Same board. Same water temperature nobody agrees on.</p>
+        </div>
+        <dl class="lido-specs reveal">
+          <div class="spec"><dt>vasca</dt><dd>50 <span>m</span></dd></div>
+          <div class="spec"><dt>corsie</dt><dd>8</dd></div>
+          <div class="spec"><dt>acqua, alle 14:00</dt><dd>26,4<span>°</span></dd></div>
+          <div class="spec"><dt>fossa dei tuffi</dt><dd>4,9 <span>m</span></dd></div>
+          <div class="spec"><dt>prima estate</dt><dd>1936</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ REGOLAMENTO ============ -->
+  <section class="section section--rules" id="regolamento">
+    <div class="container">
+      <p class="depth-tile reveal">— 2,2 m · mezzofondo —</p>
+      <h2 class="section__title reveal">Regolamento</h2>
+      <p class="section__lede reveal">Six enamel plates, screwed to the pump-house wall in 1936. Still the law.</p>
+
+      <div class="plates">
+        <article class="plate reveal" style="--d:.0s">
+          <span class="screw screw--tl"></span><span class="screw screw--tr"></span><span class="screw screw--bl"></span><span class="screw screw--br"></span>
+          <h3 lang="it">Doccia obbligatoria</h3>
+          <p>Shower before you swim. Two minutes. Cold counts.</p>
+        </article>
+        <article class="plate plate--chipped reveal" style="--d:.06s">
+          <span class="screw screw--tl"></span><span class="screw screw--tr"></span><span class="screw screw--bl"></span><span class="screw screw--br"></span>
+          <span class="chip" aria-hidden="true"></span>
+          <h3 lang="it">Non correre sul bordo</h3>
+          <p>Walk. The concrete is hotter than it looks.</p>
+        </article>
+        <article class="plate plate--red reveal" style="--d:.12s">
+          <span class="screw screw--tl"></span><span class="screw screw--tr"></span><span class="screw screw--bl"></span><span class="screw screw--br"></span>
+          <h3 lang="it">Vietato tuffarsi</h3>
+          <p>No diving in the shallow end. The tower exists for a reason.</p>
+        </article>
+        <article class="plate reveal" style="--d:.18s">
+          <span class="screw screw--tl"></span><span class="screw screw--tr"></span><span class="screw screw--bl"></span><span class="screw screw--br"></span>
+          <h3 lang="it">Cuffia in corsia</h3>
+          <p>Caps required in the lap lanes. Style optional.</p>
+        </article>
+        <article class="plate reveal" style="--d:.24s">
+          <span class="screw screw--tl"></span><span class="screw screw--tr"></span><span class="screw screw--bl"></span><span class="screw screw--br"></span>
+          <h3 lang="it">Un fischio: guarda.<br>Due: fuori</h3>
+          <p>One whistle: look up. Two whistles: everybody out.</p>
+        </article>
+        <article class="plate reveal" style="--d:.30s">
+          <span class="screw screw--tl"></span><span class="screw screw--tr"></span><span class="screw screw--bl"></span><span class="screw screw--br"></span>
+          <h3 lang="it">Il riposo è sacro</h3>
+          <p>Quiet hour, 13:00 – 14:00. The pool rests. So should you.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TESSERE ============ -->
+  <section class="section" id="tessere">
+    <div class="container">
+      <p class="depth-tile reveal">— 3,4 m · si nuota sul serio —</p>
+      <h2 class="section__title reveal">Tessere 2026</h2>
+      <p class="section__lede reveal">The turnstile accepts cash, cards, and nostalgia. Under-6s swim free; over-80s swim free and get applauded.</p>
+
+      <div class="tickets">
+        <article class="ticket ticket--day reveal" style="--d:.0s">
+          <div class="ticket__stub"><span>STAGIONE 2026</span></div>
+          <div class="ticket__body">
+            <h3>Giornaliero</h3>
+            <p class="ticket__price">€ 7<span>,00</span></p>
+            <p class="ticket__desc">One day, all of it. Gates open at 07:00 — leave when the swifts do.</p>
+            <p class="ticket__serial">N° 08841 · VALIDO UN GIORNO</p>
+          </div>
+        </article>
+        <article class="ticket ticket--dawn reveal" style="--d:.07s">
+          <div class="ticket__stub"><span>STAGIONE 2026</span></div>
+          <div class="ticket__body">
+            <h3>Mattutina</h3>
+            <p class="ticket__price">€ 55<span>,00</span></p>
+            <p class="ticket__desc">Weekday lap lanes, 07:00 – 09:00, all season. For the before-work faithful; the coffee bar opens at 06:45.</p>
+            <p class="ticket__serial">N° 00219 · SOLO CORSIE</p>
+          </div>
+        </article>
+        <article class="ticket ticket--season reveal" style="--d:.14s">
+          <div class="ticket__stub"><span>STAGIONE 2026</span></div>
+          <div class="ticket__body">
+            <h3>Stagionale</h3>
+            <p class="ticket__price">€ 130<span>,00</span></p>
+            <p class="ticket__desc">Every day until 13 September. The summer is included.</p>
+            <p class="ticket__serial">N° 01936 · TUTTA LA STAGIONE</p>
+          </div>
+        </article>
+        <article class="ticket ticket--family reveal" style="--d:.21s">
+          <div class="ticket__stub"><span>STAGIONE 2026</span></div>
+          <div class="ticket__body">
+            <h3>Famiglia</h3>
+            <p class="ticket__price">€ 290<span>,00</span></p>
+            <p class="ticket__desc">Two adults and every child under fourteen. Cousins count. We don't check hard.</p>
+            <p class="ticket__serial">N° 00452 · MAX 2 ADULTI</p>
+          </div>
+        </article>
+      </div>
+
+      <dl class="hours reveal">
+        <div class="hours__item"><dt>Tutti i giorni</dt><dd>07:00 – 20:00</dd></div>
+        <div class="hours__item"><dt>Corsie riservate</dt><dd>07:00 – 09:00</dd></div>
+        <div class="hours__item"><dt>Riposo</dt><dd>13:00 – 14:00</dd></div>
+        <div class="hours__item"><dt>Notte di San Lorenzo</dt><dd>10 ago · 21:00 – 24:00<span class="hours__note">night swim under the meteors</span></dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ============ LA TORRE ============ -->
+  <section class="torre" id="torre" aria-label="The ten-metre diving tower">
+    <div class="torre__stage">
+      <svg class="torre__scene" id="diveScene" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#1D4ED2"/>
+            <stop offset="1" stop-color="#3563DE"/>
+          </linearGradient>
+          <linearGradient id="poolGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#4FD0DF"/>
+            <stop offset="1" stop-color="#27AFC5"/>
+          </linearGradient>
+          <clipPath id="aboveWater"><rect x="0" y="-200" width="1600" height="1048"/></clipPath>
+          <clipPath id="belowWater"><rect x="0" y="848" width="1600" height="152"/></clipPath>
+        </defs>
+
+        <rect x="0" y="0" width="1600" height="850" fill="url(#skyGrad)"/>
+        <rect x="0" y="848" width="1600" height="152" fill="url(#poolGrad)"/>
+        <!-- Hockney wave dashes -->
+        <g stroke="#F7F3E9" stroke-width="4" stroke-linecap="round" opacity=".7" fill="none">
+          <path d="M120,890 q20,-8 40,0"/><path d="M420,915 q20,-8 40,0"/><path d="M950,900 q20,-8 40,0"/>
+          <path d="M1230,930 q20,-8 40,0"/><path d="M700,945 q20,-8 40,0"/><path d="M1460,895 q20,-8 40,0"/>
+        </g>
+
+        <!-- THE TOWER (rationalist, 1936) -->
+        <g id="tower">
+          <!-- main pylon -->
+          <rect x="180" y="180" width="86" height="670" fill="#E3BE8F"/>
+          <rect x="246" y="180" width="20" height="670" fill="#C79E6C"/>
+          <!-- platforms: 10 / 7.5 / 5 / 3 m -->
+          <g>
+            <rect x="180" y="180" width="368" height="20" rx="3" fill="#EDCB9E"/>
+            <rect x="180" y="196" width="368" height="7" fill="#B98F5C"/>
+            <rect x="180" y="352" width="288" height="17" rx="3" fill="#E3BE8F"/>
+            <rect x="180" y="365" width="288" height="6" fill="#B98F5C"/>
+            <rect x="180" y="520" width="238" height="16" rx="3" fill="#E3BE8F"/>
+            <rect x="180" y="532" width="238" height="6" fill="#B98F5C"/>
+            <rect x="180" y="682" width="196" height="15" rx="3" fill="#E3BE8F"/>
+            <rect x="180" y="693" width="196" height="6" fill="#B98F5C"/>
+          </g>
+          <!-- handrails -->
+          <g stroke="#F7F3E9" stroke-width="5" fill="none" stroke-linecap="round">
+            <path d="M186,180 v-46 h256"/>
+            <path d="M186,352 v-40 h190"/>
+            <path d="M186,520 v-36 h160"/>
+            <path d="M186,682 v-32 h130"/>
+          </g>
+          <!-- ladder -->
+          <g stroke="#F7F3E9" stroke-width="4" fill="none">
+            <line x1="158" y1="200" x2="158" y2="846"/><line x1="176" y1="200" x2="176" y2="846"/>
+            <g id="rungs"></g>
+          </g>
+          <!-- painted heights -->
+          <g class="torre__nums" fill="#F7F3E9">
+            <text x="213" y="248">10</text>
+            <text x="213" y="414" font-size="30">7,5</text>
+            <text x="213" y="580" font-size="30">5</text>
+            <text x="213" y="740" font-size="28">3</text>
+          </g>
+          <!-- pennant -->
+          <g id="pennant">
+            <line x1="196" y1="134" x2="196" y2="180" stroke="#F7F3E9" stroke-width="4"/>
+            <path d="M196,134 l46,10 l-46,10 z" fill="#E2372B"/>
+          </g>
+        </g>
+
+        <!-- THE DIVER -->
+        <g id="diver" clip-path="url(#aboveWater)">
+          <g id="diverInner">
+            <!-- pose: standing -->
+            <g class="pose" id="poseStand">
+              <circle cx="0" cy="-62" r="8.5"/>
+              <path d="M-6,-54 q6,4 12,0 l2,26 q-8,4 -16,0 z"/>
+              <path d="M-7,-30 l-1,30 h5 l3,-24 l3,24 h5 l-1,-30 z"/>
+              <path d="M-8,-52 l-3,24 l3,1 l5,-20 z"/>
+              <path d="M8,-52 l3,24 l-3,1 l-5,-20 z"/>
+            </g>
+            <!-- pose: launch (arms up, arched) -->
+            <g class="pose" id="poseLaunch">
+              <circle cx="2" cy="-64" r="8.5"/>
+              <path d="M-4,-56 q7,5 13,-1 l4,27 q-9,5 -17,1 z"/>
+              <path d="M-4,-30 l-6,30 h5 l7,-26 l4,26 h5 l-3,-31 z"/>
+              <path d="M-2,-55 l-9,-22 l3,-2 l11,20 z"/>
+              <path d="M9,-56 l4,-24 l3,1 l-1,25 z"/>
+            </g>
+            <!-- pose: pike (folded) -->
+            <g class="pose" id="posePike">
+              <circle cx="18" cy="-6" r="8.5"/>
+              <path d="M12,-12 q-10,-10 -22,-6 q-6,2 -6,10 q0,8 8,9 q12,1 22,-7 z"/>
+              <path d="M-14,-6 l26,-22 l4,4 l-24,24 z"/>
+              <path d="M10,-4 l14,-20 l4,3 l-13,21 z"/>
+            </g>
+            <!-- pose: entry (straight, arms overhead) -->
+            <g class="pose" id="poseEntry">
+              <circle cx="0" cy="24" r="8.5"/>
+              <path d="M-6,16 q6,-4 12,0 l1,-26 q-7,-4 -14,0 z"/>
+              <path d="M-6,-9 l2,-32 h3 l1,26 l1,-26 h3 l2,32 z"/>
+              <path d="M-4,-40 l2,-26 h4 l2,26 z"/>
+            </g>
+          </g>
+        </g>
+
+        <!-- UNDERWATER — the dive does not end at the surface -->
+        <g id="under" clip-path="url(#belowWater)">
+          <g id="underGhost" opacity="0" fill="#0C5D77">
+            <circle cx="0" cy="24" r="8.5"/>
+            <path d="M-6,16 q6,-4 12,0 l1,-26 q-7,-4 -14,0 z"/>
+            <path d="M-6,-9 l2,-32 h3 l1,26 l1,-26 h3 l2,32 z"/>
+            <path d="M-4,-40 l2,-26 h4 l2,26 z"/>
+          </g>
+          <g id="bubbles" fill="#F7F3E9"></g>
+        </g>
+
+        <!-- SPLASH -->
+        <g id="splash">
+          <g id="rings" stroke="#F7F3E9" fill="none">
+            <ellipse class="ring" cx="760" cy="852" rx="10" ry="3" stroke-width="6"/>
+            <ellipse class="ring" cx="760" cy="852" rx="10" ry="3" stroke-width="5"/>
+            <ellipse class="ring" cx="760" cy="852" rx="10" ry="3" stroke-width="4"/>
+          </g>
+          <g id="plume" fill="#F7F3E9">
+            <path d="M760,850 q-16,-4 -22,-58 q-3,-32 8,-58 q4,26 8,38 q-6,-64 6,-96 q11,34 4,97 q5,-14 10,-37 q10,28 5,57 q-5,50 -19,57 z"/>
+          </g>
+          <g id="spray" fill="#F7F3E9"></g>
+        </g>
+
+        <!-- static poster frame for reduced motion -->
+      </svg>
+
+      <div class="torre__copy">
+        <p class="depth-tile depth-tile--sky">— 4,9 m · la fossa —</p>
+        <h2 class="section__title section__title--sky">La Torre</h2>
+        <p class="torre__lede">Ten metres of municipal courage. Reinforced concrete, 1936 — platforms at 3, 5, 7,5 and 10. Recertified this June: the queue forms by four o'clock, and the silence at the top is original equipment.</p>
+        <p class="torre__hint" aria-hidden="true">scroll — he's been waiting since 1978</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="coping coping--after-torre" aria-hidden="true"></div>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p class="footer__signoff reveal">Ci vediamo in acqua.</p>
+    <div class="footer__cols">
+      <div class="footer__col">
+        <h3>Lido Solare</h3>
+        <p>Lungomare Regina Elena 8<br>18015 Santa Lucia al Mare (IM)<br>Liguria di Ponente</p>
+      </div>
+      <div class="footer__col">
+        <h3>Contatti</h3>
+        <p><a href="tel:+390184551936">+39 0184 55 19 36</a><br><a href="mailto:bagnini@lidosolare.it">bagnini@lidosolare.it</a><br>Il bagnino risponde tra un fischio e l'altro.</p>
+      </div>
+      <div class="footer__col">
+        <h3>Stagione 2026</h3>
+        <p>30 maggio – 13 settembre<br>07:00 – 20:00, tutti i giorni<br>Ultimo ingresso 19:00</p>
+      </div>
+    </div>
+    <p class="footer__colophon">Piscina comunale dal 1936 · Acqua dolce, cloro quanto basta · No lifeguard was harmed in the making of this summer.</p>
+  </div>
+</footer>
+
+<aside class="gauge" id="gauge" aria-hidden="true">
+  <div class="gauge__rail">
+    <span class="gauge__tick" style="--y:0%">0</span>
+    <span class="gauge__tick" style="--y:20%">1</span>
+    <span class="gauge__tick" style="--y:40%">2</span>
+    <span class="gauge__tick" style="--y:60%">3</span>
+    <span class="gauge__tick" style="--y:80%">4</span>
+    <span class="gauge__tick" style="--y:100%">5</span>
+    <div class="gauge__marker" id="gaugeMarker"><span id="gaugeLabel">0,0 m</span></div>
+  </div>
+</aside>
+
+<script src="vendor/gsap.min.js" defer></script>
+<script src="vendor/ScrollTrigger.min.js" defer></script>
+<script src="js/water.js" defer></script>
+<script src="js/dive.js" defer></script>
+<script src="js/main.js" defer></script>
+</body>
+</html>

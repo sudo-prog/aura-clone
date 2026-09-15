@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kiln — Wood-fired ceramics in the Blue Ridge</title>
+<meta name="description" content="Kiln is the mountain studio of potter Maren Holt in Bakersville, North Carolina — stoneware dug from the Doe River bank, thrown on a slow wheel, and wood-fired for seventy-two hours.">
+<meta property="og:title" content="Kiln — Wood-fired ceramics in the Blue Ridge">
+<meta property="og:description" content="Stoneware dug from the Doe River bank, thrown on a slow wheel, and finished by seventy-two hours of fire. Portfolio, glazes, firing schedule, and 2026 workshops.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#E3E1DB">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M12.5 3h7c-1.2 3.4-.3 5.6 1.8 8.6 2.6 3.8 3.2 9.4.4 13.4-2.3 3.3-10.1 3.3-12.4 0-2.8-4-2.2-9.6.4-13.4 2.1-3 3-5.2 1.8-8.6z' fill='%2377351D'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/SortsMillGoudy-04.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/SortsMillGoudy.css">
+<link rel="stylesheet" href="fonts/HankenGrotesk.css">
+<link rel="stylesheet" href="fonts/SplineSansMono.css">
+<link rel="stylesheet" href="css/main.css">
+<script type="importmap">
+{"imports":{"three":"./vendor/three.module.min.js","three/addons/":"./vendor/addons/"}}
+</script>
+<script type="module" src="js/main.js"></script>
+<noscript>
+<style>
+  .throw{height:auto!important}
+  .throw__sticky{position:relative!important;height:auto!important;min-height:60vh}
+  .cue,.gauge,.throw__canvas-wrap{display:none!important}
+  .stage,.hero{position:static!important;opacity:1!important;visibility:visible!important;transform:none!important;padding:2.5rem 0;max-width:34rem}
+  .hero .eyebrow,.hero h1,.hero__sub{opacity:1!important;transform:none!important}
+  .throw__overlay{position:static!important;padding:16vh 6vw 4rem!important}
+  .reveal{opacity:1!important;transform:none!important}
+  .kilnchart{display:none} /* chart is JS-drawn; the stoking log below carries the data */
+</style>
+</noscript>
+</head>
+<body id="top">
+<a class="skip" href="#why">Skip the wheel — go to the studio</a>
+
+<header class="site-head" id="site-head">
+  <a class="brand" href="#top">Kiln</a>
+  <nav class="site-nav" aria-label="Site">
+    <a href="#work">Vessels</a>
+    <a href="#glazes">Glazes</a>
+    <a href="#firing">The firing</a>
+    <a href="#workshops">Workshops</a>
+    <a href="#visit">Visit</a>
+  </nav>
+</header>
+
+<main>
+  <!-- ============ THE THROWING CHAPTER ============ -->
+  <section class="throw" id="wheel" aria-label="Throwing a pot, stage by stage">
+    <div class="throw__sticky">
+      <div class="throw__canvas-wrap" id="canvas-wrap">
+        <canvas id="wheel-canvas" aria-hidden="true"></canvas>
+      </div>
+
+      <div class="throw__overlay">
+        <div class="hero seg" data-seg="hero">
+          <p class="eyebrow">Kiln · wood-fired stoneware · Bakersville, N.C.</p>
+          <h1>Thrown by hand.<br>Finished by <em>fire</em>.</h1>
+          <p class="hero__sub">Kiln is the mountain studio of Maren Holt — stoneware dug
+          from the Doe River bank, thrown on a slow wheel, and fired for three days
+          in a kiln that burns trees instead of hours.</p>
+        </div>
+
+        <div class="stage seg" data-seg="s1">
+          <p class="eyebrow"><span class="stage__n">I</span>Centering</p>
+          <p class="stage__text">Nine pounds of Doe River clay, wedged thirty turns and
+          slapped down dead center. Press until the wobble gives up and the lump runs
+          true under your palms.</p>
+        </div>
+        <div class="stage seg" data-seg="s2">
+          <p class="eyebrow"><span class="stage__n">II</span>Opening</p>
+          <p class="stage__text">Thumbs find the floor of the pot, half an inch above the
+          wheel head. It is a vessel now — everything after is a negotiation about walls.</p>
+        </div>
+        <div class="stage seg" data-seg="s3">
+          <p class="eyebrow"><span class="stage__n">III</span>Pulling</p>
+          <p class="stage__text">Knuckle outside, two fingers in, and the wall rises
+          between them. Three slow pulls — the clay remembers every hurried one.</p>
+        </div>
+        <div class="stage seg" data-seg="s4">
+          <p class="eyebrow"><span class="stage__n">IV</span>Shaping</p>
+          <p class="stage__text">Pressure from the inside hand and the belly swells. Ease
+          off, and the shoulder turns in. Collar the neck. Let the curve decide when it
+          is done.</p>
+        </div>
+        <div class="stage seg" data-seg="s5">
+          <p class="eyebrow"><span class="stage__n">V</span>Finishing</p>
+          <p class="stage__text">A rib firms the wall, a chamois softens the lip, a wire
+          sings under the foot. Twelve minutes of attention — then months to earn the fire.</p>
+        </div>
+        <div class="stage stage--coda seg" data-seg="coda">
+          <p class="eyebrow mono">F45·01 — greenware</p>
+          <p class="stage__text">Bound for the front stack of the October firing, where
+          the flame hits first and the ash falls heaviest.</p>
+          <a class="stage__link" href="#work">See what the kiln decides</a>
+        </div>
+      </div>
+
+      <div class="gauge" aria-hidden="true">
+        <div class="gauge__ticks" id="gauge-ticks">
+          <span>I</span><span>II</span><span>III</span><span>IV</span><span>V</span>
+        </div>
+        <p class="gauge__rpm mono"><span id="rpm">25</span> rpm</p>
+      </div>
+
+      <p class="cue" id="cue" aria-hidden="true">Scroll — the wheel is turning</p>
+    </div>
+  </section>
+
+  <!-- ============ PHILOSOPHY ============ -->
+  <section class="why section" id="why" aria-labelledby="why-h">
+    <div class="wrap">
+      <p class="eyebrow reveal">The philosophy</p>
+      <h2 class="display reveal" id="why-h">The kiln has&nbsp;<em>opinions</em></h2>
+      <div class="why__cols">
+        <p class="reveal">An electric kiln repeats itself. <strong>Doe</strong> — our
+        310-cubic-foot anagama, named for the river below the studio — does not. For
+        seventy-two hours, flame runs the length of her chamber and six cords of
+        wind-fallen oak give up their minerals as ash. Where the ash lands, it melts
+        into glass. Where the embers touch, the clay blushes iron. We glaze some pots
+        and leave most bare, because the kiln finishes them better than we could.</p>
+        <p class="reveal">This is slow work in the old sense: the wheel is slow, the
+        drying is slower, and the firing takes a crew of nine working four-hour
+        stoking shifts around the clock. Out of three hundred pots, perhaps forty come
+        out the way we imagined — and a dozen come out better. Wabi-sabi is not a
+        style here. It is an agreement with the fire about who finishes the work.</p>
+      </div>
+      <ul class="why__facts reveal" role="list">
+        <li><span class="mono">310 cu ft</span>anagama, built 2014</li>
+        <li><span class="mono">72 hours</span>four firings a year</li>
+        <li><span class="mono">6 cords</span>wind-fallen oak &amp; poplar</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ THE WORK ============ -->
+  <section class="work section" id="work" aria-labelledby="work-h">
+    <div class="wrap">
+      <p class="eyebrow reveal">The work</p>
+      <h2 class="display reveal" id="work-h">Out of firing 44</h2>
+      <p class="section__lede reveal">Unloaded 19 April 2026. Each pot is numbered for where
+      it stood in the kiln — the front stack takes the flame, the back stack keeps the smoke.</p>
+
+      <ul class="work__grid" role="list">
+        <li class="piece reveal" style="--d:0s">
+          <figure>
+            <svg viewBox="0 0 200 240" role="img" aria-label="Wood-fired jar with natural ash glaze, olive and amber">
+              <ellipse cx="100" cy="221" rx="50" ry="7" fill="url(#g-shadow)"/>
+              <g filter="url(#grain)"><use href="#v-jar" fill="url(#g-ash)"/></g>
+              <path d="M64,120 C66,150 70,180 76,200 L83,203 C76,178 72,148 71,118 Z" fill="#55683E" opacity=".55"/>
+              <use href="#v-jar" fill="url(#g-form)"/>
+            </svg>
+            <figcaption>
+              <h3>Anagama jar</h3>
+              <p class="piece__meta mono">F44·03 · natural ash · front stack</p>
+              <p class="piece__dims mono">34 × 22 cm — $640</p>
+            </figcaption>
+          </figure>
+        </li>
+
+        <li class="piece reveal" style="--d:.06s">
+          <figure>
+            <svg viewBox="0 0 200 240" role="img" aria-label="Narrow-necked bottle in shino glaze, salmon with a grey carbon trap">
+              <ellipse cx="100" cy="221" rx="44" ry="7" fill="url(#g-shadow)"/>
+              <g filter="url(#grain)"><use href="#v-bottle" fill="url(#g-shino)"/></g>
+              <g clip-path="url(#c-bottle)"><ellipse cx="78" cy="150" rx="24" ry="38" fill="#6E655C" opacity=".34" filter="url(#soft)"/></g>
+              <use href="#v-bottle" fill="url(#g-form)"/>
+            </svg>
+            <figcaption>
+              <h3>Bottle</h3>
+              <p class="piece__meta mono">F44·07 · shino, carbon trap · mid stack</p>
+              <p class="piece__dims mono">27 × 14 cm — $380</p>
+            </figcaption>
+          </figure>
+        </li>
+
+        <li class="piece reveal" style="--d:.12s">
+          <figure>
+            <svg viewBox="0 0 200 240" role="img" aria-label="Round moon jar in bare clay with an iron fire flash on one side">
+              <ellipse cx="100" cy="221" rx="54" ry="7" fill="url(#g-shadow)"/>
+              <g filter="url(#grain)"><use href="#v-moon" fill="url(#g-flash)"/></g>
+              <g clip-path="url(#c-moon)"><ellipse cx="140" cy="118" rx="36" ry="62" fill="#9E5B33" opacity=".42" filter="url(#soft)"/></g>
+              <use href="#v-moon" fill="url(#g-form)"/>
+            </svg>
+            <figcaption>
+              <h3>Moon jar <span class="piece__flag">collected</span></h3>
+              <p class="piece__meta mono">F44·11 · bare clay, fire flash · front stack</p>
+              <p class="piece__dims mono">31 × 30 cm — $920</p>
+            </figcaption>
+          </figure>
+        </li>
+
+        <li class="piece reveal" style="--d:0s">
+          <figure>
+            <svg viewBox="0 0 200 240" role="img" aria-label="Tea bowl in tenmoku glaze, black breaking to rust at the rim">
+              <ellipse cx="100" cy="221" rx="40" ry="6" fill="url(#g-shadow)"/>
+              <g filter="url(#grain)"><use href="#v-bowl" fill="url(#g-tenmoku)"/></g>
+              <path d="M45,127 L155,127 C154.5,131 153,135.5 151,140 L49,140 C47,135.5 45.5,131 45,127 Z" fill="#8A4626" opacity=".55"/>
+              <ellipse cx="100" cy="127.5" rx="55" ry="2.6" fill="#93542C" opacity=".55"/>
+              <use href="#v-bowl" fill="url(#g-form)"/>
+            </svg>
+            <figcaption>
+              <h3>Tea bowl</h3>
+              <p class="piece__meta mono">F44·18 · tenmoku · back stack, cool corner</p>
+              <p class="piece__dims mono">9 × 12 cm — $145</p>
+            </figcaption>
+          </figure>
+        </li>
+
+        <li class="piece reveal" style="--d:.06s">
+          <figure>
+            <svg viewBox="0 0 200 240" role="img" aria-label="Tall vase in Doe River celadon, blue-green pooling to grey">
+              <ellipse cx="100" cy="221" rx="42" ry="6" fill="url(#g-shadow)"/>
+              <g filter="url(#grain)"><use href="#v-vase" fill="url(#g-celadon)"/></g>
+              <use href="#v-vase" fill="url(#g-form)"/>
+            </svg>
+            <figcaption>
+              <h3>Vase</h3>
+              <p class="piece__meta mono">F44·22 · Doe River celadon · mid stack</p>
+              <p class="piece__dims mono">26 × 12 cm — $410</p>
+            </figcaption>
+          </figure>
+        </li>
+
+        <li class="piece reveal" style="--d:.12s">
+          <figure>
+            <svg viewBox="0 0 200 240" role="img" aria-label="Pitcher in shino under heavy ash, amber running over salmon">
+              <ellipse cx="100" cy="221" rx="48" ry="7" fill="url(#g-shadow)"/>
+              <g filter="url(#grain)"><use href="#v-jug" fill="url(#g-shino)"/></g>
+              <path d="M78,60 C74,100 74,150 82,200 L92,204 C84,152 84,102 88,62 Z" fill="#7C6B36" opacity=".5"/>
+              <path d="M136,52 C168,62 172,110 148,130" fill="none" stroke="#8C6444" stroke-width="12" stroke-linecap="round"/>
+              <path d="M136,52 C168,62 172,110 148,130" fill="none" stroke="#C08A5C" stroke-width="8" stroke-linecap="round"/>
+              <use href="#v-jug" fill="url(#g-form)"/>
+            </svg>
+            <figcaption>
+              <h3>Pitcher <span class="piece__flag">collected</span></h3>
+              <p class="piece__meta mono">F44·29 · shino, heavy ash · front stack</p>
+              <p class="piece__dims mono">24 × 16 cm — $360</p>
+            </figcaption>
+          </figure>
+        </li>
+      </ul>
+
+      <p class="work__note reveal">Work is sold from the studio porch and twice a year through
+      Field &amp; Fen in Asheville. Firing 45 unloads on <strong>14 October 2026</strong> —
+      unloading days are open to anyone who shows up before the first brick comes down.</p>
+    </div>
+  </section>
+
+  <!-- ============ THE GLAZES ============ -->
+  <section class="glazes section" id="glazes" aria-labelledby="glazes-h">
+    <div class="wrap">
+      <p class="eyebrow reveal">The glazes</p>
+      <h2 class="display reveal" id="glazes-h">Four ways the fire&nbsp;answers</h2>
+      <p class="section__lede reveal">Test tiles from the last twelve firings. Recipes in parts
+      by weight. Every one of them moves under the flame — that is the point.</p>
+
+      <ul class="glaze__grid" role="list">
+        <li class="tile reveal" style="--d:0s">
+          <div class="tile__chip tile__chip--ash" role="img" aria-label="Ash glaze test tile — olive green streaked with amber, glassy where thick">
+            <span class="tile__drip tile__drip--ash"></span>
+          </div>
+          <h3>Ash</h3>
+          <p class="tile__id mono">T-118 · cone 10 · reduction</p>
+          <p class="tile__recipe">oak ash 45 · custer feldspar 35 · ball clay 20</p>
+          <p class="tile__note">Runs glassy where the flame lands; dry as bone in the
+          shadow of other pots.</p>
+        </li>
+        <li class="tile reveal" style="--d:.06s">
+          <div class="tile__chip tile__chip--celadon" role="img" aria-label="Celadon glaze test tile — soft blue-green pooling darker where thick">
+            <span class="tile__drip tile__drip--celadon"></span>
+          </div>
+          <h3>Doe River celadon</h3>
+          <p class="tile__id mono">T-104 · cone 10 · reduction</p>
+          <p class="tile__recipe">river slip 40 · silica 30 · whiting 20 · red iron 2</p>
+          <p class="tile__note">Blue-green where it pools, honest grey where it thins.
+          It crazes over porcelain, and we let it.</p>
+        </li>
+        <li class="tile reveal" style="--d:.12s">
+          <div class="tile__chip tile__chip--tenmoku" role="img" aria-label="Tenmoku glaze test tile — near-black brown breaking to rust at the edges">
+            <span class="tile__drip tile__drip--tenmoku"></span>
+          </div>
+          <h3>Tenmoku</h3>
+          <p class="tile__id mono">T-131 · cone 10 · reduction</p>
+          <p class="tile__recipe">alberta slip 85 · whiting 10 · red iron 5</p>
+          <p class="tile__note">Black at rest, rust wherever it breaks over an edge.
+          Best on bowls that get used every day.</p>
+        </li>
+        <li class="tile reveal" style="--d:.18s">
+          <div class="tile__chip tile__chip--shino" role="img" aria-label="Shino glaze test tile — salmon and cream with grey carbon-trap clouds">
+            <span class="tile__drip tile__drip--shino"></span>
+          </div>
+          <h3>Shino</h3>
+          <p class="tile__id mono">T-097 · cone 10 · reduction</p>
+          <p class="tile__recipe">nepheline syenite 70 · soda ash 15 · epk 15</p>
+          <p class="tile__note">Salmon to snow, and it traps carbon if you fire it
+          hungry. The kiln decides which.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ THE FIRING ============ -->
+  <section class="firing section" id="firing" aria-labelledby="firing-h">
+    <div class="wrap">
+      <p class="eyebrow reveal">The firing</p>
+      <h2 class="display reveal" id="firing-h">Seventy-two hours, stoked by hand</h2>
+      <p class="section__lede reveal">Firing 45 begins 9 October 2026 at six in the morning.
+      Nine crew, four-hour shifts, roughly five hundred stokes. The chart is the plan —
+      Doe will have notes.</p>
+
+      <figure class="kilnchart reveal" id="kilnchart">
+        <div class="kilnchart__stage" id="chart-stage" tabindex="0" role="region"
+             aria-label="Firing 45 temperature chart — pans sideways on small screens">
+          <!-- SVG chart is built by js/main.js; the stoking log below is the full data in text -->
+        </div>
+        <figcaption class="kilnchart__caption mono">Firing 45 · planned temperature at the front
+        pyrometer, °F, hours 0–72 · triangles mark witness cones falling</figcaption>
+      </figure>
+
+      <ol class="stokelog" aria-label="Stoking log">
+        <li class="reveal" style="--d:0s"><span class="mono">h 00</span>Light the front firebox at dawn. Coffee.
+        Candle overnight — steam off three hundred pots, gently.</li>
+        <li class="reveal" style="--d:.04s"><span class="mono">h 14</span>The climb begins. Stoke every twelve
+        minutes, splits of poplar, watching the color move from black to first red.</li>
+        <li class="reveal" style="--d:.08s"><span class="mono">h 24</span>Body reduction: choke the damper and
+        let the flame starve and search. This is where the iron in the clay wakes up.</li>
+        <li class="reveal" style="--d:.12s"><span class="mono">h 36</span>Side-stoking starts. Ash builds on
+        every shoulder in the front stack. Cone 04 leans, then bows.</li>
+        <li class="reveal" style="--d:.16s"><span class="mono">h 48</span>Cone 8 down at the front. Four-minute
+        stokes now — the chamber breathes with the door and the whole crew moves in rhythm.</li>
+        <li class="reveal" style="--d:.2s"><span class="mono">h 60</span>Cone 10 soft everywhere. Hold. The
+        glass needs time more than it needs heat.</li>
+        <li class="reveal" style="--d:.24s"><span class="mono">h 68</span>Last stoke. Mud the door, brick the
+        ports, seal every gap — then four days of patience while she cools.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ WORKSHOPS ============ -->
+  <section class="shops section" id="workshops" aria-labelledby="shops-h">
+    <div class="wrap">
+      <p class="eyebrow reveal">Workshops · 2026</p>
+      <h2 class="display reveal" id="shops-h">Learn it with your&nbsp;hands</h2>
+      <p class="section__lede reveal">Small classes in the ridge studio. Clay, tools, and firing
+      are included — every student pot goes through Doe with the studio work.</p>
+
+      <ul class="shop__list" role="list">
+        <li class="shop reveal" style="--d:0s">
+          <p class="shop__date mono">Aug 22–23<span>Sat–Sun</span></p>
+          <div class="shop__body">
+            <h3>Wheel: First Sessions</h3>
+            <p>Two days of centering, opening, and pulling. You will make six pots and
+            keep the two the kiln likes best.</p>
+          </div>
+          <p class="shop__price mono">$340</p>
+          <p class="shop__seats"><span class="seats-dot" aria-hidden="true"></span>3 seats left</p>
+        </li>
+        <li class="shop reveal" style="--d:.05s">
+          <p class="shop__date mono">Sep 12<span>Sat</span></p>
+          <div class="shop__body">
+            <h3>Glazes from Ash</h3>
+            <p>Burn, sieve, and blend your own hardwood-ash glaze, then take home a
+            labeled test set fired in the October load.</p>
+          </div>
+          <p class="shop__price mono">$180</p>
+          <p class="shop__seats"><span class="seats-dot" aria-hidden="true"></span>7 seats left</p>
+        </li>
+        <li class="shop reveal" style="--d:.1s">
+          <p class="shop__date mono">Oct 9–12<span>Fri–Mon</span></p>
+          <div class="shop__body">
+            <h3>Firing 45 Crew</h3>
+            <p>Four days on the stoking crew — shifts, pyrometry, and the last hour at
+            cone 12. Sleep optional; meals included.</p>
+          </div>
+          <p class="shop__price mono">$95</p>
+          <p class="shop__seats shop__seats--wait"><span class="seats-dot" aria-hidden="true"></span>waitlist</p>
+        </li>
+        <li class="shop reveal" style="--d:.15s">
+          <p class="shop__date mono">Dec 5<span>Sat</span></p>
+          <div class="shop__body">
+            <h3>Mending: Kintsugi for Wood-fired Ware</h3>
+            <p>Repair a broken pot with urushi lacquer and brass. The crack becomes the
+            biography, not the flaw.</p>
+          </div>
+          <p class="shop__price mono">$220</p>
+          <p class="shop__seats"><span class="seats-dot" aria-hidden="true"></span>5 seats left</p>
+        </li>
+      </ul>
+      <p class="shop__note reveal">Deposits hold seats; full refund until fourteen days out.
+      No experience needed for any of it. Write to
+      <a href="mailto:studio@kiln-bakersville.com">studio@kiln-bakersville.com</a>.</p>
+    </div>
+  </section>
+</main>
+
+<!-- ============ VISIT / FOOTER ============ -->
+<footer class="visit" id="visit" aria-labelledby="visit-h">
+  <div class="wrap">
+    <p class="eyebrow reveal">Visit</p>
+    <h2 class="display reveal" id="visit-h">The showroom is the&nbsp;porch</h2>
+    <div class="visit__cols">
+      <div class="reveal">
+        <p class="visit__addr">1480 Flat Rock Road<br>Bakersville, North Carolina 28705</p>
+        <p class="visit__meta">Forty minutes up the ridge from Penland. The last mile is
+        gravel; trust it.</p>
+      </div>
+      <div class="reveal" style="--d:.06s">
+        <p class="visit__hours mono">Thu–Sat · 10–5<br>April — December</p>
+        <p class="visit__meta">And by letter the rest of the year. Unloading days are open
+        to everyone — next is 14 October 2026. Coffee at eight, first pots out at nine.</p>
+      </div>
+      <div class="reveal" style="--d:.12s">
+        <p class="visit__contact"><a href="mailto:studio@kiln-bakersville.com">studio@kiln-bakersville.com</a><br>
+        <a href="tel:+18285550141">(828) 555-0141</a></p>
+        <p class="visit__meta">Maren answers between firings.</p>
+      </div>
+    </div>
+    <p class="colophon mono">Kiln Studio © 2026 · set in Sorts Mill Goudy &amp; Hanken Grotesk ·
+    built by hand, like everything else here</p>
+  </div>
+</footer>
+
+<!-- ============ SHARED SVG DEFS ============ -->
+<svg class="svgdefs" aria-hidden="true" focusable="false" width="0" height="0">
+  <defs>
+    <!-- vessel profiles -->
+    <path id="v-jar" d="M76.0,216.0 C73.3,213.3 65.3,209.3 60.0,200.0 C54.7,190.7 47.7,173.7 44.0,160.0 C40.3,146.3 38.0,131.3 38.0,118.0 C38.0,104.7 40.7,90.3 44.0,80.0 C47.3,69.7 53.7,62.3 58.0,56.0 C62.3,49.7 68.5,46.5 70.0,42.0 C71.5,37.5 67.5,31.2 67.0,29.0 L133.0,29.0 C132.5,31.2 128.5,37.5 130.0,42.0 C131.5,46.5 137.7,49.7 142.0,56.0 C146.3,62.3 152.7,69.7 156.0,80.0 C159.3,90.3 162.0,104.7 162.0,118.0 C162.0,131.3 159.7,146.3 156.0,160.0 C152.3,173.7 145.3,190.7 140.0,200.0 C134.7,209.3 126.7,213.3 124.0,216.0 Z"/>
+    <path id="v-bottle" d="M80.0,216.0 C78.3,214.0 73.3,211.7 70.0,204.0 C66.7,196.3 62.7,182.3 60.0,170.0 C57.3,157.7 53.7,143.0 54.0,130.0 C54.3,117.0 57.0,103.0 62.0,92.0 C67.0,81.0 79.7,72.0 84.0,64.0 C88.3,56.0 88.0,49.8 88.0,44.0 C88.0,38.2 84.7,31.5 84.0,29.0 L116.0,29.0 C115.3,31.5 112.0,38.2 112.0,44.0 C112.0,49.8 111.7,56.0 116.0,64.0 C120.3,72.0 133.0,81.0 138.0,92.0 C143.0,103.0 145.7,117.0 146.0,130.0 C146.3,143.0 142.7,157.7 140.0,170.0 C137.3,182.3 133.3,196.3 130.0,204.0 C126.7,211.7 121.7,214.0 120.0,216.0 Z"/>
+    <path id="v-moon" d="M74.0,216.0 C70.3,212.7 58.3,207.0 52.0,196.0 C45.7,185.0 39.0,164.7 36.0,150.0 C33.0,135.3 32.7,121.7 34.0,108.0 C35.3,94.3 39.3,78.5 44.0,68.0 C48.7,57.5 57.7,50.2 62.0,45.0 C66.3,39.8 69.3,39.7 70.0,37.0 C70.7,34.3 66.7,30.3 66.0,29.0 L134.0,29.0 C133.3,30.3 129.3,34.3 130.0,37.0 C130.7,39.7 133.7,39.8 138.0,45.0 C142.3,50.2 151.3,57.5 156.0,68.0 C160.7,78.5 164.7,94.3 166.0,108.0 C167.3,121.7 167.0,135.3 164.0,150.0 C161.0,164.7 154.3,185.0 148.0,196.0 C141.7,207.0 129.7,212.7 126.0,216.0 Z"/>
+    <path id="v-bowl" d="M84.0,216.0 C83.5,214.8 82.3,212.3 81.0,209.0 C79.7,205.7 78.5,201.5 76.0,196.0 C73.5,190.5 69.7,182.7 66.0,176.0 C62.3,169.3 57.2,162.0 54.0,156.0 C50.8,150.0 48.5,144.8 47.0,140.0 C45.5,135.2 45.3,129.2 45.0,127.0 L155.0,127.0 C154.7,129.2 154.5,135.2 153.0,140.0 C151.5,144.8 149.2,150.0 146.0,156.0 C142.8,162.0 137.7,169.3 134.0,176.0 C130.3,182.7 126.5,190.5 124.0,196.0 C121.5,201.5 120.3,205.7 119.0,209.0 C117.7,212.3 116.5,214.8 116.0,216.0 Z"/>
+    <clipPath id="c-moon"><use href="#v-moon"/></clipPath>
+    <clipPath id="c-bottle"><use href="#v-bottle"/></clipPath>
+    <path id="v-vase" d="M78.0,216.0 C76.7,214.3 72.3,212.0 70.0,206.0 C67.7,200.0 66.3,191.0 64.0,180.0 C61.7,169.0 57.7,152.0 56.0,140.0 C54.3,128.0 52.3,118.0 54.0,108.0 C55.7,98.0 62.3,88.0 66.0,80.0 C69.7,72.0 74.7,66.0 76.0,60.0 C77.3,54.0 75.3,49.2 74.0,44.0 C72.7,38.8 69.0,31.5 68.0,29.0 L132.0,29.0 C131.0,31.5 127.3,38.8 126.0,44.0 C124.7,49.2 122.7,54.0 124.0,60.0 C125.3,66.0 130.3,72.0 134.0,80.0 C137.7,88.0 144.3,98.0 146.0,108.0 C147.7,118.0 145.7,128.0 144.0,140.0 C142.3,152.0 138.3,169.0 136.0,180.0 C133.7,191.0 132.3,200.0 130.0,206.0 C127.7,212.0 123.3,214.3 122.0,216.0 Z"/>
+    <path id="v-jug" d="M76.0,216.0 C74.0,213.3 68.3,209.3 64.0,200.0 C59.7,190.7 52.7,173.3 50.0,160.0 C47.3,146.7 47.0,132.7 48.0,120.0 C49.0,107.3 53.0,94.0 56.0,84.0 C59.0,74.0 63.7,66.7 66.0,60.0 C68.3,53.3 70.3,49.2 70.0,44.0 C69.7,38.8 65.0,31.5 64.0,29.0 L136.0,29.0 C135.0,31.5 130.3,38.8 130.0,44.0 C129.7,49.2 131.7,53.3 134.0,60.0 C136.3,66.7 141.0,74.0 144.0,84.0 C147.0,94.0 151.0,107.3 152.0,120.0 C153.0,132.7 152.7,146.7 150.0,160.0 C147.3,173.3 140.3,190.7 136.0,200.0 C131.7,209.3 126.0,213.3 124.0,216.0 Z"/>
+
+    <!-- glaze gradients -->
+    <linearGradient id="g-ash" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8A7B4A"/>
+      <stop offset=".38" stop-color="#77743F"/>
+      <stop offset=".72" stop-color="#5C6B45"/>
+      <stop offset="1" stop-color="#46583A"/>
+    </linearGradient>
+    <linearGradient id="g-shino" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E7D2B8"/>
+      <stop offset=".45" stop-color="#D9A377"/>
+      <stop offset="1" stop-color="#C08055"/>
+    </linearGradient>
+    <radialGradient id="g-tenmoku" cx=".42" cy=".34" r=".9">
+      <stop offset="0" stop-color="#4A2E1B"/>
+      <stop offset=".55" stop-color="#2C1A10"/>
+      <stop offset="1" stop-color="#1D110A"/>
+    </radialGradient>
+    <linearGradient id="g-celadon" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#B3C6B0"/>
+      <stop offset=".55" stop-color="#93A896"/>
+      <stop offset="1" stop-color="#71887A"/>
+    </linearGradient>
+    <linearGradient id="g-flash" x1="0" y1="0" x2="1" y2=".25">
+      <stop offset="0" stop-color="#CDB49A"/>
+      <stop offset=".6" stop-color="#C2A183"/>
+      <stop offset="1" stop-color="#A97C58"/>
+    </linearGradient>
+    <!-- form shading: dark left edge, light core, mid right -->
+    <linearGradient id="g-form" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#26221C" stop-opacity=".34"/>
+      <stop offset=".22" stop-color="#26221C" stop-opacity=".08"/>
+      <stop offset=".46" stop-color="#FFFFFF" stop-opacity=".12"/>
+      <stop offset=".72" stop-color="#26221C" stop-opacity=".05"/>
+      <stop offset="1" stop-color="#26221C" stop-opacity=".28"/>
+    </linearGradient>
+    <radialGradient id="g-shadow" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#26221C" stop-opacity=".22"/>
+      <stop offset=".7" stop-color="#26221C" stop-opacity=".1"/>
+      <stop offset="1" stop-color="#26221C" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- speckle grain kept inside the glaze -->
+    <filter id="grain" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.16" numOctaves="3" seed="7" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.3 0.3 0.3 0 0" result="a"/>
+      <feComposite in="a" in2="SourceGraphic" operator="in" result="spk"/>
+      <feBlend in="SourceGraphic" in2="spk" mode="multiply"/>
+    </filter>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="9"/>
+    </filter>
+  </defs>
+</svg>
+</body>
+</html>

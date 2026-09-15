@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VELODROMO D'INVERNO — Winter Track Series, Milano MCMXXXIV</title>
+<meta name="description" content="Six Saturday nights of racing on the boards. Sprint, pursuit, madison. Velodromo del Sempione, Milano — steam-heated, loud, banked at 42 degrees.">
+<meta property="og:title" content="VELODROMO D'INVERNO — Milano MCMXXXIV">
+<meta property="og:description" content="Six winter nights on the boards: sprint, pursuit, madison. The page that leans into the turn.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#E9D6AE">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23E9D6AE'/%3E%3Cpath d='M10 44 L26 16 H40 L24 44 Z' fill='%23BC2A16'/%3E%3Cpath d='M28 44 L44 16 H52 L36 44 Z' fill='%2320509E'/%3E%3Cellipse cx='32' cy='47' rx='24' ry='8' fill='none' stroke='%231A1208' stroke-width='4'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/Archivo-03.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Archivo-06.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/Archivo.css">
+<link rel="stylesheet" href="fonts/ChivoMono.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="lean-rig" id="leanRig">
+
+<!-- ============ HERO / SIGNATURE ============ -->
+<header class="hero" id="top">
+  <div class="hero-canvas-wrap" id="heroCanvasWrap" aria-hidden="true">
+    <canvas id="track"></canvas>
+    <div class="speedlines" id="speedlines"></div>
+  </div>
+
+  <nav class="topbar" aria-label="Sections">
+    <p class="topbar-place" lang="it">MILANO · VIA ARONA 19 · RISCALDATO A VAPORE</p>
+    <ul class="topbar-links">
+      <li><a href="#serate" lang="it">Serate</a></li>
+      <li><a href="#corridori" lang="it">Corridori</a></li>
+      <li><a href="#classifica" lang="it">Classifica</a></li>
+      <li><a href="#biglietti" lang="it">Biglietti</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero-type">
+    <p class="eyebrow mono">SERIE INVERNALE SU PISTA · STAGIONE MCMXXXIV</p>
+    <h1 class="masthead" lang="it">
+      <span class="mast-line mast-1">VELODROMO</span>
+      <span class="mast-line mast-2">D&rsquo;INVERNO</span>
+    </h1>
+    <p class="deck">Six Saturday nights of racing on the boards.<br>Banked at 42 degrees. Steam&#8209;heated. Loud.</p>
+  </div>
+
+  <div class="hero-hud mono" id="hud" aria-live="off">
+    <div class="hud-row"><span class="hud-k">STATO</span><span class="hud-v" id="hudState" lang="it">GRUPPO COMPATTO</span></div>
+    <div class="hud-row"><span class="hud-k">VANTAGGIO</span><span class="hud-v" id="hudGap">+0&Prime;0</span></div>
+    <div class="hud-row"><span class="hud-k">GIRO</span><span class="hud-v" id="hudLap">1/20</span></div>
+    <div class="hud-row"><span class="hud-k">VELOCIT&Agrave;</span><span class="hud-v" id="hudSpeed">50 KM/H</span></div>
+  </div>
+
+  <div class="hero-cta">
+    <button class="btn-attack" id="btnAttack" type="button">
+      <span class="btn-label" id="btnAttackLabel" lang="it">LANCIA L&rsquo;ATTACCO</span>
+    </button>
+    <p class="cta-hint mono">CLICK &mdash; BASSI JUMPS. CLICK AGAIN &mdash; THE CHASE.</p>
+  </div>
+
+  <p class="hero-foot mono" lang="it">TAVOLE DI ABETE · CURVE A 42&deg; · 250 METRI AL GIRO</p>
+
+  <p class="race-stamp" id="raceStamp" aria-hidden="true"></p>
+</header>
+
+<main id="main">
+
+<!-- ============ HYMN ============ -->
+<section class="band band-oak plane" id="inno" aria-labelledby="inno-h">
+  <div class="wrap">
+    <h2 class="sec-title shade-cream" id="inno-h" lang="it">INNO ALLE TAVOLE</h2>
+    <div class="hymn">
+      <p class="hymn-lead">The city outside is fog and tram-bells. In here it is thirty degrees of
+      pine resin and a hundred and eighty beats a minute.</p>
+      <p>The boards do not sing &mdash; they rumble, low, like weather kept indoors. Tubulars at
+      nine atmospheres hiss over the grain. You do not steer on a velodrome; you agree with it.
+      Lean, and the turn carries you like a wave that never breaks.</p>
+      <p>Winter belongs to the road men, they say. Let them keep the mud. The boards belong to us.</p>
+      <p class="hymn-motto" lang="it">&laquo;CHI NON OSA IN CURVA, NON&nbsp;VINCE IN&nbsp;RETTILINEO.&raquo;</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SIX NIGHTS ============ -->
+<section class="band band-cream band-wedges plane" id="serate" aria-labelledby="serate-h">
+  <div class="wrap">
+    <p class="sec-eyebrow mono">GENNAIO &mdash; MARZO MCMXXXIV · PORTE ORE 19.30 · PRIMA CORSA ORE 21.00</p>
+    <h2 class="sec-title shade-blue" id="serate-h" lang="it">SEI SERATE</h2>
+    <ol class="nights">
+      <li class="night is-run" style="--i:0">
+        <div class="night-head">
+          <span class="night-num" aria-hidden="true">I</span>
+          <span class="night-date mono">SAB 13 GENNAIO</span>
+        </div>
+        <h3 class="night-event" lang="it">VELOCIT&Agrave;</h3>
+        <p class="night-kind mono">SPRINT</p>
+        <p class="night-line">Three laps of cat&#8209;and&#8209;mouse, then the last 200 metres at
+        full gas &mdash; first wheel across wins.</p>
+        <p class="night-stamp stamp-run" lang="it">DISPUTATA &mdash; VINCE BASSI</p>
+      </li>
+      <li class="night is-run" style="--i:1">
+        <div class="night-head">
+          <span class="night-num" aria-hidden="true">II</span>
+          <span class="night-date mono">SAB 27 GENNAIO</span>
+        </div>
+        <h3 class="night-event" lang="it">INSEGUIMENTO</h3>
+        <p class="night-kind mono">PURSUIT</p>
+        <p class="night-line">Two riders start on opposite straights and chase each other&rsquo;s
+        shadow for 4,000 metres.</p>
+        <p class="night-stamp stamp-run" lang="it">DISPUTATA &mdash; VINCE MALINVERNI</p>
+      </li>
+      <li class="night is-run" style="--i:2">
+        <div class="night-head">
+          <span class="night-num" aria-hidden="true">III</span>
+          <span class="night-date mono">SAB 10 FEBBRAIO</span>
+        </div>
+        <h3 class="night-event" lang="it">ELIMINAZIONE</h3>
+        <p class="night-kind mono">DEVIL TAKE THE HINDMOST</p>
+        <p class="night-line">Every second lap the last wheel over the line goes home. The
+        nervous go early.</p>
+        <p class="night-stamp stamp-run" lang="it">DISPUTATA &mdash; VINCE OCCHIPINTI</p>
+      </li>
+      <li class="night" style="--i:3">
+        <div class="night-head">
+          <span class="night-num" aria-hidden="true">IV</span>
+          <span class="night-date mono">SAB 24 FEBBRAIO</span>
+        </div>
+        <h3 class="night-event" lang="it">MEZZOFONDO</h3>
+        <p class="night-kind mono">MOTOR-PACED</p>
+        <p class="night-line">One hour behind the big Galloni pacing motors, inches off a roller
+        at seventy an hour.</p>
+        <p class="night-stamp stamp-next" lang="it">PROSSIMA SERATA</p>
+      </li>
+      <li class="night" style="--i:4">
+        <div class="night-head">
+          <span class="night-num" aria-hidden="true">V</span>
+          <span class="night-date mono">SAB 10 MARZO</span>
+        </div>
+        <h3 class="night-event" lang="it">CORSA A PUNTI</h3>
+        <p class="night-kind mono">POINTS RACE</p>
+        <p class="night-line">Fifty laps with a sprint every ten. The fast score; the clever
+        count.</p>
+        <p class="night-stamp stamp-plan" lang="it">IN PROGRAMMA</p>
+      </li>
+      <li class="night" style="--i:5">
+        <div class="night-head">
+          <span class="night-num" aria-hidden="true">VI</span>
+          <span class="night-date mono">SAB 24 MARZO</span>
+        </div>
+        <h3 class="night-event" lang="it">AMERICANA</h3>
+        <p class="night-kind mono">MADISON &mdash; FINALE</p>
+        <p class="night-line">Two&#8209;man teams hand&#8209;slung into the fray for 100
+        kilometres. The season decided by fingertips.</p>
+        <p class="night-stamp stamp-plan" lang="it">IN PROGRAMMA</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ RIDERS ============ -->
+<section class="band band-cream band-wedges band-riders plane" id="corridori" aria-labelledby="corridori-h">
+  <div class="wrap">
+    <p class="sec-eyebrow mono">LICENZE UVI VERIFICATE · PESATURA BICICLETTE ORE 18.00</p>
+    <h2 class="sec-title shade-red" id="corridori-h" lang="it">I CORRIDORI</h2>
+    <ul class="riders">
+
+      <li class="rider" style="--i:0">
+        <div class="rider-mark mark-a" aria-hidden="true">
+          <svg viewBox="0 0 120 120"><use href="#rider-mark"/></svg>
+        </div>
+        <p class="rider-no mono" aria-hidden="true">N&ordm; 1</p>
+        <h3 class="rider-name">ETTORE BASSI</h3>
+        <p class="rider-club mono">S.C. CORSIA NORD, MILANO</p>
+        <p class="rider-time"><span class="mono time">11&Prime;9</span><span class="time-k mono">200 M LANCIATI</span></p>
+        <p class="rider-note">Winner of Serata I. They say he sleeps in the sprinter&rsquo;s lane.</p>
+      </li>
+
+      <li class="rider" style="--i:1">
+        <div class="rider-mark mark-b" aria-hidden="true">
+          <svg viewBox="0 0 120 120"><use href="#rider-mark"/></svg>
+        </div>
+        <p class="rider-no mono" aria-hidden="true">N&ordm; 2</p>
+        <h3 class="rider-name">MAURICE DELVAUX</h3>
+        <p class="rider-club mono">V&Eacute;LO-CLUB ANVERSOIS · OSPITE</p>
+        <p class="rider-time"><span class="mono time">11&Prime;8</span><span class="time-k mono">200 M LANCIATI</span></p>
+        <p class="rider-note">The Antwerp guest. Came for the appearance money, stayed for the banking.</p>
+      </li>
+
+      <li class="rider" style="--i:2">
+        <div class="rider-mark mark-c" aria-hidden="true">
+          <svg viewBox="0 0 120 120"><use href="#rider-mark"/></svg>
+        </div>
+        <p class="rider-no mono" aria-hidden="true">N&ordm; 3</p>
+        <h3 class="rider-name">BRUNO MALINVERNI</h3>
+        <p class="rider-club mono">VELOCE CLUB SEMPIONE</p>
+        <p class="rider-time"><span class="mono time">12&Prime;4</span><span class="time-k mono">200 M LANCIATI</span></p>
+        <p class="rider-note">Rides pursuit like a debt collector &mdash; patient, then all at once.</p>
+      </li>
+
+      <li class="rider" style="--i:3">
+        <div class="rider-mark mark-d" aria-hidden="true">
+          <svg viewBox="0 0 120 120"><use href="#rider-mark"/></svg>
+        </div>
+        <p class="rider-no mono" aria-hidden="true">N&ordm; 4</p>
+        <h3 class="rider-name">DARIO OCCHIPINTI</h3>
+        <p class="rider-club mono">U.S. CREMONESE</p>
+        <p class="rider-time"><span class="mono time">12&Prime;2</span><span class="time-k mono">200 M LANCIATI</span></p>
+        <p class="rider-note">Won the Eliminazione by never once looking behind.</p>
+      </li>
+
+      <li class="rider" style="--i:4">
+        <div class="rider-mark mark-e" aria-hidden="true">
+          <svg viewBox="0 0 120 120"><use href="#rider-mark"/></svg>
+        </div>
+        <p class="rider-no mono" aria-hidden="true">N&ordm; 5</p>
+        <h3 class="rider-name">ALDO FERRAGUTI</h3>
+        <p class="rider-club mono">PEDALE AMBROSIANO</p>
+        <p class="rider-time"><span class="mono time">12&Prime;1</span><span class="time-k mono">200 M LANCIATI</span></p>
+        <p class="rider-note">Half of the Ambrosiano madison pair. The half that sprints.</p>
+      </li>
+
+      <li class="rider" style="--i:5">
+        <div class="rider-mark mark-f" aria-hidden="true">
+          <svg viewBox="0 0 120 120"><use href="#rider-mark"/></svg>
+        </div>
+        <p class="rider-no mono" aria-hidden="true">N&ordm; 6</p>
+        <h3 class="rider-name">GINO SARTORELLI</h3>
+        <p class="rider-club mono">PEDALE AMBROSIANO</p>
+        <p class="rider-time"><span class="mono time">12&Prime;5</span><span class="time-k mono">200 M LANCIATI</span></p>
+        <p class="rider-note">The other half. Throws Ferraguti into the fray like a discus.</p>
+      </li>
+
+      <li class="rider" style="--i:6">
+        <div class="rider-mark mark-g" aria-hidden="true">
+          <svg viewBox="0 0 120 120"><use href="#rider-mark"/></svg>
+        </div>
+        <p class="rider-no mono" aria-hidden="true">N&ordm; 7</p>
+        <h3 class="rider-name">RENZO CATTANEO</h3>
+        <p class="rider-club mono">S.C. CORSIA NORD, MILANO</p>
+        <p class="rider-time"><span class="mono time">12&Prime;6</span><span class="time-k mono">200 M LANCIATI</span></p>
+        <p class="rider-note">Stayer. Happiest ten centimetres behind a motorcycle at seventy.</p>
+      </li>
+
+      <li class="rider" style="--i:7">
+        <div class="rider-mark mark-h" aria-hidden="true">
+          <svg viewBox="0 0 120 120"><use href="#rider-mark"/></svg>
+        </div>
+        <p class="rider-no mono" aria-hidden="true">N&ordm; 8</p>
+        <h3 class="rider-name">VITTORIO BONOMELLI</h3>
+        <p class="rider-club mono">CICLISTICA BERGAMASCA</p>
+        <p class="rider-time"><span class="mono time">12&Prime;3</span><span class="time-k mono">200 M LANCIATI</span></p>
+        <p class="rider-note">Nineteen years old. Bergamo sent him down with one bag and one gear.</p>
+      </li>
+
+    </ul>
+  </div>
+</section>
+
+<!-- ============ SCOREBOARD ============ -->
+<section class="band band-night plane" id="classifica" aria-labelledby="classifica-h">
+  <div class="wrap">
+    <p class="sec-eyebrow mono sec-eyebrow-night">RISULTATI UFFICIALI · GIURIA: COMM. E. TREZZI</p>
+    <h2 class="sec-title shade-night" id="classifica-h" lang="it">CLASSIFICA</h2>
+
+    <div class="board-tabs" role="tablist" aria-label="Race night results">
+      <button class="board-tab mono is-active" id="tab-0" role="tab" aria-selected="true" aria-controls="board" type="button">SERATA I</button>
+      <button class="board-tab mono" id="tab-1" role="tab" aria-selected="false" aria-controls="board" type="button">SERATA II</button>
+      <button class="board-tab mono" id="tab-2" role="tab" aria-selected="false" aria-controls="board" type="button">SERATA III</button>
+    </div>
+
+    <div class="board" id="board" role="tabpanel" tabindex="0" aria-labelledby="tab-0" aria-live="polite">
+      <!-- rows injected by js/main.js -->
+    </div>
+
+    <p class="board-general mono" lang="it">GENERALE DOPO III SERATE &mdash; OCCHIPINTI 21 · BASSI 19 · DELVAUX 15 · MALINVERNI 14 · FERRAGUTI 11 · BONOMELLI 9 · SARTORELLI 8 · CATTANEO 6</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER / TICKETS ============ -->
+<footer class="band band-cream band-wedges band-foot plane" id="biglietti" aria-labelledby="biglietti-h">
+  <div class="wrap">
+    <h2 class="sec-title shade-blue" id="biglietti-h" lang="it">BIGLIETTI</h2>
+    <ul class="tickets">
+      <li class="ticket">
+        <p class="ticket-tier" lang="it">POPOLARI</p>
+        <p class="ticket-price mono">L.&nbsp;3</p>
+        <p class="ticket-note">Standing, turn one. You will feel the boards in your teeth.</p>
+        <p class="ticket-serial mono" aria-hidden="true">SERIE C &middot; N.&nbsp;2041</p>
+      </li>
+      <li class="ticket">
+        <p class="ticket-tier" lang="it">DISTINTI</p>
+        <p class="ticket-price mono">L.&nbsp;6</p>
+        <p class="ticket-note">A wooden seat on the home straight, level with the sprint.</p>
+        <p class="ticket-serial mono" aria-hidden="true">SERIE B &middot; N.&nbsp;0687</p>
+      </li>
+      <li class="ticket">
+        <p class="ticket-tier" lang="it">TRIBUNA D&rsquo;ONORE</p>
+        <p class="ticket-price mono">L.&nbsp;12</p>
+        <p class="ticket-note">Cushions, a stove, and the finish line under your nose.</p>
+        <p class="ticket-serial mono" aria-hidden="true">SERIE A &middot; N.&nbsp;0114</p>
+      </li>
+    </ul>
+    <div class="foot-cols">
+      <p lang="it">VELODROMO DEL SEMPIONE<br>VIA ARONA 19, MILANO<br>TRAM 29 E 33 FERMANO AL CANCELLO</p>
+      <p lang="it">PORTE ORE 19.30<br>PRIMA CORSA ORE 21.00<br>RISCALDAMENTO A VAPORE IN OGNI ORDINE DI POSTI</p>
+      <p>A fictional race series, set in the winter of 1934.<br>Composed in Archivo &amp; Chivo Mono.<br>Everything on these boards was drawn, not photographed.</p>
+    </div>
+    <p class="foot-line mono" lang="it">SOCIET&Agrave; ANONIMA VELODROMO DEL SEMPIONE · MILANO · MCMXXXIV</p>
+  </div>
+</footer>
+
+</div><!-- /lean-rig -->
+
+<!-- Depero-mechanical rider head, reused per card with palette vars -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="rider-mark" viewBox="0 0 120 120">
+      <path d="M-6 126 L74 -8 H126 V126 Z" fill="var(--m-wedge)"/>
+      <circle cx="58" cy="56" r="34" fill="var(--m-head)"/>
+      <path d="M58 22 a34 34 0 0 1 34 34 L58 56 Z" fill="var(--m-cap)"/>
+      <path d="M24 52 L98 44 L98 60 L24 66 Z" fill="var(--m-goggle)"/>
+      <circle cx="44" cy="58" r="7" fill="var(--m-lens)"/>
+      <circle cx="76" cy="54" r="7" fill="var(--m-lens)"/>
+      <path d="M30 88 L86 82 L104 118 L14 118 Z" fill="var(--m-collar)"/>
+      <path d="M92 56 L120 50 V62 L92 64 Z" fill="var(--m-cap)"/>
+    </symbol>
+  </defs>
+</svg>
+
+<script src="js/track.js" defer></script>
+<script src="js/main.js" defer></script>
+</body>
+</html>

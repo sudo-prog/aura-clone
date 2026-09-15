@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QUARTERWORLD — basement arcade, est. 1983</title>
+<meta name="description" content="A basement arcade nineteen steps under Cass Street. Play TOKEN RUNNER — the one cabinet Quarterworld ever built — on a real CRT, right here. 4 tokens per dollar. We reset nothing.">
+<meta property="og:title" content="QUARTERWORLD — basement arcade, est. 1983">
+<meta property="og:description" content="Play TOKEN RUNNER, the one-of-one house cabinet, on a faithful CRT. 4 tokens per dollar. High scores kept since 1984.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0B0713">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='29' fill='%23FFB300'/%3E%3Ccircle cx='32' cy='32' r='24' fill='none' stroke='%237A4A00' stroke-width='2' stroke-dasharray='3 3'/%3E%3Ccircle cx='32' cy='30' r='11' fill='none' stroke='%237A4A00' stroke-width='6'/%3E%3Crect x='37' y='37' width='12' height='6' rx='2' transform='rotate(38 37 37)' fill='%237A4A00'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/PressStart2P-05.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Chivo-03.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/PressStart2P.css">
+<link rel="stylesheet" href="fonts/Chivo.css">
+<link rel="stylesheet" href="fonts/IBMPlexMono.css">
+<link rel="stylesheet" href="fonts/Bungee.css">
+<link rel="stylesheet" href="fonts/Audiowide.css">
+<link rel="stylesheet" href="fonts/Monoton.css">
+<link rel="stylesheet" href="fonts/Righteous.css">
+<link rel="stylesheet" href="fonts/PermanentMarker.css">
+<link rel="stylesheet" href="css/main.css">
+<noscript><style>[data-reveal]{opacity:1 !important;transform:none !important}.mq-panel{filter:none !important}.photo[data-reveal] svg{filter:none !important}</style></noscript>
+</head>
+<body>
+<a class="skip" href="#play">Skip to the game</a>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="wordmark" href="#play">QUARTERWORLD</a>
+    <nav class="topnav" aria-label="Sections">
+      <a href="#play">Play</a>
+      <a href="#floor">The floor</a>
+      <a href="#tokens">Tokens</a>
+      <a href="#story">Story</a>
+    </nav>
+    <div class="wallet" id="wallet" title="Your tokens">
+      <svg class="tok-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#FFB300"/><circle cx="12" cy="12" r="8.5" fill="none" stroke="#7A4A00" stroke-width="1" stroke-dasharray="2 2"/><circle cx="12" cy="11.4" r="3.8" fill="none" stroke="#7A4A00" stroke-width="2.2"/><rect x="13.7" y="13.7" width="4.6" height="2.4" rx="1" transform="rotate(38 13.7 13.7)" fill="#7A4A00"/></svg>
+      <span class="wallet-label">TOKENS</span>
+      <span class="wallet-count" id="walletCount">10</span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- ============ HERO / THE CABINET ============ -->
+  <section class="hero" id="play" aria-label="Token Runner — playable house cabinet">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow" data-reveal>616 CASS STREET &middot; <span>NINETEEN STEPS DOWN</span></p>
+        <h1 class="hero-title" aria-label="Quarterworld"><span style="--i:0">Q</span><span style="--i:1">U</span><span style="--i:2">A</span><span style="--i:3">R</span><span style="--i:4">T</span><span style="--i:5">E</span><span style="--i:6">R</span><span style="--i:7">W</span><span style="--i:8">O</span><span style="--i:9">R</span><span style="--i:10">L</span><span style="--i:11">D</span></h1>
+        <p class="hero-sub" data-reveal>Basement arcade &middot; est. 1983</p>
+        <p class="hero-lead" data-reveal>In the winter of 1984, Marge Kowalczyk stopped paying license fees and built a cabinet of her own: birch plywood, a rewound Hitachi tube, and a game her nephew soldered at the kitchen table. She called it <strong>TOKEN RUNNER</strong>. She made exactly one.</p>
+        <p class="hero-lead hero-lead--point" data-reveal>You&rsquo;re standing in front of it.</p>
+        <p class="hero-ticket" data-reveal>1 TOKEN PER PLAY &middot; HIGH SCORES KEPT SINCE 1984 &middot; WE RESET NOTHING</p>
+        <dl class="controls" data-reveal>
+          <div><dt>Keyboard</dt><dd><kbd>&larr;</kbd><kbd>&rarr;</kbd> steer &nbsp;&middot;&nbsp; <kbd>Enter</kbd> token + start &nbsp;&middot;&nbsp; <kbd>M</kbd> sound</dd></div>
+          <div><dt>Hands</dt><dd>hold the deck arrows &middot; drag the glass &middot; tap the coin&nbsp;slot</dd></div>
+        </dl>
+        <div class="bowl" data-reveal>
+          <button class="bowl-btn" id="bowlBtn" type="button">Take a token from the bowl</button>
+          <p class="bowl-note">The bowl by the register is always full.</p>
+        </div>
+      </div>
+
+      <div class="hero-cab">
+        <div class="cone" aria-hidden="true"></div>
+        <div class="ghost-cab ghost-cab--l" aria-hidden="true"><i></i></div>
+        <div class="ghost-cab ghost-cab--r" aria-hidden="true"><i></i></div>
+
+        <div class="cabinet">
+          <div class="cab-marquee" aria-hidden="true">
+            <svg class="cab-logo" viewBox="0 0 300 78" role="img" aria-label="Token Runner">
+              <defs>
+                <linearGradient id="mgrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#FFE28A"/><stop offset=".48" stop-color="#FFB300"/>
+                  <stop offset=".52" stop-color="#F23DA6"/><stop offset="1" stop-color="#8A1D63"/>
+                </linearGradient>
+              </defs>
+              <text x="150" y="34" text-anchor="middle" class="cab-logo-t1" fill="url(#mgrad)" stroke="#2A0B1E" stroke-width="1.2">TOKEN</text>
+              <text x="150" y="68" text-anchor="middle" class="cab-logo-t2" fill="url(#mgrad)" stroke="#2A0B1E" stroke-width="1.2">RUNNER</text>
+            </svg>
+          </div>
+          <div class="cab-speaker" aria-hidden="true"></div>
+          <div class="cab-bezel">
+            <div class="crt-wrap" id="crtWrap">
+              <canvas id="crt" aria-hidden="true"></canvas>
+              <div class="crt-glass" aria-hidden="true"></div>
+            </div>
+            <p class="visually-hidden">Token Runner is a playable arcade game. Steer the spark-bot Zip with the left and right arrow keys to catch falling brass tokens and dodge grey slugs. Press Enter to insert a token and start. Your best scores are saved on this machine.</p>
+          </div>
+          <div class="cab-cards" aria-hidden="true">
+            <div class="card">CATCH TOKENS<br>DODGE SLUGS<br>COMBO GROWS BONUS</div>
+            <div class="card card--amber">1 TOKEN<br>PER PLAY<br>3 ZIPS PER GAME</div>
+          </div>
+          <div class="cab-deck">
+            <button class="deck-btn deck-btn--dir" id="btnLeft" type="button" aria-label="Steer left (hold)"><span>&#9664;</span></button>
+            <div class="joy" aria-hidden="true"><div class="joy-base"></div><div class="joy-stick" id="joyStick"><i></i></div></div>
+            <button class="deck-btn deck-btn--dir" id="btnRight" type="button" aria-label="Steer right (hold)"><span>&#9654;</span></button>
+            <button class="deck-btn deck-btn--start" id="btnStart" type="button" aria-label="Start game">START</button>
+          </div>
+          <div class="cab-coin">
+            <button class="coin-slot" id="coinSlot" type="button" aria-label="Insert one token">
+              <span class="slot-lamp" aria-hidden="true"></span>
+              <span class="slot-text">INSERT<br>TOKEN</span>
+            </button>
+            <div class="coin-plate" aria-hidden="true">
+              <span class="plate-line">4 TOKENS PER DOLLAR</span>
+              <span class="plate-ret">PUSH</span>
+            </div>
+            <button class="coin-slot coin-slot--mute" id="btnMute" type="button" aria-label="Toggle sound">
+              <span class="slot-text" id="muteLabel">SOUND<br>ON</span>
+            </button>
+          </div>
+          <div class="cab-kick" aria-hidden="true"><span class="tide" title="tide line, March 1996"></span></div>
+        </div>
+        <div class="floor-pool" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="motif" role="presentation" aria-hidden="true"></div>
+
+  <!-- ============ THE FLOOR ============ -->
+  <section class="floor" id="floor" aria-label="The floor of machines">
+    <header class="sec-head" data-reveal>
+      <h2 class="sec-title">THE FLOOR</h2>
+      <p class="sec-lede">Twenty-one machines on the floor, eight worth writing home about. Every marquee below gets repainted by hand when its tubes go &mdash; Roy does the letters, Marge still mixes the color.</p>
+    </header>
+    <ul class="mq-wall">
+      <li class="mq" data-reveal>
+        <div class="mq-panel mq--moonscow"><span class="mq-title">MOON SCOW</span></div>
+        <p class="mq-spec">1981 &middot; KANSEI GAMES &middot; <b class="ok">WORKS</b> &middot; HI&nbsp;<b>KAZ&nbsp;224,180</b></p>
+        <p class="mq-blurb">Tug freight across the lunar tide before the vacuum crabs cut your line. The dock horn is one deep, beautiful square wave.</p>
+      </li>
+      <li class="mq" data-reveal>
+        <div class="mq-panel mq--barnstorm"><span class="mq-title">BARNSTORM&nbsp;ACE</span></div>
+        <p class="mq-spec">1982 &middot; VECTOR DYNAMIKS &middot; <b class="ok">WORKS</b> &middot; HI&nbsp;<b>STU&nbsp;96,400</b></p>
+        <p class="mq-blurb">Full-vector biplane duels. Took water in the &rsquo;96 flood and still lists left, like a sailor. Compensate on the climb.</p>
+      </li>
+      <li class="mq" data-reveal>
+        <div class="mq-panel mq--sewer"><span class="mq-title">SEWER WIZARD</span></div>
+        <p class="mq-spec">1983 &middot; COPPER COIL IND. &middot; <b class="ok">WORKS</b> &middot; HI&nbsp;<b>DOT&nbsp;187,250</b></p>
+        <p class="mq-blurb">Four hundred feet of pipe maze, nine rat-kings, one broom. The third tunnel hides a warp. Roy will deny this.</p>
+      </li>
+      <li class="mq" data-reveal>
+        <div class="mq-panel mq--pylon"><span class="mq-title">PRINCESS PYLON</span></div>
+        <p class="mq-spec">1983 &middot; KANSEI GAMES &middot; <b class="ok">WORKS</b> &middot; HI&nbsp;<b>LIL&nbsp;310,775</b></p>
+        <p class="mq-blurb">Stack the power grid before the brownout rolls in. The only cabinet Marge ever beat on one token.</p>
+      </li>
+      <li class="mq" data-reveal>
+        <div class="mq-panel mq--gutter"><span class="mq-title">GUTTER KING</span></div>
+        <p class="mq-spec">1980 &middot; TEN PIN ELECTRIC &middot; <b class="ok">WORKS</b> &middot; HI&nbsp;<b>BUD&nbsp;300</b></p>
+        <p class="mq-blurb">Bar-top bowling with a nine-pound trackball. A perfect 300 has happened exactly once. Bud is insufferable about it.</p>
+      </li>
+      <li class="mq" data-reveal>
+        <div class="mq-panel mq--orbit"><span class="mq-title">Orbit Laundry</span></div>
+        <p class="mq-spec">1984 &middot; COPPER COIL IND. &middot; <b class="ok">WORKS</b> &middot; HI&nbsp;<b>PIP&nbsp;88,140</b></p>
+        <p class="mq-blurb">Sort spacesuits at eight Gs. Japan-only board, one of four in the country, and ours smells faintly of soap. Nobody knows why.</p>
+      </li>
+      <li class="mq" data-reveal>
+        <div class="mq-panel mq--whisper"><span class="mq-title">THE&nbsp;WHISPERER</span><span class="mq-tape">OUT OF ORDER</span></div>
+        <p class="mq-spec">1982 &middot; VECTOR DYNAMIKS &middot; <b class="no">DOWN SINCE 10&middot;31&middot;91</b> &middot; HI&nbsp;<b>&mdash;&mdash;&mdash;</b></p>
+        <p class="mq-blurb">Horror lightgun. Out of order since Halloween 1991. We leave it plugged in. It prefers that.</p>
+      </li>
+      <li class="mq" data-reveal>
+        <div class="mq-panel mq--fryer"><span class="mq-title">DEEP FRYER</span></div>
+        <p class="mq-spec">1985 &middot; TEN PIN ELECTRIC &middot; <b class="ok">WORKS</b> &middot; HI&nbsp;<b>MOE&nbsp;41,220</b></p>
+        <p class="mq-blurb">Short-order cook-&rsquo;em-up. The grease is simulated. The panic is not. Lunch rush on wave five is a religious experience.</p>
+      </li>
+    </ul>
+  </section>
+
+  <div class="motif" role="presentation" aria-hidden="true"></div>
+
+  <!-- ============ TOKENS ============ -->
+  <section class="tokens" id="tokens" aria-label="Token pricing and house rules">
+    <header class="sec-head" data-reveal>
+      <h2 class="sec-title">TOKEN ECONOMY</h2>
+      <p class="sec-lede">Brass, reeded edge, a Q where the eagle would go. The change machine takes ones and fives. It has never once taken a ten.</p>
+    </header>
+    <div class="tokens-grid">
+      <div class="board" data-reveal>
+        <p class="board-head">BRASS TOKENS &mdash; GOOD FOR AMUSEMENT ONLY</p>
+        <div class="board-row"><span class="qty">4 TOKENS</span><span class="dots"></span><span class="price">$1</span></div>
+        <div class="board-row"><span class="qty">20 TOKENS <em>the after-school</em></span><span class="dots"></span><span class="price">$4</span></div>
+        <div class="board-row"><span class="qty">60 TOKENS <em>the saturday</em></span><span class="dots"></span><span class="price">$10</span></div>
+        <div class="board-row"><span class="qty">300 TOKENS <em>the summer</em></span><span class="dots"></span><span class="price">$40</span></div>
+        <p class="board-foot">Birthday parties: the back two rows, $25/hr, bring your own cake. Marge lights the Whisperer&rsquo;s marquee for the candles. It helps.</p>
+      </div>
+      <div class="token-hero" data-reveal>
+        <svg class="token-svg" viewBox="0 0 260 260" role="img" aria-label="A brass Quarterworld token">
+          <defs>
+            <radialGradient id="brass" cx="0.38" cy="0.32" r="0.9">
+              <stop offset="0" stop-color="#FFE9A8"/><stop offset=".55" stop-color="#F0B62E"/><stop offset="1" stop-color="#9A6A08"/>
+            </radialGradient>
+            <path id="arcTop" d="M 40 130 A 90 90 0 0 1 220 130" fill="none"/>
+            <path id="arcBot" d="M 32 130 A 98 98 0 0 0 228 130" fill="none"/>
+          </defs>
+          <circle cx="130" cy="130" r="124" fill="url(#brass)"/>
+          <circle cx="130" cy="130" r="124" fill="none" stroke="#6B4A05" stroke-width="4" stroke-dasharray="4 4"/>
+          <circle cx="130" cy="130" r="108" fill="none" stroke="#7A5406" stroke-width="2"/>
+          <text class="token-ring"><textPath href="#arcTop" startOffset="50%" text-anchor="middle">&#9733; QUARTERWORLD &#9733;</textPath></text>
+          <text class="token-ring token-ring--b"><textPath href="#arcBot" startOffset="50%" text-anchor="middle">GOOD FOR AMUSEMENT ONLY</textPath></text>
+          <text class="token-q" x="130" y="164" text-anchor="middle">Q</text>
+          <circle cx="130" cy="130" r="124" fill="none" stroke="#FFEFC0" stroke-width="1" opacity=".5"/>
+        </svg>
+        <p class="token-cap">Struck in Rockford, 1983. Roy magnet-tests every batch: real brass rings, pot-metal thuds.</p>
+      </div>
+      <div class="rules" data-reveal>
+        <p class="rules-head">MARGE&rsquo;S RULES &mdash; TAPED HERE SINCE JUNE 1983</p>
+        <ol class="rules-list">
+          <li>Tokens never expire. We honor tokens from arcades that no longer exist.</li>
+          <li>Winner stays on. Best of three settles anything.</li>
+          <li>Drinks live on the rail. Never on the glass.</li>
+          <li>If a machine eats your token, it owes you two. Tell Roy.</li>
+          <li>High scores belong to whoever earned them. We reset nothing.</li>
+          <li>Quarters are for the payphone. The machines take tokens.</li>
+          <li>Closing time is when the last game ends. Start a good one.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <div class="motif" role="presentation" aria-hidden="true"></div>
+
+  <!-- ============ STORY ============ -->
+  <section class="story" id="story" aria-label="The story of Quarterworld">
+    <header class="sec-head" data-reveal>
+      <h2 class="sec-title">JUNE 11, 1983</h2>
+      <p class="sec-lede">Marge signed the lease in March, over the objection of everyone she knew. A storeroom under Vogel&rsquo;s TV Repair: no windows, one drain, a ceiling you could touch. Her brother said nobody would pay to sit in a basement. Marge said nobody would have to sit.</p>
+    </header>
+
+    <div class="wall">
+      <figure class="photo" data-reveal style="--tilt:-2deg">
+        <svg viewBox="0 0 320 240" role="img" aria-label="The basement stairs on opening day, warm light glowing from below">
+          <rect width="320" height="240" fill="#140d20"/>
+          <radialGradient id="p1g" cx=".72" cy=".88" r=".7"><stop offset="0" stop-color="#FFB300" stop-opacity=".85"/><stop offset=".5" stop-color="#B35B00" stop-opacity=".35"/><stop offset="1" stop-color="#140d20" stop-opacity="0"/></radialGradient>
+          <path d="M0 40 L120 40 L120 70 L150 70 L150 100 L180 100 L180 130 L210 130 L210 160 L240 160 L240 190 L320 190 L320 240 L0 240 Z" fill="#0c0716"/>
+          <path d="M120 40 L120 70 L150 70 L150 100 L180 100 L180 130 L210 130 L210 160 L240 160 L240 190 L320 190" fill="none" stroke="#3a2a52" stroke-width="3"/>
+          <rect x="240" y="120" width="80" height="70" fill="url(#p1g)"/>
+          <circle cx="278" cy="155" r="60" fill="url(#p1g)"/>
+          <line x1="110" y1="60" x2="250" y2="170" stroke="#57407a" stroke-width="4"/>
+          <line x1="130" y1="52" x2="130" y2="75" stroke="#57407a" stroke-width="3"/>
+          <line x1="190" y1="99" x2="190" y2="122" stroke="#57407a" stroke-width="3"/>
+          <circle cx="60" cy="24" r="7" fill="#FFD98A"/><line x1="60" y1="0" x2="60" y2="17" stroke="#443055" stroke-width="2"/>
+          <circle cx="60" cy="24" r="16" fill="#FFD98A" opacity=".18"/>
+        </svg>
+        <figcaption>the stairs, opening day</figcaption>
+      </figure>
+
+      <figure class="photo" data-reveal style="--tilt:1.5deg">
+        <svg viewBox="0 0 320 240" role="img" aria-label="The Quarterworld sign being hoisted up the storefront in May 1983">
+          <rect width="320" height="240" fill="#241a38"/>
+          <rect y="0" width="320" height="90" fill="#2e2147"/>
+          <rect x="0" y="90" width="320" height="150" fill="#191128"/>
+          <rect x="30" y="90" width="260" height="90" fill="#221735"/>
+          <rect x="48" y="104" width="52" height="40" fill="#120b1f"/><rect x="220" y="104" width="52" height="40" fill="#120b1f"/>
+          <rect x="70" y="30" width="180" height="42" rx="4" fill="#0e0818" stroke="#F23DA6" stroke-width="3"/>
+          <text x="160" y="58" text-anchor="middle" font-family="'Press Start 2P',monospace" font-size="14" fill="#FFB300">QUARTERWORLD</text>
+          <rect x="70" y="30" width="180" height="42" rx="4" fill="#FFB300" opacity=".08"/>
+          <line x1="100" y1="30" x2="88" y2="0" stroke="#8a76ad" stroke-width="2"/><line x1="230" y1="30" x2="244" y2="0" stroke="#8a76ad" stroke-width="2"/>
+          <line x1="120" y1="240" x2="150" y2="76" stroke="#54406e" stroke-width="5"/>
+          <line x1="180" y1="240" x2="152" y2="76" stroke="#463357" stroke-width="5"/>
+          <circle cx="96" cy="196" r="9" fill="#0a0612"/><rect x="86" y="205" width="20" height="35" rx="6" fill="#0a0612"/>
+          <circle cx="210" cy="192" r="9" fill="#0a0612"/><rect x="200" y="201" width="20" height="39" rx="6" fill="#0a0612"/>
+          <rect x="205" y="201" width="26" height="8" rx="4" transform="rotate(-40 205 201)" fill="#0a0612"/>
+        </svg>
+        <figcaption>the sign goes up &mdash; Cass St., May &rsquo;83</figcaption>
+      </figure>
+
+      <figure class="photo" data-reveal style="--tilt:-1deg">
+        <svg viewBox="0 0 320 240" role="img" aria-label="Three kids silhouetted against a glowing arcade screen at night">
+          <rect width="320" height="240" fill="#07040d"/>
+          <radialGradient id="p3g" cx=".5" cy=".42" r=".62"><stop offset="0" stop-color="#3DFF74" stop-opacity=".9"/><stop offset=".45" stop-color="#1a9e5e" stop-opacity=".4"/><stop offset="1" stop-color="#07040d" stop-opacity="0"/></radialGradient>
+          <polygon points="100,30 220,30 232,210 88,210" fill="#0d0916"/>
+          <rect x="116" y="58" width="88" height="74" rx="6" fill="url(#p3g)"/>
+          <rect x="116" y="58" width="88" height="74" rx="6" fill="#3DFF74" opacity=".28"/>
+          <circle cx="118" cy="215" r="14" fill="#020108"/><rect x="102" y="228" width="32" height="12" fill="#020108"/>
+          <circle cx="160" cy="205" r="16" fill="#020108"/><rect x="142" y="220" width="38" height="20" fill="#020108"/>
+          <circle cx="204" cy="216" r="13" fill="#020108"/><rect x="190" y="228" width="30" height="12" fill="#020108"/>
+          <path d="M104 215 a14 14 0 0 1 26 -4" fill="none" stroke="#2fce62" stroke-width="2" opacity=".8"/>
+          <path d="M144 204 a16 16 0 0 1 30 -5" fill="none" stroke="#2fce62" stroke-width="2" opacity=".8"/>
+          <path d="M191 215 a13 13 0 0 1 24 -4" fill="none" stroke="#2fce62" stroke-width="2" opacity=".8"/>
+        </svg>
+        <figcaption>school night, 9:47 pm</figcaption>
+      </figure>
+
+      <figure class="photo" data-reveal style="--tilt:2deg">
+        <svg viewBox="0 0 320 240" role="img" aria-label="The 1996 flood: cabinets raised on milk crates above dark reflective water">
+          <rect width="320" height="240" fill="#0a0714"/>
+          <rect y="150" width="320" height="90" fill="#0e1225"/>
+          <rect x="40" y="40" width="64" height="96" fill="#160e26"/><rect x="46" y="48" width="52" height="14" fill="#F23DA6" opacity=".85"/>
+          <rect x="140" y="30" width="64" height="106" fill="#120b1f"/><rect x="146" y="38" width="52" height="14" fill="#2BD9FF" opacity=".85"/>
+          <rect x="240" y="44" width="64" height="92" fill="#160e26"/><rect x="246" y="52" width="52" height="14" fill="#FFB300" opacity=".85"/>
+          <g fill="#241636"><rect x="44" y="136" width="24" height="16"/><rect x="76" y="136" width="24" height="16"/><rect x="144" y="136" width="24" height="16"/><rect x="176" y="136" width="24" height="16"/><rect x="244" y="136" width="24" height="16"/><rect x="276" y="136" width="24" height="16"/></g>
+          <g opacity=".5"><rect x="48" y="152" width="48" height="60" fill="#F23DA6" opacity=".22"/><rect x="148" y="152" width="48" height="66" fill="#2BD9FF" opacity=".22"/><rect x="248" y="152" width="48" height="56" fill="#FFB300" opacity=".22"/></g>
+          <line x1="0" y1="150" x2="320" y2="150" stroke="#2c3a63" stroke-width="2"/>
+          <line x1="20" y1="168" x2="90" y2="168" stroke="#22305a" stroke-width="2" opacity=".7"/>
+          <line x1="200" y1="188" x2="290" y2="188" stroke="#22305a" stroke-width="2" opacity=".7"/>
+        </svg>
+        <figcaption>the flood &mdash; everything on crates, &rsquo;96</figcaption>
+      </figure>
+
+      <figure class="photo" data-reveal style="--tilt:-1.6deg">
+        <svg viewBox="0 0 320 240" role="img" aria-label="A wooden bowl heaped with brass tokens on the counter">
+          <rect width="320" height="240" fill="#1a1122"/>
+          <rect y="150" width="320" height="90" fill="#2c1c33"/>
+          <rect y="150" width="320" height="8" fill="#3d2947"/>
+          <ellipse cx="160" cy="164" rx="112" ry="34" fill="#120a18"/>
+          <path d="M48 160 A 112 40 0 0 0 272 160 L 264 186 A 104 34 0 0 1 56 186 Z" fill="#4a2f1c"/>
+          <g>
+            <circle cx="120" cy="140" r="17" fill="#F0B62E"/><circle cx="120" cy="140" r="11" fill="none" stroke="#8a5f07" stroke-width="2"/>
+            <circle cx="160" cy="128" r="17" fill="#FFD35C"/><circle cx="160" cy="128" r="11" fill="none" stroke="#8a5f07" stroke-width="2"/>
+            <circle cx="200" cy="142" r="17" fill="#E0A81F"/><circle cx="200" cy="142" r="11" fill="none" stroke="#8a5f07" stroke-width="2"/>
+            <circle cx="140" cy="152" r="17" fill="#D89F18"/><circle cx="140" cy="152" r="11" fill="none" stroke="#7a5406" stroke-width="2"/>
+            <circle cx="180" cy="154" r="17" fill="#F0B62E"/><text x="180" y="160" text-anchor="middle" font-family="'Press Start 2P',monospace" font-size="12" fill="#7A4A00">Q</text>
+          </g>
+          <rect x="252" y="96" width="52" height="34" rx="3" fill="#efe6cf" transform="rotate(6 252 96)"/>
+          <text x="262" y="118" font-family="'Permanent Marker',cursive" font-size="13" fill="#3a2b20" transform="rotate(6 252 96)">FREE</text>
+        </svg>
+        <figcaption>Roy&rsquo;s bowl &mdash; always full</figcaption>
+      </figure>
+
+      <blockquote class="wall-quote" data-reveal>
+        <p>&ldquo;Opening day she cut the ribbon with scissors borrowed from the barber upstairs, and forty-one kids came down in the first hour. The fire code said thirty-five. The fire marshal was playing Gutter King.&rdquo;</p>
+        <cite>&mdash; Roy Delgado, floor manager since 2001</cite>
+      </blockquote>
+    </div>
+
+    <div class="flood-note" data-reveal>
+      <p>The sump pump lost in March of &rsquo;96. Every cabinet went up on milk crates by midnight &mdash; bucket line, the whole block. Only Barnstorm Ace took water. You can still read the tide line on its kick plate, and we would not sand it off for anything.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <p class="foot-mark">QUARTERWORLD</p>
+    <div class="foot-cols">
+      <div>
+        <p class="foot-h">FIND US</p>
+        <p>616 Cass Street &mdash; down the stairs<br>under Vogel&rsquo;s TV Repair</p>
+      </div>
+      <div>
+        <p class="foot-h">HOURS</p>
+        <p>Tue&ndash;Sun &middot; 3 PM to midnight<br>Mondays we fix monitors</p>
+      </div>
+      <div>
+        <p class="foot-h">HOUSE</p>
+        <p>4 tokens per dollar &middot; winner stays on<br>No natural light since 1983</p>
+      </div>
+    </div>
+    <p class="foot-fine">TOKEN RUNNER &copy; 1984 Quarterworld Amusement Co. &mdash; one made, none sold. Site built by the house.</p>
+  </div>
+</footer>
+
+<script src="js/game.js" defer></script>
+<script src="js/main.js" defer></script>
+</body>
+</html>

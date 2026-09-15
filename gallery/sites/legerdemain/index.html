@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LEGERDEMAIN — Akademie für Kartenkunst · Wien · Anno 1911</title>
+<meta name="description" content="An academy of sleight-of-hand one flight above Café Miramar, Vienna. The double lift, the pass, the faro shuffle — and a small oracle that reads your mind honestly. Est. 1911.">
+<meta property="og:title" content="LEGERDEMAIN — Akademie für Kartenkunst, Wien">
+<meta property="og:description" content="Card magic taught above a Vienna café since 1911. Twenty-one cards, three questions, your card produced. Closer than you think.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0C382B">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230C382B'/%3E%3Cpath d='M50 10C50 10 16 38 16 58C16 70 24 77 33 77C39 77 44 74 47 69C45 78 41 85 35 90L65 90C59 85 55 78 53 69C56 74 61 77 67 77C76 77 84 70 84 58C84 38 50 10 50 10Z' fill='%23C8A45E'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/BodoniModa-08.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/BodoniModa.css">
+<link rel="stylesheet" href="fonts/EBGaramond.css">
+<link rel="stylesheet" href="fonts/Jost.css">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<div class="frame" aria-hidden="true"></div>
+
+<header class="topbar">
+  <a class="brand" href="#top">Legerdemain</a>
+  <nav aria-label="Programme">
+    <a href="#programm">Programm</a>
+    <a href="#orakel">Das Orakel</a>
+    <a href="#lehrplan">Lehrplan</a>
+    <a href="#kollegium">Kollegium</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ————— HERO ————— -->
+  <section class="hero">
+    <p class="eyebrow hero-eyebrow">K. u. K. Akademie für Kartenkunst · Wien I. · Gegründet 1911</p>
+    <h1 class="wordmark" aria-label="Legerdemain">
+      <span style="--d:0">L</span><span style="--d:1">E</span><span style="--d:2">G</span><span style="--d:3">E</span><span style="--d:4">R</span><span style="--d:5">D</span><span style="--d:6">E</span><span style="--d:7">M</span><span style="--d:8">A</span><span style="--d:9">I</span><span style="--d:10">N</span>
+    </h1>
+    <p class="hero-sub">An academy of sleight-of-hand, one flight above Café&nbsp;Miramar.<br>
+    The coffee is downstairs. The truth is negotiable up here.</p>
+    <div class="hero-stage stage" aria-hidden="true">
+      <div class="stage-in" id="heroStage"></div>
+    </div>
+    <p class="hero-note">Auditions Thursdays at dusk · Admission by invitation, or by nerve</p>
+  </section>
+
+  <!-- ————— EPIGRAPH ————— -->
+  <section class="epigraph rv" id="ethos" aria-label="On the ethics of deception">
+    <div class="epigraph-inner">
+      <p class="eyebrow">Über die Ethik der Täuschung</p>
+      <blockquote>
+        <p>“We lie with our hands precisely so that we may lie about nothing else. The audience signs the contract at the door — <em>deceive me beautifully, and tell me nothing false about how it felt</em> — and for one hour everyone in the room is honest about being fooled. Nowhere else in Vienna is that arrangement available.”</p>
+      </blockquote>
+      <p class="attrib">— Rudolf Marek, „Der Uhrmacher“ · founding address, 11&nbsp;November&nbsp;1911</p>
+    </div>
+  </section>
+
+  <!-- ————— ACT I: FLOURISHES ————— -->
+  <section class="act" id="programm">
+    <header class="act-head rv">
+      <p class="eyebrow">Erster Akt · The Standing Rehearsal</p>
+      <h2>The deck rehearses nightly.</h2>
+      <p class="lede">Four flourishes from the house repertoire, performed by fifty-two employees who are never paid and never tired. Call one.</p>
+    </header>
+    <div class="flourish-bar rv" role="group" aria-label="Flourishes">
+      <button type="button" data-routine="fan" aria-pressed="false"><span>Der Fächer</span><small>the fan</small></button>
+      <button type="button" data-routine="ribbon" aria-pressed="false"><span>Das Band</span><small>the ribbon</small></button>
+      <button type="button" data-routine="cascade" aria-pressed="false"><span>Die Kaskade</span><small>the cascade</small></button>
+      <button type="button" data-routine="pirouette" aria-pressed="false"><span>Die Pirouette</span><small>one card, alone</small></button>
+    </div>
+    <div class="stage flourish-stage" aria-hidden="true">
+      <div class="stage-in" id="flourishStage"></div>
+    </div>
+  </section>
+
+  <!-- ————— ACT II: THE ORACLE ————— -->
+  <section class="act act-oracle" id="orakel">
+    <header class="act-head rv">
+      <p class="eyebrow">Zweiter Akt · A Demonstration, Free of Charge</p>
+      <h2>Das kleine Orakel</h2>
+      <p class="lede">Twenty-one cards. Choose one in the privacy of your skull — don’t touch it, don’t name it, don’t tell the café below. I will ask three small questions; answer by touching a pile. Then I will tell you what you are thinking.</p>
+    </header>
+    <div class="oracle rv">
+      <div class="q-steps" aria-hidden="true"><span>Frage I</span><span>Frage II</span><span>Frage III</span></div>
+      <p class="oracle-line" id="oracleLine" aria-live="polite">The table is being prepared.</p>
+      <div class="stage oracle-stage">
+        <div class="stage-in" id="oracleStage" aria-hidden="true"></div>
+        <div class="pile-hits">
+          <button type="button" class="pile-hit" disabled><span class="pile-label">Pile&nbsp;I</span></button>
+          <button type="button" class="pile-hit" disabled><span class="pile-label">Pile&nbsp;II</span></button>
+          <button type="button" class="pile-hit" disabled><span class="pile-label">Pile&nbsp;III</span></button>
+        </div>
+      </div>
+      <div class="oracle-actions" id="oracleActions" hidden>
+        <p class="oracle-after">The method is honest arithmetic; the feeling is not. That difference is the entire curriculum.</p>
+        <div class="oracle-btns">
+          <button type="button" id="oracleAgain">Once more</button>
+          <button type="button" id="oracleExplain" aria-expanded="false" aria-controls="explain">Demand an explanation</button>
+        </div>
+      </div>
+      <aside class="explain" id="explain" hidden aria-label="How the oracle works">
+        <div class="explain-card">
+          <p class="eyebrow">Die Auflösung</p>
+          <h3>Three answers, one centre.</h3>
+          <p>Twenty-one cards in three piles of seven. Each time you answer, your pile is gathered <em>between</em> the other two, and the deal by rows spreads its cards across the middle of every new pile. Your card is squeezed toward the centre of the pack: after one answer it is among seven, after two among three, after three it stands exactly eleventh — the heart of twenty-one. No sleight, no memory, no confederate under the table.</p>
+          <p>We spend the first week of Semester&nbsp;I teaching this arithmetic, and the remaining fifteen teaching you to make it feel like the room tilted. The first lesson is free. You have just had it.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ————— ACT III: CURRICULUM ————— -->
+  <section class="act" id="lehrplan">
+    <header class="act-head rv">
+      <p class="eyebrow">Dritter Akt · Lehrplan, Wintersemester 1911/12</p>
+      <h2>Semester I. Three lies, taught slowly.</h2>
+      <p class="lede">Enrolment is limited to twelve hands per course. The café below has agreed not to listen.</p>
+    </header>
+    <div class="courses">
+      <article class="course rv" style="--rv:0">
+        <p class="course-code">K.101</p>
+        <h3>Die Doublette<span class="course-en">The Double Lift</span></h3>
+        <p class="course-tempt">“Show them the same card twice and it becomes two different truths.”</p>
+        <dl class="course-meta">
+          <div><dt>Hour</dt><dd>Mondays 19:00 · Salon II</dd></div>
+          <div><dt>Chair</dt><dd>Prof. O. Brandt</dd></div>
+          <div><dt>Requires</dt><dd>One deck, unbent. Patience, bent.</dd></div>
+        </dl>
+      </article>
+      <article class="course rv" style="--rv:1">
+        <p class="course-code">K.102</p>
+        <h3>Die Volte<span class="course-en">The Pass</span></h3>
+        <p class="course-tempt">“The cut heals itself so quietly that even your own thumbs are not invited.”</p>
+        <dl class="course-meta">
+          <div><dt>Hour</dt><dd>Wednesdays 21:00 · after the café closes</dd></div>
+          <div><dt>Chair</dt><dd>Rektor R. Marek</dd></div>
+          <div><dt>Requires</dt><dd>K.101, and the nerve to be watched</dd></div>
+        </dl>
+      </article>
+      <article class="course rv" style="--rv:2">
+        <p class="course-code">K.103</p>
+        <h3>Das Faro<span class="course-en">The Faro Shuffle</span></h3>
+        <p class="course-tempt">“Eight perfect shuffles return a deck to the order God dealt it. We stop at seven.”</p>
+        <dl class="course-meta">
+          <div><dt>Hour</dt><dd>Fridays 17:00 · Salon I</dd></div>
+          <div><dt>Chair</dt><dd>Doz. J. Fenyö</dd></div>
+          <div><dt>Requires</dt><dd>Arithmetic to fifty-two</dd></div>
+        </dl>
+      </article>
+    </div>
+    <div class="sem2 rv">
+      <div class="sem2-cards" aria-hidden="true">
+        <div class="sem2-back" style="--t:-5deg"></div>
+        <div class="sem2-back" style="--t:0deg"></div>
+        <div class="sem2-back" style="--t:5deg"></div>
+      </div>
+      <p class="sem2-note"><strong>Semester II</strong> — die Forcierung, das zweite Geben, das kalte Spiel.<br>Face down until you can find the Queen without our help.</p>
+    </div>
+  </section>
+
+  <!-- ————— ACT IV: FACULTY ————— -->
+  <section class="act" id="kollegium">
+    <header class="act-head rv">
+      <p class="eyebrow">Vierter Akt · Das Kollegium</p>
+      <h2>The faculty keep their stage names.</h2>
+      <p class="lede">Court cards age better than faces. Turn one over.</p>
+    </header>
+    <div class="faculty">
+      <div class="fac rv" style="--rv:0" data-rank="K" data-suit="s" tabindex="0" role="button" aria-expanded="false" aria-label="Der Uhrmacher — Rudolf Marek, Rektor. Turn card for biography.">
+        <div class="fac-in">
+          <div class="fac-face fac-front"></div>
+          <div class="fac-face fac-back">
+            <p class="fac-name">Der Uhrmacher</p>
+            <p class="fac-civil">Rudolf Marek · Rektor</p>
+            <p class="fac-bio">Studied watchmaking in Prague until the day he understood that a pass is only an escapement for the hands. Has not been seen shuffling since 1904 — decks simply arrive in the order he prefers. Teaches the Volte, and the ethics seminar, in that order, on purpose.</p>
+          </div>
+        </div>
+        <p class="fac-caption">König ♠ · Rektor</p>
+      </div>
+      <div class="fac rv" style="--rv:1" data-rank="Q" data-suit="h" tabindex="0" role="button" aria-expanded="false" aria-label="Madame Coeur — Odile Brandt, Professorin. Turn card for biography.">
+        <div class="fac-in">
+          <div class="fac-face fac-front"></div>
+          <div class="fac-face fac-back">
+            <p class="fac-name">Madame Coeur</p>
+            <p class="fac-civil">Odile Brandt · Professorin für Nahsicht</p>
+            <p class="fac-bio">Performed forty consecutive nights at the Ronacher without ever using the stage — table to table, sleeve to sleeve. Insists the double lift is a matter of breathing, not fingers. Grades kindly; deceives more kindly still.</p>
+          </div>
+        </div>
+        <p class="fac-caption">Dame ♥ · Nahsicht</p>
+      </div>
+      <div class="fac rv" style="--rv:2" data-rank="J" data-suit="d" tabindex="0" role="button" aria-expanded="false" aria-label="Der Kassier — Jakob Fenyö, Dozent. Turn card for biography.">
+        <div class="fac-in">
+          <div class="fac-face fac-front"></div>
+          <div class="fac-face fac-back">
+            <p class="fac-name">Der Kassier</p>
+            <p class="fac-civil">Jakob Fenyö · Dozent, late of Budapest</p>
+            <p class="fac-bio">Kept the books at a card room on Andrássy&nbsp;út until the mathematics became more interesting than the money. Can faro a borrowed deck while wearing gloves. Teaches shuffle theory, and the tram schedule of quiet exits.</p>
+          </div>
+        </div>
+        <p class="fac-caption">Bube ♦ · Mathematik</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ————— COLOPHON ————— -->
+<footer class="colophon" id="kontakt">
+  <p class="colo-mark" aria-hidden="true">♠</p>
+  <p class="colo-title">Legerdemain — Akademie für Kartenkunst</p>
+  <p class="colo-addr">Spiegelgasse 11 · one flight above Café Miramar · 1010 Wien</p>
+  <p class="colo-line">Auditions Thursdays at dusk. Bring a deck you trust and a deck you don’t.</p>
+  <p class="colo-line">Correspondence by letter only — the telephone downstairs belongs to the café.</p>
+  <p class="colo-motto">Anno 1911 · <em>Näher, als Sie denken.</em></p>
+  <p class="colo-fine">A fictional academy. The oracle, however, is real — it worked on you honestly.</p>
+</footer>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ATTRACTOR — Museum of Generative Art</title>
+<meta name="description" content="Six live algorithms hang in a white gallery: flow-field rivers, a strange attractor, truchet weaves, voronoi settlements, coral aggregation, wave interference. Every visit is a state no one has seen before.">
+<meta property="og:title" content="ATTRACTOR — Museum of Generative Art">
+<meta property="og:description" content="Six algorithms hang in this building. They are painting right now.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#FBFBF9">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23FBFBF9'/%3E%3Cg fill='%232A1B33'%3E%3Ccircle cx='21' cy='41' r='3.2'/%3E%3Ccircle cx='29' cy='31' r='4.2'/%3E%3Ccircle cx='40' cy='24' r='3.1'/%3E%3Ccircle cx='47' cy='34' r='2.4'/%3E%3Ccircle cx='34' cy='45' r='2.2'/%3E%3Ccircle cx='18' cy='27' r='1.9'/%3E%3Ccircle cx='45' cy='44' r='1.6'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preload" href="fonts/Archivo-06.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Newsreader-06.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Newsreader-03.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/Archivo.css">
+<link rel="stylesheet" href="fonts/Newsreader.css">
+<link rel="stylesheet" href="css/main.css">
+<script defer src="vendor/d3-delaunay.min.js"></script>
+<script type="module" src="js/main.js"></script>
+</head>
+<body>
+
+<a class="skip" href="#collection">Skip to the collection</a>
+
+<header class="site-head">
+  <a class="wordmark" href="#top">ATTRACTOR</a>
+  <span class="head-sub">Museum of Generative Art</span>
+  <nav class="site-nav" aria-label="Museum">
+    <a href="#collection">Collection</a>
+    <a href="#essay">Essay</a>
+    <a href="#colophon">Colophon</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- entrance vinyl -->
+  <section class="entrance reveal-group" aria-labelledby="entrance-line">
+    <p class="eyebrow" data-reveal>Permanent collection · Hall 1</p>
+    <h1 id="entrance-line" data-reveal>Six algorithms hang in this building. <em>They are painting right now.</em></h1>
+    <p class="entrance-note" data-reveal>Nothing here is an image file. Each work executes in your browser from a seed drawn the moment you arrived — the states forming below have never existed before, for anyone.</p>
+  </section>
+
+  <!-- featured wall -->
+  <section class="wall wall-hero reveal-group" id="featured" data-algo="dejong" aria-labelledby="t-dejong">
+    <figure class="hang stack" style="--hangw:71rem">
+      <div class="frame frame-hero" data-reveal>
+        <div class="plate" aria-hidden="true">
+          <canvas class="art"></canvas>
+          <canvas class="ghost"></canvas>
+        </div>
+      </div>
+      <figcaption class="label" data-reveal>
+        <div class="label-main">
+          <p class="acc">Acc. 2026.001 · Featured acquisition</p>
+          <h2 class="work-title" id="t-dejong">A Body of Smoke <span class="year">2026</span></h2>
+          <p class="medium">Peter de Jong map — four coupled trigonometric equations plotting roughly 700,000 points a minute. Its parameters ride slow orbits: the smoke thickens, folds, thins, and never passes through the same state twice.</p>
+        </div>
+        <div class="seed-row">
+          <span class="seed-line">Seed<span class="seed-value"></span><span class="pulse" aria-hidden="true"></span><span class="sr-only">— still executing</span></span>
+          <span class="runtime" aria-hidden="true">this state running <span class="runtime-t">0:00</span></span>
+          <button class="reseed" type="button" aria-label="Reseed A Body of Smoke — the current state dissolves and a new one forms">
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13.5 8a5.5 5.5 0 1 1-1.61-3.89M13.5 1.5v3h-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Reseed
+          </button>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- the permanent collection -->
+  <section id="collection" aria-label="The permanent collection">
+
+    <header class="collection-head reveal-group">
+      <p class="eyebrow" data-reveal>The Permanent Collection</p>
+      <p class="collection-note" data-reveal>Six works, acquired 2024–2026, kept as running procedures rather than objects. Please do not touch the algorithms. Reseeding is permitted.</p>
+    </header>
+
+    <section class="wall reveal-group" data-algo="meltwater" aria-labelledby="t-meltwater">
+      <figure class="hang side" style="--hangw:70rem">
+        <div class="frame" data-reveal>
+          <div class="plate" aria-hidden="true">
+            <canvas class="art"></canvas>
+            <canvas class="ghost"></canvas>
+          </div>
+        </div>
+        <figcaption class="label" data-reveal>
+          <p class="acc">Acc. 2025.038</p>
+          <h3 class="work-title" id="t-meltwater">Meltwater <span class="year">2025</span></h3>
+          <p class="medium">Flow field — 1,400 ink particles ride a simplex vector field for up to 400 steps, pooling dark where the currents agree. Ink on computed paper.</p>
+          <div class="seed-row">
+            <span class="seed-line">Seed<span class="seed-value"></span><span class="pulse" aria-hidden="true"></span></span>
+            <button class="reseed" type="button" aria-label="Reseed Meltwater — new rivers are cut from a new seed">
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13.5 8a5.5 5.5 0 1 1-1.61-3.89M13.5 1.5v3h-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Reseed
+            </button>
+          </div>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="wall reveal-group" data-algo="truchet" aria-labelledby="t-truchet">
+      <figure class="hang side-left" style="--hangw:60rem">
+        <div class="frame" data-reveal>
+          <div class="plate" aria-hidden="true">
+            <canvas class="art"></canvas>
+            <canvas class="ghost"></canvas>
+          </div>
+        </div>
+        <figcaption class="label" data-reveal>
+          <p class="acc">Acc. 2025.011</p>
+          <h3 class="work-title" id="t-truchet">Woven Argument <span class="year">2025</span></h3>
+          <p class="medium">Multi-scale Truchet tiling — two arcs per tile, three tile sizes, laid in shuffled order. The over-and-under is an argument about sequence, settled differently every seed.</p>
+          <div class="seed-row">
+            <span class="seed-line">Seed<span class="seed-value"></span><span class="pulse" aria-hidden="true"></span></span>
+            <button class="reseed" type="button" aria-label="Reseed Woven Argument — the tiles are laid again in a new order">
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13.5 8a5.5 5.5 0 1 1-1.61-3.89M13.5 1.5v3h-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Reseed
+            </button>
+          </div>
+        </figcaption>
+      </figure>
+    </section>
+
+  </section>
+
+  <!-- reading room -->
+  <section id="essay" class="essay" aria-labelledby="essay-title">
+    <div class="essay-inner reveal-group">
+      <p class="eyebrow" data-reveal>Wall text · Gallery 2</p>
+      <h2 id="essay-title" data-reveal>On Authorship</h2>
+      <p data-reveal>When this museum acquired <em>Reef Logic</em> in March 2024, no object changed hands. The work arrived as 212 lines of JavaScript and a signature. We did not hang a painting; we agreed to keep a promise — that whenever a visitor stands in front of the work, the museum will run it.</p>
+      <p data-reveal>This is the quiet scandal of generative art. The artist does not make the image. The artist makes the <em>conditions</em> for the image: a field of forces, a rule for sticking, a pair of frequencies that will never quite agree. Then the artist steps back, the seed is drawn, and the work happens — the way weather happens. What hangs on our walls is not the artist's hand but the artist's intent, executed fresh each time by a machine that cannot repeat itself.</p>
+      <p data-reveal>Visitors sometimes ask which rendering is the real one — which state we keep in the vault. The answer is none of them. The vault holds procedures. The states belong to you: the exact body of smoke you watched form this afternoon existed once, for you, and was gone when you scrolled past. A museum of objects preserves what the artist saw. A museum of procedures preserves what the artist <em>meant</em>, and lets the seeing be yours.</p>
+      <p data-reveal>We conserve no pigment here. We conserve rules, and rules do not crack, fade, or yellow. In two hundred years, given electricity and arithmetic, this collection will still be exactly — and never — what it is today.</p>
+      <p class="sig" data-reveal>— Dr. Ines Kowald, Curator of Computational Works<br>Reprinted from the exhibition catalogue, spring 2026</p>
+    </div>
+  </section>
+
+  <!-- collection, continued -->
+  <section aria-label="The permanent collection, continued">
+
+    <section class="wall reveal-group" data-algo="voronoi" aria-labelledby="t-voronoi">
+      <figure class="hang side" style="--hangw:56rem">
+        <div class="frame" data-reveal>
+          <div class="plate" aria-hidden="true">
+            <canvas class="art"></canvas>
+            <canvas class="ghost"></canvas>
+          </div>
+        </div>
+        <figcaption class="label" data-reveal>
+          <p class="acc">Acc. 2024.052</p>
+          <h3 class="work-title" id="t-voronoi">Settlement <span class="year">2024</span></h3>
+          <p class="medium">Lloyd's relaxation — 120 seeded cells negotiate their borders, each ceding ground until every centroid agrees to stay put. You are watching the argument end.</p>
+          <div class="seed-row">
+            <span class="seed-line">Seed<span class="seed-value"></span><span class="pulse" aria-hidden="true"></span></span>
+            <button class="reseed" type="button" aria-label="Reseed Settlement — 120 new cells begin negotiating">
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13.5 8a5.5 5.5 0 1 1-1.61-3.89M13.5 1.5v3h-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Reseed
+            </button>
+          </div>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="wall reveal-group" data-algo="dla" aria-labelledby="t-dla">
+      <figure class="hang side-left" style="--hangw:66rem">
+        <div class="frame" data-reveal>
+          <div class="plate" aria-hidden="true">
+            <canvas class="art"></canvas>
+            <canvas class="ghost"></canvas>
+          </div>
+        </div>
+        <figcaption class="label" data-reveal>
+          <p class="acc">Acc. 2024.017</p>
+          <h3 class="work-title" id="t-dla">Reef Logic <span class="year">2024</span></h3>
+          <p class="medium">Diffusion-limited aggregation — ten thousand particles drift at random until they touch the reef, and hold on. Growth without a plan; structure anyway.</p>
+          <div class="seed-row">
+            <span class="seed-line">Seed<span class="seed-value"></span><span class="pulse" aria-hidden="true"></span></span>
+            <button class="reseed" type="button" aria-label="Reseed Reef Logic — the reef is grown again from bedrock">
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13.5 8a5.5 5.5 0 1 1-1.61-3.89M13.5 1.5v3h-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Reseed
+            </button>
+          </div>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="wall reveal-group" data-algo="interference" aria-labelledby="t-interference">
+      <figure class="hang stack" style="--hangw:76rem">
+        <div class="frame" data-reveal>
+          <div class="plate" aria-hidden="true">
+            <canvas class="art"></canvas>
+            <canvas class="ghost"></canvas>
+          </div>
+        </div>
+        <figcaption class="label" data-reveal>
+          <div class="label-main">
+            <p class="acc">Acc. 2026.014</p>
+            <h3 class="work-title" id="t-interference">Two Lighthouses <span class="year">2026</span></h3>
+            <p class="medium">Wave interference — two circular wavefronts of slightly disagreeing frequency, plus a third source standing offshore. The moiré is the shape of the disagreement.</p>
+          </div>
+          <div class="seed-row">
+            <span class="seed-line">Seed<span class="seed-value"></span><span class="pulse" aria-hidden="true"></span></span>
+            <button class="reseed" type="button" aria-label="Reseed Two Lighthouses — the sources move and the pattern is recast">
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13.5 8a5.5 5.5 0 1 1-1.61-3.89M13.5 1.5v3h-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Reseed
+            </button>
+          </div>
+        </figcaption>
+      </figure>
+    </section>
+
+  </section>
+
+</main>
+
+<!-- exit wall text -->
+<footer id="colophon" class="colophon">
+  <div class="colo-grid reveal-group">
+    <div class="colo" data-reveal>
+      <h2>The Museum</h2>
+      <p>ATTRACTOR is a museum without a building. Admission is free and perpetual; the collection executes on demand, in any browser, at any hour. There is no vault — only this page.</p>
+    </div>
+    <div class="colo" data-reveal>
+      <h2>The Works</h2>
+      <p>Six algorithms in roughly 1,900 lines of hand-written JavaScript. No image files were used anywhere on this floor: every mark you saw was computed in front of you, from a seed drawn from your device's entropy.</p>
+    </div>
+    <div class="colo" data-reveal>
+      <h2>The Labels</h2>
+      <p>Wall lettering is set in Archivo; the catalogue voice is Newsreader. Both are self-hosted. This page makes no network requests beyond its own fonts and code.</p>
+    </div>
+  </div>
+  <p class="colo-close" data-reveal>When you close this page, every state you saw stops existing. Thank you for visiting.</p>
+  <p class="colo-fine">© 2026 Attractor · The collection is software · Works acquired 2024–2026</p>
+</footer>
+
+<noscript>
+  <style>.plate{display:none}[data-reveal]{opacity:1!important;transform:none!important}</style>
+  <p style="max-width:52ch;margin:2rem auto;padding:0 1.5rem;font-size:.9rem;color:#5F5F5A">
+    This museum's collection is executed in JavaScript. With scripts disabled the frames hang empty,
+    so we have taken them down — but every wall label above still describes its algorithm precisely.
+    The labels are the scores; the works are their performances.
+  </p>
+</noscript>
+
+</body>
+</html>

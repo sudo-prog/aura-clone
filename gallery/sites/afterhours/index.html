@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AFTER HOURS — Basement Jazz Club · Kansas City, Est. 1962</title>
+<meta name="description" content="A basement jazz room at 18th &amp; Vine, Kansas City, since 1962. Tonight: the Ruby Calloway Trio at 9, the Vine Street Five at 10:30, and the open jam at midnight. Doors at 8.">
+<meta property="og:title" content="AFTER HOURS — Basement Jazz Club, Kansas City">
+<meta property="og:description" content="Down the stairs, past the green door. Ruby Calloway Trio at 9, the Vine Street Five at 10:30, the jam at midnight. Est. 1962.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#161009">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23161009'/%3E%3Ccircle cx='32' cy='32' r='22' fill='none' stroke='%23C9A05A' stroke-width='3'/%3E%3Ccircle cx='32' cy='32' r='9' fill='%23C9A05A'/%3E%3Ccircle cx='32' cy='32' r='2.5' fill='%23161009'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/Limelight-02.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/Limelight.css">
+<link rel="stylesheet" href="fonts/PoiretOne.css">
+<link rel="stylesheet" href="fonts/Cormorant.css">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<a class="skip" href="#sets">Skip to tonight’s sets</a>
+
+<canvas id="room" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+
+<svg class="svg-defs" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="deco-corner" viewBox="0 0 48 48">
+      <path d="M48 1.5 H13 Q1.5 1.5 1.5 13 V48" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M41 7 H15.5 Q7 7 7 15.5 V41" fill="none" stroke="currentColor" stroke-width="0.9" opacity="0.55"/>
+      <g stroke="currentColor" stroke-width="1" opacity="0.9">
+        <path d="M14 14 L31 14"/>
+        <path d="M14 14 L29.3 20.6"/>
+        <path d="M14 14 L26 26"/>
+        <path d="M14 14 L20.6 29.3"/>
+        <path d="M14 14 L14 31"/>
+      </g>
+      <path d="M14 9.6 L18.4 14 L14 18.4 L9.6 14 Z" fill="currentColor"/>
+    </symbol>
+  </defs>
+</svg>
+
+<main class="split" id="main">
+
+  <header class="masthead">
+    <p class="eyebrow" data-seq="1">18th &amp; Vine · Kansas City, Missouri · Est. 1962</p>
+    <h1 data-seq="2"><span class="h1-line">After</span> <span class="h1-line">Hours</span></h1>
+    <div class="brass-rule" data-seq="3" aria-hidden="true"><span></span><b>◆</b><span></span></div>
+    <p class="lede" data-seq="4">A basement room, forty-one steps off Vine Street, where the ceiling is low, the lights are lower, and the music is taken seriously.</p>
+    <p class="intro" data-seq="5">Doors at eight. First set at nine. No cover if you arrive carrying an instrument you can actually play. The coffee is black, the whiskey is honest, and in sixty-four years nobody has successfully requested “Happy Birthday.”</p>
+    <p class="cue-wrap" data-seq="6"><a class="cue" href="#sets">Cue tonight’s sets <span aria-hidden="true">↓</span></a></p>
+  </header>
+
+  <aside class="stage" aria-label="The house turntable">
+    <div class="stage-inner">
+      <svg class="tt" id="tt" viewBox="0 0 680 620" role="img" aria-label="A turntable. The record spins at 33 and a third RPM; the tonearm drops when tonight’s sets come into view.">
+        <defs>
+          <linearGradient id="plinthGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#31220F"/>
+            <stop offset="0.5" stop-color="#241809"/>
+            <stop offset="1" stop-color="#190F05"/>
+          </linearGradient>
+          <linearGradient id="brassEdge" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#EBCB8B"/>
+            <stop offset="0.55" stop-color="#C9A05A"/>
+            <stop offset="1" stop-color="#7A5C2E"/>
+          </linearGradient>
+          <radialGradient id="vinylGrad" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0" stop-color="#20180F"/>
+            <stop offset="0.35" stop-color="#141009"/>
+            <stop offset="1" stop-color="#0B0805"/>
+          </radialGradient>
+          <radialGradient id="labelGrad" cx="0.42" cy="0.38" r="0.75">
+            <stop offset="0" stop-color="#DDBB7E"/>
+            <stop offset="0.6" stop-color="#BC914F"/>
+            <stop offset="1" stop-color="#96703A"/>
+          </radialGradient>
+          <radialGradient id="sheenGrad" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0" stop-color="rgba(242,230,206,0)"/>
+            <stop offset="0.5" stop-color="rgba(242,230,206,0.16)"/>
+            <stop offset="0.82" stop-color="rgba(242,230,206,0.05)"/>
+            <stop offset="1" stop-color="rgba(242,230,206,0)"/>
+          </radialGradient>
+          <filter id="softBlur" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="2.2"/>
+          </filter>
+          <filter id="sheenBlur" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="5"/>
+          </filter>
+          <path id="labelArc" d="M290 276 a54 54 0 1 1 0 108 a54 54 0 1 1 0 -108" fill="none"/>
+        </defs>
+
+        <!-- plinth -->
+        <rect x="24" y="44" width="632" height="552" rx="16" fill="url(#plinthGrad)" stroke="#5A431F" stroke-width="1.4"/>
+        <rect x="33" y="53" width="614" height="534" rx="11" fill="none" stroke="rgba(201,160,90,0.22)" stroke-width="1"/>
+
+        <!-- platter -->
+        <circle cx="290" cy="330" r="252" fill="#080604"/>
+        <circle cx="290" cy="330" r="248" fill="#0D0A06" stroke="url(#brassEdge)" stroke-width="2.4"/>
+
+        <!-- rotating: platter top, strobe dots, vinyl, grooves, label -->
+        <g id="disc">
+          <circle cx="290" cy="330" r="243" fill="#100C08"/>
+          <g id="strobe"></g>
+          <circle cx="290" cy="330" r="225" fill="url(#vinylGrad)"/>
+          <g id="grooves"></g>
+          <circle cx="290" cy="330" r="72" fill="url(#labelGrad)" stroke="#6B4E22" stroke-width="1"/>
+          <circle cx="290" cy="330" r="66" fill="none" stroke="rgba(58,36,8,0.5)" stroke-width="0.8"/>
+          <text class="tt-label-arc" dy="3.5">
+            <textPath href="#labelArc" startOffset="0">AFTER HOURS ◆ BASEMENT JAZZ CLUB ◆ KANSAS CITY ◆ EST. 1962 ◆</textPath>
+          </text>
+          <text class="tt-label-line a" x="290" y="311" text-anchor="middle">AH-1962</text>
+          <text class="tt-label-line b" x="290" y="360" text-anchor="middle">SIDE B</text>
+          <text class="tt-label-line c" x="290" y="374" text-anchor="middle">33⅓ R.P.M.</text>
+          <circle cx="290" cy="330" r="4" fill="#0B0805"/>
+        </g>
+
+        <!-- static sheen: the light source doesn't rotate -->
+        <g filter="url(#sheenBlur)" opacity="0.9">
+          <path d="M290 330 L128 168 A229 229 0 0 1 236 108 Z" fill="url(#sheenGrad)"/>
+          <path d="M290 330 L452 492 A229 229 0 0 1 344 552 Z" fill="url(#sheenGrad)" opacity="0.6"/>
+        </g>
+        <circle cx="290" cy="330" r="5.5" fill="url(#brassEdge)"/>
+
+        <!-- tonearm rest -->
+        <rect x="648" y="446" width="14" height="6" rx="2" fill="#5A431F"/>
+        <rect x="652" y="452" width="6" height="16" rx="2" fill="#3A2B12"/>
+
+        <!-- tonearm -->
+        <g id="arm">
+          <ellipse id="armShadow" cx="560" cy="452" rx="26" ry="8" fill="#000" opacity="0.3" filter="url(#softBlur)" transform="translate(10,14)"/>
+          <rect x="561" y="52" width="28" height="42" rx="6" fill="#1E1509" stroke="url(#brassEdge)" stroke-width="1.4"/>
+          <path d="M575 94 L575 380 L562 440" fill="none" stroke="url(#brassEdge)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M575 94 L575 380 L562 440" fill="none" stroke="rgba(255,240,210,0.35)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M553 436 L571 444 L565 462 L549 455 Z" fill="#241809" stroke="#C9A05A" stroke-width="1.4"/>
+          <path d="M556 458 L559 466" stroke="#EBCB8B" stroke-width="2" stroke-linecap="round"/>
+        </g>
+
+        <!-- tonearm bearing -->
+        <circle cx="575" cy="120" r="24" fill="#191007" stroke="url(#brassEdge)" stroke-width="2"/>
+        <circle cx="575" cy="120" r="9" fill="url(#brassEdge)"/>
+        <circle cx="575" cy="120" r="3" fill="#191007"/>
+
+        <!-- furniture -->
+        <circle id="onLamp" cx="70" cy="556" r="4.5" fill="#4A3818"/>
+        <text class="tt-plate" x="88" y="561">33⅓</text>
+        <text class="tt-plate right" x="612" y="561" text-anchor="end">HOUSE HI-FI</text>
+      </svg>
+
+      <p class="plaque" aria-hidden="true">Gruenwald console · Kansas City · 1958</p>
+      <p class="status" id="ttStatus" role="status">Tonearm at rest — scroll to cue Side B</p>
+      <button class="sound-toggle" id="soundToggle" aria-pressed="false"><span aria-hidden="true">♪</span>&nbsp; Hear the room</button>
+    </div>
+  </aside>
+
+  <div class="paper">
+
+    <section id="sets" class="section" aria-labelledby="sets-h">
+      <h2 class="deco-head" id="sets-h"><span class="dh-line" aria-hidden="true"></span><b aria-hidden="true">◆</b>Tonight’s Sets<b aria-hidden="true">◆</b><span class="dh-line" aria-hidden="true"></span></h2>
+      <p class="deco-sub">Cut live to the house system · notes by the doorman</p>
+
+      <article class="set-card deco-frame reveal" data-set="0">
+        <svg class="corner tl" aria-hidden="true"><use href="#deco-corner"/></svg>
+        <svg class="corner tr" aria-hidden="true"><use href="#deco-corner"/></svg>
+        <svg class="corner bl" aria-hidden="true"><use href="#deco-corner"/></svg>
+        <svg class="corner br" aria-hidden="true"><use href="#deco-corner"/></svg>
+        <div class="set-top">
+          <div class="set-time">
+            <span class="set-eyebrow">Side A · First Set</span>
+            <span class="set-clock">9:00</span>
+          </div>
+          <svg class="groove-pos" viewBox="0 0 34 34" aria-hidden="true">
+            <circle cx="17" cy="17" r="14" fill="none" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            <circle cx="17" cy="17" r="9.5" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.35"/>
+            <circle cx="17" cy="17" r="5" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.35"/>
+            <circle cx="17" cy="3" r="2.4" fill="currentColor" class="gp-dot"/>
+          </svg>
+        </div>
+        <h3>The Ruby Calloway Trio</h3>
+        <p class="personnel">Ruby Calloway, voice &amp; piano · Dexter “Dex” Whitfield, upright bass · Wm. “Papers” Monroe, drums &amp; brushes</p>
+        <p class="notes">Ruby opens quiet on purpose. She takes “Detour Ahead” at a crawl, hands the bridge to Whitfield alone, and by the third tune the room has forgotten it ordered drinks. One Monk number played completely straight, which is somehow stranger.</p>
+      </article>
+
+      <article class="set-card deco-frame reveal" data-set="1">
+        <svg class="corner tl" aria-hidden="true"><use href="#deco-corner"/></svg>
+        <svg class="corner tr" aria-hidden="true"><use href="#deco-corner"/></svg>
+        <svg class="corner bl" aria-hidden="true"><use href="#deco-corner"/></svg>
+        <svg class="corner br" aria-hidden="true"><use href="#deco-corner"/></svg>
+        <div class="set-top">
+          <div class="set-time">
+            <span class="set-eyebrow">Side B · Second Set</span>
+            <span class="set-clock">10:30</span>
+          </div>
+          <svg class="groove-pos" viewBox="0 0 34 34" aria-hidden="true">
+            <circle cx="17" cy="17" r="14" fill="none" stroke="currentColor" stroke-width="1" opacity="0.35"/>
+            <circle cx="17" cy="17" r="9.5" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.5"/>
+            <circle cx="17" cy="17" r="5" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.35"/>
+            <circle cx="17" cy="7.5" r="2.4" fill="currentColor" class="gp-dot"/>
+          </svg>
+        </div>
+        <h3>The Vine Street Five</h3>
+        <p class="personnel">Cornelius “Corny” Dade, cornet · Little Willie Parr, tenor · Eustace Brown, trombone · Alma Reed, piano · Sonny Okafor, drums</p>
+        <p class="notes">The Five play hot: the old 18th Street riff book at brand-new tempos. Dade quotes “Moten Swing” twice a night and denies it both times. Alma Reed’s left hand is the loudest thing in the building, and the building includes a trombone.</p>
+      </article>
+
+      <article class="set-card deco-frame reveal" data-set="2">
+        <svg class="corner tl" aria-hidden="true"><use href="#deco-corner"/></svg>
+        <svg class="corner tr" aria-hidden="true"><use href="#deco-corner"/></svg>
+        <svg class="corner bl" aria-hidden="true"><use href="#deco-corner"/></svg>
+        <svg class="corner br" aria-hidden="true"><use href="#deco-corner"/></svg>
+        <div class="set-top">
+          <div class="set-time">
+            <span class="set-eyebrow">Dead Wax · The Late Hang</span>
+            <span class="set-clock">12:00</span>
+          </div>
+          <svg class="groove-pos" viewBox="0 0 34 34" aria-hidden="true">
+            <circle cx="17" cy="17" r="14" fill="none" stroke="currentColor" stroke-width="1" opacity="0.35"/>
+            <circle cx="17" cy="17" r="9.5" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.35"/>
+            <circle cx="17" cy="17" r="5" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.5"/>
+            <circle cx="17" cy="12" r="2.4" fill="currentColor" class="gp-dot"/>
+          </svg>
+        </div>
+        <h3>The Midnight Jam</h3>
+        <p class="personnel">The stand is open — house rhythm section stays up.</p>
+        <p class="notes">Bring your horn and know your keys. Don’t call “Cherokee” unless you mean it, and don’t mean it unless you’ve slept. Fastest tempos of the night, settled the traditional way: whoever blinks first counts it off.</p>
+      </article>
+    </section>
+
+    <section id="bar" class="section" aria-labelledby="bar-h">
+      <h2 class="deco-head" id="bar-h"><span class="dh-line" aria-hidden="true"></span><b aria-hidden="true">◆</b>From the Bar<b aria-hidden="true">◆</b><span class="dh-line" aria-hidden="true"></span></h2>
+      <p class="deco-sub">A short card, mixed well · prices held since March 1962</p>
+
+      <div class="reveal">
+        <div class="menu-paper">
+          <svg class="corner tl" aria-hidden="true"><use href="#deco-corner"/></svg>
+          <svg class="corner tr" aria-hidden="true"><use href="#deco-corner"/></svg>
+          <svg class="corner bl" aria-hidden="true"><use href="#deco-corner"/></svg>
+          <svg class="corner br" aria-hidden="true"><use href="#deco-corner"/></svg>
+          <p class="menu-head">The Card</p>
+          <p class="menu-subhead">— spirits · champagne · coffee —</p>
+
+          <div class="menu-row">
+            <div class="menu-main"><h3 class="drink">The Vine Street Sour</h3><span class="leader" aria-hidden="true"></span><span class="price">1.25</span></div>
+            <p class="drink-desc">Bourbon, lemon, wildflower honey, egg white. Shaken twice as long as strictly necessary.</p>
+          </div>
+          <div class="menu-row">
+            <div class="menu-main"><h3 class="drink">Brass Section</h3><span class="leader" aria-hidden="true"></span><span class="price">1.40</span></div>
+            <p class="drink-desc">Rye, sweet vermouth, black-walnut bitters, and a brandied cherry we will not be rushed about.</p>
+          </div>
+          <div class="menu-row">
+            <div class="menu-main"><h3 class="drink">Smoke Ring</h3><span class="leader" aria-hidden="true"></span><span class="price">1.35</span></div>
+            <p class="drink-desc">Blended Scotch, amaro, orange peel burned at the bar. Arrives already dressed for the room.</p>
+          </div>
+          <div class="menu-row">
+            <div class="menu-main"><h3 class="drink">The 33⅓</h3><span class="leader" aria-hidden="true"></span><span class="price">1.50</span></div>
+            <p class="drink-desc">Champagne over a bitters-soaked sugar cube. Never stirred; it keeps its own time.</p>
+          </div>
+          <div class="menu-row">
+            <div class="menu-main"><h3 class="drink">Midnight Local</h3><span class="leader" aria-hidden="true"></span><span class="price">1.10</span></div>
+            <p class="drink-desc">Hot coffee, brandy, cream floated thick. For the third set, or instead of it.</p>
+          </div>
+
+          <p class="menu-foot">Beer is a quarter. Ice is free. Tipping the band is not required — it is merely remembered.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="rules" class="section" aria-labelledby="rules-h">
+      <h2 class="deco-head" id="rules-h"><span class="dh-line" aria-hidden="true"></span><b aria-hidden="true">◆</b>The House Asks<b aria-hidden="true">◆</b><span class="dh-line" aria-hidden="true"></span></h2>
+      <p class="deco-sub">Six requests, posted since opening night</p>
+
+      <ul class="rules reveal">
+        <li class="rule-lead">Listen more than you talk.</li>
+        <li>Applaud the solo when it lands, not when it gets loud.</li>
+        <li>Requests go in the tip jar, folded twice.</li>
+        <li>Take the third step slow. Everyone misses the third step.</li>
+        <li>When Ruby sings “’Round Midnight,” the shakers rest.</li>
+        <li>Last call is 1:30. The music decides when it’s over.</li>
+      </ul>
+    </section>
+
+    <footer class="colophon">
+      <div class="brass-rule" aria-hidden="true"><span></span><b>◆</b><span></span></div>
+      <p class="col-name">After Hours</p>
+      <p class="col-line">1715 Vine Street, Kansas City, Missouri</p>
+      <p class="col-line">Thursday through Sunday · 8 p.m. until the band stops</p>
+      <p class="col-line">No telephone. Knock twice and wait for the green door.</p>
+      <p class="col-fine">Cut &amp; pressed in Kansas City · Catalogue AH-1962 · Side B · 33⅓ R.P.M.</p>
+    </footer>
+
+  </div>
+</main>
+
+<button class="chip" id="chip" type="button" title="Back to the turntable"><span class="chip-dot" aria-hidden="true"></span><span id="chipText">Now spinning — The Ruby Calloway Trio</span></button>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

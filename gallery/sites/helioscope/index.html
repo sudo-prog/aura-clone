@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Helioscope — Solar Dynamics Observatory</title>
+<meta name="description" content="A public solar observatory rendering the Sun live: churning granulation, today's flares, four numbered sunspot regions, and the aurora forecast for the next 72 hours.">
+<meta property="og:title" content="Helioscope — Solar Dynamics Observatory">
+<meta property="og:description" content="The Sun, live: a procedural photosphere, today's flare index, the sunspot log, and a G2 aurora watch for July 9.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#060606">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23060606'/%3E%3Ccircle cx='32' cy='36' r='17' fill='%23ff6a1a'/%3E%3Ccircle cx='32' cy='36' r='21' fill='none' stroke='%23ff6a1a' stroke-opacity='0.35' stroke-width='2'/%3E%3Ccircle cx='38' cy='31' r='3' fill='%23421500'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/Archivo-03.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/MartianMono-04.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/Archivo.css">
+<link rel="stylesheet" href="fonts/MartianMono.css">
+<link rel="stylesheet" href="css/main.css">
+<script>document.documentElement.classList.add('js');</script>
+<script type="importmap">
+{"imports":{"three":"./vendor/three.module.min.js","three/addons/":"./vendor/addons/"}}
+</script>
+</head>
+<body>
+
+<canvas id="sun-canvas" aria-hidden="true"></canvas>
+<div class="sun-fallback" aria-hidden="true"></div>
+
+<header class="site-head">
+  <a class="brand" href="#top" aria-label="Helioscope home">
+    <span class="brand-mark">HELIOSCOPE</span>
+    <span class="brand-sta">KEA-2</span>
+  </a>
+  <nav class="nav" aria-label="Sections">
+    <a href="#flares">FLARES</a>
+    <a href="#regions">REGIONS</a>
+    <a href="#aurora">AURORA</a>
+  </nav>
+  <div class="head-status">
+    <span class="lamp" id="status-lamp" aria-hidden="true"></span>
+    <span id="status-label">NOMINAL</span>
+    <span id="utc-clock">--:--:-- UT</span>
+  </div>
+</header>
+
+<div class="depth-rail" aria-hidden="true">
+  <span class="dr-cap">FOV</span>
+  <div class="dr-track"><span class="dr-marker"></span></div>
+  <span class="dr-read" id="dr-read">0.38</span>
+  <span class="dr-inst" id="dr-inst">WL-3</span>
+</div>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero wrap" id="sun" aria-label="The Sun, live">
+    <p class="eyebrow boot-el" style="--d:.08s">
+      <span class="inst">SOLAR DYNAMICS OBSERVATORY</span>
+      PU‘U KEA STATION KEA-2 · 19.7°N 155.5°W · 3&nbsp;014&nbsp;M
+    </p>
+    <h1>Helioscope</h1>
+    <p class="lede boot-el" style="--d:.42s">
+      The Sun is a live object — a churning sphere of plasma
+      <strong>109 Earths wide</strong>, held in view from this ridge for
+      <strong>11,797 consecutive days</strong> without blinking.
+      Below: the last 24 hours, instrument by instrument.
+    </p>
+
+    <div class="readouts boot-el" style="--d:.58s" role="group" aria-label="Current conditions">
+      <div class="readout">
+        <span class="r-label">SOLAR WIND</span>
+        <span class="r-value"><span data-shuffle>482</span><span class="r-unit">KM/S</span></span>
+        <span class="r-sub">+38 / 3 H · AT L1</span>
+      </div>
+      <div class="readout">
+        <span class="r-label">X-RAY FLUX</span>
+        <span class="r-value"><span data-shuffle>B6.2</span><span class="r-unit">BG</span></span>
+        <span class="r-sub">PEAK M1.8 · 09:16</span>
+      </div>
+      <div class="readout">
+        <span class="r-label">PLANETARY K</span>
+        <span class="r-value"><span data-shuffle>4</span><span class="r-unit">ACTIVE</span></span>
+        <span class="r-sub">G2 WATCH JUL 09</span>
+      </div>
+      <div class="readout">
+        <span class="r-label">SUNSPOT NUMBER</span>
+        <span class="r-value"><span data-shuffle>143</span></span>
+        <span class="r-sub">4 NUMBERED REGIONS</span>
+      </div>
+    </div>
+
+    <p class="scroll-cue boot-el" style="--d:.9s" aria-hidden="true">DESCEND · 24 H OF OBSERVATIONS</p>
+    <p class="feed-tag boot-el" style="--d:1.05s" aria-hidden="true">
+      <span class="rec"></span>WL-3 LIVE · FRAME <span id="frame-n">088&thinsp;214</span>
+    </p>
+  </section>
+
+  <!-- ============ TODAY ============ -->
+  <section class="wrap" id="today">
+    <header class="sec-head rv">
+      <p class="eyebrow"><span class="inst">WL-3</span> WHITE-LIGHT HELIOGRAPH · 4096² · 550 NM</p>
+      <h2>The star, today</h2>
+      <p class="lede">
+        Observation day <em>11,797</em>. Window ending <em>2026-07-08 · 21:40 UT</em>.
+        Activity moderate and rising as rotation 2297 carries its largest group
+        toward disk centre.
+      </p>
+    </header>
+    <div class="cols" style="margin-top:clamp(30px,4vh,48px)">
+      <div class="prose rv" style="--d:.08s">
+        <p>
+          Every pixel of the surface behind this page is computed live, tuned to
+          today’s telemetry. The bright cells are convection granules — each about
+          <span class="figures">1,500 km</span> across, the width of Texas, boiling up
+          and dissolving in roughly <span class="figures">ten minutes</span>. The dark
+          blemishes are real entries in today’s log: active regions
+          <span class="figures">4172, 4175, 4178 and 4181</span>, drawn at their
+          measured positions.
+        </p>
+        <p>
+          Move your pointer and the corona leans. Keep scrolling and the star will
+          step aside for its own paperwork — flare photometry first, then the
+          sunspot ledger, then what all of it means for the night sky on Thursday.
+        </p>
+      </div>
+      <div class="plate rv" style="--d:.16s">
+        <p class="plate-cap"><span>OBJECT PLATE</span><span>SOL · G2V</span></p>
+        <dl class="spec plate-pad">
+          <div><dt>Spectral type</dt><dd>G2V · MAIN SEQUENCE</dd></div>
+          <div><dt>Age</dt><dd>4.6 BILLION YR</dd></div>
+          <div><dt>Diameter</dt><dd>1 392 700 KM <small>· 109 × EARTH</small></dd></div>
+          <div><dt>Photosphere</dt><dd>5 772 K</dd></div>
+          <div><dt>Rotation</dt><dd>25.4 D <small>AT EQUATOR</small></dd></div>
+          <div><dt>Light travel</dt><dd>8 MIN 20 S <small>TO THIS PAGE</small></dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FLARES ============ -->
+  <section class="wrap" id="flares">
+    <header class="sec-head rv">
+      <p class="eyebrow"><span class="inst">HX-1</span> GRAZING-INCIDENCE X-RAY PHOTOMETER · 0.1–0.8 NM</p>
+      <h2>Flare index</h2>
+      <p class="lede">
+        Four flares in the last 24 hours, all from the numbered regions below.
+        The trace is soft X-ray flux on a logarithmic scale — each band is
+        <em>ten times</em> the one beneath it.
+      </p>
+    </header>
+    <div class="plate rv" style="--d:.1s;margin-top:clamp(30px,4vh,48px)">
+      <p class="plate-cap">
+        <span>GOES-CLASS FLUX · 24 H · W/M²</span>
+        <span class="cap-live">BACKGROUND B6.2</span>
+      </p>
+      <div class="chart-host plate-pad" id="flux-chart"></div>
+    </div>
+    <ul class="event-log rv" style="--d:.18s;margin-top:26px" aria-label="Flare event log">
+      <li>
+        <span class="e-time">03:42 UT</span>
+        <span class="e-cls">C4.1</span>
+        <span class="e-src">AR 4181</span>
+        <span class="e-note">West-limb spray, 18 min. No Earth-directed ejecta.</span>
+      </li>
+      <li>
+        <span class="e-time">09:16 UT</span>
+        <span class="e-cls hot">M1.8</span>
+        <span class="e-src">AR 4172</span>
+        <span class="e-note">31 min. R1 radio blackout across the sunlit Pacific.</span>
+      </li>
+      <li>
+        <span class="e-time">14:05 UT</span>
+        <span class="e-cls">C7.3</span>
+        <span class="e-src">AR 4172</span>
+        <span class="e-note">Impulsive, 22 min. Trailing umbra brightened during decay.</span>
+      </li>
+      <li>
+        <span class="e-time">19:58 UT</span>
+        <span class="e-cls">C2.6</span>
+        <span class="e-src">AR 4175</span>
+        <span class="e-note">Quiet decay, 14 min. Region resumed slow growth.</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ============ REGIONS ============ -->
+  <section class="wrap" id="regions">
+    <header class="sec-head rv">
+      <p class="eyebrow"><span class="inst">MAG-4</span> VECTOR MAGNETOGRAPH · FE I 617.3 NM</p>
+      <h2>Sunspot log</h2>
+      <p class="lede">
+        Four numbered regions on the Earth-facing disk. Area is measured in
+        millionths of the solar hemisphere; magnetic class runs from α (simple)
+        to βγδ (tangled enough to flare hard). These same four groups are dark
+        on the rendered star behind this page — <em>at their true positions</em>.
+      </p>
+    </header>
+    <div class="regions-grid">
+      <div class="plate rv" style="--d:.08s">
+        <p class="plate-cap"><span>DISK LOCATOR</span><span>21:40 UT</span></p>
+        <div class="plate-pad" id="disk-locator"></div>
+      </div>
+      <ul class="ar-list" id="ar-list" aria-label="Active region log"></ul>
+    </div>
+  </section>
+
+  <!-- ============ AURORA ============ -->
+  <section class="wrap" id="aurora">
+    <header class="sec-head rv">
+      <p class="eyebrow"><span class="inst">KESTREL-L1</span> SOLAR-WIND MONITOR · SUN–EARTH L1 · 1.5 M KM UPSTREAM</p>
+      <h2>Aurora forecast</h2>
+      <p class="lede">
+        A slow ejection from Sunday’s filament eruption arrives late on July 9,
+        riding a fast stream from coronal hole CH-88. Expect <em>Kp 6 — a G2
+        storm — between 03:00 and 09:00 UT</em>, with aurora sagging as far south
+        as 52° magnetic latitude.
+      </p>
+    </header>
+
+    <div class="wind-row rv" style="--d:.06s" role="group" aria-label="Solar wind at L1">
+      <div class="wind-cell">
+        <span class="r-label">WIND SPEED</span>
+        <span class="r-value">482<span class="r-unit">KM/S</span></span>
+      </div>
+      <div class="wind-cell">
+        <span class="r-label">PROTON DENSITY</span>
+        <span class="r-value">6.4<span class="r-unit">P/CM³</span></span>
+      </div>
+      <div class="wind-cell">
+        <span class="r-label">IMF BZ</span>
+        <span class="r-value mag">−3.2<span class="r-unit">NT · SOUTH</span></span>
+      </div>
+    </div>
+
+    <div class="aurora-grid">
+      <div class="plate rv" style="--d:.12s">
+        <p class="plate-cap">
+          <span>PLANETARY K INDEX · 72 H FORECAST</span>
+          <span class="cap-live">PEAK KP 6</span>
+        </p>
+        <div class="chart-host plate-pad" id="kp-chart"></div>
+        <p class="pkt-line plate-pad" style="padding-top:0">
+          KESTREL-L1 TELEMETRY · LAST PACKET <span id="pkt-age">T+037 S</span>
+        </p>
+      </div>
+      <div class="plate rv" style="--d:.2s">
+        <p class="plate-cap"><span>VISIBILITY LADDER</span><span>KP 6 · DARK SKIES</span></p>
+        <ul class="city-list plate-pad" id="city-ladder" aria-label="Aurora visibility by city"></ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ STATION ============ -->
+<footer class="station wrap" id="station">
+    <div class="station-inner">
+      <div class="station-grid">
+        <div class="rv">
+          <h2>The station</h2>
+          <p class="colophon">
+            Two telescopes on the Pu‘u Kea ridge, island of Hawai‘i, 3,014 m above
+            the Pacific inversion layer — and one monitor a million and a half
+            kilometres upstream. First light 21 March 1994. The Sun has not set
+            on this network since.
+          </p>
+        </div>
+        <ul class="instruments rv" style="--d:.1s" aria-label="Instruments">
+          <li>
+            <span class="i-id">HX-1</span>
+            <span class="i-name">Grazing-incidence X-ray photometer</span>
+            <span class="i-band">0.1–0.8 NM · 1 S CADENCE</span>
+          </li>
+          <li>
+            <span class="i-id">WL-3</span>
+            <span class="i-name">White-light heliograph</span>
+            <span class="i-band">550 NM · 4096² · 15 S CADENCE</span>
+          </li>
+          <li>
+            <span class="i-id">MAG-4</span>
+            <span class="i-name">Vector magnetograph</span>
+            <span class="i-band">FE I 617.3 NM · 90 S CADENCE</span>
+          </li>
+          <li>
+            <span class="i-id">KESTREL-L1</span>
+            <span class="i-name">Solar-wind monitor, Sun–Earth L1</span>
+            <span class="i-band">PLASMA + IMF · 60 S CADENCE</span>
+          </li>
+        </ul>
+      </div>
+      <div class="station-foot rv" style="--d:.16s">
+        <span class="truth">HELIOSCOPE IS A FICTIONAL OBSERVATORY. THE NUMBERS ARE SYNTHETIC · THE PHYSICS IS HONEST · <b>THE SUN IS REAL</b></span>
+        <span>RENDERED LIVE IN WEBGL · NO PHOTOGRAPHS · BUILT BY CLAUDE</span>
+      </div>
+    </div>
+</footer>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

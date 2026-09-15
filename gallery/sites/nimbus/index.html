@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NIMBUS — A Spotter's Atlas of Clouds</title>
+<meta name="description" content="The field atlas of the Idle Sky Society: five cloud genera rendered live in their own correctly-lit skies, while a whole day passes as you scroll.">
+<meta property="og:title" content="NIMBUS — A Spotter's Atlas of Clouds">
+<meta property="og:description" content="Five living plates. One scrolled day. The field atlas of the Idle Sky Society, rendered from arithmetic and lit by a scrolled sun.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#E9E2E2">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232F7CB6'/%3E%3Cpath d='M18 42a8 8 0 1 1 2.2-15.7 11 11 0 0 1 21-1.3A9 9 0 1 1 45 42z' fill='%23F6F7F4'/%3E%3Ccircle cx='50' cy='17' r='5' fill='%23A83328'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/Newsreader-06.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Newsreader-03.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/CourierPrime-04.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/Newsreader.css">
+<link rel="stylesheet" href="fonts/CourierPrime.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body id="top">
+
+<header class="masthead">
+  <p class="masthead-soc"><span class="soc-name">The Idle Sky Society</span> <span class="soc-est">· founded 1957, Firle Beacon, Sussex</span></p>
+  <nav class="masthead-nav mono" aria-label="Atlas contents">
+    <a href="#manifesto">Manifesto</a>
+    <a href="#plates">The Plates</a>
+    <a href="#log">Spotter's Log</a>
+  </nav>
+</header>
+
+<div class="instrument mono" aria-hidden="true">
+  <span class="inst-label">LOCAL SKY TIME</span>
+  <span class="inst-time" id="instTime">05:31</span>
+  <span class="inst-sep">·</span>
+  <span class="inst-label">SUN</span>
+  <span class="inst-sun" id="instSun">−5.7°</span>
+</div>
+
+<main>
+
+  <!-- ================= FRONTISPIECE ================= -->
+  <section class="hero" aria-label="Frontispiece">
+    <div class="hero-frame">
+      <div class="sky sky--hero" data-genus="hero" data-seed="11">
+        <canvas aria-hidden="true"></canvas>
+      </div>
+      <div class="hero-text">
+        <p class="hero-eyebrow mono">FIELD ATLAS NO. 7 · PLATES I–V · RENDERED LIVE, NOT PHOTOGRAPHED</p>
+        <h1 class="hero-title">NIMBUS</h1>
+        <p class="hero-sub">A spotter&rsquo;s atlas of clouds</p>
+        <p class="hero-line">The day begins now — it is <span id="heroClock">05:31</span> on the page — <br class="hero-br">and it will be over by the time you reach the footer.</p>
+      </div>
+      <p class="hero-hint mono" aria-hidden="true">SCROLL TO RAISE THE SUN <span class="hint-arrow">↓</span></p>
+    </div>
+    <p class="fig-caption mono">FRONTISPIECE — THE SKY BEFORE SUNRISE, HELD AT FIRST LIGHT UNTIL YOU MOVE.</p>
+  </section>
+
+  <!-- ================= MANIFESTO ================= -->
+  <section class="manifesto" id="manifesto">
+    <header class="section-head reveal">
+      <p class="eyebrow mono">ADOPTED ON THE GRASS · 14 JUNE 1957 · AMENDED ONCE (1974), AFTER AN INCIDENT WITH AN UMBRELLA</p>
+      <h2>The Manifesto</h2>
+    </header>
+    <ol class="articles">
+      <li class="article reveal"><span class="art-num" aria-hidden="true">i.</span>
+        <p>We hold the sky to be the largest free exhibition on Earth — open every hour of every day, admission nothing, the entire collection replaced by weather.</p></li>
+      <li class="article reveal"><span class="art-num" aria-hidden="true">ii.</span>
+        <p>We pledge to fight blue-sky thinking wherever we find it. A cloudless sky is a gallery between shows, and we will say so in meetings.</p></li>
+      <li class="article reveal"><span class="art-num" aria-hidden="true">iii.</span>
+        <p>We refuse to apologise for standing in public with our heads back and our mouths slightly open. This is the correct posture for the work.</p></li>
+      <li class="article reveal"><span class="art-num" aria-hidden="true">iv.</span>
+        <p>We maintain that a person lying on a hill, naming what floats by, is not wasting an afternoon. The afternoon is being spent exactly as issued.</p></li>
+      <li class="article reveal"><span class="art-num" aria-hidden="true">v.</span>
+        <p>Rain is a cloud keeping its promise, and members will treat it with corresponding respect. Umbrellas are permitted. Complaints are not.</p></li>
+    </ol>
+    <p class="manifesto-tail reveal">Membership stands at <strong>12,404</strong> — plus everyone who has ever pointed.</p>
+  </section>
+
+  <!-- ================= THE PLATES ================= -->
+  <section class="atlas" id="plates">
+    <header class="section-head reveal">
+      <p class="eyebrow mono">FIVE GENERA · ASCENDING ORDER OF ALTITUDE</p>
+      <h2>The Plates</h2>
+      <p class="section-note">Ascending altitude is also, as it happens, the order of the day: low cloud belongs to morning, and high ice keeps the last light. The atlas simply follows the sun.</p>
+    </header>
+
+    <!-- PLATE I — STRATUS -->
+    <article class="plate" id="plate-i" data-best="6.2">
+      <header class="plate-head reveal">
+        <span class="pin" aria-hidden="true">I</span>
+        <div class="plate-head-text">
+          <p class="eyebrow mono">PLATE I · THE LOW DECK · 0–600 M · BEST VIEWED 06:12</p>
+          <h3 class="plate-name">Stratus <em class="species">nebulosus</em></h3>
+          <p class="etym">From the Latin <em>sternere</em>, to spread or strew: a cloud laid flat, past tense. The species name <em>nebulosus</em> — &ldquo;full of mist&rdquo; — is the politest thing anyone has said about it.</p>
+        </div>
+      </header>
+      <figure class="specimen">
+        <div class="ruler mono" data-band="0,0.6" aria-hidden="true"></div>
+        <div class="sky" data-genus="stratus" data-seed="31">
+          <canvas aria-hidden="true"></canvas>
+        </div>
+        <figcaption class="fig-caption mono">FIG. 1 — STRATUS NEBULOSUS, 8 OKTAS, DRAWN LIVE. IT WILL NOT DO ANYTHING. KEEP WATCHING.</figcaption>
+      </figure>
+      <div class="reading">
+        <div class="datacard mono reveal">
+          <div class="row"><span class="k">GENUS</span><span class="dots"></span><span class="v">STRATUS</span></div>
+          <div class="row"><span class="k">SPECIES</span><span class="dots"></span><span class="v">NEBULOSUS</span></div>
+          <div class="row"><span class="k">BAND</span><span class="dots"></span><span class="v">0–0.6 KM AGL</span></div>
+          <div class="row"><span class="k">BUILT OF</span><span class="dots"></span><span class="v">WATER, 0.3 G/M³</span></div>
+          <div class="row"><span class="k">COVER</span><span class="dots"></span><span class="v">8/8 OKTAS</span></div>
+          <div class="row"><span class="k">YIELDS</span><span class="dots"></span><span class="v">DRIZZLE, AT MOST</span></div>
+        </div>
+        <div class="col reveal">
+          <h4 class="colhead mono">FOLKLORE</h4>
+          <p>Hill shepherds promise that &ldquo;a grey lid at dawn lifts by dinner.&rdquo; The Society has tested the claim on 214 mornings since 1961. It holds roughly half the time — which, for weather folklore, is an outstanding record.</p>
+        </div>
+        <div class="col reveal">
+          <h4 class="colhead mono">SCIENCE</h4>
+          <p>Stratus forms when a shallow, stable layer of moist air cools to its dew point from below. It is fog that has managed to clear its feet from the ground, and it is no more ambitious than that: no convection, no edges, no drama.</p>
+        </div>
+      </div>
+      <p class="spotters-note reveal"><em>Spotter&rsquo;s note — this plate is complete. Nothing has been omitted. Stratus is the sky declining to perform: one cloud, wall to wall, all morning. The Society admires the honesty of it.</em></p>
+    </article>
+
+    <!-- PLATE II — CUMULUS -->
+    <article class="plate" id="plate-ii" data-best="9.68">
+      <header class="plate-head reveal">
+        <span class="pin" aria-hidden="true">II</span>
+        <div class="plate-head-text">
+          <p class="eyebrow mono">PLATE II · FAIR-WEATHER HEAPS · 600–2 000 M · BEST VIEWED 09:41</p>
+          <h3 class="plate-name">Cumulus <em class="species">humilis</em></h3>
+          <p class="etym">From <em>cumulus</em>, a heap, and <em>humilis</em>, humble — low to the ground, sharing a root with &ldquo;humility&rdquo; and &ldquo;humus.&rdquo; A modest pile of morning.</p>
+        </div>
+      </header>
+      <figure class="specimen">
+        <div class="ruler mono" data-band="0.6,2" aria-hidden="true"></div>
+        <div class="sky" data-genus="cumulus" data-seed="7">
+          <canvas aria-hidden="true"></canvas>
+        </div>
+        <figcaption class="fig-caption mono">FIG. 2 — A STREET OF HUMILIS. EACH PUFF EVAPORATES AND IS REISSUED WHILE YOU READ.</figcaption>
+      </figure>
+      <div class="reading">
+        <div class="datacard mono reveal">
+          <div class="row"><span class="k">GENUS</span><span class="dots"></span><span class="v">CUMULUS</span></div>
+          <div class="row"><span class="k">SPECIES</span><span class="dots"></span><span class="v">HUMILIS</span></div>
+          <div class="row"><span class="k">BAND</span><span class="dots"></span><span class="v">0.6–2.0 KM AGL</span></div>
+          <div class="row"><span class="k">BUILT OF</span><span class="dots"></span><span class="v">WATER DROPLETS</span></div>
+          <div class="row"><span class="k">LIFESPAN</span><span class="dots"></span><span class="v">≈ 15 MIN / PUFF</span></div>
+          <div class="row"><span class="k">YIELDS</span><span class="dots"></span><span class="v">SHADE, BRIEFLY</span></div>
+        </div>
+        <div class="col reveal">
+          <h4 class="colhead mono">FOLKLORE</h4>
+          <p>&ldquo;Cumulus at nine, the hay will be fine.&rdquo; The fair-weather heap is the countryman&rsquo;s barometer set permanently to REASSURING: so long as each cloud stays wider than it is tall, the picnic proceeds.</p>
+        </div>
+        <div class="col reveal">
+          <h4 class="colhead mono">SCIENCE</h4>
+          <p>Each puff is the flag on top of an invisible thermal — a column of warm air rising off a sunlit field. The cloud is not the engine; it is the exhaust. Watch one for fifteen minutes: it frays, evaporates, and an entirely new cloud is issued in its place. What persists is the field below.</p>
+        </div>
+      </div>
+      <p class="spotters-note reveal"><em>Spotter&rsquo;s note — the puffs in this plate are on the fifteen-minute plan as well. No cloud you are looking at now will outlast the chapter.</em></p>
+    </article>
+
+    <!-- PLATE III — CUMULONIMBUS -->
+    <article class="plate plate--cb" id="plate-iii" data-best="15.43">
+      <header class="plate-head reveal">
+        <span class="pin" aria-hidden="true">III</span>
+        <div class="plate-head-text">
+          <p class="eyebrow mono">PLATE III · THE TOWER · 500–12 800 M · BEST VIEWED 15:26</p>
+          <h3 class="plate-name">Cumulonimbus <em class="species">capillatus incus</em></h3>
+          <p class="etym"><em>Cumulus</em> again — the heap — now with <em>nimbus</em>, rain, bolted on. <em>Incus</em> is the anvil, and the blacksmith connotation is fully earned.</p>
+        </div>
+      </header>
+      <figure class="specimen">
+        <div class="ruler mono" data-band="0.5,12.8" aria-hidden="true"></div>
+        <div class="sky sky--tall" data-genus="cumulonimbus" data-seed="3">
+          <canvas aria-hidden="true"></canvas>
+        </div>
+        <figcaption class="fig-caption mono">FIG. 3 — CB INCUS, LIVE. THE FLICKER IS INTERNAL LIGHTNING. WAIT FOR IT.</figcaption>
+      </figure>
+      <div class="reading">
+        <div class="datacard mono reveal">
+          <div class="row"><span class="k">GENUS</span><span class="dots"></span><span class="v">CUMULONIMBUS</span></div>
+          <div class="row"><span class="k">SUPPL.</span><span class="dots"></span><span class="v">CAPILLATUS INCUS</span></div>
+          <div class="row"><span class="k">BAND</span><span class="dots"></span><span class="v">0.5–12.8 KM</span></div>
+          <div class="row"><span class="k">UPDRAUGHT</span><span class="dots"></span><span class="v">25 M/S, CLIMBING</span></div>
+          <div class="row"><span class="k">CHARGE</span><span class="dots"></span><span class="v">GRAUPEL ON ICE</span></div>
+          <div class="row"><span class="k">YIELDS</span><span class="dots"></span><span class="v">EVERYTHING AT ONCE</span></div>
+          <div class="row row--warn"><span class="v">ADVISORY: OBSERVE FROM A HILL YOU ARE PREPARED TO LEAVE.</span></div>
+        </div>
+        <div class="col reveal">
+          <h4 class="colhead mono">FOLKLORE</h4>
+          <p>Count the seconds between flash and thunder, divide by three: kilometres to the storm. Old, simple, and correct — sound covers a kilometre every three seconds, and folklore occasionally files an accurate report.</p>
+        </div>
+        <div class="col reveal">
+          <h4 class="colhead mono">SCIENCE</h4>
+          <p>The only cloud that occupies the whole ruler. A tower of rising air punches upward until it strikes the tropopause — the ceiling of weather — and, unable to go higher, spreads sideways into the anvil: a storm drawing its own roof. Inside, ice and graupel collide until the charge has nowhere left to go. Then it goes.</p>
+        </div>
+      </div>
+      <p class="spotters-note reveal"><em>Spotter&rsquo;s note — this specimen is live and keeps its own schedule. The Society does not hurry it, and neither will you.</em></p>
+    </article>
+
+    <!-- PLATE IV — LENTICULARIS -->
+    <article class="plate" id="plate-iv" data-best="19.05">
+      <header class="plate-head reveal">
+        <span class="pin" aria-hidden="true">IV</span>
+        <div class="plate-head-text">
+          <p class="eyebrow mono">PLATE IV · THE STANDING WAVE · 2 000–7 000 M · BEST VIEWED 19:03</p>
+          <h3 class="plate-name">Altocumulus <em class="species">lenticularis</em></h3>
+          <p class="etym">From <em>lenticula</em>, a little lentil — lens-shaped. The French call it <em>pile d&rsquo;assiettes</em>, a stack of plates. Everyone else calls the Society to report a saucer.</p>
+        </div>
+      </header>
+      <figure class="specimen">
+        <div class="ruler mono" data-band="2,7" aria-hidden="true"></div>
+        <div class="sky" data-genus="lenticularis" data-seed="19">
+          <canvas aria-hidden="true"></canvas>
+        </div>
+        <figcaption class="fig-caption mono">FIG. 4 — LENTICULARIS OVER A RIDGE. THE WIND IS MOVING AT 80 KM/H. THE CLOUD IS NOT.</figcaption>
+      </figure>
+      <div class="reading">
+        <div class="datacard mono reveal">
+          <div class="row"><span class="k">GENUS</span><span class="dots"></span><span class="v">ALTOCUMULUS</span></div>
+          <div class="row"><span class="k">SPECIES</span><span class="dots"></span><span class="v">LENTICULARIS</span></div>
+          <div class="row"><span class="k">BAND</span><span class="dots"></span><span class="v">2.0–7.0 KM AGL</span></div>
+          <div class="row"><span class="k">WIND THROUGH</span><span class="dots"></span><span class="v">80 KM/H</span></div>
+          <div class="row"><span class="k">MOTION</span><span class="dots"></span><span class="v">NONE. SEE SCIENCE</span></div>
+          <div class="row"><span class="k">SAUCER FILE</span><span class="dots"></span><span class="v">61 REPORTS SINCE 1957</span></div>
+        </div>
+        <div class="col reveal">
+          <h4 class="colhead mono">FOLKLORE</h4>
+          <p>The Society keeps a file, four fingers thick, of flying-saucer sightings later resolved to lenticularis. We answer every letter the same way: what you saw was better than a spacecraft, and it was made of air.</p>
+        </div>
+        <div class="col reveal">
+          <h4 class="colhead mono">SCIENCE</h4>
+          <p>Downwind of a ridge, the airstream bounces the way water does past a stone. Where each wave crests, moisture condenses; where it dips, the cloud dissolves. The wind pours through at eighty kilometres an hour while the shape holds perfectly still — it is not an object at all, but a place where the sky keeps happening.</p>
+        </div>
+      </div>
+      <p class="spotters-note reveal"><em>Spotter&rsquo;s note — a stationary cloud in a moving sky. If it is hovering, it is ours. If it lands, telephone somebody else.</em></p>
+    </article>
+
+    <!-- PLATE V — CIRRUS -->
+    <article class="plate" id="plate-v" data-best="21.8">
+      <header class="plate-head reveal">
+        <span class="pin" aria-hidden="true">V</span>
+        <div class="plate-head-text">
+          <p class="eyebrow mono">PLATE V · MARES&rsquo; TAILS · 6 000–13 000 M · BEST VIEWED 21:48</p>
+          <h3 class="plate-name">Cirrus <em class="species">uncinus</em></h3>
+          <p class="etym"><em>Cirrus</em> is a curl of hair; <em>uncinus</em>, hooked. Sailors called the comma-shaped streaks mares&rsquo; tails, and read them the way we read headlines.</p>
+        </div>
+      </header>
+      <figure class="specimen">
+        <div class="ruler mono" data-band="6,13" aria-hidden="true"></div>
+        <div class="sky" data-genus="cirrus" data-seed="23">
+          <canvas aria-hidden="true"></canvas>
+        </div>
+        <figcaption class="fig-caption mono">FIG. 5 — CIRRUS UNCINUS AT DUSK. YOU ARE WATCHING ICE FALL, SIX MILES UP.</figcaption>
+      </figure>
+      <div class="reading">
+        <div class="datacard mono reveal">
+          <div class="row"><span class="k">GENUS</span><span class="dots"></span><span class="v">CIRRUS</span></div>
+          <div class="row"><span class="k">SPECIES</span><span class="dots"></span><span class="v">UNCINUS</span></div>
+          <div class="row"><span class="k">BAND</span><span class="dots"></span><span class="v">6–13 KM AGL</span></div>
+          <div class="row"><span class="k">BUILT OF</span><span class="dots"></span><span class="v">ICE, FALLING</span></div>
+          <div class="row"><span class="k">TEMPERATURE</span><span class="dots"></span><span class="v">−40 TO −60 °C</span></div>
+          <div class="row"><span class="k">WARM FRONT</span><span class="dots"></span><span class="v">24–36 H BEHIND</span></div>
+        </div>
+        <div class="col reveal">
+          <h4 class="colhead mono">FOLKLORE</h4>
+          <p>&ldquo;Mackerel sky and mares&rsquo; tails make tall ships carry low sails.&rdquo; Cirrus streaming ahead of a warm front really does promise rain within a day or two. The proverb verifies about two times in three, and the Society has the ledgers.</p>
+        </div>
+        <div class="col reveal">
+          <h4 class="colhead mono">SCIENCE</h4>
+          <p>Each streak is a fall of ice: crystals dropping from a high tuft into slower wind below, combed sideways into hooks by the shear. Six kilometres of altitude buys half an hour of extra sunlight — which is why cirrus burns pink long after the ground has gone grey. It is the last cloud to say goodnight.</p>
+        </div>
+      </div>
+      <p class="spotters-note reveal"><em>Spotter&rsquo;s note — when this plate goes dark, the day is over. The Society thanks you for scrolling it kindly.</em></p>
+    </article>
+  </section>
+
+  <!-- ================= SPOTTER'S LOG ================= -->
+  <section class="log" id="log">
+    <header class="section-head reveal">
+      <p class="eyebrow mono">TRANSCRIBED FROM THE HILL BOOK · SPRING 2026</p>
+      <h2>The Spotter&rsquo;s Log</h2>
+      <p class="section-note">Members are reminded, again, that &ldquo;magnificent&rdquo; is not a species.</p>
+    </header>
+    <div class="log-grid">
+      <article class="card reveal">
+        <p class="card-head"><span class="card-no">NO. 1198</span> 9 APR 2026 · 19:12 · PEN Y FAN</p>
+        <p class="card-body">Lenticularis, three plates high, edges like machined brass. A visitor asked whether it was &ldquo;them.&rdquo; Told her it was better than that.</p>
+        <p class="card-sig">— R.A.V.</p>
+      </article>
+      <article class="card reveal">
+        <p class="card-head"><span class="card-no">NO. 1204</span> 14 APR 2026 · 07:20 · FIRLE BEACON</p>
+        <p class="card-body">Stratus, 8 oktas, colour of dishwater. Stood inside it for an hour. Magnificent.</p>
+        <p class="card-sig">— E.H. <span class="card-stamp">MAGNIFICENT IS NOT A SPECIES —ED.</span></p>
+      </article>
+      <article class="card reveal">
+        <p class="card-head"><span class="card-no">NO. 1211</span> 2 MAY 2026 · 15:40 · WAST WATER</p>
+        <p class="card-body">Cb incus to the south-west, anvil overshooting. Counted six seconds to the thunder: two kilometres. Left the hill at a dignified pace.</p>
+        <p class="card-sig">— M.O.</p>
+      </article>
+      <article class="card reveal">
+        <p class="card-head"><span class="card-no">NO. 1217</span> 11 MAY 2026 · 09:55 · LONG MYND</p>
+        <p class="card-body">Cumulus humilis, a full street of them, bases flat as shelf brackets. Timed one puff, birth to nothing: fourteen minutes. Claim verified.</p>
+        <p class="card-sig">— S.K.</p>
+      </article>
+      <article class="card reveal">
+        <p class="card-head"><span class="card-no">NO. 1222</span> 19 MAY 2026 · 13:05 · DUNSTABLE DOWNS</p>
+        <p class="card-body">Nothing. Not one cloud, horizon to horizon. Logged under protest; see Article ii.</p>
+        <p class="card-sig">— T.F.</p>
+      </article>
+      <article class="card reveal">
+        <p class="card-head"><span class="card-no">NO. 1226</span> 30 MAY 2026 · 21:55 · DUNGENESS</p>
+        <p class="card-body">Cirrus uncinus catching the last light, pink on slate, the whole western sky. Applauded, quietly.</p>
+        <p class="card-sig">— E.H.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= FIELD METHOD ================= -->
+  <section class="method" id="method">
+    <header class="section-head reveal">
+      <p class="eyebrow mono">THREE INSTRUMENTS, ALL FREE</p>
+      <h2>Field Method</h2>
+    </header>
+    <div class="method-grid">
+      <div class="method-item reveal">
+        <h4 class="colhead mono">THE OKTA</h4>
+        <p>Sky cover is counted in eighths. Lie back, divide the dome, count the eighths with cloud in them. Zero is a clear sky — see Article ii for the Society&rsquo;s position — and eight is a stratus morning, countable in one glance.</p>
+        <div class="oktas" role="img" aria-label="Okta symbols from zero to eight eighths">
+          <span class="okta" style="--f:0"><i></i>0</span>
+          <span class="okta" style="--f:0.125"><i></i>1</span>
+          <span class="okta" style="--f:0.25"><i></i>2</span>
+          <span class="okta" style="--f:0.375"><i></i>3</span>
+          <span class="okta" style="--f:0.5"><i></i>4</span>
+          <span class="okta" style="--f:0.625"><i></i>5</span>
+          <span class="okta" style="--f:0.75"><i></i>6</span>
+          <span class="okta" style="--f:0.875"><i></i>7</span>
+          <span class="okta" style="--f:1"><i></i>8</span>
+        </div>
+      </div>
+      <div class="method-item reveal">
+        <h4 class="colhead mono">THE FIST</h4>
+        <p>A fist held at arm&rsquo;s length spans ten degrees of sky, on anyone&rsquo;s arm — the anatomy scales with the owner. Horizon to zenith is nine fists, and the sun sinks one fist every forty minutes. Plan the walk home accordingly.</p>
+      </div>
+      <div class="method-item reveal">
+        <h4 class="colhead mono">THE THUNDER COUNT</h4>
+        <p>Flash, then count the seconds to the thunder and divide by three: kilometres to the storm. If the answer falls twice in a row, the storm is coming to you. See Plate III, advisory.</p>
+      </div>
+    </div>
+    <p class="method-tail reveal mono">THE SOCIETY&rsquo;S ONLY EQUIPMENT REQUIREMENT IS A HORIZON.</p>
+  </section>
+
+</main>
+
+<footer class="colophon">
+  <p class="colo-serif">NIMBUS is the field atlas of the Idle Sky Society — founded 1957 on Firle Beacon, Sussex; meetings continue wherever two members and one cloud are present.</p>
+  <p class="colo-serif">Every sky on this page is rendered live from arithmetic. No photographs were taken, because none were needed: the plates remain on permanent display, overhead.</p>
+  <p class="colo-serif">Membership is free and, strictly speaking, involuntary. If you have ever pointed at the sky, you are already enrolled.</p>
+  <p class="colo-mono mono">ATLAS NO. 7 · REVISED EDITION · SET IN NEWSREADER &amp; COURIER PRIME · PRINTED NIGHTLY BY THE SUNSET</p>
+  <a class="dawn-link mono" href="#top" id="dawnLink">⟲ RETURN TO DAWN</a>
+</footer>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

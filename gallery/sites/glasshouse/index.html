@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Wintergarden — Victorian Conservatory &amp; Rare Plant Society</title>
+<meta name="description" content="The Wrenfold Society of Rare &amp; Tender Plants, est. 1873. Four glass houses, nine hundred species, one titan arum about to bloom. A garden that grows while you read.">
+<meta property="og:title" content="The Wintergarden">
+<meta property="og:description" content="Victorian conservatory &amp; rare plant society, est. 1873. The garden grows while you read.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#F1F5EC">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23F1F5EC'/%3E%3Cpath d='M32 56 C32 40 32 32 32 26 C32 15 41 11 47 16 C53 21 50 31 43 30 C37 29 36 23 40 21' fill='none' stroke='%23477952' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M32 44 C27 42 24 38 24 33 M32 36 C37 34 39 31 40 28' fill='none' stroke='%23477952' stroke-width='4' stroke-linecap='round' opacity='.55'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/Fraunces-06.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Karla-04.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/Fraunces.css">
+<link rel="stylesheet" href="fonts/Karla.css">
+<link rel="stylesheet" href="fonts/SplineSansMono.css">
+<link rel="stylesheet" href="css/style.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head">
+  <a class="brand" href="#top">
+    <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><path d="M4 34 H36 M6 34 V20 A14 14 0 0 1 34 20 V34 M20 6.5 V34 M11 34 V15.5 M29 34 V15.5 M6.5 24 H33.5 M20 3.5 V6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    <span class="brand-name">The Wintergarden</span>
+    <span class="brand-est">est. 1873</span>
+  </a>
+  <nav class="site-nav" aria-label="Sections">
+    <a href="#collection">Collection</a>
+    <a href="#houses">Houses</a>
+    <a href="#propagator">The Propagator</a>
+    <a href="#visit">Visit</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- ======================= HERO ======================= -->
+  <section class="hero" id="top" aria-label="The Wintergarden Palm House">
+    <p class="hero-eyebrow">Wrenfold Society of Rare &amp; Tender Plants · founded 1873</p>
+    <div class="hero-stage" id="hero-stage" aria-hidden="true">
+      <div class="stage-sky"></div>
+      <div id="palmhouse-svg"></div>
+      <canvas id="hero-garden"></canvas>
+    </div>
+    <div class="hero-text">
+      <h1 class="hero-title">The <span class="nb">Wintergarden</span></h1>
+      <p class="hero-lede">Four houses of glass, one boiler that has never been allowed to go out, and nine hundred species with no business surviving an English winter. Members and the plant-curious welcome. Umbrellas unnecessary.</p>
+      <div class="hygro" role="group" aria-label="Palm House conditions">
+        <span class="hygro-item">PALM HOUSE</span>
+        <span class="hygro-sep" aria-hidden="true">·</span>
+        <span class="hygro-item"><span id="ro-temp">27.3</span>°C</span>
+        <span class="hygro-sep" aria-hidden="true">·</span>
+        <span class="hygro-item">RH <span id="ro-rh">91</span>%</span>
+        <span class="hygro-sep" aria-hidden="true">·</span>
+        <span class="hygro-item">GLASS: <span id="ro-glass">BEADING</span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= COLLECTION ======================= -->
+  <section class="collection" id="collection">
+    <div class="threshold" aria-hidden="true"><svg viewBox="0 0 600 28" preserveAspectRatio="xMidYMid meet"><path d="M0 14 H262 M338 14 H600" stroke="currentColor" stroke-width="1"/><path d="M0 19 H246 M354 19 H600" stroke="currentColor" stroke-width="1" opacity=".45"/><path d="M300 4 L308 14 L300 24 L292 14 Z M300 9 V19 M274 14 H286 M314 14 H326" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></div>
+    <header class="section-head reveal">
+      <p class="kicker">The Collection</p>
+      <h2>Star specimens</h2>
+      <p class="section-lede">Every plant in the collection carries an accession number, a provenance, and a story about the journey here. These three draw the crowds — and one of them is about to do something it does once a decade.</p>
+    </header>
+
+    <article class="plate reveal" id="titan-arum" aria-labelledby="titan-h">
+      <div class="plate-art plate-art--arum">
+        <canvas class="specimen-canvas" data-plant="arum" aria-hidden="true"></canvas>
+        <p class="plate-caption" aria-hidden="true">Fig. 1 — drawn from life, this morning</p>
+      </div>
+      <div class="plate-body">
+        <p class="acc-no">Acc. № 1889.117 · Palm House, centre bed</p>
+        <h3 id="titan-h" class="binomial">Amorphophallus titanum</h3>
+        <p class="common-name">the titan arum — “the Wrenfold Giant”</p>
+        <p class="provenance">Collected as a corm the size of a footstool, Lampung, Sumatra, 1889; shipped home in a tea chest stencilled <em>DO NOT WATER</em>.</p>
+        <div class="countdown" role="group" aria-label="Bloom countdown">
+          <span class="countdown-num" id="bloom-days">—</span>
+          <span class="countdown-label"><span id="bloom-phrase">days until predicted bloom</span><br><em>vespertine · one night only · members telephoned in alphabetical order</em></span>
+        </div>
+        <p>Our seventh bloom in one hundred and thirty-seven years. The spathe opens after dark and smells, famously, of things best left undescribed; the society keeps late hours for the occasion. The queue starts forming when the spadix passes 36 degrees — it heats itself, the show-off.</p>
+        <ul class="chips" aria-label="Measurements">
+          <li>HEIGHT 2.67 M</li><li>GAINING 11 CM / DAY</li><li>SPADIX 36.1 °C</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="plate plate--flip reveal" id="victoria" aria-labelledby="victoria-h">
+      <div class="plate-art plate-art--lily">
+        <canvas class="specimen-canvas" data-plant="victoria" aria-hidden="true"></canvas>
+        <p class="plate-caption" aria-hidden="true">Fig. 2 — the pond, seen from the gallery</p>
+      </div>
+      <div class="plate-body">
+        <p class="acc-no">Acc. № 1877.002 · Waterlily House, the round pond</p>
+        <h3 id="victoria-h" class="binomial">Victoria amazonica</h3>
+        <p class="common-name">the giant waterlily</p>
+        <p class="provenance">Seed sent from the Rupununi River, Guyana, 1877, packed in damp moss inside a sea captain’s snuff tin.</p>
+        <p>The pads reach 2.8 metres across and will carry forty kilograms if you spread the load — a claim tested annually at the Members’ Fête with a folding chair, a borrowed child, and no incidents since 1962. The flower opens white for one night, imprisons its beetle pollinators until morning, blushes crimson, and lets them go without apology.</p>
+        <ul class="chips" aria-label="Measurements">
+          <li>PAD Ø 2.8 M</li><li>BEARS 40 KG</li><li>FLOWER: TWO NIGHTS, TWO COLOURS</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="plate reveal" id="ghost-orchid" aria-labelledby="ghost-h">
+      <div class="plate-art plate-art--orchid">
+        <canvas class="specimen-canvas" data-plant="orchid" aria-hidden="true"></canvas>
+        <p class="plate-caption" aria-hidden="true">Fig. 3 — location within the case withheld</p>
+      </div>
+      <div class="plate-body">
+        <p class="acc-no">Acc. № 1902.044 · Orchid Case, far end</p>
+        <h3 id="ghost-h" class="binomial">Dendrophylax lindenii</h3>
+        <p class="common-name">the ghost orchid</p>
+        <p class="provenance">Fakahatchee Strand, Florida, 1902; three crossings failed before one arrived alive, lashed to a slab of pond-apple bark.</p>
+        <p>No leaves. No visible means of support. The entire plant is a handful of grey roots that photosynthesise on their own, and once a year — if the fog is right — it produces a white flower that appears to hover in mid-air. We keep it behind glass within glass, and we do not tell visitors exactly where.</p>
+        <ul class="chips" aria-label="Characteristics">
+          <li>LEAVES: NONE</li><li>ROOTS: PHOTOSYNTHETIC</li><li>LOCATION: UNDISCLOSED</li>
+        </ul>
+      </div>
+    </article>
+  </section>
+
+  <!-- ======================= HOUSES ======================= -->
+  <section class="houses" id="houses">
+    <div class="threshold" aria-hidden="true"><svg viewBox="0 0 600 28"><path d="M0 14 H262 M338 14 H600" stroke="currentColor" stroke-width="1"/><path d="M0 19 H246 M354 19 H600" stroke="currentColor" stroke-width="1" opacity=".45"/><path d="M300 4 L308 14 L300 24 L292 14 Z M300 9 V19 M274 14 H286 M314 14 H326" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></div>
+    <header class="section-head reveal">
+      <p class="kicker">The Houses</p>
+      <h2>Climate ledger</h2>
+      <p class="section-lede">Readings taken at eight o’clock this morning by the Keeper of Glass. The boiler — <em>Prudence</em>, installed 1873 — has not been out since the Coronation.</p>
+    </header>
+    <div class="ledger-wrap reveal">
+      <table class="ledger">
+        <thead>
+          <tr><th scope="col">House</th><th scope="col">Air</th><th scope="col">Humidity</th><th scope="col">Glazing</th><th scope="col">Notable residents</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Palm House</td><td>27 °C</td><td>91 %</td><td>16,000 panes</td><td>The titan arum; twelve palms older than the society</td></tr>
+          <tr><td>Waterlily House</td><td>29 °C</td><td>85 %</td><td>round pond, 9 m</td><td><i>Victoria amazonica</i>; water held at 28 °C</td></tr>
+          <tr><td>The Fernery</td><td>18 °C</td><td>96 %</td><td>north light only</td><td>214 fern species; the dripping wall</td></tr>
+          <tr><td>Orchid Case</td><td>24 °C</td><td>82 %</td><td>double-glazed, 1911</td><td>The ghost orchid; a vanilla vine that refuses to flower</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ======================= PROPAGATOR ======================= -->
+  <section class="propagator" id="propagator">
+    <div class="threshold" aria-hidden="true"><svg viewBox="0 0 600 28"><path d="M0 14 H262 M338 14 H600" stroke="currentColor" stroke-width="1"/><path d="M0 19 H246 M354 19 H600" stroke="currentColor" stroke-width="1" opacity=".45"/><path d="M300 4 L308 14 L300 24 L292 14 Z M300 9 V19 M274 14 H286 M314 14 H326" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></div>
+    <header class="section-head reveal">
+      <p class="kicker">The Propagator</p>
+      <h2>Notes from the potting bench</h2>
+      <p class="section-lede">Vol. CLIII · № 7 · July 2026 · circulated to members by post, second-class, as tradition demands</p>
+    </header>
+    <div class="notes">
+      <article class="note reveal">
+        <p class="note-date">4 July 2026</p>
+        <h3>On the arum, again</h3>
+        <p><span class="dropcap">T</span>he spadix has passed two and a half metres and the betting book in the potting shed now runs to four pages. Mr Osei has the 26th; I have the 24th, and shall say no more. When it opens we will telephone the membership in alphabetical order, as ever — so if your name is Zysman, I apologise in advance.</p>
+        <p class="note-sig">— Edith Marchbank, Head Keeper</p>
+      </article>
+      <article class="note reveal">
+        <p class="note-date">21 June 2026</p>
+        <h3>On fern spore, and patience</h3>
+        <p>The <i>Osmunda</i> spore sown in March has germinated: a green film on the pan no wider than a thumbprint. In two years it will be a fern; in five, a specimen. Members asking after “quick results” are directed to the nasturtiums.</p>
+        <p class="note-sig">— E.M.</p>
+      </article>
+      <article class="note reveal">
+        <p class="note-date">9 June 2026</p>
+        <h3>A caution regarding tendrils</h3>
+        <p>The <i>Passiflora</i> in the Temperate Corridor has taken hold of the barometer again. Nothing that grips with that much confidence should be trusted near instruments. Pruning is Fridays; gloves are in the third drawer; courage is your own affair.</p>
+        <p class="note-sig">— E.M.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ======================= VISIT ======================= -->
+  <section class="visit" id="visit">
+    <div class="threshold" aria-hidden="true"><svg viewBox="0 0 600 28"><path d="M0 14 H262 M338 14 H600" stroke="currentColor" stroke-width="1"/><path d="M0 19 H246 M354 19 H600" stroke="currentColor" stroke-width="1" opacity=".45"/><path d="M300 4 L308 14 L300 24 L292 14 Z M300 9 V19 M274 14 H286 M314 14 H326" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></div>
+    <header class="section-head reveal">
+      <p class="kicker">Visiting</p>
+      <h2>Hours &amp; admission</h2>
+      <p class="section-lede">Palm House Walk, Wrenfold — ten minutes from the station. Follow the warm air.</p>
+    </header>
+    <div class="visit-grid">
+      <div class="visit-col reveal">
+        <h3 class="visit-sub">Hours</h3>
+        <dl class="hours">
+          <div><dt>Monday – Saturday</dt><dd>10.00 – 17.30</dd></div>
+          <div><dt>Sunday</dt><dd>12.00 – 17.00</dd></div>
+          <div><dt>Members’ quiet hours</dt><dd>daily, 8.00 – 10.00</dd></div>
+          <div><dt>Bloom nights</dt><dd>open until 2.00 am</dd></div>
+          <div><dt>Christmas Day</dt><dd>closed — the plants keep one day to themselves</dd></div>
+        </dl>
+        <h3 class="visit-sub">Admission</h3>
+        <dl class="hours">
+          <div><dt>Adults</dt><dd>£9.50</dd></div>
+          <div><dt>Under-twelves</dt><dd>free, noses pressed to the glass encouraged</dd></div>
+          <div><dt>Members</dt><dd>free, always, and first through the door</dd></div>
+        </dl>
+      </div>
+      <div class="visit-col reveal">
+        <div class="member-card" role="group" aria-label="Membership">
+          <div class="card-rule" aria-hidden="true"></div>
+          <p class="card-society">Wrenfold Society of Rare &amp; Tender Plants</p>
+          <p class="card-title">Member’s Ticket</p>
+          <p class="card-no">№ 4,103 · admits one, plus curiosity</p>
+          <ul class="card-benefits">
+            <li>Quiet hours, every morning</li>
+            <li>The bloom-night telephone list</li>
+            <li><em>The Propagator</em>, by post, monthly</li>
+            <li>Six guest passes &amp; the autumn seed exchange</li>
+          </ul>
+          <p class="card-price">Forty-eight pounds the year</p>
+          <a class="btn" href="#visit" id="join-btn"><span>Join the society</span></a>
+          <div class="card-rule" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="foot-inner">
+    <p class="foot-brand">The Wintergarden</p>
+    <p>Wrenfold Society of Rare &amp; Tender Plants · Palm House Walk, Wrenfold · est. 1873</p>
+    <p class="foot-fine">Set in Fraunces, Karla &amp; Spline Sans Mono. Every plant on this page was grown from code — L-systems and turtle graphics, no photographs. Boiler: <em>Prudence</em>, lit 1873; an end date has never been required.</p>
+    <p class="foot-fine" id="foot-growth">The garden you just grew: — </p>
+  </div>
+</footer>
+
+<div class="rail rail--l" aria-hidden="true"><canvas id="rail-l"></canvas></div>
+<div class="rail rail--r" aria-hidden="true"><canvas id="rail-r"></canvas></div>
+<canvas id="condensation" aria-hidden="true"></canvas>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

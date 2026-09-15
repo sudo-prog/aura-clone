@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QUBIT — Institute for Quantum Information</title>
+<meta name="description" content="QUBIT builds error-corrected quantum machines and the theory that keeps them honest. Fluxonium processors, topological matter, entanglement networks — Boulder, Colorado.">
+<meta property="og:title" content="QUBIT — Institute for Quantum Information">
+<meta property="og:description" content="All states at once — until you measure. Error-corrected quantum machines and the theory that keeps them honest.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#F9F9F6">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23F9F9F6'/%3E%3Cpath d='M32 13a19 19 0 0 0 0 38z' fill='%2300A8BE'/%3E%3Cpath d='M32 13a19 19 0 0 1 0 38z' fill='%236633EE'/%3E%3Cline x1='32' y1='6' x2='32' y2='58' stroke='%23F9F9F6' stroke-width='4'/%3E%3C/svg%3E">
+<link rel="preload" href="./fonts/Archivo-06.woff2" as="font" type="font/woff2" crossorigin>
+<script>document.documentElement.classList.add('js');</script>
+<link rel="stylesheet" href="./fonts/Archivo.css">
+<link rel="stylesheet" href="./fonts/Newsreader.css">
+<link rel="stylesheet" href="./fonts/IBMPlexMono.css">
+<link rel="stylesheet" href="./css/main.css">
+<script type="importmap">
+{"imports":{"three":"./vendor/three.module.min.js"}}
+</script>
+</head>
+<body>
+
+<header class="site-head">
+  <a class="wordmark" href="#top" aria-label="QUBIT home">
+    <svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 13a19 19 0 0 0 0 38z" fill="var(--cyan)"/><path d="M32 13a19 19 0 0 1 0 38z" fill="var(--violet)"/><line x1="32" y1="6" x2="32" y2="58" stroke="var(--paper)" stroke-width="5"/></svg>
+    <span class="wordmark-text">QUBIT</span>
+    <span class="wordmark-sub">Institute for Quantum Information</span>
+  </a>
+  <nav class="site-nav" aria-label="Sections">
+    <a href="#research">Research</a>
+    <a href="#machine">The machine</a>
+    <a href="#coherence">Coherence</a>
+    <a href="#publications">Publications</a>
+    <a href="#institute">Institute</a>
+  </nav>
+  <p class="head-status mono">BOULDER&thinsp;·&thinsp;11&thinsp;mK</p>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO: ENTANGLEMENT LATTICE ============ -->
+  <section class="hero" id="hero" aria-label="Introduction">
+    <canvas id="lattice" aria-hidden="true"></canvas>
+    <div class="hero-inner">
+      <p class="eyebrow mono" data-load="1">INSTITUTE FOR QUANTUM INFORMATION · EST. 2019</p>
+      <h1 class="hero-title">
+        <span class="line-mask"><span class="line" data-load="2">All states at once&#160;—</span></span>
+        <span class="line-mask"><span class="line" data-load="3">until you measure.</span></span>
+      </h1>
+      <p class="hero-sub" data-load="4">QUBIT builds error-corrected quantum machines and the theory that keeps them honest. The lattice behind these words is a live ensemble in superposition&thinsp;— its color is its phase.</p>
+      <p class="hero-cue mono" data-load="5"><span class="reticle" aria-hidden="true"></span>Click any node to measure it. The collapse travels its entangled links.</p>
+    </div>
+    <p class="hero-status mono" id="latticeStatus" data-load="6">ensemble — qubits · — pairs entangled · 0 measurements</p>
+    <p class="hero-scroll mono" data-load="6" aria-hidden="true">scroll&thinsp;↓</p>
+  </section>
+
+  <!-- ============ EPIGRAPH ============ -->
+  <section class="epigraph" aria-label="Epigraph">
+    <blockquote data-reveal>
+      <p>&ldquo;A quantum computer does not try every answer. It arranges interference so that the wrong answers cancel&thinsp;— and what remains is true.&rdquo;</p>
+      <cite>Miren Aldasoro, founding lecture, October 2019</cite>
+    </blockquote>
+  </section>
+
+  <!-- ============ RESEARCH ============ -->
+  <section class="section" id="research" aria-labelledby="research-h">
+    <p class="bra-label mono" data-reveal><span class="bra">research</span></p>
+    <div class="section-head">
+      <h2 id="research-h" data-reveal data-ri="1">Four programs, one question: what survives the noise?</h2>
+      <p class="section-sub" data-reveal data-ri="2">Every group at QUBIT works the same seam from a different face&thinsp;— protecting quantum information long enough to do something irreversible with it.</p>
+    </div>
+    <div class="programs">
+      <article class="program" data-reveal data-ri="1">
+        <p class="program-code mono">EC</p>
+        <h3>Error-corrected logic</h3>
+        <p>Surface and bivariate-bicycle codes running live on fluxonium arrays. Two hundred sixteen physical qubits per logical qubit today&thinsp;— and falling every quarter.</p>
+        <p class="program-lead mono">Lead — Dr.&nbsp;Yusuf Adeyemi</p>
+      </article>
+      <article class="program" data-reveal data-ri="2">
+        <p class="program-code mono">TOP</p>
+        <h3>Topological matter</h3>
+        <p>Majorana zero modes in proximitized indium-antimonide nanowires: qubits that store information nowhere in particular, so the noise cannot find it.</p>
+        <p class="program-lead mono">Lead — Dr.&nbsp;Ingrid Solheim</p>
+      </article>
+      <article class="program" data-reveal data-ri="3">
+        <p class="program-code mono">NET</p>
+        <h3>Quantum networks</h3>
+        <p>Heralded entanglement over 41&thinsp;km of dark fiber between Boulder and Longmont, at 1.1&thinsp;kHz. A repeater you can drive to in twenty minutes.</p>
+        <p class="program-lead mono">Lead — Dr.&nbsp;Priya Raghunathan</p>
+      </article>
+      <article class="program" data-reveal data-ri="4">
+        <p class="program-code mono">ALG</p>
+        <h3>Algorithms &amp; complexity</h3>
+        <p>Where does quantum advantage actually live? Lattice chemistry, sampling, and the honest end-to-end accounting of every claimed speedup.</p>
+        <p class="program-lead mono">Lead — Dr.&nbsp;Tomáš Krejčí</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ THE MACHINE / BLOCH SPHERE ============ -->
+  <section class="section" id="machine" aria-labelledby="machine-h">
+    <p class="bra-label mono" data-reveal><span class="bra">one qubit</span></p>
+    <div class="section-head">
+      <h2 id="machine-h" data-reveal data-ri="1">Colibri&#8209;2 runs 216 of these. Here is one, honestly rendered.</h2>
+      <p class="section-sub" data-reveal data-ri="2">Our flagship fluxonium processor hangs at 11&thinsp;millikelvin under 1.4&thinsp;km of superconducting coax. Everything a single one of its qubits can be is a point on this sphere. Drag the state. Apply a gate. Then measure&thinsp;— and see what a question costs.</p>
+    </div>
+    <div class="bloch-grid">
+      <div class="bloch-stage" data-reveal data-ri="2">
+        <div class="bloch-wrap" id="blochWrap" tabindex="0" role="application"
+             aria-label="Interactive Bloch sphere. Drag to steer the qubit state; arrow keys also rotate it. Use the gate buttons to transform the state and the measure button to collapse it.">
+          <canvas id="bloch" aria-hidden="true"></canvas>
+          <div class="bloch-labels" aria-hidden="true">
+            <span class="blabel" data-pole="z+"><span class="ket">0</span></span>
+            <span class="blabel" data-pole="z-"><span class="ket">1</span></span>
+            <span class="blabel" data-pole="x+"><span class="ket">+</span></span>
+            <span class="blabel" data-pole="y+"><span class="ket">i</span></span>
+          </div>
+          <p class="bloch-hint mono" id="blochHint">drag the vector · keys x h z s m</p>
+        </div>
+      </div>
+      <div class="bloch-panel" data-reveal data-ri="3">
+        <p class="panel-title mono">STATE READOUT</p>
+        <p class="ket-line mono" id="ketLine" aria-live="off">
+          <span class="ket">&psi;</span><span class="eq">=</span><span id="ampAlpha">0.924</span><span class="ket">0</span><span class="op" id="ketPlus">+</span><span id="ampBeta">0.383</span><span class="ket">1</span>
+        </p>
+        <div class="angles mono">
+          <p>&theta; = <span id="thetaOut">0.785</span> rad</p>
+          <p>&phi; = <span id="phiOut">0.000</span> rad</p>
+        </div>
+        <div class="probs" role="group" aria-label="Measurement probabilities">
+          <div class="prob">
+            <span class="prob-k mono"><span class="prob-swatch sw0"></span>P(<span class="ket">0</span>)</span>
+            <span class="prob-bar"><span class="prob-fill fill0" id="bar0"></span></span>
+            <span class="prob-v mono" id="p0Out">85.4%</span>
+          </div>
+          <div class="prob">
+            <span class="prob-k mono"><span class="prob-swatch sw1"></span>P(<span class="ket">1</span>)</span>
+            <span class="prob-bar"><span class="prob-fill fill1" id="bar1"></span></span>
+            <span class="prob-v mono" id="p1Out">14.6%</span>
+          </div>
+        </div>
+        <div class="gates" role="group" aria-label="Quantum gates">
+          <button class="gate" id="gateX" type="button" title="Pauli X — π rotation about x">X</button>
+          <button class="gate" id="gateH" type="button" title="Hadamard — π rotation about x+z">H</button>
+          <button class="gate" id="gateZ" type="button" title="Pauli Z — π rotation about z">Z</button>
+          <button class="gate" id="gateS" type="button" title="Phase S — π/2 rotation about z">S</button>
+          <button class="gate gate-measure" id="gateM" type="button" title="Measure in the computational basis">MEASURE</button>
+        </div>
+        <p class="record mono" id="record" aria-live="polite">record&thinsp;— awaiting first measurement</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COHERENCE ============ -->
+  <section class="section coherence" id="coherence" aria-labelledby="coherence-h">
+    <p class="bra-label mono" data-reveal><span class="bra">coherence</span></p>
+    <h2 class="visually-hidden" id="coherence-h">Coherence time</h2>
+    <p class="coh-intro" data-reveal data-ri="1">The number we protect:</p>
+    <p class="coh-figure mono" data-reveal data-ri="2">T<sub>2</sub>&hairsp;=&hairsp;<span class="coh-num">1&#8201;312</span>&hairsp;<span class="coh-unit">&mu;s</span></p>
+    <p class="coh-copy" data-reveal data-ri="3">One thousand three hundred twelve microseconds. That is how long a logical qubit inside Colibri&#8209;2 holds a superposition before the room leaks in. It is the quietest place we know how to build&thinsp;— and since you opened this page, that window has opened and closed
+    <span class="coh-count mono" id="cohCount">0</span> times.</p>
+    <dl class="coh-stats" data-reveal data-ri="4">
+      <div><dt class="mono">two-qubit gate fidelity</dt><dd class="mono">99.992%</dd></div>
+      <div><dt class="mono">mixing-chamber stage</dt><dd class="mono">11 mK</dd></div>
+      <div><dt class="mono">physical&thinsp;:&thinsp;logical</dt><dd class="mono">216&thinsp;:&thinsp;1</dd></div>
+    </dl>
+  </section>
+
+  <!-- ============ SECOND EPIGRAPH ============ -->
+  <section class="epigraph epigraph-tight" aria-label="Epigraph">
+    <blockquote data-reveal>
+      <p>&ldquo;We do not build faster computers. We build colder questions.&rdquo;</p>
+      <cite>Miren Aldasoro, commissioning of Colibri&#8209;1, March 2022</cite>
+    </blockquote>
+  </section>
+
+  <!-- ============ PUBLICATIONS ============ -->
+  <section class="section" id="publications" aria-labelledby="pubs-h">
+    <p class="bra-label mono" data-reveal><span class="bra">publications</span></p>
+    <div class="section-head">
+      <h2 id="pubs-h" data-reveal data-ri="1">Recent preprints</h2>
+      <p class="section-sub" data-reveal data-ri="2">Everything we publish goes to the arXiv first, formatted plainly, the day the data settles.</p>
+    </div>
+    <ul class="pubs">
+      <li class="pub" tabindex="0" data-reveal data-ri="1">
+        <p class="pub-id mono">arXiv:2606.04471<br><span class="pub-cat">[quant-ph]</span></p>
+        <div class="pub-main">
+          <h3>Below threshold: a 216-qubit fluxonium surface code with &Lambda; = 2.14</h3>
+          <p class="pub-authors">Y. Adeyemi, L. Chen, R. Duval, M. Aldasoro</p>
+          <p class="pub-abstract"><span>We hold a distance-11 logical qubit below threshold for 1.2 million cycles and watch the error rate halve with every added ring.</span></p>
+        </div>
+        <p class="pub-date mono">Jun 2026</p>
+      </li>
+      <li class="pub" tabindex="0" data-reveal data-ri="2">
+        <p class="pub-id mono">arXiv:2604.09112<br><span class="pub-cat">[quant-ph]</span></p>
+        <div class="pub-main">
+          <h3>Heralded entanglement between remote fluxonium qubits at 1.1 kHz</h3>
+          <p class="pub-authors">P. Raghunathan, S. Okafor, J. Whitfield</p>
+          <p class="pub-abstract"><span>Two refrigerators, 41 km apart, come to share a Bell pair faster than either could decohere it alone.</span></p>
+        </div>
+        <p class="pub-date mono">Apr 2026</p>
+      </li>
+      <li class="pub" tabindex="0" data-reveal data-ri="3">
+        <p class="pub-id mono">arXiv:2601.13058<br><span class="pub-cat">[cond-mat.mes-hall]</span></p>
+        <div class="pub-main">
+          <h3>Parity lifetime exceeding one second in proximitized InSb nanowires</h3>
+          <p class="pub-authors">I. Solheim, S. Okafor, A. Petrova</p>
+          <p class="pub-abstract"><span>A nanowire island keeps its fermion parity for 1.4 seconds — four orders of magnitude past where theory stood a decade ago.</span></p>
+        </div>
+        <p class="pub-date mono">Jan 2026</p>
+      </li>
+      <li class="pub" tabindex="0" data-reveal data-ri="4">
+        <p class="pub-id mono">arXiv:2511.07789<br><span class="pub-cat">[quant-ph]</span></p>
+        <div class="pub-main">
+          <h3>The cost of honesty: end-to-end resource counts for lattice chemistry</h3>
+          <p class="pub-authors">T. Krej&#269;&iacute;, R. Duval</p>
+          <p class="pub-abstract"><span>If a speedup disappears when you count the compiler, it was never there. We count everything, and say what is left.</span></p>
+        </div>
+        <p class="pub-date mono">Nov 2025</p>
+      </li>
+      <li class="pub" tabindex="0" data-reveal data-ri="5">
+        <p class="pub-id mono">arXiv:2509.02214<br><span class="pub-cat">[quant-ph]</span></p>
+        <div class="pub-main">
+          <h3>Measurement-induced phase transitions in driven fluxonium chains</h3>
+          <p class="pub-authors">L. Chen, M. Aldasoro</p>
+          <p class="pub-abstract"><span>Watch a chain too often and it forgets how to entangle; we map exactly where the forgetting begins.</span></p>
+        </div>
+        <p class="pub-date mono">Sep 2025</p>
+      </li>
+    </ul>
+  </section>
+
+</main>
+
+<!-- ============ INSTITUTE / FOOTER ============ -->
+<footer class="site-foot" id="institute">
+  <p class="bra-label mono" data-reveal><span class="bra">institute</span></p>
+  <div class="foot-grid">
+    <div class="foot-block" data-reveal data-ri="1">
+      <p class="foot-h mono">ADDRESS</p>
+      <p>QUBIT — Institute for Quantum Information<br>740 Foothills Parkway<br>Boulder, Colorado 80303</p>
+    </div>
+    <div class="foot-block" data-reveal data-ri="2">
+      <p class="foot-h mono">VISITING</p>
+      <p>Tours run the first Friday of each month, 10:00 MT. The dilution refrigerators are louder than you expect; the answers are quieter.</p>
+    </div>
+    <div class="foot-block" data-reveal data-ri="3">
+      <p class="foot-h mono">WRITE TO US</p>
+      <p>inquiries@qubit.institute<br>press@qubit.institute<br>join@qubit.institute</p>
+    </div>
+  </div>
+  <div class="colophon" data-reveal data-ri="4">
+    <p>&copy; 2026 QUBIT. Set in Archivo, Newsreader, and IBM Plex Mono. No photographs&thinsp;— every figure on this page is computed live, and nothing on it was decided until you looked.</p>
+  </div>
+</footer>
+
+<script src="./js/lattice.js" defer></script>
+<script src="./js/main.js" defer></script>
+<script type="module" src="./js/bloch.js"></script>
+</body>
+</html>

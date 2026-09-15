@@ -1,0 +1,377 @@
+/* ============================================================
+   BENTHICA — descent log of DSV VELA
+   Palette: SUNLIT #0F7E8A · TWILIGHT #0A3B5C · MIDNIGHT #041526
+            ABYSS #010409 · BIOLUME #64F0D2 · FLOODLIGHT #FFE9C4
+            HUD-ICE #9FC3CF
+   ============================================================ */
+
+:root{
+  --sunlit:#0F7E8A;
+  --twilight:#0A3B5C;
+  --midnight:#041526;
+  --abyss:#010409;
+  --biolume:#64F0D2;
+  --floodlight:#FFE9C4;
+  --ice:#9FC3CF;
+  --ice-bright:#E6F1F4;
+  --body-text:#C9DAE1;
+  --ease-out:cubic-bezier(0.16,1,0.3,1);
+  --ease-ring:cubic-bezier(0.18,0.9,0.32,1);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+html{
+  scroll-behavior:smooth;
+  background:var(--midnight);
+  scrollbar-color:#16333B var(--abyss);
+}
+
+body{
+  font-family:'Archivo',system-ui,sans-serif;
+  font-weight:400;
+  color:var(--body-text);
+  background:var(--midnight);
+  overflow-x:hidden;
+}
+
+::selection{background:rgba(100,240,210,.30);color:#F2FFFB}
+
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:#010409}
+::-webkit-scrollbar-thumb{background:#16333B;border-radius:5px}
+::-webkit-scrollbar-thumb:hover{background:#1F4A55}
+
+:focus-visible{outline:2px solid var(--biolume);outline-offset:3px;border-radius:2px}
+
+.sr-note{
+  position:absolute;width:1px;height:1px;overflow:hidden;
+  clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;
+}
+
+.skip{
+  position:fixed;top:-100px;left:50%;transform:translateX(-50%);
+  z-index:100;padding:.6rem 1.2rem;
+  font-family:'IBM Plex Mono',monospace;font-size:.75rem;letter-spacing:.12em;
+  color:var(--abyss);background:var(--biolume);text-decoration:none;
+  transition:top .25s var(--ease-out);
+}
+.skip:focus-visible{top:0}
+
+/* ---------- fixed sea layers ---------- */
+
+#ambient{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:linear-gradient(rgb(15,126,138) 0%, rgb(11,75,98) 100%);
+}
+#sea{position:fixed;inset:0;z-index:1;pointer-events:none;width:100%;height:100%}
+#vignette{
+  position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.35;
+  background:radial-gradient(120% 95% at 50% 42%, rgba(0,0,2,0) 52%, rgba(0,0,2,.62) 100%);
+}
+#tape{position:fixed;top:0;left:0;height:100%;width:76px;z-index:6;pointer-events:none}
+
+/* ---------- HUD ---------- */
+
+.hud-top{
+  position:fixed;top:0;left:0;right:0;z-index:7;pointer-events:none;
+  display:flex;align-items:baseline;justify-content:space-between;gap:1rem;
+  padding:1.1rem 1.6rem 0.9rem;
+  font-family:'IBM Plex Mono',monospace;
+  background:linear-gradient(rgba(0,2,5,.55), rgba(0,2,5,0));
+}
+.wordmark{
+  font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
+  font-size:1.02rem;letter-spacing:.34em;color:var(--ice-bright);
+}
+.mission{font-size:.66rem;letter-spacing:.22em;color:var(--ice)}
+.linkline{font-size:.66rem;letter-spacing:.18em;color:var(--ice);display:flex;align-items:center;gap:.55em}
+.dot{
+  width:7px;height:7px;border-radius:50%;background:var(--biolume);
+  box-shadow:0 0 8px rgba(100,240,210,.8);
+  animation:dotpulse 2.6s var(--ease-out) infinite;
+}
+@keyframes dotpulse{0%,100%{opacity:1}50%{opacity:.25}}
+
+.hud-cluster{
+  position:fixed;top:4.4rem;right:1.6rem;z-index:7;pointer-events:none;
+  font-family:'IBM Plex Mono',monospace;
+  text-align:right;
+  padding:.9rem 1rem .8rem 1.2rem;
+  background:rgba(0,3,7,.42);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  border-right:2px solid rgba(159,195,207,.35);
+}
+.readout{display:flex;justify-content:flex-end;align-items:baseline;gap:.6em;margin:.28rem 0}
+.readout .lbl{font-size:.6rem;letter-spacing:.24em;color:rgba(159,195,207,.66)}
+.readout .val{font-size:.95rem;font-weight:500;color:var(--ice-bright);min-width:6.4ch}
+.readout .unit{font-size:.6rem;letter-spacing:.14em;color:rgba(159,195,207,.66);min-width:2.6ch;text-align:left}
+.readout--depth .val{font-size:1.85rem;font-weight:600;letter-spacing:.02em}
+.readout--depth .lbl{color:var(--ice)}
+.hud-cluster .prog{
+  position:absolute;top:0;right:-2px;width:2px;height:100%;
+  background:var(--ice-bright);
+  transform:scaleY(0);transform-origin:top center;
+  will-change:transform;
+}
+
+.hud-bottom{
+  position:fixed;left:0;right:0;bottom:0;z-index:7;pointer-events:none;
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding:0.9rem 1.6rem 1.1rem;
+  font-family:'IBM Plex Mono',monospace;
+  background:linear-gradient(rgba(0,2,5,0), rgba(0,2,5,.55));
+}
+.zoneline,.rateline{font-size:.7rem;letter-spacing:.2em;color:var(--ice);display:flex;align-items:baseline;gap:.9em}
+.zoneline .lbl,.rateline .lbl{font-size:.6rem;color:rgba(159,195,207,.55)}
+.rateline .unit{font-size:.6rem;color:rgba(159,195,207,.55)}
+#r-zone{color:var(--ice-bright);transition:color 1.4s var(--ease-out),text-shadow 1.4s var(--ease-out)}
+#r-zone.flash{color:var(--biolume);text-shadow:0 0 14px rgba(100,240,210,.75);transition:none}
+#r-rate{color:var(--ice-bright);min-width:4ch;display:inline-block;text-align:right}
+
+/* ---------- sonar ping ---------- */
+
+#sonar{position:fixed;inset:0;z-index:5;display:grid;place-items:center;pointer-events:none}
+.ring{
+  grid-area:1/1;width:240px;height:240px;border-radius:50%;
+  border:1px solid rgba(100,240,210,.8);
+  box-shadow:0 0 14px rgba(100,240,210,.25), inset 0 0 8px rgba(100,240,210,.18);
+  opacity:0;transform:scale(.06);
+  animation:ring 1.8s var(--ease-ring) forwards;
+}
+@keyframes ring{
+  0%{transform:scale(.06);opacity:.95}
+  100%{transform:scale(var(--s,3.4));opacity:0}
+}
+.ping-label{
+  position:absolute;left:50%;top:20vh;transform:translateX(-50%);
+  font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.34em;
+  color:var(--biolume);text-shadow:0 0 16px rgba(100,240,210,.5);
+  white-space:nowrap;
+  animation:pinglabel 2.6s var(--ease-out) forwards;
+}
+@keyframes pinglabel{
+  0%{opacity:0;transform:translateX(-50%) translateY(8px)}
+  14%{opacity:1;transform:translateX(-50%) translateY(0)}
+  72%{opacity:1}
+  100%{opacity:0}
+}
+
+/* ---------- content column ---------- */
+
+main{position:relative;z-index:3}
+
+.log{
+  padding-left:clamp(6rem, 16vw, 20rem);
+  padding-right:clamp(1.2rem, 4vw, 4rem);
+}
+
+/* ---------- hero ---------- */
+
+.hero{
+  min-height:100vh;min-height:100svh;
+  display:flex;align-items:flex-end;
+  padding:0 clamp(1.2rem,4vw,4rem) clamp(5rem,14vh,9rem) clamp(6rem,16vw,20rem);
+}
+.hero-inner{max-width:46rem}
+.eyebrow{
+  font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.3em;
+  color:rgba(230,241,244,.82);margin-bottom:1.6rem;
+}
+h1{
+  font-stretch:125%;font-weight:800;
+  font-size:clamp(3.4rem, 9.5vw, 8.2rem);
+  line-height:.95;letter-spacing:.045em;
+  color:#F2FBFB;
+  text-shadow:0 2px 44px rgba(0,20,26,.55);
+  margin-left:-.05em;
+}
+.standfirst{
+  margin-top:1.8rem;max-width:54ch;
+  font-size:clamp(1.02rem, 1.4vw, 1.22rem);line-height:1.66;font-weight:420;
+  color:#EAF6F6;text-shadow:0 1px 18px rgba(0,18,24,.6);
+  text-wrap:pretty;
+}
+.standfirst em{font-style:normal;font-stretch:118%;font-weight:640}
+.fixline{
+  margin-top:1.7rem;
+  font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.18em;line-height:2;
+  color:rgba(230,241,244,.72);max-width:60ch;
+}
+.begin{
+  display:inline-flex;align-items:center;gap:.9em;
+  margin-top:2.6rem;padding:.85em 1.5em;
+  font-family:'IBM Plex Mono',monospace;font-size:.74rem;letter-spacing:.28em;
+  color:var(--ice-bright);text-decoration:none;
+  border:1px solid rgba(230,241,244,.4);
+  transition:background .35s var(--ease-out), border-color .35s var(--ease-out), letter-spacing .35s var(--ease-out);
+}
+.begin:hover{background:rgba(230,241,244,.1);border-color:rgba(230,241,244,.75);letter-spacing:.34em}
+.begin .arr{display:inline-block;animation:bob 2.4s var(--ease-out) infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+
+/* load choreography */
+.js .hero .eyebrow,.js .hero h1,.js .hero .standfirst,.js .hero .fixline,.js .hero .begin{
+  opacity:0;transform:translateY(18px);
+  animation:surface 1.3s var(--ease-out) forwards;
+}
+.js .hero h1{animation-name:surface-title;animation-duration:1.7s;animation-delay:.15s}
+.js .hero .eyebrow{animation-delay:.05s}
+.js .hero .standfirst{animation-delay:.42s}
+.js .hero .fixline{animation-delay:.6s}
+.js .hero .begin{animation-delay:.78s}
+@keyframes surface{to{opacity:1;transform:translateY(0)}}
+@keyframes surface-title{
+  0%{opacity:0;transform:translateY(26px);letter-spacing:.16em}
+  to{opacity:1;transform:translateY(0);letter-spacing:.045em}
+}
+
+/* ---------- strata (zone boundary headings) ---------- */
+
+.stratum{
+  margin-top:var(--drop, 90vh);
+  font-stretch:125%;font-weight:750;
+  font-size:clamp(2.5rem, 7.4vw, 6.4rem);
+  line-height:1.02;letter-spacing:.07em;
+  color:var(--stratum, #9FC3CF);
+  scroll-margin-top:22vh;
+}
+.stratum .sub{
+  display:block;margin-top:1rem;
+  font-family:'IBM Plex Mono',monospace;font-stretch:100%;font-weight:400;
+  font-size:.72rem;letter-spacing:.34em;line-height:1.6;
+  color:var(--stratum, #9FC3CF);
+  opacity:.88;
+}
+.zone--epi .stratum{--stratum:#C4DEE6}
+.zone--meso .stratum{--stratum:#9FC3CF}
+.zone--bathy .stratum{--stratum:#7FA3B0}
+.zone--abysso .stratum{--stratum:#6E92A0}
+.zone--hadal .stratum{--stratum:#61828F}
+
+/* ---------- log entries ---------- */
+
+.entry{
+  position:relative;
+  margin-top:var(--drop, 110vh);
+  max-width:34rem;
+  padding:1.5rem 1.9rem 1.6rem;
+  background:rgba(2,10,16,.44);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  border-left:1px solid rgba(159,195,207,.4);
+}
+/* the spine flashes biolume the moment an entry is written in */
+.entry::before{
+  content:'';position:absolute;left:-1px;top:0;bottom:0;width:1px;
+  background:var(--biolume);
+  box-shadow:0 0 16px 1px rgba(100,240,210,.55);
+  opacity:0;pointer-events:none;
+}
+.js .entry.in::before{animation:entryflash 2.6s var(--ease-out) .12s both}
+@keyframes entryflash{0%{opacity:0}16%{opacity:.95}100%{opacity:0}}
+.entry--bottom::before{
+  background:var(--floodlight);
+  box-shadow:0 0 16px 1px rgba(255,233,196,.55);
+}
+.stamp{
+  font-family:'IBM Plex Mono',monospace;font-size:.76rem;font-weight:500;
+  letter-spacing:.16em;color:var(--ice);
+  display:flex;align-items:center;flex-wrap:wrap;gap:.9em;
+}
+.chip{
+  font-size:.6rem;font-weight:500;letter-spacing:.22em;
+  color:var(--biolume);
+  border:1px solid rgba(100,240,210,.5);
+  padding:.25em .8em .2em;
+  text-shadow:0 0 10px rgba(100,240,210,.45);
+}
+.entry p{
+  margin-top:1rem;
+  font-size:1.05rem;line-height:1.72;font-weight:410;
+  color:var(--body-text);
+  text-wrap:pretty;
+}
+.entry--bottom{border-left-color:rgba(255,233,196,.55)}
+.entry--bottom .stamp{color:#D8C9A8}
+.entry--bottom .chip{
+  color:var(--floodlight);border-color:rgba(255,233,196,.55);
+  text-shadow:0 0 10px rgba(255,233,196,.45);
+}
+
+/* scroll reveal */
+.js .entry,.js .stratum,.js .credits{
+  opacity:0;transform:translateY(26px);
+  transition:opacity .9s var(--ease-out), transform .9s var(--ease-out);
+}
+.js .entry.in,.js .stratum.in,.js .credits.in{opacity:1;transform:translateY(0)}
+
+/* ---------- credits ---------- */
+
+.credits{
+  position:relative;z-index:3;
+  margin-top:var(--drop, 65vh);
+  padding:0 clamp(1.2rem,4vw,4rem) 30vh clamp(6rem,16vw,20rem);
+  font-family:'IBM Plex Mono',monospace;
+}
+.cline{
+  font-size:.7rem;letter-spacing:.24em;line-height:2.4;
+  color:rgba(184,214,224,.95);
+  text-shadow:0 1px 10px rgba(0,0,0,.85), 0 0 28px rgba(0,0,0,.7);
+}
+.cnote{
+  margin-top:2.2rem;max-width:52ch;
+  font-size:.66rem;letter-spacing:.12em;line-height:2.1;
+  color:rgba(170,202,213,.8);
+  text-shadow:0 1px 10px rgba(0,0,0,.85), 0 0 28px rgba(0,0,0,.7);
+  text-wrap:pretty;
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width:960px){
+  .mission{display:none}
+  .log{padding-left:clamp(4.5rem, 12vw, 8rem)}
+  .hero{padding-left:clamp(4.5rem, 12vw, 8rem)}
+  .credits{padding-left:clamp(4.5rem, 12vw, 8rem)}
+}
+
+@media (max-width:720px){
+  #tape{display:none}
+  .log{padding-left:1.15rem;padding-right:1.15rem}
+  .hero{padding-left:1.15rem;padding-right:1.15rem;padding-bottom:22vh}
+  .credits{padding-left:1.15rem;padding-right:1.15rem}
+  .hud-top{padding:.9rem 1.15rem .7rem}
+  .wordmark{font-size:.88rem;letter-spacing:.26em}
+  .linkline{font-size:.58rem}
+  .hud-cluster{
+    top:3.4rem;right:1.15rem;
+    padding:.65rem .8rem .55rem 1rem;
+    background:rgba(0,3,7,.6);
+  }
+  .readout{margin:.18rem 0}
+  .readout .val{font-size:.8rem}
+  .readout--depth .val{font-size:1.35rem}
+  .hud-bottom{padding:.7rem 1.15rem .9rem}
+  .zoneline,.rateline{font-size:.6rem;letter-spacing:.14em;gap:.6em}
+  h1{font-size:clamp(2.4rem, 12.4vw, 3.2rem)}
+  .fixline{letter-spacing:.14em}
+  .entry{padding:1.2rem 1.3rem 1.3rem;-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(2,10,16,.66)}
+  .entry p{font-size:.98rem}
+  .ping-label{font-size:.62rem;letter-spacing:.24em;top:27vh;max-width:94vw}
+}
+
+/* ---------- reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .js .hero .eyebrow,.js .hero h1,.js .hero .standfirst,.js .hero .fixline,.js .hero .begin{
+    animation:none;opacity:1;transform:none;
+  }
+  .js .entry,.js .stratum,.js .credits{opacity:1;transform:none;transition:none}
+  .js .entry.in::before{animation:none}
+  .begin .arr{animation:none}
+  .dot{animation:none}
+  .ring{animation-duration:.01s}
+  .ping-label{animation:pinglabel-rm 2.2s ease-out forwards}
+  @keyframes pinglabel-rm{0%{opacity:0}15%{opacity:1}75%{opacity:1}100%{opacity:0}}
+}

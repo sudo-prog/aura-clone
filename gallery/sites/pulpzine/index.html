@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PULP #7 — NIGHT SHIFT · a risograph zine from Gullhaven</title>
+<meta name="description" content="Issue 07 of PULP, a two-ink risograph zine: five profiles of the people who keep Gullhaven running while it sleeps. Fluorescent pink, medium blue, 300 copies, hand-stapled.">
+<meta property="og:title" content="PULP #7 — NIGHT SHIFT">
+<meta property="og:description" content="A risograph zine about the people who work while the city sleeps. Two drums of ink, 24 pages, printed between 1:12 and 4:56 a.m.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#EFEBE3">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23EFEBE3'/%3E%3Crect x='9' y='14' width='38' height='38' fill='%23FF48B0'/%3E%3Crect x='17' y='10' width='38' height='38' fill='%233255A4'/%3E%3Crect x='17' y='14' width='30' height='34' fill='%23321871'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/AlfaSlabOne-03.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/SpecialElite-02.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/AlfaSlabOne.css">
+<link rel="stylesheet" href="fonts/SpecialElite.css">
+<link rel="stylesheet" href="fonts/BigShouldersDisplay.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- shared SVG filters -->
+<svg class="defs" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="roughen" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.055" numOctaves="2" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="3.2"/>
+    </filter>
+    <filter id="roughen2" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.09" numOctaves="2" seed="23" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4"/>
+    </filter>
+  </defs>
+</svg>
+
+<!-- ═══════════════ TICKER ═══════════════ -->
+<div class="ticker" role="marquee" aria-label="Zine gossip ticker">
+  <div class="ticker-track" id="tickerTrack">
+    <span class="tk-set">
+      <span class="tk">OTTO STILL REFUSES TO CLEAN THE PINK DRUM</span><span class="tk-dot">●</span>
+      <span class="tk">ISSUE #6 SOLD OUT AT DELANCEY NEWS IN NINE DAYS</span><span class="tk-dot">●</span>
+      <span class="tk">THE LONG-ARM STAPLER IS BROKEN AGAIN — BRING YOUR OWN</span><span class="tk-dot">●</span>
+      <span class="tk">LENA PLAYED 40 MINUTES OF WHALE SONG AND NOBODY CALLED IN</span><span class="tk-dot">●</span>
+      <span class="tk">SEND YOUR 4 A.M. PHOTOS TO POUCH 77, GULLHAVEN GPO</span><span class="tk-dot">●</span>
+      <span class="tk">MISPRINTS ARE FREE IF YOU ASK NICELY</span><span class="tk-dot">●</span>
+      <span class="tk">NEXT ISSUE: “WET PAINT,” OCTOBER</span><span class="tk-dot">●</span>
+    </span>
+  </div>
+</div>
+
+<!-- ═══════════════ MASTHEAD / COVER ═══════════════ -->
+<header class="masthead" id="cover">
+  <div class="press-sheet" id="pressSheet">
+    <div class="mast-toprow">
+      <div class="stamp-round hand" aria-hidden="true">
+        <svg viewBox="0 0 120 120">
+          <circle cx="60" cy="60" r="55" fill="none" stroke="currentColor" stroke-width="3"/>
+          <circle cx="60" cy="60" r="40" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <path id="rndpath" d="M60,60 m-47,0 a47,47 0 1,1 94,0 a47,47 0 1,1 -94,0" fill="none"/>
+          <text class="stamp-ring"><textPath href="#rndpath" startOffset="0">RISOGRAPH · GULLHAVEN · TWO DRUMS · NO REGRETS ·</textPath></text>
+          <text x="60" y="57" text-anchor="middle" class="stamp-big">Nº 07</text>
+          <text x="60" y="76" text-anchor="middle" class="stamp-small">JULY 2026</text>
+        </svg>
+      </div>
+      <p class="mast-eyebrow">A zine about work, printed at night &nbsp;·&nbsp; est. 2023 &nbsp;·&nbsp; Gullhaven</p>
+      <div class="stamp-price hand" aria-hidden="true">$4<br>CASH<br>ONLY</div>
+    </div>
+
+    <h1 class="mast-title" aria-label="PULP — issue number seven, the Night Shift issue">
+      <span class="ml" data-l="P" aria-hidden="true"><i>P</i></span><span class="ml" data-l="U" aria-hidden="true"><i>U</i></span><span class="ml" data-l="L" aria-hidden="true"><i>L</i></span><span class="ml" data-l="P" aria-hidden="true"><i>P</i></span>
+    </h1>
+
+    <div class="mast-strip-wrap hand">
+      <p class="mast-strip"><span class="tape tape-l" aria-hidden="true"></span>№ 7 — THE NIGHT SHIFT ISSUE<span class="tape tape-r" aria-hidden="true"></span></p>
+    </div>
+
+    <p class="mast-dateline">24 pages · two drums of ink · printed between 1:12 and 4:56 a.m.<br>by Otto Fenn, who would like to go to bed.</p>
+
+    <div class="mast-annot hand" aria-hidden="true">
+      <svg class="annot-arrow" viewBox="0 0 120 70"><path class="draw" d="M6,62 C40,58 70,44 92,18 M80,20 L94,15 L90,30" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+      <p>the pink drum drifts left.<br>we stopped fighting it.</p>
+    </div>
+
+    <div class="sticker sticker-moon hand" aria-hidden="true">
+      <svg viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="48" class="stk-ring"/>
+        <circle cx="50" cy="50" r="41" class="stk-bg"/>
+        <path d="M63 22 A33 33 0 1 0 63 78 A27 27 0 1 1 63 22 Z" class="stk-moon"/>
+        <circle cx="66" cy="38" r="3" class="stk-star"/>
+        <circle cx="72" cy="56" r="2.2" class="stk-star"/>
+      </svg>
+      <span class="sticker-txt">AWAKE<br>CLUB</span>
+    </div>
+
+    <div class="mast-bottomrow hand">
+      <button class="stamp-btn" id="replayBtn" type="button">⟲ RUN THE PRESS AGAIN</button>
+      <div class="control-strip" aria-hidden="true">
+        <i class="cs cs-1"></i><i class="cs cs-2"></i><i class="cs cs-3"></i><i class="cs cs-4"></i><i class="cs cs-5"></i><i class="cs cs-6"></i>
+        <span>CONTROL — DO NOT TRUST</span>
+      </div>
+      <div class="barcode" aria-hidden="true">
+        <svg viewBox="0 0 120 40" preserveAspectRatio="none">
+          <g fill="currentColor"><rect x="0" width="3" height="34"/><rect x="5" width="1.5" height="34"/><rect x="9" width="4" height="34"/><rect x="15" width="1.5" height="34"/><rect x="19" width="2.5" height="34"/><rect x="24" width="5" height="34"/><rect x="31" width="1.5" height="34"/><rect x="35" width="3" height="34"/><rect x="41" width="1.5" height="34"/><rect x="44" width="4" height="34"/><rect x="50" width="2" height="34"/><rect x="54" width="1.5" height="34"/><rect x="58" width="5" height="34"/><rect x="65" width="2" height="34"/><rect x="69" width="1.5" height="34"/><rect x="73" width="3.5" height="34"/><rect x="79" width="1.5" height="34"/><rect x="83" width="2.5" height="34"/><rect x="88" width="4.5" height="34"/><rect x="95" width="1.5" height="34"/><rect x="99" width="3" height="34"/><rect x="104" width="1.5" height="34"/><rect x="108" width="4" height="34"/><rect x="114" width="2" height="34"/></g>
+        </svg>
+        <span>7 74470 00707 4</span>
+      </div>
+    </div>
+
+    <div class="drumbar drumbar-blue" aria-hidden="true"></div>
+    <div class="drumbar drumbar-pink" aria-hidden="true"></div>
+  </div>
+</header>
+
+<main>
+<!-- ═══════════════ PROFILES ═══════════════ -->
+<section class="profiles" id="profiles" aria-labelledby="profiles-h">
+  <div class="sec-head reveal">
+    <p class="sec-eyebrow">INSIDE THE ISSUE · PP. 4–23 · ONE NIGHT APIECE</p>
+    <h2 class="mr sec-title" id="profiles-h" data-t="CLOCKED IN"><span>CLOCKED IN</span></h2>
+    <p class="sec-intro">Five people keep Gullhaven running between dusk and dawn. We stayed up
+    with each of them and typed what we saw. Everything below came off the duplicator
+    slightly crooked — <em>rest a hand on a page to pull it into register.</em></p>
+  </div>
+
+  <div class="cards">
+
+    <!-- 21:30 THE PRINTER -->
+    <article class="card reveal" id="card-printer" style="--tilt:-1.5deg; --mrx:4px; --mry:-3px;">
+      <div class="sheet">
+        <span class="tape tp-corner" aria-hidden="true"></span>
+        <header class="card-top">
+          <p class="mr card-time" data-t="21:30" aria-hidden="true"><span>21:30</span></p>
+          <p class="card-role"><span class="sr-only">9:30 p.m. — </span>THE PRINTER</p>
+        </header>
+        <div class="emblem" aria-hidden="true">
+          <svg viewBox="0 0 120 120">
+            <g class="em-p"><circle cx="58" cy="60" r="38" fill="none" stroke-width="7"/><circle cx="58" cy="60" r="16"/><path d="M96 60 h14 v10 h-8" fill="none" stroke-width="6"/></g>
+            <g class="em-b"><circle cx="58" cy="60" r="38" fill="none" stroke-width="7"/><circle cx="58" cy="60" r="16"/><path d="M96 60 h14 v10 h-8" fill="none" stroke-width="6"/></g>
+          </svg>
+        </div>
+        <h3 class="card-name">Otto Fenn, 61</h3>
+        <p class="card-loc">Fenn Duplicator Works · 44 Cannery Rd.</p>
+        <blockquote class="card-quote"><p>“People say riso is unpredictable. The machine is fine. It’s the people who are unpredictable.”</p></blockquote>
+        <p class="card-body">Otto prints church bulletins by day and everything else by night —
+        setlists, seed catalogs, this zine. At 21:30 he switches off the shop radio, cranks the
+        GR3770, and lets the pink drum drift, because perfect registration is for cowards.
+        He proofed this page. He says the misalignment is intentional. We believe him.</p>
+        <a class="card-link" href="#spread-printer" data-spread="spread-printer">READ THE FULL PAGE · P. 4 <span aria-hidden="true">→</span></a>
+        <span class="mini-stamp" aria-hidden="true">HE PRINTED THIS PAGE</span>
+      </div>
+      <span class="stamp-reg" aria-hidden="true">IN&nbsp;REGISTER ✓</span>
+    </article>
+
+    <!-- 23:58 THE NURSE -->
+    <article class="card reveal" id="card-nurse" style="--tilt:1.1deg; --mrx:-3px; --mry:2px;">
+      <div class="sheet">
+        <span class="tape tp-corner flip" aria-hidden="true"></span>
+        <header class="card-top">
+          <p class="mr card-time" data-t="23:58" aria-hidden="true"><span>23:58</span></p>
+          <p class="card-role"><span class="sr-only">11:58 p.m. — </span>THE NURSE</p>
+        </header>
+        <div class="emblem" aria-hidden="true">
+          <svg viewBox="0 0 120 120">
+            <g class="em-p"><path d="M45 18 h30 v27 h27 v30 h-27 v27 h-30 v-27 h-27 v-30 h27 z" fill="none" stroke-width="7"/><path d="M30 62 h18 l7 -18 l10 32 l8 -20 l5 6 h12" fill="none" stroke-width="5"/></g>
+            <g class="em-b"><path d="M45 18 h30 v27 h27 v30 h-27 v27 h-30 v-27 h-27 v-30 h27 z" fill="none" stroke-width="7"/><path d="M30 62 h18 l7 -18 l10 32 l8 -20 l5 6 h12" fill="none" stroke-width="5"/></g>
+          </svg>
+        </div>
+        <h3 class="card-name">Deion Marsh, RN</h3>
+        <p class="card-loc">St. Brigid’s Emergency · Ward Street</p>
+        <blockquote class="card-quote"><p>“Four a.m. is the honest hour. Nobody comes in at four a.m. for something small.”</p></blockquote>
+        <p class="card-body">Deion clocks in two minutes before midnight — never earlier, a
+        superstition he refuses to explain. Twelve beds, one vending machine that eats dollar
+        coins, and a shift that runs on drip coffee and triage math. He keeps a tally of
+        sunrise discharges on the whiteboard: 1,204 and counting.</p>
+        <a class="card-link" href="#spread-nurse" data-spread="spread-nurse">READ THE FULL PAGE · P. 8 <span aria-hidden="true">→</span></a>
+      </div>
+      <span class="stamp-reg" aria-hidden="true">IN&nbsp;REGISTER ✓</span>
+    </article>
+
+    <!-- 01:00 THE DJ -->
+    <article class="card reveal" id="card-dj" style="--tilt:-0.9deg; --mrx:3px; --mry:3px;">
+      <div class="sheet">
+        <header class="card-top">
+          <p class="mr card-time" data-t="01:00" aria-hidden="true"><span>01:00</span></p>
+          <p class="card-role"><span class="sr-only">1:00 a.m. — </span>THE DJ</p>
+        </header>
+        <div class="emblem" aria-hidden="true">
+          <svg viewBox="0 0 120 120">
+            <g class="em-p"><path d="M60 30 L42 96 M60 30 L78 96 M48 72 h24 M52 54 h16" fill="none" stroke-width="6"/><circle cx="60" cy="24" r="6"/><path d="M38 28 a26 26 0 0 1 44 0 M28 16 a40 40 0 0 1 64 0" fill="none" stroke-width="5"/></g>
+            <g class="em-b"><path d="M60 30 L42 96 M60 30 L78 96 M48 72 h24 M52 54 h16" fill="none" stroke-width="6"/><circle cx="60" cy="24" r="6"/><path d="M38 28 a26 26 0 0 1 44 0 M28 16 a40 40 0 0 1 64 0" fill="none" stroke-width="5"/></g>
+          </svg>
+        </div>
+        <h3 class="card-name">Lena Volt</h3>
+        <p class="card-loc">“The Owl Service” · 91.3 WGUL</p>
+        <blockquote class="card-quote"><p>“My listeners are bakers, nurses, and one lighthouse. I play what the lighthouse requests.”</p></blockquote>
+        <p class="card-body">From a booth above a shuttered arcade, Lena takes calls from anyone
+        awake enough to dial. Logged this night: three ballads, one shipping forecast read as a
+        lullaby, and forty minutes of whale song for a tugboat captain named Ruth.</p>
+        <a class="card-link" href="#spread-dj" data-spread="spread-dj">READ THE FULL PAGE · P. 16 <span aria-hidden="true">→</span></a>
+      </div>
+      <span class="stamp-reg" aria-hidden="true">IN&nbsp;REGISTER ✓</span>
+    </article>
+
+    <!-- 02:10 THE HARBOR PILOT -->
+    <article class="card reveal" id="card-pilot" style="--tilt:1.4deg; --mrx:-4px; --mry:-2px;">
+      <div class="sheet">
+        <span class="tape tp-corner" aria-hidden="true"></span>
+        <header class="card-top">
+          <p class="mr card-time" data-t="02:10" aria-hidden="true"><span>02:10</span></p>
+          <p class="card-role"><span class="sr-only">2:10 a.m. — </span>THE HARBOR PILOT</p>
+        </header>
+        <div class="emblem" aria-hidden="true">
+          <svg viewBox="0 0 120 120">
+            <g class="em-p"><path d="M60 18 v66 M60 84 a30 22 0 0 1 -30 -18 M60 84 a30 22 0 0 0 30 -18 M42 40 h36" fill="none" stroke-width="7"/><circle cx="60" cy="26" r="9" fill="none" stroke-width="6"/><path d="M18 104 q10 -8 21 0 t21 0 t21 0 t21 0" fill="none" stroke-width="5"/></g>
+            <g class="em-b"><path d="M60 18 v66 M60 84 a30 22 0 0 1 -30 -18 M60 84 a30 22 0 0 0 30 -18 M42 40 h36" fill="none" stroke-width="7"/><circle cx="60" cy="26" r="9" fill="none" stroke-width="6"/><path d="M18 104 q10 -8 21 0 t21 0 t21 0 t21 0" fill="none" stroke-width="5"/></g>
+          </svg>
+        </div>
+        <h3 class="card-name">Capt. Ingrid Sao</h3>
+        <p class="card-loc">Gullhaven Pilotage · Berth 9</p>
+        <blockquote class="card-quote"><p>“The ship is nine hundred feet long. The ladder is rope. You just don’t think about it in those terms.”</p></blockquote>
+        <p class="card-body">At 02:10 Ingrid steps off a pitching launch onto the hull ladder of
+        the MV <em>Aster Kite</em> — fourteen stories of steel moving at eight knots. She’ll bring it
+        up the channel in the dark, by feel and by numbers, and be home before her kids find
+        the cereal.</p>
+        <a class="card-link" href="#spread-pilot" data-spread="spread-pilot">READ THE FULL PAGE · P. 20 <span aria-hidden="true">→</span></a>
+      </div>
+      <span class="stamp-reg" aria-hidden="true">IN&nbsp;REGISTER ✓</span>
+    </article>
+
+    <!-- 03:40 THE BAKER -->
+    <article class="card reveal" id="card-baker" style="--tilt:-1.2deg; --mrx:3px; --mry:-4px;">
+      <div class="sheet">
+        <span class="tape tp-corner flip" aria-hidden="true"></span>
+        <header class="card-top">
+          <p class="mr card-time" data-t="03:40" aria-hidden="true"><span>03:40</span></p>
+          <p class="card-role"><span class="sr-only">3:40 a.m. — </span>THE BAKER</p>
+        </header>
+        <div class="emblem" aria-hidden="true">
+          <svg viewBox="0 0 120 120">
+            <g class="em-p"><ellipse cx="60" cy="74" rx="42" ry="26" fill="none" stroke-width="7"/><path d="M40 66 l10 -8 M56 62 l10 -8 M72 58 l10 -8" fill="none" stroke-width="5"/><path d="M44 30 q4 -8 0 -14 M60 26 q4 -8 0 -14 M76 30 q4 -8 0 -14" fill="none" stroke-width="4"/></g>
+            <g class="em-b"><ellipse cx="60" cy="74" rx="42" ry="26" fill="none" stroke-width="7"/><path d="M40 66 l10 -8 M56 62 l10 -8 M72 58 l10 -8" fill="none" stroke-width="5"/><path d="M44 30 q4 -8 0 -14 M60 26 q4 -8 0 -14 M76 30 q4 -8 0 -14" fill="none" stroke-width="4"/></g>
+          </svg>
+        </div>
+        <h3 class="card-name">Marisol Quade</h3>
+        <p class="card-loc">Ovenbird Bakery · Delancey Row</p>
+        <blockquote class="card-quote"><p>“The city thinks bread appears at seven. Bread appears at 3:40 — it just isn’t ready to talk to anyone yet.”</p></blockquote>
+        <p class="card-body">Marisol’s alarm is three alarm clocks, staggered, on the far side of
+        the room. By four the ovens are singing and the radio is tuned to Lena. Sixty baguettes,
+        ninety rolls, and one experimental rye she describes as “still in beta.” The first loaf
+        is always burned on purpose. For luck.</p>
+        <a class="card-link" href="#spread-baker" data-spread="spread-baker">READ THE FULL PAGE · P. 23 <span aria-hidden="true">→</span></a>
+      </div>
+      <span class="stamp-reg" aria-hidden="true">IN&nbsp;REGISTER ✓</span>
+    </article>
+  </div>
+</section>
+
+<!-- ═══════════════ SPREADS SHELF ═══════════════ -->
+<section class="spreads" id="spreads" aria-labelledby="spreads-h">
+  <div class="sec-head reveal">
+    <p class="sec-eyebrow">FLIP THROUGH · 24 PAGES · TWO INKS</p>
+    <h2 class="mr sec-title" data-t="INTERIOR SPREADS" id="spreads-h"><span>INTERIOR SPREADS</span></h2>
+    <p class="sec-intro">The whole issue, laid flat on the light table. Drag the shelf, or use the
+    arrows. Ink smells included at no extra charge.</p>
+  </div>
+
+  <div class="shelf-wrap reveal">
+    <div class="shelf" id="shelf" tabindex="0" role="region" aria-label="Interior spreads — scroll horizontally">
+
+      <!-- pp 2–3 : editor + contents -->
+      <article class="spread" id="spread-toc" style="--tilt:-0.7deg; --mrx:3px; --mry:-2px;">
+        <div class="page pg-l">
+          <p class="pg-kicker">FROM THE KITCHEN TABLE</p>
+          <h3 class="mr pg-title" data-t="DEAR READER,"><span>DEAR READER,</span></h3>
+          <p class="pg-body">PULP is assembled at a kitchen table and printed at Otto’s while
+          the kettle recovers. This issue kept us up — on purpose, for once. We followed five
+          Gullhaveners through one full night each and wrote down only what we actually saw.<br><br>
+          No composites, no “sources say.” Just the small hours, typed up.<br><br>
+          Go to bed. After you read it.<br>— E.</p>
+          <p class="pg-folio">2 · PULP Nº 7</p>
+        </div>
+        <div class="page pg-r">
+          <h3 class="pg-title-sm">IN THIS ISSUE</h3>
+          <ol class="toc">
+            <li><span class="toc-t">the printer</span><span class="toc-dots"></span><span class="toc-p">04</span></li>
+            <li><span class="toc-t">the nurse</span><span class="toc-dots"></span><span class="toc-p">08</span></li>
+            <li><span class="toc-t">who’s awake at 4 a.m.</span><span class="toc-dots"></span><span class="toc-p">12</span></li>
+            <li><span class="toc-t">the owl service, logged</span><span class="toc-dots"></span><span class="toc-p">16</span></li>
+            <li><span class="toc-t">the pilot</span><span class="toc-dots"></span><span class="toc-p">20</span></li>
+            <li><span class="toc-t">the baker</span><span class="toc-dots"></span><span class="toc-p">23</span></li>
+            <li><span class="toc-t">small hours, small ads</span><span class="toc-dots"></span><span class="toc-p">24</span></li>
+          </ol>
+          <div class="ht-panel" aria-hidden="true"><span class="ht ht-b"></span><span class="ht ht-p"></span></div>
+          <p class="pg-folio r">NIGHT SHIFT · 3</p>
+        </div>
+        <span class="stamp-reg" aria-hidden="true">IN&nbsp;REGISTER ✓</span>
+      </article>
+
+      <!-- pp 4–5 : printer -->
+      <article class="spread" id="spread-printer" style="--tilt:0.8deg; --mrx:-3px; --mry:2px;">
+        <div class="page pg-l">
+          <p class="pg-kicker">21:30 · CANNERY ROAD</p>
+          <h3 class="mr pg-title" data-t="THE PRINTER"><span>THE PRINTER</span></h3>
+          <p class="pg-body">The GR3770 arrived in 2019 on a fish cart, traded for a case of
+          stout and a promise. Otto rebuilt the paper feed with a violin string. It has printed
+          61,000 pages since, every one of them slightly to the left.</p>
+          <p class="pg-note" aria-hidden="true">↑ violin string. really.</p>
+          <p class="pg-folio">4 · PULP Nº 7</p>
+        </div>
+        <div class="page pg-r">
+          <div class="drum-art" aria-hidden="true">
+            <svg viewBox="0 0 200 160">
+              <g class="em-p"><circle cx="90" cy="80" r="58" fill="none" stroke-width="8"/><circle cx="90" cy="80" r="24"/><path d="M148 80 h30 v14 h-16" fill="none" stroke-width="7"/></g>
+              <g class="em-b"><circle cx="90" cy="80" r="58" fill="none" stroke-width="8"/><circle cx="90" cy="80" r="24"/><path d="M148 80 h30 v14 h-16" fill="none" stroke-width="7"/></g>
+            </svg>
+          </div>
+          <p class="pg-pull">“PERFECT REGISTRATION IS FOR COWARDS.”</p>
+          <p class="pg-spec">GR3770 · 2 drums · 300 copies · 80 gsm offcut</p>
+          <p class="pg-folio r">NIGHT SHIFT · 5</p>
+        </div>
+        <span class="stamp-reg" aria-hidden="true">IN&nbsp;REGISTER ✓</span>
+      </article>
+
+      <!-- pp 8–9 : nurse -->
+      <article class="spread" id="spread-nurse" style="--tilt:-0.6deg; --mrx:3px; --mry:3px;">
+        <svg class="ekg" viewBox="0 0 800 90" preserveAspectRatio="none" aria-hidden="true">
+          <path class="ekg-p" d="M0 50 H140 l14 -9 l11 9 h54 l11 -34 l16 60 l11 -26 h64 l9 -7 l9 7 h100 l14 -11 l11 11 h56 l11 -30 l17 54 l11 -24 h84 l9 -7 l9 7 h139" fill="none" stroke-width="4"/>
+          <path class="ekg-b" d="M0 50 H140 l14 -9 l11 9 h54 l11 -34 l16 60 l11 -26 h64 l9 -7 l9 7 h100 l14 -11 l11 11 h56 l11 -30 l17 54 l11 -24 h84 l9 -7 l9 7 h139" fill="none" stroke-width="4"/>
+        </svg>
+        <div class="page pg-l">
+          <p class="pg-kicker">23:58 · WARD STREET</p>
+          <h3 class="mr pg-title" data-t="THE NURSE"><span>THE NURSE</span></h3>
+          <p class="pg-body">Triage at 2 a.m. is a quiet arithmetic: who can wait, who thinks
+          they can wait, who says they can wait and cannot. Deion does the math without looking
+          up from the chart. The vending machine takes his dollar coin. Again.</p>
+          <p class="pg-folio">8 · PULP Nº 7</p>
+        </div>
+        <div class="page pg-r">
+          <div class="tally" aria-hidden="true">
+            <p class="tally-label">SUNRISE DISCHARGES, LIFETIME:</p>
+            <p class="tally-num mr" data-t="1,204"><span>1,204</span></p>
+            <p class="tally-sub">counted in dry-erase, verified by nobody, doubted by no one</p>
+          </div>
+          <p class="pg-note" aria-hidden="true">night shift meal: two clementines + hot water with “an amount” of instant coffee</p>
+          <p class="pg-folio r">NIGHT SHIFT · 9</p>
+        </div>
+        <span class="stamp-reg" aria-hidden="true">IN&nbsp;REGISTER ✓</span>
+      </article>
+
+      <!-- pp 12–13 : centerfold -->
+      <article class="spread centerfold" id="spread-map" style="--tilt:0.5deg; --mrx:-4px; --mry:-2px;">
+        <div class="page pg-full">
+          <p class="pg-kicker center">PP. 12–13 · THE CENTERFOLD</p>
+          <h3 class="mr pg-title center" data-t="WHO’S AWAKE AT 4 A.M.?"><span>WHO’S AWAKE AT 4 A.M.?</span></h3>
+          <div class="skyline" aria-hidden="true">
+            <svg viewBox="0 0 800 190" preserveAspectRatio="xMidYMax meet">
+              <circle cx="712" cy="34" r="20" class="sky-moon"/>
+              <path d="M726 22 A24 24 0 1 0 726 46 A19 19 0 1 1 726 22 Z" class="sky-moon-in"/>
+              <g class="sky-b">
+                <rect x="20" y="90" width="52" height="100"/><rect x="84" y="60" width="44" height="130"/><rect x="140" y="110" width="60" height="80"/><rect x="212" y="40" width="38" height="150"/><rect x="262" y="84" width="56" height="106"/><rect x="330" y="66" width="42" height="124"/><rect x="384" y="100" width="64" height="90"/><rect x="460" y="52" width="40" height="138"/><rect x="512" y="90" width="58" height="100"/><rect x="582" y="120" width="70" height="70"/><rect x="664" y="76" width="42" height="114"/><rect x="718" y="104" width="62" height="86"/>
+                <path d="M212 40 l19 -22 l19 22" fill="none" stroke-width="5"/>
+              </g>
+              <g class="sky-w">
+                <rect x="30" y="102" width="8" height="10"/><rect x="52" y="128" width="8" height="10"/><rect x="94" y="74" width="8" height="10"/><rect x="110" y="96" width="8" height="10" class="tw"/><rect x="152" y="122" width="8" height="10"/><rect x="222" y="60" width="8" height="10" class="tw"/><rect x="234" y="88" width="8" height="10"/><rect x="274" y="98" width="8" height="10"/><rect x="296" y="130" width="8" height="10" class="tw"/><rect x="340" y="80" width="8" height="10"/><rect x="398" y="112" width="8" height="10"/><rect x="424" y="140" width="8" height="10" class="tw"/><rect x="470" y="66" width="8" height="10"/><rect x="484" y="94" width="8" height="10"/><rect x="524" y="104" width="8" height="10" class="tw"/><rect x="548" y="132" width="8" height="10"/><rect x="596" y="134" width="8" height="10"/><rect x="676" y="90" width="8" height="10" class="tw"/><rect x="730" y="118" width="8" height="10"/>
+              </g>
+            </svg>
+          </div>
+          <ul class="census">
+            <li><span class="c-n">214</span> bakers</li>
+            <li><span class="c-n">371</span> nurses &amp; orderlies</li>
+            <li><span class="c-n">1</span> radio DJ</li>
+            <li><span class="c-n">2</span> harbor pilots</li>
+            <li><span class="c-n">1</span> printer <em>(mid-run — this very page, still wet)</em></li>
+            <li><span class="c-n">≈6,000</span> gulls <em>(unionized)</em></li>
+          </ul>
+          <p class="pg-folio">12 · PULP Nº 7</p>
+          <p class="pg-folio r">NIGHT SHIFT · 13</p>
+        </div>
+        <span class="stamp-reg" aria-hidden="true">IN&nbsp;REGISTER ✓</span>
+      </article>
+
+      <!-- pp 16–17 : DJ playlist -->
+      <article class="spread" id="spread-dj" style="--tilt:-0.8deg; --mrx:4px; --mry:2px;">
+        <div class="page pg-l">
+          <p class="pg-kicker">01:00 · 91.3 WGUL</p>
+          <h3 class="mr pg-title" data-t="THE OWL SERVICE"><span>THE OWL SERVICE</span></h3>
+          <p class="pg-body">Every request between 1:00 and 5:00, logged by hand in the station
+          diary. Lena’s only rule: if you’re awake enough to call, you’re awake enough to get
+          your song.</p>
+          <p class="pg-note" aria-hidden="true">the lighthouse calls collect. the station accepts.</p>
+          <p class="pg-folio">16 · PULP Nº 7</p>
+        </div>
+        <div class="page pg-r">
+          <table class="playlist">
+            <caption class="sr-only">Requests logged on The Owl Service, 1:00 to 5:00 a.m.</caption>
+            <tbody>
+              <tr><td>01:07</td><td>“Harvest Moon” — for Deion, from the break room</td></tr>
+              <tr><td>01:52</td><td>a ballad, “any ballad,” for the toll booth on Route 9</td></tr>
+              <tr><td>02:44</td><td>the shipping forecast, read slowly, as a lullaby</td></tr>
+              <tr><td>03:10</td><td>whale song, 40 min — for Ruth, tugboat <em>Persimmon</em></td></tr>
+              <tr><td>04:12</td><td>“anything with horns in it” — Marisol, flour audible</td></tr>
+              <tr><td>04:59</td><td>“Here Comes the Sun.” every night. no exceptions.</td></tr>
+            </tbody>
+          </table>
+          <p class="pg-folio r">NIGHT SHIFT · 17</p>
+        </div>
+        <span class="stamp-reg" aria-hidden="true">IN&nbsp;REGISTER ✓</span>
+      </article>
+
+      <!-- pp 20–21 : pilot -->
+      <article class="spread" id="spread-pilot" style="--tilt:0.7deg; --mrx:-3px; --mry:-3px;">
+        <div class="page pg-l">
+          <p class="pg-kicker">02:10 · THE SEA BUOY</p>
+          <h3 class="mr pg-title" data-t="THE PILOT"><span>THE PILOT</span></h3>
+          <p class="pg-body">Boarding log, MV <em>Aster Kite</em>: 02:10 on the ladder. 02:14 on the
+          bridge, coffee refused, tea accepted. 03:25 alongside at Berth 9, gentle as a library.
+          Ingrid’s hands never left her pockets except to point.</p>
+          <p class="pg-folio">20 · PULP Nº 7</p>
+        </div>
+        <div class="page pg-r">
+          <div class="chart-art" aria-hidden="true">
+            <svg viewBox="0 0 320 200">
+              <g class="map-depth"><text x="36" y="60">14</text><text x="120" y="40">11</text><text x="210" y="70">9</text><text x="262" y="140">7½</text><text x="90" y="150">12</text></g>
+              <path class="map-route" d="M296 28 C 240 60, 220 90, 180 104 S 90 140, 38 168" fill="none" stroke-width="4" stroke-dasharray="10 8"/>
+              <g class="map-buoy"><circle cx="296" cy="28" r="7"/><circle cx="180" cy="104" r="7"/><circle cx="38" cy="168" r="7"/></g>
+              <g class="map-ship"><path d="M186 88 l30 8 l-8 14 l-30 -8 z"/></g>
+              <text class="map-label" x="240" y="20">SEA BUOY</text>
+              <text class="map-label" x="10" y="190">BERTH 9</text>
+            </svg>
+          </div>
+          <p class="pg-spec">tide +2.1 m · wind SW 12 kn · one heron, unimpressed</p>
+          <p class="pg-folio r">NIGHT SHIFT · 21</p>
+        </div>
+        <span class="stamp-reg" aria-hidden="true">IN&nbsp;REGISTER ✓</span>
+      </article>
+
+      <!-- pp 22-23 : baker -->
+      <article class="spread" id="spread-baker" style="--tilt:-0.5deg; --mrx:3px; --mry:-3px;">
+        <div class="page pg-l">
+          <p class="pg-kicker">03:40 · DELANCEY ROW</p>
+          <h3 class="mr pg-title" data-t="THE BAKER"><span>THE BAKER</span></h3>
+          <p class="pg-body">Timeline of a batch: 03:40 alarms one through three. 04:05 ovens lit,
+          radio on — Lena, obviously. 04:40 first loaf in. 05:05 first loaf out, burned, on
+          purpose, for luck. 06:58 door unlocked. 07:00 the city believes in bread again.</p>
+          <p class="pg-folio">22 · PULP Nº 7</p>
+        </div>
+        <div class="page pg-r">
+          <div class="loaf-art" aria-hidden="true">
+            <svg viewBox="0 0 220 150">
+              <g class="em-p"><ellipse cx="105" cy="95" rx="80" ry="42" fill="none" stroke-width="8"/><path d="M65 82 l18 -13 M95 75 l18 -13 M125 68 l18 -13" fill="none" stroke-width="6"/><path d="M75 30 q6 -11 0 -20 M108 24 q6 -11 0 -20 M141 30 q6 -11 0 -20" fill="none" stroke-width="5"/></g>
+              <g class="em-b"><ellipse cx="105" cy="95" rx="80" ry="42" fill="none" stroke-width="8"/><path d="M65 82 l18 -13 M95 75 l18 -13 M125 68 l18 -13" fill="none" stroke-width="6"/><path d="M75 30 q6 -11 0 -20 M108 24 q6 -11 0 -20 M141 30 q6 -11 0 -20" fill="none" stroke-width="5"/></g>
+            </svg>
+          </div>
+          <p class="pg-pull">“STILL IN BETA.” — the rye</p>
+          <p class="pg-folio r">NIGHT SHIFT · 23</p>
+        </div>
+        <span class="stamp-reg" aria-hidden="true">IN&nbsp;REGISTER ✓</span>
+      </article>
+
+      <!-- p 24 : back page -->
+      <article class="spread backpage" id="spread-back" style="--tilt:0.9deg; --mrx:-3px; --mry:2px;">
+        <div class="page pg-full">
+          <p class="pg-kicker center">P. 24 · SMALL HOURS, SMALL ADS</p>
+          <div class="ads">
+            <p class="ad">LOST: one glove, warm, sentimental. Pier 4. Reward: soup.</p>
+            <p class="ad">FOR TRADE: 40 min of whale song (cassette) for literally anything else. — Ruth</p>
+            <p class="ad">WANTED: alarm clock loud enough for a baker. Must be merciless.</p>
+            <p class="ad">FREE: misprints of this very page. See Otto. Ask nicely.</p>
+          </div>
+          <p class="back-sign mr" data-t="SEE YOU AT DAWN."><span>SEE YOU AT DAWN.</span></p>
+          <p class="back-next">PULP Nº 8 — “WET PAINT” — OCTOBER</p>
+          <p class="pg-folio center">24 · PULP Nº 7 · END</p>
+        </div>
+        <span class="stamp-reg" aria-hidden="true">IN&nbsp;REGISTER ✓</span>
+      </article>
+    </div>
+
+    <div class="shelf-nav">
+      <button class="shelf-btn" id="shelfPrev" type="button" aria-label="Previous spread">←</button>
+      <p class="shelf-pos" id="shelfPos" aria-live="polite">PP. 2–3 OF 24</p>
+      <button class="shelf-btn" id="shelfNext" type="button" aria-label="Next spread">→</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ COLOPHON ═══════════════ -->
+<section class="colophon" id="colophon" aria-labelledby="colophon-h">
+  <div class="sec-head reveal">
+    <p class="sec-eyebrow">THE FINE PRINT</p>
+    <h2 class="mr sec-title" data-t="COLOPHON" id="colophon-h"><span>COLOPHON</span></h2>
+  </div>
+
+  <div class="colo-grid reveal">
+    <div class="drums" aria-hidden="true">
+      <div class="drum-circles">
+        <span class="dc dc-p"></span>
+        <span class="dc dc-b"></span>
+      </div>
+      <p class="drum-cap"><span class="cap-p">DRUM 1 — FLUOR PINK 21U</span> · <span class="cap-b">DRUM 2 — MEDIUM BLUE 45U</span><br><span class="cap-v">↑ the overlap is where they argue</span></p>
+    </div>
+
+    <dl class="specs">
+      <div><dt>MACHINE</dt><dd>Risograph GR3770, secondhand, temperamental, beloved</dd></div>
+      <div><dt>STOCK</dt><dd>80 gsm recycled offcut — whatever the mill had that week</dd></div>
+      <div><dt>TYPE</dt><dd>woodcut poster caps &amp; a typewriter that sticks on the letter R</dd></div>
+      <div><dt>EDITION</dt><dd>300 copies, hand-stapled, collated by insomnia</dd></div>
+      <div><dt>MISPRINTS</dt><dd>free, while supplies last (supplies always last)</dd></div>
+    </dl>
+
+    <div class="edition">
+      <p class="ed-stamp" aria-hidden="true">THIS IS COPY<br><span class="ed-no">Nº 217</span><br>OF 300</p>
+      <div class="thumb" aria-hidden="true">
+        <svg viewBox="0 0 80 100">
+          <g fill="none" stroke-width="2.6">
+            <ellipse cx="40" cy="52" rx="30" ry="42"/><ellipse cx="40" cy="54" rx="24" ry="34"/><ellipse cx="40" cy="56" rx="18" ry="26"/><ellipse cx="41" cy="58" rx="12" ry="18"/><ellipse cx="42" cy="60" rx="6" ry="10"/>
+          </g>
+        </svg>
+        <span>otto’s thumb, 03:12</span>
+      </div>
+    </div>
+
+    <form class="mail" id="mailForm" aria-labelledby="mail-h">
+      <h3 id="mail-h" class="mail-h">GET Nº 8 IN YOUR MAILBOX</h3>
+      <p class="mail-p">We mail it. Stamps are expensive; send $4 and a kind word.</p>
+      <label class="mail-label" for="addr">your mailing address</label>
+      <input class="mail-in" id="addr" name="addr" type="text" autocomplete="street-address" placeholder="e.g. the blue door past the fish market" required>
+      <button class="stamp-btn" type="submit">PUT ME ON THE LIST</button>
+      <p class="mail-done" id="mailDone" hidden>NOTED. GO TO SLEEP. <span aria-hidden="true">✓</span></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <p class="foot-stamp" aria-hidden="true">PRESS OFF AT 04:56 — GOODNIGHT, GULLHAVEN</p>
+  <p class="foot-line">PULP is made by four people and a duplicator. No ads. No website — well.</p>
+  <p class="foot-fine">Pouch 77, Gullhaven GPO · printed at Fenn Duplicator Works, 44 Cannery Rd. · © 2026, or whenever the ink dries</p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

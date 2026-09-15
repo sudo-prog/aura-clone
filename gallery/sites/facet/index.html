@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FACET — Lapidary Atelier &amp; Gem-Cutting House</title>
+<meta name="description" content="FACET is a four-bench lapidary atelier in Idar-Oberstein cutting collector stones to a tenth of a degree. Round brilliant, emerald step, marquise, trillion — re-cut live.">
+<meta property="og:title" content="FACET — Lapidary Atelier &amp; Gem-Cutting House">
+<meta property="og:description" content="Light, cut to order. A lapidary atelier cutting collector stones to a tenth of a degree — with a live 57-facet stone on the dop.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0A0D15">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230A0D15'/%3E%3Cpath d='M14 26 L24 15 L40 15 L50 26 L32 51 Z' fill='none' stroke='%23D3A957' stroke-width='2.4'/%3E%3Cpath d='M14 26 L50 26 M24 15 L28 26 M40 15 L36 26 M28 26 L32 51 M36 26 L32 51' stroke='%23D3A957' stroke-width='1.2' fill='none'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/BodoniModa-08.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Archivo-03.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/BodoniModa.css">
+<link rel="stylesheet" href="fonts/Archivo.css">
+<link rel="stylesheet" href="fonts/SplineSansMono.css">
+<link rel="stylesheet" href="css/main.css">
+<script type="importmap">
+{"imports":{"three":"./vendor/three.module.min.js","three/addons/":"./vendor/addons/"}}
+</script>
+</head>
+<body class="loading">
+
+<header class="site-nav" id="top">
+  <a class="brand" href="#top" aria-label="FACET — home">FACET</a>
+  <nav aria-label="Site">
+    <a href="#anatomy">Anatomy</a>
+    <a href="#cutroom">Cut&nbsp;Room</a>
+    <a href="#register">Register</a>
+    <a href="#rough">Atelier</a>
+  </nav>
+  <a class="commission-link" href="#commission">Commission a cut</a>
+</header>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" aria-label="The stone">
+    <div class="lamp-pool" aria-hidden="true"></div>
+    <div class="gem-stage hero-stage" aria-hidden="true">
+      <canvas id="heroGem"></canvas>
+      <div class="gl-fallback" hidden></div>
+    </div>
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="tick"></span>Lapidary atelier · Idar-Oberstein · est. 1994</p>
+      <h1><span class="l"><span>Light,</span></span> <span class="l"><span><em>cut</em> to order.</span></span></h1>
+      <p class="lede">FACET is a four-bench atelier cutting collector stones to a tenth of a degree. We do not add the fire you see. We release it — one facet at a time, at angles the stone has kept since it cooled.</p>
+      <p class="hero-meta mono">crown 34.50° · pavilion 40.75° · 57 facets · turning live</p>
+    </div>
+    <a class="scroll-cue" href="#anatomy"><span class="mono">34.5°</span> descend to the pavilion</a>
+  </section>
+
+  <!-- ============ ANATOMY ============ -->
+  <section class="anatomy" id="anatomy">
+    <div class="wrap split">
+      <div class="col-copy">
+        <p class="eyebrow reveal"><span class="tick"></span>Cut anatomy</p>
+        <h2 class="reveal" style="--d:.06s">Four names, one geometry.</h2>
+        <p class="reveal" style="--d:.12s">Every faceted stone, whatever its outline, is the same argument: a <em>crown</em> to gather light, a <em>pavilion</em> to return it, a <em>girdle</em> to survive the setting, and a <em>culet</em> where every decision meets. Move one angle half a degree and the stone goes quiet. These are the tolerances we keep, bench by bench, on every commission.</p>
+        <dl class="anatomy-terms reveal" style="--d:.18s">
+          <div><dt>Crown</dt><dd>Everything above the girdle — table, 8 stars, 8 kites, 16 upper halves. At 34.50° the crown gathers; steeper, it hoards.</dd></div>
+          <div><dt>Girdle</dt><dd>The stone's equator and its handshake with the setting. We hold it between 1.7 and 3.0&nbsp;% — thick enough to survive a prong, thin enough to vanish.</dd></div>
+          <div><dt>Pavilion</dt><dd>The engine. Twenty-four facets at 40.75° turn the pavilion into a hall of mirrors that sends light back out through the crown instead of leaking it below.</dd></div>
+          <div><dt>Culet</dt><dd>The point of decision at the bottom of the stone. Ours is pointed — 0.0&nbsp;% — because a window at the culet is a confession of nerves.</dd></div>
+        </dl>
+      </div>
+      <figure class="col-figure reveal" style="--d:.1s">
+        <svg id="anatomySVG" viewBox="0 0 560 470" role="img" aria-label="Cross-section of a round brilliant with crown, girdle, pavilion and culet labeled"></svg>
+        <figcaption>
+          <table class="spec-table" aria-label="Ideal round brilliant proportions">
+            <caption class="mono">Tolkowsky ideal · 1919 · as we still cut it</caption>
+            <tbody>
+              <tr><th scope="row">Table</th><td class="mono">53.0 %</td><th scope="row">Girdle</th><td class="mono">1.7–3.0 %</td></tr>
+              <tr><th scope="row">Crown angle</th><td class="mono">34.50°</td><th scope="row">Culet</th><td class="mono">0.0 % pointed</td></tr>
+              <tr><th scope="row">Pavilion angle</th><td class="mono">40.75°</td><th scope="row">Total depth</th><td class="mono">59.3 %</td></tr>
+            </tbody>
+          </table>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ CUT ROOM ============ -->
+  <section class="cutroom" id="cutroom">
+    <div class="wrap">
+      <p class="eyebrow reveal"><span class="tick"></span>The cut room</p>
+      <h2 class="reveal" style="--d:.06s">One rough. Four futures.</h2>
+      <p class="section-lede reveal" style="--d:.12s">The same 3.18-carat block of Ceylon sapphire rough, planned four ways. Choose a cut and the stone on the dop is re-cut live — facet counts measured from the geometry itself, angles as they would leave the wheel. Drag the stone to turn it.</p>
+    </div>
+    <div class="wrap instrument reveal" style="--d:.18s">
+      <div class="stage-housing">
+        <div class="gem-stage cut-stage" aria-hidden="true">
+          <canvas id="cutGem"></canvas>
+          <div class="gl-fallback" hidden></div>
+        </div>
+        <p class="stage-note mono"><span class="dot"></span>on the dop · 3.18 ct rough · Ratnapura, Ceylon</p>
+      </div>
+      <div class="rail">
+        <div class="cut-buttons" role="group" aria-label="Choose a cut">
+          <button class="cut-btn is-active" data-cut="brilliant" aria-pressed="true">
+            <span class="cut-ico" data-map="brilliant"></span>
+            <span class="cut-name">Round brilliant</span>
+            <span class="cut-sub mono" data-facets="brilliant"></span>
+          </button>
+          <button class="cut-btn" data-cut="step" aria-pressed="false">
+            <span class="cut-ico" data-map="step"></span>
+            <span class="cut-name">Emerald step</span>
+            <span class="cut-sub mono" data-facets="step"></span>
+          </button>
+          <button class="cut-btn" data-cut="marquise" aria-pressed="false">
+            <span class="cut-ico" data-map="marquise"></span>
+            <span class="cut-name">Marquise</span>
+            <span class="cut-sub mono" data-facets="marquise"></span>
+          </button>
+          <button class="cut-btn" data-cut="trillion" aria-pressed="false">
+            <span class="cut-ico" data-map="trillion"></span>
+            <span class="cut-name">Trillion</span>
+            <span class="cut-sub mono" data-facets="trillion"></span>
+          </button>
+        </div>
+        <dl class="readout" aria-live="polite">
+          <div class="ro-row ro-facets"><dt>Facets <span class="ro-hint">measured, girdle excl.</span></dt><dd class="mono" id="roFacets">57</dd></div>
+          <div class="ro-row"><dt>Table</dt><dd class="mono" id="roTable">56.0 %</dd></div>
+          <div class="ro-row"><dt>Crown</dt><dd class="mono" id="roCrown">34.50°</dd></div>
+          <div class="ro-row"><dt>Pavilion</dt><dd class="mono" id="roPavilion">40.75°</dd></div>
+          <div class="ro-row"><dt>Depth</dt><dd class="mono" id="roDepth">61.2 %</dd></div>
+          <div class="ro-row"><dt>L : W</dt><dd class="mono" id="roRatio">1.00</dd></div>
+          <div class="ro-row"><dt>Yield from rough</dt><dd class="mono" id="roYield">41 %</dd></div>
+        </dl>
+        <p class="cut-note" id="cutNote">Maximum fire. The brilliant surrenders the most rough — and returns it as light.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ REGISTER ============ -->
+  <section class="register" id="register">
+    <div class="wrap">
+      <p class="eyebrow reveal"><span class="tick"></span>The register</p>
+      <h2 class="reveal" style="--d:.06s">Commissioned stones.</h2>
+      <p class="section-lede reveal" style="--d:.12s">Every stone we cut is entered in the atelier register by hand, with its plan, its rough weight, and what the wheel took. Four entries, with their owners' permission.</p>
+
+      <article class="stone reveal">
+        <div class="stone-map" data-map="brilliant"></div>
+        <div class="stone-head">
+          <p class="stone-id mono">FCT-2019-041</p>
+          <h3>Vesper</h3>
+          <p class="stone-specs mono">round brilliant · white sapphire · 2.87 ct · VVS, eye-clean · Ratnapura, Ceylon</p>
+        </div>
+        <p class="stone-story">Cut for a Geneva horologist who asked for a stone “quiet at noon, loud at dinner.” Forty-one hours at the lap; 59&nbsp;% of the rough surrendered to the wheel. At delivery he held it to the window for a long moment and said nothing — which is the review we keep.</p>
+      </article>
+
+      <article class="stone reveal">
+        <div class="stone-map" data-map="step"></div>
+        <div class="stone-head">
+          <p class="stone-id mono">FCT-2021-067</p>
+          <h3>Meridian</h3>
+          <p class="stone-specs mono">emerald step · aquamarine · 5.61 ct · IF · Santa Maria de Itabira, Minas Gerais</p>
+        </div>
+        <p class="stone-story">Eight weeks of letters to win the rough from a dealer who had promised it elsewhere. The steps were planned so each one holds a deeper register of the same Santa Maria blue — a bathymetric chart of itself. Commissioned by a retired cartographer, who insists she can read the depth in metres.</p>
+      </article>
+
+      <article class="stone reveal">
+        <div class="stone-map" data-map="marquise"></div>
+        <div class="stone-head">
+          <p class="stone-id mono">FCT-2022-090</p>
+          <h3>The Wick</h3>
+          <p class="stone-specs mono">marquise · spessartine garnet · 3.05 ct · one silk inclusion, kept · Loliondo, Tanzania</p>
+        </div>
+        <p class="stone-story">The rough carried a flame-shaped zone of deepest mandarin at one end. Any symmetrical cut would have split it; the navette keeps the whole flame at a single point, so the stone burns brighter at its north. Its owner wears the flame turned toward her hand, where only she knows it is.</p>
+      </article>
+
+      <article class="stone reveal">
+        <div class="stone-map" data-map="trillion"></div>
+        <div class="stone-head">
+          <p class="stone-id mono">FCT-2024-113</p>
+          <h3>Trine</h3>
+          <p class="stone-specs mono">trillion · chrome tourmaline · 2.44 ct · eye-clean · Merelani Hills, Tanzania</p>
+        </div>
+        <p class="stone-story">Cut shallow against every textbook, because the chrome green was so saturated a full pavilion went black. Forty-three facets, 37&nbsp;% depth. The dealer called the plan a waste of face-up size he could have sold twice; the finished stone reads greener than his whole parcel.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ PHILOSOPHY ============ -->
+  <section class="rough" id="rough">
+    <div class="wrap narrow">
+      <p class="eyebrow reveal"><span class="tick"></span>On rough</p>
+      <blockquote class="pull reveal" style="--d:.06s">
+        <p>“The cut is already inside the rough. My work is to disagree with the stone as little as possible.”</p>
+        <cite>— Odile Brandt, master cutter · Bench I</cite>
+      </blockquote>
+      <div class="rough-copy reveal" style="--d:.12s">
+        <p>Brandt apprenticed nine years in Idar-Oberstein before she was allowed to plan a stone of her own. The habit survives: every parcel of rough that enters the atelier spends a week under the polariscope before anyone touches a wheel. We map strain like weather. We find the windows, the feathers, the color zones — and then we wait another day, because rough read in enthusiasm is rough read wrong.</p>
+        <p>We refuse eleven parcels for every one we buy. Not because the ten were worthless, but because we could not hear a cut in them. A stone can always lose weight later; it can never gain angle. Carat is vanity. Angle is honesty. When a client asks us to save half a carat by lifting the pavilion, we decline the commission and recommend a competitor we do not respect.</p>
+        <p class="signature">O. Brandt <span class="mono">· Bench I · FACET</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COMMISSION ============ -->
+  <section class="commission" id="commission">
+    <div class="wrap">
+      <p class="eyebrow reveal"><span class="tick"></span>Commission</p>
+      <h2 class="reveal" style="--d:.06s">From rough to register.</h2>
+      <ol class="process">
+        <li class="reveal" style="--d:.08s"><span class="step mono">I</span>
+          <h3>The sitting</h3>
+          <p>One hour at the atelier or by call. You bring the occasion; we bring the trays. We ask what the stone is for, and we listen to what you do not say.</p></li>
+        <li class="reveal" style="--d:.14s"><span class="step mono">II</span>
+          <h3>The rough</h3>
+          <p>Two to six weeks of sourcing through cutters we have traded with for decades. You receive each candidate on video, turned slowly under the bench lamp.</p></li>
+        <li class="reveal" style="--d:.2s"><span class="step mono">III</span>
+          <h3>The plan</h3>
+          <p>A full cut sheet — facet diagram, every angle, predicted yield — and a 10:1 resin maquette by post, so the geometry sits in your hand before it exists.</p></li>
+        <li class="reveal" style="--d:.26s"><span class="step mono">IV</span>
+          <h3>The wheel</h3>
+          <p>Two to nine weeks at the bench, depending on the stone's temper. Bench notes go out every Friday. No photographs of unfinished work; the stone decides when it is ready to be seen.</p></li>
+        <li class="reveal" style="--d:.32s"><span class="step mono">V</span>
+          <h3>The delivery</h3>
+          <p>Hand delivery in Idar-Oberstein or Geneva, in the tray it was cut over. With it: the register entry and the cut sheet with every angle <em>as cut</em>, signed at the bench.</p></li>
+      </ol>
+      <div class="contact reveal" style="--d:.1s">
+        <p class="contact-line">Begin with a letter: <a href="mailto:commissions@facet.haus">commissions@facet.haus</a></p>
+        <p class="contact-sub mono">Hauptstraße 47 · 55743 Idar-Oberstein · bench visits Thursdays, by appointment</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap foot-grid">
+    <p class="foot-brand">FACET</p>
+    <p class="foot-note">A lapidary atelier of four benches. The stone above is cut live — its facets are counted from the geometry, not the brochure.</p>
+    <p class="foot-colophon mono">Set in Bodoni Moda &amp; Archivo · dispersion computed at three indices of refraction · © MMXXVI FACET, Idar-Oberstein</p>
+  </div>
+</footer>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

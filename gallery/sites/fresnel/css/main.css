@@ -1,0 +1,657 @@
+/* ═══════════════════════════════════════════════════════════════════
+   STATION FRESNEL — a page lit by a working lighthouse
+   Atlantic slate #0C141B · Wheelhouse #141F29 · Beam #F6EACB
+   Fog #8FA69B · Storm-shutter #A63D33 · Brass #C29B5A · Pale #C9D2D7
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+  --slate: #0C141B;
+  --wheel: #141F29;
+  --beam: #F6EACB;
+  --fogc: #8FA69B;
+  --storm: #A63D33;
+  --storm-ink: #D2685A; /* storm red lifted for small text on slate — ≥4.5:1 */
+  --brass: #C29B5A;
+  --pale: #C9D2D7;
+  --ease: cubic-bezier(.22, .61, .21, 1);
+  /* live lighting state, written by js/main.js every frame */
+  --flash: 0;      /* 0..1 flash envelope (the honest Fl(2) W 15s)   */
+  --fog: 0;        /* 0..1 fog density                               */
+  --blast: 0;      /* 0..1 foghorn envelope                          */
+  --b1: 0deg;      /* beam spoke A screen angle                      */
+  --b2: -72deg;    /* beam spoke B screen angle                      */
+  --face1: 0;      /* spoke A facing factor                          */
+  --face2: 0;      /* spoke B facing factor                          */
+  --bandx: -60vw;  /* grazing wash band position                     */
+  --bandop: 0;     /* grazing wash band opacity                      */
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; overflow-x: clip; }
+
+body {
+  background:
+    radial-gradient(140% 80% at 50% -10%, #13212c 0%, var(--slate) 55%),
+    var(--slate);
+  color: var(--pale);
+  font-family: "Newsreader", "Iowan Old Style", Georgia, serif;
+  font-size: 17px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+::selection { background: var(--brass); color: var(--slate); }
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #0a1118; }
+::-webkit-scrollbar-thumb { background: #2a3a46; border-radius: 5px; border: 2px solid #0a1118; }
+::-webkit-scrollbar-thumb:hover { background: var(--brass); }
+
+:focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; border-radius: 2px; }
+
+.skip {
+  position: absolute; left: 1rem; top: -3rem; z-index: 200;
+  background: var(--brass); color: var(--slate);
+  font-family: "Cutive Mono", monospace; font-size: .8rem;
+  padding: .5rem .9rem; text-decoration: none; transition: top .2s var(--ease);
+}
+.skip:focus-visible { top: 1rem; }
+
+/* ── night-vision settle on load ─────────────────────────────────── */
+body::after {
+  content: ""; position: fixed; inset: 0; z-index: 120;
+  background: #05090d; opacity: 1; pointer-events: none;
+  transition: opacity 1.6s var(--ease);
+}
+body.lit::after { opacity: 0; }
+
+/* ═══ ATMOSPHERE LAYERS ═══════════════════════════════════════════ */
+
+#fog {
+  position: fixed; inset: 0; width: 100%; height: 100%;
+  z-index: 8; pointer-events: none;
+}
+
+.wash { position: fixed; inset: 0; z-index: 9; pointer-events: none; overflow: hidden; }
+
+/* the grazing pass — a beam sweeping the page like light across a wall */
+.wash-band {
+  position: absolute; top: -12%; bottom: -12%; left: 0; width: 40vw;
+  background: linear-gradient(90deg, transparent, rgba(246,234,203,.22) 50%, transparent);
+  transform: translateX(var(--bandx)) skewX(-9deg);
+  opacity: var(--bandop);
+  mix-blend-mode: screen;
+  will-change: transform, opacity;
+}
+
+/* the flash itself — light arriving from the lantern */
+.wash-bloom {
+  position: absolute; inset: 0;
+  background: radial-gradient(115% 70% at 50% -32%,
+    rgba(246,234,203,.52), rgba(246,234,203,.07) 42%, transparent 60%);
+  opacity: var(--flash);
+  mix-blend-mode: screen;
+  will-change: opacity;
+}
+
+/* in fog the flash scatters — the whole air lights up */
+.wash-scatter {
+  position: absolute; inset: 0;
+  background: rgba(197,213,201,.42);
+  opacity: calc(var(--flash) * var(--fog) * .75);
+  mix-blend-mode: screen;
+  will-change: opacity;
+}
+
+/* the horn is felt, not seen — a pressure vignette */
+.horn-veil {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 90% 45% at 50% 112%, rgba(166,61,51,.30), transparent 65%),
+    radial-gradient(145% 145% at 50% 50%, transparent 52%, rgba(12,6,5,.55) 100%);
+  opacity: var(--blast);
+  will-change: opacity;
+}
+
+/* ═══ MASTHEAD ════════════════════════════════════════════════════ */
+
+.mast {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 40;
+  display: flex; align-items: center; gap: 1.5rem;
+  padding: .65rem clamp(1rem, 3vw, 2.2rem);
+  background: linear-gradient(rgba(8,13,18,.88), rgba(8,13,18,.62) 70%, transparent);
+}
+
+.mast-name { display: flex; flex-direction: column; line-height: 1.25; }
+.mast-title {
+  font-family: "Bevan", serif; font-size: .95rem; letter-spacing: .14em;
+  color: var(--beam);
+}
+.mast-sub {
+  font-family: "Cutive Mono", monospace; font-size: .62rem;
+  letter-spacing: .08em; color: var(--fogc);
+}
+
+.mast-nav { margin-left: auto; display: flex; gap: 1.4rem; }
+.mast-nav a {
+  font-family: "Cutive Mono", monospace; font-size: .74rem;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--pale); text-decoration: none; padding: .3rem 0;
+  border-bottom: 1px solid transparent;
+  transition: color .25s var(--ease), border-color .25s var(--ease);
+}
+.mast-nav a:hover { color: var(--beam); border-bottom-color: var(--brass); }
+
+/* the conditions switch — brass toggle for fog */
+.conditions {
+  display: flex; align-items: center; gap: .6rem;
+  background: rgba(20,31,41,.85); color: var(--pale);
+  border: 1px solid rgba(194,155,90,.45); border-radius: 3px;
+  padding: .42rem .8rem; cursor: pointer;
+  font-family: "Cutive Mono", monospace;
+  transition: border-color .25s var(--ease), background .25s var(--ease);
+}
+.conditions:hover { border-color: var(--brass); background: rgba(26,39,51,.92); }
+.cond-label { font-size: .58rem; letter-spacing: .16em; color: var(--fogc); text-transform: uppercase; }
+.cond-value { font-size: .78rem; letter-spacing: .1em; color: var(--beam); min-width: 5.6ch; }
+.cond-lamp {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: #3d5247; box-shadow: inset 0 0 2px rgba(0,0,0,.6);
+  transition: background .5s var(--ease), box-shadow .5s var(--ease);
+}
+.conditions[aria-pressed="true"] .cond-lamp {
+  background: var(--fogc); box-shadow: 0 0 8px rgba(143,166,155,.8);
+}
+.conditions[aria-pressed="true"] .cond-value { color: var(--fogc); }
+
+/* ═══ HERO — THE LIGHT ════════════════════════════════════════════ */
+
+.hero {
+  position: relative; z-index: 2;
+  min-height: 100svh;
+  display: flex; flex-direction: column; align-items: center;
+  padding: calc(64px + 2.5vh) 1rem 4rem;
+}
+
+.hero-eyebrow {
+  font-family: "Cutive Mono", monospace; font-size: .72rem;
+  letter-spacing: .18em; color: var(--fogc); text-align: center;
+  margin-bottom: .9rem;
+}
+
+/* the stage: rose + beams + optic share one centre — the lamp */
+.stage {
+  position: relative;
+  height: clamp(320px, 50vh, 540px);
+  aspect-ratio: 640 / 940;
+  display: grid; place-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.rose {
+  position: absolute; left: 50%; top: 50%;
+  width: calc(clamp(320px, 50vh, 540px) * 1.14);
+  height: calc(clamp(320px, 50vh, 540px) * 1.14);
+  transform: translate(-50%, -50%);
+  overflow: visible;
+}
+.rose-ring { fill: none; stroke: rgba(143,166,155,.30); stroke-width: 1; }
+.rose-ring.faint { stroke: rgba(143,166,155,.14); }
+.rose-txt {
+  font-family: "Cutive Mono", monospace; font-size: 26px;
+  letter-spacing: 3px;
+  fill: rgba(143,166,155,.6); text-anchor: middle;
+}
+#roseTicks line { stroke: rgba(143,166,155,.38); }
+
+/* THE BEAMS — two spokes, one revolution per 15 s, honest to the clock */
+.beam {
+  position: absolute; left: 50%; top: 50%;
+  width: 130vmax; height: 24vmax; margin-top: -12vmax;
+  transform-origin: 0 50%;
+  pointer-events: none;
+  will-change: transform;
+}
+#beamA { transform: rotate(var(--b1)); }
+#beamB { transform: rotate(var(--b2)); }
+
+.beam-core {
+  position: absolute; inset: 0;
+  clip-path: polygon(0 48.4%, 100% 34%, 100% 66%, 0 51.6%);
+  background: linear-gradient(90deg,
+    rgba(246,234,203,.95), rgba(246,234,203,.34) 46%, transparent 88%);
+  mix-blend-mode: screen;
+}
+#beamA .beam-core { opacity: calc(.42 + var(--face1) * .58); }
+#beamB .beam-core { opacity: calc(.42 + var(--face2) * .58); }
+
+/* the volumetric cone — nearly invisible in clear air, solid in fog */
+.beam-halo {
+  position: absolute; inset: 0;
+  clip-path: polygon(0 46%, 100% 8%, 100% 92%, 0 54%);
+  background: linear-gradient(90deg,
+    rgba(228,238,224,.55), rgba(228,238,224,.20) 50%, transparent 90%);
+  mix-blend-mode: screen;
+  opacity: calc(.10 + var(--fog) * .85);
+}
+
+/* foghorn pressure rings */
+.ripples { position: absolute; inset: 0; display: grid; place-items: center; overflow: visible; }
+.rip {
+  position: absolute; width: 34vmin; height: 34vmin; border-radius: 50%;
+  border: 2px solid rgba(194,155,90,.55);
+  animation: rip 3s cubic-bezier(.16, .84, .44, 1) forwards;
+}
+@keyframes rip {
+  from { transform: scale(.18); opacity: .75; }
+  to   { transform: scale(3.6); opacity: 0; }
+}
+
+/* the optic */
+.lens { position: relative; height: 100%; overflow: visible; }
+.glass-dim  { opacity: .9; }
+.glass-lit  { opacity: var(--flash); will-change: opacity; }
+.glass-glint{ opacity: .8; }
+.lamp-halo  { opacity: calc(.38 + var(--flash) * .62); will-change: opacity; }
+.lamp-point { filter: drop-shadow(0 0 6px rgba(255,246,218,.9)); }
+/* four-ray flare — blooms out of the lamp at the flash moment */
+.lamp-flare {
+  opacity: var(--flash);
+  transform-box: fill-box; transform-origin: center;
+  transform: scale(calc(.25 + var(--flash) * .75));
+  will-change: transform, opacity;
+  filter: drop-shadow(0 0 5px rgba(255,246,218,.75));
+}
+.plate-engrave {
+  font-family: "Cutive Mono", monospace; font-size: 12.5px;
+  fill: var(--brass); letter-spacing: 1px;
+}
+
+/* the 15 s dial — threads the gap between rim and prisms */
+.dial-arc {
+  fill: none; stroke: rgba(246,234,203,.5); stroke-width: 2;
+  stroke-dasharray: 1608.5; stroke-dashoffset: 1608.5;
+  will-change: stroke-dashoffset;
+}
+.dial-dot { fill: var(--brass); opacity: .9; }
+
+/* ring draw-in on load: animate from 0 to each ring's own opacity */
+body.lit .glass-dim > * { animation: ringIn 1s var(--ease) both; }
+@keyframes ringIn { from { opacity: 0; } }
+
+/* ═══ HERO COPY ═══════════════════════════════════════════════════ */
+
+.hero-copy { text-align: center; max-width: 44rem; }
+
+.obs-line {
+  font-family: "Cutive Mono", monospace; font-size: .64rem;
+  letter-spacing: .22em; color: var(--fogc);
+  margin-bottom: 1rem;
+}
+.obs-line::first-letter { color: var(--beam); }
+
+h1 {
+  font-family: "Bevan", serif; font-weight: 400;
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  letter-spacing: .07em; line-height: 1.1;
+  color: var(--beam);
+  text-shadow: 0 0 calc(6px + 26px * var(--flash)) rgba(246,234,203, calc(.25 + .45 * var(--flash)));
+}
+
+.hero-char { margin: .9rem 0 1.3rem; display: flex; flex-direction: column; gap: .3rem; }
+.char-main {
+  font-family: "Cutive Mono", monospace;
+  font-size: clamp(1.05rem, 2.4vw, 1.5rem); letter-spacing: .2em;
+  color: var(--brass);
+}
+.char-rest {
+  font-family: "Cutive Mono", monospace; font-size: .72rem;
+  letter-spacing: .18em; color: var(--fogc);
+}
+
+.hero-lede {
+  font-size: 1.08rem; line-height: 1.75; color: var(--pale);
+  max-width: 58ch; margin: 0 auto;
+}
+
+.hero-cue {
+  margin-top: 2.6rem;
+  font-family: "Cutive Mono", monospace; font-size: .68rem;
+  letter-spacing: .3em; color: var(--fogc);
+}
+/* the cue breathes with the flash — the page keeps the interval.
+   opacity rides --flash directly on an inner span so the reveal
+   transition on the <p> cannot lag it behind the beam. */
+.cue-breathe { opacity: calc(.58 + var(--flash) * .42); }
+
+/* ═══ LOG ENTRIES ═════════════════════════════════════════════════ */
+
+.entry {
+  position: relative; z-index: 2;
+  width: min(46rem, 92vw); margin: 0 auto;
+  padding: clamp(4.5rem, 9vh, 7.5rem) 0;
+}
+
+.entry-head {
+  border-top: 1px solid rgba(194,155,90, calc(.35 + var(--flash) * .45));
+  padding-top: 1.1rem; margin-bottom: 1.6rem;
+}
+.entry-no {
+  font-family: "Cutive Mono", monospace; font-size: .7rem;
+  letter-spacing: .3em; color: var(--brass);
+  display: block; margin-bottom: .5rem;
+}
+h2 {
+  font-family: "Bevan", serif; font-weight: 400;
+  font-size: clamp(1.45rem, 3vw, 2.1rem);
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--beam); line-height: 1.2;
+  text-shadow: 0 0 calc(20px * var(--flash)) rgba(246,234,203, calc(.55 * var(--flash)));
+  transition: letter-spacing 1.1s var(--ease);
+}
+.entry-head.in h2 { letter-spacing: .045em; }
+
+.entry-lede { max-width: 62ch; color: var(--pale); margin-bottom: 2.2rem; }
+.entry-note {
+  max-width: 62ch; margin-top: 2.2rem;
+  color: var(--fogc); font-style: italic;
+  border-left: 2px solid rgba(194,155,90,.4); padding-left: 1.1rem;
+}
+
+/* ── data plate ── */
+.plate {
+  background: linear-gradient(rgba(23,34,44,.9), rgba(16,25,33,.9));
+  border: 1px solid rgba(194,155,90,.4);
+  border-radius: 4px; overflow: hidden;
+  box-shadow: 0 0 0 4px rgba(20,31,41,.5), inset 0 1px 0 rgba(216,181,115,.18);
+}
+.plate-row {
+  display: grid; grid-template-columns: 11rem 1fr; gap: 1rem;
+  padding: .68rem 1.2rem;
+  border-bottom: 1px solid rgba(143,166,155,.12);
+  transition: background .3s var(--ease);
+}
+.plate-row:last-child { border-bottom: none; }
+.plate-row:hover { background: rgba(194,155,90,.07); }
+.plate-row dt {
+  font-family: "Cutive Mono", monospace; font-size: .74rem;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--brass); padding-top: .18rem;
+}
+.plate-row dd { color: var(--pale); font-size: .98rem; }
+
+/* ── keeper lineage ── */
+.lineage { list-style: none; }
+.keeper {
+  display: grid; grid-template-columns: 7.2rem 1fr; gap: .35rem 1.4rem;
+  padding: 1.15rem .9rem 1.15rem 1.1rem;
+  border-bottom: 1px solid rgba(143,166,155,.14);
+  position: relative;
+  transition: background .35s var(--ease);
+  background: linear-gradient(90deg, rgba(246,234,203,0), rgba(246,234,203,0));
+}
+.keeper::before {
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
+  background: transparent; transition: background .35s var(--ease);
+}
+.keeper:hover { background: linear-gradient(90deg, rgba(246,234,203,.055), rgba(246,234,203,0) 60%); }
+.keeper:hover::before { background: var(--beam); box-shadow: 0 0 10px rgba(246,234,203,.5); }
+.k-years {
+  grid-row: 1 / span 2;
+  font-family: "Cutive Mono", monospace; font-size: .86rem;
+  letter-spacing: .05em; color: var(--brass); padding-top: .22rem;
+}
+.k-name {
+  font-family: "Bevan", serif; font-size: 1.02rem; letter-spacing: .09em;
+  text-transform: uppercase; color: var(--beam);
+}
+.k-note { grid-column: 2; color: var(--pale); font-size: .97rem; max-width: 58ch; }
+.k-log {
+  display: block; margin-top: .8rem; padding: .6rem 1rem;
+  border-left: 2px solid var(--brass);
+  font-style: italic; color: var(--fogc); font-size: .95rem;
+  background: rgba(20,31,41,.6);
+}
+/* the .reveal rule below would otherwise override the hover-background
+   ease — restate the full transition at higher specificity */
+.keeper.reveal {
+  transition: opacity .8s var(--ease), transform .8s var(--ease), background .35s var(--ease);
+  transition-delay: var(--d, 0s), var(--d, 0s), 0s;
+}
+.keeper.is-veale { background: rgba(20,31,41,.45); }
+.keeper.is-veale::before { background: rgba(194,155,90,.7); }
+
+/* ── manifest ── */
+.manifest {
+  background: rgba(20,31,41,.55);
+  border: 1px solid rgba(143,166,155,.2); border-radius: 4px;
+  padding: 1.6rem 1.8rem;
+}
+.manifest-title {
+  font-family: "Cutive Mono", monospace; font-weight: 400;
+  font-size: .74rem; letter-spacing: .26em; color: var(--brass);
+  margin-bottom: .9rem;
+}
+.manifest-title.lost { color: var(--storm-ink); margin-top: 1.7rem; }
+.manifest-list { list-style: none; }
+.manifest-list li {
+  font-family: "Cutive Mono", monospace; font-size: .86rem;
+  color: var(--pale); padding: .3rem 0 .3rem 1.4rem; position: relative;
+}
+.manifest-list li::before {
+  content: "—"; position: absolute; left: 0; color: rgba(143,166,155,.5);
+}
+.manifest-list.lost li {
+  font-family: "Newsreader", serif; font-style: italic; font-size: 1rem;
+  color: var(--fogc);
+}
+.manifest-list.lost li::before { color: rgba(210,104,88,.7); }
+
+/* ── sailings ── */
+.sailings {
+  width: 100%; border-collapse: collapse;
+  font-family: "Cutive Mono", monospace; font-size: .82rem;
+}
+.sailings th {
+  text-align: left; font-weight: 400; letter-spacing: .18em; font-size: .68rem;
+  text-transform: uppercase; color: var(--fogc);
+  padding: .5rem .8rem; border-bottom: 1px solid rgba(194,155,90,.4);
+}
+.sailings td {
+  padding: .55rem .8rem; border-bottom: 1px solid rgba(143,166,155,.12);
+  color: var(--pale);
+}
+/* logbook dates and verdicts never break — remarks may wrap instead */
+.sailings td:first-child, .sailings td:nth-child(2),
+.sailings th:first-child, .sailings th:nth-child(2) { white-space: nowrap; }
+.sailings tbody tr { transition: background .3s var(--ease); }
+.sailings tbody tr:hover { background: rgba(246,234,203,.05); }
+.sailings .no { color: var(--storm-ink); letter-spacing: .06em; }
+.sailings .ok { color: var(--beam); letter-spacing: .06em; }
+.sailings tfoot td {
+  color: var(--brass); letter-spacing: .12em; font-size: .72rem;
+  border-bottom: none; padding-top: .9rem;
+}
+
+.landing-notes { list-style: none; margin-top: 2.2rem; max-width: 62ch; }
+.landing-notes li {
+  padding: .45rem 0 .45rem 1.5rem; position: relative; color: var(--pale);
+}
+.landing-notes li::before {
+  content: "▸"; position: absolute; left: 0; top: .52rem;
+  color: var(--brass); font-size: .8rem;
+  transition: color .3s var(--ease), transform .3s var(--ease);
+}
+.landing-notes li:hover::before { color: var(--beam); transform: translateX(3px); }
+
+/* ═══ COLOPHON ════════════════════════════════════════════════════ */
+
+.colophon {
+  position: relative; z-index: 2;
+  text-align: center;
+  padding: 3rem 1.5rem calc(3.4rem + 56px);
+  border-top: 1px solid rgba(143,166,155,.15);
+  width: min(46rem, 92vw); margin: 0 auto;
+}
+.colo-line {
+  font-family: "Cutive Mono", monospace; font-size: .72rem;
+  letter-spacing: .2em; color: var(--brass); margin-bottom: 1rem;
+}
+.colo-body { color: var(--pale); max-width: 46ch; margin: 0 auto .9rem; }
+.colo-small {
+  font-family: "Cutive Mono", monospace; font-size: .66rem;
+  letter-spacing: .1em; color: var(--fogc);
+}
+
+/* ═══ WEATHER LOG LINE ════════════════════════════════════════════ */
+
+.wxlog {
+  position: fixed; right: 1rem; bottom: 60px; z-index: 45;
+  max-width: min(340px, 82vw);
+  font-family: "Cutive Mono", monospace; font-size: .66rem;
+  letter-spacing: .08em; line-height: 1.5; color: var(--fogc);
+  background: rgba(8,13,18,.88);
+  border-left: 2px solid var(--brass);
+  padding: .55rem .85rem;
+  opacity: 0; transform: translateY(8px);
+  transition: opacity .6s var(--ease), transform .6s var(--ease);
+  pointer-events: none;
+}
+.wxlog.show { opacity: 1; transform: none; }
+
+/* ═══ SIGNAL STRIP ════════════════════════════════════════════════ */
+
+.signal {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 40;
+  display: flex; align-items: center; justify-content: center;
+  gap: clamp(1rem, 3.5vw, 2.6rem);
+  height: 48px;
+  background: rgba(8,13,18,.85);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(194,155,90,.35);
+  font-family: "Cutive Mono", monospace;
+}
+.sig-label { font-size: .62rem; letter-spacing: .3em; color: var(--fogc); }
+.sig-mode {
+  display: flex; align-items: center; gap: .9rem;
+  opacity: .32; transition: opacity .8s var(--ease);
+}
+.signal:not(.fog) .sig-light, .signal.fog .sig-horn { opacity: 1; }
+.sig-char { font-size: .78rem; letter-spacing: .12em; color: var(--beam); }
+.sig-horn .sig-char { color: var(--fogc); }
+.signal.fog .sig-horn .sig-char { color: var(--storm-ink); }
+
+.sig-wheel {
+  position: relative; width: clamp(120px, 16vw, 220px); height: 14px;
+}
+.sig-wheel::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 6px; height: 2px;
+  background: rgba(143,166,155,.3);
+}
+.sig-tick {
+  position: absolute; top: 3px; width: 5.3%; height: 8px;
+  background: var(--beam); opacity: .85; border-radius: 1px;
+}
+.sig-blast {
+  position: absolute; top: 3px; height: 8px;
+  background: var(--storm); opacity: .8; border-radius: 1px;
+}
+.sig-cursor {
+  position: absolute; left: 0; top: 0; width: 2px; height: 14px;
+  background: #fff;
+  box-shadow: 0 0 6px rgba(246,234,203,.9);
+  will-change: transform;
+}
+.sig-clock { font-size: .68rem; letter-spacing: .1em; color: var(--fogc); }
+
+/* eclipse readout — chart language for the dark between flashes */
+.sig-phase {
+  font-size: .68rem; letter-spacing: .1em; color: var(--fogc);
+  min-width: 8.5ch;
+}
+.sig-phase.lit { color: var(--beam); text-shadow: 0 0 8px rgba(246,234,203,.6); }
+
+/* horn blast makes the strip breathe */
+.signal.fog .sig-horn .sig-char {
+  text-shadow: 0 0 calc(14px * var(--blast)) rgba(166,61,51, calc(.9 * var(--blast)));
+}
+
+/* in fog, ink darkens against the veil — the page compensates */
+body.foggy .entry, body.foggy .colophon, body.foggy .hero-copy {
+  text-shadow: 0 1px 10px rgba(6, 10, 14, .85), 0 0 3px rgba(6, 10, 14, .7);
+}
+
+/* ═══ REVEALS ═════════════════════════════════════════════════════ */
+
+.reveal {
+  opacity: 0; transform: translateY(26px);
+  transition: opacity .8s var(--ease), transform .8s var(--ease);
+  transition-delay: var(--d, 0s);
+}
+.reveal.in { opacity: 1; transform: none; }
+
+/* ═══ RESPONSIVE ══════════════════════════════════════════════════ */
+
+@media (max-width: 860px) {
+  .mast {
+    flex-wrap: wrap; row-gap: .1rem;
+    padding-bottom: .5rem;
+    background: rgba(8,13,18,.92);
+    -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(143,166,155,.14);
+  }
+  .mast-name { order: 1; }
+  .conditions { order: 2; margin-left: auto; }
+  .mast-nav {
+    order: 3; width: 100%; margin-left: 0;
+    gap: 1.2rem; justify-content: flex-start;
+  }
+  .mast-nav a { font-size: .62rem; letter-spacing: .12em; padding: .25rem 0; }
+  .hero { padding-top: calc(96px + 2vh); }
+  .entry { scroll-margin-top: 2rem; }
+  .plate-row { grid-template-columns: 8.4rem 1fr; padding: .6rem .9rem; }
+}
+
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .stage { height: clamp(300px, 42vh, 420px); margin-bottom: 1.5rem; }
+  .rose {
+    width: calc(clamp(300px, 42vh, 420px) * 1.14);
+    height: calc(clamp(300px, 42vh, 420px) * 1.14);
+  }
+  .hero-eyebrow { font-size: .62rem; letter-spacing: .12em; }
+  .eyebrow-adm { display: none; }
+  .cond-label { display: none; }
+  .conditions { padding: .38rem .65rem; }
+  .obs-tail { display: none; }
+  .mast-sub { display: none; }
+  .sig-clock { display: none; }
+  .sig-label { display: none; }
+  .signal:not(.fog) .sig-horn { display: none; }
+  .signal.fog .sig-light { display: none; }
+  .plate-row { grid-template-columns: 1fr; gap: .15rem; }
+  .keeper { grid-template-columns: 1fr; padding-left: .9rem; }
+  .k-years { grid-row: auto; }
+  .k-note { grid-column: 1; }
+  .sailings { font-size: .72rem; }
+  .sailings th, .sailings td { padding: .45rem .45rem; }
+  .sailings tfoot td { letter-spacing: .05em; }
+  .hero { padding-top: 96px; }
+}
+
+/* ═══ REDUCED MOTION — the light holds steady ═════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  :root { --flash: .3; --bandop: 0; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+  .beam { display: none; }
+  .reveal { opacity: 1; transform: none; }
+  body::after { opacity: 0; }
+  .sig-cursor { display: none; }
+}
