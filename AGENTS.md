@@ -56,6 +56,11 @@ Nothing else in the app was modified — the feature is injected at runtime into
 existing SPA, so the Next.js code, the Library pages and the generated Vite bundle are
 untouched.
 
+### 2026-09-16 — Repo hygiene: ignore local tool state
+
+Added `.kilo/` and `.vercel/` to the root `.gitignore` so a future `git add -A` cannot
+sweep local agent / deploy state into a commit. §8 was updated to match.
+
 ---
 
 ## 3. UI Editor feature specification
@@ -291,10 +296,12 @@ Result: **33/33 assertions passed** across two runs, covering:
 - Remote: `origin → https://github.com/sudo-prog/aura-clone.git`, tracking `origin/main`.
 - This feature is committed on `main` in the commit
   **"feat: hamburger menu + Settings + UI Editor"** (see `git log`).
-- **Untracked at the time of writing, intentionally NOT committed:**
-  - `.kilo/worktrees/busy-join/` — a tool worktree (registered in `git worktree list`,
-    detached HEAD) that duplicates `public/_legacy/**`. Never `git add -A` blindly here.
-  - `.vercel/` — local Vercel CLI state.
+- **Local tool state is gitignored** (added to the root `.gitignore`):
+  - `.kilo/` — Kilo Code config plus `worktrees/busy-join`, a registered
+    `git worktree list` entry on detached HEAD that duplicates `public/_legacy/**`.
+    `git worktree` bookkeeping lives in `.git/worktrees/`, so ignoring `.kilo/` does
+    **not** remove or break that worktree.
+  - `.vercel/` — Vercel CLI state (`project.json` holds the project + org ids).
 - **Modified but NOT part of this feature:**
   `public/_legacy/assets/index-CugVVnIU.js.bak` has 26 pre-existing uncommitted line
   changes (offline URL rewrites such as `fonts.googleapis.com` → `fonts-dummy.local`).

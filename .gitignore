@@ -19,3 +19,7 @@ Thumbs.db
 # Editor
 .vscode/
 .idea/
+
+# Local tool state (Kilo Code worktrees, Vercel CLI project link)
+.kilo/
+.vercel/
